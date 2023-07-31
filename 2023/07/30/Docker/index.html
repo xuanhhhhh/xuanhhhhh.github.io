@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Docker概述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker">
+<meta property="og:url" content="http://example.com/2023/07/30/Docker/index.html">
+<meta property="og:site_name" content="Konglong">
+<meta property="og:description" content="Docker概述">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/be7adea748abd28eee7d4ec814b7a316.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/14c9919761fe4833b59b16f1944f39fc.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9b835a379a044e06869c036190e649aa.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2725bac4251243ce9e42eff23e2e44ac.png">
+<meta property="article:published_time" content="2023-07-30T01:13:00.000Z">
+<meta property="article:modified_time" content="2023-07-31T10:09:38.142Z">
+<meta property="article:author" content="xuan">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/be7adea748abd28eee7d4ec814b7a316.jpeg">
+
+
+<link rel="canonical" href="http://example.com/2023/07/30/Docker/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/07/30/Docker/","path":"2023/07/30/Docker/","title":"docker"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>docker | Konglong</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Konglong</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">Docker概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E5%92%8CDocker"><span class="nav-number">1.1.</span> <span class="nav-text">容器和Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">容器的必要性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90"><span class="nav-number">2.</span> <span class="nav-text">Docker 的基本组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Docker"><span class="nav-number">3.</span> <span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F"><span class="nav-number">4.</span> <span class="nav-text">阿里云镜像加速</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">底层原理</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xuan"
+      src="/images/head.png">
+  <p class="site-author-name" itemprop="name">xuan</p>
+  <div class="site-description" itemprop="description">Welcome</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xuanhhhhh/xuanhhhhh.github.io" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xuanhhhhh&#x2F;xuanhhhhh.github.io" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:18035748708@163.com" title="E-Mail → mailto:18035748708@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_74080781?type=blog" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_74080781?type&#x3D;blog" rel="noopener me" target="_blank"><i class="fab fa-codiepie fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/30/Docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.png">
+      <meta itemprop="name" content="xuan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Konglong">
+      <meta itemprop="description" content="Welcome">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="docker | Konglong">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          docker
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-07-30 09:13:00" itemprop="dateCreated datePublished" datetime="2023-07-30T09:13:00+08:00">2023-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-31 18:09:38" itemprop="dateModified" datetime="2023-07-31T18:09:38+08:00">2023-07-31</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Docker概述"><a href="#Docker概述" class="headerlink" title="Docker概述"></a>Docker概述</h1><span id="more"></span>
+
+<p>Docker是一个开源平台，通过将应用程序隔离到轻量级、可移植的容器中，自动化应用程序的部署、扩展和管理。容器是独立的可执行单元，封装了运行应用程序所需的所有必要依赖项、库和配置文件，可以在各种环境中稳定地运行。</p>
+<p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口</p>
+<p>隔离：docker核心思想！</p>
+<p>docker的思想来源于集装箱</p>
+<p>docker  十分轻巧！！！</p>
+<p>基于Go语言开发的，开源项目！</p>
+<p>虚拟机也是属于虚拟化技术，Docker 容器技术，也是一种 虚拟化技术!</p>
+<ul>
+<li>Vm:     linux centos原生镜像 (一个电脑!) 隔离，需要开启多个虚拟机!                        几个G                      几分钟</li>
+<li>docker:隔离,境像(最核心的环境 4m + jdk + mysql)十分的小巧， 运行像就可以了! 小巧! 几个M KB秒级启动!</li>
+</ul>
+<p><strong>虚拟机技术缺点:</strong><br>1、资源占用十分多<br>2、冗余步骤多<br>3、启动很慢 !<br><strong>容器化技术</strong><br><strong><code>容器化技术不是模拟的一个完整的提作系统</code></strong></p>
+<p><strong>比较Docker 和 虚拟机技术的不同:</strong></p>
+<ul>
+<li>传统虚拟机，虚拟出一条硬件，运行一个完整的操作系统，然后在这个系统上安装和运行软件</li>
+<li>容器内的应用直接运行在 宿主机的内容，容器是没有自己的内核的，也没有虚拟我们的硬件，所以就轻便</li>
+<li>每个容器间是互相隔离，每个容器内都有一个属于自己的文件系统，互不影响。</li>
+</ul>
+<p>官网: <a target="_blank" rel="noopener" href="https://www.docker.com/">https://www.docker.com/</a></p>
+<p>文档地址: <a target="_blank" rel="noopener" href="https://docs.docker.com/">https://docs.docker.com/</a> (超级详细)</p>
+<p>仓库地址: <a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<h2 id="容器和Docker"><a href="#容器和Docker" class="headerlink" title="容器和Docker"></a><strong>容器和Docker</strong></h2><p>Docker是一种简化创建、部署和管理容器的平台。它为开发人员和管理员提供了一组工具和API，用于管理容器化的应用程序。使用Docker，您可以将应用程序代码、库和依赖项构建和打包成一个容器映像，该映像可以在支持Docker的任何环境中分发和一致地运行。</p>
+<h2 id="容器的必要性"><a href="#容器的必要性" class="headerlink" title="容器的必要性"></a><strong>容器的必要性</strong></h2><p><strong>应用更快速的交付和部署</strong><br>传统:一堆帮助文档，安装程序<br>Docker: 打包镜像发布测试，一键运行<br><strong>更便捷的升级和扩缩容</strong><br>使用了Docker之后，我们部署应用就和搭积木一样!<br>项目打包为一个镜像，扩展 服务器A ! 服务器B</p>
+<p><strong>更简单的系统运维</strong><br>在容器化之后，我们的开发，测试环境都是高度一致的。</p>
+<p><strong>更高效的计算资源利用</strong></p>
+<p>Docker 是 内核级别的虚拟化，可以在一个物理机上可以运行很多的客器实例!服务器的性能可以被压榨到极致.</p>
+<h1 id="Docker-的基本组成"><a href="#Docker-的基本组成" class="headerlink" title="Docker 的基本组成"></a>Docker 的基本组成</h1><p><img src="https://img-blog.csdnimg.cn/img_convert/be7adea748abd28eee7d4ec814b7a316.jpeg" alt="img"></p>
+<p><strong>镜像(image )</strong> :<br>docker镜像就好比是一个模板，可以通过这个模板来创建容器服务，tomcat镜像&#x3D;&#x3D;&#x3D;&gt; run &#x3D;&#x3D;&gt; tomcat01 容器(提供服务器)通过这个镜像可以创建多个容器( 最终服务运行或者项目运行就是在容器中的)。<br><strong>容器(container) :</strong><br>Docker利用容器技术，独立运行一个或者一个组应用，通过镜像来创建的</p>
+<p>启动，停止，删除，基本命令!</p>
+<p>目前就可以把这个容器理解为就是一个简易的linux系统</p>
+<p><strong>仓库(repository) :</strong><br>仓库就是存放镜像的地方!<br>仓库分为公有仓库和私有仓库!<br>Docker Hub(默认是国外的)   阿里云….都有容器服务器(配置镜像加速 !)</p>
+<h1 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h1><p><strong>环境准备</strong></p>
+<ol>
+<li>Linux基础</li>
+<li>CentOS 7或以上版本</li>
+<li>使用Xshell连接远程服务器进行操作</li>
+</ol>
+<p><strong>环境查看</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#系统内核是3.10以上</span><br><span class="line">用uname -r查看</span><br></pre></td></tr></table></figure>
+
+<p>系统版本</p>
+<p>[root@163 ~]# cat &#x2F;etc&#x2F;os-release<br>NAME&#x3D;”CentOS Linux”<br>VERSION&#x3D;”8”<br>ID&#x3D;”centos”<br>ID_LIKE&#x3D;”rhel fedora”<br>VERSION_ID&#x3D;”8”<br>PLATFORM_ID&#x3D;”platform:el8”<br>PRETTY_NAME&#x3D;”CentOS Linux 8”<br>ANSI_COLOR&#x3D;”0;31”<br>CPE_NAME&#x3D;”cpe:&#x2F;o:centos:centos:8”<br>HOME_URL&#x3D;”<a target="_blank" rel="noopener" href="https://centos.org/">https://centos.org/</a>“<br>BUG_REPORT_URL&#x3D;”<a target="_blank" rel="noopener" href="https://bugs.centos.org/">https://bugs.centos.org/</a>“<br>CENTOS_MANTISBT_PROJECT&#x3D;”CentOS-8”<br>CENTOS_MANTISBT_PROJECT_VERSION&#x3D;”8”</p>
+<p><strong>安装</strong></p>
+<ol>
+<li><p><strong>卸载旧版本</strong></p>
+<pre><code>yum remove docker \
+            docker-client \
+            docker-client-latest \
+            docker-common \
+            docker-latest \
+            docker-latest-logrotate \
+            docker-logrotate \
+            docker-engine
+</code></pre>
+</li>
+<li><p><strong>需要的安装包</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>设置镜像的仓库</strong></p>
+<p>yum-config-manager –add-repo <a target="_blank" rel="noopener" href="https://download.docker.com/linux/centos/docker-ce.repo">https://download.docker.com/linux/centos/docker-ce.repo</a> &#x2F;&#x2F;默认是国外的，非常慢</p>
+<p>yum-config-manager –add-repo <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a> &#x2F;&#x2F;阿里云镜像</p>
+<p>##更新yum软件包索引  yum makecache fast</p>
+</li>
+<li><p><strong>安装docker相关的</strong></p>
+<p>yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</p>
+<p>ce 社区  ee企业</p>
+</li>
+<li><p><strong>启动Docker</strong></p>
+<p>systemctl start docker</p>
+</li>
+<li><p><strong>使用docker version查看是否安装成功</strong></p>
+<p>[root@163 ~]# docker version<br>Client: Docker Engine - Community<br> Version:           24.0.5<br> API version:       1.43<br> Go version:        go1.20.6<br> Git commit:        ced0996<br> Built:             Fri Jul 21 20:36:32 2023<br> OS&#x2F;Arch:           linux&#x2F;amd64<br> Context:           default</p>
+<p>Server: Docker Engine - Community<br> Engine:<br>  Version:          24.0.5<br>  API version:      1.43 (minimum version 1.12)<br>  Go version:       go1.20.6<br>  Git commit:       a61e2b4<br>  Built:            Fri Jul 21 20:35:32 2023<br>  OS&#x2F;Arch:          linux&#x2F;amd64<br>  Experimental:     false<br> containerd:<br>  Version:          1.6.21<br>  GitCommit:        3dce8eb055cbb6872793272b4f20ed16117344f8<br> runc:<br>  Version:          1.1.7<br>  GitCommit:        v1.1.7-0-g860f061<br> docker-init:<br>  Version:          0.19.0<br>  GitCommit:        de40ad0</p>
+</li>
+<li><p><strong>sudo docker run hello-world</strong></p>
+</li>
+<li><p><strong>查看一下下载的这个 hello-world镜像</strong></p>
+<p>docker images</p>
+</li>
+</ol>
+<p><strong>了解</strong></p>
+<p>docker卸载</p>
+<ol>
+<li>卸载依赖</li>
+</ol>
+<p>  <code>yum remove docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras</code></p>
+<ol start="2">
+<li><p>删除资源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf /var/lib/docker   //docker默认工作路径</span><br><span class="line">sudo rm -rf /var/lib/containerd</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="阿里云镜像加速"><a href="#阿里云镜像加速" class="headerlink" title="阿里云镜像加速"></a>阿里云镜像加速</h1><ol>
+<li>登录阿里云找到容器镜像服务</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/14c9919761fe4833b59b16f1944f39fc.png" alt="请添加图片描述"></p>
+<ol start="2">
+<li><p>找到镜像加速器</p>
+</li>
+<li><p>配置使用</p>
+</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker </span><br><span class="line"></span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27; </span><br><span class="line">&#123; </span><br><span class="line"> &quot;registry-mirrors&quot;: [&quot;https://kzsz87k0.mirror.aliyuncs.com&quot;] </span><br><span class="line">&#125; </span><br><span class="line">EOF </span><br><span class="line"></span><br><span class="line">sudo systemctl daemon-reload </span><br><span class="line"></span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h1 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h1><p><strong>Docker是什么工作的?</strong><br>Docker 是一个Client-Server 结构的系统，Docker的守护进程运行在主机上。通过Socket从客户端访问<br>DockerServer 接收到 Docker-Client 的指令，就会执行这个命令</p>
+<p><strong>Docker为什么比VM快</strong><br>1、Docker有着比虚拟机更少的抽象层<br>2、docker 利用的是宿主机的内核，vm 需要是 Guest OS。<br><img src="https://img-blog.csdnimg.cn/9b835a379a044e06869c036190e649aa.png" alt="在这里插入图片描述"><br>所以说，新建一个容器的时候，docker不需要想虚拟机一样重新加载一个操作系统内核，避免引导。虚拟机是加载 Guest OS，分钟级别的，而docker 是利用 宿主机的操作系统吗，省略了这个复杂的过程，秒级!</p>
+<p><img src="https://img-blog.csdnimg.cn/2725bac4251243ce9e42eff23e2e44ac.png" alt="在这里插入图片描述"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="xuan 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/zhifubao.png" alt="xuan 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/07/27/Java3/" rel="prev" title="Java面向对象">
+                  <i class="fa fa-angle-left"></i> Java面向对象
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">xuan</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">34k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:02</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
