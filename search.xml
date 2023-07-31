@@ -1,6 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java面向对象</title>
+    <url>/2023/07/27/Java3/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+
+<h1 id="Java-对象和类"><a href="#Java-对象和类" class="headerlink" title="Java 对象和类"></a>Java 对象和类</h1><ul>
+<li><p><strong>类和对象的关系</strong><br><strong>类</strong>:类是对现实生活中一类具有共同属性和行为的事物的抽象<br><strong>对象</strong>:是能够看得到摸的着的真实存在的实体</p>
+</li>
+<li><p><strong>类的定义</strong><br><strong>类的重要性</strong>:是Java程序的基本组成单位<br><strong>类是什么</strong>:是对现实生活中一类具有共同属性和行为的事物的抽象，确定对象将会拥有的属性和行为</p>
+<p><strong>类的特点</strong>：类是对象的数据类型，是具有相同属性和行为的事物的抽象</p>
+<p><strong>类的组成</strong>:属性和行为<br><strong>属性</strong>:在类中通过成员变量来体现(类中方法外的变量)<br><strong>行为</strong>:在类中通过成员方法来体现(和前面的方法相比去掉static关键字即可)</p>
+</li>
+<li><p><strong>对象的定义</strong></p>
+<p>看看周围真实的世界，会发现身边有很多对象，车，手机，人等等。所有这些对象都有自己的属性和行为。</p>
+</li>
+</ul>
+<p>​       拿一个手机来举例，它的属性有：品牌、价格，行为有：打电话、发短信。</p>
+<p>​       软件对象也有属性和行为。行为通过方法体现。</p>
+<p>​       在软件开发中，方法操作对象内部状态的改变，对象的相互调用也是通过方法来完成。</p>
+<h2 id="Java-中的类"><a href="#Java-中的类" class="headerlink" title="Java 中的类"></a>Java 中的类</h2><p>类可以看成是创建 Java 对象的模板。</p>
+<p>pubIic class Phone {</p>
+<p>​		&#x2F;&#x2F;成员变量</p>
+<p>​		String brand;</p>
+<p>​		int price;</p>
+<p>​		&#x2F;&#x2F;成员方法</p>
+<p>​		public void call(){</p>
+<p>​			System.out.printIn(“打电话”);}<br>​		public void sendMessage(){</p>
+<p>​			System.out,pnintIn(“发短信”);}</p>
+<p>}</p>
+<p><strong>成员变量和局部变量的区别</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">区别</th>
+<th align="center">成员变量</th>
+<th align="center">局部变量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">类中位置不同</td>
+<td align="center">类中方法外</td>
+<td align="center">方法内或者方法声明上</td>
+</tr>
+<tr>
+<td align="center">内存中位置不同</td>
+<td align="center">堆内存</td>
+<td align="center">栈内存</td>
+</tr>
+<tr>
+<td align="center">生命周期不同</td>
+<td align="center">随着对象的存在而存在，随看对象的消失而消失</td>
+<td align="center">随着方法的调用而存在，随着方法的调用完毕而消失</td>
+</tr>
+<tr>
+<td align="center">初始化值不同</td>
+<td align="center">有默认的初始化值</td>
+<td align="center">没有默认的初始化值，必须先定义，赋值，才能使用</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>局部变量</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
+<li><strong>成员变量</strong>：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</li>
+<li><strong>类变量</strong>：类变量也声明在类中，方法体之外，但必须声明为 static 类型。</li>
+</ul>
+<hr>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>格式:类名对象名 &#x3D; new 类名0;<br>范例: Phone p &#x3D; new Phone0;</p>
+<h2 id="使用对象"><a href="#使用对象" class="headerlink" title="使用对象"></a>使用对象</h2><ol>
+<li><strong>使用成员变量</strong><br>格式:对象名.变量名<br>范例:p.brand</li>
+<li><strong>使用成员方法</strong><br>格式:对象名.方法名()<br>范例: p.call()</li>
+</ol>
+<hr>
+<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><h2 id="一、private关键字"><a href="#一、private关键字" class="headerlink" title="一、private关键字"></a>一、private关键字</h2><ul>
+<li>是一个权限修饰符</li>
+<li>可以修饰成员 (成员变量和成员方法)</li>
+<li>作用是保护成员不被别的类使用，被private修饰的成员只在本类中才能访问</li>
+</ul>
+<p>针对<code>private</code>修饰的成员变量，如果需要被其他类使用，提供相应的操作</p>
+<ul>
+<li>提供“<code>get变量名()</code>”方法，用于获取成员变量的值，方法用<code>public</code>修饰</li>
+<li>提供“<code>set变量名(参数)</code>”方法，用于设置成员变量的值，方法用<code>public</code>修饰</li>
+</ul>
+<h2 id="二、this关键字"><a href="#二、this关键字" class="headerlink" title="二、this关键字"></a>二、this关键字</h2><ol>
+<li><p>this修饰的变量用于指代成员变量<br>方法的形参如果与成员变量同名，不带this修饰的变量指的是形参，而不是成员变量<br>方法的形参没有与成员变量同名，不带this修饰的变量指的是成员变量</p>
+</li>
+<li><p>什么时候使用this呢? <strong>解决局部变量隐藏成员变量</strong></p>
+</li>
+<li><p>this 代表所在类的对象引用<br>记住:方法被哪个对象调用，this就代表哪个对象</p>
+</li>
+</ol>
+<h2 id="三、封装"><a href="#三、封装" class="headerlink" title="三、封装"></a>三、封装</h2><ol>
+<li><strong>封装概述</strong><br>是面向对象三大特征之一 (封装，继承，多态)<br>是面向对象编程语言对客观世界的横拟，客观世界里成员变量都是隐藏在对象内部的，外界是无法直接操作</li>
+<li><strong>封装规则</strong><br>将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对的冠信息的操作和访问成员变量private，提供对应的getXxx()&#x2F;setXxx()方法</li>
+<li><strong>好处</strong><br>通过方法来控制成员变量的操作，提高了代码的安全性<br>把代码用方法进行封装，提高了代码的复用性</li>
+</ol>
+<h2 id="四、构造方法"><a href="#四、构造方法" class="headerlink" title="四、构造方法"></a>四、构造方法</h2><p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
+<p>下面是一个构造方法示例：</p>
+<p>public class Student{   </p>
+<p>​		 public Student(){ }     </p>
+<p>​		 public Student(String name){         </p>
+<p>​			&#x2F;&#x2F; 这个构造器仅有一个参数：name    } }</p>
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li><p>构造方法的创建</p>
+<p>如果没有定义构造方法，系统将给出一个认的无参数构造方法<br>如果定义了构造方法，系统将不再提供默认的构造方法</p>
+</li>
+<li><p>构造方法的重载<br>如果自定义了带参构造方法，还要使用无参数构造方法，就必须再写一个无参数构造方法</p>
+</li>
+<li><p>推荐的使用方式<br>无论是否使用，都手工书写无参数构造方法</p>
+</li>
+</ol>
+<h5 id="标准类制作"><a href="#标准类制作" class="headerlink" title="标准类制作"></a>标准类制作</h5><ol>
+<li>成员变量<br>使用private修饰</li>
+<li>构造方法<br>提供一个无参构造方法<br>提供一个带多个参数的构造方法</li>
+<li>成员方法<br>提供每一个成员变量对应的setXxx()&#x2F;getXxx()<br>提供一个显示对象信息的show()</li>
+<li>创建对象并为其成员变量值的两种方式<br>无参构造方法创建对象后使用setXxx()赋值<br>使用带参构造方法直接创建带有属性值的对象</li>
+</ol>
+<p>例子：</p>
+<h5 id="Student-java程序"><a href="#Student-java程序" class="headerlink" title="Student.java程序"></a>Student.java程序</h5><p>public class Student{   </p>
+<p>​		prative String name;&#x2F;&#x2F;成员变量</p>
+<p>​		prative int age;</p>
+<p>​		public Student() { }&#x2F;&#x2F;构造方法</p>
+<p>​		public Student(String name,int age){ </p>
+<p>​			this.name &#x3D; name;</p>
+<p>​			this.age &#x3D; age;}</p>
+<p>​		&#x2F;&#x2F;成员方法</p>
+<p>​		public void setName(String name){</p>
+<p>​			this.name &#x3D; name;}</p>
+<p>​		public String getName(){</p>
+<p>​			return name;}</p>
+<p>​		public void setAge(int age){</p>
+<p>​			this.age &#x3D; age;}</p>
+<p>​		public String getAge(){</p>
+<p>​			return age;}</p>
+<p>​		public void show(){</p>
+<p>​			System.out.println(name+”,”+age);}</p>
+<p>} </p>
+<h5 id="StudentDemo-java程序"><a href="#StudentDemo-java程序" class="headerlink" title="StudentDemo.java程序"></a>StudentDemo.java程序</h5><p>package com.XXX</p>
+<p>public class StudentDemo{</p>
+<p>​		public static void main(String[ ] args){</p>
+<p>​			&#x2F;&#x2F;无参构造方法创建对象后使用setXxx()赋值</p>
+<p>​			Student s1 &#x3D; new Student( );</p>
+<p>​			s1.setName(“xuan”);</p>
+<p>​			s1.setAge(18);</p>
+<p>​			s1.show();</p>
+<p>​			&#x2F;&#x2F;使用带参构造方法直接创建带有属性值的对象</p>
+<p>​			Student s2 &#x3D; new Student(“name:”xuan”,age:18);</p>
+<p>​			s2.show();</p>
+<p>​		}		</p>
+<p>}</p>
+<p><strong>运行结果</strong>：</p>
+<p>xuan,18</p>
+<p>xuan,18</p>
+<h1 id="Java-继承"><a href="#Java-继承" class="headerlink" title="Java 继承"></a>Java 继承</h1><hr>
+<h2 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h2><p>继承是面向对象的三大特征之一，可以使得子类具有父类的属性和方法，还可以在子类中重新定义，追加属性和方法</p>
+<ul>
+<li>格式:public class 子类名extends父类名}</li>
+<li>范例: public class Zi extends Fu<br>Fu:是类，也被称为基类、超类<br>Zi: 是子类，也被称为派生类</li>
+</ul>
+<p>继承中子类的特点：</p>
+<p>子类可以有父类的内容，还可以有自己特有的内容</p>
+<h2 id="继承的好处和弊端"><a href="#继承的好处和弊端" class="headerlink" title="继承的好处和弊端"></a>继承的好处和弊端</h2><p><strong>继承好处</strong><br>提高了代码的复用性(多个类相同的成员可以放到同一个类中)<br>提高了代码的维护性(如果方法的代码需要修改，修改一处即可)<br><strong>继承弊端</strong><br>继承让类与类之间产生了关系，类的合性增强了，当父类发生变化时子类实现也不得不跟着变化，削弱了子类的独立性<br><strong>什么时候使用继承?</strong><br>继承体现的关系:is a<br>假设法:我有两个类A和B，如果他们满足A是B的一种，或者B是A的一种，就说明他们存在继承关系，这个时候就可以考虑使用继承来体现，否则就不滥用继承</p>
+<h2 id="继承中变量的访问特点"><a href="#继承中变量的访问特点" class="headerlink" title="继承中变量的访问特点"></a>继承中变量的访问特点</h2><p>在子类方法中访问一个变量</p>
+<ol>
+<li>子类局部范围找</li>
+<li>子类成员范围找</li>
+<li>父类成员范围找</li>
+<li>如果都没有就报错(不考虑父亲的父亲…)</li>
+</ol>
+<h2 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a>继承类型</h2><p>需要注意的是 Java 不支持多继承，但支持多重继承。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-extends-2020-12-08.png" alt="img"></p>
+<h2 id="继承关键字"><a href="#继承关键字" class="headerlink" title="继承关键字"></a>继承关键字</h2><p>继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 java.lang.Object，当一个类没有继承的两个关键字，则默认继承 Object（这个类在 <strong>java.lang</strong> 包中，所以不需要 <strong>import</strong>）祖先类。</p>
+<h3 id="extends关键字"><a href="#extends关键字" class="headerlink" title="extends关键字"></a>extends关键字</h3><p>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。</p>
+<p>public class Animal {<br>    private String name;<br>    private int id;<br>    public Animal(String myName, int myid) {<br>        &#x2F;&#x2F;初始化属性值<br>    }<br>    public void eat() {  &#x2F;&#x2F;吃东西方法的具体实现  }<br>    public void sleep() { &#x2F;&#x2F;睡觉方法的具体实现  }<br>} </p>
+<p>public class Penguin  extends  Animal{<br>}</p>
+<h3 id="implements关键字"><a href="#implements关键字" class="headerlink" title="implements关键字"></a>implements关键字</h3><p>使用 implements 关键字可以变相的使java具有<code>多继承</code>的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）。</p>
+<p>public interface A {<br>    public void eat();<br>    public void sleep();<br>}</p>
+<p>public interface B {<br>    public void show();<br>}</p>
+<p>public class C implements A,B {<br>}</p>
+<h3 id="super-与-this-关键字"><a href="#super-与-this-关键字" class="headerlink" title="super 与 this 关键字"></a>super 与 this 关键字</h3><p>super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。</p>
+<p>this关键字：指向自己的引用。</p>
+<p><strong>实例</strong></p>
+<p>class Animal {<br>  void eat() {<br>    System.out.println(“animal : eat”);<br>  }<br>}</p>
+<p>class Dog extends Animal {<br>  void eat() {<br>    System.out.println(“dog : eat”);<br>  }<br>  void eatTest() {<br>    this.eat();   &#x2F;&#x2F; this 调用自己的方法<br>    super.eat();  &#x2F;&#x2F; super 调用父类方法<br>  }<br>}</p>
+<p>public class Test {<br>  public static void main(String[] args) {<br>    Animal a &#x3D; new Animal();<br>    a.eat();<br>    Dog d &#x3D; new Dog();<br>    d.eatTest();<br>  }<br>}</p>
+<p>输出结果为：</p>
+<p>animal : eat<br>dog : eat<br>animal : eat</p>
+<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><p>final 可以用来修饰变量（包括类属性、对象属性、局部变量和形参）、方法（包括类方法和对象方法）和类。</p>
+<p><strong>final修饰的特点</strong></p>
+<ul>
+<li>修饰方法:表明该方法是最终方法，不能被重写</li>
+<li>修饰变量:表明该变量是常量，不能再次被赋值</li>
+<li>修饰类:表明该类是最终类，不能被继承</li>
+</ul>
+<p>声明类：</p>
+<p>final class 类名 {&#x2F;&#x2F;类体}</p>
+<p>声明方法：</p>
+<p>修饰符(public&#x2F;private&#x2F;default&#x2F;protected) final 返回值类型 方法名(){&#x2F;&#x2F;方法体}</p>
+<p><strong>注：</strong> final 定义的类，其中的属性、方法不是 final 的。</p>
+<p><strong>final修饰局部变量</strong></p>
+<p>变量是基本类型: final修饰指的是基本类型的数据值不能发生改变</p>
+<p>变量是引用类型: final修饰指的是引用类型的地址值不能发生改变，但是地址里面的内容是可以发生改变的</p>
+<h1 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h1><p>static 关键字是静态的意思，可以修饰成员方法，成员变量<br><strong>static 修饰的特点</strong></p>
+<ul>
+<li>被类的所有对象共享<br>这也是我们判断是否使用静态关键字的条件</li>
+<li>推荐使用类名调用</li>
+</ul>
+<p><strong>static 访问特点</strong></p>
+<p>静态成员方法只能访问静态成员和静态成员方法</p>
+<h1 id="Java-包"><a href="#Java-包" class="headerlink" title="Java 包"></a>Java 包</h1><p>包主要用来对类和接口进行分类管理</p>
+<p>包的定义格式</p>
+<p>格式：package 包名；</p>
+<p>范例：package com.first;</p>
+<h2 id="import-语句-导包"><a href="#import-语句-导包" class="headerlink" title="import 语句(导包)"></a>import 语句(导包)</h2><p>在 Java 中，如果给出一个完整的限定名，包括包名、类名，那么 Java 编译器就可以很容易地定位到源代码或者类。import 语句就是用来提供一个合理的路径，使得编译器可以找到某个类。</p>
+<p>例如，下面的命令行将会命令编译器载入 java_installation&#x2F;java&#x2F;io 路径下的所有类</p>
+<p>import java.io.*;(import 包名)</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java基础知识</title>
     <url>/2023/07/26/Java2/</url>
     <content><![CDATA[<h1 id="Java-基础语法"><a href="#Java-基础语法" class="headerlink" title="Java 基础语法"></a>Java 基础语法</h1><span id="more"></span>
@@ -1415,226 +1635,6 @@
 <li>StringBuilder转换为 String<br>public String toString():通过toString()就可以实现把StringBuilder转换为String</li>
 <li>String 转换为StringBuilder<br>public StringBuilder(String s): 通过构造方法就可以实现把 String转换为StringBuilder</li>
 </ol>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java面向对象</title>
-    <url>/2023/07/27/Java3/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h1 id="Java-对象和类"><a href="#Java-对象和类" class="headerlink" title="Java 对象和类"></a>Java 对象和类</h1><ul>
-<li><p><strong>类和对象的关系</strong><br><strong>类</strong>:类是对现实生活中一类具有共同属性和行为的事物的抽象<br><strong>对象</strong>:是能够看得到摸的着的真实存在的实体</p>
-</li>
-<li><p><strong>类的定义</strong><br><strong>类的重要性</strong>:是Java程序的基本组成单位<br><strong>类是什么</strong>:是对现实生活中一类具有共同属性和行为的事物的抽象，确定对象将会拥有的属性和行为</p>
-<p><strong>类的特点</strong>：类是对象的数据类型，是具有相同属性和行为的事物的抽象</p>
-<p><strong>类的组成</strong>:属性和行为<br><strong>属性</strong>:在类中通过成员变量来体现(类中方法外的变量)<br><strong>行为</strong>:在类中通过成员方法来体现(和前面的方法相比去掉static关键字即可)</p>
-</li>
-<li><p><strong>对象的定义</strong></p>
-<p>看看周围真实的世界，会发现身边有很多对象，车，手机，人等等。所有这些对象都有自己的属性和行为。</p>
-</li>
-</ul>
-<p>​       拿一个手机来举例，它的属性有：品牌、价格，行为有：打电话、发短信。</p>
-<p>​       软件对象也有属性和行为。行为通过方法体现。</p>
-<p>​       在软件开发中，方法操作对象内部状态的改变，对象的相互调用也是通过方法来完成。</p>
-<h2 id="Java-中的类"><a href="#Java-中的类" class="headerlink" title="Java 中的类"></a>Java 中的类</h2><p>类可以看成是创建 Java 对象的模板。</p>
-<p>pubIic class Phone {</p>
-<p>​		&#x2F;&#x2F;成员变量</p>
-<p>​		String brand;</p>
-<p>​		int price;</p>
-<p>​		&#x2F;&#x2F;成员方法</p>
-<p>​		public void call(){</p>
-<p>​			System.out.printIn(“打电话”);}<br>​		public void sendMessage(){</p>
-<p>​			System.out,pnintIn(“发短信”);}</p>
-<p>}</p>
-<p><strong>成员变量和局部变量的区别</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">区别</th>
-<th align="center">成员变量</th>
-<th align="center">局部变量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">类中位置不同</td>
-<td align="center">类中方法外</td>
-<td align="center">方法内或者方法声明上</td>
-</tr>
-<tr>
-<td align="center">内存中位置不同</td>
-<td align="center">堆内存</td>
-<td align="center">栈内存</td>
-</tr>
-<tr>
-<td align="center">生命周期不同</td>
-<td align="center">随着对象的存在而存在，随看对象的消失而消失</td>
-<td align="center">随着方法的调用而存在，随着方法的调用完毕而消失</td>
-</tr>
-<tr>
-<td align="center">初始化值不同</td>
-<td align="center">有默认的初始化值</td>
-<td align="center">没有默认的初始化值，必须先定义，赋值，才能使用</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>局部变量</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
-<li><strong>成员变量</strong>：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</li>
-<li><strong>类变量</strong>：类变量也声明在类中，方法体之外，但必须声明为 static 类型。</li>
-</ul>
-<hr>
-<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>格式:类名对象名 &#x3D; new 类名0;<br>范例: Phone p &#x3D; new Phone0;</p>
-<h2 id="使用对象"><a href="#使用对象" class="headerlink" title="使用对象"></a>使用对象</h2><ol>
-<li><strong>使用成员变量</strong><br>格式:对象名.变量名<br>范例:p.brand</li>
-<li><strong>使用成员方法</strong><br>格式:对象名.方法名()<br>范例: p.call()</li>
-</ol>
-<hr>
-<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><h2 id="一、private关键字"><a href="#一、private关键字" class="headerlink" title="一、private关键字"></a>一、private关键字</h2><ul>
-<li>是一个权限修饰符</li>
-<li>可以修饰成员 (成员变量和成员方法)</li>
-<li>作用是保护成员不被别的类使用，被private修饰的成员只在本类中才能访问</li>
-</ul>
-<p>针对<code>private</code>修饰的成员变量，如果需要被其他类使用，提供相应的操作</p>
-<ul>
-<li>提供“<code>get变量名()</code>”方法，用于获取成员变量的值，方法用<code>public</code>修饰</li>
-<li>提供“<code>set变量名(参数)</code>”方法，用于设置成员变量的值，方法用<code>public</code>修饰</li>
-</ul>
-<h2 id="二、this关键字"><a href="#二、this关键字" class="headerlink" title="二、this关键字"></a>二、this关键字</h2><ol>
-<li><p>this修饰的变量用于指代成员变量<br>方法的形参如果与成员变量同名，不带this修饰的变量指的是形参，而不是成员变量<br>方法的形参没有与成员变量同名，不带this修饰的变量指的是成员变量</p>
-</li>
-<li><p>什么时候使用this呢? <strong>解决局部变量隐藏成员变量</strong></p>
-</li>
-<li><p>this 代表所在类的对象引用<br>记住:方法被哪个对象调用，this就代表哪个对象</p>
-</li>
-</ol>
-<h2 id="三、封装"><a href="#三、封装" class="headerlink" title="三、封装"></a>三、封装</h2><ol>
-<li><strong>封装概述</strong><br>是面向对象三大特征之一 (封装，继承，多态)<br>是面向对象编程语言对客观世界的横拟，客观世界里成员变量都是隐藏在对象内部的，外界是无法直接操作</li>
-<li><strong>封装规则</strong><br>将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对的冠信息的操作和访问成员变量private，提供对应的getXxx()&#x2F;setXxx()方法</li>
-<li><strong>好处</strong><br>通过方法来控制成员变量的操作，提高了代码的安全性<br>把代码用方法进行封装，提高了代码的复用性</li>
-</ol>
-<h2 id="四、构造方法"><a href="#四、构造方法" class="headerlink" title="四、构造方法"></a>四、构造方法</h2><p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
-<p>下面是一个构造方法示例：</p>
-<p>public class Student{   </p>
-<p>​		 public Student(){ }     </p>
-<p>​		 public Student(String name){         </p>
-<p>​			&#x2F;&#x2F; 这个构造器仅有一个参数：name    } }</p>
-<p><strong>注意事项</strong>：</p>
-<ol>
-<li><p>构造方法的创建</p>
-<p>如果没有定义构造方法，系统将给出一个认的无参数构造方法<br>如果定义了构造方法，系统将不再提供默认的构造方法</p>
-</li>
-<li><p>构造方法的重载<br>如果自定义了带参构造方法，还要使用无参数构造方法，就必须再写一个无参数构造方法</p>
-</li>
-<li><p>推荐的使用方式<br>无论是否使用，都手工书写无参数构造方法</p>
-</li>
-</ol>
-<h5 id="标准类制作"><a href="#标准类制作" class="headerlink" title="标准类制作"></a>标准类制作</h5><ol>
-<li>成员变量<br>使用private修饰</li>
-<li>构造方法<br>提供一个无参构造方法<br>提供一个带多个参数的构造方法</li>
-<li>成员方法<br>提供每一个成员变量对应的setXxx()&#x2F;getXxx()<br>提供一个显示对象信息的show()</li>
-<li>创建对象并为其成员变量值的两种方式<br>无参构造方法创建对象后使用setXxx()赋值<br>使用带参构造方法直接创建带有属性值的对象</li>
-</ol>
-<p>例子：</p>
-<h5 id="Student-java程序"><a href="#Student-java程序" class="headerlink" title="Student.java程序"></a>Student.java程序</h5><p>public class Student{   </p>
-<p>​		prative String name;&#x2F;&#x2F;成员变量</p>
-<p>​		prative int age;</p>
-<p>​		public Student() { }&#x2F;&#x2F;构造方法</p>
-<p>​		public Student(String name,int age){ </p>
-<p>​			this.name &#x3D; name;</p>
-<p>​			this.age &#x3D; age;}</p>
-<p>​		&#x2F;&#x2F;成员方法</p>
-<p>​		public void setName(String name){</p>
-<p>​			this.name &#x3D; name;}</p>
-<p>​		public String getName(){</p>
-<p>​			return name;}</p>
-<p>​		public void setAge(int age){</p>
-<p>​			this.age &#x3D; age;}</p>
-<p>​		public String getAge(){</p>
-<p>​			return age;}</p>
-<p>​		public void show(){</p>
-<p>​			System.out.println(name+”,”+age);}</p>
-<p>} </p>
-<h5 id="StudentDemo-java程序"><a href="#StudentDemo-java程序" class="headerlink" title="StudentDemo.java程序"></a>StudentDemo.java程序</h5><p>package com.XXX</p>
-<p>public class StudentDemo{</p>
-<p>​		public static void main(String[ ] args){</p>
-<p>​			&#x2F;&#x2F;无参构造方法创建对象后使用setXxx()赋值</p>
-<p>​			Student s1 &#x3D; new Student( );</p>
-<p>​			s1.setName(“xuan”);</p>
-<p>​			s1.setAge(18);</p>
-<p>​			s1.show();</p>
-<p>​			&#x2F;&#x2F;使用带参构造方法直接创建带有属性值的对象</p>
-<p>​			Student s2 &#x3D; new Student(“name:”xuan”,age:18);</p>
-<p>​			s2.show();</p>
-<p>​		}		</p>
-<p>}</p>
-<p><strong>运行结果</strong>：</p>
-<p>xuan,18</p>
-<p>xuan,18</p>
-<h1 id="Java-继承"><a href="#Java-继承" class="headerlink" title="Java 继承"></a>Java 继承</h1><hr>
-<h2 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h2><p>继承是面向对象的三大特征之一，可以使得子类具有父类的属性和方法，还可以在子类中重新定义，追加属性和方法</p>
-<ul>
-<li>格式:public class 子类名extends父类名}</li>
-<li>范例: public class Zi extends Fu<br>Fu:是类，也被称为基类、超类<br>Zi: 是子类，也被称为派生类</li>
-</ul>
-<p>继承中子类的特点：</p>
-<p>子类可以有父类的内容，还可以有自己特有的内容</p>
-<h2 id="继承的好处和弊端"><a href="#继承的好处和弊端" class="headerlink" title="继承的好处和弊端"></a>继承的好处和弊端</h2><p><strong>继承好处</strong><br>提高了代码的复用性(多个类相同的成员可以放到同一个类中)<br>提高了代码的维护性(如果方法的代码需要修改，修改一处即可)<br><strong>继承弊端</strong><br>继承让类与类之间产生了关系，类的合性增强了，当父类发生变化时子类实现也不得不跟着变化，削弱了子类的独立性<br><strong>什么时候使用继承?</strong><br>继承体现的关系:is a<br>假设法:我有两个类A和B，如果他们满足A是B的一种，或者B是A的一种，就说明他们存在继承关系，这个时候就可以考虑使用继承来体现，否则就不滥用继承</p>
-<h2 id="继承中变量的访问特点"><a href="#继承中变量的访问特点" class="headerlink" title="继承中变量的访问特点"></a>继承中变量的访问特点</h2><p>在子类方法中访问一个变量</p>
-<ol>
-<li>子类局部范围找</li>
-<li>子类成员范围找</li>
-<li>父类成员范围找</li>
-<li>如果都没有就报错(不考虑父亲的父亲…)</li>
-</ol>
-<h2 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a>继承类型</h2><p>需要注意的是 Java 不支持多继承，但支持多重继承。</p>
-<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-extends-2020-12-08.png" alt="img"></p>
-<h2 id="继承关键字"><a href="#继承关键字" class="headerlink" title="继承关键字"></a>继承关键字</h2><p>继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 java.lang.Object，当一个类没有继承的两个关键字，则默认继承 Object（这个类在 <strong>java.lang</strong> 包中，所以不需要 <strong>import</strong>）祖先类。</p>
-<h3 id="extends关键字"><a href="#extends关键字" class="headerlink" title="extends关键字"></a>extends关键字</h3><p>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。</p>
-<p>public class Animal {<br>    private String name;<br>    private int id;<br>    public Animal(String myName, int myid) {<br>        &#x2F;&#x2F;初始化属性值<br>    }<br>    public void eat() {  &#x2F;&#x2F;吃东西方法的具体实现  }<br>    public void sleep() { &#x2F;&#x2F;睡觉方法的具体实现  }<br>} </p>
-<p>public class Penguin  extends  Animal{<br>}</p>
-<h3 id="implements关键字"><a href="#implements关键字" class="headerlink" title="implements关键字"></a>implements关键字</h3><p>使用 implements 关键字可以变相的使java具有<code>多继承</code>的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）。</p>
-<p>public interface A {<br>    public void eat();<br>    public void sleep();<br>}</p>
-<p>public interface B {<br>    public void show();<br>}</p>
-<p>public class C implements A,B {<br>}</p>
-<h3 id="super-与-this-关键字"><a href="#super-与-this-关键字" class="headerlink" title="super 与 this 关键字"></a>super 与 this 关键字</h3><p>super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。</p>
-<p>this关键字：指向自己的引用。</p>
-<p><strong>实例</strong></p>
-<p>class Animal {<br>  void eat() {<br>    System.out.println(“animal : eat”);<br>  }<br>}</p>
-<p>class Dog extends Animal {<br>  void eat() {<br>    System.out.println(“dog : eat”);<br>  }<br>  void eatTest() {<br>    this.eat();   &#x2F;&#x2F; this 调用自己的方法<br>    super.eat();  &#x2F;&#x2F; super 调用父类方法<br>  }<br>}</p>
-<p>public class Test {<br>  public static void main(String[] args) {<br>    Animal a &#x3D; new Animal();<br>    a.eat();<br>    Dog d &#x3D; new Dog();<br>    d.eatTest();<br>  }<br>}</p>
-<p>输出结果为：</p>
-<p>animal : eat<br>dog : eat<br>animal : eat</p>
-<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><p>final 可以用来修饰变量（包括类属性、对象属性、局部变量和形参）、方法（包括类方法和对象方法）和类。</p>
-<p><strong>final修饰的特点</strong></p>
-<ul>
-<li>修饰方法:表明该方法是最终方法，不能被重写</li>
-<li>修饰变量:表明该变量是常量，不能再次被赋值</li>
-<li>修饰类:表明该类是最终类，不能被继承</li>
-</ul>
-<p>声明类：</p>
-<p>final class 类名 {&#x2F;&#x2F;类体}</p>
-<p>声明方法：</p>
-<p>修饰符(public&#x2F;private&#x2F;default&#x2F;protected) final 返回值类型 方法名(){&#x2F;&#x2F;方法体}</p>
-<p><strong>注：</strong> final 定义的类，其中的属性、方法不是 final 的。</p>
-<p><strong>final修饰局部变量</strong></p>
-<p>变量是基本类型: final修饰指的是基本类型的数据值不能发生改变</p>
-<p>变量是引用类型: final修饰指的是引用类型的地址值不能发生改变，但是地址里面的内容是可以发生改变的</p>
-<h1 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h1><p>static 关键字是静态的意思，可以修饰成员方法，成员变量<br><strong>static 修饰的特点</strong></p>
-<ul>
-<li>被类的所有对象共享<br>这也是我们判断是否使用静态关键字的条件</li>
-<li>推荐使用类名调用</li>
-</ul>
-<p><strong>static 访问特点</strong></p>
-<p>静态成员方法只能访问静态成员和静态成员方法</p>
-<h1 id="Java-包"><a href="#Java-包" class="headerlink" title="Java 包"></a>Java 包</h1><p>包主要用来对类和接口进行分类管理</p>
-<p>包的定义格式</p>
-<p>格式：package 包名；</p>
-<p>范例：package com.first;</p>
-<h2 id="import-语句-导包"><a href="#import-语句-导包" class="headerlink" title="import 语句(导包)"></a>import 语句(导包)</h2><p>在 Java 中，如果给出一个完整的限定名，包括包名、类名，那么 Java 编译器就可以很容易地定位到源代码或者类。import 语句就是用来提供一个合理的路径，使得编译器可以找到某个类。</p>
-<p>例如，下面的命令行将会命令编译器载入 java_installation&#x2F;java&#x2F;io 路径下的所有类</p>
-<p>import java.io.*;(import 包名)</p>
 ]]></content>
       <tags>
         <tag>Java</tag>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Java面向对象">
+<meta property="og:url" content="http://example.com/2023/07/27/Java3/index.html">
+<meta property="og:site_name" content="Konglong">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2013/12/java-extends-2020-12-08.png">
+<meta property="article:published_time" content="2023-07-27T04:33:28.000Z">
+<meta property="article:modified_time" content="2023-07-31T05:33:39.558Z">
+<meta property="article:author" content="xuan">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.runoob.com/wp-content/uploads/2013/12/java-extends-2020-12-08.png">
+
+
+<link rel="canonical" href="http://example.com/2023/07/27/Java3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/07/27/Java3/","path":"2023/07/27/Java3/","title":"Java面向对象"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java面向对象 | Konglong</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Konglong</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">Java 对象和类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E7%9A%84%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text">Java 中的类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.2.</span> <span class="nav-text">创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.3.</span> <span class="nav-text">使用对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%81%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">封装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81private%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.1.</span> <span class="nav-text">一、private关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81this%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.2.</span> <span class="nav-text">二、this关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B0%81%E8%A3%85"><span class="nav-number">3.3.</span> <span class="nav-text">三、封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">3.4.</span> <span class="nav-text">四、构造方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E7%B1%BB%E5%88%B6%E4%BD%9C"><span class="nav-number">3.4.0.0.1.</span> <span class="nav-text">标准类制作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Student-java%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.4.0.0.2.</span> <span class="nav-text">Student.java程序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#StudentDemo-java%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.4.0.0.3.</span> <span class="nav-text">StudentDemo.java程序</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-%E7%BB%A7%E6%89%BF"><span class="nav-number">4.</span> <span class="nav-text">Java 继承</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.</span> <span class="nav-text">继承的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E7%9A%84%E5%A5%BD%E5%A4%84%E5%92%8C%E5%BC%8A%E7%AB%AF"><span class="nav-number">4.2.</span> <span class="nav-text">继承的好处和弊端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E4%B8%AD%E5%8F%98%E9%87%8F%E7%9A%84%E8%AE%BF%E9%97%AE%E7%89%B9%E7%82%B9"><span class="nav-number">4.3.</span> <span class="nav-text">继承中变量的访问特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.4.</span> <span class="nav-text">继承类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">4.5.</span> <span class="nav-text">继承关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#extends%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">4.5.1.</span> <span class="nav-text">extends关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#implements%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">4.5.2.</span> <span class="nav-text">implements关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#super-%E4%B8%8E-this-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">4.5.3.</span> <span class="nav-text">super 与 this 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">4.5.4.</span> <span class="nav-text">final 关键字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#static-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">5.</span> <span class="nav-text">static 关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-%E5%8C%85"><span class="nav-number">6.</span> <span class="nav-text">Java 包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#import-%E8%AF%AD%E5%8F%A5-%E5%AF%BC%E5%8C%85"><span class="nav-number">6.1.</span> <span class="nav-text">import 语句(导包)</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xuan"
+      src="/images/head.png">
+  <p class="site-author-name" itemprop="name">xuan</p>
+  <div class="site-description" itemprop="description">Welcome</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xuanhhhhh/xuanhhhhh.github.io" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xuanhhhhh&#x2F;xuanhhhhh.github.io" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:18035748708@163.com" title="E-Mail → mailto:18035748708@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_74080781?type=blog" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_74080781?type&#x3D;blog" rel="noopener me" target="_blank"><i class="fab fa-codiepie fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/27/Java3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.png">
+      <meta itemprop="name" content="xuan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Konglong">
+      <meta itemprop="description" content="Welcome">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java面向对象 | Konglong">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java面向对象
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-07-27 12:33:28" itemprop="dateCreated datePublished" datetime="2023-07-27T12:33:28+08:00">2023-07-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-31 13:33:39" itemprop="dateModified" datetime="2023-07-31T13:33:39+08:00">2023-07-31</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+
+<h1 id="Java-对象和类"><a href="#Java-对象和类" class="headerlink" title="Java 对象和类"></a>Java 对象和类</h1><ul>
+<li><p><strong>类和对象的关系</strong><br><strong>类</strong>:类是对现实生活中一类具有共同属性和行为的事物的抽象<br><strong>对象</strong>:是能够看得到摸的着的真实存在的实体</p>
+</li>
+<li><p><strong>类的定义</strong><br><strong>类的重要性</strong>:是Java程序的基本组成单位<br><strong>类是什么</strong>:是对现实生活中一类具有共同属性和行为的事物的抽象，确定对象将会拥有的属性和行为</p>
+<p><strong>类的特点</strong>：类是对象的数据类型，是具有相同属性和行为的事物的抽象</p>
+<p><strong>类的组成</strong>:属性和行为<br><strong>属性</strong>:在类中通过成员变量来体现(类中方法外的变量)<br><strong>行为</strong>:在类中通过成员方法来体现(和前面的方法相比去掉static关键字即可)</p>
+</li>
+<li><p><strong>对象的定义</strong></p>
+<p>看看周围真实的世界，会发现身边有很多对象，车，手机，人等等。所有这些对象都有自己的属性和行为。</p>
+</li>
+</ul>
+<p>​       拿一个手机来举例，它的属性有：品牌、价格，行为有：打电话、发短信。</p>
+<p>​       软件对象也有属性和行为。行为通过方法体现。</p>
+<p>​       在软件开发中，方法操作对象内部状态的改变，对象的相互调用也是通过方法来完成。</p>
+<h2 id="Java-中的类"><a href="#Java-中的类" class="headerlink" title="Java 中的类"></a>Java 中的类</h2><p>类可以看成是创建 Java 对象的模板。</p>
+<p>pubIic class Phone {</p>
+<p>​		&#x2F;&#x2F;成员变量</p>
+<p>​		String brand;</p>
+<p>​		int price;</p>
+<p>​		&#x2F;&#x2F;成员方法</p>
+<p>​		public void call(){</p>
+<p>​			System.out.printIn(“打电话”);}<br>​		public void sendMessage(){</p>
+<p>​			System.out,pnintIn(“发短信”);}</p>
+<p>}</p>
+<p><strong>成员变量和局部变量的区别</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">区别</th>
+<th align="center">成员变量</th>
+<th align="center">局部变量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">类中位置不同</td>
+<td align="center">类中方法外</td>
+<td align="center">方法内或者方法声明上</td>
+</tr>
+<tr>
+<td align="center">内存中位置不同</td>
+<td align="center">堆内存</td>
+<td align="center">栈内存</td>
+</tr>
+<tr>
+<td align="center">生命周期不同</td>
+<td align="center">随着对象的存在而存在，随看对象的消失而消失</td>
+<td align="center">随着方法的调用而存在，随着方法的调用完毕而消失</td>
+</tr>
+<tr>
+<td align="center">初始化值不同</td>
+<td align="center">有默认的初始化值</td>
+<td align="center">没有默认的初始化值，必须先定义，赋值，才能使用</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>局部变量</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
+<li><strong>成员变量</strong>：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</li>
+<li><strong>类变量</strong>：类变量也声明在类中，方法体之外，但必须声明为 static 类型。</li>
+</ul>
+<hr>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>格式:类名对象名 &#x3D; new 类名0;<br>范例: Phone p &#x3D; new Phone0;</p>
+<h2 id="使用对象"><a href="#使用对象" class="headerlink" title="使用对象"></a>使用对象</h2><ol>
+<li><strong>使用成员变量</strong><br>格式:对象名.变量名<br>范例:p.brand</li>
+<li><strong>使用成员方法</strong><br>格式:对象名.方法名()<br>范例: p.call()</li>
+</ol>
+<hr>
+<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><h2 id="一、private关键字"><a href="#一、private关键字" class="headerlink" title="一、private关键字"></a>一、private关键字</h2><ul>
+<li>是一个权限修饰符</li>
+<li>可以修饰成员 (成员变量和成员方法)</li>
+<li>作用是保护成员不被别的类使用，被private修饰的成员只在本类中才能访问</li>
+</ul>
+<p>针对<code>private</code>修饰的成员变量，如果需要被其他类使用，提供相应的操作</p>
+<ul>
+<li>提供“<code>get变量名()</code>”方法，用于获取成员变量的值，方法用<code>public</code>修饰</li>
+<li>提供“<code>set变量名(参数)</code>”方法，用于设置成员变量的值，方法用<code>public</code>修饰</li>
+</ul>
+<h2 id="二、this关键字"><a href="#二、this关键字" class="headerlink" title="二、this关键字"></a>二、this关键字</h2><ol>
+<li><p>this修饰的变量用于指代成员变量<br>方法的形参如果与成员变量同名，不带this修饰的变量指的是形参，而不是成员变量<br>方法的形参没有与成员变量同名，不带this修饰的变量指的是成员变量</p>
+</li>
+<li><p>什么时候使用this呢? <strong>解决局部变量隐藏成员变量</strong></p>
+</li>
+<li><p>this 代表所在类的对象引用<br>记住:方法被哪个对象调用，this就代表哪个对象</p>
+</li>
+</ol>
+<h2 id="三、封装"><a href="#三、封装" class="headerlink" title="三、封装"></a>三、封装</h2><ol>
+<li><strong>封装概述</strong><br>是面向对象三大特征之一 (封装，继承，多态)<br>是面向对象编程语言对客观世界的横拟，客观世界里成员变量都是隐藏在对象内部的，外界是无法直接操作</li>
+<li><strong>封装规则</strong><br>将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对的冠信息的操作和访问成员变量private，提供对应的getXxx()&#x2F;setXxx()方法</li>
+<li><strong>好处</strong><br>通过方法来控制成员变量的操作，提高了代码的安全性<br>把代码用方法进行封装，提高了代码的复用性</li>
+</ol>
+<h2 id="四、构造方法"><a href="#四、构造方法" class="headerlink" title="四、构造方法"></a>四、构造方法</h2><p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
+<p>下面是一个构造方法示例：</p>
+<p>public class Student{   </p>
+<p>​		 public Student(){ }     </p>
+<p>​		 public Student(String name){         </p>
+<p>​			&#x2F;&#x2F; 这个构造器仅有一个参数：name    } }</p>
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li><p>构造方法的创建</p>
+<p>如果没有定义构造方法，系统将给出一个认的无参数构造方法<br>如果定义了构造方法，系统将不再提供默认的构造方法</p>
+</li>
+<li><p>构造方法的重载<br>如果自定义了带参构造方法，还要使用无参数构造方法，就必须再写一个无参数构造方法</p>
+</li>
+<li><p>推荐的使用方式<br>无论是否使用，都手工书写无参数构造方法</p>
+</li>
+</ol>
+<h5 id="标准类制作"><a href="#标准类制作" class="headerlink" title="标准类制作"></a>标准类制作</h5><ol>
+<li>成员变量<br>使用private修饰</li>
+<li>构造方法<br>提供一个无参构造方法<br>提供一个带多个参数的构造方法</li>
+<li>成员方法<br>提供每一个成员变量对应的setXxx()&#x2F;getXxx()<br>提供一个显示对象信息的show()</li>
+<li>创建对象并为其成员变量值的两种方式<br>无参构造方法创建对象后使用setXxx()赋值<br>使用带参构造方法直接创建带有属性值的对象</li>
+</ol>
+<p>例子：</p>
+<h5 id="Student-java程序"><a href="#Student-java程序" class="headerlink" title="Student.java程序"></a>Student.java程序</h5><p>public class Student{   </p>
+<p>​		prative String name;&#x2F;&#x2F;成员变量</p>
+<p>​		prative int age;</p>
+<p>​		public Student() { }&#x2F;&#x2F;构造方法</p>
+<p>​		public Student(String name,int age){ </p>
+<p>​			this.name &#x3D; name;</p>
+<p>​			this.age &#x3D; age;}</p>
+<p>​		&#x2F;&#x2F;成员方法</p>
+<p>​		public void setName(String name){</p>
+<p>​			this.name &#x3D; name;}</p>
+<p>​		public String getName(){</p>
+<p>​			return name;}</p>
+<p>​		public void setAge(int age){</p>
+<p>​			this.age &#x3D; age;}</p>
+<p>​		public String getAge(){</p>
+<p>​			return age;}</p>
+<p>​		public void show(){</p>
+<p>​			System.out.println(name+”,”+age);}</p>
+<p>} </p>
+<h5 id="StudentDemo-java程序"><a href="#StudentDemo-java程序" class="headerlink" title="StudentDemo.java程序"></a>StudentDemo.java程序</h5><p>package com.XXX</p>
+<p>public class StudentDemo{</p>
+<p>​		public static void main(String[ ] args){</p>
+<p>​			&#x2F;&#x2F;无参构造方法创建对象后使用setXxx()赋值</p>
+<p>​			Student s1 &#x3D; new Student( );</p>
+<p>​			s1.setName(“xuan”);</p>
+<p>​			s1.setAge(18);</p>
+<p>​			s1.show();</p>
+<p>​			&#x2F;&#x2F;使用带参构造方法直接创建带有属性值的对象</p>
+<p>​			Student s2 &#x3D; new Student(“name:”xuan”,age:18);</p>
+<p>​			s2.show();</p>
+<p>​		}		</p>
+<p>}</p>
+<p><strong>运行结果</strong>：</p>
+<p>xuan,18</p>
+<p>xuan,18</p>
+<h1 id="Java-继承"><a href="#Java-继承" class="headerlink" title="Java 继承"></a>Java 继承</h1><hr>
+<h2 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h2><p>继承是面向对象的三大特征之一，可以使得子类具有父类的属性和方法，还可以在子类中重新定义，追加属性和方法</p>
+<ul>
+<li>格式:public class 子类名extends父类名}</li>
+<li>范例: public class Zi extends Fu<br>Fu:是类，也被称为基类、超类<br>Zi: 是子类，也被称为派生类</li>
+</ul>
+<p>继承中子类的特点：</p>
+<p>子类可以有父类的内容，还可以有自己特有的内容</p>
+<h2 id="继承的好处和弊端"><a href="#继承的好处和弊端" class="headerlink" title="继承的好处和弊端"></a>继承的好处和弊端</h2><p><strong>继承好处</strong><br>提高了代码的复用性(多个类相同的成员可以放到同一个类中)<br>提高了代码的维护性(如果方法的代码需要修改，修改一处即可)<br><strong>继承弊端</strong><br>继承让类与类之间产生了关系，类的合性增强了，当父类发生变化时子类实现也不得不跟着变化，削弱了子类的独立性<br><strong>什么时候使用继承?</strong><br>继承体现的关系:is a<br>假设法:我有两个类A和B，如果他们满足A是B的一种，或者B是A的一种，就说明他们存在继承关系，这个时候就可以考虑使用继承来体现，否则就不滥用继承</p>
+<h2 id="继承中变量的访问特点"><a href="#继承中变量的访问特点" class="headerlink" title="继承中变量的访问特点"></a>继承中变量的访问特点</h2><p>在子类方法中访问一个变量</p>
+<ol>
+<li>子类局部范围找</li>
+<li>子类成员范围找</li>
+<li>父类成员范围找</li>
+<li>如果都没有就报错(不考虑父亲的父亲…)</li>
+</ol>
+<h2 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a>继承类型</h2><p>需要注意的是 Java 不支持多继承，但支持多重继承。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-extends-2020-12-08.png" alt="img"></p>
+<h2 id="继承关键字"><a href="#继承关键字" class="headerlink" title="继承关键字"></a>继承关键字</h2><p>继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 java.lang.Object，当一个类没有继承的两个关键字，则默认继承 Object（这个类在 <strong>java.lang</strong> 包中，所以不需要 <strong>import</strong>）祖先类。</p>
+<h3 id="extends关键字"><a href="#extends关键字" class="headerlink" title="extends关键字"></a>extends关键字</h3><p>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。</p>
+<p>public class Animal {<br>    private String name;<br>    private int id;<br>    public Animal(String myName, int myid) {<br>        &#x2F;&#x2F;初始化属性值<br>    }<br>    public void eat() {  &#x2F;&#x2F;吃东西方法的具体实现  }<br>    public void sleep() { &#x2F;&#x2F;睡觉方法的具体实现  }<br>} </p>
+<p>public class Penguin  extends  Animal{<br>}</p>
+<h3 id="implements关键字"><a href="#implements关键字" class="headerlink" title="implements关键字"></a>implements关键字</h3><p>使用 implements 关键字可以变相的使java具有<code>多继承</code>的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）。</p>
+<p>public interface A {<br>    public void eat();<br>    public void sleep();<br>}</p>
+<p>public interface B {<br>    public void show();<br>}</p>
+<p>public class C implements A,B {<br>}</p>
+<h3 id="super-与-this-关键字"><a href="#super-与-this-关键字" class="headerlink" title="super 与 this 关键字"></a>super 与 this 关键字</h3><p>super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。</p>
+<p>this关键字：指向自己的引用。</p>
+<p><strong>实例</strong></p>
+<p>class Animal {<br>  void eat() {<br>    System.out.println(“animal : eat”);<br>  }<br>}</p>
+<p>class Dog extends Animal {<br>  void eat() {<br>    System.out.println(“dog : eat”);<br>  }<br>  void eatTest() {<br>    this.eat();   &#x2F;&#x2F; this 调用自己的方法<br>    super.eat();  &#x2F;&#x2F; super 调用父类方法<br>  }<br>}</p>
+<p>public class Test {<br>  public static void main(String[] args) {<br>    Animal a &#x3D; new Animal();<br>    a.eat();<br>    Dog d &#x3D; new Dog();<br>    d.eatTest();<br>  }<br>}</p>
+<p>输出结果为：</p>
+<p>animal : eat<br>dog : eat<br>animal : eat</p>
+<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><p>final 可以用来修饰变量（包括类属性、对象属性、局部变量和形参）、方法（包括类方法和对象方法）和类。</p>
+<p><strong>final修饰的特点</strong></p>
+<ul>
+<li>修饰方法:表明该方法是最终方法，不能被重写</li>
+<li>修饰变量:表明该变量是常量，不能再次被赋值</li>
+<li>修饰类:表明该类是最终类，不能被继承</li>
+</ul>
+<p>声明类：</p>
+<p>final class 类名 {&#x2F;&#x2F;类体}</p>
+<p>声明方法：</p>
+<p>修饰符(public&#x2F;private&#x2F;default&#x2F;protected) final 返回值类型 方法名(){&#x2F;&#x2F;方法体}</p>
+<p><strong>注：</strong> final 定义的类，其中的属性、方法不是 final 的。</p>
+<p><strong>final修饰局部变量</strong></p>
+<p>变量是基本类型: final修饰指的是基本类型的数据值不能发生改变</p>
+<p>变量是引用类型: final修饰指的是引用类型的地址值不能发生改变，但是地址里面的内容是可以发生改变的</p>
+<h1 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h1><p>static 关键字是静态的意思，可以修饰成员方法，成员变量<br><strong>static 修饰的特点</strong></p>
+<ul>
+<li>被类的所有对象共享<br>这也是我们判断是否使用静态关键字的条件</li>
+<li>推荐使用类名调用</li>
+</ul>
+<p><strong>static 访问特点</strong></p>
+<p>静态成员方法只能访问静态成员和静态成员方法</p>
+<h1 id="Java-包"><a href="#Java-包" class="headerlink" title="Java 包"></a>Java 包</h1><p>包主要用来对类和接口进行分类管理</p>
+<p>包的定义格式</p>
+<p>格式：package 包名；</p>
+<p>范例：package com.first;</p>
+<h2 id="import-语句-导包"><a href="#import-语句-导包" class="headerlink" title="import 语句(导包)"></a>import 语句(导包)</h2><p>在 Java 中，如果给出一个完整的限定名，包括包名、类名，那么 Java 编译器就可以很容易地定位到源代码或者类。import 语句就是用来提供一个合理的路径，使得编译器可以找到某个类。</p>
+<p>例如，下面的命令行将会命令编译器载入 java_installation&#x2F;java&#x2F;io 路径下的所有类</p>
+<p>import java.io.*;(import 包名)</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="xuan 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/zhifubao.png" alt="xuan 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/07/26/Java2/" rel="prev" title="Java基础知识">
+                  <i class="fa fa-angle-left"></i> Java基础知识
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">xuan</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">26k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">48 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
