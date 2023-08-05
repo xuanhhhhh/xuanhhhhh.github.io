@@ -1,6 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Basics</title>
+    <url>/2023/07/26/Basics/</url>
+    <content><![CDATA[<h1 id="Windows基础"><a href="#Windows基础" class="headerlink" title="Windows基础"></a>Windows基础</h1><span id="more"></span>
+
+<h3 id="一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。"><a href="#一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。" class="headerlink" title="一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。"></a>一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。</h3><p>标准行为：<br>Windovws 文件系统将文件和目录名称视为不区分大小写。 FOO.txt 和 foo.txt 将被视为等效文件。<br>Linux 文件系统将文件和目录名称视为区分大小写。 FOO.txt 和 foo.txt 将被视为不同文件。</p>
+<p>Windows 文件系统支持使用属性标志按目录设置区分大小写。 虽然标准行为是不区分大小写，但你可以分配属性标志来使目录区分大小写，以便它能够识别可能仅大小写不同的 Linux 文件和文件夹。<br>在将驱动器装载到适用于 Linux 的 Windows 子系统 (WSL) 文件系统时，尤其如此。 在 WSL 文件系统中工作时，运行的是 Linux，因此默认情况下，文件和目录被视为区分大小写。</p>
+<h3 id="二、Windows-常用快捷键"><a href="#二、Windows-常用快捷键" class="headerlink" title="二、Windows 常用快捷键"></a>二、Windows 常用快捷键</h3><blockquote>
+<p>1 保存 Ctrl + S 必用<br>2 复制 Ctrl + C<br>3 粘贴 Ctrl + V<br>4 剪切 Ctrl + X<br>5 撤销 Ctrl + Z<br>6 全选 Ctrl + A<br>7 显示桌面 Win + D<br>8 打开资源管理器（此电脑） Win + E<br>9 关闭窗口、浏览器标签 Ctrl + W<br>10 切换打开的程序窗口 Alt + Tab<br>11 新建文件夹 Ctrl + Shift + N<br>12 刷新 Ctrl + R<br>13【浏览器快捷键】恢复 Chrome 中刚被关掉的网页Ctrl + Shift + T<br>14【浏览器快捷键】地址栏搜索Ctrl + E<br>15【浏览器快捷键】全选地址栏内容Ctrl + L<br>16【浏览器快捷键】标签之间切换 Ctrl + Tab<br>17 删除文件（进回收站） Ctrl + D<br>18 彻底删除文件 Shift + Delete<br>19 打开任务管理器 Ctrl + Shift + Esc<br>20 锁定计算机 Win + L<br>21 打印 Ctrl + P<br>22 投影 Win + P<br>23 打开 Windows 常用功能列表 Win + X</p>
+</blockquote>
+<h3 id="三、Windows-运行命令"><a href="#三、Windows-运行命令" class="headerlink" title="三、Windows 运行命令"></a>三、Windows 运行命令</h3><table>
+<thead>
+<tr>
+<th align="center">作用</th>
+<th align="center">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">打开运行窗口</td>
+<td align="center">Win + R</td>
+</tr>
+<tr>
+<td align="center">打开运行窗口</td>
+<td align="center">Win + R</td>
+</tr>
+<tr>
+<td align="center">打开控制面板</td>
+<td align="center">control</td>
+</tr>
+<tr>
+<td align="center">打开计算器</td>
+<td align="center">calc</td>
+</tr>
+<tr>
+<td align="center">打开记事本</td>
+<td align="center">notepad</td>
+</tr>
+<tr>
+<td align="center">打开任务管理器</td>
+<td align="center">taskmgr</td>
+</tr>
+<tr>
+<td align="center">打开系统配置</td>
+<td align="center">msconfig</td>
+</tr>
+<tr>
+<td align="center">打开注册表</td>
+<td align="center">regedit</td>
+</tr>
+<tr>
+<td align="center">打开卸载程序界面</td>
+<td align="center">appwiz.cpl</td>
+</tr>
+<tr>
+<td align="center">打开防火墙设置</td>
+<td align="center">firewall.cpl</td>
+</tr>
+<tr>
+<td align="center">打开系统服务</td>
+<td align="center">services.msc</td>
+</tr>
+<tr>
+<td align="center">打开网络连接</td>
+<td align="center">ncpa.cpl</td>
+</tr>
+<tr>
+<td align="center">打开系统属性</td>
+<td align="center">sysdm.cpl</td>
+</tr>
+<tr>
+<td align="center">快速启动任务栏软件</td>
+<td align="center">Win + （1 ~ 9）</td>
+</tr>
+<tr>
+<td align="center">用命令关机</td>
+<td align="center">shutdown -s -t 0</td>
+</tr>
+<tr>
+<td align="center">用命令重启</td>
+<td align="center">shutdown -r -t 0</td>
+</tr>
+<tr>
+<td align="center">炫酷下滑关机</td>
+<td align="center">slideToShutDown(在桌面新建“关机.txt”，在文件里输入 SlideToShutDown，再把 文件名改为“关 机.bat”，双击这个文件，自己看看效果~~~~)</td>
+</tr>
+</tbody></table>
+<h3 id="四、必装软件"><a href="#四、必装软件" class="headerlink" title="四、必装软件"></a>四、必装软件</h3><ol>
+<li><p>Everything：免费，本地硬盘文件极速搜索工具 （必用）<br>官网下载： <a href="https://www.voidtools.com/zh-cn/">https://www.voidtools.com/zh-cn/</a></p>
+</li>
+<li><p>Wox：免费，效率神器 （必用）<br>百度搜索 Wox 下载或官网下载：<a href="https://github.com/Wox-launcher/Wox">https://github.com/Wox-launcher/Wox</a></p>
+</li>
+<li><p>程序员必用：Markdown 工具（Typora 版本：v0.9.86） （必用）</p>
+</li>
+</ol>
+<p>  Markdown 教程：<a href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a></p>
+<ol start="4">
+<li>Notepad++ ：免费，功能强大的文本编辑器 （常用）</li>
+</ol>
+<p>  官网下载：<a href="https://notepad-plus.en.softonic.com/">https://notepad-plus.en.softonic.com/</a></p>
+<ol start="5">
+<li>VS Code：编程神器，可开发多种语言，多用于前端开发 （常用）</li>
+</ol>
+<p>  官网下载：<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
+<ol start="6">
+<li>FDM：免费，非常棒的下载工具</li>
+</ol>
+<p>​       官网下载：<a href="https://www.freedownloadmanager.org/zh/download.htm">https://www.freedownloadmanager.org/zh/download.htm</a></p>
+<ol start="7">
+<li>Chrome、Firefox：程序员用的浏览器，调试 Web 前端 （必用）</li>
+</ol>
+<p>​        百度搜索：Chrome 下载、Firefox 下载</p>
+]]></content>
+      <tags>
+        <tag>Windows常用快捷键</tag>
+        <tag>Windows运行命令</tag>
+        <tag>必备软件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docke精髓</title>
     <url>/2023/08/01/Docke3/</url>
     <content><![CDATA[<h1 id="容器数据卷"><a href="#容器数据卷" class="headerlink" title="容器数据卷"></a>容器数据卷</h1><span id="more"></span>
@@ -143,121 +261,28 @@
       </tags>
   </entry>
   <entry>
-    <title>Basics</title>
-    <url>/2023/07/26/Basics/</url>
-    <content><![CDATA[<h1 id="Windows基础"><a href="#Windows基础" class="headerlink" title="Windows基础"></a>Windows基础</h1><span id="more"></span>
+    <title>Docker相关部署</title>
+    <url>/2023/07/31/Docker2/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
 
-<h3 id="一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。"><a href="#一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。" class="headerlink" title="一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。"></a>一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。</h3><p>标准行为：<br>Windovws 文件系统将文件和目录名称视为不区分大小写。 FOO.txt 和 foo.txt 将被视为等效文件。<br>Linux 文件系统将文件和目录名称视为区分大小写。 FOO.txt 和 foo.txt 将被视为不同文件。</p>
-<p>Windows 文件系统支持使用属性标志按目录设置区分大小写。 虽然标准行为是不区分大小写，但你可以分配属性标志来使目录区分大小写，以便它能够识别可能仅大小写不同的 Linux 文件和文件夹。<br>在将驱动器装载到适用于 Linux 的 Windows 子系统 (WSL) 文件系统时，尤其如此。 在 WSL 文件系统中工作时，运行的是 Linux，因此默认情况下，文件和目录被视为区分大小写。</p>
-<h3 id="二、Windows-常用快捷键"><a href="#二、Windows-常用快捷键" class="headerlink" title="二、Windows 常用快捷键"></a>二、Windows 常用快捷键</h3><blockquote>
-<p>1 保存 Ctrl + S 必用<br>2 复制 Ctrl + C<br>3 粘贴 Ctrl + V<br>4 剪切 Ctrl + X<br>5 撤销 Ctrl + Z<br>6 全选 Ctrl + A<br>7 显示桌面 Win + D<br>8 打开资源管理器（此电脑） Win + E<br>9 关闭窗口、浏览器标签 Ctrl + W<br>10 切换打开的程序窗口 Alt + Tab<br>11 新建文件夹 Ctrl + Shift + N<br>12 刷新 Ctrl + R<br>13【浏览器快捷键】恢复 Chrome 中刚被关掉的网页Ctrl + Shift + T<br>14【浏览器快捷键】地址栏搜索Ctrl + E<br>15【浏览器快捷键】全选地址栏内容Ctrl + L<br>16【浏览器快捷键】标签之间切换 Ctrl + Tab<br>17 删除文件（进回收站） Ctrl + D<br>18 彻底删除文件 Shift + Delete<br>19 打开任务管理器 Ctrl + Shift + Esc<br>20 锁定计算机 Win + L<br>21 打印 Ctrl + P<br>22 投影 Win + P<br>23 打开 Windows 常用功能列表 Win + X</p>
-</blockquote>
-<h3 id="三、Windows-运行命令"><a href="#三、Windows-运行命令" class="headerlink" title="三、Windows 运行命令"></a>三、Windows 运行命令</h3><table>
-<thead>
-<tr>
-<th align="center">作用</th>
-<th align="center">命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">打开运行窗口</td>
-<td align="center">Win + R</td>
-</tr>
-<tr>
-<td align="center">打开运行窗口</td>
-<td align="center">Win + R</td>
-</tr>
-<tr>
-<td align="center">打开控制面板</td>
-<td align="center">control</td>
-</tr>
-<tr>
-<td align="center">打开计算器</td>
-<td align="center">calc</td>
-</tr>
-<tr>
-<td align="center">打开记事本</td>
-<td align="center">notepad</td>
-</tr>
-<tr>
-<td align="center">打开任务管理器</td>
-<td align="center">taskmgr</td>
-</tr>
-<tr>
-<td align="center">打开系统配置</td>
-<td align="center">msconfig</td>
-</tr>
-<tr>
-<td align="center">打开注册表</td>
-<td align="center">regedit</td>
-</tr>
-<tr>
-<td align="center">打开卸载程序界面</td>
-<td align="center">appwiz.cpl</td>
-</tr>
-<tr>
-<td align="center">打开防火墙设置</td>
-<td align="center">firewall.cpl</td>
-</tr>
-<tr>
-<td align="center">打开系统服务</td>
-<td align="center">services.msc</td>
-</tr>
-<tr>
-<td align="center">打开网络连接</td>
-<td align="center">ncpa.cpl</td>
-</tr>
-<tr>
-<td align="center">打开系统属性</td>
-<td align="center">sysdm.cpl</td>
-</tr>
-<tr>
-<td align="center">快速启动任务栏软件</td>
-<td align="center">Win + （1 ~ 9）</td>
-</tr>
-<tr>
-<td align="center">用命令关机</td>
-<td align="center">shutdown -s -t 0</td>
-</tr>
-<tr>
-<td align="center">用命令重启</td>
-<td align="center">shutdown -r -t 0</td>
-</tr>
-<tr>
-<td align="center">炫酷下滑关机</td>
-<td align="center">slideToShutDown(在桌面新建“关机.txt”，在文件里输入 SlideToShutDown，再把 文件名改为“关 机.bat”，双击这个文件，自己看看效果~~~~)</td>
-</tr>
-</tbody></table>
-<h3 id="四、必装软件"><a href="#四、必装软件" class="headerlink" title="四、必装软件"></a>四、必装软件</h3><ol>
-<li><p>Everything：免费，本地硬盘文件极速搜索工具 （必用）<br>官网下载： <a href="https://www.voidtools.com/zh-cn/">https://www.voidtools.com/zh-cn/</a></p>
-</li>
-<li><p>Wox：免费，效率神器 （必用）<br>百度搜索 Wox 下载或官网下载：<a href="https://github.com/Wox-launcher/Wox">https://github.com/Wox-launcher/Wox</a></p>
-</li>
-<li><p>程序员必用：Markdown 工具（Typora 版本：v0.9.86） （必用）</p>
-</li>
-</ol>
-<p>  Markdown 教程：<a href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a></p>
-<ol start="4">
-<li>Notepad++ ：免费，功能强大的文本编辑器 （常用）</li>
-</ol>
-<p>  官网下载：<a href="https://notepad-plus.en.softonic.com/">https://notepad-plus.en.softonic.com/</a></p>
-<ol start="5">
-<li>VS Code：编程神器，可开发多种语言，多用于前端开发 （常用）</li>
-</ol>
-<p>  官网下载：<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
-<ol start="6">
-<li>FDM：免费，非常棒的下载工具</li>
-</ol>
-<p>​       官网下载：<a href="https://www.freedownloadmanager.org/zh/download.htm">https://www.freedownloadmanager.org/zh/download.htm</a></p>
-<ol start="7">
-<li>Chrome、Firefox：程序员用的浏览器，调试 Web 前端 （必用）</li>
-</ol>
-<p>​        百度搜索：Chrome 下载、Firefox 下载</p>
+<h1 id="Docker安装Nginx"><a href="#Docker安装Nginx" class="headerlink" title="Docker安装Nginx"></a>Docker安装Nginx</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.搜索镜像 docker search nginx</span><br><span class="line">2.下载镜像 docker pull nginx</span><br><span class="line">3.运行测试</span><br><span class="line">[root@163 ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">nginx         latest    605c77e624dd   19 months ago   141MB</span><br><span class="line">centos        latest    5d0da3dc9764   22 months ago   231MB</span><br><span class="line">-d 后台运行（停止了容器后，容器还可以查到）</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 宿主机:容器内部端口</span><br><span class="line">[root@163 ~]# docker run -d --name nginx01 -p 3344:80 nginx</span><br><span class="line">bb07f6e55670b129a14434aae3a9422cf3f7091f2d3079a5f96005613a909993</span><br><span class="line">[root@163 ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                   NAMES</span><br><span class="line">bb07f6e55670   nginx     &quot;/docker-entrypoint.…&quot;   9 seconds ago   Up 8 seconds   0.0.0.0:3344-&gt;80/tcp, :::3344-&gt;80/tcp   nginx01</span><br><span class="line">[root@163 ~]# curl localhost:3344</span><br><span class="line"></span><br><span class="line">4.进入容器</span><br><span class="line">[root@163 ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@bb07f6e55670:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@bb07f6e55670:/# cd /etc/nginx</span><br><span class="line">root@bb07f6e55670:/etc/nginx# ls</span><br><span class="line">conf.d		mime.types  nginx.conf	 uwsgi_params</span><br><span class="line">fastcgi_params	modules     scgi_params</span><br><span class="line">root@bb07f6e55670:/etc/nginx# </span><br></pre></td></tr></table></figure>
+
+<h1 id="Docker安装Tomcat"><a href="#Docker安装Tomcat" class="headerlink" title="Docker安装Tomcat"></a>Docker安装Tomcat</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#官方使用</span><br><span class="line">docker run -it --rm tomcat:9.0</span><br><span class="line">docker run -it --rm一般用于测试，用完立即删除</span><br><span class="line"></span><br><span class="line">#下载再使用</span><br><span class="line">docker pull tomcat:9.0</span><br><span class="line"></span><br><span class="line">#启动运行</span><br><span class="line">docker run -d -p 3355:8080 --name tomcat01 tomcat</span><br><span class="line">#测试访问没有问题</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">[root@163 ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">#发现问题，1.1inux命今少了，2.没有webapps 阿里云镜像的原因。默认是最小的镜像，所有不必要的都被剔除掉。保证最小可运行的环境</span><br></pre></td></tr></table></figure>
+
+<h1 id="部署es-kibana"><a href="#部署es-kibana" class="headerlink" title="部署es+kibana"></a>部署es+kibana</h1><figure class="highlight console"><table><tr><td class="code"><pre><span class="line">--net somenetwork  网络配置</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">docker run -d --name elasticsearch (--net somenetwork) -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; elasticsearch:8.8.1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动了 1inux就卡住了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 暴露的端口很多!</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 十分的耗内存</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 的数据一般霉要放置到安全目录!挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker stats 查看 cpu的状态</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试一下es构建是否成功</span></span><br><span class="line">    curl localhost:9200</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">马上关闭，增加内存限制 修改配置文件 -e 环境配置修改</span></span><br><span class="line">docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; elasticsearch:8.8.1</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装php和php插件"><a href="#安装php和php插件" class="headerlink" title="安装php和php插件"></a>安装php和php插件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install php -y</span><br><span class="line">apt-get install libapache2-mod-php -y  --fix-missing</span><br><span class="line">apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure>
+
+<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><strong>什么 portainer ?</strong><br>Docker图形化界面管理工具!提供一个后台面板供我们操作 !</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
+
+<p>访问测试：端口打开8088  访问<a href="http://ip:8088/">http://ip:8088/</a></p>
+<h1 id="commit镜像"><a href="#commit镜像" class="headerlink" title="commit镜像"></a>commit镜像</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"></span><br><span class="line">#命今和git原理类似</span><br><span class="line">docker commit -m=&quot;提交的描述信息”-a=&quot;作者”容器id 目标镜像名:[TAG]</span><br><span class="line"></span><br><span class="line">实战测试</span><br><span class="line"># 1、启动一个默认的tomcat</span><br><span class="line"># 2、发现这个默认的tomcat 是没有webapps应用，镜像的原因，官方的镜像默认 webapps下面是没有文件的!</span><br><span class="line"># 3、我自己拷贝进去了基本的文件</span><br><span class="line"># 4、将我们操作过的容器通过commit提交为一个境像! 我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Windows常用快捷键</tag>
-        <tag>Windows运行命令</tag>
-        <tag>必备软件</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -365,31 +390,6 @@
 <h1 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h1><p><strong>Docker是什么工作的?</strong><br>Docker 是一个Client-Server 结构的系统，Docker的守护进程运行在主机上。通过Socket从客户端访问<br>DockerServer 接收到 Docker-Client 的指令，就会执行这个命令</p>
 <p><strong>Docker为什么比VM快</strong><br>1、Docker有着比虚拟机更少的抽象层<br>2、docker 利用的是宿主机的内核，vm 需要是 Guest OS。<br><img src="https://img-blog.csdnimg.cn/9b835a379a044e06869c036190e649aa.png" alt="在这里插入图片描述"><br>所以说，新建一个容器的时候，docker不需要想虚拟机一样重新加载一个操作系统内核，避免引导。虚拟机是加载 Guest OS，分钟级别的，而docker 是利用 宿主机的操作系统吗，省略了这个复杂的过程，秒级!</p>
 <p><img src="https://img-blog.csdnimg.cn/2725bac4251243ce9e42eff23e2e44ac.png" alt="在这里插入图片描述"></p>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker相关部署</title>
-    <url>/2023/07/31/Docker2/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h1 id="Docker安装Nginx"><a href="#Docker安装Nginx" class="headerlink" title="Docker安装Nginx"></a>Docker安装Nginx</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.搜索镜像 docker search nginx</span><br><span class="line">2.下载镜像 docker pull nginx</span><br><span class="line">3.运行测试</span><br><span class="line">[root@163 ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">nginx         latest    605c77e624dd   19 months ago   141MB</span><br><span class="line">centos        latest    5d0da3dc9764   22 months ago   231MB</span><br><span class="line">-d 后台运行（停止了容器后，容器还可以查到）</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 宿主机:容器内部端口</span><br><span class="line">[root@163 ~]# docker run -d --name nginx01 -p 3344:80 nginx</span><br><span class="line">bb07f6e55670b129a14434aae3a9422cf3f7091f2d3079a5f96005613a909993</span><br><span class="line">[root@163 ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                   NAMES</span><br><span class="line">bb07f6e55670   nginx     &quot;/docker-entrypoint.…&quot;   9 seconds ago   Up 8 seconds   0.0.0.0:3344-&gt;80/tcp, :::3344-&gt;80/tcp   nginx01</span><br><span class="line">[root@163 ~]# curl localhost:3344</span><br><span class="line"></span><br><span class="line">4.进入容器</span><br><span class="line">[root@163 ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@bb07f6e55670:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@bb07f6e55670:/# cd /etc/nginx</span><br><span class="line">root@bb07f6e55670:/etc/nginx# ls</span><br><span class="line">conf.d		mime.types  nginx.conf	 uwsgi_params</span><br><span class="line">fastcgi_params	modules     scgi_params</span><br><span class="line">root@bb07f6e55670:/etc/nginx# </span><br></pre></td></tr></table></figure>
-
-<h1 id="Docker安装Tomcat"><a href="#Docker安装Tomcat" class="headerlink" title="Docker安装Tomcat"></a>Docker安装Tomcat</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#官方使用</span><br><span class="line">docker run -it --rm tomcat:9.0</span><br><span class="line">docker run -it --rm一般用于测试，用完立即删除</span><br><span class="line"></span><br><span class="line">#下载再使用</span><br><span class="line">docker pull tomcat:9.0</span><br><span class="line"></span><br><span class="line">#启动运行</span><br><span class="line">docker run -d -p 3355:8080 --name tomcat01 tomcat</span><br><span class="line">#测试访问没有问题</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">[root@163 ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">#发现问题，1.1inux命今少了，2.没有webapps 阿里云镜像的原因。默认是最小的镜像，所有不必要的都被剔除掉。保证最小可运行的环境</span><br></pre></td></tr></table></figure>
-
-<h1 id="部署es-kibana"><a href="#部署es-kibana" class="headerlink" title="部署es+kibana"></a>部署es+kibana</h1><figure class="highlight console"><table><tr><td class="code"><pre><span class="line">--net somenetwork  网络配置</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">docker run -d --name elasticsearch (--net somenetwork) -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; elasticsearch:8.8.1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动了 1inux就卡住了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 暴露的端口很多!</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 十分的耗内存</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 的数据一般霉要放置到安全目录!挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker stats 查看 cpu的状态</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试一下es构建是否成功</span></span><br><span class="line">    curl localhost:9200</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">马上关闭，增加内存限制 修改配置文件 -e 环境配置修改</span></span><br><span class="line">docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; elasticsearch:8.8.1</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装php和php插件"><a href="#安装php和php插件" class="headerlink" title="安装php和php插件"></a>安装php和php插件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install php -y</span><br><span class="line">apt-get install libapache2-mod-php -y  --fix-missing</span><br><span class="line">apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure>
-
-<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><strong>什么 portainer ?</strong><br>Docker图形化界面管理工具!提供一个后台面板供我们操作 !</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
-
-<p>访问测试：端口打开8088  访问<a href="http://ip:8088/">http://ip:8088/</a></p>
-<h1 id="commit镜像"><a href="#commit镜像" class="headerlink" title="commit镜像"></a>commit镜像</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"></span><br><span class="line">#命今和git原理类似</span><br><span class="line">docker commit -m=&quot;提交的描述信息”-a=&quot;作者”容器id 目标镜像名:[TAG]</span><br><span class="line"></span><br><span class="line">实战测试</span><br><span class="line"># 1、启动一个默认的tomcat</span><br><span class="line"># 2、发现这个默认的tomcat 是没有webapps应用，镜像的原因，官方的镜像默认 webapps下面是没有文件的!</span><br><span class="line"># 3、我自己拷贝进去了基本的文件</span><br><span class="line"># 4、将我们操作过的容器通过commit提交为一个境像! 我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
         <tag>Docker</tag>
