@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一、XSS攻击简介XSS全称是Cross Site Scripting即跨站脚本，当目标网站目标用户浏览器渲染HTML文档的过程中，出现了不被预期的脚本指令并执行时，XSS就发生了。 作为一种HTML注入攻击，XSS攻击的核心思想就是在HTML页面中注入恶意代码，而XSS采用的注入方式是非常巧妙的。在XSS攻击中，一般有三个角色参与：攻击者、目标服务器、受害者的浏览器。 由于有的服务器并没有对用户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xss">
+<meta property="og:url" content="http://example.com/2023/08/05/xss/index.html">
+<meta property="og:site_name" content="Konglong">
+<meta property="og:description" content="一、XSS攻击简介XSS全称是Cross Site Scripting即跨站脚本，当目标网站目标用户浏览器渲染HTML文档的过程中，出现了不被预期的脚本指令并执行时，XSS就发生了。 作为一种HTML注入攻击，XSS攻击的核心思想就是在HTML页面中注入恶意代码，而XSS采用的注入方式是非常巧妙的。在XSS攻击中，一般有三个角色参与：攻击者、目标服务器、受害者的浏览器。 由于有的服务器并没有对用户">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-05T02:41:09.000Z">
+<meta property="article:modified_time" content="2023-08-05T02:47:27.154Z">
+<meta property="article:author" content="xuan">
+<meta property="article:tag" content="xss">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/08/05/xss/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/05/xss/","path":"2023/08/05/xss/","title":"xss"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>xss | Konglong</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Konglong</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81XSS%E6%94%BB%E5%87%BB%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">一、XSS攻击简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81XSS%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">二、XSS原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81XSS%E6%94%BB%E5%87%BB%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">三、XSS攻击类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%8F%8D%E5%B0%84%E5%9E%8BXSS%EF%BC%88%E9%9D%9E%E6%8C%81%E4%B9%85%E5%9E%8BXSS%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">1、反射型XSS（非持久型XSS）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%AD%98%E5%82%A8%E5%9E%8BXSS%EF%BC%88%E6%8C%81%E4%B9%85%E5%9E%8BXSS%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">2、存储型XSS（持久型XSS）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81DOM-based-%E5%9E%8B"><span class="nav-number">3.3.</span> <span class="nav-text">3、DOM-based 型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%9F%BA%E4%BA%8E%E5%AD%97%E7%AC%A6%E9%9B%86%E7%9A%84-XSS"><span class="nav-number">3.4.</span> <span class="nav-text">4、基于字符集的 XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E5%9F%BA%E4%BA%8E-Flash-%E7%9A%84%E8%B7%A8%E7%AB%99-XSS"><span class="nav-number">3.5.</span> <span class="nav-text">5、基于 Flash 的跨站 XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E6%9C%AA%E7%BB%8F%E9%AA%8C%E8%AF%81%E7%9A%84%E8%B7%B3%E8%BD%AC-XSS"><span class="nav-number">3.6.</span> <span class="nav-text">6、未经验证的跳转 XSS</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xuan"
+      src="/images/head.png">
+  <p class="site-author-name" itemprop="name">xuan</p>
+  <div class="site-description" itemprop="description">Welcome</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xuanhhhhh/xuanhhhhh.github.io" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xuanhhhhh&#x2F;xuanhhhhh.github.io" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:18035748708@163.com" title="E-Mail → mailto:18035748708@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_74080781?type=blog" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_74080781?type&#x3D;blog" rel="noopener me" target="_blank"><i class="fab fa-codiepie fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/05/xss/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.png">
+      <meta itemprop="name" content="xuan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Konglong">
+      <meta itemprop="description" content="Welcome">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="xss | Konglong">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          xss
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-08-05 10:41:09 / 修改时间：10:47:27" itemprop="dateCreated datePublished" datetime="2023-08-05T10:41:09+08:00">2023-08-05</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、XSS攻击简介"><a href="#一、XSS攻击简介" class="headerlink" title="一、XSS攻击简介"></a><strong>一、XSS攻击简介</strong></h2><p>XSS全称是Cross Site Scripting即跨站脚本，当目标网站目标用户浏览器渲染HTML文档的过程中，出现了不被预期的脚本指令并执行时，XSS就发生了。</p>
+<p>作为一种HTML注入攻击，XSS攻击的核心思想就是在HTML页面中注入恶意代码，而XSS采用的注入方式是非常巧妙的。在XSS攻击中，一般有三个角色参与：攻击者、目标服务器、受害者的浏览器。</p>
+<p>由于有的服务器并没有对用户的输入进行安全方面的验证，攻击者就可以很容易地通过正常的输入手段，夹带进一些恶意的HTML脚本代码。当受害者的浏览器访 问目标服务器上被注入恶意脚本的页面后，由于它对目标服务器的信任，这段恶意脚本的执行不会受到什么阻碍。而此时，攻击者的目的就已经达到了。</p>
+<p>下面我们以一段简单的JavaScript脚本为例，来描述整个XSS攻击的过程：</p>
+<script>alert(document.cookie);</script>
+
+<p>上面这段脚本的执行具体内容就是弹出一个对话框显示用户的Cookie信息。攻击者在向目标服务器的某个页面进行数据输入的过程中，通过正常的输入方式夹带进这段脚本。假如一切正常的时候，生成的页面代码如下形式：</p>
+<html>
+
+<p>…</p>
+<p>text &#x2F;&#x2F;正常输入的数据</p>
+<p>…</p>
+</html>
+
+<p>如果用户的输入为text<script>alert(document.cookie);</script>，而目标服务器又没有对这个输入进行检验的话，则会生成如下形式的页面代码：</p>
+<html>
+
+<p>…</p>
+<p>text</p>
+<script>alert(document.cookie);</script>
+
+<p>…</p>
+</html>
+
+<p>可以看到，这段脚本已经成功嵌入到该页面当中。当受害浏览器访问这个页面的时候，这段脚本也将被认为是页面的一部分，从而得到执行，即弹出对话框显示受害浏览器的Cookie信息。</p>
+<h2 id="二、XSS原理"><a href="#二、XSS原理" class="headerlink" title="二、XSS原理"></a><strong>二、XSS原理</strong></h2><p>XSS的原理是恶意攻击者往 Web 页面里插入恶意可执行网页脚本代码，当用户浏览该页之时，嵌入其中 Web 里面的脚本代码会被执行，从而可以达到攻击者盗取用户信息或其他侵犯用户安全隐私的目的。</p>
+<h2 id="三、XSS攻击类型"><a href="#三、XSS攻击类型" class="headerlink" title="三、XSS攻击类型"></a><strong>三、XSS攻击类型</strong></h2><p>根据XSS脚本注入方式的不同，我们可以将XSS攻击简单的分类为反射型XSS、存储型XSS、DOM-based 型、基于字符集的 XSS、基于 Flash 的跨站 XSS、未经验证的跳转 XSS 6种类型。</p>
+<h3 id="1、反射型XSS（非持久型XSS）"><a href="#1、反射型XSS（非持久型XSS）" class="headerlink" title="1、反射型XSS（非持久型XSS）"></a><strong>1、反射型XSS（非持久型XSS）</strong></h3><p>又称<strong>非持久型XSS</strong>。之所以称为反射型XSS，是因为这种攻击方式的注入代码是从目标服务器通过错误信息、搜索结果等等方式“反射”回来的：发出请求时，XSS代码出现在URL中，作为输入提交到服务器端，服务器端解析后响应，XSS代码随响应内容一起传回给浏览器，最后浏览器解析执行XSS代码。这个过程像一次反射，故叫反射型XSS。 而称为非持久型XSS，则是因为这种攻击方式具有一次性，由于代码注入的是一个动态产生的页面而不是永久的页面，因此这种攻击方式只在点击链接的时候才产生作用。</p>
+<p>攻击者通过电子邮件等方式给别人发送带有恶意脚本代码参数的 URL，当 URL 地址被打开时，注入脚本被传输到目标服务器上，然后服务器将注入脚本“反射”到受害者的浏览器上，特有的恶意代码参数被 HTML 解析、执行。</p>
+<p>非持久型 XSS 漏洞攻击的<strong>四大特点</strong>：① 即时性。不经过服务器存储，直接通过 HTTP 的 GET 和 POST 请求就能完成一次攻击，拿到用户隐私数据；②攻击者需要诱骗点击；③反馈率低，所以较难发现和响应修复；④盗取用户敏感保密信息。</p>
+<p>防止出现非持久型 XSS 漏洞的<strong>五大措施</strong>：① Web 页面渲染的所有内容或者渲染的数据都必须来自于服务端；②尽量不要从 URL，document.referrer，document.forms 等这种 DOM API 中获取数据直接渲染；③尽量不要使用 eval, new Function()，document.write()，document.writeln()，window.setInterval()，window.setTimeout()，innerHTML，document.creteElement() 等可执行字符串的方法；④如果做不到以上几点，也必须对涉及 DOM 渲染的方法传入的字符串参数做 escape 转义；⑤ 前端渲染的时候对任何的字段都需要做 escape 转义编码。</p>
+<h3 id="2、存储型XSS（持久型XSS）"><a href="#2、存储型XSS（持久型XSS）" class="headerlink" title="2、存储型XSS（持久型XSS）"></a><strong>2、存储型XSS（持久型XSS）</strong></h3><p>存储型XSS，又称持久型XSS，他和反射型XSS最大的不同就是，攻击脚本将被永久地存放在目标服务器端（数据库，内存，文件系统等），下次请求目标页面时不用再提交XSS代码。</p>
+<p>一般存在于 Form 表单提交等交互功能，如发帖留言，提交文本信息等，黑客利用的 XSS 漏洞，将内容经正常功能提交进入数据库持久保存，当前端页面获得后端从数据库中读出的注入代码时，恰好将其渲染执行。</p>
+<p>这种攻击多见于论坛，攻击者在发帖的过程中，将恶意脚本连同正常信息一起注入到帖子的内容之中。随着帖子被论坛服务器存储下来，恶意脚本也永久地被存放在论坛服务器的后端存储器中。当其它用户浏览这个被注入了恶意脚本的帖子的时候，恶意脚本则会在他们的浏览器中得到执行，从而受到了攻击。</p>
+<p>可以看到，存储型XSS的攻击方式能够将恶意代码永久地嵌入一个页面当中，所有访问这个页面的用户都将成为受害者。如果我们能够谨慎对待不明链接，那么反射型的XSS攻击将没有多大作为，而存储型XSS则不同，由于它注入的往往是一些我们所信任的页面，因此无论我们多么小心，都难免会受到攻击。可以说，存储型XSS更具有隐蔽性，带来的危害也更大，除非服务器能完全阻止注入，否则任何人都很有可能受到攻击。</p>
+<p>持久型 XSS 的三<strong>大特点</strong>：①持久性，植入在数据库中；②危害面广，甚至可以让用户机器变成 DDoS 攻击的肉鸡；③ 盗取用户敏感私密信息。</p>
+<p>防止持久型 XSS 漏洞的<strong>三大措施：</strong> ①后端在入库前应该选择不相信任何前端数据，将所有的字段统一进行转义处理；②后端在输出给前端数据统一进行转义处理；③前端在渲染页面 DOM 的时候应该选择不相信任何后端数据，任何字段都需要做转义处理。</p>
+<h3 id="3、DOM-based-型"><a href="#3、DOM-based-型" class="headerlink" title="3、DOM-based 型"></a><strong>3、DOM-based 型</strong></h3><p>客户端的脚本程序可以动态地检查和修改页面内容，而不依赖于服务器端的数据。例如客户端如从 URL 中提取数据并在本地执行，如果用户在客户端输入的数据包含了恶意的 JavaScript 脚本，而这些脚本没有经过适当的过滤和消毒，那么应用程序就可能受到 DOM-based XSS 攻击。需要特别注意以下的用户输入源 document.URL、 location.hash、 location.search、 document.referrer 等。</p>
+<h3 id="4、基于字符集的-XSS"><a href="#4、基于字符集的-XSS" class="headerlink" title="4、基于字符集的 XSS"></a><strong>4、基于字符集的 XSS</strong></h3><p>哪怕现在很多的浏览器以及各种开源的库都专门针对了 XSS 进行转义处理，尽量默认抵御绝大多数 XSS 攻击，但是还是有很多方式可以绕过转义规则，让人防不胜防。比如「基于字符集的 XSS 攻击」就是绕过这些转义处理的一种攻击方式，比如有些 Web 页面字符集不固定，用户输入非期望字符集的字符，有时会绕过转义过滤规则。</p>
+<p>可以形成「基于字符集的 XSS 攻击」的原因是由于浏览器在 meta 没有指定 charset 的时候有自动识别编码的机制，所以这类攻击通常就是发生在没有指定或者没来得及指定 meta 标签的 charset 的情况下。</p>
+<p>避免基于字符集的 XSS 攻击的<strong>两大方法：</strong>①记住指定 <meta charset="utf-8">；② XML 中不仅要指定字符集为 utf-8，而且标签要闭合。</p>
+<h3 id="5、基于-Flash-的跨站-XSS"><a href="#5、基于-Flash-的跨站-XSS" class="headerlink" title="5、基于 Flash 的跨站 XSS"></a><strong>5、基于 Flash 的跨站 XSS</strong></h3><p>基于 Flash 的跨站 XSS 也是属于反射型 XSS 的一种，AS 脚本可以接受用户输入并操作 cookie，攻击者可以配合其他 XSS（持久型或者非持久型）方法将恶意 swf 文件嵌入页面中。主要是因为 AS 有时候需要和 JS 传参交互，攻击者会通过恶意的 XSS 注入篡改参数，窃取并操作cookie。</p>
+<p>基于 Flash 的跨站 XSS 的<strong>两种避免方法</strong> <strong>：</strong>①严格管理 cookie 的读写权限；②对 Flash 能接受用户输入的参数进行过滤 escape 转义处理。</p>
+<h3 id="6、未经验证的跳转-XSS"><a href="#6、未经验证的跳转-XSS" class="headerlink" title="6、未经验证的跳转 XSS"></a><strong>6、未经验证的跳转 XSS</strong></h3><p>有一些场景是后端需要对一个传进来的待跳转的 URL 参数进行一个 302 跳转，可能其中会带有一些用户的敏感（cookie）信息。如果服务器端做302 跳转，跳转的地址来自用户的输入，攻击者可以输入一个恶意的跳转地址来执行脚本。</p>
+<p>防止未经验证的跳转 XSS漏洞的<strong>两种措施：</strong>①对待跳转的 URL 参数做白名单或者某种规则过滤；②后端注意对敏感信息的保护, 比如 cookie 使用来源验证。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="xuan 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/zhifubao.png" alt="xuan 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/xss/" rel="tag"># xss</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/04/SQL%E6%B3%A8%E5%85%A5/" rel="prev" title="SQL注入">
+                  <i class="fa fa-angle-left"></i> SQL注入
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">xuan</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">64k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:57</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
