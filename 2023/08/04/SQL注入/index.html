@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="SQL注入入门简介就不说奇奇怪怪书面语言了，大致意思就是通过可控输入点达到非预期执行数据库语句，这里的非预期指的是，拼接相应的语句可以拿到数据库里面的其他数据，具体看下面的Demo。 比如下面的语句： 1$sql &#x3D; &quot;SELECT username,password FROM users WHERE id &#x3D; &quot;.$_GET[&quot;id&quot;];  对于他的预期操">
+    <meta name="description" content="SQL注入入门">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL注入">
 <meta property="og:url" content="http://example.com/2023/08/04/SQL%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="Konglong">
-<meta property="og:description" content="SQL注入入门简介就不说奇奇怪怪书面语言了，大致意思就是通过可控输入点达到非预期执行数据库语句，这里的非预期指的是，拼接相应的语句可以拿到数据库里面的其他数据，具体看下面的Demo。 比如下面的语句： 1$sql &#x3D; &quot;SELECT username,password FROM users WHERE id &#x3D; &quot;.$_GET[&quot;id&quot;];  对于他的预期操">
+<meta property="og:description" content="SQL注入入门">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://nssctf.wdf.ink//img/WDTJ/202304261635588.png">
 <meta property="og:image" content="https://nssctf.wdf.ink//img/WDTJ/202304261646646.png">
@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://nssctf.wdf.ink//img/WDTJ/202305050110708.png">
 <meta property="og:image" content="https://nssctf.wdf.ink//img/WDTJ/202305050150790.png">
 <meta property="article:published_time" content="2023-08-04T06:45:21.000Z">
-<meta property="article:modified_time" content="2023-08-04T06:47:56.586Z">
+<meta property="article:modified_time" content="2023-08-05T10:05:32.709Z">
 <meta property="article:author" content="xuan">
 <meta property="article:tag" content="SQL注入">
 <meta name="twitter:card" content="summary">
@@ -246,9 +246,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-08-04 14:45:21 / 修改时间：14:47:56" itemprop="dateCreated datePublished" datetime="2023-08-04T14:45:21+08:00">2023-08-04</time>
+      <time title="创建时间：2023-08-04 14:45:21" itemprop="dateCreated datePublished" datetime="2023-08-04T14:45:21+08:00">2023-08-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-08-05 18:05:32" itemprop="dateModified" datetime="2023-08-05T18:05:32+08:00">2023-08-05</time>
     </span>
 
   
@@ -282,7 +288,9 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="SQL注入入门"><a href="#SQL注入入门" class="headerlink" title="SQL注入入门"></a>SQL注入入门</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>就不说奇奇怪怪书面语言了，大致意思就是通过可控输入点达到非预期执行数据库语句，这里的非预期指的是，拼接相应的语句可以拿到数据库里面的其他数据，具体看下面的Demo。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="SQL注入入门"><a href="#SQL注入入门" class="headerlink" title="SQL注入入门"></a>SQL注入入门</h2><span id="more"></span>
+
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>就不说奇奇怪怪书面语言了，大致意思就是通过可控输入点达到非预期执行数据库语句，这里的非预期指的是，拼接相应的语句可以拿到数据库里面的其他数据，具体看下面的Demo。</p>
 <p>比如下面的语句：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
 

