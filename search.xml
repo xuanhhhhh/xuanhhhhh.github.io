@@ -1,6 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Basics</title>
+    <url>/2023/07/26/Basics/</url>
+    <content><![CDATA[<h1 id="Windows基础"><a href="#Windows基础" class="headerlink" title="Windows基础"></a>Windows基础</h1><span id="more"></span>
+
+<h3 id="一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。"><a href="#一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。" class="headerlink" title="一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。"></a>一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。</h3><p>标准行为：<br>Windovws 文件系统将文件和目录名称视为不区分大小写。 FOO.txt 和 foo.txt 将被视为等效文件。<br>Linux 文件系统将文件和目录名称视为区分大小写。 FOO.txt 和 foo.txt 将被视为不同文件。</p>
+<p>Windows 文件系统支持使用属性标志按目录设置区分大小写。 虽然标准行为是不区分大小写，但你可以分配属性标志来使目录区分大小写，以便它能够识别可能仅大小写不同的 Linux 文件和文件夹。<br>在将驱动器装载到适用于 Linux 的 Windows 子系统 (WSL) 文件系统时，尤其如此。 在 WSL 文件系统中工作时，运行的是 Linux，因此默认情况下，文件和目录被视为区分大小写。</p>
+<h3 id="二、Windows-常用快捷键"><a href="#二、Windows-常用快捷键" class="headerlink" title="二、Windows 常用快捷键"></a>二、Windows 常用快捷键</h3><blockquote>
+<p>1 保存 Ctrl + S 必用<br>2 复制 Ctrl + C<br>3 粘贴 Ctrl + V<br>4 剪切 Ctrl + X<br>5 撤销 Ctrl + Z<br>6 全选 Ctrl + A<br>7 显示桌面 Win + D<br>8 打开资源管理器（此电脑） Win + E<br>9 关闭窗口、浏览器标签 Ctrl + W<br>10 切换打开的程序窗口 Alt + Tab<br>11 新建文件夹 Ctrl + Shift + N<br>12 刷新 Ctrl + R<br>13【浏览器快捷键】恢复 Chrome 中刚被关掉的网页Ctrl + Shift + T<br>14【浏览器快捷键】地址栏搜索Ctrl + E<br>15【浏览器快捷键】全选地址栏内容Ctrl + L<br>16【浏览器快捷键】标签之间切换 Ctrl + Tab<br>17 删除文件（进回收站） Ctrl + D<br>18 彻底删除文件 Shift + Delete<br>19 打开任务管理器 Ctrl + Shift + Esc<br>20 锁定计算机 Win + L<br>21 打印 Ctrl + P<br>22 投影 Win + P<br>23 打开 Windows 常用功能列表 Win + X</p>
+</blockquote>
+<h3 id="三、Windows-运行命令"><a href="#三、Windows-运行命令" class="headerlink" title="三、Windows 运行命令"></a>三、Windows 运行命令</h3><table>
+<thead>
+<tr>
+<th align="center">作用</th>
+<th align="center">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">打开运行窗口</td>
+<td align="center">Win + R</td>
+</tr>
+<tr>
+<td align="center">打开运行窗口</td>
+<td align="center">Win + R</td>
+</tr>
+<tr>
+<td align="center">打开控制面板</td>
+<td align="center">control</td>
+</tr>
+<tr>
+<td align="center">打开计算器</td>
+<td align="center">calc</td>
+</tr>
+<tr>
+<td align="center">打开记事本</td>
+<td align="center">notepad</td>
+</tr>
+<tr>
+<td align="center">打开任务管理器</td>
+<td align="center">taskmgr</td>
+</tr>
+<tr>
+<td align="center">打开系统配置</td>
+<td align="center">msconfig</td>
+</tr>
+<tr>
+<td align="center">打开注册表</td>
+<td align="center">regedit</td>
+</tr>
+<tr>
+<td align="center">打开卸载程序界面</td>
+<td align="center">appwiz.cpl</td>
+</tr>
+<tr>
+<td align="center">打开防火墙设置</td>
+<td align="center">firewall.cpl</td>
+</tr>
+<tr>
+<td align="center">打开系统服务</td>
+<td align="center">services.msc</td>
+</tr>
+<tr>
+<td align="center">打开网络连接</td>
+<td align="center">ncpa.cpl</td>
+</tr>
+<tr>
+<td align="center">打开系统属性</td>
+<td align="center">sysdm.cpl</td>
+</tr>
+<tr>
+<td align="center">快速启动任务栏软件</td>
+<td align="center">Win + （1 ~ 9）</td>
+</tr>
+<tr>
+<td align="center">用命令关机</td>
+<td align="center">shutdown -s -t 0</td>
+</tr>
+<tr>
+<td align="center">用命令重启</td>
+<td align="center">shutdown -r -t 0</td>
+</tr>
+<tr>
+<td align="center">炫酷下滑关机</td>
+<td align="center">slideToShutDown(在桌面新建“关机.txt”，在文件里输入 SlideToShutDown，再把 文件名改为“关 机.bat”，双击这个文件，自己看看效果~~~~)</td>
+</tr>
+</tbody></table>
+<h3 id="四、必装软件"><a href="#四、必装软件" class="headerlink" title="四、必装软件"></a>四、必装软件</h3><ol>
+<li><p>Everything：免费，本地硬盘文件极速搜索工具 （必用）<br>官网下载： <a href="https://www.voidtools.com/zh-cn/">https://www.voidtools.com/zh-cn/</a></p>
+</li>
+<li><p>Wox：免费，效率神器 （必用）<br>百度搜索 Wox 下载或官网下载：<a href="https://github.com/Wox-launcher/Wox">https://github.com/Wox-launcher/Wox</a></p>
+</li>
+<li><p>程序员必用：Markdown 工具（Typora 版本：v0.9.86） （必用）</p>
+</li>
+</ol>
+<p>  Markdown 教程：<a href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a></p>
+<ol start="4">
+<li>Notepad++ ：免费，功能强大的文本编辑器 （常用）</li>
+</ol>
+<p>  官网下载：<a href="https://notepad-plus.en.softonic.com/">https://notepad-plus.en.softonic.com/</a></p>
+<ol start="5">
+<li>VS Code：编程神器，可开发多种语言，多用于前端开发 （常用）</li>
+</ol>
+<p>  官网下载：<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
+<ol start="6">
+<li>FDM：免费，非常棒的下载工具</li>
+</ol>
+<p>​       官网下载：<a href="https://www.freedownloadmanager.org/zh/download.htm">https://www.freedownloadmanager.org/zh/download.htm</a></p>
+<ol start="7">
+<li>Chrome、Firefox：程序员用的浏览器，调试 Web 前端 （必用）</li>
+</ol>
+<p>​        百度搜索：Chrome 下载、Firefox 下载</p>
+]]></content>
+      <tags>
+        <tag>Windows常用快捷键</tag>
+        <tag>Windows运行命令</tag>
+        <tag>必备软件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docke精髓</title>
     <url>/2023/08/01/Docke3/</url>
     <content><![CDATA[<h1 id="容器数据卷"><a href="#容器数据卷" class="headerlink" title="容器数据卷"></a>容器数据卷</h1><span id="more"></span>
@@ -143,121 +261,28 @@
       </tags>
   </entry>
   <entry>
-    <title>Basics</title>
-    <url>/2023/07/26/Basics/</url>
-    <content><![CDATA[<h1 id="Windows基础"><a href="#Windows基础" class="headerlink" title="Windows基础"></a>Windows基础</h1><span id="more"></span>
+    <title>Docker相关部署</title>
+    <url>/2023/07/31/Docker2/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
 
-<h3 id="一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。"><a href="#一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。" class="headerlink" title="一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。"></a>一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。</h3><p>标准行为：<br>Windovws 文件系统将文件和目录名称视为不区分大小写。 FOO.txt 和 foo.txt 将被视为等效文件。<br>Linux 文件系统将文件和目录名称视为区分大小写。 FOO.txt 和 foo.txt 将被视为不同文件。</p>
-<p>Windows 文件系统支持使用属性标志按目录设置区分大小写。 虽然标准行为是不区分大小写，但你可以分配属性标志来使目录区分大小写，以便它能够识别可能仅大小写不同的 Linux 文件和文件夹。<br>在将驱动器装载到适用于 Linux 的 Windows 子系统 (WSL) 文件系统时，尤其如此。 在 WSL 文件系统中工作时，运行的是 Linux，因此默认情况下，文件和目录被视为区分大小写。</p>
-<h3 id="二、Windows-常用快捷键"><a href="#二、Windows-常用快捷键" class="headerlink" title="二、Windows 常用快捷键"></a>二、Windows 常用快捷键</h3><blockquote>
-<p>1 保存 Ctrl + S 必用<br>2 复制 Ctrl + C<br>3 粘贴 Ctrl + V<br>4 剪切 Ctrl + X<br>5 撤销 Ctrl + Z<br>6 全选 Ctrl + A<br>7 显示桌面 Win + D<br>8 打开资源管理器（此电脑） Win + E<br>9 关闭窗口、浏览器标签 Ctrl + W<br>10 切换打开的程序窗口 Alt + Tab<br>11 新建文件夹 Ctrl + Shift + N<br>12 刷新 Ctrl + R<br>13【浏览器快捷键】恢复 Chrome 中刚被关掉的网页Ctrl + Shift + T<br>14【浏览器快捷键】地址栏搜索Ctrl + E<br>15【浏览器快捷键】全选地址栏内容Ctrl + L<br>16【浏览器快捷键】标签之间切换 Ctrl + Tab<br>17 删除文件（进回收站） Ctrl + D<br>18 彻底删除文件 Shift + Delete<br>19 打开任务管理器 Ctrl + Shift + Esc<br>20 锁定计算机 Win + L<br>21 打印 Ctrl + P<br>22 投影 Win + P<br>23 打开 Windows 常用功能列表 Win + X</p>
-</blockquote>
-<h3 id="三、Windows-运行命令"><a href="#三、Windows-运行命令" class="headerlink" title="三、Windows 运行命令"></a>三、Windows 运行命令</h3><table>
-<thead>
-<tr>
-<th align="center">作用</th>
-<th align="center">命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">打开运行窗口</td>
-<td align="center">Win + R</td>
-</tr>
-<tr>
-<td align="center">打开运行窗口</td>
-<td align="center">Win + R</td>
-</tr>
-<tr>
-<td align="center">打开控制面板</td>
-<td align="center">control</td>
-</tr>
-<tr>
-<td align="center">打开计算器</td>
-<td align="center">calc</td>
-</tr>
-<tr>
-<td align="center">打开记事本</td>
-<td align="center">notepad</td>
-</tr>
-<tr>
-<td align="center">打开任务管理器</td>
-<td align="center">taskmgr</td>
-</tr>
-<tr>
-<td align="center">打开系统配置</td>
-<td align="center">msconfig</td>
-</tr>
-<tr>
-<td align="center">打开注册表</td>
-<td align="center">regedit</td>
-</tr>
-<tr>
-<td align="center">打开卸载程序界面</td>
-<td align="center">appwiz.cpl</td>
-</tr>
-<tr>
-<td align="center">打开防火墙设置</td>
-<td align="center">firewall.cpl</td>
-</tr>
-<tr>
-<td align="center">打开系统服务</td>
-<td align="center">services.msc</td>
-</tr>
-<tr>
-<td align="center">打开网络连接</td>
-<td align="center">ncpa.cpl</td>
-</tr>
-<tr>
-<td align="center">打开系统属性</td>
-<td align="center">sysdm.cpl</td>
-</tr>
-<tr>
-<td align="center">快速启动任务栏软件</td>
-<td align="center">Win + （1 ~ 9）</td>
-</tr>
-<tr>
-<td align="center">用命令关机</td>
-<td align="center">shutdown -s -t 0</td>
-</tr>
-<tr>
-<td align="center">用命令重启</td>
-<td align="center">shutdown -r -t 0</td>
-</tr>
-<tr>
-<td align="center">炫酷下滑关机</td>
-<td align="center">slideToShutDown(在桌面新建“关机.txt”，在文件里输入 SlideToShutDown，再把 文件名改为“关 机.bat”，双击这个文件，自己看看效果~~~~)</td>
-</tr>
-</tbody></table>
-<h3 id="四、必装软件"><a href="#四、必装软件" class="headerlink" title="四、必装软件"></a>四、必装软件</h3><ol>
-<li><p>Everything：免费，本地硬盘文件极速搜索工具 （必用）<br>官网下载： <a href="https://www.voidtools.com/zh-cn/">https://www.voidtools.com/zh-cn/</a></p>
-</li>
-<li><p>Wox：免费，效率神器 （必用）<br>百度搜索 Wox 下载或官网下载：<a href="https://github.com/Wox-launcher/Wox">https://github.com/Wox-launcher/Wox</a></p>
-</li>
-<li><p>程序员必用：Markdown 工具（Typora 版本：v0.9.86） （必用）</p>
-</li>
-</ol>
-<p>  Markdown 教程：<a href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a></p>
-<ol start="4">
-<li>Notepad++ ：免费，功能强大的文本编辑器 （常用）</li>
-</ol>
-<p>  官网下载：<a href="https://notepad-plus.en.softonic.com/">https://notepad-plus.en.softonic.com/</a></p>
-<ol start="5">
-<li>VS Code：编程神器，可开发多种语言，多用于前端开发 （常用）</li>
-</ol>
-<p>  官网下载：<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
-<ol start="6">
-<li>FDM：免费，非常棒的下载工具</li>
-</ol>
-<p>​       官网下载：<a href="https://www.freedownloadmanager.org/zh/download.htm">https://www.freedownloadmanager.org/zh/download.htm</a></p>
-<ol start="7">
-<li>Chrome、Firefox：程序员用的浏览器，调试 Web 前端 （必用）</li>
-</ol>
-<p>​        百度搜索：Chrome 下载、Firefox 下载</p>
+<h1 id="Docker安装Nginx"><a href="#Docker安装Nginx" class="headerlink" title="Docker安装Nginx"></a>Docker安装Nginx</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.搜索镜像 docker search nginx</span><br><span class="line">2.下载镜像 docker pull nginx</span><br><span class="line">3.运行测试</span><br><span class="line">[root@163 ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">nginx         latest    605c77e624dd   19 months ago   141MB</span><br><span class="line">centos        latest    5d0da3dc9764   22 months ago   231MB</span><br><span class="line">-d 后台运行（停止了容器后，容器还可以查到）</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 宿主机:容器内部端口</span><br><span class="line">[root@163 ~]# docker run -d --name nginx01 -p 3344:80 nginx</span><br><span class="line">bb07f6e55670b129a14434aae3a9422cf3f7091f2d3079a5f96005613a909993</span><br><span class="line">[root@163 ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                   NAMES</span><br><span class="line">bb07f6e55670   nginx     &quot;/docker-entrypoint.…&quot;   9 seconds ago   Up 8 seconds   0.0.0.0:3344-&gt;80/tcp, :::3344-&gt;80/tcp   nginx01</span><br><span class="line">[root@163 ~]# curl localhost:3344</span><br><span class="line"></span><br><span class="line">4.进入容器</span><br><span class="line">[root@163 ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@bb07f6e55670:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@bb07f6e55670:/# cd /etc/nginx</span><br><span class="line">root@bb07f6e55670:/etc/nginx# ls</span><br><span class="line">conf.d		mime.types  nginx.conf	 uwsgi_params</span><br><span class="line">fastcgi_params	modules     scgi_params</span><br><span class="line">root@bb07f6e55670:/etc/nginx# </span><br></pre></td></tr></table></figure>
+
+<h1 id="Docker安装Tomcat"><a href="#Docker安装Tomcat" class="headerlink" title="Docker安装Tomcat"></a>Docker安装Tomcat</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#官方使用</span><br><span class="line">docker run -it --rm tomcat:9.0</span><br><span class="line">docker run -it --rm一般用于测试，用完立即删除</span><br><span class="line"></span><br><span class="line">#下载再使用</span><br><span class="line">docker pull tomcat:9.0</span><br><span class="line"></span><br><span class="line">#启动运行</span><br><span class="line">docker run -d -p 3355:8080 --name tomcat01 tomcat</span><br><span class="line">#测试访问没有问题</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">[root@163 ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">#发现问题，1.1inux命今少了，2.没有webapps 阿里云镜像的原因。默认是最小的镜像，所有不必要的都被剔除掉。保证最小可运行的环境</span><br></pre></td></tr></table></figure>
+
+<h1 id="部署es-kibana"><a href="#部署es-kibana" class="headerlink" title="部署es+kibana"></a>部署es+kibana</h1><figure class="highlight console"><table><tr><td class="code"><pre><span class="line">--net somenetwork  网络配置</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">docker run -d --name elasticsearch (--net somenetwork) -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; elasticsearch:8.8.1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动了 1inux就卡住了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 暴露的端口很多!</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 十分的耗内存</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 的数据一般霉要放置到安全目录!挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker stats 查看 cpu的状态</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试一下es构建是否成功</span></span><br><span class="line">    curl localhost:9200</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">马上关闭，增加内存限制 修改配置文件 -e 环境配置修改</span></span><br><span class="line">docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; elasticsearch:8.8.1</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装php和php插件"><a href="#安装php和php插件" class="headerlink" title="安装php和php插件"></a>安装php和php插件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install php -y</span><br><span class="line">apt-get install libapache2-mod-php -y  --fix-missing</span><br><span class="line">apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure>
+
+<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><strong>什么 portainer ?</strong><br>Docker图形化界面管理工具!提供一个后台面板供我们操作 !</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
+
+<p>访问测试：端口打开8088  访问<a href="http://ip:8088/">http://ip:8088/</a></p>
+<h1 id="commit镜像"><a href="#commit镜像" class="headerlink" title="commit镜像"></a>commit镜像</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"></span><br><span class="line">#命今和git原理类似</span><br><span class="line">docker commit -m=&quot;提交的描述信息”-a=&quot;作者”容器id 目标镜像名:[TAG]</span><br><span class="line"></span><br><span class="line">实战测试</span><br><span class="line"># 1、启动一个默认的tomcat</span><br><span class="line"># 2、发现这个默认的tomcat 是没有webapps应用，镜像的原因，官方的镜像默认 webapps下面是没有文件的!</span><br><span class="line"># 3、我自己拷贝进去了基本的文件</span><br><span class="line"># 4、将我们操作过的容器通过commit提交为一个境像! 我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Windows常用快捷键</tag>
-        <tag>Windows运行命令</tag>
-        <tag>必备软件</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -368,6 +393,48 @@
 ]]></content>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java简介</title>
+    <url>/2023/07/26/Java1/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+
+<h2 id="什么是Java"><a href="#什么是Java" class="headerlink" title="什么是Java"></a>什么是Java</h2><p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。</p>
+<h2 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景"></a>诞生背景</h2><p>任职于Sun公司(Stanford University Network斯坦福网络公司)的詹姆斯·高斯林和麦克·舍林丹等人于1990年代初开发Java语言的雏形，最初被命名为Oak，Oak的目标是作为家用电器等小型系统的编程语言，用于电视机、电话、闹钟、烤面包机等家用电器的控制和通信。由于这些智能化家电的市场需求没有预期的高，Sun公司放弃了该项计划。随着1990年代互联网的发展，Sun公司发现Oak在互联网上应用的前景，于是改造了Oak，于1995年5月以Java的名称正式发布。伴随着互联网的迅猛发展，Java逐渐成为重要的网络编程语言。</p>
+<h2 id="语言特点与应用场景"><a href="#语言特点与应用场景" class="headerlink" title="语言特点与应用场景"></a>语言特点与应用场景</h2><p>Java语言具有简单性、面向对象、分布式、健壮性、安全性、跨平台性、可移植性、多线程与动态性等特点。Java语言可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统等 。Java 快速、安全、可靠。从笔记本电脑到数据中心，从游戏控制台到超级计算机，从手机到互联网，Java 无处不在！</p>
+<h2 id="JVM、JRE和JDK的关系"><a href="#JVM、JRE和JDK的关系" class="headerlink" title="JVM、JRE和JDK的关系"></a>JVM、JRE和JDK的关系</h2><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><p>Java Virtual Machine是Java虚拟机，Java程序需要运行在虚拟机上，不同的平台有自己的虚拟机，因此Java语言可以实现跨平台。</p>
+<h4 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h4><p>Java Runtime Environment包括Java虚拟机和Java程序所需的核心类库等。核心类库主要是java.lang包：包含了运行Java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包</p>
+<p>如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</p>
+<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h4><p>Java Development Kit是提供给Java开发人员使用的，其中包含了Java的开发工具，也包括了JRE。所以安装了JDK，就无需再单独安装JRE了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe)等</p>
+<p>JVM&amp;JRE&amp;JDK关系图</p>
+<p><img src="https://img-blog.csdnimg.cn/20210430091557268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmcxMzU2Mzc1ODEyOA==,size_16,color_FFFFFF,t_70" alt="img"></p>
+<h1 id="Java是编译型还是解释型语言"><a href="#Java是编译型还是解释型语言" class="headerlink" title="Java是编译型还是解释型语言"></a>Java是编译型还是解释型语言</h1><h3 id="1-编译型语言和解释型语言"><a href="#1-编译型语言和解释型语言" class="headerlink" title="1.编译型语言和解释型语言"></a>1.编译型语言和解释型语言</h3><h5 id="编译型语言"><a href="#编译型语言" class="headerlink" title="编译型语言"></a>编译型语言</h5><p><strong>定义</strong>：在程序运行之前，通过编译器将源程序编译成机器码(可运行的二进制代码)，以后执行这个程序时，就不用再进行编译了。</p>
+<p><strong>优点</strong>：编译器一般会有预编译的过程对代码进行优化。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高，可以脱离语言环境独立运行。</p>
+<p><strong>缺点</strong>：编译之后如果需要修改就需要整个模块重新编译。编译的时候根据对应的运行环境生成机器码，不同的操作系统之间移植就会有问题，需要根据运行的操作系统环境编译不同的可执行文件。</p>
+<p><strong>总结</strong>：执行速度快、效率高；依靠编译器、跨平台性差些。</p>
+<p><strong>代表语言</strong>：C、C++、Pascal、Object-C以及Swift。</p>
+<h6 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h6><p><strong>定义</strong>：解释型语言的源代码不是直接翻译成机器码，而是先翻译成中间代码，再由解释器对中间代码进行解释运行。在运行的时候才将源程序翻译成机器码，翻译一句，然后执行一句，直至结束。</p>
+<p>优点：有良好的平台兼容性，在任何环境中都可以运行，前提是安装了解释器（虚拟机）。灵活，修改代码的时候直接修改就可以，可以快速部署，不用停机维护。</p>
+<p><strong>缺点</strong>：每次运行的时候都要解释一遍，性能上不如编译型语言。</p>
+<p><strong>总结</strong>：执行速度慢、效率低；依靠解释器、跨平台性好。</p>
+<p><strong>代表语言</strong>：JavaScript、Python、Erlang、PHP、Perl、Ruby。</p>
+<h5 id="混合型语言"><a href="#混合型语言" class="headerlink" title="混合型语言"></a>混合型语言</h5><p><strong>定义</strong>：既然编译型和解释型各有缺点就会有人想到把两种类型整合起来，取其精华去其糟粕，就出现了半编译，半解释型语言。</p>
+<p>比如C#，C#在编译的时候不是直接编译成机器码而是中间码，.NET平台提供了中间语言运行库运行中间码，中间语言运行库类似于Java虚拟机。.NET在编译成IL代码后，保存在dll中，首次运行时由JIT在编译成机器码缓存在内存中，下次直接执行。严格来说混合型语言属于解释型语言，C#更接近编译型语言。</p>
+<p><strong>Java即是编译型的，也是解释型语言，总的来说Java更接近解释型语言。</strong></p>
+<p>可以说它是编译型的。因为所有的Java代码都是要编译的，.java不经过编译就什么用都没有。同时围绕JVM的效率问题，会涉及一些如JIT、AOT等优化技术，例如JIT技术，会将热点代码编译成机器码。而AOT技术，是在运行前，通过工具直接将字节码转换为机器码。</p>
+<p>可以说它是解释型的。因为Java代码编译后不能直接运行，它是解释运行在JVM上的，所以它是解释运行的。</p>
+<h3 id="2-动态类型语言和静态类型语言"><a href="#2-动态类型语言和静态类型语言" class="headerlink" title="2.动态类型语言和静态类型语言"></a>2.动态类型语言和静态类型语言</h3><h6 id="动态类型语言"><a href="#动态类型语言" class="headerlink" title="动态类型语言"></a>动态类型语言</h6><p>动态类型语言：在运行期间才去做数据类型检查的语言，说的是数据类型。动态类型语言的数据类型不是在编译阶段决定的，而是把类型绑定延后到了运行阶段。</p>
+<p>代表语言：Python、Ruby、Erlang、JavaScript、Swift、PHP、Perl。</p>
+<h6 id="静态类型语言"><a href="#静态类型语言" class="headerlink" title="静态类型语言"></a>静态类型语言</h6><p>静态类型语言的数据类型是在编译期间（或运行之前）确定的，编写代码的时候要明确确定变量的数据类型。</p>
+<p>代表语言：C、C++、C#、Java、Object-C。</p>
+<h3 id="3-动态语言和静态语言"><a href="#3-动态语言和静态语言" class="headerlink" title="3.动态语言和静态语言"></a>3.动态语言和静态语言</h3><h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态类型语言和动态语言是完全不同的两个概念。</p>
+<p>动态语言：说的是运行时改变结构，说的是代码结构。在运行时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是在运行时代码可以根据某些条件改变自身结构。</p>
+<p>代表语言：Object-C、C#、JavaScript、PHP、Python、Erlang。</p>
+<h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>与动态语言相对应的，运行时结构不可变的语言就是静态语言。如Java、C、C++。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -604,31 +671,6 @@
 <td align="center">截取容器止时的退出状态值</td>
 </tr>
 </tbody></table>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker相关部署</title>
-    <url>/2023/07/31/Docker2/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h1 id="Docker安装Nginx"><a href="#Docker安装Nginx" class="headerlink" title="Docker安装Nginx"></a>Docker安装Nginx</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.搜索镜像 docker search nginx</span><br><span class="line">2.下载镜像 docker pull nginx</span><br><span class="line">3.运行测试</span><br><span class="line">[root@163 ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">nginx         latest    605c77e624dd   19 months ago   141MB</span><br><span class="line">centos        latest    5d0da3dc9764   22 months ago   231MB</span><br><span class="line">-d 后台运行（停止了容器后，容器还可以查到）</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 宿主机:容器内部端口</span><br><span class="line">[root@163 ~]# docker run -d --name nginx01 -p 3344:80 nginx</span><br><span class="line">bb07f6e55670b129a14434aae3a9422cf3f7091f2d3079a5f96005613a909993</span><br><span class="line">[root@163 ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                   NAMES</span><br><span class="line">bb07f6e55670   nginx     &quot;/docker-entrypoint.…&quot;   9 seconds ago   Up 8 seconds   0.0.0.0:3344-&gt;80/tcp, :::3344-&gt;80/tcp   nginx01</span><br><span class="line">[root@163 ~]# curl localhost:3344</span><br><span class="line"></span><br><span class="line">4.进入容器</span><br><span class="line">[root@163 ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@bb07f6e55670:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@bb07f6e55670:/# cd /etc/nginx</span><br><span class="line">root@bb07f6e55670:/etc/nginx# ls</span><br><span class="line">conf.d		mime.types  nginx.conf	 uwsgi_params</span><br><span class="line">fastcgi_params	modules     scgi_params</span><br><span class="line">root@bb07f6e55670:/etc/nginx# </span><br></pre></td></tr></table></figure>
-
-<h1 id="Docker安装Tomcat"><a href="#Docker安装Tomcat" class="headerlink" title="Docker安装Tomcat"></a>Docker安装Tomcat</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#官方使用</span><br><span class="line">docker run -it --rm tomcat:9.0</span><br><span class="line">docker run -it --rm一般用于测试，用完立即删除</span><br><span class="line"></span><br><span class="line">#下载再使用</span><br><span class="line">docker pull tomcat:9.0</span><br><span class="line"></span><br><span class="line">#启动运行</span><br><span class="line">docker run -d -p 3355:8080 --name tomcat01 tomcat</span><br><span class="line">#测试访问没有问题</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">[root@163 ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">#发现问题，1.1inux命今少了，2.没有webapps 阿里云镜像的原因。默认是最小的镜像，所有不必要的都被剔除掉。保证最小可运行的环境</span><br></pre></td></tr></table></figure>
-
-<h1 id="部署es-kibana"><a href="#部署es-kibana" class="headerlink" title="部署es+kibana"></a>部署es+kibana</h1><figure class="highlight console"><table><tr><td class="code"><pre><span class="line">--net somenetwork  网络配置</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">docker run -d --name elasticsearch (--net somenetwork) -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; elasticsearch:8.8.1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动了 1inux就卡住了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 暴露的端口很多!</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 十分的耗内存</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 的数据一般霉要放置到安全目录!挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker stats 查看 cpu的状态</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试一下es构建是否成功</span></span><br><span class="line">    curl localhost:9200</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">马上关闭，增加内存限制 修改配置文件 -e 环境配置修改</span></span><br><span class="line">docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; elasticsearch:8.8.1</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装php和php插件"><a href="#安装php和php插件" class="headerlink" title="安装php和php插件"></a>安装php和php插件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install php -y</span><br><span class="line">apt-get install libapache2-mod-php -y  --fix-missing</span><br><span class="line">apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure>
-
-<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><strong>什么 portainer ?</strong><br>Docker图形化界面管理工具!提供一个后台面板供我们操作 !</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
-
-<p>访问测试：端口打开8088  访问<a href="http://ip:8088/">http://ip:8088/</a></p>
-<h1 id="commit镜像"><a href="#commit镜像" class="headerlink" title="commit镜像"></a>commit镜像</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"></span><br><span class="line">#命今和git原理类似</span><br><span class="line">docker commit -m=&quot;提交的描述信息”-a=&quot;作者”容器id 目标镜像名:[TAG]</span><br><span class="line"></span><br><span class="line">实战测试</span><br><span class="line"># 1、启动一个默认的tomcat</span><br><span class="line"># 2、发现这个默认的tomcat 是没有webapps应用，镜像的原因，官方的镜像默认 webapps下面是没有文件的!</span><br><span class="line"># 3、我自己拷贝进去了基本的文件</span><br><span class="line"># 4、将我们操作过的容器通过commit提交为一个境像! 我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
         <tag>Docker</tag>
@@ -2275,48 +2317,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java简介</title>
-    <url>/2023/07/26/Java1/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h2 id="什么是Java"><a href="#什么是Java" class="headerlink" title="什么是Java"></a>什么是Java</h2><p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。</p>
-<h2 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景"></a>诞生背景</h2><p>任职于Sun公司(Stanford University Network斯坦福网络公司)的詹姆斯·高斯林和麦克·舍林丹等人于1990年代初开发Java语言的雏形，最初被命名为Oak，Oak的目标是作为家用电器等小型系统的编程语言，用于电视机、电话、闹钟、烤面包机等家用电器的控制和通信。由于这些智能化家电的市场需求没有预期的高，Sun公司放弃了该项计划。随着1990年代互联网的发展，Sun公司发现Oak在互联网上应用的前景，于是改造了Oak，于1995年5月以Java的名称正式发布。伴随着互联网的迅猛发展，Java逐渐成为重要的网络编程语言。</p>
-<h2 id="语言特点与应用场景"><a href="#语言特点与应用场景" class="headerlink" title="语言特点与应用场景"></a>语言特点与应用场景</h2><p>Java语言具有简单性、面向对象、分布式、健壮性、安全性、跨平台性、可移植性、多线程与动态性等特点。Java语言可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统等 。Java 快速、安全、可靠。从笔记本电脑到数据中心，从游戏控制台到超级计算机，从手机到互联网，Java 无处不在！</p>
-<h2 id="JVM、JRE和JDK的关系"><a href="#JVM、JRE和JDK的关系" class="headerlink" title="JVM、JRE和JDK的关系"></a>JVM、JRE和JDK的关系</h2><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><p>Java Virtual Machine是Java虚拟机，Java程序需要运行在虚拟机上，不同的平台有自己的虚拟机，因此Java语言可以实现跨平台。</p>
-<h4 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h4><p>Java Runtime Environment包括Java虚拟机和Java程序所需的核心类库等。核心类库主要是java.lang包：包含了运行Java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包</p>
-<p>如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</p>
-<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h4><p>Java Development Kit是提供给Java开发人员使用的，其中包含了Java的开发工具，也包括了JRE。所以安装了JDK，就无需再单独安装JRE了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe)等</p>
-<p>JVM&amp;JRE&amp;JDK关系图</p>
-<p><img src="https://img-blog.csdnimg.cn/20210430091557268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmcxMzU2Mzc1ODEyOA==,size_16,color_FFFFFF,t_70" alt="img"></p>
-<h1 id="Java是编译型还是解释型语言"><a href="#Java是编译型还是解释型语言" class="headerlink" title="Java是编译型还是解释型语言"></a>Java是编译型还是解释型语言</h1><h3 id="1-编译型语言和解释型语言"><a href="#1-编译型语言和解释型语言" class="headerlink" title="1.编译型语言和解释型语言"></a>1.编译型语言和解释型语言</h3><h5 id="编译型语言"><a href="#编译型语言" class="headerlink" title="编译型语言"></a>编译型语言</h5><p><strong>定义</strong>：在程序运行之前，通过编译器将源程序编译成机器码(可运行的二进制代码)，以后执行这个程序时，就不用再进行编译了。</p>
-<p><strong>优点</strong>：编译器一般会有预编译的过程对代码进行优化。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高，可以脱离语言环境独立运行。</p>
-<p><strong>缺点</strong>：编译之后如果需要修改就需要整个模块重新编译。编译的时候根据对应的运行环境生成机器码，不同的操作系统之间移植就会有问题，需要根据运行的操作系统环境编译不同的可执行文件。</p>
-<p><strong>总结</strong>：执行速度快、效率高；依靠编译器、跨平台性差些。</p>
-<p><strong>代表语言</strong>：C、C++、Pascal、Object-C以及Swift。</p>
-<h6 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h6><p><strong>定义</strong>：解释型语言的源代码不是直接翻译成机器码，而是先翻译成中间代码，再由解释器对中间代码进行解释运行。在运行的时候才将源程序翻译成机器码，翻译一句，然后执行一句，直至结束。</p>
-<p>优点：有良好的平台兼容性，在任何环境中都可以运行，前提是安装了解释器（虚拟机）。灵活，修改代码的时候直接修改就可以，可以快速部署，不用停机维护。</p>
-<p><strong>缺点</strong>：每次运行的时候都要解释一遍，性能上不如编译型语言。</p>
-<p><strong>总结</strong>：执行速度慢、效率低；依靠解释器、跨平台性好。</p>
-<p><strong>代表语言</strong>：JavaScript、Python、Erlang、PHP、Perl、Ruby。</p>
-<h5 id="混合型语言"><a href="#混合型语言" class="headerlink" title="混合型语言"></a>混合型语言</h5><p><strong>定义</strong>：既然编译型和解释型各有缺点就会有人想到把两种类型整合起来，取其精华去其糟粕，就出现了半编译，半解释型语言。</p>
-<p>比如C#，C#在编译的时候不是直接编译成机器码而是中间码，.NET平台提供了中间语言运行库运行中间码，中间语言运行库类似于Java虚拟机。.NET在编译成IL代码后，保存在dll中，首次运行时由JIT在编译成机器码缓存在内存中，下次直接执行。严格来说混合型语言属于解释型语言，C#更接近编译型语言。</p>
-<p><strong>Java即是编译型的，也是解释型语言，总的来说Java更接近解释型语言。</strong></p>
-<p>可以说它是编译型的。因为所有的Java代码都是要编译的，.java不经过编译就什么用都没有。同时围绕JVM的效率问题，会涉及一些如JIT、AOT等优化技术，例如JIT技术，会将热点代码编译成机器码。而AOT技术，是在运行前，通过工具直接将字节码转换为机器码。</p>
-<p>可以说它是解释型的。因为Java代码编译后不能直接运行，它是解释运行在JVM上的，所以它是解释运行的。</p>
-<h3 id="2-动态类型语言和静态类型语言"><a href="#2-动态类型语言和静态类型语言" class="headerlink" title="2.动态类型语言和静态类型语言"></a>2.动态类型语言和静态类型语言</h3><h6 id="动态类型语言"><a href="#动态类型语言" class="headerlink" title="动态类型语言"></a>动态类型语言</h6><p>动态类型语言：在运行期间才去做数据类型检查的语言，说的是数据类型。动态类型语言的数据类型不是在编译阶段决定的，而是把类型绑定延后到了运行阶段。</p>
-<p>代表语言：Python、Ruby、Erlang、JavaScript、Swift、PHP、Perl。</p>
-<h6 id="静态类型语言"><a href="#静态类型语言" class="headerlink" title="静态类型语言"></a>静态类型语言</h6><p>静态类型语言的数据类型是在编译期间（或运行之前）确定的，编写代码的时候要明确确定变量的数据类型。</p>
-<p>代表语言：C、C++、C#、Java、Object-C。</p>
-<h3 id="3-动态语言和静态语言"><a href="#3-动态语言和静态语言" class="headerlink" title="3.动态语言和静态语言"></a>3.动态语言和静态语言</h3><h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态类型语言和动态语言是完全不同的两个概念。</p>
-<p>动态语言：说的是运行时改变结构，说的是代码结构。在运行时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是在运行时代码可以根据某些条件改变自身结构。</p>
-<p>代表语言：Object-C、C#、JavaScript、PHP、Python、Erlang。</p>
-<h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>与动态语言相对应的，运行时结构不可变的语言就是静态语言。如Java、C、C++。</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SQL注入</title>
     <url>/2023/08/04/SQL%E6%B3%A8%E5%85%A5/</url>
     <content><![CDATA[<h2 id="SQL注入入门"><a href="#SQL注入入门" class="headerlink" title="SQL注入入门"></a>SQL注入入门</h2><span id="more"></span>
@@ -2649,7 +2649,9 @@
   <entry>
     <title>buuctf</title>
     <url>/2023/08/08/buuctf/</url>
-    <content><![CDATA[<h1 id="babyupload"><a href="#babyupload" class="headerlink" title="babyupload"></a>babyupload</h1><p>1、后缀名不能有ph！对于文件后缀名的限制，无法绕过这里<br>2、上传类型也太露骨了吧！对Content-Type的限制，修改为image&#x2F;jpeg即可绕过<br>3、诶，别蒙我啊，这标志明显还是php啊</p>
+    <content><![CDATA[<h1 id="babyupload"><a href="#babyupload" class="headerlink" title="babyupload"></a>babyupload</h1><span id="more"></span>
+
+<p>1、后缀名不能有ph！对于文件后缀名的限制，无法绕过这里<br>2、上传类型也太露骨了吧！对Content-Type的限制，修改为image&#x2F;jpeg即可绕过<br>3、诶，别蒙我啊，这标志明显还是php啊</p>
 <p>对上传文件的内容进行了检测，不能含有&lt;?，这里的PHP版本为：PHP&#x2F;5.6.23，可以使用 绕过</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script language=&quot;php&quot;&gt;eval($_POST[&#x27;111&#x27;]);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
