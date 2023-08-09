@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="基本的 PHP 语法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP">
+<meta property="og:url" content="http://example.com/2023/08/09/PHP/index.html">
+<meta property="og:site_name" content="Konglong">
+<meta property="og:description" content="基本的 PHP 语法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:\Users\%E9%99%88\AppData\Roaming\Typora\typora-user-images\image-20230809110222323.png">
+<meta property="article:published_time" content="2023-08-09T01:25:20.000Z">
+<meta property="article:modified_time" content="2023-08-09T03:08:43.560Z">
+<meta property="article:author" content="xuan">
+<meta property="article:tag" content="PHP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\%E9%99%88\AppData\Roaming\Typora\typora-user-images\image-20230809110222323.png">
+
+
+<link rel="canonical" href="http://example.com/2023/08/09/PHP/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/09/PHP/","path":"2023/08/09/PHP/","title":"PHP"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>PHP | Konglong</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Konglong</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84-PHP-%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">基本的 PHP 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">PHP文件系统管理</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xuan"
+      src="/images/head.png">
+  <p class="site-author-name" itemprop="name">xuan</p>
+  <div class="site-description" itemprop="description">Welcome</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xuanhhhhh/xuanhhhhh.github.io" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xuanhhhhh&#x2F;xuanhhhhh.github.io" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:18035748708@163.com" title="E-Mail → mailto:18035748708@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_74080781?type=blog" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_74080781?type&#x3D;blog" rel="noopener me" target="_blank"><i class="fab fa-codiepie fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/09/PHP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.png">
+      <meta itemprop="name" content="xuan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Konglong">
+      <meta itemprop="description" content="Welcome">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="PHP | Konglong">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PHP
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-08-09 09:25:20 / 修改时间：11:08:43" itemprop="dateCreated datePublished" datetime="2023-08-09T09:25:20+08:00">2023-08-09</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="基本的-PHP-语法"><a href="#基本的-PHP-语法" class="headerlink" title="基本的 PHP 语法"></a>基本的 PHP 语法</h2><span id="more"></span>
+
+<p>PHP 脚本以 <strong><?php** 开始，以 **?></strong> 结束：</p>
+<?php
+ // PHP 代码
+ ?>
+
+<p>PHP 文件的默认文件扩展名是 “.php”。</p>
+<p>PHP echo 和 print 语句</p>
+<p>echo 和 print 区别:</p>
+<ul>
+<li>echo - 可以输出一个或多个字符串</li>
+<li>print - 只允许输出一个字符串，返回值总为 1</li>
+</ul>
+<p> goto循环语句</p>
+<pre><code>王同学每周往返,但有一个特例:项目失败后或者集团临时通知除外,就可以不再这么每周往返了.
+</code></pre>
+<p>基本语法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">goto wan;</span><br><span class="line">echo &#x27;天王盖地虎&#x27;;</span><br><span class="line">wan:</span><br><span class="line">echo &#x27;小鸡炖蘑菇&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>基本编写:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">for ($i=0;$i&lt;100;$i++)&#123;</span><br><span class="line">    echo &#x27;第&#x27;.$i.&#x27;每周往返北京大连&lt;br /&gt;&#x27;;</span><br><span class="line">    if($i == 17)&#123;</span><br><span class="line">        goto end;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">end:</span><br><span class="line">echo &#x27;停止此项&#x27;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="PHP文件系统管理"><a href="#PHP文件系统管理" class="headerlink" title="PHP文件系统管理"></a>PHP文件系统管理</h3><p>(1)fopen、fread、fclose操作读取文件</p>
+<p>1.readfile读取文件函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">readfile ( string: $文件名)</span><br><span class="line">功能：传入一个文件路径，输出一个文件。</span><br></pre></td></tr></table></figure>
+
+<p>下面的这一段代码中，只要传入文件名或者指定的文件路径就把文件读取出来了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //linux类的读了方式</span><br><span class="line">   readfile(&quot;/home/paul/test.txt&quot;);</span><br><span class="line">   //windows类的读取方式</span><br><span class="line">   readfile(&quot;c:\oldboyoldboyoot.ini&quot;);</span><br><span class="line">?&gt;</span><br><span class="line">注意：上面的代码中windows的斜线是斜线，可能会转义掉一些字符。因此，我们写的时候写上两个斜线。</span><br></pre></td></tr></table></figure>
+
+<p>2、file_get_contents打开文件函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   $filename = &#x27;NoAlike.txt&#x27;;</span><br><span class="line">   $filestring = file_get_contents($filename);</span><br><span class="line">   echo $filestring;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3、fopen、fread、fclose操作读取文件</p>
+<p>上面file_get_contents打开文件的方式简单、粗暴。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">resource fopen	 	    ( string $文件名, string 模式)</span><br><span class="line">string fread 			( resource $操作资源, int 读取长度)</span><br><span class="line">bool fclose 			( resource $操作资源 )</span><br></pre></td></tr></table></figure>
+
+<p>fopen的模式有下面几个</p>
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230809110222323.png" alt="image-20230809110222323"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //你可以创建一个NoAlike.txt，以只读模式打开</span><br><span class="line">   $fp = fopen(&#x27;NoAlike.txt&#x27;, &quot;r&quot;);</span><br><span class="line">   //var_dump()操作一下$fp看看效果，输出的是不是只有类型提示的是resource</span><br><span class="line">   var_dump($fp);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>(2)PHP创建和修改文件内容</p>
+<p>1、file_put_contents写入文件</p>
+<p>第一种写入文件的方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file_put_contents ( string $文件路径, string $写入数据)</span><br><span class="line">功能：向指定的文件当中写入一个字符串，如果文件不存在则创建文件。返回的是写入的字节长度</span><br></pre></td></tr></table></figure>
+
+<p>操作代码演示示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   $data = &quot;在PHP中文网学好PHP，不再话下！&quot;;</span><br><span class="line">   $numbytes = file_put_contents(&#x27;test.txt&#x27;, $data);</span><br><span class="line">   if($numbytes)&#123;</span><br><span class="line">       echo &#x27;写入成功，我们读取看看结果试试：&#x27;;</span><br><span class="line">       echo file_get_contents(&#x27;test.txt&#x27;);</span><br><span class="line">   &#125;else&#123;</span><br><span class="line">       echo &#x27;写入失败或者没有权限，注意检查&#x27;;</span><br><span class="line">   &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、fwrite配合fopen进行写入操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   $filename = &#x27;test.txt&#x27;;</span><br><span class="line">   $fp= fopen($filename, &quot;w&quot;);</span><br><span class="line">   $len = fwrite($fp, &#x27;我是一只来自北方的狼，却在南方冻成了狗&#x27;);</span><br><span class="line">   fclose($fp);</span><br><span class="line">   print $len .&#x27;字节被写入了</span><br><span class="line">&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>代码说明：<br>· 不论有没有新建都会打开文件重新写入<br>· 原有的文件内容会被覆盖掉<br>· 文件不存在会创建</p>
+<p>(3) PHP创建临时文件</p>
+<pre><code>我们之前创建的文件都是永久文件，而创建临时文件在我们平时的项目开发中也非常有用，创建临时文件的好处：文件操作完成后即删除，不需要去维护这个文件的删除状态。
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //创建了一个临时文件</span><br><span class="line">   $handle = tmpfile();</span><br><span class="line">   //向里面写入了数据</span><br><span class="line">   $numbytes = fwrite($handle, &#x27;写入临时文件&#x27;);</span><br><span class="line">   //关闭临时文件，文件即被删除</span><br><span class="line">   fclose($handle);</span><br><span class="line">   echo  &#x27;向临时文件中写入了&#x27;.$numbytes . &#x27;个字节&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>(4) php移动、拷贝和删除文件</p>
+<p>我们日常在处理文件的时候，可以删除文件、重命名文件也可以也可复制文件。</p>
+<p>1、重命名文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rename($旧名,$新名);</span><br><span class="line">功能：这个函数返回一个bool值，将旧的名字改为新的名字。</span><br></pre></td></tr></table></figure>
+
+<p>操作示例说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //旧文件名</span><br><span class="line">   $filename = &#x27;test.txt&#x27;;</span><br><span class="line">   //新文件名</span><br><span class="line">   $filename2 = $filename . &#x27;.old&#x27;;</span><br><span class="line">   //复制文件</span><br><span class="line">   rename($filename, $filename2);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、复制文件<br>复制文件，就相当于是克隆技术，将一个原来的东西再克隆成一个新的东西，两个长得一模一样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">copy(源文件,目标文件)</span><br><span class="line">功能：将指定路径的源文件，复制一份到目标文件的位置。</span><br></pre></td></tr></table></figure>
+
+<p>操作示例说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //旧文件名</span><br><span class="line">   $filename = &#x27;copy.txt&#x27;;</span><br><span class="line">   //新文件名</span><br><span class="line">   $filename2 = $filename . &#x27;_backup&#x27;;</span><br><span class="line">   //修改名字。</span><br><span class="line">   copy($filename, $filename2);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>说明：会通过上面的例子，发现多出来了一个文件。</p>
+<p>3、删除文件</p>
+<p>删除文件就是将指定路径的一个文件删除，不过这个删除是直接删除。使用的是windows电脑，你在回收站看不到这个文件，你只会发现这个文件消失了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unlink(指定路径的文件)</span><br></pre></td></tr></table></figure>
+
+<p>代码操作示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   $filename = &#x27;test.txt&#x27;;</span><br><span class="line">   if (unlink($filename)) &#123;</span><br><span class="line">       echo  &quot;删除文件成功 $filename!</span><br><span class="line">&quot;;</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">       echo  &quot;删除 $filename 失败!</span><br><span class="line">&quot;;</span><br><span class="line">   &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4、检测文件属性函数</p>
+<p>假设安装界面的网址是：install.php，安装的锁文件是install.lock。我们就可以检测install.lock文件是否存在。</p>
+<pre><code>&lt;?php
+if(file_exists(&#39;install.lock&#39;))&#123;
+   echo &#39;已安装，请不要再次进行安装&#39;;
+   exit;
+&#125;
+?&gt;
+</code></pre>
+<p>5、PHP目录处理函数</p>
+<p>php 目录处理函数处理文件夹的基本思想如下：<br>1.读取某个路径的时候判断是否是文件夹<br>2.是文件夹的话，打开指定文件夹，返回文件目录的资源变量<br>3.使用readdir读取一次目录中的文件，目录指针向后偏移一次<br>4.使用readdir读取到最后，没有可读的文件返回false<br>5.关闭文件目录<br><strong>代码演示操作</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//设置打开的目录是D盘</span><br><span class="line">$dir = &quot;d:/&quot;;</span><br><span class="line">//判断是否是文件夹，是文件夹</span><br><span class="line">if (is_dir($dir)) &#123;</span><br><span class="line">   if ($dh = opendir($dir)) &#123;</span><br><span class="line">      //读取到最后返回false，停止循环</span><br><span class="line">      while (($file = readdir($dh)) !== false) &#123;</span><br><span class="line">           echo &quot;文件名为: $file : 文件的类型是: &quot; . filetype($dir . $file) . &quot;&lt;br /&gt;&quot;;</span><br><span class="line">       &#125;</span><br><span class="line">       closedir($dh);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>6、php 文件权限设置<br>chmod主要是修改文件的的权限</p>
+<pre><code>&lt;?php
+//修改linux系统/var/wwwroot/某文件权限为755
+chmod(&quot;/var/wwwroot/index.html&quot;, 755);  
+chmod(&quot;/var/wwwroot/index.html&quot;, &quot;u+rwx,go+rx&quot;); 
+chmod(&quot;/somedir/somefile&quot;, 0755); 
+?&gt;
+</code></pre>
+<p>7、php文件路径函数</p>
+<p>我们经常会遇到处理文件路径的情况。例如：<br>1.文件后缀需要取出来<br>2.路径需要取出名字不取目录<br>3.只需要取出路径名中的目录路径<br>4.或者把网址中的各个部份进行解析取得独立值<br>5.甚至是自己组成一个url出来</p>
+<p>很多地方都需要用路径处理类的函数。把常用的路径处理函数为大家做了标注，对着这个路径处理函数进行处理即可：在这里插入图片描述</p>
+<p>代码示例说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$path_parts = pathinfo(&#x27;d:/www/index.inc.php&#x27;);</span><br><span class="line">echo &#x27;文件目录名：&#x27;.$path_parts[&#x27;dirname&#x27;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &#x27;文件全名：&#x27;.$path_parts[&#x27;basename&#x27;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &#x27;文件扩展名：&#x27;.$path_parts[&#x27;extension&#x27;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &#x27;不包含扩展的文件名：&#x27;.$path_parts[&#x27;filename&#x27;].&quot;&lt;br /&gt;&quot;; </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>8、php实现文件留言本</p>
+<p>我们来看一下文件结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.php		展示输入框和留言内容</span><br><span class="line">write.php 		向message.txt写入数据</span><br><span class="line">message.txt 		存入聊天内容</span><br></pre></td></tr></table></figure>
+
+<p>编写index.php文件信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//设置时区</span><br><span class="line">date_default_timezone_set(&#x27;PRC&#x27;);</span><br><span class="line">//读了内容</span><br><span class="line">@$string = file_get_contents(&#x27;message.txt&#x27;);</span><br><span class="line">//如果$string 不为空的时候执行，也就是message.txt中有留言数据</span><br><span class="line">if (!empty($string)) &#123;</span><br><span class="line">    //每一段留言有一个分格符，但是最后多出了一个&amp;^。因此，我们要将&amp;^删掉</span><br><span class="line">    $string = rtrim($string, &#x27;&amp;^&#x27;);</span><br><span class="line">    //以&amp;^切成数组</span><br><span class="line">    $arr = explode(&#x27;&amp;^&#x27;, $string);</span><br><span class="line">    //将留言内容读取</span><br><span class="line">    foreach ($arr as $value) &#123;</span><br><span class="line">        //将用户名和内容分开</span><br><span class="line">        list($username, $content, $time) = explode(&#x27;$#&#x27;, $value);</span><br><span class="line">        echo &#x27;用户名为&lt;font color=&quot;gree&quot;&gt;&#x27; . $username . &#x27;&lt;/font&gt;内容为&lt;font color=&quot;red&quot;&gt;&#x27; . $content . &#x27;&lt;/font&gt;时间为&#x27; . date(&#x27;Y-m-d H:i:s&#x27;, $time);</span><br><span class="line">        echo &#x27;&lt;hr /&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;h1&gt;基于文件的留言本演示&lt;/h1&gt;</span><br><span class="line">&lt;form action=&quot;write.php&quot; method=&quot;post&quot;&gt;</span><br><span class="line">    用户名：&lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt;&lt;br /&gt;</span><br><span class="line">    留言内容：&lt;textarea  name=&quot;content&quot;&gt;&lt;/textarea&gt;&lt;br /&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;提交&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>看了刚刚的展示内容，我们知道文件存储时：<br>1、段与段之间进行了分割<br>2、内容与用户之前用一个特殊的符号进行了分割</p>
+<p>下面我们来写write.php写入留言至文件的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//追加方式打开文件</span><br><span class="line">$fp=fopen(&#x27;message.txt&#x27;,&#x27;a&#x27;);</span><br><span class="line">//设置时间</span><br><span class="line">$time=time();</span><br><span class="line">//得到用户名</span><br><span class="line">$username=trim($_POST[&#x27;username&#x27;]);</span><br><span class="line">//得到内容</span><br><span class="line">$content=trim($_POST[&#x27;content&#x27;]);</span><br><span class="line">//组合写入的字符串：内容和用户之间分开，使用$#</span><br><span class="line">//行与行之间分开，使用&amp;^</span><br><span class="line">$string=$username.&#x27;$#&#x27;.$content.&#x27;$#&#x27;.$time.&#x27;&amp;^&#x27;;</span><br><span class="line">//写入文件</span><br><span class="line">fwrite($fp,$string);</span><br><span class="line">//关闭文件</span><br><span class="line">fclose($fp);</span><br><span class="line">header(&#x27;location:index.php&#x27;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>参考文章：<br> <a target="_blank" rel="noopener" href="https://www.runoob.com/php/php-tutorial.html">PHP 教程</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="xuan 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/zhifubao.png" alt="xuan 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/PHP/" rel="tag"># PHP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/09/Linux/" rel="prev" title="Linux">
+                  <i class="fa fa-angle-left"></i> Linux
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">xuan</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">80k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:26</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
