@@ -152,13 +152,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -186,6 +186,116 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/15/dirsearch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.png">
+      <meta itemprop="name" content="xuan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Konglong">
+      <meta itemprop="description" content="Welcome">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Konglong">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/15/dirsearch/" class="post-title-link" itemprop="url">dirsearch</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-08-15 19:38:02 / 修改时间：19:40:39" itemprop="dateCreated datePublished" datetime="2023-08-15T19:38:02+08:00">2023-08-15</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ol>
+<li>dirsearch是一个基于python3的命令行工具，常用于暴力扫描页面结构，包括网页中的目录和文件。</li>
+</ol>
+<p>1.介绍：dirsearch是一个基于python3的命令行工具，常用于暴力扫描页面结构，包括网页中的目录和文件。</p>
+<p>相比其他扫描工具disearch的特点是：</p>
+<pre><code>支持HTTP代理
+多线程
+支持多种形式的网页（asp,php）
+生成报告（纯文本，JSON）
+启发式检测无效的网页
+递归扫描
+用户代理随机化
+批量处理
+扫描器与字典（注：字典必须是文本文件）
+</code></pre>
+<p>下载及安装<br> 要求:python 3.7或更高版本 </p>
+<pre><code>其中，db文件夹为自带字典文件夹；reports为扫描日志文件夹；dirsearch.py为主程序文件 
+</code></pre>
+<p>2.下载地址</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/maurosoria/dirsearch">https://github.com/maurosoria/dirsearch</a></p>
+<p>目前版本是更新到0.42。</p>
+<p>3.下载到本地，安装使用</p>
+<p>pip3 install -r requirements.txt     &#x2F;&#x2F;安装依赖包<br>python3 setup.py install</p>
+<p>4.使用命令</p>
+<p>常用命令<br>–version            显示dirsearch的版本<br>-h –help            帮助提示<br>-u  –url            指定网址<br>-e                   指定网站语言<br>-w                   指定字典<br>-r                   递归目录（跑出目录后，继续跑目录下面的目录）<br>-l  –url-list&#x3D;FILE  目标url文件路径<br>-i                   保留的响应状态码(以逗号分隔,支持指定范围) 如(-i 200,300-399)<br>-x                   排除的响应状态码(以逗号分隔,支持指定范围)  如(-x 301,500-599)</p>
+<p>简单使用<br>&#x2F;&#x2F;简单的使用方法<br>python3 dirsearch.py -u <a target="_blank" rel="noopener" href="https://target/">https://target</a><br>&#x2F;&#x2F;使用文件拓展名为php和txt以及js的字典扫描目标<br>python3 dirsearch.py -e php,txt,js -u <a target="_blank" rel="noopener" href="https://target/">https://target</a><br>&#x2F;&#x2F;采用指定路径的wordlist且拓展名为php，txt，js的字典扫描目标url<br>python3 dirsearch.py -e php,txt,js -u <a target="_blank" rel="noopener" href="https://target/">https://target</a> -w &#x2F;path&#x2F;to&#x2F;wordlist<br>&#x2F;&#x2F;采用递归扫描<br>python3 dirsearch.py -e php,txt,js -u <a target="_blank" rel="noopener" href="https://target/">https://target</a> -r<br>&#x2F;&#x2F;采用递归扫描 递归层数为三层<br>python3 dirsearch.py -e php,txt,js -u <a target="_blank" rel="noopener" href="https://target/">https://target</a> -r -R 3</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -223,8 +333,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2023-08-15 19:20:56" itemprop="dateCreated datePublished" datetime="2023-08-15T19:20:56+08:00">2023-08-15</time>
+      <time title="创建时间：2023-08-15 19:20:56 / 修改时间：19:37:53" itemprop="dateCreated datePublished" datetime="2023-08-15T19:20:56+08:00">2023-08-15</time>
     </span>
 
   
@@ -234,7 +345,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>563</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -252,7 +363,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <p>Java安全</p>
+<p>java通过以下技术来实现安全机制</p>
+<ul>
+<li>语言设计特性(对数组边界检查，只进行合法的类型转换，无指针算法)</li>
+<li>访问控制机制，用于控制代码能够执行的功能</li>
+<li>代码签名，java代码的作者能够用加密算法来表明java代码的作者</li>
+</ul>
+<p>一.类加载器</p>
+<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%99%9A%E6%8B%9F%E6%9C%BA&spm=1001.2101.3001.7020">虚拟机</a>只加载程序需要的类文件，例如程序从MyProgram.Class执行，下面是虚拟机执行步骤：</p>
+<ol>
+<li>虚拟机有一个用于加载类文件的机制，例如从磁盘文件加载或web请求访问，使用该价值加载MyProgram.Class</li>
+<li>如果MyProgram.Class拥有一个类型为另一个类的实例变量，或者拥有超类，那么这些类文件也被加载</li>
+<li>接着虚拟机执行MyProgram.Class的main方法，因为它是静态，无需实例化</li>
+<li>如果main方法或者调用其他方法使用到得类，这些类被加载</li>
+</ol>
+<p>  类加载机制至少拥有三个类加载器：</p>
+<ul>
+<li>引导类加载器 负责加载系统类，从JAR文件rt.jar中加载，它是虚拟机整体一部分。而且它是C语言实现的，另外引导类加载器没有ClassLoader对象</li>
+<li>扩展类加载器 用于从jre&#x2F;lib&#x2F;ext目录加载“标准的扩展”，</li>
+<li>系统类加载器(也陈为应用类加载器) 加载应用类，它是在CLASSPATH环境变量或者是-classpath命令行选项设置的类目录里或者是JAR&#x2F;ZIP文件里查找这些类。</li>
+</ul>
+
       
     </div>
 
@@ -1036,104 +1168,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/31/Docker%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.png">
-      <meta itemprop="name" content="xuan">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Konglong">
-      <meta itemprop="description" content="Welcome">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Konglong">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/07/31/Docker%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Docker命令</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-07-31 19:45:35" itemprop="dateCreated datePublished" datetime="2023-07-31T19:45:35+08:00">2023-07-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-01 19:52:16" itemprop="dateModified" datetime="2023-08-01T19:52:16+08:00">2023-08-01</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>6.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>12 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Docker的常用命令"><a href="#Docker的常用命令" class="headerlink" title="Docker的常用命令"></a>Docker的常用命令</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/07/31/Docker%E5%91%BD%E4%BB%A4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1157,13 +1191,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">88k</span>
+    <span title="站点总字数">90k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:40</span>
+    <span title="站点阅读时长">2:43</span>
   </span>
 </div>
 <div class="busuanzi-count">
