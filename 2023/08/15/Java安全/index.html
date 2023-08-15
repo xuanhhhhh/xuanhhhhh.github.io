@@ -21,18 +21,22 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Java安全 java通过以下技术来实现安全机制  语言设计特性(对数组边界检查，只进行合法的类型转换，无指针算法) 访问控制机制，用于控制代码能够执行的功能 代码签名，java代码的作者能够用加密算法来表明java代码的作者  一.类加载器 虚拟机只加载程序需要的类文件，例如程序从MyProgram.Class执行，下面是虚拟机执行步骤：  虚拟机有一个用于加载类文件的机制，例如从磁盘文件加载或">
+    <meta name="description" content="Java安全java通过以下技术来实现安全机制  语言设计特性(对数组边界检查，只进行合法的类型转换，无指针算法) 访问控制机制，用于控制代码能够执行的功能 代码签名，java代码的作者能够用加密算法来表明java代码的作者  一.类加载器 虚拟机只加载程序需要的类文件，例如程序从MyProgram.Class执行，下面是虚拟机执行步骤：  虚拟机有一个用于加载类文件的机制，例如从磁盘文件加载或w">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java安全">
 <meta property="og:url" content="http://example.com/2023/08/15/Java%E5%AE%89%E5%85%A8/index.html">
 <meta property="og:site_name" content="Konglong">
-<meta property="og:description" content="Java安全 java通过以下技术来实现安全机制  语言设计特性(对数组边界检查，只进行合法的类型转换，无指针算法) 访问控制机制，用于控制代码能够执行的功能 代码签名，java代码的作者能够用加密算法来表明java代码的作者  一.类加载器 虚拟机只加载程序需要的类文件，例如程序从MyProgram.Class执行，下面是虚拟机执行步骤：  虚拟机有一个用于加载类文件的机制，例如从磁盘文件加载或">
+<meta property="og:description" content="Java安全java通过以下技术来实现安全机制  语言设计特性(对数组边界检查，只进行合法的类型转换，无指针算法) 访问控制机制，用于控制代码能够执行的功能 代码签名，java代码的作者能够用加密算法来表明java代码的作者  一.类加载器 虚拟机只加载程序需要的类文件，例如程序从MyProgram.Class执行，下面是虚拟机执行步骤：  虚拟机有一个用于加载类文件的机制，例如从磁盘文件加载或w">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/15ac811137144c5abc01c49068c5a363.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2cb8f0784e024604a6c09d38882f0676.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/82dc94c8208f479e86508569793a36be.png">
 <meta property="article:published_time" content="2023-08-15T11:20:56.000Z">
-<meta property="article:modified_time" content="2023-08-15T11:37:53.750Z">
+<meta property="article:modified_time" content="2023-08-15T12:15:36.562Z">
 <meta property="article:author" content="xuan">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/15ac811137144c5abc01c49068c5a363.png">
 
 
 <link rel="canonical" href="http://example.com/2023/08/15/Java%E5%AE%89%E5%85%A8/">
@@ -128,7 +132,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -141,6 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E5%AE%89%E5%85%A8"><span class="nav-number">1.</span> <span class="nav-text">Java安全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="nav-number">2.</span> <span class="nav-text">Java线程安全</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -229,7 +234,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-08-15 19:20:56 / 修改时间：19:37:53" itemprop="dateCreated datePublished" datetime="2023-08-15T19:20:56+08:00">2023-08-15</time>
+      <time title="创建时间：2023-08-15 19:20:56 / 修改时间：20:15:36" itemprop="dateCreated datePublished" datetime="2023-08-15T19:20:56+08:00">2023-08-15</time>
     </span>
 
   
@@ -246,14 +251,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>563</span>
+      <span>6.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>12 分钟</span>
     </span>
 </div>
 
@@ -263,8 +268,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>Java安全</p>
-<p>java通过以下技术来实现安全机制</p>
+    <div class="post-body" itemprop="articleBody"><h1 id="Java安全"><a href="#Java安全" class="headerlink" title="Java安全"></a>Java安全</h1><p>java通过以下技术来实现安全机制</p>
 <ul>
 <li>语言设计特性(对数组边界检查，只进行合法的类型转换，无指针算法)</li>
 <li>访问控制机制，用于控制代码能够执行的功能</li>
@@ -284,6 +288,216 @@
 <li>扩展类加载器 用于从jre&#x2F;lib&#x2F;ext目录加载“标准的扩展”，</li>
 <li>系统类加载器(也陈为应用类加载器) 加载应用类，它是在CLASSPATH环境变量或者是-classpath命令行选项设置的类目录里或者是JAR&#x2F;ZIP文件里查找这些类。</li>
 </ul>
+<h1 id="Java线程安全"><a href="#Java线程安全" class="headerlink" title="Java线程安全"></a>Java线程安全</h1><p>一、什么是线程安全</p>
+<p>想给出一个线程安全的确切定义是复杂的，但我们可以这样认为：<br>如果多线程环境下代码运行的结果是符合我们预期的，即在单线程环境应该的结果，则说这个程序是线程安全的</p>
+<p>🌰栗子</p>
+<pre><code>package Thread;
+ 
+public class demo77 &#123;
+    private static int count;
+    public static void main(String[] args) throws InterruptedException &#123;
+        Thread t1 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                count++;
+            &#125;
+        &#125;);
+        Thread t2 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                count++;
+            &#125;
+        &#125;);
+        t1.start(); // 两个线程在创建好了后，线程所对应的PCB加入到系统链表，参与系统调度
+        t2.start();
+        // 让主线程main等t1、t2执行完了再接着往下走
+        t1.join();
+        t2.join();
+        System.out.println(count);
+    &#125;
+&#125;
+</code></pre>
+<p> 想这样，在多线程情况下，程序的运行结果不符合我们的预期，这被称为线程不安全</p>
+<p>二、造成线程不安全的原因 </p>
+<p>根本原因：操作系统的随机调度执行，抢占式执行 </p>
+<pre><code>还有：我们可以看到我们的count是一个全局变量，我们的线程t1、线程t2对count变量同时都进行了修改——++操作（为什么说是同时呢，因为我们的t1线程、t2线程在创建完了后就参与到系统调度，由系统随机分配线程的执行，可能是t2线程先执行10个指令然后t1再执行10个指令，相当于是同时）
+</code></pre>
+<p>那么我们就改一下代码让t1、t2分批次对count修改不就行了吗？</p>
+<pre><code>package Thread;
+ 
+public class demo77 &#123;
+    private static int count;
+    public static void main(String[] args) throws InterruptedException &#123;
+        Thread t1 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                count++;
+            &#125;
+ 
+        &#125;);
+        Thread t2 = new Thread(() -&gt; &#123;
+            try &#123;
+                t1.join();// 等t1线程执行完了，t2线程再执行
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                count++;
+            &#125;
+        &#125;);
+        t1.start(); // 两个线程在创建好了后，线程所对应的PCB加入到系统链表，参与系统调度
+        t2.start();
+ 
+        t2.join(); // 等t2线程执行完了，主线程main再接着执行，执行顺序：t1-&gt;t2-&gt;打印count
+        System.out.println(count);
+    &#125;
+&#125;
+</code></pre>
+<p>大家有没有想过为什么多个线程同时执行count++的时候就会出现BUG呢？</p>
+<p>这是因为我们多个线程同时对同一变量修改的所造成的BUG往往和我们操作的原子性有关！！！这时候的操作往往不是一个整体，多个线程并发执行这些操作就可能出现一些问题</p>
+<p>如果我们在变量修改过程中，操作是原子的——只是对应一个机器指令，那么即使是多个线程同时对同一个变量修改也不一定会造成BUG,但也可能造成BUG——要看具体的业务场景</p>
+<p>总之我们要避免多个线程同时对同一个变量来操作</p>
+<p>🍑 对原子性在多线程并发执行中出现问题的分析</p>
+<p>🔔🔔注意：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">像 count++ 其实一行代码, 对应三个机器指令!</span><br><span class="line">1)从内存读取数据到 CPU load</span><br><span class="line">2)在 CPU 寄存器中,完成加法运算 add</span><br><span class="line">3)把寄存器的数据写回到内存中 save</span><br><span class="line">这几个步骤单线程下执行,没有任何问题</span><br><span class="line">如果是多线程并发执行,这个就不一定了!!</span><br></pre></td></tr></table></figure>
+
+<p>当我们执行t1.start()、t2.start()后，t1线程和t2线程就在操作系统内核中创建出来了，t1、t2线程就参与到了系统调度当中</p>
+<p>而调度是随机的——他可能先让t1执行几个指令，然后t2再执行几个指令、最后再把CPU的控制权交给t1。</p>
+<p>于是因为系统的调度是随机的（这是罪魁祸首，但我们无法改变），当我们多个线程同时执行一些不是整体的操作的时候（++或–）由于并发就会产生一些问题</p>
+<p> <strong>🌰栗子一</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/15ac811137144c5abc01c49068c5a363.png" alt="img"></p>
+<p><strong>🌰栗子二</strong> </p>
+<p><img src="https://img-blog.csdnimg.cn/2cb8f0784e024604a6c09d38882f0676.png" alt="img"></p>
+<p>为什么会产生上面的BUG呢？</p>
+<p>就是因为我们的++操作不是一个整体，是一个由多个指令所组成的操作 </p>
+<p>解决方案：也是加锁：“synchronized”,意味着把这三条指令打包成了一组指令，然后把这一组指令看出成一条指令了，类似于数学里的“整体代换”思想。</p>
+<p> <img src="https://img-blog.csdnimg.cn/82dc94c8208f479e86508569793a36be.png" alt="img"></p>
+<p> 首先我们要明白加锁操作都是针对某一个对象来进行的（加锁本质就是给对象头里设置个标记），加锁有以下几种形式</p>
+<p>形式一、 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class demo7777 &#123;</span><br><span class="line">	public static Object object1 = new Object();</span><br><span class="line">	public static Object object2 = new Object();</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Thread t1 = new Thread(() -&gt;&#123;</span><br><span class="line">			synchronized (object1)&#123;//对object1对象进行了加锁操作</span><br><span class="line">				System.out.println(&quot;t1线程start&quot;);</span><br><span class="line">				try &#123;</span><br><span class="line">						Thread.sleep( millis: 1000);</span><br><span class="line">				&#125; catch (InterruptedException e)&#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println(&quot;t1线程finish&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">t1.start();</span><br></pre></td></tr></table></figure>
+
+<p> 形式二、</p>
+<pre><code>package Thread;
+ 
+class Counter &#123;
+    public static int count;
+//    public synchronized void increase() &#123;
+//        ++count; 这两种写法视为是等价的
+//    &#125;
+    public void increase() &#123;
+        synchronized (this) &#123; // 这里this可以是任意对象，this可以有多个Counter counter1 = new Counter(), Counter counter2 = new Counter();
+            ++count;
+        &#125;
+    &#125;
+&#125;
+public class demo777 &#123;
+ 
+    public static void main(String[] args) throws InterruptedException &#123;
+        Counter counter1 = new Counter();
+        Counter counter2 = new Counter();
+        Thread t1 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                counter1.increase();
+            &#125;
+        &#125;);
+        Thread t2 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                counter1.increase();
+            &#125;
+            // 多个线程去调用这个increase方法，其实就是针对这个Counter对象counter1来进行加锁
+            // 如果一个线程t1获取到了该对象counter1的锁，那么另一个线程t2就要等到counter1对应的锁开了后（t1线程执行完该锁里的内容——++操作）t2才能执行++操作
+            // 此时++操作相当于是成为了一个整体（相当于一个指令，当一个线程再执行这个加锁的整体的指令的时候，另一个线程只能阻塞等待）
+        &#125;);
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join(); // 确保线程t1和线程t2都执行完了，main主线程再接着执行——输出count
+        System.out.println(Counter.count); // 输出10000
+    &#125;
+&#125;
+</code></pre>
+<p>形式三、 </p>
+<p> 加锁本质 就是给对象头里设置个标记,它的成员对应的对象的对象头不受影响</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public synchronized static void func1() &#123;</span><br><span class="line">&#125;</span><br><span class="line">public static void func2() &#123;</span><br><span class="line">	synchronized(Counter.class)&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用类对象加锁,和类里有啥成员没关系~~<br>synchronized static、Counter.class这俩写法视为是等价的!!<br>类对象是整个程序里唯一的!!<br>这样加锁,但凡是调用到 func1 和 func2，之间都会产生竞争!!</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Counter1 &#123;</span><br><span class="line">	public static int count;</span><br><span class="line">	public synchronized static void increase() &#123;</span><br><span class="line">		++count;</span><br><span class="line">	&#125;</span><br><span class="line">public class demo77777 </span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Counter1 counter1 = new Counter1();</span><br><span class="line">		Thread t1 = new Thread(() -&gt;&#123;</span><br><span class="line">			for (int i = 日; i &lt; 500; i++) &#123;</span><br><span class="line">				System.out.println(&quot;t1 start&quot;);</span><br><span class="line">				Counter1.increase();</span><br><span class="line">				System.out.printin(&quot;t1 finish&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		t1.start();</span><br></pre></td></tr></table></figure>
+
+<p>当我们给不同的对象上锁后，如果用住房来比喻</p>
+<pre><code>不同的房间相当于是不同的对象，不同的线程相当于是不同的客人
+
+如果房间1住了客人A，那么房间1就上了锁，客人B就需要等客人A不再住房间1（开了锁）然后客人B才能住房间1；或者客人B住其他的房间（其他的对象，没上锁的）
+
+package Thread;
+// 测试线程竞争，对锁的竞争
+public class demo7777 &#123;
+    public static Object object1 = new Object();
+    public static Object object2 = new Object();
+    public static void main(String[] args) &#123;
+        Thread t1 = new Thread(() -&gt; &#123;
+            // 针对object1对象进行加锁，加锁操作是针对某一个对象来进行的
+            synchronized (object1) &#123;
+                System.out.println(&quot;t1线程start&quot;);
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(&quot;t1线程finish&quot;);
+            &#125;
+        &#125;);
+        t1.start();
+        Thread t2 = new Thread(() -&gt; &#123;
+            synchronized (object1) &#123;  // 针对object1对象来进行加锁操作
+                System.out.println(&quot;t2线程start&quot;);
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(&quot;t2线程finish&quot;);
+            &#125;
+        &#125;);
+        t2.start();
+    &#125;
+&#125;
+</code></pre>
+<p>无论是使用哪种用法,使用 synchronized 的时候都是要明确锁对象!(明确是对哪个对象加锁)</p>
+<p>只有当两个线程针对同一个对象加锁的时候,才会发生竞争</p>
+<p>如果是两个线程针对不同对象加锁,则没有竞争~</p>
+<p>我们上面就是两个线程t1和t2同时对object1这个对象进行了加锁，然后t1与t2直接就产生了竞争。从上述代码的实现过程中我们也可以看到，等到t1线程执行完了后，t2线程才开始执行。</p>
+<p>但如果是两个线程对不同的对象进行加锁，则没有竞争（就像两个客人（两个线程）住不同的房间（不同的对象）当然不会发生竞争。</p>
+<pre><code>package Thread;
+// 测试线程竞争，对锁的竞争
+public class demo7777 &#123;
+    public static Object object1 = new Object();
+    public static Object object2 = new Object();
+    public static void main(String[] args) &#123;
+        Thread t1 = new Thread(() -&gt; &#123;
+            synchronized (object1) &#123; // 针对object1对象来进行加锁，加锁操作是针对一个对象来进行的
+                System.out.println(&quot;t1线程start&quot;);
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(&quot;t1线程finish&quot;);
+            &#125;
+        &#125;);
+        t1.start();
+        Thread t2 = new Thread(() -&gt; &#123;
+            synchronized (object2) &#123; // 针对object2对象进行加锁
+                System.out.println(&quot;t2线程start&quot;);
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(&quot;t2线程finish&quot;);
+            &#125;
+        &#125;);
+        t2.start();
+    &#125;
+&#125;
+</code></pre>
+<p> 两个线程可以做到同时执行</p>
 
     </div>
 
@@ -356,13 +570,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">90k</span>
+    <span title="站点总字数">96k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:43</span>
+    <span title="站点阅读时长">2:54</span>
   </span>
 </div>
 <div class="busuanzi-count">
