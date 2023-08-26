@@ -225,7 +225,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-08-26 14:42:25 / 修改时间：15:03:29" itemprop="dateCreated datePublished" datetime="2023-08-26T14:42:25+08:00">2023-08-26</time>
+      <time title="创建时间：2023-08-26 14:42:25 / 修改时间：15:05:57" itemprop="dateCreated datePublished" datetime="2023-08-26T14:42:25+08:00">2023-08-26</time>
     </span>
 
   
@@ -253,182 +253,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="一、跨站脚本（Cross-Site-Scripting，XSS）"><a href="#一、跨站脚本（Cross-Site-Scripting，XSS）" class="headerlink" title="一、跨站脚本（Cross-Site Scripting，XSS）"></a>一、跨站脚本（Cross-Site Scripting，XSS）</h1><p>是一种常见的Web安全漏洞，攻击者通过注入恶意代码到网页中，使得这些代码被其他用户的浏览器执行，从而攻击用户的计算机系统.<br><strong>XSS攻击通常分为以下几类：</strong></p>
-<ul>
-<li><p>反射型XSS：攻击者构造一个恶意的URL，将恶意代码注入到URL中，诱使用户点击该URL，从而触发攻击。</p>
-</li>
-<li><p>存储型XSS：攻击者将恶意代码存储在服务器上的数据库中，当其他用户访问相应的页面时，这些代码会被读取并执行，从而攻击用户。</p>
-</li>
-<li><p>DOM-based XSS：攻击者通过修改浏览器中的DOM树，将恶意代码注入到网页中，诱使用户执行恶意代码。</p>
-</li>
-</ul>
-<p>当Java程序扫描到跨站脚本漏洞时，通常会给出一些具体的提示信息，比如漏洞出现的位置、攻击者可以注入的代码类型等等。一般来说，修复跨站脚本漏洞需要在应用程序的代码中加入一些安全措施，如输入验证、输出过滤等，以防止攻击者注入恶意代码。<br><strong>跨站脚本示例：</strong></p>
-<p>示例一：</p>
-<p>假设有一个搜索页面，用户在该页面输入一个关键词，然后该关键词将被发送到服务器进行搜索，最后将搜索结果返回给用户。</p>
-<p>如果程序没有对用户输入的关键词进行过滤，攻击者就可以在搜索框中输入一段恶意的脚本代码，比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&#x27;XSS attack&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当其他用户访问该页面并搜索该关键词时，这段恶意代码就会被服务器返回给用户的浏览器执行，从而弹出一个警告框，对用户进行攻击。</p>
-<p>为了避免这种攻击，程序应该对用户输入的关键词进行过滤和转义，以确保任何恶意的脚本都无法执行。例如，可以使用一些Web开发框架提供的安全函数来实现这一点，如在Java中可以使用ESAPI库中提供的函数进行输入验证和输出过滤。</p>
-<p>示例二</p>
-<p>假设有一个Java Web应用程序，其中一个Servlet接收一个名为”message”的参数，并将其显示在页面上。代码如下：</p>
-<pre><code>@WebServlet(&quot;/xss&quot;)
-public class XssServlet extends HttpServlet &#123;
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-        String message = request.getParameter(&quot;message&quot;);
-        response.setContentType(&quot;text/html&quot;);
-        PrintWriter out = response.getWriter();
-        out.println(&quot;&lt;html&gt;&quot;);
-        out.println(&quot;&lt;head&gt;&quot;);
-        out.println(&quot;&lt;title&gt;XSS漏洞示例&lt;/title&gt;&quot;);
-        out.println(&quot;&lt;/head&gt;&quot;);
-        out.println(&quot;&lt;body&gt;&quot;);
-        out.println(&quot;&lt;h1&gt;&quot; + message + &quot;&lt;/h1&gt;&quot;);
-        out.println(&quot;&lt;/body&gt;&quot;);
-        out.println(&quot;&lt;/html&gt;&quot;);
-    &#125;
-&#125;
-</code></pre>
-<p>如果程序没有对用户输入的”message”参数进行过滤和转义，攻击者就可以在URL中注入恶意代码，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://example.com/xss?message=&lt;script&gt;alert(&#x27;XSS attack&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当其他用户访问该URL时，这段恶意代码就会被服务器返回给用户的浏览器执行，从而弹出一个警告框，对用户进行攻击。</p>
-<p>为了避免这种攻击，程序应该对用户输入的参数进行过滤和转义，以确保任何恶意的脚本都无法执行。例如，在Java中可以使用ESAPI库中提供的函数进行输入验证和输出过滤，以确保用户输入的数据不会包含任何恶意的脚本。</p>
-<h1 id="二、SQL注入（SQL-Injection）漏洞"><a href="#二、SQL注入（SQL-Injection）漏洞" class="headerlink" title="二、SQL注入（SQL Injection）漏洞"></a>二、SQL注入（SQL Injection）漏洞</h1><p>攻击者通过在Web应用程序中注入恶意SQL语句来获取敏感信息，修改数据或者执行任意代码。<br><strong>SQL注入漏洞示例</strong></p>
-<p>假设一个Web应用程序中有一个搜索功能，用户可以通过输入关键字搜索相关内容。如果程序没有对用户输入的关键字进行过滤，攻击者就可以在搜索框中注入恶意的SQL语句，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; OR 1=1; --</span><br></pre></td></tr></table></figure>
-
-<p>这段代码将会被拼接到SQL查询语句中，并使查询语句变为：</p>
-<pre><code>SELECT * FROM articles WHERE title=&#39;&#39; OR 1=1; -- &#39;
-</code></pre>
-<p>攻击者就可以绕过身份验证，获取文章列表中所有文章的信息</p>
-<h1 id="三、文件包含（File-Inclusion）漏洞"><a href="#三、文件包含（File-Inclusion）漏洞" class="headerlink" title="三、文件包含（File Inclusion）漏洞"></a>三、文件包含（File Inclusion）漏洞</h1><p>攻击者利用Web应用程序中存在的文件包含漏洞，向应用程序中注入恶意代码，以获取敏感信息或者执行任意代码。<br><strong>文件包含漏洞示例</strong></p>
-<p>假设一个Web应用程序中有一个功能，允许用户在服务器上查看指定的文件。如果程序没有对用户输入的文件名进行过滤，攻击者就可以通过在URL中注入恶意的文件名来读取任意文件，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://example.com/viewfile.php?file=../../../etc/passwd</span><br></pre></td></tr></table></figure>
-
-<p>这段代码将会被拼接到文件路径中，并使程序读取&#x2F;etc&#x2F;passwd文件并将其显示在页面上，攻击者就可以获取敏感信息</p>
-<h1 id="四、CSRF（Cross-Site-Request-Forgery）漏洞"><a href="#四、CSRF（Cross-Site-Request-Forgery）漏洞" class="headerlink" title="四、CSRF（Cross-Site Request Forgery）漏洞"></a>四、CSRF（Cross-Site Request Forgery）漏洞</h1><p>攻击者通过欺骗用户在已经登录的Web应用程序中执行某些操作，从而窃取用户的身份验证信息或者执行任意操作。<br><strong>CSRF漏洞示例</strong></p>
-<p>假设一个Web应用程序中有一个功能，允许用户通过访问URL来删除自己的帖子。如果程序没有进行CSRF防护，攻击者就可以伪造一个带有删除帖子的请求的页面，欺骗用户点击链接，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;http://example.com/deletepost.php?postid=123&amp;action=delete&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当用户点击该链接时，程序将会执行删除操作，攻击者就可以删除用户的帖子。</p>
-<h1 id="五、认证与授权漏洞"><a href="#五、认证与授权漏洞" class="headerlink" title="五、认证与授权漏洞"></a>五、认证与授权漏洞</h1><p>攻击者通过欺骗或者绕过Web应用程序的身份验证或者授权机制，获取未授权的访问权限或者执行任意操作。</p>
-<p>认证与授权漏洞示例<br>假设一个Web应用程序中的一个页面需要特定的权限才能访问，例如管理员权限。如果程序没有进行足够的身份验证或者授权机制，攻击者就可以绕过该机制，获取管理员权限并执行任意操作。</p>
-<h1 id="六、逻辑漏洞"><a href="#六、逻辑漏洞" class="headerlink" title="六、逻辑漏洞"></a>六、逻辑漏洞</h1><p>攻击者利用Web应用程序中的逻辑漏洞，绕过应用程序的安全措施，获取未授权的访问权限或者执行任意操作。</p>
-<p>逻辑漏洞示例<br>假设一个Web应用程序中的一个功能需要进行支付，用户需要在完成支付后才能获得相应的商品或者服务。如果程序存在逻辑漏洞，例如没有对支付进行验证或者没有对用户状态进行检查，攻击者就可以绕过支付流程，获得相应的商品或者服务，而不需要真正支付<br>七、敏感数据泄露漏洞</p>
-<p>Web应用程序在处理敏感信息时出现漏洞，导致敏感信息泄露。</p>
-<p>敏感数据泄露漏洞示例<br>假设一个Web应用程序中存储了用户的敏感信息，例如信用卡号、社保号码等等。如果程序没有对这些信息进行足够的保护，攻击者就可以通过利用程序的漏洞或者直接攻击数据库等方式获取这些信息。</p>
-<h1 id="八、命令注入（Command-Injection）漏洞"><a href="#八、命令注入（Command-Injection）漏洞" class="headerlink" title="八、命令注入（Command Injection）漏洞"></a>八、命令注入（Command Injection）漏洞</h1><p>攻击者通过在Web应用程序中注入恶意命令，从而获取敏感信息或者执行任意代码.</p>
-<p>命令注入漏洞示例<br>假设一个Web应用程序中有一个命令行操作的功能，例如允许管理员执行一些命令来管理服务器。如果程序没有对用户输入的命令进行过滤，攻击者就可以在命令中注入恶意的代码，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">; rm -rf /</span><br></pre></td></tr></table></figure>
-
-<p>这段代码将会被拼接到命令中，并使命令变为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls; rm -rf /</span><br></pre></td></tr></table></figure>
-
-<p>攻击者就可以执行任意代码，删除服务器上的所有文件。</p>
-<p>需要注意的是，以上示例仅仅是每个漏洞类型的一个简单示例，实际的漏洞可能会更加复杂，攻击者也会不断地创造新的攻击方式来绕过应用程序的防御措施。为了确保Web应用程序的安全性，需要开发人员注重代码的安全性，以及定期进行安全测试和漏洞扫描</p>
-<h1 id="审计方法总结"><a href="#审计方法总结" class="headerlink" title="审计方法总结"></a>审计方法总结</h1><p>主要代码审计方法是跟踪用户输入数据和敏感函数参数回溯：跟踪用户的输入数据，判断数据进入的每一个代码逻辑是否有可利用的点，此处的代码逻辑可以是一个函数，或者是条小小的条件判断语句。</p>
-<p>敏感函数参数回溯，根据敏感函数，逆向追踪参数传递的过程。这个方法是最高效，最常用的方法。大多数漏洞的产生是因为函数的使用不当导致的，只要找到这些函数，就能够快速挖掘想要的漏洞。</p>
-<p>以下是基于关键词审计技巧总结：</p>
-<p>在搜索时要注意是否为整个单词,以及小写敏感这些设置</p>
-<table>
-<thead>
-<tr>
-<th align="center">漏洞名称</th>
-<th align="center">关键词</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">密码硬编码、密码明文存储</td>
-<td align="center">password 、pass、jdbc</td>
-</tr>
-<tr>
-<td align="center">XSS</td>
-<td align="center">getParamter、&lt;%&#x3D;、param.</td>
-</tr>
-<tr>
-<td align="center">SQL 注入</td>
-<td align="center">Select、Dao 、from 、delete 、update、insert</td>
-</tr>
-<tr>
-<td align="center">任意文件下载</td>
-<td align="center">download 、fileName 、filePath、write、getFile、getWriter</td>
-</tr>
-<tr>
-<td align="center">任意文件删除</td>
-<td align="center">Delete、deleteFile、fileName 、filePath</td>
-</tr>
-<tr>
-<td align="center">文件上传</td>
-<td align="center">Upload、write、fileName 、filePath</td>
-</tr>
-<tr>
-<td align="center">命令注入</td>
-<td align="center">getRuntime、exec、cmd、shell</td>
-</tr>
-<tr>
-<td align="center">缓冲区溢出</td>
-<td align="center">strcpy,strcat,scanf,memcpy,memmove,memeccpy<br/>Getc(),fgetc(),getchar;read,printf</td>
-</tr>
-<tr>
-<td align="center">XML 注入</td>
-<td align="center">DocumentBuilder、XMLStreamReader、SAXBuilder、SAXParser<br/>SAXSource 、TransformerFactory 、SAXTransformerFactory 、</td>
-</tr>
-<tr>
-<td align="center">反序列化漏洞</td>
-<td align="center">ObjectInputStream.readObject、ObjectInputStream.readUnshared、XMLDecoder.readObject<br/>Yaml.load 、 XStream.fromXML 、 ObjectMapper.readValue 、JSON.parseObject</td>
-</tr>
-<tr>
-<td align="center">url 跳转</td>
-<td align="center">sendRedirect、setHeader、forward</td>
-</tr>
-<tr>
-<td align="center">不安全组件暴露</td>
-<td align="center">activity、Broadcast Receiver、Content Provider、Service、 inter-filter</td>
-</tr>
-<tr>
-<td align="center">日志记录敏感信息</td>
-<td align="center">log log.info logger.info</td>
-</tr>
-<tr>
-<td align="center">代码执行</td>
-<td align="center">eval、system、exec</td>
-</tr>
-</tbody></table>
-<h1 id="其他漏洞审计方法"><a href="#其他漏洞审计方法" class="headerlink" title="其他漏洞审计方法"></a>其他漏洞审计方法</h1><ol>
-<li>CSRF</li>
-</ol>
-<p>审计方法:通过查看配置文件有没有配置 csrf 全局过滤器，如果没有则重点看每个操作前有没有添加 token 的防护机制</p>
-<p>在Smpkpiappealcontroller.java中200处，直接用用ids控制删除操作，而没有添加防 csrf的随机token验证检查，存在csrf漏洞。</p>
-<p> Java&#x2F;main&#x2F;com&#x2F;venustech&#x2F;tsoc&#x2F;cupid&#x2F;smp&#x2F;kpi&#x2F;dao&#x2F;smpkpideclardao.java 517行，对传</p>
-<p>入的ids进行删除操作。</p>
-<ol start="2">
-<li>Struts2 远程代码执行漏洞</li>
-</ol>
-<p>审计方法：查看 struts 插件的版本信息是否为漏洞版本漏洞版本查询网址：<a target="_blank" rel="noopener" href="https://www.exploit-db.com/">https://www.exploit-db.com/</a></p>
-<ol start="3">
-<li>越权操作</li>
-</ol>
-<p>审计方法：重点关注用户操作请求时查看是否有对当前登陆用户权限做校验从而确定是否存在漏洞，有些厂商会使用一些主流的权限框架，例如 shiro ,spring security 等框架，那么需要重点关注框架的配置文件以及实现方法</p>
-<p>漏洞示例：</p>
-<p>在以下文件中采用了 shiro 框架进行权限控制，在代码 58-72 行处为控制访问路径的权限设置，51-55 行处为对 admin 路径下访问限制，只有 SysyUserFilter 设置了 isAccessAllowed 方法,其他过滤均没有</p>
-<p>SysUserFilter 中 isAccessAllowed 具体实现方法如下，90-93 行处没有对是否为当前用户进行判断，导致了越权</p>
-<p>其他过滤文件均只设置了 onAccessDaniad()方法</p>
-<p>如果没有使用框架的话，就要注意每个操作是否有权限</p>
-<p>代码 7 行处获取 session 里的 username，只判断了 username 是不是为空，如果在截取数据包的时候将 username 再重新赋一个值就有可能造成越权漏洞。</p>
-<p> 以这个年度服务费用编制功能为例，测试一下，代码如图所示：</p>
-<ol start="4">
-<li>会话超时设置</li>
-</ol>
-<p>审计方法：</p>
-<p>Javaweb 应用会话超时设置一般有俩种方法：一是在配置文件 web.xml 设置</p>
-<p> 二是通过 java 代码设置</p>
-<ol start="5">
-<li>敏感数据弱加密</li>
-</ol>
-<p>审计方法：</p>
-<p>敏感数据弱加密主要看数据传输中的加密方法，一般写在工具类 util 中以下文件中为 base64 编码方法</p>
-
+          <h1 id="一、跨站脚本（Cross-Site-Scripting，XSS）"><a href="#一、跨站脚本（Cross-Site-Scripting，XSS）" class="headerlink" title="一、跨站脚本（Cross-Site Scripting，XSS）"></a>一、跨站脚本（Cross-Site Scripting，XSS）</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/08/26/Java%E6%BC%8F%E6%B4%9E/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

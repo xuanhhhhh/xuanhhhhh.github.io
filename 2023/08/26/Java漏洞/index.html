@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="一、跨站脚本（Cross-Site Scripting，XSS）是一种常见的Web安全漏洞，攻击者通过注入恶意代码到网页中，使得这些代码被其他用户的浏览器执行，从而攻击用户的计算机系统.XSS攻击通常分为以下几类：  反射型XSS：攻击者构造一个恶意的URL，将恶意代码注入到URL中，诱使用户点击该URL，从而触发攻击。  存储型XSS：攻击者将恶意代码存储在服务器上的数据库中，当其他用户访问相应">
+    <meta name="description" content="一、跨站脚本（Cross-Site Scripting，XSS）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java漏洞">
 <meta property="og:url" content="http://example.com/2023/08/26/Java%E6%BC%8F%E6%B4%9E/index.html">
 <meta property="og:site_name" content="Konglong">
-<meta property="og:description" content="一、跨站脚本（Cross-Site Scripting，XSS）是一种常见的Web安全漏洞，攻击者通过注入恶意代码到网页中，使得这些代码被其他用户的浏览器执行，从而攻击用户的计算机系统.XSS攻击通常分为以下几类：  反射型XSS：攻击者构造一个恶意的URL，将恶意代码注入到URL中，诱使用户点击该URL，从而触发攻击。  存储型XSS：攻击者将恶意代码存储在服务器上的数据库中，当其他用户访问相应">
+<meta property="og:description" content="一、跨站脚本（Cross-Site Scripting，XSS）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-26T06:42:25.000Z">
-<meta property="article:modified_time" content="2023-08-26T07:03:29.412Z">
+<meta property="article:modified_time" content="2023-08-26T07:05:57.331Z">
 <meta property="article:author" content="xuan">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -230,7 +230,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-08-26 14:42:25 / 修改时间：15:03:29" itemprop="dateCreated datePublished" datetime="2023-08-26T14:42:25+08:00">2023-08-26</time>
+      <time title="创建时间：2023-08-26 14:42:25 / 修改时间：15:05:57" itemprop="dateCreated datePublished" datetime="2023-08-26T14:42:25+08:00">2023-08-26</time>
     </span>
 
   
@@ -264,7 +264,9 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="一、跨站脚本（Cross-Site-Scripting，XSS）"><a href="#一、跨站脚本（Cross-Site-Scripting，XSS）" class="headerlink" title="一、跨站脚本（Cross-Site Scripting，XSS）"></a>一、跨站脚本（Cross-Site Scripting，XSS）</h1><p>是一种常见的Web安全漏洞，攻击者通过注入恶意代码到网页中，使得这些代码被其他用户的浏览器执行，从而攻击用户的计算机系统.<br><strong>XSS攻击通常分为以下几类：</strong></p>
+    <div class="post-body" itemprop="articleBody"><h1 id="一、跨站脚本（Cross-Site-Scripting，XSS）"><a href="#一、跨站脚本（Cross-Site-Scripting，XSS）" class="headerlink" title="一、跨站脚本（Cross-Site Scripting，XSS）"></a>一、跨站脚本（Cross-Site Scripting，XSS）</h1><span id="more"></span>
+
+<p>是一种常见的Web安全漏洞，攻击者通过注入恶意代码到网页中，使得这些代码被其他用户的浏览器执行，从而攻击用户的计算机系统.<br><strong>XSS攻击通常分为以下几类：</strong></p>
 <ul>
 <li><p>反射型XSS：攻击者构造一个恶意的URL，将恶意代码注入到URL中，诱使用户点击该URL，从而触发攻击。</p>
 </li>
@@ -439,6 +441,9 @@ public class XssServlet extends HttpServlet &#123;
 </ol>
 <p>审计方法：</p>
 <p>敏感数据弱加密主要看数据传输中的加密方法，一般写在工具类 util 中以下文件中为 base64 编码方法</p>
+<p>​	</p>
+<p>​	</p>
+<p>​	</p>
 
     </div>
 
