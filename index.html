@@ -225,7 +225,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-08-26 14:42:25 / 修改时间：14:47:51" itemprop="dateCreated datePublished" datetime="2023-08-26T14:42:25+08:00">2023-08-26</time>
+      <time title="创建时间：2023-08-26 14:42:25 / 修改时间：15:03:29" itemprop="dateCreated datePublished" datetime="2023-08-26T14:42:25+08:00">2023-08-26</time>
     </span>
 
   
@@ -235,14 +235,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.5k</span>
+      <span>5.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
+      <span>10 分钟</span>
     </span>
 </div>
 
@@ -327,6 +327,107 @@ public class XssServlet extends HttpServlet &#123;
 
 <p>攻击者就可以执行任意代码，删除服务器上的所有文件。</p>
 <p>需要注意的是，以上示例仅仅是每个漏洞类型的一个简单示例，实际的漏洞可能会更加复杂，攻击者也会不断地创造新的攻击方式来绕过应用程序的防御措施。为了确保Web应用程序的安全性，需要开发人员注重代码的安全性，以及定期进行安全测试和漏洞扫描</p>
+<h1 id="审计方法总结"><a href="#审计方法总结" class="headerlink" title="审计方法总结"></a>审计方法总结</h1><p>主要代码审计方法是跟踪用户输入数据和敏感函数参数回溯：跟踪用户的输入数据，判断数据进入的每一个代码逻辑是否有可利用的点，此处的代码逻辑可以是一个函数，或者是条小小的条件判断语句。</p>
+<p>敏感函数参数回溯，根据敏感函数，逆向追踪参数传递的过程。这个方法是最高效，最常用的方法。大多数漏洞的产生是因为函数的使用不当导致的，只要找到这些函数，就能够快速挖掘想要的漏洞。</p>
+<p>以下是基于关键词审计技巧总结：</p>
+<p>在搜索时要注意是否为整个单词,以及小写敏感这些设置</p>
+<table>
+<thead>
+<tr>
+<th align="center">漏洞名称</th>
+<th align="center">关键词</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">密码硬编码、密码明文存储</td>
+<td align="center">password 、pass、jdbc</td>
+</tr>
+<tr>
+<td align="center">XSS</td>
+<td align="center">getParamter、&lt;%&#x3D;、param.</td>
+</tr>
+<tr>
+<td align="center">SQL 注入</td>
+<td align="center">Select、Dao 、from 、delete 、update、insert</td>
+</tr>
+<tr>
+<td align="center">任意文件下载</td>
+<td align="center">download 、fileName 、filePath、write、getFile、getWriter</td>
+</tr>
+<tr>
+<td align="center">任意文件删除</td>
+<td align="center">Delete、deleteFile、fileName 、filePath</td>
+</tr>
+<tr>
+<td align="center">文件上传</td>
+<td align="center">Upload、write、fileName 、filePath</td>
+</tr>
+<tr>
+<td align="center">命令注入</td>
+<td align="center">getRuntime、exec、cmd、shell</td>
+</tr>
+<tr>
+<td align="center">缓冲区溢出</td>
+<td align="center">strcpy,strcat,scanf,memcpy,memmove,memeccpy<br/>Getc(),fgetc(),getchar;read,printf</td>
+</tr>
+<tr>
+<td align="center">XML 注入</td>
+<td align="center">DocumentBuilder、XMLStreamReader、SAXBuilder、SAXParser<br/>SAXSource 、TransformerFactory 、SAXTransformerFactory 、</td>
+</tr>
+<tr>
+<td align="center">反序列化漏洞</td>
+<td align="center">ObjectInputStream.readObject、ObjectInputStream.readUnshared、XMLDecoder.readObject<br/>Yaml.load 、 XStream.fromXML 、 ObjectMapper.readValue 、JSON.parseObject</td>
+</tr>
+<tr>
+<td align="center">url 跳转</td>
+<td align="center">sendRedirect、setHeader、forward</td>
+</tr>
+<tr>
+<td align="center">不安全组件暴露</td>
+<td align="center">activity、Broadcast Receiver、Content Provider、Service、 inter-filter</td>
+</tr>
+<tr>
+<td align="center">日志记录敏感信息</td>
+<td align="center">log log.info logger.info</td>
+</tr>
+<tr>
+<td align="center">代码执行</td>
+<td align="center">eval、system、exec</td>
+</tr>
+</tbody></table>
+<h1 id="其他漏洞审计方法"><a href="#其他漏洞审计方法" class="headerlink" title="其他漏洞审计方法"></a>其他漏洞审计方法</h1><ol>
+<li>CSRF</li>
+</ol>
+<p>审计方法:通过查看配置文件有没有配置 csrf 全局过滤器，如果没有则重点看每个操作前有没有添加 token 的防护机制</p>
+<p>在Smpkpiappealcontroller.java中200处，直接用用ids控制删除操作，而没有添加防 csrf的随机token验证检查，存在csrf漏洞。</p>
+<p> Java&#x2F;main&#x2F;com&#x2F;venustech&#x2F;tsoc&#x2F;cupid&#x2F;smp&#x2F;kpi&#x2F;dao&#x2F;smpkpideclardao.java 517行，对传</p>
+<p>入的ids进行删除操作。</p>
+<ol start="2">
+<li>Struts2 远程代码执行漏洞</li>
+</ol>
+<p>审计方法：查看 struts 插件的版本信息是否为漏洞版本漏洞版本查询网址：<a target="_blank" rel="noopener" href="https://www.exploit-db.com/">https://www.exploit-db.com/</a></p>
+<ol start="3">
+<li>越权操作</li>
+</ol>
+<p>审计方法：重点关注用户操作请求时查看是否有对当前登陆用户权限做校验从而确定是否存在漏洞，有些厂商会使用一些主流的权限框架，例如 shiro ,spring security 等框架，那么需要重点关注框架的配置文件以及实现方法</p>
+<p>漏洞示例：</p>
+<p>在以下文件中采用了 shiro 框架进行权限控制，在代码 58-72 行处为控制访问路径的权限设置，51-55 行处为对 admin 路径下访问限制，只有 SysyUserFilter 设置了 isAccessAllowed 方法,其他过滤均没有</p>
+<p>SysUserFilter 中 isAccessAllowed 具体实现方法如下，90-93 行处没有对是否为当前用户进行判断，导致了越权</p>
+<p>其他过滤文件均只设置了 onAccessDaniad()方法</p>
+<p>如果没有使用框架的话，就要注意每个操作是否有权限</p>
+<p>代码 7 行处获取 session 里的 username，只判断了 username 是不是为空，如果在截取数据包的时候将 username 再重新赋一个值就有可能造成越权漏洞。</p>
+<p> 以这个年度服务费用编制功能为例，测试一下，代码如图所示：</p>
+<ol start="4">
+<li>会话超时设置</li>
+</ol>
+<p>审计方法：</p>
+<p>Javaweb 应用会话超时设置一般有俩种方法：一是在配置文件 web.xml 设置</p>
+<p> 二是通过 java 代码设置</p>
+<ol start="5">
+<li>敏感数据弱加密</li>
+</ol>
+<p>审计方法：</p>
+<p>敏感数据弱加密主要看数据传输中的加密方法，一般写在工具类 util 中以下文件中为 base64 编码方法</p>
 
       
     </div>
@@ -1226,13 +1327,13 @@ public class XssServlet extends HttpServlet &#123;
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">154k</span>
+    <span title="站点总字数">156k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:39</span>
+    <span title="站点阅读时长">4:43</span>
   </span>
 </div>
 <div class="busuanzi-count">
