@@ -117,141 +117,6 @@
       </tags>
   </entry>
   <entry>
-    <title>docker</title>
-    <url>/2023/07/30/Docker/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h1 id="Docker概述"><a href="#Docker概述" class="headerlink" title="Docker概述"></a>Docker概述</h1><p>Docker是一个开源平台，通过将应用程序隔离到轻量级、可移植的容器中，自动化应用程序的部署、扩展和管理。容器是独立的可执行单元，封装了运行应用程序所需的所有必要依赖项、库和配置文件，可以在各种环境中稳定地运行。</p>
-<p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口</p>
-<p>隔离：docker核心思想！</p>
-<p>docker的思想来源于集装箱</p>
-<p>docker  十分轻巧！！！</p>
-<p>基于Go语言开发的，开源项目！</p>
-<p>虚拟机也是属于虚拟化技术，Docker 容器技术，也是一种 虚拟化技术!</p>
-<ul>
-<li>Vm:     linux centos原生镜像 (一个电脑!) 隔离，需要开启多个虚拟机!                        几个G                      几分钟</li>
-<li>docker:隔离,境像(最核心的环境 4m + jdk + mysql)十分的小巧， 运行像就可以了! 小巧! 几个M KB秒级启动!</li>
-</ul>
-<p><strong>虚拟机技术缺点:</strong><br>1、资源占用十分多<br>2、冗余步骤多<br>3、启动很慢 !<br><strong>容器化技术</strong><br><strong><code>容器化技术不是模拟的一个完整的提作系统</code></strong></p>
-<p><strong>比较Docker 和 虚拟机技术的不同:</strong></p>
-<ul>
-<li>传统虚拟机，虚拟出一条硬件，运行一个完整的操作系统，然后在这个系统上安装和运行软件</li>
-<li>容器内的应用直接运行在 宿主机的内容，容器是没有自己的内核的，也没有虚拟我们的硬件，所以就轻便</li>
-<li>每个容器间是互相隔离，每个容器内都有一个属于自己的文件系统，互不影响。</li>
-</ul>
-<p>官网: <a href="https://www.docker.com/">https://www.docker.com/</a></p>
-<p>文档地址: <a href="https://docs.docker.com/">https://docs.docker.com/</a> (超级详细)</p>
-<p>仓库地址: <a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
-<h2 id="容器和Docker"><a href="#容器和Docker" class="headerlink" title="容器和Docker"></a><strong>容器和Docker</strong></h2><p>Docker是一种简化创建、部署和管理容器的平台。它为开发人员和管理员提供了一组工具和API，用于管理容器化的应用程序。使用Docker，您可以将应用程序代码、库和依赖项构建和打包成一个容器映像，该映像可以在支持Docker的任何环境中分发和一致地运行。</p>
-<h2 id="容器的必要性"><a href="#容器的必要性" class="headerlink" title="容器的必要性"></a><strong>容器的必要性</strong></h2><p><strong>应用更快速的交付和部署</strong><br>传统:一堆帮助文档，安装程序<br>Docker: 打包镜像发布测试，一键运行<br><strong>更便捷的升级和扩缩容</strong><br>使用了Docker之后，我们部署应用就和搭积木一样!<br>项目打包为一个镜像，扩展 服务器A ! 服务器B</p>
-<p><strong>更简单的系统运维</strong><br>在容器化之后，我们的开发，测试环境都是高度一致的。</p>
-<p><strong>更高效的计算资源利用</strong></p>
-<p>Docker 是 内核级别的虚拟化，可以在一个物理机上可以运行很多的客器实例!服务器的性能可以被压榨到极致.</p>
-<h1 id="Docker-的基本组成"><a href="#Docker-的基本组成" class="headerlink" title="Docker 的基本组成"></a>Docker 的基本组成</h1><p><img src="https://img-blog.csdnimg.cn/img_convert/be7adea748abd28eee7d4ec814b7a316.jpeg" alt="img"></p>
-<p><strong>镜像(image )</strong> :<br>docker镜像就好比是一个模板，可以通过这个模板来创建容器服务，tomcat镜像&#x3D;&#x3D;&#x3D;&gt; run &#x3D;&#x3D;&gt; tomcat01 容器(提供服务器)通过这个镜像可以创建多个容器( 最终服务运行或者项目运行就是在容器中的)。<br><strong>容器(container) :</strong><br>Docker利用容器技术，独立运行一个或者一个组应用，通过镜像来创建的</p>
-<p>启动，停止，删除，基本命令!</p>
-<p>目前就可以把这个容器理解为就是一个简易的linux系统</p>
-<p><strong>仓库(repository) :</strong><br>仓库就是存放镜像的地方!<br>仓库分为公有仓库和私有仓库!<br>Docker Hub(默认是国外的)   阿里云….都有容器服务器(配置镜像加速 !)</p>
-<h1 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h1><p><strong>环境准备</strong></p>
-<ol>
-<li>Linux基础</li>
-<li>CentOS 7或以上版本</li>
-<li>使用Xshell连接远程服务器进行操作</li>
-</ol>
-<p><strong>环境查看</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#系统内核是3.10以上</span><br><span class="line">用uname -r查看</span><br></pre></td></tr></table></figure>
-
-<p>系统版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@163 ~]# cat /etc/os-release</span><br><span class="line">NAME=&quot;CentOS Linux&quot;</span><br><span class="line">VERSION=&quot;8&quot;</span><br><span class="line">ID=&quot;centos&quot;</span><br><span class="line">ID_LIKE=&quot;rhel fedora&quot;</span><br><span class="line">VERSION_ID=&quot;8&quot;</span><br><span class="line">PLATFORM_ID=&quot;platform:el8&quot;</span><br><span class="line">PRETTY_NAME=&quot;CentOS Linux 8&quot;</span><br><span class="line">ANSI_COLOR=&quot;0;31&quot;</span><br><span class="line">CPE_NAME=&quot;cpe:/o:centos:centos:8&quot;</span><br><span class="line">HOME_URL=&quot;https://centos.org/&quot;</span><br><span class="line">BUG_REPORT_URL=&quot;https://bugs.centos.org/&quot;</span><br><span class="line">CENTOS_MANTISBT_PROJECT=&quot;CentOS-8&quot;</span><br><span class="line">CENTOS_MANTISBT_PROJECT_VERSION=&quot;8&quot;</span><br></pre></td></tr></table></figure>
-
-<p><strong>安装</strong></p>
-<ol>
-<li><p><strong>卸载旧版本</strong></p>
-<pre><code>yum remove docker \
-            docker-client \
-            docker-client-latest \
-            docker-common \
-            docker-latest \
-            docker-latest-logrotate \
-            docker-logrotate \
-            docker-engine
-</code></pre>
-</li>
-<li><p><strong>需要的安装包</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>设置镜像的仓库</strong></p>
-<p>yum-config-manager –add-repo <a href="https://download.docker.com/linux/centos/docker-ce.repo">https://download.docker.com/linux/centos/docker-ce.repo</a> &#x2F;&#x2F;默认是国外的，非常慢</p>
-<p>yum-config-manager –add-repo <a href="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a> &#x2F;&#x2F;阿里云镜像</p>
-<p>##更新yum软件包索引  yum makecache fast</p>
-</li>
-<li><p><strong>安装docker相关的</strong></p>
-<p>yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</p>
-<p>ce 社区  ee企业</p>
-</li>
-<li><p><strong>启动Docker</strong></p>
-<p>systemctl start docker</p>
-</li>
-<li><p><strong>使用docker version查看是否安装成功</strong></p>
-<p>[root@163 ~]# docker version<br>Client: Docker Engine - Community<br> Version:           24.0.5<br> API version:       1.43<br> Go version:        go1.20.6<br> Git commit:        ced0996<br> Built:             Fri Jul 21 20:36:32 2023<br> OS&#x2F;Arch:           linux&#x2F;amd64<br> Context:           default</p>
-<p>Server: Docker Engine - Community<br> Engine:<br>  Version:          24.0.5<br>  API version:      1.43 (minimum version 1.12)<br>  Go version:       go1.20.6<br>  Git commit:       a61e2b4<br>  Built:            Fri Jul 21 20:35:32 2023<br>  OS&#x2F;Arch:          linux&#x2F;amd64<br>  Experimental:     false<br> containerd:<br>  Version:          1.6.21<br>  GitCommit:        3dce8eb055cbb6872793272b4f20ed16117344f8<br> runc:<br>  Version:          1.1.7<br>  GitCommit:        v1.1.7-0-g860f061<br> docker-init:<br>  Version:          0.19.0<br>  GitCommit:        de40ad0</p>
-</li>
-<li><p><strong>sudo docker run hello-world</strong></p>
-</li>
-<li><p><strong>查看一下下载的这个 hello-world镜像</strong></p>
-<p>docker images</p>
-</li>
-</ol>
-<p><strong>了解</strong></p>
-<p>docker卸载</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 卸载依赖</span><br><span class="line"></span><br><span class="line">  ```yum remove docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras```</span><br><span class="line"></span><br><span class="line">2. 删除资源</span><br><span class="line">sudo rm -rf /var/lib/docker   //docker默认工作路径</span><br><span class="line">sudo rm -rf /var/lib/containerd</span><br></pre></td></tr></table></figure>
-
-<h1 id="阿里云镜像加速"><a href="#阿里云镜像加速" class="headerlink" title="阿里云镜像加速"></a>阿里云镜像加速</h1><ol>
-<li>登录阿里云找到容器镜像服务</li>
-</ol>
-<p><img src="https://img-blog.csdnimg.cn/14c9919761fe4833b59b16f1944f39fc.png" alt="请添加图片描述"></p>
-<ol start="2">
-<li><p>找到镜像加速器</p>
-</li>
-<li><p>配置使用</p>
-</li>
-</ol>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker </span><br><span class="line"></span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27; </span><br><span class="line">&#123; </span><br><span class="line"> &quot;registry-mirrors&quot;: [&quot;https://kzsz87k0.mirror.aliyuncs.com&quot;] </span><br><span class="line">&#125; </span><br><span class="line">EOF </span><br><span class="line"></span><br><span class="line">sudo systemctl daemon-reload </span><br><span class="line"></span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
-
-<h1 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h1><p><strong>Docker是什么工作的?</strong><br>Docker 是一个Client-Server 结构的系统，Docker的守护进程运行在主机上。通过Socket从客户端访问<br>DockerServer 接收到 Docker-Client 的指令，就会执行这个命令</p>
-<p><strong>Docker为什么比VM快</strong><br>1、Docker有着比虚拟机更少的抽象层<br>2、docker 利用的是宿主机的内核，vm 需要是 Guest OS。<br><img src="https://img-blog.csdnimg.cn/9b835a379a044e06869c036190e649aa.png" alt="在这里插入图片描述"><br>所以说，新建一个容器的时候，docker不需要想虚拟机一样重新加载一个操作系统内核，避免引导。虚拟机是加载 Guest OS，分钟级别的，而docker 是利用 宿主机的操作系统吗，省略了这个复杂的过程，秒级!</p>
-<p><img src="https://img-blog.csdnimg.cn/2725bac4251243ce9e42eff23e2e44ac.png" alt="在这里插入图片描述"></p>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker相关部署</title>
-    <url>/2023/07/31/Docker2/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h1 id="Docker安装Nginx"><a href="#Docker安装Nginx" class="headerlink" title="Docker安装Nginx"></a>Docker安装Nginx</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.搜索镜像 docker search nginx</span><br><span class="line">2.下载镜像 docker pull nginx</span><br><span class="line">3.运行测试</span><br><span class="line">[root@163 ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">nginx         latest    605c77e624dd   19 months ago   141MB</span><br><span class="line">centos        latest    5d0da3dc9764   22 months ago   231MB</span><br><span class="line">-d 后台运行（停止了容器后，容器还可以查到）</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 宿主机:容器内部端口</span><br><span class="line">[root@163 ~]# docker run -d --name nginx01 -p 3344:80 nginx</span><br><span class="line">bb07f6e55670b129a14434aae3a9422cf3f7091f2d3079a5f96005613a909993</span><br><span class="line">[root@163 ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                   NAMES</span><br><span class="line">bb07f6e55670   nginx     &quot;/docker-entrypoint.…&quot;   9 seconds ago   Up 8 seconds   0.0.0.0:3344-&gt;80/tcp, :::3344-&gt;80/tcp   nginx01</span><br><span class="line">[root@163 ~]# curl localhost:3344</span><br><span class="line"></span><br><span class="line">4.进入容器</span><br><span class="line">[root@163 ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@bb07f6e55670:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@bb07f6e55670:/# cd /etc/nginx</span><br><span class="line">root@bb07f6e55670:/etc/nginx# ls</span><br><span class="line">conf.d		mime.types  nginx.conf	 uwsgi_params</span><br><span class="line">fastcgi_params	modules     scgi_params</span><br><span class="line">root@bb07f6e55670:/etc/nginx# </span><br></pre></td></tr></table></figure>
-
-<h1 id="Docker安装Tomcat"><a href="#Docker安装Tomcat" class="headerlink" title="Docker安装Tomcat"></a>Docker安装Tomcat</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#官方使用</span><br><span class="line">docker run -it --rm tomcat:9.0</span><br><span class="line">docker run -it --rm一般用于测试，用完立即删除</span><br><span class="line"></span><br><span class="line">#下载再使用</span><br><span class="line">docker pull tomcat:9.0</span><br><span class="line"></span><br><span class="line">#启动运行</span><br><span class="line">docker run -d -p 3355:8080 --name tomcat01 tomcat</span><br><span class="line">#测试访问没有问题</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">[root@163 ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">#发现问题，1.1inux命今少了，2.没有webapps 阿里云镜像的原因。默认是最小的镜像，所有不必要的都被剔除掉。保证最小可运行的环境</span><br></pre></td></tr></table></figure>
-
-<h1 id="部署es-kibana"><a href="#部署es-kibana" class="headerlink" title="部署es+kibana"></a>部署es+kibana</h1><figure class="highlight console"><table><tr><td class="code"><pre><span class="line">--net somenetwork  网络配置</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">docker run -d --name elasticsearch (--net somenetwork) -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; elasticsearch:8.8.1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动了 1inux就卡住了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 暴露的端口很多!</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 十分的耗内存</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 的数据一般霉要放置到安全目录!挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker stats 查看 cpu的状态</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试一下es构建是否成功</span></span><br><span class="line">    curl localhost:9200</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">马上关闭，增加内存限制 修改配置文件 -e 环境配置修改</span></span><br><span class="line">docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; elasticsearch:8.8.1</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
-
-<h1 id="安装php和php插件"><a href="#安装php和php插件" class="headerlink" title="安装php和php插件"></a>安装php和php插件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install php -y</span><br><span class="line">apt-get install libapache2-mod-php -y  --fix-missing</span><br><span class="line">apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure>
-
-<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><strong>什么 portainer ?</strong><br>Docker图形化界面管理工具!提供一个后台面板供我们操作 !</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
-
-<p>访问测试：端口打开8088  访问<a href="http://ip:8088/">http://ip:8088/</a></p>
-<h1 id="commit镜像"><a href="#commit镜像" class="headerlink" title="commit镜像"></a>commit镜像</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"></span><br><span class="line">#命今和git原理类似</span><br><span class="line">docker commit -m=&quot;提交的描述信息”-a=&quot;作者”容器id 目标镜像名:[TAG]</span><br><span class="line"></span><br><span class="line">实战测试</span><br><span class="line"># 1、启动一个默认的tomcat</span><br><span class="line"># 2、发现这个默认的tomcat 是没有webapps应用，镜像的原因，官方的镜像默认 webapps下面是没有文件的!</span><br><span class="line"># 3、我自己拷贝进去了基本的文件</span><br><span class="line"># 4、将我们操作过的容器通过commit提交为一个境像! 我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docke精髓</title>
     <url>/2023/08/01/Docke3/</url>
     <content><![CDATA[<h1 id="容器数据卷"><a href="#容器数据卷" class="headerlink" title="容器数据卷"></a>容器数据卷</h1><span id="more"></span>
@@ -388,6 +253,141 @@
 <h2 id="网络连通"><a href="#网络连通" class="headerlink" title="网络连通"></a>网络连通</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker network --help</span><br><span class="line">docker network connect --help</span><br><span class="line">测试打通 tomcat01 - mynet</span><br><span class="line"># docker network connect mynet tomcat01</span><br><span class="line">连通之后就是将 tomcat01 放到了 mynet 网络下</span><br><span class="line">一个容器两个ip地址!</span><br><span class="line"># 阿里云服务:公网ip 私网ip</span><br><span class="line"></span><br><span class="line">docker exec -it tomcat01 ping tomcat-net-01//连通</span><br></pre></td></tr></table></figure>
 
 <p>假设要跨网络操作别人，就需要使用docker network connect连通</p>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker</title>
+    <url>/2023/07/30/Docker/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+
+<h1 id="Docker概述"><a href="#Docker概述" class="headerlink" title="Docker概述"></a>Docker概述</h1><p>Docker是一个开源平台，通过将应用程序隔离到轻量级、可移植的容器中，自动化应用程序的部署、扩展和管理。容器是独立的可执行单元，封装了运行应用程序所需的所有必要依赖项、库和配置文件，可以在各种环境中稳定地运行。</p>
+<p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口</p>
+<p>隔离：docker核心思想！</p>
+<p>docker的思想来源于集装箱</p>
+<p>docker  十分轻巧！！！</p>
+<p>基于Go语言开发的，开源项目！</p>
+<p>虚拟机也是属于虚拟化技术，Docker 容器技术，也是一种 虚拟化技术!</p>
+<ul>
+<li>Vm:     linux centos原生镜像 (一个电脑!) 隔离，需要开启多个虚拟机!                        几个G                      几分钟</li>
+<li>docker:隔离,境像(最核心的环境 4m + jdk + mysql)十分的小巧， 运行像就可以了! 小巧! 几个M KB秒级启动!</li>
+</ul>
+<p><strong>虚拟机技术缺点:</strong><br>1、资源占用十分多<br>2、冗余步骤多<br>3、启动很慢 !<br><strong>容器化技术</strong><br><strong><code>容器化技术不是模拟的一个完整的提作系统</code></strong></p>
+<p><strong>比较Docker 和 虚拟机技术的不同:</strong></p>
+<ul>
+<li>传统虚拟机，虚拟出一条硬件，运行一个完整的操作系统，然后在这个系统上安装和运行软件</li>
+<li>容器内的应用直接运行在 宿主机的内容，容器是没有自己的内核的，也没有虚拟我们的硬件，所以就轻便</li>
+<li>每个容器间是互相隔离，每个容器内都有一个属于自己的文件系统，互不影响。</li>
+</ul>
+<p>官网: <a href="https://www.docker.com/">https://www.docker.com/</a></p>
+<p>文档地址: <a href="https://docs.docker.com/">https://docs.docker.com/</a> (超级详细)</p>
+<p>仓库地址: <a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<h2 id="容器和Docker"><a href="#容器和Docker" class="headerlink" title="容器和Docker"></a><strong>容器和Docker</strong></h2><p>Docker是一种简化创建、部署和管理容器的平台。它为开发人员和管理员提供了一组工具和API，用于管理容器化的应用程序。使用Docker，您可以将应用程序代码、库和依赖项构建和打包成一个容器映像，该映像可以在支持Docker的任何环境中分发和一致地运行。</p>
+<h2 id="容器的必要性"><a href="#容器的必要性" class="headerlink" title="容器的必要性"></a><strong>容器的必要性</strong></h2><p><strong>应用更快速的交付和部署</strong><br>传统:一堆帮助文档，安装程序<br>Docker: 打包镜像发布测试，一键运行<br><strong>更便捷的升级和扩缩容</strong><br>使用了Docker之后，我们部署应用就和搭积木一样!<br>项目打包为一个镜像，扩展 服务器A ! 服务器B</p>
+<p><strong>更简单的系统运维</strong><br>在容器化之后，我们的开发，测试环境都是高度一致的。</p>
+<p><strong>更高效的计算资源利用</strong></p>
+<p>Docker 是 内核级别的虚拟化，可以在一个物理机上可以运行很多的客器实例!服务器的性能可以被压榨到极致.</p>
+<h1 id="Docker-的基本组成"><a href="#Docker-的基本组成" class="headerlink" title="Docker 的基本组成"></a>Docker 的基本组成</h1><p><img src="https://img-blog.csdnimg.cn/img_convert/be7adea748abd28eee7d4ec814b7a316.jpeg" alt="img"></p>
+<p><strong>镜像(image )</strong> :<br>docker镜像就好比是一个模板，可以通过这个模板来创建容器服务，tomcat镜像&#x3D;&#x3D;&#x3D;&gt; run &#x3D;&#x3D;&gt; tomcat01 容器(提供服务器)通过这个镜像可以创建多个容器( 最终服务运行或者项目运行就是在容器中的)。<br><strong>容器(container) :</strong><br>Docker利用容器技术，独立运行一个或者一个组应用，通过镜像来创建的</p>
+<p>启动，停止，删除，基本命令!</p>
+<p>目前就可以把这个容器理解为就是一个简易的linux系统</p>
+<p><strong>仓库(repository) :</strong><br>仓库就是存放镜像的地方!<br>仓库分为公有仓库和私有仓库!<br>Docker Hub(默认是国外的)   阿里云….都有容器服务器(配置镜像加速 !)</p>
+<h1 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h1><p><strong>环境准备</strong></p>
+<ol>
+<li>Linux基础</li>
+<li>CentOS 7或以上版本</li>
+<li>使用Xshell连接远程服务器进行操作</li>
+</ol>
+<p><strong>环境查看</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#系统内核是3.10以上</span><br><span class="line">用uname -r查看</span><br></pre></td></tr></table></figure>
+
+<p>系统版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@163 ~]# cat /etc/os-release</span><br><span class="line">NAME=&quot;CentOS Linux&quot;</span><br><span class="line">VERSION=&quot;8&quot;</span><br><span class="line">ID=&quot;centos&quot;</span><br><span class="line">ID_LIKE=&quot;rhel fedora&quot;</span><br><span class="line">VERSION_ID=&quot;8&quot;</span><br><span class="line">PLATFORM_ID=&quot;platform:el8&quot;</span><br><span class="line">PRETTY_NAME=&quot;CentOS Linux 8&quot;</span><br><span class="line">ANSI_COLOR=&quot;0;31&quot;</span><br><span class="line">CPE_NAME=&quot;cpe:/o:centos:centos:8&quot;</span><br><span class="line">HOME_URL=&quot;https://centos.org/&quot;</span><br><span class="line">BUG_REPORT_URL=&quot;https://bugs.centos.org/&quot;</span><br><span class="line">CENTOS_MANTISBT_PROJECT=&quot;CentOS-8&quot;</span><br><span class="line">CENTOS_MANTISBT_PROJECT_VERSION=&quot;8&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>安装</strong></p>
+<ol>
+<li><p><strong>卸载旧版本</strong></p>
+<pre><code>yum remove docker \
+            docker-client \
+            docker-client-latest \
+            docker-common \
+            docker-latest \
+            docker-latest-logrotate \
+            docker-logrotate \
+            docker-engine
+</code></pre>
+</li>
+<li><p><strong>需要的安装包</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y yum-utils</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>设置镜像的仓库</strong></p>
+<p>yum-config-manager –add-repo <a href="https://download.docker.com/linux/centos/docker-ce.repo">https://download.docker.com/linux/centos/docker-ce.repo</a> &#x2F;&#x2F;默认是国外的，非常慢</p>
+<p>yum-config-manager –add-repo <a href="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a> &#x2F;&#x2F;阿里云镜像</p>
+<p>##更新yum软件包索引  yum makecache fast</p>
+</li>
+<li><p><strong>安装docker相关的</strong></p>
+<p>yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</p>
+<p>ce 社区  ee企业</p>
+</li>
+<li><p><strong>启动Docker</strong></p>
+<p>systemctl start docker</p>
+</li>
+<li><p><strong>使用docker version查看是否安装成功</strong></p>
+<p>[root@163 ~]# docker version<br>Client: Docker Engine - Community<br> Version:           24.0.5<br> API version:       1.43<br> Go version:        go1.20.6<br> Git commit:        ced0996<br> Built:             Fri Jul 21 20:36:32 2023<br> OS&#x2F;Arch:           linux&#x2F;amd64<br> Context:           default</p>
+<p>Server: Docker Engine - Community<br> Engine:<br>  Version:          24.0.5<br>  API version:      1.43 (minimum version 1.12)<br>  Go version:       go1.20.6<br>  Git commit:       a61e2b4<br>  Built:            Fri Jul 21 20:35:32 2023<br>  OS&#x2F;Arch:          linux&#x2F;amd64<br>  Experimental:     false<br> containerd:<br>  Version:          1.6.21<br>  GitCommit:        3dce8eb055cbb6872793272b4f20ed16117344f8<br> runc:<br>  Version:          1.1.7<br>  GitCommit:        v1.1.7-0-g860f061<br> docker-init:<br>  Version:          0.19.0<br>  GitCommit:        de40ad0</p>
+</li>
+<li><p><strong>sudo docker run hello-world</strong></p>
+</li>
+<li><p><strong>查看一下下载的这个 hello-world镜像</strong></p>
+<p>docker images</p>
+</li>
+</ol>
+<p><strong>了解</strong></p>
+<p>docker卸载</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 卸载依赖</span><br><span class="line"></span><br><span class="line">  ```yum remove docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras```</span><br><span class="line"></span><br><span class="line">2. 删除资源</span><br><span class="line">sudo rm -rf /var/lib/docker   //docker默认工作路径</span><br><span class="line">sudo rm -rf /var/lib/containerd</span><br></pre></td></tr></table></figure>
+
+<h1 id="阿里云镜像加速"><a href="#阿里云镜像加速" class="headerlink" title="阿里云镜像加速"></a>阿里云镜像加速</h1><ol>
+<li>登录阿里云找到容器镜像服务</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/14c9919761fe4833b59b16f1944f39fc.png" alt="请添加图片描述"></p>
+<ol start="2">
+<li><p>找到镜像加速器</p>
+</li>
+<li><p>配置使用</p>
+</li>
+</ol>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker </span><br><span class="line"></span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27; </span><br><span class="line">&#123; </span><br><span class="line"> &quot;registry-mirrors&quot;: [&quot;https://kzsz87k0.mirror.aliyuncs.com&quot;] </span><br><span class="line">&#125; </span><br><span class="line">EOF </span><br><span class="line"></span><br><span class="line">sudo systemctl daemon-reload </span><br><span class="line"></span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h1 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h1><p><strong>Docker是什么工作的?</strong><br>Docker 是一个Client-Server 结构的系统，Docker的守护进程运行在主机上。通过Socket从客户端访问<br>DockerServer 接收到 Docker-Client 的指令，就会执行这个命令</p>
+<p><strong>Docker为什么比VM快</strong><br>1、Docker有着比虚拟机更少的抽象层<br>2、docker 利用的是宿主机的内核，vm 需要是 Guest OS。<br><img src="https://img-blog.csdnimg.cn/9b835a379a044e06869c036190e649aa.png" alt="在这里插入图片描述"><br>所以说，新建一个容器的时候，docker不需要想虚拟机一样重新加载一个操作系统内核，避免引导。虚拟机是加载 Guest OS，分钟级别的，而docker 是利用 宿主机的操作系统吗，省略了这个复杂的过程，秒级!</p>
+<p><img src="https://img-blog.csdnimg.cn/2725bac4251243ce9e42eff23e2e44ac.png" alt="在这里插入图片描述"></p>
+]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker相关部署</title>
+    <url>/2023/07/31/Docker2/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+
+<h1 id="Docker安装Nginx"><a href="#Docker安装Nginx" class="headerlink" title="Docker安装Nginx"></a>Docker安装Nginx</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.搜索镜像 docker search nginx</span><br><span class="line">2.下载镜像 docker pull nginx</span><br><span class="line">3.运行测试</span><br><span class="line">[root@163 ~]# docker images</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">nginx         latest    605c77e624dd   19 months ago   141MB</span><br><span class="line">centos        latest    5d0da3dc9764   22 months ago   231MB</span><br><span class="line">-d 后台运行（停止了容器后，容器还可以查到）</span><br><span class="line">--name 给容器命名</span><br><span class="line">-p 宿主机:容器内部端口</span><br><span class="line">[root@163 ~]# docker run -d --name nginx01 -p 3344:80 nginx</span><br><span class="line">bb07f6e55670b129a14434aae3a9422cf3f7091f2d3079a5f96005613a909993</span><br><span class="line">[root@163 ~]# docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                   NAMES</span><br><span class="line">bb07f6e55670   nginx     &quot;/docker-entrypoint.…&quot;   9 seconds ago   Up 8 seconds   0.0.0.0:3344-&gt;80/tcp, :::3344-&gt;80/tcp   nginx01</span><br><span class="line">[root@163 ~]# curl localhost:3344</span><br><span class="line"></span><br><span class="line">4.进入容器</span><br><span class="line">[root@163 ~]# docker exec -it nginx01 /bin/bash</span><br><span class="line">root@bb07f6e55670:/# whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib/nginx /etc/nginx /usr/share/nginx</span><br><span class="line">root@bb07f6e55670:/# cd /etc/nginx</span><br><span class="line">root@bb07f6e55670:/etc/nginx# ls</span><br><span class="line">conf.d		mime.types  nginx.conf	 uwsgi_params</span><br><span class="line">fastcgi_params	modules     scgi_params</span><br><span class="line">root@bb07f6e55670:/etc/nginx# </span><br></pre></td></tr></table></figure>
+
+<h1 id="Docker安装Tomcat"><a href="#Docker安装Tomcat" class="headerlink" title="Docker安装Tomcat"></a>Docker安装Tomcat</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#官方使用</span><br><span class="line">docker run -it --rm tomcat:9.0</span><br><span class="line">docker run -it --rm一般用于测试，用完立即删除</span><br><span class="line"></span><br><span class="line">#下载再使用</span><br><span class="line">docker pull tomcat:9.0</span><br><span class="line"></span><br><span class="line">#启动运行</span><br><span class="line">docker run -d -p 3355:8080 --name tomcat01 tomcat</span><br><span class="line">#测试访问没有问题</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">[root@163 ~]# docker exec -it tomcat01 /bin/bash</span><br><span class="line">#发现问题，1.1inux命今少了，2.没有webapps 阿里云镜像的原因。默认是最小的镜像，所有不必要的都被剔除掉。保证最小可运行的环境</span><br></pre></td></tr></table></figure>
+
+<h1 id="部署es-kibana"><a href="#部署es-kibana" class="headerlink" title="部署es+kibana"></a>部署es+kibana</h1><figure class="highlight console"><table><tr><td class="code"><pre><span class="line">--net somenetwork  网络配置</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">docker run -d --name elasticsearch (--net somenetwork) -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; elasticsearch:8.8.1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动了 1inux就卡住了</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 暴露的端口很多!</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 十分的耗内存</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">es 的数据一般霉要放置到安全目录!挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">docker stats 查看 cpu的状态</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">测试一下es构建是否成功</span></span><br><span class="line">    curl localhost:9200</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">马上关闭，增加内存限制 修改配置文件 -e 环境配置修改</span></span><br><span class="line">docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -e ES_JAVA_OPTS=&quot;-Xms64m -Xmx512m&quot; elasticsearch:8.8.1</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装vim"><a href="#安装vim" class="headerlink" title="安装vim"></a>安装vim</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install vim</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装php和php插件"><a href="#安装php和php插件" class="headerlink" title="安装php和php插件"></a>安装php和php插件</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install php -y</span><br><span class="line">apt-get install libapache2-mod-php -y  --fix-missing</span><br><span class="line">apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure>
+
+<h1 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h1><p><strong>什么 portainer ?</strong><br>Docker图形化界面管理工具!提供一个后台面板供我们操作 !</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
+
+<p>访问测试：端口打开8088  访问<a href="http://ip:8088/">http://ip:8088/</a></p>
+<h1 id="commit镜像"><a href="#commit镜像" class="headerlink" title="commit镜像"></a>commit镜像</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker commit 提交容器成为一个新的副本</span><br><span class="line"></span><br><span class="line">#命今和git原理类似</span><br><span class="line">docker commit -m=&quot;提交的描述信息”-a=&quot;作者”容器id 目标镜像名:[TAG]</span><br><span class="line"></span><br><span class="line">实战测试</span><br><span class="line"># 1、启动一个默认的tomcat</span><br><span class="line"># 2、发现这个默认的tomcat 是没有webapps应用，镜像的原因，官方的镜像默认 webapps下面是没有文件的!</span><br><span class="line"># 3、我自己拷贝进去了基本的文件</span><br><span class="line"># 4、将我们操作过的容器通过commit提交为一个境像! 我们以后就使用我们修改过的镜像即可，这就是我们自己的一个修改的镜像</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
         <tag>Docker</tag>
@@ -633,48 +633,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java简介</title>
-    <url>/2023/07/26/Java1/</url>
-    <content><![CDATA[<h2 id="什么是Java"><a href="#什么是Java" class="headerlink" title="什么是Java"></a>什么是Java</h2><span id="more"></span>
-
-<p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。</p>
-<h2 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景"></a>诞生背景</h2><p>任职于Sun公司(Stanford University Network斯坦福网络公司)的詹姆斯·高斯林和麦克·舍林丹等人于1990年代初开发Java语言的雏形，最初被命名为Oak，Oak的目标是作为家用电器等小型系统的编程语言，用于电视机、电话、闹钟、烤面包机等家用电器的控制和通信。由于这些智能化家电的市场需求没有预期的高，Sun公司放弃了该项计划。随着1990年代互联网的发展，Sun公司发现Oak在互联网上应用的前景，于是改造了Oak，于1995年5月以Java的名称正式发布。伴随着互联网的迅猛发展，Java逐渐成为重要的网络编程语言。</p>
-<h2 id="语言特点与应用场景"><a href="#语言特点与应用场景" class="headerlink" title="语言特点与应用场景"></a>语言特点与应用场景</h2><p>Java语言具有简单性、面向对象、分布式、健壮性、安全性、跨平台性、可移植性、多线程与动态性等特点。Java语言可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统等 。Java 快速、安全、可靠。从笔记本电脑到数据中心，从游戏控制台到超级计算机，从手机到互联网，Java 无处不在！</p>
-<h2 id="JVM、JRE和JDK的关系"><a href="#JVM、JRE和JDK的关系" class="headerlink" title="JVM、JRE和JDK的关系"></a>JVM、JRE和JDK的关系</h2><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><p>Java Virtual Machine是Java虚拟机，Java程序需要运行在虚拟机上，不同的平台有自己的虚拟机，因此Java语言可以实现跨平台。</p>
-<h4 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h4><p>Java Runtime Environment包括Java虚拟机和Java程序所需的核心类库等。核心类库主要是java.lang包：包含了运行Java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包</p>
-<p>如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</p>
-<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h4><p>Java Development Kit是提供给Java开发人员使用的，其中包含了Java的开发工具，也包括了JRE。所以安装了JDK，就无需再单独安装JRE了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe)等</p>
-<p>JVM&amp;JRE&amp;JDK关系图</p>
-<p><img src="https://img-blog.csdnimg.cn/20210430091557268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmcxMzU2Mzc1ODEyOA==,size_16,color_FFFFFF,t_70" alt="img"></p>
-<h1 id="Java是编译型还是解释型语言"><a href="#Java是编译型还是解释型语言" class="headerlink" title="Java是编译型还是解释型语言"></a>Java是编译型还是解释型语言</h1><h3 id="1-编译型语言和解释型语言"><a href="#1-编译型语言和解释型语言" class="headerlink" title="1.编译型语言和解释型语言"></a>1.编译型语言和解释型语言</h3><h5 id="编译型语言"><a href="#编译型语言" class="headerlink" title="编译型语言"></a>编译型语言</h5><p><strong>定义</strong>：在程序运行之前，通过编译器将源程序编译成机器码(可运行的二进制代码)，以后执行这个程序时，就不用再进行编译了。</p>
-<p><strong>优点</strong>：编译器一般会有预编译的过程对代码进行优化。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高，可以脱离语言环境独立运行。</p>
-<p><strong>缺点</strong>：编译之后如果需要修改就需要整个模块重新编译。编译的时候根据对应的运行环境生成机器码，不同的操作系统之间移植就会有问题，需要根据运行的操作系统环境编译不同的可执行文件。</p>
-<p><strong>总结</strong>：执行速度快、效率高；依靠编译器、跨平台性差些。</p>
-<p><strong>代表语言</strong>：C、C++、Pascal、Object-C以及Swift。</p>
-<h6 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h6><p><strong>定义</strong>：解释型语言的源代码不是直接翻译成机器码，而是先翻译成中间代码，再由解释器对中间代码进行解释运行。在运行的时候才将源程序翻译成机器码，翻译一句，然后执行一句，直至结束。</p>
-<p>优点：有良好的平台兼容性，在任何环境中都可以运行，前提是安装了解释器（虚拟机）。灵活，修改代码的时候直接修改就可以，可以快速部署，不用停机维护。</p>
-<p><strong>缺点</strong>：每次运行的时候都要解释一遍，性能上不如编译型语言。</p>
-<p><strong>总结</strong>：执行速度慢、效率低；依靠解释器、跨平台性好。</p>
-<p><strong>代表语言</strong>：JavaScript、Python、Erlang、PHP、Perl、Ruby。</p>
-<h5 id="混合型语言"><a href="#混合型语言" class="headerlink" title="混合型语言"></a>混合型语言</h5><p><strong>定义</strong>：既然编译型和解释型各有缺点就会有人想到把两种类型整合起来，取其精华去其糟粕，就出现了半编译，半解释型语言。</p>
-<p>比如C#，C#在编译的时候不是直接编译成机器码而是中间码，.NET平台提供了中间语言运行库运行中间码，中间语言运行库类似于Java虚拟机。.NET在编译成IL代码后，保存在dll中，首次运行时由JIT在编译成机器码缓存在内存中，下次直接执行。严格来说混合型语言属于解释型语言，C#更接近编译型语言。</p>
-<p><strong>Java即是编译型的，也是解释型语言，总的来说Java更接近解释型语言。</strong></p>
-<p>可以说它是编译型的。因为所有的Java代码都是要编译的，.java不经过编译就什么用都没有。同时围绕JVM的效率问题，会涉及一些如JIT、AOT等优化技术，例如JIT技术，会将热点代码编译成机器码。而AOT技术，是在运行前，通过工具直接将字节码转换为机器码。</p>
-<p>可以说它是解释型的。因为Java代码编译后不能直接运行，它是解释运行在JVM上的，所以它是解释运行的。</p>
-<h3 id="2-动态类型语言和静态类型语言"><a href="#2-动态类型语言和静态类型语言" class="headerlink" title="2.动态类型语言和静态类型语言"></a>2.动态类型语言和静态类型语言</h3><h6 id="动态类型语言"><a href="#动态类型语言" class="headerlink" title="动态类型语言"></a>动态类型语言</h6><p>动态类型语言：在运行期间才去做数据类型检查的语言，说的是数据类型。动态类型语言的数据类型不是在编译阶段决定的，而是把类型绑定延后到了运行阶段。</p>
-<p>代表语言：Python、Ruby、Erlang、JavaScript、Swift、PHP、Perl。</p>
-<h6 id="静态类型语言"><a href="#静态类型语言" class="headerlink" title="静态类型语言"></a>静态类型语言</h6><p>静态类型语言的数据类型是在编译期间（或运行之前）确定的，编写代码的时候要明确确定变量的数据类型。</p>
-<p>代表语言：C、C++、C#、Java、Object-C。</p>
-<h3 id="3-动态语言和静态语言"><a href="#3-动态语言和静态语言" class="headerlink" title="3.动态语言和静态语言"></a>3.动态语言和静态语言</h3><h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态类型语言和动态语言是完全不同的两个概念。</p>
-<p>动态语言：说的是运行时改变结构，说的是代码结构。在运行时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是在运行时代码可以根据某些条件改变自身结构。</p>
-<p>代表语言：Object-C、C#、JavaScript、PHP、Python、Erlang。</p>
-<h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>与动态语言相对应的，运行时结构不可变的语言就是静态语言。如Java、C、C++。</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTML</title>
     <url>/2023/08/08/HTML/</url>
     <content><![CDATA[<h1 id="html基本元素标签"><a href="#html基本元素标签" class="headerlink" title="html基本元素标签"></a>html基本元素标签</h1><span id="more"></span>
@@ -750,6 +708,819 @@
 ]]></content>
       <tags>
         <tag>语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java面向对象</title>
+    <url>/2023/07/27/Java3/</url>
+    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
+
+<h1 id="Java-对象和类"><a href="#Java-对象和类" class="headerlink" title="Java 对象和类"></a>Java 对象和类</h1><ul>
+<li><p><strong>类和对象的关系</strong><br><strong>类</strong>:类是对现实生活中一类具有共同属性和行为的事物的抽象<br><strong>对象</strong>:是能够看得到摸的着的真实存在的实体</p>
+</li>
+<li><p><strong>类的定义</strong><br><strong>类的重要性</strong>:是Java程序的基本组成单位<br><strong>类是什么</strong>:是对现实生活中一类具有共同属性和行为的事物的抽象，确定对象将会拥有的属性和行为</p>
+<p><strong>类的特点</strong>：类是对象的数据类型，是具有相同属性和行为的事物的抽象</p>
+<p><strong>类的组成</strong>:属性和行为<br><strong>属性</strong>:在类中通过成员变量来体现(类中方法外的变量)<br><strong>行为</strong>:在类中通过成员方法来体现(和前面的方法相比去掉static关键字即可)</p>
+</li>
+<li><p><strong>对象的定义</strong></p>
+<p>看看周围真实的世界，会发现身边有很多对象，车，手机，人等等。所有这些对象都有自己的属性和行为。</p>
+</li>
+</ul>
+<p>​       拿一个手机来举例，它的属性有：品牌、价格，行为有：打电话、发短信。</p>
+<p>​       软件对象也有属性和行为。行为通过方法体现。</p>
+<p>​       在软件开发中，方法操作对象内部状态的改变，对象的相互调用也是通过方法来完成。</p>
+<h2 id="Java-中的类"><a href="#Java-中的类" class="headerlink" title="Java 中的类"></a>Java 中的类</h2><p>类可以看成是创建 Java 对象的模板。</p>
+<p>pubIic class Phone {</p>
+<p>​		&#x2F;&#x2F;成员变量</p>
+<p>​		String brand;</p>
+<p>​		int price;</p>
+<p>​		&#x2F;&#x2F;成员方法</p>
+<p>​		public void call(){</p>
+<p>​			System.out.printIn(“打电话”);}<br>​		public void sendMessage(){</p>
+<p>​			System.out,pnintIn(“发短信”);}</p>
+<p>}</p>
+<p><strong>成员变量和局部变量的区别</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">区别</th>
+<th align="center">成员变量</th>
+<th align="center">局部变量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">类中位置不同</td>
+<td align="center">类中方法外</td>
+<td align="center">方法内或者方法声明上</td>
+</tr>
+<tr>
+<td align="center">内存中位置不同</td>
+<td align="center">堆内存</td>
+<td align="center">栈内存</td>
+</tr>
+<tr>
+<td align="center">生命周期不同</td>
+<td align="center">随着对象的存在而存在，随看对象的消失而消失</td>
+<td align="center">随着方法的调用而存在，随着方法的调用完毕而消失</td>
+</tr>
+<tr>
+<td align="center">初始化值不同</td>
+<td align="center">有默认的初始化值</td>
+<td align="center">没有默认的初始化值，必须先定义，赋值，才能使用</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>局部变量</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
+<li><strong>成员变量</strong>：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</li>
+<li><strong>类变量</strong>：类变量也声明在类中，方法体之外，但必须声明为 static 类型。</li>
+</ul>
+<hr>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>格式:类名对象名 &#x3D; new 类名0;<br>范例: Phone p &#x3D; new Phone0;</p>
+<h2 id="使用对象"><a href="#使用对象" class="headerlink" title="使用对象"></a>使用对象</h2><ol>
+<li><strong>使用成员变量</strong><br>格式:对象名.变量名<br>范例:p.brand</li>
+<li><strong>使用成员方法</strong><br>格式:对象名.方法名()<br>范例: p.call()</li>
+</ol>
+<hr>
+<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><h2 id="一、private关键字"><a href="#一、private关键字" class="headerlink" title="一、private关键字"></a>一、private关键字</h2><ul>
+<li>是一个权限修饰符</li>
+<li>可以修饰成员 (成员变量和成员方法)</li>
+<li>作用是保护成员不被别的类使用，被private修饰的成员只在本类中才能访问</li>
+</ul>
+<p>针对<code>private</code>修饰的成员变量，如果需要被其他类使用，提供相应的操作</p>
+<ul>
+<li>提供“<code>get变量名()</code>”方法，用于获取成员变量的值，方法用<code>public</code>修饰</li>
+<li>提供“<code>set变量名(参数)</code>”方法，用于设置成员变量的值，方法用<code>public</code>修饰</li>
+</ul>
+<h2 id="二、this关键字"><a href="#二、this关键字" class="headerlink" title="二、this关键字"></a>二、this关键字</h2><ol>
+<li><p>this修饰的变量用于指代成员变量<br>方法的形参如果与成员变量同名，不带this修饰的变量指的是形参，而不是成员变量<br>方法的形参没有与成员变量同名，不带this修饰的变量指的是成员变量</p>
+</li>
+<li><p>什么时候使用this呢? <strong>解决局部变量隐藏成员变量</strong></p>
+</li>
+<li><p>this 代表所在类的对象引用<br>记住:方法被哪个对象调用，this就代表哪个对象</p>
+</li>
+</ol>
+<h2 id="三、封装"><a href="#三、封装" class="headerlink" title="三、封装"></a>三、封装</h2><ol>
+<li><strong>封装概述</strong><br>是面向对象三大特征之一 (封装，继承，多态)<br>是面向对象编程语言对客观世界的横拟，客观世界里成员变量都是隐藏在对象内部的，外界是无法直接操作</li>
+<li><strong>封装规则</strong><br>将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对的冠信息的操作和访问成员变量private，提供对应的getXxx()&#x2F;setXxx()方法</li>
+<li><strong>好处</strong><br>通过方法来控制成员变量的操作，提高了代码的安全性<br>把代码用方法进行封装，提高了代码的复用性</li>
+</ol>
+<h2 id="四、构造方法"><a href="#四、构造方法" class="headerlink" title="四、构造方法"></a>四、构造方法</h2><p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
+<p>下面是一个构造方法示例：</p>
+<p>public class Student{   </p>
+<p>​		 public Student(){ }     </p>
+<p>​		 public Student(String name){         </p>
+<p>​			&#x2F;&#x2F; 这个构造器仅有一个参数：name    } }</p>
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li><p>构造方法的创建</p>
+<p>如果没有定义构造方法，系统将给出一个认的无参数构造方法<br>如果定义了构造方法，系统将不再提供默认的构造方法</p>
+</li>
+<li><p>构造方法的重载<br>如果自定义了带参构造方法，还要使用无参数构造方法，就必须再写一个无参数构造方法</p>
+</li>
+<li><p>推荐的使用方式<br>无论是否使用，都手工书写无参数构造方法</p>
+</li>
+</ol>
+<h5 id="标准类制作"><a href="#标准类制作" class="headerlink" title="标准类制作"></a>标准类制作</h5><ol>
+<li>成员变量<br>使用private修饰</li>
+<li>构造方法<br>提供一个无参构造方法<br>提供一个带多个参数的构造方法</li>
+<li>成员方法<br>提供每一个成员变量对应的setXxx()&#x2F;getXxx()<br>提供一个显示对象信息的show()</li>
+<li>创建对象并为其成员变量值的两种方式<br>无参构造方法创建对象后使用setXxx()赋值<br>使用带参构造方法直接创建带有属性值的对象</li>
+</ol>
+<p>例子：</p>
+<h5 id="Student-java程序"><a href="#Student-java程序" class="headerlink" title="Student.java程序"></a>Student.java程序</h5><p>public class Student{   </p>
+<p>​		prative String name;&#x2F;&#x2F;成员变量</p>
+<p>​		prative int age;</p>
+<p>​		public Student() { }&#x2F;&#x2F;构造方法</p>
+<p>​		public Student(String name,int age){ </p>
+<p>​			this.name &#x3D; name;</p>
+<p>​			this.age &#x3D; age;}</p>
+<p>​		&#x2F;&#x2F;成员方法</p>
+<p>​		public void setName(String name){</p>
+<p>​			this.name &#x3D; name;}</p>
+<p>​		public String getName(){</p>
+<p>​			return name;}</p>
+<p>​		public void setAge(int age){</p>
+<p>​			this.age &#x3D; age;}</p>
+<p>​		public String getAge(){</p>
+<p>​			return age;}</p>
+<p>​		public void show(){</p>
+<p>​			System.out.println(name+”,”+age);}</p>
+<p>} </p>
+<h5 id="StudentDemo-java程序"><a href="#StudentDemo-java程序" class="headerlink" title="StudentDemo.java程序"></a>StudentDemo.java程序</h5><p>package com.XXX</p>
+<p>public class StudentDemo{</p>
+<p>​		public static void main(String[ ] args){</p>
+<p>​			&#x2F;&#x2F;无参构造方法创建对象后使用setXxx()赋值</p>
+<p>​			Student s1 &#x3D; new Student( );</p>
+<p>​			s1.setName(“xuan”);</p>
+<p>​			s1.setAge(18);</p>
+<p>​			s1.show();</p>
+<p>​			&#x2F;&#x2F;使用带参构造方法直接创建带有属性值的对象</p>
+<p>​			Student s2 &#x3D; new Student(“name:”xuan”,age:18);</p>
+<p>​			s2.show();</p>
+<p>​		}		</p>
+<p>}</p>
+<p><strong>运行结果</strong>：</p>
+<p>xuan,18</p>
+<p>xuan,18</p>
+<h1 id="Java-继承"><a href="#Java-继承" class="headerlink" title="Java 继承"></a>Java 继承</h1><hr>
+<h2 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h2><p>继承是面向对象的三大特征之一，可以使得子类具有父类的属性和方法，还可以在子类中重新定义，追加属性和方法</p>
+<ul>
+<li>格式:public class 子类名extends父类名}</li>
+<li>范例: public class Zi extends Fu<br>Fu:是类，也被称为基类、超类<br>Zi: 是子类，也被称为派生类</li>
+</ul>
+<p>继承中子类的特点：</p>
+<p>子类可以有父类的内容，还可以有自己特有的内容</p>
+<h2 id="继承的好处和弊端"><a href="#继承的好处和弊端" class="headerlink" title="继承的好处和弊端"></a>继承的好处和弊端</h2><p><strong>继承好处</strong><br>提高了代码的复用性(多个类相同的成员可以放到同一个类中)<br>提高了代码的维护性(如果方法的代码需要修改，修改一处即可)<br><strong>继承弊端</strong><br>继承让类与类之间产生了关系，类的合性增强了，当父类发生变化时子类实现也不得不跟着变化，削弱了子类的独立性<br><strong>什么时候使用继承?</strong><br>继承体现的关系:is a<br>假设法:我有两个类A和B，如果他们满足A是B的一种，或者B是A的一种，就说明他们存在继承关系，这个时候就可以考虑使用继承来体现，否则就不滥用继承</p>
+<h2 id="继承中变量的访问特点"><a href="#继承中变量的访问特点" class="headerlink" title="继承中变量的访问特点"></a>继承中变量的访问特点</h2><p>在子类方法中访问一个变量</p>
+<ol>
+<li>子类局部范围找</li>
+<li>子类成员范围找</li>
+<li>父类成员范围找</li>
+<li>如果都没有就报错(不考虑父亲的父亲…)</li>
+</ol>
+<h2 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a>继承类型</h2><p>需要注意的是 Java 不支持多继承，但支持多重继承。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-extends-2020-12-08.png" alt="img"></p>
+<h2 id="继承关键字"><a href="#继承关键字" class="headerlink" title="继承关键字"></a>继承关键字</h2><p>继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 java.lang.Object，当一个类没有继承的两个关键字，则默认继承 Object（这个类在 <strong>java.lang</strong> 包中，所以不需要 <strong>import</strong>）祖先类。</p>
+<h3 id="extends关键字"><a href="#extends关键字" class="headerlink" title="extends关键字"></a>extends关键字</h3><p>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。</p>
+<p>public class Animal {<br>    private String name;<br>    private int id;<br>    public Animal(String myName, int myid) {<br>        &#x2F;&#x2F;初始化属性值<br>    }<br>    public void eat() {  &#x2F;&#x2F;吃东西方法的具体实现  }<br>    public void sleep() { &#x2F;&#x2F;睡觉方法的具体实现  }<br>} </p>
+<p>public class Penguin  extends  Animal{<br>}</p>
+<h3 id="implements关键字"><a href="#implements关键字" class="headerlink" title="implements关键字"></a>implements关键字</h3><p>使用 implements 关键字可以变相的使java具有<code>多继承</code>的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）。</p>
+<p>public interface A {<br>    public void eat();<br>    public void sleep();<br>}</p>
+<p>public interface B {<br>    public void show();<br>}</p>
+<p>public class C implements A,B {<br>}</p>
+<h3 id="super-与-this-关键字"><a href="#super-与-this-关键字" class="headerlink" title="super 与 this 关键字"></a>super 与 this 关键字</h3><p>super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。</p>
+<p>this关键字：指向自己的引用。</p>
+<p><strong>实例</strong></p>
+<p>class Animal {<br>  void eat() {<br>    System.out.println(“animal : eat”);<br>  }<br>}</p>
+<p>class Dog extends Animal {<br>  void eat() {<br>    System.out.println(“dog : eat”);<br>  }<br>  void eatTest() {<br>    this.eat();   &#x2F;&#x2F; this 调用自己的方法<br>    super.eat();  &#x2F;&#x2F; super 调用父类方法<br>  }<br>}</p>
+<p>public class Test {<br>  public static void main(String[] args) {<br>    Animal a &#x3D; new Animal();<br>    a.eat();<br>    Dog d &#x3D; new Dog();<br>    d.eatTest();<br>  }<br>}</p>
+<p>输出结果为：</p>
+<p>animal : eat<br>dog : eat<br>animal : eat</p>
+<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><p>final 可以用来修饰变量（包括类属性、对象属性、局部变量和形参）、方法（包括类方法和对象方法）和类。</p>
+<p><strong>final修饰的特点</strong></p>
+<ul>
+<li>修饰方法:表明该方法是最终方法，不能被重写</li>
+<li>修饰变量:表明该变量是常量，不能再次被赋值</li>
+<li>修饰类:表明该类是最终类，不能被继承</li>
+</ul>
+<p>声明类：</p>
+<p>final class 类名 {&#x2F;&#x2F;类体}</p>
+<p>声明方法：</p>
+<p>修饰符(public&#x2F;private&#x2F;default&#x2F;protected) final 返回值类型 方法名(){&#x2F;&#x2F;方法体}</p>
+<p><strong>注：</strong> final 定义的类，其中的属性、方法不是 final 的。</p>
+<p><strong>final修饰局部变量</strong></p>
+<p>变量是基本类型: final修饰指的是基本类型的数据值不能发生改变</p>
+<p>变量是引用类型: final修饰指的是引用类型的地址值不能发生改变，但是地址里面的内容是可以发生改变的</p>
+<h1 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h1><p>static 关键字是静态的意思，可以修饰成员方法，成员变量<br><strong>static 修饰的特点</strong></p>
+<ul>
+<li>被类的所有对象共享<br>这也是我们判断是否使用静态关键字的条件</li>
+<li>推荐使用类名调用</li>
+</ul>
+<p><strong>static 访问特点</strong></p>
+<p>静态成员方法只能访问静态成员和静态成员方法</p>
+<h1 id="Java-包"><a href="#Java-包" class="headerlink" title="Java 包"></a>Java 包</h1><p>包主要用来对类和接口进行分类管理</p>
+<p>包的定义格式</p>
+<p>格式：package 包名；</p>
+<p>范例：package com.first;</p>
+<h2 id="import-语句-导包"><a href="#import-语句-导包" class="headerlink" title="import 语句(导包)"></a>import 语句(导包)</h2><p>在 Java 中，如果给出一个完整的限定名，包括包名、类名，那么 Java 编译器就可以很容易地定位到源代码或者类。import 语句就是用来提供一个合理的路径，使得编译器可以找到某个类。</p>
+<p>例如，下面的命令行将会命令编译器载入 java_installation&#x2F;java&#x2F;io 路径下的所有类</p>
+<p>import java.io.*;(import 包名)</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java简介</title>
+    <url>/2023/07/26/Java1/</url>
+    <content><![CDATA[<h2 id="什么是Java"><a href="#什么是Java" class="headerlink" title="什么是Java"></a>什么是Java</h2><span id="more"></span>
+
+<p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。</p>
+<h2 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景"></a>诞生背景</h2><p>任职于Sun公司(Stanford University Network斯坦福网络公司)的詹姆斯·高斯林和麦克·舍林丹等人于1990年代初开发Java语言的雏形，最初被命名为Oak，Oak的目标是作为家用电器等小型系统的编程语言，用于电视机、电话、闹钟、烤面包机等家用电器的控制和通信。由于这些智能化家电的市场需求没有预期的高，Sun公司放弃了该项计划。随着1990年代互联网的发展，Sun公司发现Oak在互联网上应用的前景，于是改造了Oak，于1995年5月以Java的名称正式发布。伴随着互联网的迅猛发展，Java逐渐成为重要的网络编程语言。</p>
+<h2 id="语言特点与应用场景"><a href="#语言特点与应用场景" class="headerlink" title="语言特点与应用场景"></a>语言特点与应用场景</h2><p>Java语言具有简单性、面向对象、分布式、健壮性、安全性、跨平台性、可移植性、多线程与动态性等特点。Java语言可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统等 。Java 快速、安全、可靠。从笔记本电脑到数据中心，从游戏控制台到超级计算机，从手机到互联网，Java 无处不在！</p>
+<h2 id="JVM、JRE和JDK的关系"><a href="#JVM、JRE和JDK的关系" class="headerlink" title="JVM、JRE和JDK的关系"></a>JVM、JRE和JDK的关系</h2><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><p>Java Virtual Machine是Java虚拟机，Java程序需要运行在虚拟机上，不同的平台有自己的虚拟机，因此Java语言可以实现跨平台。</p>
+<h4 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h4><p>Java Runtime Environment包括Java虚拟机和Java程序所需的核心类库等。核心类库主要是java.lang包：包含了运行Java程序必不可少的系统类，如基本数据类型、基本数学函数、字符串处理、线程、异常处理类等，系统缺省加载这个包</p>
+<p>如果想要运行一个开发好的Java程序，计算机中只需要安装JRE即可。</p>
+<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h4><p>Java Development Kit是提供给Java开发人员使用的，其中包含了Java的开发工具，也包括了JRE。所以安装了JDK，就无需再单独安装JRE了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe)等</p>
+<p>JVM&amp;JRE&amp;JDK关系图</p>
+<p><img src="https://img-blog.csdnimg.cn/20210430091557268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmcxMzU2Mzc1ODEyOA==,size_16,color_FFFFFF,t_70" alt="img"></p>
+<h1 id="Java是编译型还是解释型语言"><a href="#Java是编译型还是解释型语言" class="headerlink" title="Java是编译型还是解释型语言"></a>Java是编译型还是解释型语言</h1><h3 id="1-编译型语言和解释型语言"><a href="#1-编译型语言和解释型语言" class="headerlink" title="1.编译型语言和解释型语言"></a>1.编译型语言和解释型语言</h3><h5 id="编译型语言"><a href="#编译型语言" class="headerlink" title="编译型语言"></a>编译型语言</h5><p><strong>定义</strong>：在程序运行之前，通过编译器将源程序编译成机器码(可运行的二进制代码)，以后执行这个程序时，就不用再进行编译了。</p>
+<p><strong>优点</strong>：编译器一般会有预编译的过程对代码进行优化。因为编译只做一次，运行时不需要编译，所以编译型语言的程序执行效率高，可以脱离语言环境独立运行。</p>
+<p><strong>缺点</strong>：编译之后如果需要修改就需要整个模块重新编译。编译的时候根据对应的运行环境生成机器码，不同的操作系统之间移植就会有问题，需要根据运行的操作系统环境编译不同的可执行文件。</p>
+<p><strong>总结</strong>：执行速度快、效率高；依靠编译器、跨平台性差些。</p>
+<p><strong>代表语言</strong>：C、C++、Pascal、Object-C以及Swift。</p>
+<h6 id="解释型语言"><a href="#解释型语言" class="headerlink" title="解释型语言"></a>解释型语言</h6><p><strong>定义</strong>：解释型语言的源代码不是直接翻译成机器码，而是先翻译成中间代码，再由解释器对中间代码进行解释运行。在运行的时候才将源程序翻译成机器码，翻译一句，然后执行一句，直至结束。</p>
+<p>优点：有良好的平台兼容性，在任何环境中都可以运行，前提是安装了解释器（虚拟机）。灵活，修改代码的时候直接修改就可以，可以快速部署，不用停机维护。</p>
+<p><strong>缺点</strong>：每次运行的时候都要解释一遍，性能上不如编译型语言。</p>
+<p><strong>总结</strong>：执行速度慢、效率低；依靠解释器、跨平台性好。</p>
+<p><strong>代表语言</strong>：JavaScript、Python、Erlang、PHP、Perl、Ruby。</p>
+<h5 id="混合型语言"><a href="#混合型语言" class="headerlink" title="混合型语言"></a>混合型语言</h5><p><strong>定义</strong>：既然编译型和解释型各有缺点就会有人想到把两种类型整合起来，取其精华去其糟粕，就出现了半编译，半解释型语言。</p>
+<p>比如C#，C#在编译的时候不是直接编译成机器码而是中间码，.NET平台提供了中间语言运行库运行中间码，中间语言运行库类似于Java虚拟机。.NET在编译成IL代码后，保存在dll中，首次运行时由JIT在编译成机器码缓存在内存中，下次直接执行。严格来说混合型语言属于解释型语言，C#更接近编译型语言。</p>
+<p><strong>Java即是编译型的，也是解释型语言，总的来说Java更接近解释型语言。</strong></p>
+<p>可以说它是编译型的。因为所有的Java代码都是要编译的，.java不经过编译就什么用都没有。同时围绕JVM的效率问题，会涉及一些如JIT、AOT等优化技术，例如JIT技术，会将热点代码编译成机器码。而AOT技术，是在运行前，通过工具直接将字节码转换为机器码。</p>
+<p>可以说它是解释型的。因为Java代码编译后不能直接运行，它是解释运行在JVM上的，所以它是解释运行的。</p>
+<h3 id="2-动态类型语言和静态类型语言"><a href="#2-动态类型语言和静态类型语言" class="headerlink" title="2.动态类型语言和静态类型语言"></a>2.动态类型语言和静态类型语言</h3><h6 id="动态类型语言"><a href="#动态类型语言" class="headerlink" title="动态类型语言"></a>动态类型语言</h6><p>动态类型语言：在运行期间才去做数据类型检查的语言，说的是数据类型。动态类型语言的数据类型不是在编译阶段决定的，而是把类型绑定延后到了运行阶段。</p>
+<p>代表语言：Python、Ruby、Erlang、JavaScript、Swift、PHP、Perl。</p>
+<h6 id="静态类型语言"><a href="#静态类型语言" class="headerlink" title="静态类型语言"></a>静态类型语言</h6><p>静态类型语言的数据类型是在编译期间（或运行之前）确定的，编写代码的时候要明确确定变量的数据类型。</p>
+<p>代表语言：C、C++、C#、Java、Object-C。</p>
+<h3 id="3-动态语言和静态语言"><a href="#3-动态语言和静态语言" class="headerlink" title="3.动态语言和静态语言"></a>3.动态语言和静态语言</h3><h5 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h5><p>动态类型语言和动态语言是完全不同的两个概念。</p>
+<p>动态语言：说的是运行时改变结构，说的是代码结构。在运行时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是在运行时代码可以根据某些条件改变自身结构。</p>
+<p>代表语言：Object-C、C#、JavaScript、PHP、Python、Erlang。</p>
+<h5 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h5><p>与动态语言相对应的，运行时结构不可变的语言就是静态语言。如Java、C、C++。</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java安全</title>
+    <url>/2023/08/15/Java%E5%AE%89%E5%85%A8/</url>
+    <content><![CDATA[<h1 id="Java安全"><a href="#Java安全" class="headerlink" title="Java安全"></a>Java安全</h1><span id="more"></span>
+
+<p>java通过以下技术来实现安全机制</p>
+<ul>
+<li>语言设计特性(对数组边界检查，只进行合法的类型转换，无指针算法)</li>
+<li>访问控制机制，用于控制代码能够执行的功能</li>
+<li>代码签名，java代码的作者能够用加密算法来表明java代码的作者</li>
+</ul>
+<p>一.类加载器</p>
+<p><a href="https://so.csdn.net/so/search?q=%E8%99%9A%E6%8B%9F%E6%9C%BA&spm=1001.2101.3001.7020">虚拟机</a>只加载程序需要的类文件，例如程序从MyProgram.Class执行，下面是虚拟机执行步骤：</p>
+<ol>
+<li>虚拟机有一个用于加载类文件的机制，例如从磁盘文件加载或web请求访问，使用该价值加载MyProgram.Class</li>
+<li>如果MyProgram.Class拥有一个类型为另一个类的实例变量，或者拥有超类，那么这些类文件也被加载</li>
+<li>接着虚拟机执行MyProgram.Class的main方法，因为它是静态，无需实例化</li>
+<li>如果main方法或者调用其他方法使用到得类，这些类被加载</li>
+</ol>
+<p>  类加载机制至少拥有三个类加载器：</p>
+<ul>
+<li>引导类加载器 负责加载系统类，从JAR文件rt.jar中加载，它是虚拟机整体一部分。而且它是C语言实现的，另外引导类加载器没有ClassLoader对象</li>
+<li>扩展类加载器 用于从jre&#x2F;lib&#x2F;ext目录加载“标准的扩展”，</li>
+<li>系统类加载器(也陈为应用类加载器) 加载应用类，它是在CLASSPATH环境变量或者是-classpath命令行选项设置的类目录里或者是JAR&#x2F;ZIP文件里查找这些类。</li>
+</ul>
+<h1 id="Java线程安全"><a href="#Java线程安全" class="headerlink" title="Java线程安全"></a>Java线程安全</h1><p>一、什么是线程安全</p>
+<p>想给出一个线程安全的确切定义是复杂的，但我们可以这样认为：<br>如果多线程环境下代码运行的结果是符合我们预期的，即在单线程环境应该的结果，则说这个程序是线程安全的</p>
+<p>🌰栗子</p>
+<pre><code>package Thread;
+ 
+public class demo77 &#123;
+    private static int count;
+    public static void main(String[] args) throws InterruptedException &#123;
+        Thread t1 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                count++;
+            &#125;
+        &#125;);
+        Thread t2 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                count++;
+            &#125;
+        &#125;);
+        t1.start(); // 两个线程在创建好了后，线程所对应的PCB加入到系统链表，参与系统调度
+        t2.start();
+        // 让主线程main等t1、t2执行完了再接着往下走
+        t1.join();
+        t2.join();
+        System.out.println(count);
+    &#125;
+&#125;
+</code></pre>
+<p> 想这样，在多线程情况下，程序的运行结果不符合我们的预期，这被称为线程不安全</p>
+<p>二、造成线程不安全的原因 </p>
+<p>根本原因：操作系统的随机调度执行，抢占式执行 </p>
+<pre><code>还有：我们可以看到我们的count是一个全局变量，我们的线程t1、线程t2对count变量同时都进行了修改——++操作（为什么说是同时呢，因为我们的t1线程、t2线程在创建完了后就参与到系统调度，由系统随机分配线程的执行，可能是t2线程先执行10个指令然后t1再执行10个指令，相当于是同时）
+</code></pre>
+<p>那么我们就改一下代码让t1、t2分批次对count修改不就行了吗？</p>
+<pre><code>package Thread;
+ 
+public class demo77 &#123;
+    private static int count;
+    public static void main(String[] args) throws InterruptedException &#123;
+        Thread t1 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                count++;
+            &#125;
+ 
+        &#125;);
+        Thread t2 = new Thread(() -&gt; &#123;
+            try &#123;
+                t1.join();// 等t1线程执行完了，t2线程再执行
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                count++;
+            &#125;
+        &#125;);
+        t1.start(); // 两个线程在创建好了后，线程所对应的PCB加入到系统链表，参与系统调度
+        t2.start();
+ 
+        t2.join(); // 等t2线程执行完了，主线程main再接着执行，执行顺序：t1-&gt;t2-&gt;打印count
+        System.out.println(count);
+    &#125;
+&#125;
+</code></pre>
+<p>大家有没有想过为什么多个线程同时执行count++的时候就会出现BUG呢？</p>
+<p>这是因为我们多个线程同时对同一变量修改的所造成的BUG往往和我们操作的原子性有关！！！这时候的操作往往不是一个整体，多个线程并发执行这些操作就可能出现一些问题</p>
+<p>如果我们在变量修改过程中，操作是原子的——只是对应一个机器指令，那么即使是多个线程同时对同一个变量修改也不一定会造成BUG,但也可能造成BUG——要看具体的业务场景</p>
+<p>总之我们要避免多个线程同时对同一个变量来操作</p>
+<p>🍑 对原子性在多线程并发执行中出现问题的分析</p>
+<p>🔔🔔注意：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">像 count++ 其实一行代码, 对应三个机器指令!</span><br><span class="line">1)从内存读取数据到 CPU load</span><br><span class="line">2)在 CPU 寄存器中,完成加法运算 add</span><br><span class="line">3)把寄存器的数据写回到内存中 save</span><br><span class="line">这几个步骤单线程下执行,没有任何问题</span><br><span class="line">如果是多线程并发执行,这个就不一定了!!</span><br></pre></td></tr></table></figure>
+
+<p>当我们执行t1.start()、t2.start()后，t1线程和t2线程就在操作系统内核中创建出来了，t1、t2线程就参与到了系统调度当中</p>
+<p>而调度是随机的——他可能先让t1执行几个指令，然后t2再执行几个指令、最后再把CPU的控制权交给t1。</p>
+<p>于是因为系统的调度是随机的（这是罪魁祸首，但我们无法改变），当我们多个线程同时执行一些不是整体的操作的时候（++或–）由于并发就会产生一些问题</p>
+<p> <strong>🌰栗子一</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/15ac811137144c5abc01c49068c5a363.png" alt="img"></p>
+<p><strong>🌰栗子二</strong> </p>
+<p><img src="https://img-blog.csdnimg.cn/2cb8f0784e024604a6c09d38882f0676.png" alt="img"></p>
+<p>为什么会产生上面的BUG呢？</p>
+<p>就是因为我们的++操作不是一个整体，是一个由多个指令所组成的操作 </p>
+<p>解决方案：也是加锁：“synchronized”,意味着把这三条指令打包成了一组指令，然后把这一组指令看出成一条指令了，类似于数学里的“整体代换”思想。</p>
+<p> <img src="https://img-blog.csdnimg.cn/82dc94c8208f479e86508569793a36be.png" alt="img"></p>
+<p> 首先我们要明白加锁操作都是针对某一个对象来进行的（加锁本质就是给对象头里设置个标记），加锁有以下几种形式</p>
+<p>形式一、 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class demo7777 &#123;</span><br><span class="line">	public static Object object1 = new Object();</span><br><span class="line">	public static Object object2 = new Object();</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Thread t1 = new Thread(() -&gt;&#123;</span><br><span class="line">			synchronized (object1)&#123;//对object1对象进行了加锁操作</span><br><span class="line">				System.out.println(&quot;t1线程start&quot;);</span><br><span class="line">				try &#123;</span><br><span class="line">						Thread.sleep( millis: 1000);</span><br><span class="line">				&#125; catch (InterruptedException e)&#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println(&quot;t1线程finish&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">t1.start();</span><br></pre></td></tr></table></figure>
+
+<p> 形式二、</p>
+<pre><code>package Thread;
+ 
+class Counter &#123;
+    public static int count;
+//    public synchronized void increase() &#123;
+//        ++count; 这两种写法视为是等价的
+//    &#125;
+    public void increase() &#123;
+        synchronized (this) &#123; // 这里this可以是任意对象，this可以有多个Counter counter1 = new Counter(), Counter counter2 = new Counter();
+            ++count;
+        &#125;
+    &#125;
+&#125;
+public class demo777 &#123;
+ 
+    public static void main(String[] args) throws InterruptedException &#123;
+        Counter counter1 = new Counter();
+        Counter counter2 = new Counter();
+        Thread t1 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                counter1.increase();
+            &#125;
+        &#125;);
+        Thread t2 = new Thread(() -&gt; &#123;
+            for (int i = 0; i &lt; 5000; i++) &#123;
+                counter1.increase();
+            &#125;
+            // 多个线程去调用这个increase方法，其实就是针对这个Counter对象counter1来进行加锁
+            // 如果一个线程t1获取到了该对象counter1的锁，那么另一个线程t2就要等到counter1对应的锁开了后（t1线程执行完该锁里的内容——++操作）t2才能执行++操作
+            // 此时++操作相当于是成为了一个整体（相当于一个指令，当一个线程再执行这个加锁的整体的指令的时候，另一个线程只能阻塞等待）
+        &#125;);
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join(); // 确保线程t1和线程t2都执行完了，main主线程再接着执行——输出count
+        System.out.println(Counter.count); // 输出10000
+    &#125;
+&#125;
+</code></pre>
+<p>形式三、 </p>
+<p> 加锁本质 就是给对象头里设置个标记,它的成员对应的对象的对象头不受影响</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public synchronized static void func1() &#123;</span><br><span class="line">&#125;</span><br><span class="line">public static void func2() &#123;</span><br><span class="line">	synchronized(Counter.class)&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用类对象加锁,和类里有啥成员没关系~~<br>synchronized static、Counter.class这俩写法视为是等价的!!<br>类对象是整个程序里唯一的!!<br>这样加锁,但凡是调用到 func1 和 func2，之间都会产生竞争!!</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Counter1 &#123;</span><br><span class="line">	public static int count;</span><br><span class="line">	public synchronized static void increase() &#123;</span><br><span class="line">		++count;</span><br><span class="line">	&#125;</span><br><span class="line">public class demo77777 </span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Counter1 counter1 = new Counter1();</span><br><span class="line">		Thread t1 = new Thread(() -&gt;&#123;</span><br><span class="line">			for (int i = 日; i &lt; 500; i++) &#123;</span><br><span class="line">				System.out.println(&quot;t1 start&quot;);</span><br><span class="line">				Counter1.increase();</span><br><span class="line">				System.out.printin(&quot;t1 finish&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		t1.start();</span><br></pre></td></tr></table></figure>
+
+<p>当我们给不同的对象上锁后，如果用住房来比喻</p>
+<pre><code>不同的房间相当于是不同的对象，不同的线程相当于是不同的客人
+
+如果房间1住了客人A，那么房间1就上了锁，客人B就需要等客人A不再住房间1（开了锁）然后客人B才能住房间1；或者客人B住其他的房间（其他的对象，没上锁的）
+
+package Thread;
+// 测试线程竞争，对锁的竞争
+public class demo7777 &#123;
+    public static Object object1 = new Object();
+    public static Object object2 = new Object();
+    public static void main(String[] args) &#123;
+        Thread t1 = new Thread(() -&gt; &#123;
+            // 针对object1对象进行加锁，加锁操作是针对某一个对象来进行的
+            synchronized (object1) &#123;
+                System.out.println(&quot;t1线程start&quot;);
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(&quot;t1线程finish&quot;);
+            &#125;
+        &#125;);
+        t1.start();
+        Thread t2 = new Thread(() -&gt; &#123;
+            synchronized (object1) &#123;  // 针对object1对象来进行加锁操作
+                System.out.println(&quot;t2线程start&quot;);
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(&quot;t2线程finish&quot;);
+            &#125;
+        &#125;);
+        t2.start();
+    &#125;
+&#125;
+</code></pre>
+<p>无论是使用哪种用法,使用 synchronized 的时候都是要明确锁对象!(明确是对哪个对象加锁)</p>
+<p>只有当两个线程针对同一个对象加锁的时候,才会发生竞争</p>
+<p>如果是两个线程针对不同对象加锁,则没有竞争~</p>
+<p>我们上面就是两个线程t1和t2同时对object1这个对象进行了加锁，然后t1与t2直接就产生了竞争。从上述代码的实现过程中我们也可以看到，等到t1线程执行完了后，t2线程才开始执行。</p>
+<p>但如果是两个线程对不同的对象进行加锁，则没有竞争（就像两个客人（两个线程）住不同的房间（不同的对象）当然不会发生竞争。</p>
+<pre><code>package Thread;
+// 测试线程竞争，对锁的竞争
+public class demo7777 &#123;
+    public static Object object1 = new Object();
+    public static Object object2 = new Object();
+    public static void main(String[] args) &#123;
+        Thread t1 = new Thread(() -&gt; &#123;
+            synchronized (object1) &#123; // 针对object1对象来进行加锁，加锁操作是针对一个对象来进行的
+                System.out.println(&quot;t1线程start&quot;);
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(&quot;t1线程finish&quot;);
+            &#125;
+        &#125;);
+        t1.start();
+        Thread t2 = new Thread(() -&gt; &#123;
+            synchronized (object2) &#123; // 针对object2对象进行加锁
+                System.out.println(&quot;t2线程start&quot;);
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(&quot;t2线程finish&quot;);
+            &#125;
+        &#125;);
+        t2.start();
+    &#125;
+&#125;
+</code></pre>
+<p> 两个线程可以做到同时执行</p>
+<h1 id="java安全入门-一"><a href="#java安全入门-一" class="headerlink" title="java安全入门(一)"></a>java安全入门(一)</h1><p>首先，我们需要了解java得基本语法，没有了解得同学，建议学习完java得基本语法之后，再来学习</p>
+<h2 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h2><p>首先介绍最基本的 java中的命令执行</p>
+<p>我们以后，最常用的poc，就是下面的这条</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Calc</span> &#123;</span><br><span class="line">    <span class="comment">//当前执行命令无回显</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        Runtime.getRuntime().exec(<span class="string">&quot;calc.exe&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里，在额外普及一下，如果需要回显怎么办的问题，主要是用IO流将命令执行后的字节加载出来，然后最基本的按行读取，就可以了。</p>
+<p>在进行网站开发入JSP的时候，我们使用的JSP一句话木马也是根据这个原理进行编写的。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Ping</span> &#123;</span><br><span class="line">    <span class="comment">//我们需要执行有回显得命令</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">Process</span> <span class="variable">process</span> <span class="operator">=</span> Runtime.getRuntime().exec(<span class="string">&quot;ping baidu.com&quot;</span>);</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> process.getInputStream();</span><br><span class="line">        <span class="type">InputStreamReader</span> <span class="variable">inputStreamReader</span> <span class="operator">=</span>  <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(inputStream);</span><br><span class="line">        <span class="type">BufferedReader</span> <span class="variable">inputBufferedReader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(inputStreamReader);</span><br><span class="line">        StringBuilder stringBuilder=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">while</span> ((line = inputBufferedReader.readLine()) != <span class="literal">null</span>) &#123;</span><br><span class="line">            stringBuilder.append(line);</span><br><span class="line">            System.out.println(line);</span><br><span class="line">        &#125;</span><br><span class="line">        inputBufferedReader.close();</span><br><span class="line">        inputBufferedReader=<span class="literal">null</span>;</span><br><span class="line">        inputStreamReader.close();</span><br><span class="line">        inputStreamReader=<span class="literal">null</span>;</span><br><span class="line">        inputStream.close();</span><br><span class="line">        inputStream=<span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Runtime的其他用法"><a href="#Runtime的其他用法" class="headerlink" title="Runtime的其他用法"></a>Runtime的其他用法</h3><p>我们在进行命令执行的时候，是需要区分操作系统的，不同的操作系统所执行的命令方式绝对是不一样的，</p>
+<h4 id="Windows下"><a href="#Windows下" class="headerlink" title="Windows下"></a>Windows下</h4><p>windows 我们可以调用 cmd或者powershell去执行命令，但是powershell一般会限制执行策略，所以使用cmd一般是比较保险的</p>
+<p><a href="https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2">https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String [] cmd=&#123;<span class="string">&quot;cmd&quot;</span>,<span class="string">&quot;/C&quot;</span>,<span class="string">&quot;calc.exe&quot;</span>&#125;; </span><br><span class="line"><span class="type">Process</span> <span class="variable">proc</span> <span class="operator">=</span>Runtime.getRuntime().exec(cmd);</span><br></pre></td></tr></table></figure>
+
+<h4 id="linux下"><a href="#linux下" class="headerlink" title="linux下"></a>linux下</h4><p>对于linux的话，我们一般可以使用<code>bash</code>进行命令的执行，通常情况下是会有的，但是有的情况，可能没有bash，我们就可以使用<code>sh</code>来进行替代，</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String [] cmd=&#123;<span class="string">&quot;/bin/sh&quot;</span>,<span class="string">&quot;-c&quot;</span>,<span class="string">&quot;ls&quot;</span>&#125;; </span><br><span class="line"><span class="type">Process</span> <span class="variable">proc</span> <span class="operator">=</span>Runtime.getRuntime().exec(cmd);</span><br></pre></td></tr></table></figure>
+
+<p>于是乎，在后面我们写exp或者一些工具的时候，就需要根据主机的操作系统进行甄别</p>
+<p>最简单的办法就是使用<code>getProperty</code>函数进行<code>os</code>的名称</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.getProperty(<span class="string">&quot;os.name&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>初步demo</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">property</span> <span class="operator">=</span> System.getProperty(<span class="string">&quot;os.name&quot;</span>);</span><br><span class="line">        String [] cmd1=&#123;<span class="string">&quot;cmd&quot;</span>,<span class="string">&quot;/C&quot;</span>,<span class="string">&quot;start calc.exe&quot;</span>&#125;;</span><br><span class="line">        String [] cmd2=&#123;<span class="string">&quot;/bin/sh&quot;</span>,<span class="string">&quot;-c&quot;</span>,<span class="string">&quot;ls&quot;</span>&#125;;</span><br><span class="line">        String [] cmd = <span class="literal">null</span>;</span><br><span class="line">        System.out.println(property);</span><br><span class="line">        <span class="keyword">if</span> (property.contains(<span class="string">&quot;Windows&quot;</span>))&#123;</span><br><span class="line">             cmd= cmd1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">             cmd= cmd1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">Process</span> <span class="variable">process</span> <span class="operator">=</span>Runtime.getRuntime().exec(cmd);</span><br><span class="line">        <span class="comment">//取得命令结果的输出流</span></span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> process.getInputStream();</span><br><span class="line">        <span class="comment">//用输出读取去读</span></span><br><span class="line">        <span class="type">InputStreamReader</span> <span class="variable">inputStreamReader</span> <span class="operator">=</span>  <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(inputStream);</span><br><span class="line">        <span class="comment">//创建缓冲器</span></span><br><span class="line">        <span class="type">BufferedReader</span> <span class="variable">inputBufferedReader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(inputStreamReader);</span><br><span class="line">        StringBuilder stringBuilder=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">while</span> ((line = inputBufferedReader.readLine()) != <span class="literal">null</span>) &#123;</span><br><span class="line">            stringBuilder.append(line);</span><br><span class="line">            System.out.println(line);</span><br><span class="line">        &#125;</span><br><span class="line">        inputBufferedReader.close();</span><br><span class="line">        inputBufferedReader=<span class="literal">null</span>;</span><br><span class="line">        inputStreamReader.close();</span><br><span class="line">        inputStreamReader=<span class="literal">null</span>;</span><br><span class="line">        inputStream.close();</span><br><span class="line">        inputStream=<span class="literal">null</span>;</span><br><span class="line"><span class="comment">//        return stringBuilder;</span></span><br><span class="line"><span class="comment">//        这里如果要返回的值的话，返回的应该是stringBuilder</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="java反射的概念"><a href="#java反射的概念" class="headerlink" title="java反射的概念"></a>java反射的概念</h2><p>Java 的反射机制是指在运行状态中，对于任意一个类都能够知道这个类所有的属性和方法； 并且对于任意一个对象，都能够调用它的任意一个方法；这种动态获取信息以及动态调用对象方法的功能成为Java语言的反射机制。</p>
+<blockquote>
+<p>java有四个基本特征，封装，继承，多态，抽象</p>
+<p>Java的反射（reflection）机制是指在程序的运行状态中，可以构造任意一个类的对象，可以了解任意一个对象所属的类，可以了解任意一个类的成员变量和方法，可以调用任意一个对象的属性和方法。本质上其实就是动态的生成类似于上述的字节码，加载到jvm中运行</p>
+</blockquote>
+<p><strong>关键点：动态获取</strong></p>
+<h3 id="反射获取对象"><a href="#反射获取对象" class="headerlink" title="反射获取对象"></a>反射获取对象</h3><p>正常的new对象的过程如下，我们可以看到，首先编译出了Student的类，而Student.class 经过JVM的内存中，就始终存在一个（一个类只会存在一个class对象），</p>
+<p><img src="https://cdn.jsdelivr.net/gh/h0ld1rs/image/image/20220115014839.png"></p>
+<p>补一张jvm的图</p>
+<p><img src="https://pic4.zhimg.com/80/v2-4face8109e0d52ef5894c41c69e4ec6b_hd.jpg" alt="img"></p>
+<p>双亲委派机制</p>
+<p>1-&gt;2-&gt;3-&gt;4</p>
+<p>由于java语言动态的特性，在程序运行后，所运行的类，就已经在JVM的内存中，我们就可以直接调用已经加载好的类去实现我们的方法操作。</p>
+<blockquote>
+<p>在很大一部分情况下，公司上线的产品都是以jar包或者war包部署到Tomcat下运行的，我们如果有源码，能审查链以后，就可以直接利用加载在JVM中的类进行操作。</p>
+</blockquote>
+<ol>
+<li>Java反射机制的核心是在程序运行时动态加载类并获取类的详细信息，从而操作类或对象的属性和方法。本质是JVM得到class对象之后，再通过class对象进行反编译，从而获取对象的各种信息。</li>
+<li>Java属于&#x3D;&#x3D;先编译再运行&#x3D;&#x3D;的语言，程序中对象的类型在编译期就确定下来了，而当程序在运行时可能需要动态加载某些类，这些类因为之前用不到，所以没有被加载到JVM。通过反射，可以在运行时动态地创建对象并调用其属性，不需要提前在编译期知道运行的对象是谁。</li>
+<li><strong>反射调用方法时，会忽略权限检查</strong>，可以无视权限修改对应的值—&gt;因此容易导致安全性问题，（对安全研究人员来说提供了不小的帮助，hhhh）</li>
+</ol>
+<h3 id="获得实例化类的对象"><a href="#获得实例化类的对象" class="headerlink" title="获得实例化类的对象"></a>获得实例化类的对象</h3><p>主要是通过newInstance方法</p>
+<p>方法一通过Class中的newInstance</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class p=Class.forName(&quot;Person&quot;);</span><br><span class="line">Object p1=p.newInstance();</span><br><span class="line">Class p=Class.forName(&quot;Person&quot;);</span><br><span class="line">Person p1=(Person)p.newInstance();</span><br></pre></td></tr></table></figure>
+
+<p>方法二 Constructor中的newInstance</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=p.getClass();</span><br><span class="line">Constructor con = cla.getConstructor();</span><br><span class="line">Object p1 = con.newInstance();</span><br></pre></td></tr></table></figure>
+
+<p>那么为什么要说这两种方法呢？如上第一中方法，只能适用于，我们的类只能含有不含参的构造器，一旦我们的类中没有不含参的构造器的时候第一中方法就会报错了</p>
+<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/493737b9-57ed-49cc-b954-dd99b52c27ba.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/493737b9-57ed-49cc-b954-dd99b52c27ba.png" alt="image.png"></a></p>
+<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/d603db70-f6ee-4c39-83f6-fc800ab525fb.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/d603db70-f6ee-4c39-83f6-fc800ab525fb.png" alt="image.png"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;phone&quot;);</span><br><span class="line">Constructor con = cla.getConstructor(String.class);</span><br><span class="line">Object p1 = con.newInstance(&quot;lituer&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/d4ae1c92-de7e-486a-91b7-99ef20d7b41c.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/d4ae1c92-de7e-486a-91b7-99ef20d7b41c.png" alt="image.png"></a></p>
+<h4 id="Class-newInstance"><a href="#Class-newInstance" class="headerlink" title="Class.newInstance"></a><a href="https://tttang.com/archive/1902/#toc_classnewinstance">Class.newInstance</a></h4><p>newInstance，字面意思就是“新实例”，Class.newInstance是java反射中Class类创建新的实例化对象的方法，在这个过程中，是先取了这个类的不带参数的构造方法，然后调用构造方法 也就是无参构造函数 的 newInstance 来创建对象</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public T newInstance()</span><br><span class="line">              throws InstantiationException,</span><br><span class="line">                     IllegalAccessException</span><br><span class="line">Creates a new instance of the class represented by this Class object. The class is instantiated as if by a new expression with an empty argument list. The class is initialized if it has not already been initialized.</span><br><span class="line">Note that this method propagates any exception thrown by the nullary constructor, including a checked exception. Use of this method effectively bypasses the compile-time exception checking that would otherwise be performed by the compiler. The Constructor.newInstance method avoids this problem by wrapping any exception thrown by the constructor in a (checked) InvocationTargetException.</span><br><span class="line"></span><br><span class="line">Returns:</span><br><span class="line">a newly allocated instance of the class represented by this object.</span><br><span class="line">Throws:</span><br><span class="line">IllegalAccessException - if the class or its nullary constructor is not accessible.</span><br><span class="line">InstantiationException - if this Class represents an abstract class, an interface, an array class, a primitive type, or void; or if the class has no nullary constructor; or if the instantiation fails for some other reason.</span><br><span class="line">ExceptionInInitializerError - if the initialization provoked by this method fails.</span><br><span class="line">SecurityException - If a security manager, s, is present and any of the following conditions is met:</span><br><span class="line">invocation of s.checkMemberAccess(this, Member.PUBLIC) denies creation of new instances of this class</span><br><span class="line">the caller&#x27;s class loader is not the same as or an ancestor of the class loader for the current class and invocation of s.checkPackageAccess() denies access to the package of this class</span><br></pre></td></tr></table></figure>
+
+<p>和我们上面说的一样，既然类中存在无参构造函数，那么面对有参构造函数，那么我们就不能使用Class.newInstance而是要用Constructor.newInstance()</p>
+<p>然而，通过 Constructor.newInstance() 方法可以根据提供的参数调用任何构造函数。相比之下，Class.newInstance() 方法只能调用可见的构造函数，也就是公共(public)类型的构造函数。然而，在特定情况下，Constructor.newInstance() 方法可以调用私有的构造函数，需要使用 setAccessible(true) 方法来实现。</p>
+<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/92672c01-220e-46be-b517-162759249c63.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/92672c01-220e-46be-b517-162759249c63.png" alt="image.png"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Constructor constructor = cla.getDeclaredConstructor(String.class);</span><br><span class="line">constructor.setAccessible(true);</span><br><span class="line">Object obj=constructor.newInstance(&quot;lituer&quot;);</span><br><span class="line">Method method = cla.getMethod(&quot;test&quot;);</span><br><span class="line">method.invoke(obj);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/9034f67b-e5c0-42ac-8b15-c05a3164d7b1.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/9034f67b-e5c0-42ac-8b15-c05a3164d7b1.png" alt="image.png"></a></p>
+<p>执行成功。</p>
+<h3 id="获取类的构造器"><a href="#获取类的构造器" class="headerlink" title="获取类的构造器"></a>获取类的构造器</h3><p>一：获取public类型的构造器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getConstructor(class[]parameterTypes)//里面的参数可选</span><br><span class="line">getConstructors()//获得类中所有public类型的构造器</span><br></pre></td></tr></table></figure>
+
+<p>实例：就上面用到的</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;phone&quot;);</span><br><span class="line">Constructor con = cla.getConstructor(String.class);//获得有参数的</span><br><span class="line">Constructor con = cla.getConstructor();//获得无参数的</span><br><span class="line">Constructor[] con = cla.getConstructors();//获得类中所有public类型的构造器，因为所有的构造器肯定不是一个，所以要用数组</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/7d30d0a9-7eb7-434e-9be3-6c2c5a7b50a2.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/7d30d0a9-7eb7-434e-9be3-6c2c5a7b50a2.png" alt="image.png"></a></p>
+<p>二：getDeclaredConstructor(class[]parameterTypes)</p>
+<p>它可以同时获取public和private以及protected还有默认类型的构造器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;phone&quot;);</span><br><span class="line">Constructor con2 = cla.getDeclaredConstructor();</span><br></pre></td></tr></table></figure>
+
+<p>getDeclaredConstructors()方法全部的构造器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Constructor[] con2 = cla.getDeclaredConstructor();</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取类的属性"><a href="#获取类的属性" class="headerlink" title="获取类的属性"></a>获取类的属性</h3><p>1,获得类的public类型的属性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getField(String name)</span><br><span class="line">getFields()//全部public</span><br><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Field field = cla.getField(&quot;x&quot;);</span><br><span class="line">Field[] field = cla.getFields();</span><br></pre></td></tr></table></figure>
+
+<p>2,获得任一一个类型属性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getDeclaredField(String name)</span><br><span class="line">getDeclaredFields();//全部的任何类型的属性</span><br><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Field field = cla.getDeclaredField(&quot;y&quot;);</span><br><span class="line">Field[] field = cla.getDeclaredFields();</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取类的方法"><a href="#获取类的方法" class="headerlink" title="获取类的方法"></a>获取类的方法</h3><p>1,获得public类型的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getMethod(String name,class[] parameterTypes)；//第一个参数是方法名，第二个参数是形参的类型，没有即不填</span><br><span class="line">getMethods()</span><br><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Method method = cla.getMethod(&quot;test&quot;);</span><br><span class="line">Method[] methods = cla.getMethods();</span><br></pre></td></tr></table></figure>
+
+<p>2，获得所有类型的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getDeclaredMethod(String name,class[] parameterTypes)</span><br><span class="line">getDeclaredMethods()//全部方法</span><br><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Method method = cla.getDeclaredMethod(&quot;input&quot;, String.class);</span><br><span class="line">Method[] methods=cla.getDeclaredMethods();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://storage.tttang.com/media/attachment/2023/08/17/51c6fabd-a4d5-45a0-b8b0-f5b0345b348e.png" alt="![image.png](https://storage.tttang.com/media/attachment/2023/08/17/51c6fabd-a4d5-45a0-b8b0-f5b0345b348e.png)"></p>
+<p>获得Method信息包括</p>
+<ol>
+<li>getName() 返回方法的名称</li>
+<li>getReturnType() 返回方法返回值类型 也是一个 Class实例比如 String.class</li>
+<li>getParameterTypes()：返回方法的参数类型，是一个 Class 数组，例如：{String.class, int.class}；</li>
+<li>getModifiers()：返回方法的修饰符，它是一个 int，不同的 bit 表示不同的含义</li>
+</ol>
+<h3 id="获得类方法的调用"><a href="#获得类方法的调用" class="headerlink" title="获得类方法的调用"></a>获得类方法的调用</h3><p>使用invoke</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Object invoke(Object obj,Object...args)</span><br></pre></td></tr></table></figure>
+
+<p>其中参数 obj 是实例化后的对象，args 为用于方法调用的参数，如果我们获取的方法为非静态方法，那么第一个参数是类对象，如果是一个静态方法，那么我第一个参数就是一个类</p>
+<p>这也比较好理解了，我们正常执行方法是 [1].method([2], [3], [4]…) ，其实在反射里就是 method.invoke([1], [2], [3], [4]…) 。</p>
+<p>下面是整个反射利用的过程</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);//获得Class对象</span><br><span class="line">Constructor constructor =cla.getConstructor(String.class);//获得构造器</span><br><span class="line">Object obj=constructor.newInstance(&quot;lituer&quot;);//实例化对象</span><br><span class="line">Method method = cla.getMethod(&quot;test&quot;);//获得方法</span><br><span class="line">method.invoke(obj);//执行方法</span><br></pre></td></tr></table></figure>
+
+<h3 id="获得类属性的修改"><a href="#获得类属性的修改" class="headerlink" title="获得类属性的修改"></a>获得类属性的修改</h3><p>我们使用set方法</p>
+<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/1f659533-c1f8-4e23-b059-28990520c152.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/1f659533-c1f8-4e23-b059-28990520c152.png" alt="image.png"></a></p>
+<p>我们当修改我们类中的属性可以通过</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Field field = cla.getField(&quot;x&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>先获得属性，然后通过set来修改</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Field field = cla.getField(&quot;x&quot;);</span><br><span class="line">field.set(p,&quot;xiaoming&quot;);//这个p是Class类的实例对象</span><br></pre></td></tr></table></figure>
+
+<p>如果说是私有属性 的话我们怎么修改</p>
+<p>第一步我们需要获得这个属性我们使用getDeclaredField</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Field field = cla.getDeclaredField(&quot;y&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>然后我们还需要setAccessible</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Field field = cla.getDeclaredField(&quot;y&quot;);</span><br><span class="line">field.setAccessible(true);</span><br><span class="line">field.set(p,&quot;xiaoming&quot;);</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java漏洞</title>
+    <url>/2023/08/26/Java%E6%BC%8F%E6%B4%9E/</url>
+    <content><![CDATA[<h1 id="一、跨站脚本（Cross-Site-Scripting，XSS）"><a href="#一、跨站脚本（Cross-Site-Scripting，XSS）" class="headerlink" title="一、跨站脚本（Cross-Site Scripting，XSS）"></a>一、跨站脚本（Cross-Site Scripting，XSS）</h1><span id="more"></span>
+
+<p>是一种常见的Web安全漏洞，攻击者通过注入恶意代码到网页中，使得这些代码被其他用户的浏览器执行，从而攻击用户的计算机系统.<br><strong>XSS攻击通常分为以下几类：</strong></p>
+<ul>
+<li><p>反射型XSS：攻击者构造一个恶意的URL，将恶意代码注入到URL中，诱使用户点击该URL，从而触发攻击。</p>
+</li>
+<li><p>存储型XSS：攻击者将恶意代码存储在服务器上的数据库中，当其他用户访问相应的页面时，这些代码会被读取并执行，从而攻击用户。</p>
+</li>
+<li><p>DOM-based XSS：攻击者通过修改浏览器中的DOM树，将恶意代码注入到网页中，诱使用户执行恶意代码。</p>
+</li>
+</ul>
+<p>当Java程序扫描到跨站脚本漏洞时，通常会给出一些具体的提示信息，比如漏洞出现的位置、攻击者可以注入的代码类型等等。一般来说，修复跨站脚本漏洞需要在应用程序的代码中加入一些安全措施，如输入验证、输出过滤等，以防止攻击者注入恶意代码。<br><strong>跨站脚本示例：</strong></p>
+<p>示例一：</p>
+<p>假设有一个搜索页面，用户在该页面输入一个关键词，然后该关键词将被发送到服务器进行搜索，最后将搜索结果返回给用户。</p>
+<p>如果程序没有对用户输入的关键词进行过滤，攻击者就可以在搜索框中输入一段恶意的脚本代码，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;alert(&#x27;XSS attack&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当其他用户访问该页面并搜索该关键词时，这段恶意代码就会被服务器返回给用户的浏览器执行，从而弹出一个警告框，对用户进行攻击。</p>
+<p>为了避免这种攻击，程序应该对用户输入的关键词进行过滤和转义，以确保任何恶意的脚本都无法执行。例如，可以使用一些Web开发框架提供的安全函数来实现这一点，如在Java中可以使用ESAPI库中提供的函数进行输入验证和输出过滤。</p>
+<p>示例二</p>
+<p>假设有一个Java Web应用程序，其中一个Servlet接收一个名为”message”的参数，并将其显示在页面上。代码如下：</p>
+<pre><code>@WebServlet(&quot;/xss&quot;)
+public class XssServlet extends HttpServlet &#123;
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+        String message = request.getParameter(&quot;message&quot;);
+        response.setContentType(&quot;text/html&quot;);
+        PrintWriter out = response.getWriter();
+        out.println(&quot;&lt;html&gt;&quot;);
+        out.println(&quot;&lt;head&gt;&quot;);
+        out.println(&quot;&lt;title&gt;XSS漏洞示例&lt;/title&gt;&quot;);
+        out.println(&quot;&lt;/head&gt;&quot;);
+        out.println(&quot;&lt;body&gt;&quot;);
+        out.println(&quot;&lt;h1&gt;&quot; + message + &quot;&lt;/h1&gt;&quot;);
+        out.println(&quot;&lt;/body&gt;&quot;);
+        out.println(&quot;&lt;/html&gt;&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>如果程序没有对用户输入的”message”参数进行过滤和转义，攻击者就可以在URL中注入恶意代码，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/xss?message=&lt;script&gt;alert(&#x27;XSS attack&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当其他用户访问该URL时，这段恶意代码就会被服务器返回给用户的浏览器执行，从而弹出一个警告框，对用户进行攻击。</p>
+<p>为了避免这种攻击，程序应该对用户输入的参数进行过滤和转义，以确保任何恶意的脚本都无法执行。例如，在Java中可以使用ESAPI库中提供的函数进行输入验证和输出过滤，以确保用户输入的数据不会包含任何恶意的脚本。</p>
+<h1 id="二、SQL注入（SQL-Injection）漏洞"><a href="#二、SQL注入（SQL-Injection）漏洞" class="headerlink" title="二、SQL注入（SQL Injection）漏洞"></a>二、SQL注入（SQL Injection）漏洞</h1><p>攻击者通过在Web应用程序中注入恶意SQL语句来获取敏感信息，修改数据或者执行任意代码。<br><strong>SQL注入漏洞示例</strong></p>
+<p>假设一个Web应用程序中有一个搜索功能，用户可以通过输入关键字搜索相关内容。如果程序没有对用户输入的关键字进行过滤，攻击者就可以在搜索框中注入恶意的SQL语句，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#x27; OR 1=1; --</span><br></pre></td></tr></table></figure>
+
+<p>这段代码将会被拼接到SQL查询语句中，并使查询语句变为：</p>
+<pre><code>SELECT * FROM articles WHERE title=&#39;&#39; OR 1=1; -- &#39;
+</code></pre>
+<p>攻击者就可以绕过身份验证，获取文章列表中所有文章的信息</p>
+<h1 id="三、文件包含（File-Inclusion）漏洞"><a href="#三、文件包含（File-Inclusion）漏洞" class="headerlink" title="三、文件包含（File Inclusion）漏洞"></a>三、文件包含（File Inclusion）漏洞</h1><p>攻击者利用Web应用程序中存在的文件包含漏洞，向应用程序中注入恶意代码，以获取敏感信息或者执行任意代码。<br><strong>文件包含漏洞示例</strong></p>
+<p>假设一个Web应用程序中有一个功能，允许用户在服务器上查看指定的文件。如果程序没有对用户输入的文件名进行过滤，攻击者就可以通过在URL中注入恶意的文件名来读取任意文件，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/viewfile.php?file=../../../etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p>这段代码将会被拼接到文件路径中，并使程序读取&#x2F;etc&#x2F;passwd文件并将其显示在页面上，攻击者就可以获取敏感信息</p>
+<h1 id="四、CSRF（Cross-Site-Request-Forgery）漏洞"><a href="#四、CSRF（Cross-Site-Request-Forgery）漏洞" class="headerlink" title="四、CSRF（Cross-Site Request Forgery）漏洞"></a>四、CSRF（Cross-Site Request Forgery）漏洞</h1><p>攻击者通过欺骗用户在已经登录的Web应用程序中执行某些操作，从而窃取用户的身份验证信息或者执行任意操作。<br><strong>CSRF漏洞示例</strong></p>
+<p>假设一个Web应用程序中有一个功能，允许用户通过访问URL来删除自己的帖子。如果程序没有进行CSRF防护，攻击者就可以伪造一个带有删除帖子的请求的页面，欺骗用户点击链接，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;http://example.com/deletepost.php?postid=123&amp;action=delete&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当用户点击该链接时，程序将会执行删除操作，攻击者就可以删除用户的帖子。</p>
+<h1 id="五、认证与授权漏洞"><a href="#五、认证与授权漏洞" class="headerlink" title="五、认证与授权漏洞"></a>五、认证与授权漏洞</h1><p>攻击者通过欺骗或者绕过Web应用程序的身份验证或者授权机制，获取未授权的访问权限或者执行任意操作。</p>
+<p>认证与授权漏洞示例<br>假设一个Web应用程序中的一个页面需要特定的权限才能访问，例如管理员权限。如果程序没有进行足够的身份验证或者授权机制，攻击者就可以绕过该机制，获取管理员权限并执行任意操作。</p>
+<h1 id="六、逻辑漏洞"><a href="#六、逻辑漏洞" class="headerlink" title="六、逻辑漏洞"></a>六、逻辑漏洞</h1><p>攻击者利用Web应用程序中的逻辑漏洞，绕过应用程序的安全措施，获取未授权的访问权限或者执行任意操作。</p>
+<p>逻辑漏洞示例<br>假设一个Web应用程序中的一个功能需要进行支付，用户需要在完成支付后才能获得相应的商品或者服务。如果程序存在逻辑漏洞，例如没有对支付进行验证或者没有对用户状态进行检查，攻击者就可以绕过支付流程，获得相应的商品或者服务，而不需要真正支付<br>七、敏感数据泄露漏洞</p>
+<p>Web应用程序在处理敏感信息时出现漏洞，导致敏感信息泄露。</p>
+<p>敏感数据泄露漏洞示例<br>假设一个Web应用程序中存储了用户的敏感信息，例如信用卡号、社保号码等等。如果程序没有对这些信息进行足够的保护，攻击者就可以通过利用程序的漏洞或者直接攻击数据库等方式获取这些信息。</p>
+<h1 id="八、命令注入（Command-Injection）漏洞"><a href="#八、命令注入（Command-Injection）漏洞" class="headerlink" title="八、命令注入（Command Injection）漏洞"></a>八、命令注入（Command Injection）漏洞</h1><p>攻击者通过在Web应用程序中注入恶意命令，从而获取敏感信息或者执行任意代码.</p>
+<p>命令注入漏洞示例<br>假设一个Web应用程序中有一个命令行操作的功能，例如允许管理员执行一些命令来管理服务器。如果程序没有对用户输入的命令进行过滤，攻击者就可以在命令中注入恶意的代码，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">; rm -rf /</span><br></pre></td></tr></table></figure>
+
+<p>这段代码将会被拼接到命令中，并使命令变为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls; rm -rf /</span><br></pre></td></tr></table></figure>
+
+<p>攻击者就可以执行任意代码，删除服务器上的所有文件。</p>
+<p>需要注意的是，以上示例仅仅是每个漏洞类型的一个简单示例，实际的漏洞可能会更加复杂，攻击者也会不断地创造新的攻击方式来绕过应用程序的防御措施。为了确保Web应用程序的安全性，需要开发人员注重代码的安全性，以及定期进行安全测试和漏洞扫描</p>
+<h1 id="审计方法总结"><a href="#审计方法总结" class="headerlink" title="审计方法总结"></a>审计方法总结</h1><p>主要代码审计方法是跟踪用户输入数据和敏感函数参数回溯：跟踪用户的输入数据，判断数据进入的每一个代码逻辑是否有可利用的点，此处的代码逻辑可以是一个函数，或者是条小小的条件判断语句。</p>
+<p>敏感函数参数回溯，根据敏感函数，逆向追踪参数传递的过程。这个方法是最高效，最常用的方法。大多数漏洞的产生是因为函数的使用不当导致的，只要找到这些函数，就能够快速挖掘想要的漏洞。</p>
+<p>以下是基于关键词审计技巧总结：</p>
+<p>在搜索时要注意是否为整个单词,以及小写敏感这些设置</p>
+<table>
+<thead>
+<tr>
+<th align="center">漏洞名称</th>
+<th align="center">关键词</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">密码硬编码、密码明文存储</td>
+<td align="center">password 、pass、jdbc</td>
+</tr>
+<tr>
+<td align="center">XSS</td>
+<td align="center">getParamter、&lt;%&#x3D;、param.</td>
+</tr>
+<tr>
+<td align="center">SQL 注入</td>
+<td align="center">Select、Dao 、from 、delete 、update、insert</td>
+</tr>
+<tr>
+<td align="center">任意文件下载</td>
+<td align="center">download 、fileName 、filePath、write、getFile、getWriter</td>
+</tr>
+<tr>
+<td align="center">任意文件删除</td>
+<td align="center">Delete、deleteFile、fileName 、filePath</td>
+</tr>
+<tr>
+<td align="center">文件上传</td>
+<td align="center">Upload、write、fileName 、filePath</td>
+</tr>
+<tr>
+<td align="center">命令注入</td>
+<td align="center">getRuntime、exec、cmd、shell</td>
+</tr>
+<tr>
+<td align="center">缓冲区溢出</td>
+<td align="center">strcpy,strcat,scanf,memcpy,memmove,memeccpy<br/>Getc(),fgetc(),getchar;read,printf</td>
+</tr>
+<tr>
+<td align="center">XML 注入</td>
+<td align="center">DocumentBuilder、XMLStreamReader、SAXBuilder、SAXParser<br/>SAXSource 、TransformerFactory 、SAXTransformerFactory 、</td>
+</tr>
+<tr>
+<td align="center">反序列化漏洞</td>
+<td align="center">ObjectInputStream.readObject、ObjectInputStream.readUnshared、XMLDecoder.readObject<br/>Yaml.load 、 XStream.fromXML 、 ObjectMapper.readValue 、JSON.parseObject</td>
+</tr>
+<tr>
+<td align="center">url 跳转</td>
+<td align="center">sendRedirect、setHeader、forward</td>
+</tr>
+<tr>
+<td align="center">不安全组件暴露</td>
+<td align="center">activity、Broadcast Receiver、Content Provider、Service、 inter-filter</td>
+</tr>
+<tr>
+<td align="center">日志记录敏感信息</td>
+<td align="center">log log.info logger.info</td>
+</tr>
+<tr>
+<td align="center">代码执行</td>
+<td align="center">eval、system、exec</td>
+</tr>
+</tbody></table>
+<h1 id="其他漏洞审计方法"><a href="#其他漏洞审计方法" class="headerlink" title="其他漏洞审计方法"></a>其他漏洞审计方法</h1><ol>
+<li>CSRF</li>
+</ol>
+<p>审计方法:通过查看配置文件有没有配置 csrf 全局过滤器，如果没有则重点看每个操作前有没有添加 token 的防护机制</p>
+<p>在Smpkpiappealcontroller.java中200处，直接用用ids控制删除操作，而没有添加防 csrf的随机token验证检查，存在csrf漏洞。</p>
+<p> Java&#x2F;main&#x2F;com&#x2F;venustech&#x2F;tsoc&#x2F;cupid&#x2F;smp&#x2F;kpi&#x2F;dao&#x2F;smpkpideclardao.java 517行，对传</p>
+<p>入的ids进行删除操作。</p>
+<ol start="2">
+<li>Struts2 远程代码执行漏洞</li>
+</ol>
+<p>审计方法：查看 struts 插件的版本信息是否为漏洞版本漏洞版本查询网址：<a href="https://www.exploit-db.com/">https://www.exploit-db.com/</a></p>
+<ol start="3">
+<li>越权操作</li>
+</ol>
+<p>审计方法：重点关注用户操作请求时查看是否有对当前登陆用户权限做校验从而确定是否存在漏洞，有些厂商会使用一些主流的权限框架，例如 shiro ,spring security 等框架，那么需要重点关注框架的配置文件以及实现方法</p>
+<p>漏洞示例：</p>
+<p>在以下文件中采用了 shiro 框架进行权限控制，在代码 58-72 行处为控制访问路径的权限设置，51-55 行处为对 admin 路径下访问限制，只有 SysyUserFilter 设置了 isAccessAllowed 方法,其他过滤均没有</p>
+<p>SysUserFilter 中 isAccessAllowed 具体实现方法如下，90-93 行处没有对是否为当前用户进行判断，导致了越权</p>
+<p>其他过滤文件均只设置了 onAccessDaniad()方法</p>
+<p>如果没有使用框架的话，就要注意每个操作是否有权限</p>
+<p>代码 7 行处获取 session 里的 username，只判断了 username 是不是为空，如果在截取数据包的时候将 username 再重新赋一个值就有可能造成越权漏洞。</p>
+<p> 以这个年度服务费用编制功能为例，测试一下，代码如图所示：</p>
+<ol start="4">
+<li>会话超时设置</li>
+</ol>
+<p>审计方法：</p>
+<p>Javaweb 应用会话超时设置一般有俩种方法：一是在配置文件 web.xml 设置</p>
+<p> 二是通过 java 代码设置</p>
+<ol start="5">
+<li>敏感数据弱加密</li>
+</ol>
+<p>审计方法：</p>
+<p>敏感数据弱加密主要看数据传输中的加密方法，一般写在工具类 util 中以下文件中为 base64 编码方法</p>
+<p>​	</p>
+<p>​	</p>
+<p>​	</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -2173,845 +2944,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java安全</title>
-    <url>/2023/08/15/Java%E5%AE%89%E5%85%A8/</url>
-    <content><![CDATA[<h1 id="Java安全"><a href="#Java安全" class="headerlink" title="Java安全"></a>Java安全</h1><span id="more"></span>
-
-<p>java通过以下技术来实现安全机制</p>
-<ul>
-<li>语言设计特性(对数组边界检查，只进行合法的类型转换，无指针算法)</li>
-<li>访问控制机制，用于控制代码能够执行的功能</li>
-<li>代码签名，java代码的作者能够用加密算法来表明java代码的作者</li>
-</ul>
-<p>一.类加载器</p>
-<p><a href="https://so.csdn.net/so/search?q=%E8%99%9A%E6%8B%9F%E6%9C%BA&spm=1001.2101.3001.7020">虚拟机</a>只加载程序需要的类文件，例如程序从MyProgram.Class执行，下面是虚拟机执行步骤：</p>
-<ol>
-<li>虚拟机有一个用于加载类文件的机制，例如从磁盘文件加载或web请求访问，使用该价值加载MyProgram.Class</li>
-<li>如果MyProgram.Class拥有一个类型为另一个类的实例变量，或者拥有超类，那么这些类文件也被加载</li>
-<li>接着虚拟机执行MyProgram.Class的main方法，因为它是静态，无需实例化</li>
-<li>如果main方法或者调用其他方法使用到得类，这些类被加载</li>
-</ol>
-<p>  类加载机制至少拥有三个类加载器：</p>
-<ul>
-<li>引导类加载器 负责加载系统类，从JAR文件rt.jar中加载，它是虚拟机整体一部分。而且它是C语言实现的，另外引导类加载器没有ClassLoader对象</li>
-<li>扩展类加载器 用于从jre&#x2F;lib&#x2F;ext目录加载“标准的扩展”，</li>
-<li>系统类加载器(也陈为应用类加载器) 加载应用类，它是在CLASSPATH环境变量或者是-classpath命令行选项设置的类目录里或者是JAR&#x2F;ZIP文件里查找这些类。</li>
-</ul>
-<h1 id="Java线程安全"><a href="#Java线程安全" class="headerlink" title="Java线程安全"></a>Java线程安全</h1><p>一、什么是线程安全</p>
-<p>想给出一个线程安全的确切定义是复杂的，但我们可以这样认为：<br>如果多线程环境下代码运行的结果是符合我们预期的，即在单线程环境应该的结果，则说这个程序是线程安全的</p>
-<p>🌰栗子</p>
-<pre><code>package Thread;
- 
-public class demo77 &#123;
-    private static int count;
-    public static void main(String[] args) throws InterruptedException &#123;
-        Thread t1 = new Thread(() -&gt; &#123;
-            for (int i = 0; i &lt; 5000; i++) &#123;
-                count++;
-            &#125;
-        &#125;);
-        Thread t2 = new Thread(() -&gt; &#123;
-            for (int i = 0; i &lt; 5000; i++) &#123;
-                count++;
-            &#125;
-        &#125;);
-        t1.start(); // 两个线程在创建好了后，线程所对应的PCB加入到系统链表，参与系统调度
-        t2.start();
-        // 让主线程main等t1、t2执行完了再接着往下走
-        t1.join();
-        t2.join();
-        System.out.println(count);
-    &#125;
-&#125;
-</code></pre>
-<p> 想这样，在多线程情况下，程序的运行结果不符合我们的预期，这被称为线程不安全</p>
-<p>二、造成线程不安全的原因 </p>
-<p>根本原因：操作系统的随机调度执行，抢占式执行 </p>
-<pre><code>还有：我们可以看到我们的count是一个全局变量，我们的线程t1、线程t2对count变量同时都进行了修改——++操作（为什么说是同时呢，因为我们的t1线程、t2线程在创建完了后就参与到系统调度，由系统随机分配线程的执行，可能是t2线程先执行10个指令然后t1再执行10个指令，相当于是同时）
-</code></pre>
-<p>那么我们就改一下代码让t1、t2分批次对count修改不就行了吗？</p>
-<pre><code>package Thread;
- 
-public class demo77 &#123;
-    private static int count;
-    public static void main(String[] args) throws InterruptedException &#123;
-        Thread t1 = new Thread(() -&gt; &#123;
-            for (int i = 0; i &lt; 5000; i++) &#123;
-                count++;
-            &#125;
- 
-        &#125;);
-        Thread t2 = new Thread(() -&gt; &#123;
-            try &#123;
-                t1.join();// 等t1线程执行完了，t2线程再执行
-            &#125; catch (InterruptedException e) &#123;
-                e.printStackTrace();
-            &#125;
-            for (int i = 0; i &lt; 5000; i++) &#123;
-                count++;
-            &#125;
-        &#125;);
-        t1.start(); // 两个线程在创建好了后，线程所对应的PCB加入到系统链表，参与系统调度
-        t2.start();
- 
-        t2.join(); // 等t2线程执行完了，主线程main再接着执行，执行顺序：t1-&gt;t2-&gt;打印count
-        System.out.println(count);
-    &#125;
-&#125;
-</code></pre>
-<p>大家有没有想过为什么多个线程同时执行count++的时候就会出现BUG呢？</p>
-<p>这是因为我们多个线程同时对同一变量修改的所造成的BUG往往和我们操作的原子性有关！！！这时候的操作往往不是一个整体，多个线程并发执行这些操作就可能出现一些问题</p>
-<p>如果我们在变量修改过程中，操作是原子的——只是对应一个机器指令，那么即使是多个线程同时对同一个变量修改也不一定会造成BUG,但也可能造成BUG——要看具体的业务场景</p>
-<p>总之我们要避免多个线程同时对同一个变量来操作</p>
-<p>🍑 对原子性在多线程并发执行中出现问题的分析</p>
-<p>🔔🔔注意：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">像 count++ 其实一行代码, 对应三个机器指令!</span><br><span class="line">1)从内存读取数据到 CPU load</span><br><span class="line">2)在 CPU 寄存器中,完成加法运算 add</span><br><span class="line">3)把寄存器的数据写回到内存中 save</span><br><span class="line">这几个步骤单线程下执行,没有任何问题</span><br><span class="line">如果是多线程并发执行,这个就不一定了!!</span><br></pre></td></tr></table></figure>
-
-<p>当我们执行t1.start()、t2.start()后，t1线程和t2线程就在操作系统内核中创建出来了，t1、t2线程就参与到了系统调度当中</p>
-<p>而调度是随机的——他可能先让t1执行几个指令，然后t2再执行几个指令、最后再把CPU的控制权交给t1。</p>
-<p>于是因为系统的调度是随机的（这是罪魁祸首，但我们无法改变），当我们多个线程同时执行一些不是整体的操作的时候（++或–）由于并发就会产生一些问题</p>
-<p> <strong>🌰栗子一</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/15ac811137144c5abc01c49068c5a363.png" alt="img"></p>
-<p><strong>🌰栗子二</strong> </p>
-<p><img src="https://img-blog.csdnimg.cn/2cb8f0784e024604a6c09d38882f0676.png" alt="img"></p>
-<p>为什么会产生上面的BUG呢？</p>
-<p>就是因为我们的++操作不是一个整体，是一个由多个指令所组成的操作 </p>
-<p>解决方案：也是加锁：“synchronized”,意味着把这三条指令打包成了一组指令，然后把这一组指令看出成一条指令了，类似于数学里的“整体代换”思想。</p>
-<p> <img src="https://img-blog.csdnimg.cn/82dc94c8208f479e86508569793a36be.png" alt="img"></p>
-<p> 首先我们要明白加锁操作都是针对某一个对象来进行的（加锁本质就是给对象头里设置个标记），加锁有以下几种形式</p>
-<p>形式一、 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class demo7777 &#123;</span><br><span class="line">	public static Object object1 = new Object();</span><br><span class="line">	public static Object object2 = new Object();</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Thread t1 = new Thread(() -&gt;&#123;</span><br><span class="line">			synchronized (object1)&#123;//对object1对象进行了加锁操作</span><br><span class="line">				System.out.println(&quot;t1线程start&quot;);</span><br><span class="line">				try &#123;</span><br><span class="line">						Thread.sleep( millis: 1000);</span><br><span class="line">				&#125; catch (InterruptedException e)&#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println(&quot;t1线程finish&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">t1.start();</span><br></pre></td></tr></table></figure>
-
-<p> 形式二、</p>
-<pre><code>package Thread;
- 
-class Counter &#123;
-    public static int count;
-//    public synchronized void increase() &#123;
-//        ++count; 这两种写法视为是等价的
-//    &#125;
-    public void increase() &#123;
-        synchronized (this) &#123; // 这里this可以是任意对象，this可以有多个Counter counter1 = new Counter(), Counter counter2 = new Counter();
-            ++count;
-        &#125;
-    &#125;
-&#125;
-public class demo777 &#123;
- 
-    public static void main(String[] args) throws InterruptedException &#123;
-        Counter counter1 = new Counter();
-        Counter counter2 = new Counter();
-        Thread t1 = new Thread(() -&gt; &#123;
-            for (int i = 0; i &lt; 5000; i++) &#123;
-                counter1.increase();
-            &#125;
-        &#125;);
-        Thread t2 = new Thread(() -&gt; &#123;
-            for (int i = 0; i &lt; 5000; i++) &#123;
-                counter1.increase();
-            &#125;
-            // 多个线程去调用这个increase方法，其实就是针对这个Counter对象counter1来进行加锁
-            // 如果一个线程t1获取到了该对象counter1的锁，那么另一个线程t2就要等到counter1对应的锁开了后（t1线程执行完该锁里的内容——++操作）t2才能执行++操作
-            // 此时++操作相当于是成为了一个整体（相当于一个指令，当一个线程再执行这个加锁的整体的指令的时候，另一个线程只能阻塞等待）
-        &#125;);
-        t1.start();
-        t2.start();
-        t1.join();
-        t2.join(); // 确保线程t1和线程t2都执行完了，main主线程再接着执行——输出count
-        System.out.println(Counter.count); // 输出10000
-    &#125;
-&#125;
-</code></pre>
-<p>形式三、 </p>
-<p> 加锁本质 就是给对象头里设置个标记,它的成员对应的对象的对象头不受影响</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public synchronized static void func1() &#123;</span><br><span class="line">&#125;</span><br><span class="line">public static void func2() &#123;</span><br><span class="line">	synchronized(Counter.class)&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用类对象加锁,和类里有啥成员没关系~~<br>synchronized static、Counter.class这俩写法视为是等价的!!<br>类对象是整个程序里唯一的!!<br>这样加锁,但凡是调用到 func1 和 func2，之间都会产生竞争!!</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Counter1 &#123;</span><br><span class="line">	public static int count;</span><br><span class="line">	public synchronized static void increase() &#123;</span><br><span class="line">		++count;</span><br><span class="line">	&#125;</span><br><span class="line">public class demo77777 </span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Counter1 counter1 = new Counter1();</span><br><span class="line">		Thread t1 = new Thread(() -&gt;&#123;</span><br><span class="line">			for (int i = 日; i &lt; 500; i++) &#123;</span><br><span class="line">				System.out.println(&quot;t1 start&quot;);</span><br><span class="line">				Counter1.increase();</span><br><span class="line">				System.out.printin(&quot;t1 finish&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		t1.start();</span><br></pre></td></tr></table></figure>
-
-<p>当我们给不同的对象上锁后，如果用住房来比喻</p>
-<pre><code>不同的房间相当于是不同的对象，不同的线程相当于是不同的客人
-
-如果房间1住了客人A，那么房间1就上了锁，客人B就需要等客人A不再住房间1（开了锁）然后客人B才能住房间1；或者客人B住其他的房间（其他的对象，没上锁的）
-
-package Thread;
-// 测试线程竞争，对锁的竞争
-public class demo7777 &#123;
-    public static Object object1 = new Object();
-    public static Object object2 = new Object();
-    public static void main(String[] args) &#123;
-        Thread t1 = new Thread(() -&gt; &#123;
-            // 针对object1对象进行加锁，加锁操作是针对某一个对象来进行的
-            synchronized (object1) &#123;
-                System.out.println(&quot;t1线程start&quot;);
-                try &#123;
-                    Thread.sleep(1000);
-                &#125; catch (InterruptedException e) &#123;
-                    e.printStackTrace();
-                &#125;
-                System.out.println(&quot;t1线程finish&quot;);
-            &#125;
-        &#125;);
-        t1.start();
-        Thread t2 = new Thread(() -&gt; &#123;
-            synchronized (object1) &#123;  // 针对object1对象来进行加锁操作
-                System.out.println(&quot;t2线程start&quot;);
-                try &#123;
-                    Thread.sleep(1000);
-                &#125; catch (InterruptedException e) &#123;
-                    e.printStackTrace();
-                &#125;
-                System.out.println(&quot;t2线程finish&quot;);
-            &#125;
-        &#125;);
-        t2.start();
-    &#125;
-&#125;
-</code></pre>
-<p>无论是使用哪种用法,使用 synchronized 的时候都是要明确锁对象!(明确是对哪个对象加锁)</p>
-<p>只有当两个线程针对同一个对象加锁的时候,才会发生竞争</p>
-<p>如果是两个线程针对不同对象加锁,则没有竞争~</p>
-<p>我们上面就是两个线程t1和t2同时对object1这个对象进行了加锁，然后t1与t2直接就产生了竞争。从上述代码的实现过程中我们也可以看到，等到t1线程执行完了后，t2线程才开始执行。</p>
-<p>但如果是两个线程对不同的对象进行加锁，则没有竞争（就像两个客人（两个线程）住不同的房间（不同的对象）当然不会发生竞争。</p>
-<pre><code>package Thread;
-// 测试线程竞争，对锁的竞争
-public class demo7777 &#123;
-    public static Object object1 = new Object();
-    public static Object object2 = new Object();
-    public static void main(String[] args) &#123;
-        Thread t1 = new Thread(() -&gt; &#123;
-            synchronized (object1) &#123; // 针对object1对象来进行加锁，加锁操作是针对一个对象来进行的
-                System.out.println(&quot;t1线程start&quot;);
-                try &#123;
-                    Thread.sleep(1000);
-                &#125; catch (InterruptedException e) &#123;
-                    e.printStackTrace();
-                &#125;
-                System.out.println(&quot;t1线程finish&quot;);
-            &#125;
-        &#125;);
-        t1.start();
-        Thread t2 = new Thread(() -&gt; &#123;
-            synchronized (object2) &#123; // 针对object2对象进行加锁
-                System.out.println(&quot;t2线程start&quot;);
-                try &#123;
-                    Thread.sleep(1000);
-                &#125; catch (InterruptedException e) &#123;
-                    e.printStackTrace();
-                &#125;
-                System.out.println(&quot;t2线程finish&quot;);
-            &#125;
-        &#125;);
-        t2.start();
-    &#125;
-&#125;
-</code></pre>
-<p> 两个线程可以做到同时执行</p>
-<h1 id="java安全入门-一"><a href="#java安全入门-一" class="headerlink" title="java安全入门(一)"></a>java安全入门(一)</h1><p>首先，我们需要了解java得基本语法，没有了解得同学，建议学习完java得基本语法之后，再来学习</p>
-<h2 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h2><p>首先介绍最基本的 java中的命令执行</p>
-<p>我们以后，最常用的poc，就是下面的这条</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Calc</span> &#123;</span><br><span class="line">    <span class="comment">//当前执行命令无回显</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        Runtime.getRuntime().exec(<span class="string">&quot;calc.exe&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里，在额外普及一下，如果需要回显怎么办的问题，主要是用IO流将命令执行后的字节加载出来，然后最基本的按行读取，就可以了。</p>
-<p>在进行网站开发入JSP的时候，我们使用的JSP一句话木马也是根据这个原理进行编写的。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Ping</span> &#123;</span><br><span class="line">    <span class="comment">//我们需要执行有回显得命令</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">Process</span> <span class="variable">process</span> <span class="operator">=</span> Runtime.getRuntime().exec(<span class="string">&quot;ping baidu.com&quot;</span>);</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> process.getInputStream();</span><br><span class="line">        <span class="type">InputStreamReader</span> <span class="variable">inputStreamReader</span> <span class="operator">=</span>  <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(inputStream);</span><br><span class="line">        <span class="type">BufferedReader</span> <span class="variable">inputBufferedReader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(inputStreamReader);</span><br><span class="line">        StringBuilder stringBuilder=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">while</span> ((line = inputBufferedReader.readLine()) != <span class="literal">null</span>) &#123;</span><br><span class="line">            stringBuilder.append(line);</span><br><span class="line">            System.out.println(line);</span><br><span class="line">        &#125;</span><br><span class="line">        inputBufferedReader.close();</span><br><span class="line">        inputBufferedReader=<span class="literal">null</span>;</span><br><span class="line">        inputStreamReader.close();</span><br><span class="line">        inputStreamReader=<span class="literal">null</span>;</span><br><span class="line">        inputStream.close();</span><br><span class="line">        inputStream=<span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Runtime的其他用法"><a href="#Runtime的其他用法" class="headerlink" title="Runtime的其他用法"></a>Runtime的其他用法</h3><p>我们在进行命令执行的时候，是需要区分操作系统的，不同的操作系统所执行的命令方式绝对是不一样的，</p>
-<h4 id="Windows下"><a href="#Windows下" class="headerlink" title="Windows下"></a>Windows下</h4><p>windows 我们可以调用 cmd或者powershell去执行命令，但是powershell一般会限制执行策略，所以使用cmd一般是比较保险的</p>
-<p><a href="https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2">https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2</a></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String [] cmd=&#123;<span class="string">&quot;cmd&quot;</span>,<span class="string">&quot;/C&quot;</span>,<span class="string">&quot;calc.exe&quot;</span>&#125;; </span><br><span class="line"><span class="type">Process</span> <span class="variable">proc</span> <span class="operator">=</span>Runtime.getRuntime().exec(cmd);</span><br></pre></td></tr></table></figure>
-
-<h4 id="linux下"><a href="#linux下" class="headerlink" title="linux下"></a>linux下</h4><p>对于linux的话，我们一般可以使用<code>bash</code>进行命令的执行，通常情况下是会有的，但是有的情况，可能没有bash，我们就可以使用<code>sh</code>来进行替代，</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String [] cmd=&#123;<span class="string">&quot;/bin/sh&quot;</span>,<span class="string">&quot;-c&quot;</span>,<span class="string">&quot;ls&quot;</span>&#125;; </span><br><span class="line"><span class="type">Process</span> <span class="variable">proc</span> <span class="operator">=</span>Runtime.getRuntime().exec(cmd);</span><br></pre></td></tr></table></figure>
-
-<p>于是乎，在后面我们写exp或者一些工具的时候，就需要根据主机的操作系统进行甄别</p>
-<p>最简单的办法就是使用<code>getProperty</code>函数进行<code>os</code>的名称</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.getProperty(<span class="string">&quot;os.name&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>初步demo</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">property</span> <span class="operator">=</span> System.getProperty(<span class="string">&quot;os.name&quot;</span>);</span><br><span class="line">        String [] cmd1=&#123;<span class="string">&quot;cmd&quot;</span>,<span class="string">&quot;/C&quot;</span>,<span class="string">&quot;start calc.exe&quot;</span>&#125;;</span><br><span class="line">        String [] cmd2=&#123;<span class="string">&quot;/bin/sh&quot;</span>,<span class="string">&quot;-c&quot;</span>,<span class="string">&quot;ls&quot;</span>&#125;;</span><br><span class="line">        String [] cmd = <span class="literal">null</span>;</span><br><span class="line">        System.out.println(property);</span><br><span class="line">        <span class="keyword">if</span> (property.contains(<span class="string">&quot;Windows&quot;</span>))&#123;</span><br><span class="line">             cmd= cmd1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">             cmd= cmd1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">Process</span> <span class="variable">process</span> <span class="operator">=</span>Runtime.getRuntime().exec(cmd);</span><br><span class="line">        <span class="comment">//取得命令结果的输出流</span></span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> process.getInputStream();</span><br><span class="line">        <span class="comment">//用输出读取去读</span></span><br><span class="line">        <span class="type">InputStreamReader</span> <span class="variable">inputStreamReader</span> <span class="operator">=</span>  <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(inputStream);</span><br><span class="line">        <span class="comment">//创建缓冲器</span></span><br><span class="line">        <span class="type">BufferedReader</span> <span class="variable">inputBufferedReader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(inputStreamReader);</span><br><span class="line">        StringBuilder stringBuilder=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">while</span> ((line = inputBufferedReader.readLine()) != <span class="literal">null</span>) &#123;</span><br><span class="line">            stringBuilder.append(line);</span><br><span class="line">            System.out.println(line);</span><br><span class="line">        &#125;</span><br><span class="line">        inputBufferedReader.close();</span><br><span class="line">        inputBufferedReader=<span class="literal">null</span>;</span><br><span class="line">        inputStreamReader.close();</span><br><span class="line">        inputStreamReader=<span class="literal">null</span>;</span><br><span class="line">        inputStream.close();</span><br><span class="line">        inputStream=<span class="literal">null</span>;</span><br><span class="line"><span class="comment">//        return stringBuilder;</span></span><br><span class="line"><span class="comment">//        这里如果要返回的值的话，返回的应该是stringBuilder</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="java反射的概念"><a href="#java反射的概念" class="headerlink" title="java反射的概念"></a>java反射的概念</h2><p>Java 的反射机制是指在运行状态中，对于任意一个类都能够知道这个类所有的属性和方法； 并且对于任意一个对象，都能够调用它的任意一个方法；这种动态获取信息以及动态调用对象方法的功能成为Java语言的反射机制。</p>
-<blockquote>
-<p>java有四个基本特征，封装，继承，多态，抽象</p>
-<p>Java的反射（reflection）机制是指在程序的运行状态中，可以构造任意一个类的对象，可以了解任意一个对象所属的类，可以了解任意一个类的成员变量和方法，可以调用任意一个对象的属性和方法。本质上其实就是动态的生成类似于上述的字节码，加载到jvm中运行</p>
-</blockquote>
-<p><strong>关键点：动态获取</strong></p>
-<h3 id="反射获取对象"><a href="#反射获取对象" class="headerlink" title="反射获取对象"></a>反射获取对象</h3><p>正常的new对象的过程如下，我们可以看到，首先编译出了Student的类，而Student.class 经过JVM的内存中，就始终存在一个（一个类只会存在一个class对象），</p>
-<p><img src="https://cdn.jsdelivr.net/gh/h0ld1rs/image/image/20220115014839.png"></p>
-<p>补一张jvm的图</p>
-<p><img src="https://pic4.zhimg.com/80/v2-4face8109e0d52ef5894c41c69e4ec6b_hd.jpg" alt="img"></p>
-<p>双亲委派机制</p>
-<p>1-&gt;2-&gt;3-&gt;4</p>
-<p>由于java语言动态的特性，在程序运行后，所运行的类，就已经在JVM的内存中，我们就可以直接调用已经加载好的类去实现我们的方法操作。</p>
-<blockquote>
-<p>在很大一部分情况下，公司上线的产品都是以jar包或者war包部署到Tomcat下运行的，我们如果有源码，能审查链以后，就可以直接利用加载在JVM中的类进行操作。</p>
-</blockquote>
-<ol>
-<li>Java反射机制的核心是在程序运行时动态加载类并获取类的详细信息，从而操作类或对象的属性和方法。本质是JVM得到class对象之后，再通过class对象进行反编译，从而获取对象的各种信息。</li>
-<li>Java属于&#x3D;&#x3D;先编译再运行&#x3D;&#x3D;的语言，程序中对象的类型在编译期就确定下来了，而当程序在运行时可能需要动态加载某些类，这些类因为之前用不到，所以没有被加载到JVM。通过反射，可以在运行时动态地创建对象并调用其属性，不需要提前在编译期知道运行的对象是谁。</li>
-<li><strong>反射调用方法时，会忽略权限检查</strong>，可以无视权限修改对应的值—&gt;因此容易导致安全性问题，（对安全研究人员来说提供了不小的帮助，hhhh）</li>
-</ol>
-<h3 id="获得实例化类的对象"><a href="#获得实例化类的对象" class="headerlink" title="获得实例化类的对象"></a>获得实例化类的对象</h3><p>主要是通过newInstance方法</p>
-<p>方法一通过Class中的newInstance</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class p=Class.forName(&quot;Person&quot;);</span><br><span class="line">Object p1=p.newInstance();</span><br><span class="line">Class p=Class.forName(&quot;Person&quot;);</span><br><span class="line">Person p1=(Person)p.newInstance();</span><br></pre></td></tr></table></figure>
-
-<p>方法二 Constructor中的newInstance</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=p.getClass();</span><br><span class="line">Constructor con = cla.getConstructor();</span><br><span class="line">Object p1 = con.newInstance();</span><br></pre></td></tr></table></figure>
-
-<p>那么为什么要说这两种方法呢？如上第一中方法，只能适用于，我们的类只能含有不含参的构造器，一旦我们的类中没有不含参的构造器的时候第一中方法就会报错了</p>
-<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/493737b9-57ed-49cc-b954-dd99b52c27ba.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/493737b9-57ed-49cc-b954-dd99b52c27ba.png" alt="image.png"></a></p>
-<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/d603db70-f6ee-4c39-83f6-fc800ab525fb.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/d603db70-f6ee-4c39-83f6-fc800ab525fb.png" alt="image.png"></a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;phone&quot;);</span><br><span class="line">Constructor con = cla.getConstructor(String.class);</span><br><span class="line">Object p1 = con.newInstance(&quot;lituer&quot;);</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/d4ae1c92-de7e-486a-91b7-99ef20d7b41c.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/d4ae1c92-de7e-486a-91b7-99ef20d7b41c.png" alt="image.png"></a></p>
-<h4 id="Class-newInstance"><a href="#Class-newInstance" class="headerlink" title="Class.newInstance"></a><a href="https://tttang.com/archive/1902/#toc_classnewinstance">Class.newInstance</a></h4><p>newInstance，字面意思就是“新实例”，Class.newInstance是java反射中Class类创建新的实例化对象的方法，在这个过程中，是先取了这个类的不带参数的构造方法，然后调用构造方法 也就是无参构造函数 的 newInstance 来创建对象</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public T newInstance()</span><br><span class="line">              throws InstantiationException,</span><br><span class="line">                     IllegalAccessException</span><br><span class="line">Creates a new instance of the class represented by this Class object. The class is instantiated as if by a new expression with an empty argument list. The class is initialized if it has not already been initialized.</span><br><span class="line">Note that this method propagates any exception thrown by the nullary constructor, including a checked exception. Use of this method effectively bypasses the compile-time exception checking that would otherwise be performed by the compiler. The Constructor.newInstance method avoids this problem by wrapping any exception thrown by the constructor in a (checked) InvocationTargetException.</span><br><span class="line"></span><br><span class="line">Returns:</span><br><span class="line">a newly allocated instance of the class represented by this object.</span><br><span class="line">Throws:</span><br><span class="line">IllegalAccessException - if the class or its nullary constructor is not accessible.</span><br><span class="line">InstantiationException - if this Class represents an abstract class, an interface, an array class, a primitive type, or void; or if the class has no nullary constructor; or if the instantiation fails for some other reason.</span><br><span class="line">ExceptionInInitializerError - if the initialization provoked by this method fails.</span><br><span class="line">SecurityException - If a security manager, s, is present and any of the following conditions is met:</span><br><span class="line">invocation of s.checkMemberAccess(this, Member.PUBLIC) denies creation of new instances of this class</span><br><span class="line">the caller&#x27;s class loader is not the same as or an ancestor of the class loader for the current class and invocation of s.checkPackageAccess() denies access to the package of this class</span><br></pre></td></tr></table></figure>
-
-<p>和我们上面说的一样，既然类中存在无参构造函数，那么面对有参构造函数，那么我们就不能使用Class.newInstance而是要用Constructor.newInstance()</p>
-<p>然而，通过 Constructor.newInstance() 方法可以根据提供的参数调用任何构造函数。相比之下，Class.newInstance() 方法只能调用可见的构造函数，也就是公共(public)类型的构造函数。然而，在特定情况下，Constructor.newInstance() 方法可以调用私有的构造函数，需要使用 setAccessible(true) 方法来实现。</p>
-<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/92672c01-220e-46be-b517-162759249c63.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/92672c01-220e-46be-b517-162759249c63.png" alt="image.png"></a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Constructor constructor = cla.getDeclaredConstructor(String.class);</span><br><span class="line">constructor.setAccessible(true);</span><br><span class="line">Object obj=constructor.newInstance(&quot;lituer&quot;);</span><br><span class="line">Method method = cla.getMethod(&quot;test&quot;);</span><br><span class="line">method.invoke(obj);</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/9034f67b-e5c0-42ac-8b15-c05a3164d7b1.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/9034f67b-e5c0-42ac-8b15-c05a3164d7b1.png" alt="image.png"></a></p>
-<p>执行成功。</p>
-<h3 id="获取类的构造器"><a href="#获取类的构造器" class="headerlink" title="获取类的构造器"></a>获取类的构造器</h3><p>一：获取public类型的构造器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getConstructor(class[]parameterTypes)//里面的参数可选</span><br><span class="line">getConstructors()//获得类中所有public类型的构造器</span><br></pre></td></tr></table></figure>
-
-<p>实例：就上面用到的</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;phone&quot;);</span><br><span class="line">Constructor con = cla.getConstructor(String.class);//获得有参数的</span><br><span class="line">Constructor con = cla.getConstructor();//获得无参数的</span><br><span class="line">Constructor[] con = cla.getConstructors();//获得类中所有public类型的构造器，因为所有的构造器肯定不是一个，所以要用数组</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/7d30d0a9-7eb7-434e-9be3-6c2c5a7b50a2.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/7d30d0a9-7eb7-434e-9be3-6c2c5a7b50a2.png" alt="image.png"></a></p>
-<p>二：getDeclaredConstructor(class[]parameterTypes)</p>
-<p>它可以同时获取public和private以及protected还有默认类型的构造器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;phone&quot;);</span><br><span class="line">Constructor con2 = cla.getDeclaredConstructor();</span><br></pre></td></tr></table></figure>
-
-<p>getDeclaredConstructors()方法全部的构造器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Constructor[] con2 = cla.getDeclaredConstructor();</span><br></pre></td></tr></table></figure>
-
-<h3 id="获取类的属性"><a href="#获取类的属性" class="headerlink" title="获取类的属性"></a>获取类的属性</h3><p>1,获得类的public类型的属性</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getField(String name)</span><br><span class="line">getFields()//全部public</span><br><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Field field = cla.getField(&quot;x&quot;);</span><br><span class="line">Field[] field = cla.getFields();</span><br></pre></td></tr></table></figure>
-
-<p>2,获得任一一个类型属性</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getDeclaredField(String name)</span><br><span class="line">getDeclaredFields();//全部的任何类型的属性</span><br><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Field field = cla.getDeclaredField(&quot;y&quot;);</span><br><span class="line">Field[] field = cla.getDeclaredFields();</span><br></pre></td></tr></table></figure>
-
-<h3 id="获取类的方法"><a href="#获取类的方法" class="headerlink" title="获取类的方法"></a>获取类的方法</h3><p>1,获得public类型的方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getMethod(String name,class[] parameterTypes)；//第一个参数是方法名，第二个参数是形参的类型，没有即不填</span><br><span class="line">getMethods()</span><br><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Method method = cla.getMethod(&quot;test&quot;);</span><br><span class="line">Method[] methods = cla.getMethods();</span><br></pre></td></tr></table></figure>
-
-<p>2，获得所有类型的方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getDeclaredMethod(String name,class[] parameterTypes)</span><br><span class="line">getDeclaredMethods()//全部方法</span><br><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Method method = cla.getDeclaredMethod(&quot;input&quot;, String.class);</span><br><span class="line">Method[] methods=cla.getDeclaredMethods();</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://storage.tttang.com/media/attachment/2023/08/17/51c6fabd-a4d5-45a0-b8b0-f5b0345b348e.png" alt="![image.png](https://storage.tttang.com/media/attachment/2023/08/17/51c6fabd-a4d5-45a0-b8b0-f5b0345b348e.png)"></p>
-<p>获得Method信息包括</p>
-<ol>
-<li>getName() 返回方法的名称</li>
-<li>getReturnType() 返回方法返回值类型 也是一个 Class实例比如 String.class</li>
-<li>getParameterTypes()：返回方法的参数类型，是一个 Class 数组，例如：{String.class, int.class}；</li>
-<li>getModifiers()：返回方法的修饰符，它是一个 int，不同的 bit 表示不同的含义</li>
-</ol>
-<h3 id="获得类方法的调用"><a href="#获得类方法的调用" class="headerlink" title="获得类方法的调用"></a>获得类方法的调用</h3><p>使用invoke</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Object invoke(Object obj,Object...args)</span><br></pre></td></tr></table></figure>
-
-<p>其中参数 obj 是实例化后的对象，args 为用于方法调用的参数，如果我们获取的方法为非静态方法，那么第一个参数是类对象，如果是一个静态方法，那么我第一个参数就是一个类</p>
-<p>这也比较好理解了，我们正常执行方法是 [1].method([2], [3], [4]…) ，其实在反射里就是 method.invoke([1], [2], [3], [4]…) 。</p>
-<p>下面是整个反射利用的过程</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);//获得Class对象</span><br><span class="line">Constructor constructor =cla.getConstructor(String.class);//获得构造器</span><br><span class="line">Object obj=constructor.newInstance(&quot;lituer&quot;);//实例化对象</span><br><span class="line">Method method = cla.getMethod(&quot;test&quot;);//获得方法</span><br><span class="line">method.invoke(obj);//执行方法</span><br></pre></td></tr></table></figure>
-
-<h3 id="获得类属性的修改"><a href="#获得类属性的修改" class="headerlink" title="获得类属性的修改"></a>获得类属性的修改</h3><p>我们使用set方法</p>
-<p><a href="https://storage.tttang.com/media/attachment/2023/08/17/1f659533-c1f8-4e23-b059-28990520c152.png"><img src="https://storage.tttang.com/media/attachment/2023/08/17/1f659533-c1f8-4e23-b059-28990520c152.png" alt="image.png"></a></p>
-<p>我们当修改我们类中的属性可以通过</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Field field = cla.getField(&quot;x&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>先获得属性，然后通过set来修改</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Field field = cla.getField(&quot;x&quot;);</span><br><span class="line">field.set(p,&quot;xiaoming&quot;);//这个p是Class类的实例对象</span><br></pre></td></tr></table></figure>
-
-<p>如果说是私有属性 的话我们怎么修改</p>
-<p>第一步我们需要获得这个属性我们使用getDeclaredField</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Field field = cla.getDeclaredField(&quot;y&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>然后我们还需要setAccessible</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Class cla=Class.forName(&quot;MyClass&quot;);</span><br><span class="line">Field field = cla.getDeclaredField(&quot;y&quot;);</span><br><span class="line">field.setAccessible(true);</span><br><span class="line">field.set(p,&quot;xiaoming&quot;);</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java面向对象</title>
-    <url>/2023/07/27/Java3/</url>
-    <content><![CDATA[<h1 id=""><a href="#" class="headerlink" title=""></a></h1><span id="more"></span>
-
-<h1 id="Java-对象和类"><a href="#Java-对象和类" class="headerlink" title="Java 对象和类"></a>Java 对象和类</h1><ul>
-<li><p><strong>类和对象的关系</strong><br><strong>类</strong>:类是对现实生活中一类具有共同属性和行为的事物的抽象<br><strong>对象</strong>:是能够看得到摸的着的真实存在的实体</p>
-</li>
-<li><p><strong>类的定义</strong><br><strong>类的重要性</strong>:是Java程序的基本组成单位<br><strong>类是什么</strong>:是对现实生活中一类具有共同属性和行为的事物的抽象，确定对象将会拥有的属性和行为</p>
-<p><strong>类的特点</strong>：类是对象的数据类型，是具有相同属性和行为的事物的抽象</p>
-<p><strong>类的组成</strong>:属性和行为<br><strong>属性</strong>:在类中通过成员变量来体现(类中方法外的变量)<br><strong>行为</strong>:在类中通过成员方法来体现(和前面的方法相比去掉static关键字即可)</p>
-</li>
-<li><p><strong>对象的定义</strong></p>
-<p>看看周围真实的世界，会发现身边有很多对象，车，手机，人等等。所有这些对象都有自己的属性和行为。</p>
-</li>
-</ul>
-<p>​       拿一个手机来举例，它的属性有：品牌、价格，行为有：打电话、发短信。</p>
-<p>​       软件对象也有属性和行为。行为通过方法体现。</p>
-<p>​       在软件开发中，方法操作对象内部状态的改变，对象的相互调用也是通过方法来完成。</p>
-<h2 id="Java-中的类"><a href="#Java-中的类" class="headerlink" title="Java 中的类"></a>Java 中的类</h2><p>类可以看成是创建 Java 对象的模板。</p>
-<p>pubIic class Phone {</p>
-<p>​		&#x2F;&#x2F;成员变量</p>
-<p>​		String brand;</p>
-<p>​		int price;</p>
-<p>​		&#x2F;&#x2F;成员方法</p>
-<p>​		public void call(){</p>
-<p>​			System.out.printIn(“打电话”);}<br>​		public void sendMessage(){</p>
-<p>​			System.out,pnintIn(“发短信”);}</p>
-<p>}</p>
-<p><strong>成员变量和局部变量的区别</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">区别</th>
-<th align="center">成员变量</th>
-<th align="center">局部变量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">类中位置不同</td>
-<td align="center">类中方法外</td>
-<td align="center">方法内或者方法声明上</td>
-</tr>
-<tr>
-<td align="center">内存中位置不同</td>
-<td align="center">堆内存</td>
-<td align="center">栈内存</td>
-</tr>
-<tr>
-<td align="center">生命周期不同</td>
-<td align="center">随着对象的存在而存在，随看对象的消失而消失</td>
-<td align="center">随着方法的调用而存在，随着方法的调用完毕而消失</td>
-</tr>
-<tr>
-<td align="center">初始化值不同</td>
-<td align="center">有默认的初始化值</td>
-<td align="center">没有默认的初始化值，必须先定义，赋值，才能使用</td>
-</tr>
-</tbody></table>
-<ul>
-<li><strong>局部变量</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
-<li><strong>成员变量</strong>：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</li>
-<li><strong>类变量</strong>：类变量也声明在类中，方法体之外，但必须声明为 static 类型。</li>
-</ul>
-<hr>
-<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>格式:类名对象名 &#x3D; new 类名0;<br>范例: Phone p &#x3D; new Phone0;</p>
-<h2 id="使用对象"><a href="#使用对象" class="headerlink" title="使用对象"></a>使用对象</h2><ol>
-<li><strong>使用成员变量</strong><br>格式:对象名.变量名<br>范例:p.brand</li>
-<li><strong>使用成员方法</strong><br>格式:对象名.方法名()<br>范例: p.call()</li>
-</ol>
-<hr>
-<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><h2 id="一、private关键字"><a href="#一、private关键字" class="headerlink" title="一、private关键字"></a>一、private关键字</h2><ul>
-<li>是一个权限修饰符</li>
-<li>可以修饰成员 (成员变量和成员方法)</li>
-<li>作用是保护成员不被别的类使用，被private修饰的成员只在本类中才能访问</li>
-</ul>
-<p>针对<code>private</code>修饰的成员变量，如果需要被其他类使用，提供相应的操作</p>
-<ul>
-<li>提供“<code>get变量名()</code>”方法，用于获取成员变量的值，方法用<code>public</code>修饰</li>
-<li>提供“<code>set变量名(参数)</code>”方法，用于设置成员变量的值，方法用<code>public</code>修饰</li>
-</ul>
-<h2 id="二、this关键字"><a href="#二、this关键字" class="headerlink" title="二、this关键字"></a>二、this关键字</h2><ol>
-<li><p>this修饰的变量用于指代成员变量<br>方法的形参如果与成员变量同名，不带this修饰的变量指的是形参，而不是成员变量<br>方法的形参没有与成员变量同名，不带this修饰的变量指的是成员变量</p>
-</li>
-<li><p>什么时候使用this呢? <strong>解决局部变量隐藏成员变量</strong></p>
-</li>
-<li><p>this 代表所在类的对象引用<br>记住:方法被哪个对象调用，this就代表哪个对象</p>
-</li>
-</ol>
-<h2 id="三、封装"><a href="#三、封装" class="headerlink" title="三、封装"></a>三、封装</h2><ol>
-<li><strong>封装概述</strong><br>是面向对象三大特征之一 (封装，继承，多态)<br>是面向对象编程语言对客观世界的横拟，客观世界里成员变量都是隐藏在对象内部的，外界是无法直接操作</li>
-<li><strong>封装规则</strong><br>将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对的冠信息的操作和访问成员变量private，提供对应的getXxx()&#x2F;setXxx()方法</li>
-<li><strong>好处</strong><br>通过方法来控制成员变量的操作，提高了代码的安全性<br>把代码用方法进行封装，提高了代码的复用性</li>
-</ol>
-<h2 id="四、构造方法"><a href="#四、构造方法" class="headerlink" title="四、构造方法"></a>四、构造方法</h2><p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
-<p>下面是一个构造方法示例：</p>
-<p>public class Student{   </p>
-<p>​		 public Student(){ }     </p>
-<p>​		 public Student(String name){         </p>
-<p>​			&#x2F;&#x2F; 这个构造器仅有一个参数：name    } }</p>
-<p><strong>注意事项</strong>：</p>
-<ol>
-<li><p>构造方法的创建</p>
-<p>如果没有定义构造方法，系统将给出一个认的无参数构造方法<br>如果定义了构造方法，系统将不再提供默认的构造方法</p>
-</li>
-<li><p>构造方法的重载<br>如果自定义了带参构造方法，还要使用无参数构造方法，就必须再写一个无参数构造方法</p>
-</li>
-<li><p>推荐的使用方式<br>无论是否使用，都手工书写无参数构造方法</p>
-</li>
-</ol>
-<h5 id="标准类制作"><a href="#标准类制作" class="headerlink" title="标准类制作"></a>标准类制作</h5><ol>
-<li>成员变量<br>使用private修饰</li>
-<li>构造方法<br>提供一个无参构造方法<br>提供一个带多个参数的构造方法</li>
-<li>成员方法<br>提供每一个成员变量对应的setXxx()&#x2F;getXxx()<br>提供一个显示对象信息的show()</li>
-<li>创建对象并为其成员变量值的两种方式<br>无参构造方法创建对象后使用setXxx()赋值<br>使用带参构造方法直接创建带有属性值的对象</li>
-</ol>
-<p>例子：</p>
-<h5 id="Student-java程序"><a href="#Student-java程序" class="headerlink" title="Student.java程序"></a>Student.java程序</h5><p>public class Student{   </p>
-<p>​		prative String name;&#x2F;&#x2F;成员变量</p>
-<p>​		prative int age;</p>
-<p>​		public Student() { }&#x2F;&#x2F;构造方法</p>
-<p>​		public Student(String name,int age){ </p>
-<p>​			this.name &#x3D; name;</p>
-<p>​			this.age &#x3D; age;}</p>
-<p>​		&#x2F;&#x2F;成员方法</p>
-<p>​		public void setName(String name){</p>
-<p>​			this.name &#x3D; name;}</p>
-<p>​		public String getName(){</p>
-<p>​			return name;}</p>
-<p>​		public void setAge(int age){</p>
-<p>​			this.age &#x3D; age;}</p>
-<p>​		public String getAge(){</p>
-<p>​			return age;}</p>
-<p>​		public void show(){</p>
-<p>​			System.out.println(name+”,”+age);}</p>
-<p>} </p>
-<h5 id="StudentDemo-java程序"><a href="#StudentDemo-java程序" class="headerlink" title="StudentDemo.java程序"></a>StudentDemo.java程序</h5><p>package com.XXX</p>
-<p>public class StudentDemo{</p>
-<p>​		public static void main(String[ ] args){</p>
-<p>​			&#x2F;&#x2F;无参构造方法创建对象后使用setXxx()赋值</p>
-<p>​			Student s1 &#x3D; new Student( );</p>
-<p>​			s1.setName(“xuan”);</p>
-<p>​			s1.setAge(18);</p>
-<p>​			s1.show();</p>
-<p>​			&#x2F;&#x2F;使用带参构造方法直接创建带有属性值的对象</p>
-<p>​			Student s2 &#x3D; new Student(“name:”xuan”,age:18);</p>
-<p>​			s2.show();</p>
-<p>​		}		</p>
-<p>}</p>
-<p><strong>运行结果</strong>：</p>
-<p>xuan,18</p>
-<p>xuan,18</p>
-<h1 id="Java-继承"><a href="#Java-继承" class="headerlink" title="Java 继承"></a>Java 继承</h1><hr>
-<h2 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h2><p>继承是面向对象的三大特征之一，可以使得子类具有父类的属性和方法，还可以在子类中重新定义，追加属性和方法</p>
-<ul>
-<li>格式:public class 子类名extends父类名}</li>
-<li>范例: public class Zi extends Fu<br>Fu:是类，也被称为基类、超类<br>Zi: 是子类，也被称为派生类</li>
-</ul>
-<p>继承中子类的特点：</p>
-<p>子类可以有父类的内容，还可以有自己特有的内容</p>
-<h2 id="继承的好处和弊端"><a href="#继承的好处和弊端" class="headerlink" title="继承的好处和弊端"></a>继承的好处和弊端</h2><p><strong>继承好处</strong><br>提高了代码的复用性(多个类相同的成员可以放到同一个类中)<br>提高了代码的维护性(如果方法的代码需要修改，修改一处即可)<br><strong>继承弊端</strong><br>继承让类与类之间产生了关系，类的合性增强了，当父类发生变化时子类实现也不得不跟着变化，削弱了子类的独立性<br><strong>什么时候使用继承?</strong><br>继承体现的关系:is a<br>假设法:我有两个类A和B，如果他们满足A是B的一种，或者B是A的一种，就说明他们存在继承关系，这个时候就可以考虑使用继承来体现，否则就不滥用继承</p>
-<h2 id="继承中变量的访问特点"><a href="#继承中变量的访问特点" class="headerlink" title="继承中变量的访问特点"></a>继承中变量的访问特点</h2><p>在子类方法中访问一个变量</p>
-<ol>
-<li>子类局部范围找</li>
-<li>子类成员范围找</li>
-<li>父类成员范围找</li>
-<li>如果都没有就报错(不考虑父亲的父亲…)</li>
-</ol>
-<h2 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a>继承类型</h2><p>需要注意的是 Java 不支持多继承，但支持多重继承。</p>
-<p><img src="https://www.runoob.com/wp-content/uploads/2013/12/java-extends-2020-12-08.png" alt="img"></p>
-<h2 id="继承关键字"><a href="#继承关键字" class="headerlink" title="继承关键字"></a>继承关键字</h2><p>继承可以使用 extends 和 implements 这两个关键字来实现继承，而且所有的类都是继承于 java.lang.Object，当一个类没有继承的两个关键字，则默认继承 Object（这个类在 <strong>java.lang</strong> 包中，所以不需要 <strong>import</strong>）祖先类。</p>
-<h3 id="extends关键字"><a href="#extends关键字" class="headerlink" title="extends关键字"></a>extends关键字</h3><p>在 Java 中，类的继承是单一继承，也就是说，一个子类只能拥有一个父类，所以 extends 只能继承一个类。</p>
-<p>public class Animal {<br>    private String name;<br>    private int id;<br>    public Animal(String myName, int myid) {<br>        &#x2F;&#x2F;初始化属性值<br>    }<br>    public void eat() {  &#x2F;&#x2F;吃东西方法的具体实现  }<br>    public void sleep() { &#x2F;&#x2F;睡觉方法的具体实现  }<br>} </p>
-<p>public class Penguin  extends  Animal{<br>}</p>
-<h3 id="implements关键字"><a href="#implements关键字" class="headerlink" title="implements关键字"></a>implements关键字</h3><p>使用 implements 关键字可以变相的使java具有<code>多继承</code>的特性，使用范围为类继承接口的情况，可以同时继承多个接口（接口跟接口之间采用逗号分隔）。</p>
-<p>public interface A {<br>    public void eat();<br>    public void sleep();<br>}</p>
-<p>public interface B {<br>    public void show();<br>}</p>
-<p>public class C implements A,B {<br>}</p>
-<h3 id="super-与-this-关键字"><a href="#super-与-this-关键字" class="headerlink" title="super 与 this 关键字"></a>super 与 this 关键字</h3><p>super关键字：我们可以通过super关键字来实现对父类成员的访问，用来引用当前对象的父类。</p>
-<p>this关键字：指向自己的引用。</p>
-<p><strong>实例</strong></p>
-<p>class Animal {<br>  void eat() {<br>    System.out.println(“animal : eat”);<br>  }<br>}</p>
-<p>class Dog extends Animal {<br>  void eat() {<br>    System.out.println(“dog : eat”);<br>  }<br>  void eatTest() {<br>    this.eat();   &#x2F;&#x2F; this 调用自己的方法<br>    super.eat();  &#x2F;&#x2F; super 调用父类方法<br>  }<br>}</p>
-<p>public class Test {<br>  public static void main(String[] args) {<br>    Animal a &#x3D; new Animal();<br>    a.eat();<br>    Dog d &#x3D; new Dog();<br>    d.eatTest();<br>  }<br>}</p>
-<p>输出结果为：</p>
-<p>animal : eat<br>dog : eat<br>animal : eat</p>
-<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><p>final 可以用来修饰变量（包括类属性、对象属性、局部变量和形参）、方法（包括类方法和对象方法）和类。</p>
-<p><strong>final修饰的特点</strong></p>
-<ul>
-<li>修饰方法:表明该方法是最终方法，不能被重写</li>
-<li>修饰变量:表明该变量是常量，不能再次被赋值</li>
-<li>修饰类:表明该类是最终类，不能被继承</li>
-</ul>
-<p>声明类：</p>
-<p>final class 类名 {&#x2F;&#x2F;类体}</p>
-<p>声明方法：</p>
-<p>修饰符(public&#x2F;private&#x2F;default&#x2F;protected) final 返回值类型 方法名(){&#x2F;&#x2F;方法体}</p>
-<p><strong>注：</strong> final 定义的类，其中的属性、方法不是 final 的。</p>
-<p><strong>final修饰局部变量</strong></p>
-<p>变量是基本类型: final修饰指的是基本类型的数据值不能发生改变</p>
-<p>变量是引用类型: final修饰指的是引用类型的地址值不能发生改变，但是地址里面的内容是可以发生改变的</p>
-<h1 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h1><p>static 关键字是静态的意思，可以修饰成员方法，成员变量<br><strong>static 修饰的特点</strong></p>
-<ul>
-<li>被类的所有对象共享<br>这也是我们判断是否使用静态关键字的条件</li>
-<li>推荐使用类名调用</li>
-</ul>
-<p><strong>static 访问特点</strong></p>
-<p>静态成员方法只能访问静态成员和静态成员方法</p>
-<h1 id="Java-包"><a href="#Java-包" class="headerlink" title="Java 包"></a>Java 包</h1><p>包主要用来对类和接口进行分类管理</p>
-<p>包的定义格式</p>
-<p>格式：package 包名；</p>
-<p>范例：package com.first;</p>
-<h2 id="import-语句-导包"><a href="#import-语句-导包" class="headerlink" title="import 语句(导包)"></a>import 语句(导包)</h2><p>在 Java 中，如果给出一个完整的限定名，包括包名、类名，那么 Java 编译器就可以很容易地定位到源代码或者类。import 语句就是用来提供一个合理的路径，使得编译器可以找到某个类。</p>
-<p>例如，下面的命令行将会命令编译器载入 java_installation&#x2F;java&#x2F;io 路径下的所有类</p>
-<p>import java.io.*;(import 包名)</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java漏洞</title>
-    <url>/2023/08/26/Java%E6%BC%8F%E6%B4%9E/</url>
-    <content><![CDATA[<h1 id="一、跨站脚本（Cross-Site-Scripting，XSS）"><a href="#一、跨站脚本（Cross-Site-Scripting，XSS）" class="headerlink" title="一、跨站脚本（Cross-Site Scripting，XSS）"></a>一、跨站脚本（Cross-Site Scripting，XSS）</h1><span id="more"></span>
-
-<p>是一种常见的Web安全漏洞，攻击者通过注入恶意代码到网页中，使得这些代码被其他用户的浏览器执行，从而攻击用户的计算机系统.<br><strong>XSS攻击通常分为以下几类：</strong></p>
-<ul>
-<li><p>反射型XSS：攻击者构造一个恶意的URL，将恶意代码注入到URL中，诱使用户点击该URL，从而触发攻击。</p>
-</li>
-<li><p>存储型XSS：攻击者将恶意代码存储在服务器上的数据库中，当其他用户访问相应的页面时，这些代码会被读取并执行，从而攻击用户。</p>
-</li>
-<li><p>DOM-based XSS：攻击者通过修改浏览器中的DOM树，将恶意代码注入到网页中，诱使用户执行恶意代码。</p>
-</li>
-</ul>
-<p>当Java程序扫描到跨站脚本漏洞时，通常会给出一些具体的提示信息，比如漏洞出现的位置、攻击者可以注入的代码类型等等。一般来说，修复跨站脚本漏洞需要在应用程序的代码中加入一些安全措施，如输入验证、输出过滤等，以防止攻击者注入恶意代码。<br><strong>跨站脚本示例：</strong></p>
-<p>示例一：</p>
-<p>假设有一个搜索页面，用户在该页面输入一个关键词，然后该关键词将被发送到服务器进行搜索，最后将搜索结果返回给用户。</p>
-<p>如果程序没有对用户输入的关键词进行过滤，攻击者就可以在搜索框中输入一段恶意的脚本代码，比如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;alert(&#x27;XSS attack&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当其他用户访问该页面并搜索该关键词时，这段恶意代码就会被服务器返回给用户的浏览器执行，从而弹出一个警告框，对用户进行攻击。</p>
-<p>为了避免这种攻击，程序应该对用户输入的关键词进行过滤和转义，以确保任何恶意的脚本都无法执行。例如，可以使用一些Web开发框架提供的安全函数来实现这一点，如在Java中可以使用ESAPI库中提供的函数进行输入验证和输出过滤。</p>
-<p>示例二</p>
-<p>假设有一个Java Web应用程序，其中一个Servlet接收一个名为”message”的参数，并将其显示在页面上。代码如下：</p>
-<pre><code>@WebServlet(&quot;/xss&quot;)
-public class XssServlet extends HttpServlet &#123;
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
-        String message = request.getParameter(&quot;message&quot;);
-        response.setContentType(&quot;text/html&quot;);
-        PrintWriter out = response.getWriter();
-        out.println(&quot;&lt;html&gt;&quot;);
-        out.println(&quot;&lt;head&gt;&quot;);
-        out.println(&quot;&lt;title&gt;XSS漏洞示例&lt;/title&gt;&quot;);
-        out.println(&quot;&lt;/head&gt;&quot;);
-        out.println(&quot;&lt;body&gt;&quot;);
-        out.println(&quot;&lt;h1&gt;&quot; + message + &quot;&lt;/h1&gt;&quot;);
-        out.println(&quot;&lt;/body&gt;&quot;);
-        out.println(&quot;&lt;/html&gt;&quot;);
-    &#125;
-&#125;
-</code></pre>
-<p>如果程序没有对用户输入的”message”参数进行过滤和转义，攻击者就可以在URL中注入恶意代码，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/xss?message=&lt;script&gt;alert(&#x27;XSS attack&#x27;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当其他用户访问该URL时，这段恶意代码就会被服务器返回给用户的浏览器执行，从而弹出一个警告框，对用户进行攻击。</p>
-<p>为了避免这种攻击，程序应该对用户输入的参数进行过滤和转义，以确保任何恶意的脚本都无法执行。例如，在Java中可以使用ESAPI库中提供的函数进行输入验证和输出过滤，以确保用户输入的数据不会包含任何恶意的脚本。</p>
-<h1 id="二、SQL注入（SQL-Injection）漏洞"><a href="#二、SQL注入（SQL-Injection）漏洞" class="headerlink" title="二、SQL注入（SQL Injection）漏洞"></a>二、SQL注入（SQL Injection）漏洞</h1><p>攻击者通过在Web应用程序中注入恶意SQL语句来获取敏感信息，修改数据或者执行任意代码。<br><strong>SQL注入漏洞示例</strong></p>
-<p>假设一个Web应用程序中有一个搜索功能，用户可以通过输入关键字搜索相关内容。如果程序没有对用户输入的关键字进行过滤，攻击者就可以在搜索框中注入恶意的SQL语句，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#x27; OR 1=1; --</span><br></pre></td></tr></table></figure>
-
-<p>这段代码将会被拼接到SQL查询语句中，并使查询语句变为：</p>
-<pre><code>SELECT * FROM articles WHERE title=&#39;&#39; OR 1=1; -- &#39;
-</code></pre>
-<p>攻击者就可以绕过身份验证，获取文章列表中所有文章的信息</p>
-<h1 id="三、文件包含（File-Inclusion）漏洞"><a href="#三、文件包含（File-Inclusion）漏洞" class="headerlink" title="三、文件包含（File Inclusion）漏洞"></a>三、文件包含（File Inclusion）漏洞</h1><p>攻击者利用Web应用程序中存在的文件包含漏洞，向应用程序中注入恶意代码，以获取敏感信息或者执行任意代码。<br><strong>文件包含漏洞示例</strong></p>
-<p>假设一个Web应用程序中有一个功能，允许用户在服务器上查看指定的文件。如果程序没有对用户输入的文件名进行过滤，攻击者就可以通过在URL中注入恶意的文件名来读取任意文件，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/viewfile.php?file=../../../etc/passwd</span><br></pre></td></tr></table></figure>
-
-<p>这段代码将会被拼接到文件路径中，并使程序读取&#x2F;etc&#x2F;passwd文件并将其显示在页面上，攻击者就可以获取敏感信息</p>
-<h1 id="四、CSRF（Cross-Site-Request-Forgery）漏洞"><a href="#四、CSRF（Cross-Site-Request-Forgery）漏洞" class="headerlink" title="四、CSRF（Cross-Site Request Forgery）漏洞"></a>四、CSRF（Cross-Site Request Forgery）漏洞</h1><p>攻击者通过欺骗用户在已经登录的Web应用程序中执行某些操作，从而窃取用户的身份验证信息或者执行任意操作。<br><strong>CSRF漏洞示例</strong></p>
-<p>假设一个Web应用程序中有一个功能，允许用户通过访问URL来删除自己的帖子。如果程序没有进行CSRF防护，攻击者就可以伪造一个带有删除帖子的请求的页面，欺骗用户点击链接，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;http://example.com/deletepost.php?postid=123&amp;action=delete&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当用户点击该链接时，程序将会执行删除操作，攻击者就可以删除用户的帖子。</p>
-<h1 id="五、认证与授权漏洞"><a href="#五、认证与授权漏洞" class="headerlink" title="五、认证与授权漏洞"></a>五、认证与授权漏洞</h1><p>攻击者通过欺骗或者绕过Web应用程序的身份验证或者授权机制，获取未授权的访问权限或者执行任意操作。</p>
-<p>认证与授权漏洞示例<br>假设一个Web应用程序中的一个页面需要特定的权限才能访问，例如管理员权限。如果程序没有进行足够的身份验证或者授权机制，攻击者就可以绕过该机制，获取管理员权限并执行任意操作。</p>
-<h1 id="六、逻辑漏洞"><a href="#六、逻辑漏洞" class="headerlink" title="六、逻辑漏洞"></a>六、逻辑漏洞</h1><p>攻击者利用Web应用程序中的逻辑漏洞，绕过应用程序的安全措施，获取未授权的访问权限或者执行任意操作。</p>
-<p>逻辑漏洞示例<br>假设一个Web应用程序中的一个功能需要进行支付，用户需要在完成支付后才能获得相应的商品或者服务。如果程序存在逻辑漏洞，例如没有对支付进行验证或者没有对用户状态进行检查，攻击者就可以绕过支付流程，获得相应的商品或者服务，而不需要真正支付<br>七、敏感数据泄露漏洞</p>
-<p>Web应用程序在处理敏感信息时出现漏洞，导致敏感信息泄露。</p>
-<p>敏感数据泄露漏洞示例<br>假设一个Web应用程序中存储了用户的敏感信息，例如信用卡号、社保号码等等。如果程序没有对这些信息进行足够的保护，攻击者就可以通过利用程序的漏洞或者直接攻击数据库等方式获取这些信息。</p>
-<h1 id="八、命令注入（Command-Injection）漏洞"><a href="#八、命令注入（Command-Injection）漏洞" class="headerlink" title="八、命令注入（Command Injection）漏洞"></a>八、命令注入（Command Injection）漏洞</h1><p>攻击者通过在Web应用程序中注入恶意命令，从而获取敏感信息或者执行任意代码.</p>
-<p>命令注入漏洞示例<br>假设一个Web应用程序中有一个命令行操作的功能，例如允许管理员执行一些命令来管理服务器。如果程序没有对用户输入的命令进行过滤，攻击者就可以在命令中注入恶意的代码，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">; rm -rf /</span><br></pre></td></tr></table></figure>
-
-<p>这段代码将会被拼接到命令中，并使命令变为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls; rm -rf /</span><br></pre></td></tr></table></figure>
-
-<p>攻击者就可以执行任意代码，删除服务器上的所有文件。</p>
-<p>需要注意的是，以上示例仅仅是每个漏洞类型的一个简单示例，实际的漏洞可能会更加复杂，攻击者也会不断地创造新的攻击方式来绕过应用程序的防御措施。为了确保Web应用程序的安全性，需要开发人员注重代码的安全性，以及定期进行安全测试和漏洞扫描</p>
-<h1 id="审计方法总结"><a href="#审计方法总结" class="headerlink" title="审计方法总结"></a>审计方法总结</h1><p>主要代码审计方法是跟踪用户输入数据和敏感函数参数回溯：跟踪用户的输入数据，判断数据进入的每一个代码逻辑是否有可利用的点，此处的代码逻辑可以是一个函数，或者是条小小的条件判断语句。</p>
-<p>敏感函数参数回溯，根据敏感函数，逆向追踪参数传递的过程。这个方法是最高效，最常用的方法。大多数漏洞的产生是因为函数的使用不当导致的，只要找到这些函数，就能够快速挖掘想要的漏洞。</p>
-<p>以下是基于关键词审计技巧总结：</p>
-<p>在搜索时要注意是否为整个单词,以及小写敏感这些设置</p>
-<table>
-<thead>
-<tr>
-<th align="center">漏洞名称</th>
-<th align="center">关键词</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">密码硬编码、密码明文存储</td>
-<td align="center">password 、pass、jdbc</td>
-</tr>
-<tr>
-<td align="center">XSS</td>
-<td align="center">getParamter、&lt;%&#x3D;、param.</td>
-</tr>
-<tr>
-<td align="center">SQL 注入</td>
-<td align="center">Select、Dao 、from 、delete 、update、insert</td>
-</tr>
-<tr>
-<td align="center">任意文件下载</td>
-<td align="center">download 、fileName 、filePath、write、getFile、getWriter</td>
-</tr>
-<tr>
-<td align="center">任意文件删除</td>
-<td align="center">Delete、deleteFile、fileName 、filePath</td>
-</tr>
-<tr>
-<td align="center">文件上传</td>
-<td align="center">Upload、write、fileName 、filePath</td>
-</tr>
-<tr>
-<td align="center">命令注入</td>
-<td align="center">getRuntime、exec、cmd、shell</td>
-</tr>
-<tr>
-<td align="center">缓冲区溢出</td>
-<td align="center">strcpy,strcat,scanf,memcpy,memmove,memeccpy<br/>Getc(),fgetc(),getchar;read,printf</td>
-</tr>
-<tr>
-<td align="center">XML 注入</td>
-<td align="center">DocumentBuilder、XMLStreamReader、SAXBuilder、SAXParser<br/>SAXSource 、TransformerFactory 、SAXTransformerFactory 、</td>
-</tr>
-<tr>
-<td align="center">反序列化漏洞</td>
-<td align="center">ObjectInputStream.readObject、ObjectInputStream.readUnshared、XMLDecoder.readObject<br/>Yaml.load 、 XStream.fromXML 、 ObjectMapper.readValue 、JSON.parseObject</td>
-</tr>
-<tr>
-<td align="center">url 跳转</td>
-<td align="center">sendRedirect、setHeader、forward</td>
-</tr>
-<tr>
-<td align="center">不安全组件暴露</td>
-<td align="center">activity、Broadcast Receiver、Content Provider、Service、 inter-filter</td>
-</tr>
-<tr>
-<td align="center">日志记录敏感信息</td>
-<td align="center">log log.info logger.info</td>
-</tr>
-<tr>
-<td align="center">代码执行</td>
-<td align="center">eval、system、exec</td>
-</tr>
-</tbody></table>
-<h1 id="其他漏洞审计方法"><a href="#其他漏洞审计方法" class="headerlink" title="其他漏洞审计方法"></a>其他漏洞审计方法</h1><ol>
-<li>CSRF</li>
-</ol>
-<p>审计方法:通过查看配置文件有没有配置 csrf 全局过滤器，如果没有则重点看每个操作前有没有添加 token 的防护机制</p>
-<p>在Smpkpiappealcontroller.java中200处，直接用用ids控制删除操作，而没有添加防 csrf的随机token验证检查，存在csrf漏洞。</p>
-<p> Java&#x2F;main&#x2F;com&#x2F;venustech&#x2F;tsoc&#x2F;cupid&#x2F;smp&#x2F;kpi&#x2F;dao&#x2F;smpkpideclardao.java 517行，对传</p>
-<p>入的ids进行删除操作。</p>
-<ol start="2">
-<li>Struts2 远程代码执行漏洞</li>
-</ol>
-<p>审计方法：查看 struts 插件的版本信息是否为漏洞版本漏洞版本查询网址：<a href="https://www.exploit-db.com/">https://www.exploit-db.com/</a></p>
-<ol start="3">
-<li>越权操作</li>
-</ol>
-<p>审计方法：重点关注用户操作请求时查看是否有对当前登陆用户权限做校验从而确定是否存在漏洞，有些厂商会使用一些主流的权限框架，例如 shiro ,spring security 等框架，那么需要重点关注框架的配置文件以及实现方法</p>
-<p>漏洞示例：</p>
-<p>在以下文件中采用了 shiro 框架进行权限控制，在代码 58-72 行处为控制访问路径的权限设置，51-55 行处为对 admin 路径下访问限制，只有 SysyUserFilter 设置了 isAccessAllowed 方法,其他过滤均没有</p>
-<p>SysUserFilter 中 isAccessAllowed 具体实现方法如下，90-93 行处没有对是否为当前用户进行判断，导致了越权</p>
-<p>其他过滤文件均只设置了 onAccessDaniad()方法</p>
-<p>如果没有使用框架的话，就要注意每个操作是否有权限</p>
-<p>代码 7 行处获取 session 里的 username，只判断了 username 是不是为空，如果在截取数据包的时候将 username 再重新赋一个值就有可能造成越权漏洞。</p>
-<p> 以这个年度服务费用编制功能为例，测试一下，代码如图所示：</p>
-<ol start="4">
-<li>会话超时设置</li>
-</ol>
-<p>审计方法：</p>
-<p>Javaweb 应用会话超时设置一般有俩种方法：一是在配置文件 web.xml 设置</p>
-<p> 二是通过 java 代码设置</p>
-<ol start="5">
-<li>敏感数据弱加密</li>
-</ol>
-<p>审计方法：</p>
-<p>敏感数据弱加密主要看数据传输中的加密方法，一般写在工具类 util 中以下文件中为 base64 编码方法</p>
-<p>​	</p>
-<p>​	</p>
-<p>​	</p>
-]]></content>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux</title>
-    <url>/2023/08/09/Linux/</url>
-    <content><![CDATA[<h1 id="Linux操作系统获取方式"><a href="#Linux操作系统获取方式" class="headerlink" title="Linux操作系统获取方式"></a>Linux操作系统获取方式</h1><span id="more"></span>
-
-<p>以centOS为例，获取方法大致分为两种：</p>
-<ul>
-<li><p>从<a href="https://www.centos.org/download/">CentOS官网</a>获取；</p>
-</li>
-<li><p>从镜像网站获取</p>
-<ul>
-<li><p>以</p>
-<p>阿里云镜像</p>
-<p>网站平台为例。</p>
-<ul>
-<li>新版本镜像地址： <a href="https://mirrors.aliyun.com/centos/">https://mirrors.aliyun.com/centos/</a></li>
-<li>旧版本镜像地址： <a href="https://mirrors.aliyun.com/centos-vault/">https://mirrors.aliyun.com/centos-vault/</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="Linux-接口"><a href="#Linux-接口" class="headerlink" title="Linux 接口"></a>Linux 接口</h1><p>Linux 系统是一种金字塔模型的系统，如下所示</p>
-<p><img src="https://img2020.cnblogs.com/blog/1515111/202010/1515111-20201010070233641-1312039505.png" alt="img"></p>
-<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><p>pwd 显示工作路径</p>
-<p>shutdown -h now 关闭系统  &#x2F;halt 关闭系统</p>
-<p>shutdown -r now 重启 &#x2F; reboot 重启</p>
-<p>systemctl stop firewalld　　关闭防火墙</p>
-<p>ip addr　　查看ip地址</p>
-<p>1、<strong>cd命令</strong>：这是一个非常基本，也是大家经常需要使用的命令，它用于切换当前目录，它的参数是要切换到的目录的路径，可以是绝对路径，也可以是相对路径。如：</p>
-<p>cd &#x2F;home 　 进入根目录下面的home目录<br>cd home 　 进入当前目录下的home目录<br>cd ..　　　 返回上一层目录<br>cd ..&#x2F;.. 　　 返回上两级目录<br>cd &#x2F;　　　　　返回跟目录<br>cd - 　　　　返回上次所在的目录 </p>
-<p>2、<strong>ls命令</strong>：这是一个非常有用的查看文件与目录的命令，list之意，它的参数非常多，下面就列出一些我常用的参数吧，如下：</p>
-<p>ls 　　　查看目录中的文件<br>ls -a　　列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来<br>ls -l 　 显示文件和目录的详细资料 </p>
-<p>ls A*    意味着只列出以 A 为开头的所有文件</p>
-<p>3、<strong>mkdir命令</strong>：创建</p>
-<p>mkdir dir1 创建一个叫做 ‘dir1’ 的目录’<br>mkdir dir1 dir2 同时创建两个目录 </p>
-<p>4、<strong>rm命令</strong>：删除</p>
-<p>rm -f file1　　 删除一个叫做 ‘file1’ 的文件’<br>rmdir dir1 　　删除一个叫做 ‘dir1’ 的目录’ （空目录才能删除）<br>rm -rf dir1 　　删除一个叫做 ‘dir1’ 的目录并同时删除其内容<br>rm -rf dir1 dir2　　 同时删除两个目录及它们的内容 </p>
-<p>rm A*      会移除所有以 A 为开头的文件而不是只删除文件名是 <code>A*</code> 的文件</p>
-<p>5、<strong>mv命令</strong>：该命令用于移动文件、目录或更名，move之意，它的常用参数如下：-f 如果目标文件已经存在，不会询问而直接覆盖</p>
-<p>mv file1 file2  把文件file1重命名为file2 </p>
-<p>mv file1 file2 dir  把文件file1、file2移动到目录dir中</p>
-<p>6、<strong>cp命令</strong>：该命令用于复制文件，copy之意，它还可以把多个文件一次性地复制到一个目录下， 它的常用参数如下：</p>
-<p>cp -a file1 file2 连同文件的所有特性把文件file1复制成文件file2<br>cp dir&#x2F;* . 复制一个目录下的所有文件到当前工作目录<br>cp -a &#x2F;tmp&#x2F;dir1 . 复制一个目录到当前工作目录<br>cp -a dir1 dir2 复制一个目录 </p>
-<p>7、<strong>find命令</strong>：find是一个基于查找的功能非常强大的命令</p>
-<p>find &#x2F; -name file1 从 ‘&#x2F;‘ 开始进入根文件系统搜索文件和目录<br>find &#x2F; -user user1 搜索属于用户 ‘user1’ 的文件和目录<br>find &#x2F;home&#x2F;user1 -name *.bin 在目录 ‘&#x2F; home&#x2F;user1’ 中搜索带有’.bin’ 结尾的文件<br>find &#x2F;usr&#x2F;bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件<br>find &#x2F;usr&#x2F;bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件 </p>
-<p>8、<strong>ps命令</strong>：该命令用于将某个时间点的进程运行情况选取下来并输出，process之意，它的常用参数如下：</p>
-<p>-A ：所有的进程均显示出来<br>-a ：不与terminal有关的所有进程<br>-u ：有效用户的相关进程<br>-x ：一般与a参数一起使用，可列出较完整的信息<br>-l ：较长，较详细地将PID的信息列出<br>其实我们只要记住ps一般使用的命令参数搭配即可，它们并不多，如下：</p>
-<p>ps aux  查看系统所有的进程数据<br>ps ax  查看不与terminal有关的所有进程<br>ps -lA  查看系统所有的进程数据<br>ps axjf  查看连同一部分进程树状态</p>
-<p>9、<strong>kill命令</strong>：该命令用于向某个工作（%jobnumber）或者是某个PID（数字）传送一个信号，它通常与ps和jobs命令一起使用，它的基本语法如下：</p>
-<p>kill -signal PID<br>signal的常用参数如下：注：最前面的数字为信号的代号，使用时可以用代号代替相应的信号。</p>
-<p>1：SIGHUP，启动被终止的进程<br>2：SIGINT，相当于输入ctrl+c，中断一个程序的进行<br>9：SIGKILL，强制中断一个进程的进行<br>15：SIGTERM，以正常的结束进程方式来终止进程<br>17：SIGSTOP，相当于输入ctrl+z，暂停一个进程的进行<br>例如：</p>
-<p># 以正常的结束进程方式来终于第一个后台工作，可用jobs命令查看后台中的第一个工作进程<br>kill -SIGTERM %1<br># 重新改动进程ID为PID的进程，PID可用ps命令通过管道命令加上grep命令进行筛选获得<br>kill -SIGHUP PID </p>
-<p> 10、<strong>tar命令</strong>：该命令用于对文件进行打包，默认情况并不会压缩，如果指定了相应的参数，它还会调用相应的压缩程序（如gzip和bzip等）进行压缩和解压。它的常用参数如下：</p>
-<ol>
-<li>压缩：tar -jcv -f filename.tar.bz2 要被处理的文件或目录名称 </li>
-<li>查询：tar -jtv -f filename.tar.bz2 </li>
-<li>解压：tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录</li>
-</ol>
-<p>11、chmod命令：该命令用于改变文件的权限，一般的用法如下：</p>
-<p>chmod -R 777   chmod -R 777 意思就是将当前目录及目录下所有文件都给予777权限（所有权限）</p>
-<p><strong>查看文件内容</strong><br>cat file1 从第一个字节开始正向查看文件的内容<br>tac file1 从最后一行开始反向查看一个文件的内容<br>more file1 查看一个长文件的内容<br>less file1 类似于 ‘more’ 命令，但是它允许在文件中和正向操作一样的反向操作<br>head -2 file1 查看一个文件的前两行<br>tail -2 file1 查看一个文件的最后两行<br>tail -f &#x2F;var&#x2F;log&#x2F;messages 实时查看被添加到一个文件中的内容 </p>
-<p><strong>YUM 软件包升级器 - （Fedora, RedHat及类似系统）</strong><br>yum install package_name 下载并安装一个rpm包<br>yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系<br>yum update package_name.rpm 更新当前系统中所有安装的rpm包<br>yum update package_name 更新一个rpm包<br>yum remove package_name 删除一个rpm包<br>yum list 列出当前系统中安装的所有包<br>yum search package_name 在rpm仓库中搜寻软件包<br>yum clean packages 清理rpm缓存删除下载的包<br>yum clean headers 删除所有头文件<br>yum clean all 删除所有缓存的包和头文件 </p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MYSQL</title>
     <url>/2023/09/15/MYSQL/</url>
     <content><![CDATA[<p><strong>MySQL是用C和C++编写的。它使用C语言来实现其核心部分，如数据库引擎和查询解析器，而使用C++语言来支持更高级的功能和插件。此外，MySQL还使用自己的编程语言和支持多种编程语言的接口来提供丰富的功能和灵活性。</strong></p>
@@ -3109,6 +3041,74 @@ public class XssServlet extends HttpServlet &#123;
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysqldump -h other-host.com -P port -u root -p database_name &gt; dump.txt</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux</title>
+    <url>/2023/08/09/Linux/</url>
+    <content><![CDATA[<h1 id="Linux操作系统获取方式"><a href="#Linux操作系统获取方式" class="headerlink" title="Linux操作系统获取方式"></a>Linux操作系统获取方式</h1><span id="more"></span>
+
+<p>以centOS为例，获取方法大致分为两种：</p>
+<ul>
+<li><p>从<a href="https://www.centos.org/download/">CentOS官网</a>获取；</p>
+</li>
+<li><p>从镜像网站获取</p>
+<ul>
+<li><p>以</p>
+<p>阿里云镜像</p>
+<p>网站平台为例。</p>
+<ul>
+<li>新版本镜像地址： <a href="https://mirrors.aliyun.com/centos/">https://mirrors.aliyun.com/centos/</a></li>
+<li>旧版本镜像地址： <a href="https://mirrors.aliyun.com/centos-vault/">https://mirrors.aliyun.com/centos-vault/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Linux-接口"><a href="#Linux-接口" class="headerlink" title="Linux 接口"></a>Linux 接口</h1><p>Linux 系统是一种金字塔模型的系统，如下所示</p>
+<p><img src="https://img2020.cnblogs.com/blog/1515111/202010/1515111-20201010070233641-1312039505.png" alt="img"></p>
+<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><p>pwd 显示工作路径</p>
+<p>shutdown -h now 关闭系统  &#x2F;halt 关闭系统</p>
+<p>shutdown -r now 重启 &#x2F; reboot 重启</p>
+<p>systemctl stop firewalld　　关闭防火墙</p>
+<p>ip addr　　查看ip地址</p>
+<p>1、<strong>cd命令</strong>：这是一个非常基本，也是大家经常需要使用的命令，它用于切换当前目录，它的参数是要切换到的目录的路径，可以是绝对路径，也可以是相对路径。如：</p>
+<p>cd &#x2F;home 　 进入根目录下面的home目录<br>cd home 　 进入当前目录下的home目录<br>cd ..　　　 返回上一层目录<br>cd ..&#x2F;.. 　　 返回上两级目录<br>cd &#x2F;　　　　　返回跟目录<br>cd - 　　　　返回上次所在的目录 </p>
+<p>2、<strong>ls命令</strong>：这是一个非常有用的查看文件与目录的命令，list之意，它的参数非常多，下面就列出一些我常用的参数吧，如下：</p>
+<p>ls 　　　查看目录中的文件<br>ls -a　　列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来<br>ls -l 　 显示文件和目录的详细资料 </p>
+<p>ls A*    意味着只列出以 A 为开头的所有文件</p>
+<p>3、<strong>mkdir命令</strong>：创建</p>
+<p>mkdir dir1 创建一个叫做 ‘dir1’ 的目录’<br>mkdir dir1 dir2 同时创建两个目录 </p>
+<p>4、<strong>rm命令</strong>：删除</p>
+<p>rm -f file1　　 删除一个叫做 ‘file1’ 的文件’<br>rmdir dir1 　　删除一个叫做 ‘dir1’ 的目录’ （空目录才能删除）<br>rm -rf dir1 　　删除一个叫做 ‘dir1’ 的目录并同时删除其内容<br>rm -rf dir1 dir2　　 同时删除两个目录及它们的内容 </p>
+<p>rm A*      会移除所有以 A 为开头的文件而不是只删除文件名是 <code>A*</code> 的文件</p>
+<p>5、<strong>mv命令</strong>：该命令用于移动文件、目录或更名，move之意，它的常用参数如下：-f 如果目标文件已经存在，不会询问而直接覆盖</p>
+<p>mv file1 file2  把文件file1重命名为file2 </p>
+<p>mv file1 file2 dir  把文件file1、file2移动到目录dir中</p>
+<p>6、<strong>cp命令</strong>：该命令用于复制文件，copy之意，它还可以把多个文件一次性地复制到一个目录下， 它的常用参数如下：</p>
+<p>cp -a file1 file2 连同文件的所有特性把文件file1复制成文件file2<br>cp dir&#x2F;* . 复制一个目录下的所有文件到当前工作目录<br>cp -a &#x2F;tmp&#x2F;dir1 . 复制一个目录到当前工作目录<br>cp -a dir1 dir2 复制一个目录 </p>
+<p>7、<strong>find命令</strong>：find是一个基于查找的功能非常强大的命令</p>
+<p>find &#x2F; -name file1 从 ‘&#x2F;‘ 开始进入根文件系统搜索文件和目录<br>find &#x2F; -user user1 搜索属于用户 ‘user1’ 的文件和目录<br>find &#x2F;home&#x2F;user1 -name *.bin 在目录 ‘&#x2F; home&#x2F;user1’ 中搜索带有’.bin’ 结尾的文件<br>find &#x2F;usr&#x2F;bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件<br>find &#x2F;usr&#x2F;bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件 </p>
+<p>8、<strong>ps命令</strong>：该命令用于将某个时间点的进程运行情况选取下来并输出，process之意，它的常用参数如下：</p>
+<p>-A ：所有的进程均显示出来<br>-a ：不与terminal有关的所有进程<br>-u ：有效用户的相关进程<br>-x ：一般与a参数一起使用，可列出较完整的信息<br>-l ：较长，较详细地将PID的信息列出<br>其实我们只要记住ps一般使用的命令参数搭配即可，它们并不多，如下：</p>
+<p>ps aux  查看系统所有的进程数据<br>ps ax  查看不与terminal有关的所有进程<br>ps -lA  查看系统所有的进程数据<br>ps axjf  查看连同一部分进程树状态</p>
+<p>9、<strong>kill命令</strong>：该命令用于向某个工作（%jobnumber）或者是某个PID（数字）传送一个信号，它通常与ps和jobs命令一起使用，它的基本语法如下：</p>
+<p>kill -signal PID<br>signal的常用参数如下：注：最前面的数字为信号的代号，使用时可以用代号代替相应的信号。</p>
+<p>1：SIGHUP，启动被终止的进程<br>2：SIGINT，相当于输入ctrl+c，中断一个程序的进行<br>9：SIGKILL，强制中断一个进程的进行<br>15：SIGTERM，以正常的结束进程方式来终止进程<br>17：SIGSTOP，相当于输入ctrl+z，暂停一个进程的进行<br>例如：</p>
+<p># 以正常的结束进程方式来终于第一个后台工作，可用jobs命令查看后台中的第一个工作进程<br>kill -SIGTERM %1<br># 重新改动进程ID为PID的进程，PID可用ps命令通过管道命令加上grep命令进行筛选获得<br>kill -SIGHUP PID </p>
+<p> 10、<strong>tar命令</strong>：该命令用于对文件进行打包，默认情况并不会压缩，如果指定了相应的参数，它还会调用相应的压缩程序（如gzip和bzip等）进行压缩和解压。它的常用参数如下：</p>
+<ol>
+<li>压缩：tar -jcv -f filename.tar.bz2 要被处理的文件或目录名称 </li>
+<li>查询：tar -jtv -f filename.tar.bz2 </li>
+<li>解压：tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录</li>
+</ol>
+<p>11、chmod命令：该命令用于改变文件的权限，一般的用法如下：</p>
+<p>chmod -R 777   chmod -R 777 意思就是将当前目录及目录下所有文件都给予777权限（所有权限）</p>
+<p><strong>查看文件内容</strong><br>cat file1 从第一个字节开始正向查看文件的内容<br>tac file1 从最后一行开始反向查看一个文件的内容<br>more file1 查看一个长文件的内容<br>less file1 类似于 ‘more’ 命令，但是它允许在文件中和正向操作一样的反向操作<br>head -2 file1 查看一个文件的前两行<br>tail -2 file1 查看一个文件的最后两行<br>tail -f &#x2F;var&#x2F;log&#x2F;messages 实时查看被添加到一个文件中的内容 </p>
+<p><strong>YUM 软件包升级器 - （Fedora, RedHat及类似系统）</strong><br>yum install package_name 下载并安装一个rpm包<br>yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系<br>yum update package_name.rpm 更新当前系统中所有安装的rpm包<br>yum update package_name 更新一个rpm包<br>yum remove package_name 删除一个rpm包<br>yum list 列出当前系统中安装的所有包<br>yum search package_name 在rpm仓库中搜寻软件包<br>yum clean packages 清理rpm缓存删除下载的包<br>yum clean headers 删除所有头文件<br>yum clean all 删除所有缓存的包和头文件 </p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -4401,7 +4401,7 @@ echo $b;
 else &#123;
 ?&gt;
 </code></pre>
-<p>进行一个正则匹配，<br>phone 的位数必须是11位<br>email的格式必须为 数字+@+字母+ . +字母例如：<a href="mailto:&#x31;&#50;&#x33;&#52;&#53;&#54;&#x2e;&#64;&#x70;&#x70;&#x2e;&#x63;&#x6f;&#x6d;">&#x31;&#50;&#x33;&#52;&#53;&#54;&#x2e;&#64;&#x70;&#x70;&#x2e;&#x63;&#x6f;&#x6d;</a><br>nickmane 并没有做什么明确的要求，但值得一提的是前面的两个正则匹配是 是不匹配执行 这个是匹配执行。<br>同时，对photo进行大小判断</p>
+<p>进行一个正则匹配，<br>phone 的位数必须是11位<br>email的格式必须为 数字+@+字母+ . +字母例如：<a href="mailto:&#x31;&#x32;&#51;&#x34;&#x35;&#54;&#46;&#64;&#x70;&#x70;&#x2e;&#99;&#111;&#109;">&#x31;&#x32;&#51;&#x34;&#x35;&#54;&#46;&#64;&#x70;&#x70;&#x2e;&#99;&#111;&#109;</a><br>nickmane 并没有做什么明确的要求，但值得一提的是前面的两个正则匹配是 是不匹配执行 这个是匹配执行。<br>同时，对photo进行大小判断</p>
 <p>class.php<br>重点php片段</p>
 <pre><code>public function filter($string) &#123;
         $escape = array(&#39;\&#39;&#39;, &#39;\\\\&#39;);
